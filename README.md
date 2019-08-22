@@ -2,11 +2,11 @@
 
 Project goal
 
-   To build USB Midi, monophonic, Bass line synth based on Arduino Pro Micro board. 
+      To build USB Midi, monophonic, Bass line synth based on Arduino Pro Micro board. 
 
 Concept
 
-   Waveforms are analog modulations of single digital frequency source (digital pin, Arduino tone() method) with pure square waveform.
+      Waveforms are analog modulations of single digital frequency source (digital pin, Arduino tone() method) with pure square waveform.
 
 # Key (hardware) components:
 - Arduino Pro Micro
