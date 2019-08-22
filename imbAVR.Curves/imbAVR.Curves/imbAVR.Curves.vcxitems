@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{856c293d-d12e-4620-997e-34da01c4152a}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\imbAVR.Curves.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.Curves.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)ASR.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)EnvSection.h" />
+    <ClInclude Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\velesMath\ADSRSequence.h" />
+    <ClInclude Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\velesMath\splineSegment.h" />
+    <ClInclude Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\velesMath\splineSequence.h" />
+    <ClInclude Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\veles\controlPoint.h" />
+    <ClInclude Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\veles\envelope.h" />
+    <ClInclude Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\veles\spline.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ASR.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)EnvSection.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Curves.cpp" />
+    <ClCompile Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\velesMath\ADSRSequence.cpp" />
+    <ClCompile Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\velesMath\splineSegment.cpp" />
+    <ClCompile Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\velesMath\splineSequence.cpp" />
+    <ClCompile Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\veles\controlPoint.cpp" />
+    <ClCompile Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\veles\envelope.cpp" />
+    <ClCompile Include="D:\ACE\ACE_Development\_OldArduino\Arduino\libraries\veles\spline.cpp" />
+  </ItemGroup>
+</Project>
