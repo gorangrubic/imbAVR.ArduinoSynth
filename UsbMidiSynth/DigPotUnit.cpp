@@ -16,7 +16,7 @@ DigPotUnitClass::DigPotUnitClass(byte chipSelectPin) {
 
 	ChipSelectPin = chipSelectPin;
 	pinMode(ChipSelectPin, OUTPUT);
-	Write(127);
+	//Write(127);
 }
 
 void DigPotUnitClass::init()

@@ -10,7 +10,7 @@
 #endif
 
 
-#include "SoftwareSerial.h"
+
 #include "ADSRUnit.h"
 #include "pitchToFrequency.h"
 
@@ -119,14 +119,6 @@ static const uint16_t sNotePitches[] = {
 };
 
 
-
-#define MIDIMSG_SystemEx		B11110000
-#define MIDIMSG_SystemExEnd		B11110111
-
-#define MIDIMSG_Timecode		B11110001
-#define MIDIMSG_TuneRequest		B11110110
-
-
 #define CC_ChannelVolume 01
 #define CC_Balance 8
 
@@ -185,6 +177,8 @@ class MidiSoundControlClass
 	// byte amp_ChannelVolume = 127;
 
 
+	 void setPreset(byte presetID);
+
 	 void noteOn(byte channel, byte pitch, byte velocity);
 
 	 void noteOff(byte channel, byte pitch, byte velocity);
@@ -206,29 +200,8 @@ class MidiSoundControlClass
 	 ADSRUnitClass ADSR_Filter = ADSRUnitClass();
 	 ADSRUnitClass ADSR_Amp = ADSRUnitClass();
 
-	 //byte flt_Cutoff = 64;
-	 //byte flt_ADSR_Mix =64;
-
 	 unsigned int time_factor = 2;
 
-	// unsigned int flt_AttackTime = 10;
-	// unsigned int flt_DecayTime = 2;
-	// unsigned int flt_ReleaseTime = 10;
-	// byte flt_InitLevel = 50;
-	// byte flt_SustainLevel = 20;
-
-	// unsigned int amp_AttackTime = 3;
-	// unsigned int amp_DecayTime = 10;
-	// unsigned int amp_ReleaseTime = 10;
-	// byte amp_InitLevel = 10;
-	// byte amp_SustainLevel = 90;
-
-
-	// byte fx_Shaper = 64;
-	// byte fx_Modulation = 64;
-
-	// byte amp_Balance = 127;
-	
 
 	 byte out_amp_value = 0;
 	 byte out_flt_value = 64;
@@ -241,11 +214,8 @@ class MidiSoundControlClass
 	 byte out_waveform_mix = 0;
 
 
-	 //byte out_mod_value = 0;
-
 	 byte channel_id = 0;
 
-	 //void controlChange(byte channel, byte control, byte value);
 
 	void init();
 };
@@ -253,4 +223,3 @@ class MidiSoundControlClass
 extern MidiSoundControlClass MidiSoundControl;
 
 #endif
-

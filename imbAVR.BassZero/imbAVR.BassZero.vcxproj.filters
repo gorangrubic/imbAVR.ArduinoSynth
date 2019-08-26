@@ -9,42 +9,39 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="Misc Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+      <Extensions>xml;json;txt;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="UsbMidiSynth.ino" />
+    <None Include="imbAVR.BassZero.ino" />
+    <None Include="src\arduino folders read me.txt">
+      <Filter>Misc Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnvUnit.h">
+    <ClInclude Include="..\UsbMidiSynth\DigPotUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DigPotUnit.h">
+    <ClInclude Include="..\UsbMidiSynth\MidiSoundControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ADSRUnit.h">
+    <ClInclude Include="..\UsbMidiSynth\ADSRUnit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MidiSoundControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="__vm\.UsbMidiSynth.vsarduino.h">
+    <ClInclude Include="__vm\.imbAVR.BassZero.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EnvUnit.cpp">
+    <ClCompile Include="..\UsbMidiSynth\DigPotUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DigPotUnit.cpp">
+    <ClCompile Include="..\UsbMidiSynth\ADSRUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ADSRUnit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MidiSoundControl.cpp">
+    <ClCompile Include="..\UsbMidiSynth\MidiSoundControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

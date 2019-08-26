@@ -9,8 +9,6 @@
 	#include "WProgram.h"
 #endif
 
-#include <SoftwareSerial.h>
-
 enum ADSRUnitState {
 	off,
 	Attack,

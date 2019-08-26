@@ -1,20 +1,6 @@
-/*
- * Simple USBMIDI synth v0.2
- *
- * Plays MIDI notes using square waves on SNDOUT pin
- * Attach piezo or audio amplifier to that pin and send some notes to it
- * Can only play one note at time
- * Tested on Brmlab Leonardo
- *
- * (c) Tomas 'harvie' Mudrunka 2019
- */
-
-
-#include "SoftwareSerial.h"
-
+#include <LightChrono.h>
 #include <pitchToNote.h>
 #include <pitchToFrequency.h>
-#include "pitchToFrequency.h"
 #include <MIDIUSB_Defs.h>
 #include <frequencyToNote.h>
 
@@ -30,32 +16,18 @@
 #include "MIDIUSB.h"
 
 
-#include  "Chrono.h"
+#include  <Chrono.h>
 
 #include "SPI.h"
 
 
 #include "MidiSoundControl.h"
 
-const int DIGPOT_FILTER_CS_PIN = 20;
-const int DIGPOT_AMP_CS_PIN = 19;
-
 
 #define LED 8
-// #define SNDOUT 3 //Audio output pin
-
 #define SOUND_OUT_1 6
 
-//#define SOUND_OUT_2 9
-//#define SOUND_OUT_3 10
-
 #define TEST_TONE 64
-
-//
-//#define MON_RX 4
-//#define MON_TX 5
-
-
 
 #define BAUDRATE 115200
 
@@ -65,12 +37,14 @@ const int DIGPOT_AMP_CS_PIN = 19;
 #define MIDI_PITCH_BEND 0b11100000
 
 #include "EnvUnit.h"
+
 // #define DEBUG_MODE
 
 #ifdef DEBUG_MODE
 
 Chrono DEBUG_Chrono;
 bool DEBUG_NoteOn;
+
 #define DEBUG_Tick 250
 #define DEBUG_Pitch 36
 #define DEBUG_Volume 50
@@ -86,51 +60,16 @@ Chrono Engine_Chrono = Chrono();
 DigPotUnitClass dp_waveform_a_shaper = DigPotUnitClass(A0);
 DigPotUnitClass dp_filter_gain = DigPotUnitClass(A2);
 DigPotUnitClass dp_filter = DigPotUnitClass(A3);
-// A2 - resonance
-// A3 cut off
-
 
 // 5
 DigPotUnitClass dp_waveform_b_flt = DigPotUnitClass(5);
-
-
 DigPotUnitClass dp_waveform_mix = DigPotUnitClass(3);
-
 DigPotUnitClass dp_master_amp = DigPotUnitClass(4);
 
 
-
-// DigPotUnitClass dp_waveform_a_shape = DigPotUnitClass(5);
-
-
-
-
-// DigPotUnitClass dp_master_RESERVE = DigPotUnitClass(7);
-// DigPotUnitClass dp_master_RESERVE = DigPotUnitClass(2);
-
-
-//DigPotUnitClass dp_dist_mix = DigPotUnitClass(A2);
-
-
-
-
-//SoftwareSerial portTwo(MON_RX, MON_TX);
-
 MidiSoundControlClass mainControl = MidiSoundControlClass();
 
-bool led_toggle = false;
 
-void ledToggle() {
-
-	if (led_toggle) {
-		digitalWrite(LED, HIGH);
-	}
-	else {
-		digitalWrite(LED, LOW);
-	}
-	led_toggle = !led_toggle;
-
-}
 
 uint16_t OUTPUT_PIN = SOUND_OUT_1;
 
@@ -158,29 +97,14 @@ uint16_t OUTPUT_PIN = SOUND_OUT_1;
 //
 //}
 
-
-
-
-const char* pitch_name(byte pitch) {
-	static const char* names[] = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
-	return names[pitch % 12];
-}
-
-int pitch_octave(byte pitch) {
-	return (pitch / 12) - 1;
-}
-
 bool LEDSTATE = true;
-
-
-
-
 
 void setup() {
   
   SPI.begin();
 
   // mainControl.time_factor = 10 / Engine_Tick;
+  pinMode(SOUND_OUT_1, OUTPUT);
 
   mainControl.ApplyControls();
 
@@ -213,6 +137,20 @@ void setup() {
   pinMode(LED, OUTPUT);
 
   //portTwo.print("Start");
+}
+
+bool led_toggle = false;
+
+void ledToggle() {
+
+	if (led_toggle) {
+		digitalWrite(LED, HIGH);
+	}
+	else {
+		digitalWrite(LED, LOW);
+	}
+	led_toggle = !led_toggle;
+
 }
 
 void loop() {

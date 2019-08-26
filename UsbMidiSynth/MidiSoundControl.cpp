@@ -4,6 +4,48 @@
 
 #include "MidiSoundControl.h"
 
+void MidiSoundControlClass::setPreset(byte presetID)
+{
+	//CCValues[CC_AmpAttack] = 5;
+	//CCValues[CC_AmpDecayTime] = 5;
+	//CCValues[CC_AmpRelease] = 5;
+	//CCValues[CC_AmpInitLevel] = 0;
+	//CCValues[CC_AmpSustainLevel] = 40;
+
+	CCValues[CC_Cutoff] = 30;
+	CCValues[CC_Resonance] = 30;
+
+	//CCValues[CC_FLT_ADSR_Mix] = 1;
+
+	//CCValues[CC_FLTAttack] = 5;
+	//CCValues[CC_FLTDecayTime] = 5;
+	//CCValues[CC_FLTRelease] = 5;
+	//CCValues[CC_FLTInitLevel] = 0;
+	//CCValues[CC_FLTSustainLevel] = 40;
+
+	//CCValues[CC_WaveformA_Shaper] = 127;
+	//CCValues[CC_WaveformB_Filter] = 64;
+	//CCValues[CC_WaveformMix] = 64;
+
+
+	CCValues[CC_AmpAttack] = 5;
+	CCValues[CC_AmpDecayTime] = 5;
+	CCValues[CC_AmpRelease] = 5;
+	CCValues[CC_AmpInitLevel] = 0;
+	CCValues[CC_AmpSustainLevel] = 60;
+
+	CCValues[CC_FLTAttack] = 10;
+	CCValues[CC_FLTInitLevel] = 100;
+	CCValues[CC_FLTRelease] = 10;
+	CCValues[CC_FLTSustainLevel] = 10;
+
+	CCValues[CC_WaveformMix] = 64;
+	CCValues[CC_WaveformA_Shaper] = 64;
+	CCValues[CC_WaveformB_Filter] = 64;
+	CCValues[CC_FLT_ADSR_Mix] = 64;
+
+}
+
 void MidiSoundControlClass::noteOn(byte channel, byte pitch, byte velocity) {
 	
 	if (channel_id != CHANNEL_ID_ALL && channel != channel_id) return;

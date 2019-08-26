@@ -9,7 +9,3 @@ void EnvUnitClass::init()
 
 
 }
-
-
-EnvUnitClass EnvUnit;
-

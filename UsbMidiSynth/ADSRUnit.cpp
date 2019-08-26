@@ -38,21 +38,6 @@ void ADSRUnitClass::SetLevels(byte iL, byte pL, byte sL) {
 }
 
 
-//void ADSRUnitClass::ReportADSR(ADSRUnitClass adsr, byte ampVal, SoftwareSerial portTwo) {
-//
-//
-//	unsigned int ADEndTime = (AttackTime + DecayTime);
-//	unsigned int TotalTime = (ADEndTime + ReleaseTime);
-//
-//	// portTwo.print(" t:");
-//	// portTwo.print(adsr.CurrentPosition);
-//	// portTwo.print(" v:");
-//	// portTwo.print(ampVal);
-//	// portTwo.print(" n:");
-//	// portTwo.print(adsr.lastNoteOn);
-//
-//}
-
 
 /// <summary>
 /// Sets IsActive to true and CurrentPosition to 0
@@ -63,26 +48,6 @@ void ADSRUnitClass::Restart() {
 	CurrentPosition = 1;
 	
 }
-//
-//void ADSRUnitClass::SetState(bool noteOn) {
-//
-//	unsigned int PositionOffset = CurrentPosition;
-//
-//	if (CurrentPosition > 0) {
-//		CurrentState = ADSRUnitState::Attack;
-//	}
-//	else if (CurrentPosition > AttackTime) {
-//
-//		CurrentState = ADSRUnitState::Decay;
-//	}
-//	else if (CurrentPosition > (AttackTime + DecayTime)) {
-//		CurrentState = ADSRUnitState::Release;
-//	}
-//	else if (CurrentPosition > (TotalTime)) {
-//		CurrentState = ADSRUnitState::off;
-//	}
-//
-//}
 
 float ADSRUnitClass::GetRatio(unsigned int part, unsigned int total, float whenPartIsZero=0.0, float whenTotalIsZero=1.0) {
 
@@ -232,7 +197,3 @@ void ADSRUnitClass::init()
 
 
 }
-
-
-//ADSRUnitClass ADSRUnit;
-
