@@ -81,69 +81,6 @@ void MidiSoundControlClass::controlChange(byte channel, byte control, byte value
 
 	CCValues[control] = value;
 
-/*
-	switch (control) {
-	
-	case  CC_ModulationWheel:
-		fx_Modulation = value;
-		break;
-
-	case  CC_ChannelVolume:
-		amp_ChannelVolume = value;
-		break;
-	case  CC_Balance:
-		amp_Balance = value;
-		break;
-
-
-
-	case  CC_Shaper:
-		fx_Shaper = value;
-		break;
-
-
-	case  CC_FLT_ADSR_Mix:
-		flt_ADSR_Mix = value;
-		break;
-	case  CC_Cutoff:
-		flt_Cutoff = value;
-		break;
-
-	case  CC_AmpRelease:
-		amp_ReleaseTime = value;
-		break;
-	case  CC_AmpAttack:
-		amp_AttackTime = value;
-		break;
-	case  CC_AmpInitLevel:
-		amp_InitLevel = value;
-		break;
-	case  CC_AmpSustainLevel:
-		amp_SustainLevel = value;
-		break;
-	case  CC_AmpDecayTime:
-		amp_DecayTime = value;
-		break;
-
-
-	case  CC_FLTAttack:
-		flt_AttackTime = value;
-		break;
-	case  CC_FLTDecayTime:
-		flt_DecayTime = value;
-		break;
-	case  CC_FLTRelease:
-		flt_ReleaseTime = value;
-		break;
-
-	case  CC_FLTInitLevel:
-		flt_InitLevel = value;
-		break;
-	case  CC_FLTSustainLevel:
-		flt_SustainLevel = value;
-		break;
-	}
-*/
 	ApplyControls();
 }
 
@@ -160,9 +97,11 @@ void MidiSoundControlClass::ApplyControls() {
 	ADSR_Filter.SetLevels(CCValues[CC_FLTInitLevel], 127, CCValues[CC_FLTSustainLevel]);
 
 
-	ADSR_Amp.SetTimes(CCValues[CC_AmpAttack], CCValues[CC_AmpDecayTime], CCValues[CC_AmpDecayTime]);
+	ADSR_Amp.SetTimes(CCValues[CC_AmpAttack]*time_factor, CCValues[CC_AmpDecayTime] * time_factor, CCValues[CC_AmpRelease] * time_factor);
 
-	ADSR_Filter.SetTimes(CCValues[CC_FLTAttack], CCValues[CC_FLTDecayTime], CCValues[CC_FLTRelease]);
+	ADSR_Filter.SetTimes(CCValues[CC_FLTAttack] * time_factor, CCValues[CC_FLTDecayTime] * time_factor, CCValues[CC_FLTRelease] * time_factor);
+
+	
 
 
 }
@@ -172,7 +111,10 @@ void MidiSoundControlClass::DoTick() {
 
 	//float level_factor = ((float)tone_velocity / 127.0) * ((float) CCValues[CC_ChannelVolume] / 127.0) * 2;
 
-	out_amp_value = ADSR_Amp.DoTick(tone_on) * 2;
+	out_amp_value = 255 - (ADSR_Amp.DoTick(tone_on) * 2);
+	
+	if (out_amp_value >= (255 - gate_margin)) out_amp_value = 255;
+	if (out_amp_value <= gate_margin) out_amp_value = 0;
 
 	float flt_adsr_mix_factor = ADSR_Filter.GetRatio(CCValues[CC_FLT_ADSR_Mix], 127);
 	
@@ -190,7 +132,9 @@ void MidiSoundControlClass::DoTick() {
 
 	out_flt_gain = CCValues[CC_Resonance] * 2;
 
-
+	if (ADSR_Amp.CurrentState == ADSRUnitState::off) {
+		
+	}
 	
 	
 }

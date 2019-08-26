@@ -18,10 +18,10 @@
 void ADSRUnitClass::SetTimes(unsigned int At, unsigned int  Dt, unsigned int Rt) {
 
 	
-	AttackTime = At;
-	DecayTime = Dt;
+	AttackTime = At+1;
+	DecayTime = Dt+1;
 	
-	ReleaseTime = Rt;
+	ReleaseTime = Rt+1;
 
 	
 	TotalTime = AttackTime + DecayTime + ReleaseTime;

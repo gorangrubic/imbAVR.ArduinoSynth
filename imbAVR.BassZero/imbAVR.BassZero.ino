@@ -18,7 +18,7 @@
 #include "DigPotUnit.h"
 #include "MidiSoundControl.h"
 
-#define LED 8
+//#define LED 8
 #define SOUND_OUT 6
 
 #define PIN_WAVEFORM_A_SHAPER A0
@@ -26,11 +26,11 @@
 #define PIN_FILTER_FREQ A3
 
 #define PIN_WAVEFORM_B_FILTER 5
-#define PIN_WAVEFORM_MIX 3
-#define PIN_MASTER_AMP 4
+#define PIN_WAVEFORM_MIX 9
+#define PIN_MASTER_AMP 8
 
 
-#define Engine_Tick 10
+#define Engine_Tick 5
 Chrono Engine_Chrono = Chrono();
 
 DigPotUnitClass dp_waveform_a_shaper = DigPotUnitClass(PIN_WAVEFORM_A_SHAPER);
@@ -51,7 +51,7 @@ void setup() {
 
 	// mainControl.time_factor = 10 / Engine_Tick;
 	pinMode(SOUND_OUT, OUTPUT);
-
+	mainControl.time_factor = 2;
 	mainControl.ADSR_Amp.IsDebugOn = false;
 	mainControl.ADSR_Filter.IsDebugOn = false;
 	mainControl.setPreset(1);
@@ -64,19 +64,19 @@ void setup() {
 
 }
 
-bool led_toggle = false;
-
-void ledToggle() {
-
-	if (led_toggle) {
-		digitalWrite(LED, HIGH);
-	}
-	else {
-		digitalWrite(LED, LOW);
-	}
-	led_toggle = !led_toggle;
-
-}
+//bool led_toggle = false;
+//
+//void ledToggle() {
+//
+//	if (led_toggle) {
+//		digitalWrite(LED, HIGH);
+//	}
+//	else {
+//		digitalWrite(LED, LOW);
+//	}
+//	led_toggle = !led_toggle;
+//
+//}
 
 
 // the loop function runs over and over again until power down or reset
@@ -97,9 +97,9 @@ void loop() {
 			break; //No pending events
 		case 0x9:
 			mainControl.noteOn(rx.byte1 & 0xF, rx.byte2, rx.byte3);
-			tone(SOUND_OUT, mainControl.tone_pitch);
+			
 
-			ledToggle();
+			//ledToggle();
 			//noteOn(
 			//	rx.byte1 & 0xF,  //channel
 			//	rx.byte2,        //pitch
@@ -153,7 +153,12 @@ void loop() {
 
 		mainControl.DoTick();
 
-
+		if (mainControl.tone_on) {
+			tone(SOUND_OUT, mainControl.tone_pitch);
+		}
+		else {
+			//
+		}
 		//dp_amp.Write(mainControl.out_amp_value);
 		//dp_filter.Write(mainControl.out_flt_value);
 		//dp_dist_mix.Write(mainControl.out_mod_value);

@@ -126,31 +126,31 @@ static const uint16_t sNotePitches[] = {
 #define CC_WaveformB_Filter 3
 
 
-#define CC_WaveformMix 13
+#define CC_WaveformMix 5
 
-#define CC_Cutoff 29
-#define CC_Resonance 21
-
-
-
-#define CC_AmpAttack 33
-
-#define CC_AmpDecayTime 25
-#define CC_AmpRelease 17
-
-
-#define CC_AmpInitLevel 32
-#define CC_AmpSustainLevel 24
+#define CC_Cutoff 12
+#define CC_Resonance 11
 
 
 
-#define CC_FLTAttack 31
-#define CC_FLTDecayTime 23
-#define CC_FLTRelease 15
+#define CC_AmpAttack 24
 
-#define CC_FLTInitLevel 30
-#define CC_FLTSustainLevel 22
-#define CC_FLT_ADSR_Mix 14
+#define CC_AmpDecayTime 23
+#define CC_AmpRelease 22
+
+
+#define CC_AmpInitLevel 21
+#define CC_AmpSustainLevel 20
+
+
+
+#define CC_FLTAttack 18
+#define CC_FLTDecayTime 17
+#define CC_FLTRelease 16
+
+#define CC_FLTInitLevel 15
+#define CC_FLTSustainLevel 16
+#define CC_FLT_ADSR_Mix 13
 
 
 
@@ -176,6 +176,7 @@ class MidiSoundControlClass
 	 byte tone_velocity = 100;
 	// byte amp_ChannelVolume = 127;
 
+	 byte gate_margin = 5;
 
 	 void setPreset(byte presetID);
 
@@ -220,6 +221,6 @@ class MidiSoundControlClass
 	void init();
 };
 
-extern MidiSoundControlClass MidiSoundControl;
+// extern MidiSoundControlClass MidiSoundControl;
 
 #endif
