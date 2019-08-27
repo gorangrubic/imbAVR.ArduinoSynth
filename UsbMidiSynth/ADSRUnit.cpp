@@ -64,7 +64,7 @@ float ADSRUnitClass::GetRatio(unsigned int part, unsigned int total, float whenP
 }
 
 
-byte ADSRUnitClass::Interpolation(byte from, byte to, unsigned int index, unsigned int length) {
+ byte ADSRUnitClass::Interpolation(byte from, byte to, unsigned int index, unsigned int length) {
 
 	bool isPositiveDirection = true;
 	byte step = 0;

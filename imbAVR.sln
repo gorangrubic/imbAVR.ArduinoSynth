@@ -9,11 +9,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SynthDiagnosticDevice", "Sy
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.SynthControl", "imbAVR.SynthControl\imbAVR.SynthControl.vcxitems", "{8C5A7585-B0BE-4991-8D2F-BBEC89D4F881}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.LCDOnMega", "imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems", "{F5380A71-EF86-4E69-82BF-A28106B5F81B}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{072244d1-855f-4a4f-9987-aebc82c8d001}*SharedItemsImports = 4
+		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{8c5a7585-b0be-4991-8d2f-bbec89d4f881}*SharedItemsImports = 9
+		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{f5380a71-ef86-4e69-82bf-a28106b5f81b}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86

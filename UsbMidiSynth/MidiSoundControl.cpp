@@ -12,8 +12,8 @@ void MidiSoundControlClass::setPreset(byte presetID)
 	//CCValues[CC_AmpInitLevel] = 0;
 	//CCValues[CC_AmpSustainLevel] = 40;
 
-	CCValues[CC_Cutoff] = 30;
-	CCValues[CC_Resonance] = 30;
+	//CCValues[CC_Cutoff] = 30;
+	//CCValues[CC_Resonance] = 30;
 
 	//CCValues[CC_FLT_ADSR_Mix] = 1;
 
@@ -28,21 +28,21 @@ void MidiSoundControlClass::setPreset(byte presetID)
 	//CCValues[CC_WaveformMix] = 64;
 
 
-	CCValues[CC_AmpAttack] = 5;
-	CCValues[CC_AmpDecayTime] = 5;
-	CCValues[CC_AmpRelease] = 5;
-	CCValues[CC_AmpInitLevel] = 0;
-	CCValues[CC_AmpSustainLevel] = 60;
+	State.CCValues[CC_AmpAttack] = 5;
+	State.CCValues[CC_AmpDecayTime] = 5;
+	State.CCValues[CC_AmpRelease] = 5;
+	State.CCValues[CC_AmpInitLevel] = 0;
+	State.CCValues[CC_AmpSustainLevel] = 60;
 
-	CCValues[CC_FLTAttack] = 10;
-	CCValues[CC_FLTInitLevel] = 100;
-	CCValues[CC_FLTRelease] = 10;
-	CCValues[CC_FLTSustainLevel] = 10;
+	State.CCValues[CC_FLTAttack] = 10;
+	State.CCValues[CC_FLTInitLevel] = 100;
+	State.CCValues[CC_FLTRelease] = 10;
+	State.CCValues[CC_FLTSustainLevel] = 10;
 
-	CCValues[CC_WaveformMix] = 64;
-	CCValues[CC_WaveformA_Shaper] = 64;
-	CCValues[CC_WaveformB_Filter] = 64;
-	CCValues[CC_FLT_ADSR_Mix] = 64;
+	State.CCValues[CC_WaveformMix] = 64;
+	State.CCValues[CC_WaveformA_Shaper] = 64;
+	State.CCValues[CC_WaveformB_Filter] = 64;
+	State.CCValues[CC_FLT_ADSR_Mix] = 64;
 
 }
 
@@ -56,10 +56,11 @@ void MidiSoundControlClass::noteOn(byte channel, byte pitch, byte velocity) {
 
 	tone_velocity = velocity;
 	
+	NoteOnTime = millis();
 	
 	
-	ADSR_Amp.Restart();
-	ADSR_Filter.Restart();
+	//ADSR_Amp.Restart();
+	//ADSR_Filter.Restart();
 
 	
 }
@@ -68,10 +69,12 @@ void MidiSoundControlClass::noteOff(byte channel, byte pitch, byte velocity) {
 
 	if (channel_id != CHANNEL_ID_ALL && channel != channel_id) return;
 	
-	tone_on = false;
+	//tone_on = false;
 
-	ADSR_Amp.NoteOff();
-	ADSR_Filter.NoteOff();
+	NoteOffTime = millis();
+
+	/*ADSR_Amp.NoteOff();
+	ADSR_Filter.NoteOff();*/
 
 }
 
@@ -79,7 +82,7 @@ void MidiSoundControlClass::controlChange(byte channel, byte control, byte value
 	
 	if (channel_id != CHANNEL_ID_ALL && channel != channel_id) return;
 
-	CCValues[control] = value;
+	State.CCValues[control] = value;
 
 	ApplyControls();
 }
@@ -92,30 +95,64 @@ void MidiSoundControlClass::ApplyControls() {
 
 	
 
-	ADSR_Amp.SetLevels(CCValues[CC_AmpInitLevel], 127 , CCValues[CC_AmpSustainLevel]);
+	ADSR_Amp.SetLevels(State.CCValues[CC_AmpInitLevel], 127 , State.CCValues[CC_AmpSustainLevel]);
 
-	ADSR_Filter.SetLevels(CCValues[CC_FLTInitLevel], 127, CCValues[CC_FLTSustainLevel]);
+	ADSR_Filter.SetLevels(State.CCValues[CC_FLTInitLevel], 127, State.CCValues[CC_FLTSustainLevel]);
 
 
-	ADSR_Amp.SetTimes(CCValues[CC_AmpAttack]*time_factor, CCValues[CC_AmpDecayTime] * time_factor, CCValues[CC_AmpRelease] * time_factor);
+	ADSR_Amp.SetTimes(State.CCValues[CC_AmpAttack]*time_factor, State.CCValues[CC_AmpDecayTime] * time_factor, State.CCValues[CC_AmpRelease] * time_factor);
 
-	ADSR_Filter.SetTimes(CCValues[CC_FLTAttack] * time_factor, CCValues[CC_FLTDecayTime] * time_factor, CCValues[CC_FLTRelease] * time_factor);
+	ADSR_Filter.SetTimes(State.CCValues[CC_FLTAttack] * time_factor, State.CCValues[CC_FLTDecayTime] * time_factor, State.CCValues[CC_FLTRelease] * time_factor);
 
 	
 
 
 }
 
-void MidiSoundControlClass::DoTick() {
+unsigned int MidiSoundControlClass::DoTick() {
 
+
+	bool IsReleaseStage = NoteOnTime < NoteOffTime;
+	unsigned long CurrentTime = millis();
+
+	unsigned int cT = 0;
+
+	if (IsReleaseStage) {
+		cT = CurrentTime - NoteOffTime;
+	}
+	else {
+		cT = CurrentTime - NoteOnTime;
+	}
+
+	
+	if (IsReleaseStage) {
+
+		if (cT > ADSR_Amp.ReleaseTime) {
+			State.out_amp_value = 0;
+			State.out_flt_value = 0;
+			tone_on = false;
+		} else {
+
+			State.out_amp_value = ADSR_Amp.ComputeR(cT) * 2;
+			State.out_flt_value = ADSR_Filter.ComputeR(cT) ;
+		}
+	}
+	else {
+		
+		State.out_amp_value = ADSR_Amp.ComputeADS(cT)*2;
+		State.out_flt_value = ADSR_Filter.ComputeADS(cT);
+	}
+
+	State.out_amp_value = 255 - State.out_amp_value;
+	State.out_flt_value = 255 - (State.out_flt_value + State.CCValues[CC_Cutoff]);
 
 	//float level_factor = ((float)tone_velocity / 127.0) * ((float) CCValues[CC_ChannelVolume] / 127.0) * 2;
 
-	out_amp_value = 255 - (ADSR_Amp.DoTick(tone_on) * 2);
+	//out_amp_value = 255 - (ADSR_Amp.DoTick(tone_on) * 2);
 	
-	if (out_amp_value >= (255 - gate_margin)) out_amp_value = 255;
-	if (out_amp_value <= gate_margin) out_amp_value = 0;
-
+	if (State.out_amp_value >= (255 - gate_margin)) State.out_amp_value = 255;
+	if (State.out_amp_value <= gate_margin) State.out_amp_value = 0;
+	/*
 	float flt_adsr_mix_factor = ADSR_Filter.GetRatio(CCValues[CC_FLT_ADSR_Mix], 127);
 	
 	byte out_flt_A = ADSR_Filter.DoTick(tone_on);
@@ -124,24 +161,22 @@ void MidiSoundControlClass::DoTick() {
 	out_flt_value = ((1.0 - flt_adsr_mix_factor) * (float)out_flt_B) + (flt_adsr_mix_factor * (float)out_flt_A);
 	
 	out_flt_value = 255 - out_flt_value;
+	*/
 
+	State.out_waveform_mix = State.CCValues[CC_WaveformMix] * 2;
+	State.out_waveform_b_flt = State.CCValues[CC_WaveformB_Filter] * 2;
+	State.out_waveform_a_shaper = State.CCValues[CC_WaveformA_Shaper] * 2;
 
-	out_waveform_mix = CCValues[CC_WaveformMix] * 2;
-	out_waveform_b_flt = CCValues[CC_WaveformB_Filter] * 2;
-	out_waveform_a_shaper = CCValues[CC_WaveformA_Shaper] * 2;
+	State.out_flt_gain = State.CCValues[CC_Resonance] * 2;
 
-	out_flt_gain = CCValues[CC_Resonance] * 2;
-
-	if (ADSR_Amp.CurrentState == ADSRUnitState::off) {
-		
-	}
+	return cT;
 	
 	
 }
 
 void MidiSoundControlClass::init()
 {
-	
+	/*
 	CCValues[CC_AmpAttack] = 5;
 	CCValues[CC_AmpDecayTime] = 5;
 	CCValues[CC_AmpRelease] = 5;
@@ -162,6 +197,7 @@ void MidiSoundControlClass::init()
 	CCValues[CC_WaveformA_Shaper] = 127;
 	CCValues[CC_WaveformB_Filter] = 64;
 	CCValues[CC_WaveformMix] = 64;
+	CCValues[CC_WaveformMix] = 64;*/
 }
 
 

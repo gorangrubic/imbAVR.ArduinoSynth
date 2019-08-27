@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,13 +15,21 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
-	<Text Include="$(MSBuildThisFileDirectory)library.properties" />
-  	<Text Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.h" />
-  </ItemGroup>
- <ItemGroup>
-    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.cpp" />
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ADSR.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MathTool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiConfig.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MonitorMessage.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthState.h" />
   </ItemGroup>
-  </Project>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ADSR.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MathTool.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MonitorMessage.cpp" />
+  </ItemGroup>
+</Project>

@@ -13,6 +13,9 @@
 
 #include "ADSRUnit.h"
 #include "pitchToFrequency.h"
+#include "ADSR.h"
+#include "SynthState.h"
+
 
 #define NOTE_B0  31
 #define NOTE_C1  33
@@ -119,43 +122,7 @@ static const uint16_t sNotePitches[] = {
 };
 
 
-#define CC_ChannelVolume 01
-#define CC_Balance 8
-
-#define CC_WaveformA_Shaper 4
-#define CC_WaveformB_Filter 3
-
-
-#define CC_WaveformMix 5
-
-#define CC_Cutoff 12
-#define CC_Resonance 11
-
-
-
-#define CC_AmpAttack 24
-
-#define CC_AmpDecayTime 23
-#define CC_AmpRelease 22
-
-
-#define CC_AmpInitLevel 21
-#define CC_AmpSustainLevel 20
-
-
-
-#define CC_FLTAttack 18
-#define CC_FLTDecayTime 17
-#define CC_FLTRelease 16
-
-#define CC_FLTInitLevel 15
-#define CC_FLTSustainLevel 16
-#define CC_FLT_ADSR_Mix 13
-
-
-
-#define CHANNEL_ID_ALL 0
-
+#include "MidiConfig.h"
 
 
 
@@ -167,9 +134,13 @@ class MidiSoundControlClass
 
  public:
 
+	 SynthState State;
 
-	 byte CCValues[127]; 
+	// byte CCValues[127]; 
 
+	 unsigned long NoteOnTime;
+
+	 unsigned long NoteOffTime=0;
 
 	 float tone_pitch = 0;
 	 bool tone_on = false;
@@ -196,23 +167,26 @@ class MidiSoundControlClass
 
 	 void ApplyControls();
 
-	 void DoTick();
+	 unsigned int DoTick();
 
-	 ADSRUnitClass ADSR_Filter = ADSRUnitClass();
-	 ADSRUnitClass ADSR_Amp = ADSRUnitClass();
+	 //ADSRUnitClass ADSR_Filter = ADSRUnitClass();
+	 //ADSRUnitClass ADSR_Amp = ADSRUnitClass();
+	 
+	 ADSRFunction ADSR_Amp = ADSRFunction();
+	 ADSRFunction ADSR_Filter = ADSRFunction();
 
 	 unsigned int time_factor = 2;
 
 
-	 byte out_amp_value = 0;
-	 byte out_flt_value = 64;
-	 byte out_flt_gain = 0;
+	// byte out_amp_value = 0;
+	// byte out_flt_value = 64;
+	// byte out_flt_gain = 0;
 	 
 
-	 byte out_waveform_b_flt = 0;
-	 byte out_waveform_a_shaper = 0;
+	// byte out_waveform_b_flt = 0;
+	// byte out_waveform_a_shaper = 0;
 
-	 byte out_waveform_mix = 0;
+	// byte out_waveform_mix = 0;
 
 
 	 byte channel_id = 0;

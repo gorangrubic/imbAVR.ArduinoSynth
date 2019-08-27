@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{f5380a71-ef86-4e69-82bf-a28106b5f81b}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\imbAVR.LCDOnMega.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.LCDOnMega.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowHeading.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ACEMegaHostTFT.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDField.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\GuiScreen.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDByteField.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDLabel.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowTwoByteFields.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowHeading.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ACEMegaHostTFT.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDField.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\GuiScreen.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDByteField.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDLabel.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowTwoByteFields.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.LCDOnMega.cpp" />
+  </ItemGroup>
+</Project>
