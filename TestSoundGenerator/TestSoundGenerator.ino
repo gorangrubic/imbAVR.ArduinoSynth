@@ -25,5 +25,6 @@ void loop() {
   
 	if (soundTimer.hasPassed(TONE_CYCLE)) {
 		tone(SOUND_OUT, TONE_PITCH, TONE_DURATION);
+		soundTimer.restart();
 	}
 }
