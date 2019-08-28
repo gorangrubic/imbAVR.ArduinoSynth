@@ -365,7 +365,7 @@ void loop() {
 
 	
 
-	update(&module, &mode);
+	// update(&module, &mode);
 
 	UpdateDisplay(modeLast != mode);
 

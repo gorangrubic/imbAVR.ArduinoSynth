@@ -19,6 +19,7 @@ class DigPotUnitClass
  public:
 	 
 	byte ChipSelectPin;
+	byte lastValue;
 
 	void Write(byte value);
 

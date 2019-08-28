@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ampControlCluster.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\digPotCluster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ADSR.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MathTool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiConfig.h" />
@@ -27,6 +29,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthState.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ampControlCluster.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\digPotCluster.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ADSR.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MathTool.cpp" />

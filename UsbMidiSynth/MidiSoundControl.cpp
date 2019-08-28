@@ -128,32 +128,34 @@ unsigned int MidiSoundControlClass::DoTick() {
 	if (IsReleaseStage) {
 
 		if (cT > ADSR_Amp.ReleaseTime) {
-			State.out_amp_value = 0;
-			State.out_flt_value = 0;
-			tone_on = false;
+			//State.out_amp_value = 0;
+			//State.out_flt_value = 0;
+			//tone_on = false;
 		} else {
 
-			State.out_amp_value = ADSR_Amp.ComputeR(cT) * 2;
+			State.out_amp_value = ADSR_Amp.ComputeR(cT);
 			State.out_flt_value = ADSR_Filter.ComputeR(cT) ;
 		}
 	}
 	else {
 		
-		State.out_amp_value = ADSR_Amp.ComputeADS(cT)*2;
+		State.out_amp_value = ADSR_Amp.ComputeADS(cT);
 		State.out_flt_value = ADSR_Filter.ComputeADS(cT);
 	}
 
-	State.out_amp_value = 255 - State.out_amp_value;
-	State.out_flt_value = 255 - (State.out_flt_value + State.CCValues[CC_Cutoff]);
+	float flt_adsr_mix_factor = MathTool::GetRatio((unsigned int)State.CCValues[CC_FLT_ADSR_Mix], 127,1,0);
+
+	State.out_amp_value = State.out_amp_value;
+	State.out_flt_value = ( ((float)State.out_flt_value * flt_adsr_mix_factor) + (127 * (1- flt_adsr_mix_factor)))  * MathTool::GetRatio((unsigned int)State.CCValues[CC_Cutoff], 127, 1, 0);
 
 	//float level_factor = ((float)tone_velocity / 127.0) * ((float) CCValues[CC_ChannelVolume] / 127.0) * 2;
 
 	//out_amp_value = 255 - (ADSR_Amp.DoTick(tone_on) * 2);
 	
-	if (State.out_amp_value >= (255 - gate_margin)) State.out_amp_value = 255;
-	if (State.out_amp_value <= gate_margin) State.out_amp_value = 0;
+	//if (State.out_amp_value >= (255 - gate_margin)) State.out_amp_value = 255;
+	//if (State.out_amp_value <= gate_margin) State.out_amp_value = 0;
 	/*
-	float flt_adsr_mix_factor = ADSR_Filter.GetRatio(CCValues[CC_FLT_ADSR_Mix], 127);
+	
 	
 	byte out_flt_A = ADSR_Filter.DoTick(tone_on);
 	byte out_flt_B = CCValues[CC_Cutoff] * 2;
@@ -163,7 +165,13 @@ unsigned int MidiSoundControlClass::DoTick() {
 	out_flt_value = 255 - out_flt_value;
 	*/
 
-	State.out_waveform_mix = State.CCValues[CC_WaveformMix] * 2;
+	float waveform_mix_ration = MathTool::GetRatio((unsigned int)State.CCValues[CC_WaveformMix], 127, 1, 0);
+
+	State.out_waveform_mix = waveform_mix_ration * 100; // State.CCValues[CC_WaveformMix];
+
+	if (State.out_waveform_mix > 100) State.out_waveform_mix = 100;
+
+
 	State.out_waveform_b_flt = State.CCValues[CC_WaveformB_Filter] * 2;
 	State.out_waveform_a_shaper = State.CCValues[CC_WaveformA_Shaper] * 2;
 

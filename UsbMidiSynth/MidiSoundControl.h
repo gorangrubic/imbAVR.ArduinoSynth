@@ -123,7 +123,7 @@ static const uint16_t sNotePitches[] = {
 
 
 #include "MidiConfig.h"
-
+#include "MathTool.h"
 
 
 
