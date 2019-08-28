@@ -1,7 +1,5 @@
 ﻿#include "digPotCluster.h"
 
-
-
 void digPotCluster::init(byte latch_pin, byte clock_pin, byte data_pin)
 {
 	latchPin = latch_pin;
@@ -61,7 +59,6 @@ void digPotCluster::Debug() {
 
 		delay(1000);
 
-
 		digitalWrite(latchPin, LOW);
 
 		bitWrite(bitsToSend, i, 1);
@@ -80,14 +77,11 @@ void digPotCluster::Debug() {
 
 void digPotCluster::SetOut(byte data) {
 
-
 	int i = 0;
 	int pinState;
 
-
 	digitalWrite(dataPin, 0);
 	digitalWrite(clockPin, 0);
-
 
 	for (i = 7; i >= 0; i--) {
 		digitalWrite(clockPin, 0);
@@ -107,7 +101,6 @@ void digPotCluster::SetOut(byte data) {
 		digitalWrite(dataPin, 0);
 	}
 
-
 	digitalWrite(clockPin, 0);
 }
 
@@ -119,34 +112,22 @@ void digPotCluster::Write(byte dp_id, byte dp_value) {
 
 	byte bitsToSend = 0B11111111;
 
-
 	digitalWrite(latchPin, LOW);
 
 	bitWrite(bitsToSend, dp_id, 0);
 
-
 	SetOut(bitsToSend);
 
-
 	digitalWrite(latchPin, HIGH);
-
-
 
 	SPI.transfer(B00010001); 
 	SPI.transfer(dp_value);    
 
-
 	digitalWrite(latchPin, LOW);
-
-
 
 	bitWrite(bitsToSend, dp_id, 1);
 
 	SetOut(bitsToSend);
 
 	digitalWrite(latchPin, HIGH);
-
-
-
-
 }
