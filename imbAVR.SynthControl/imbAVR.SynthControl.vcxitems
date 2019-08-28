@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\UsbMidiSynth\DigPotUnit.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ampControlCluster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\digPotCluster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ADSR.h" />
@@ -29,11 +30,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthState.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\UsbMidiSynth\DigPotUnit.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ampControlCluster.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\digPotCluster.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ADSR.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MathTool.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MonitorMessage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)README.md" />
   </ItemGroup>
 </Project>

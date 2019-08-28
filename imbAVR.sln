@@ -13,9 +13,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.LCDOnMega", "imbAVR.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSoundGenerator", "TestSoundGenerator\TestSoundGenerator.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.TestDigPotCluster", "imbAVR.TestDigPotCluster\imbAVR.TestDigPotCluster.vcxproj", "{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{072244d1-855f-4a4f-9987-aebc82c8d001}*SharedItemsImports = 4
+		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5eb5ff4c-cb59-4a58-bc63-67fe34f5e211}*SharedItemsImports = 4
 		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{8c5a7585-b0be-4991-8d2f-bbec89d4f881}*SharedItemsImports = 9
@@ -38,6 +41,10 @@ Global
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Debug|x86.ActiveCfg = Debug|Win32
+		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Debug|x86.Build.0 = Debug|Win32
+		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Release|x86.ActiveCfg = Release|Win32
+		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
