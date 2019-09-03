@@ -7,7 +7,9 @@
 */
 
 #include <SPI.h>
+#include "SignalInstruction.h"
 #include "digPotCluster.h"
+
 
 digPotCluster dp_cluster = digPotCluster();
 

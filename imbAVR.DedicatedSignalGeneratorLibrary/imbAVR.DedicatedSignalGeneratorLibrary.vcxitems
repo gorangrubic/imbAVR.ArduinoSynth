@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{87bd9f7b-779a-4062-b267-383884a5cebf}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\imbAVR.DedicatedSignalGeneratorLibrary.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.DedicatedSignalGeneratorLibrary.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlLink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlUnit.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalInstruction.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlLink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlUnit.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.DedicatedSignalGeneratorLibrary.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalInstruction.cpp" />
+  </ItemGroup>
+</Project>

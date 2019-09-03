@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.BassZero", "imbAVR.BassZero\imbAVR.BassZero.vcxproj", "{072244D1-855F-4A4F-9987-AEBC82C8D001}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SynthDiagnosticDevice", "SynthDiagnosticDevice\SynthDiagnosticDevice.vcxproj", "{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.SynthControl", "imbAVR.SynthControl\imbAVR.SynthControl.vcxitems", "{8C5A7585-B0BE-4991-8D2F-BBEC89D4F881}"
@@ -15,24 +13,37 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSoundGenerator", "TestS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.TestDigPotCluster", "imbAVR.TestDigPotCluster\imbAVR.TestDigPotCluster.vcxproj", "{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.BassZeroNano", "imbAVR.BassZeroNano\imbAVR.BassZeroNano.vcxproj", "{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.BassZeroProMicro", "imbAVR.BassZeroProMicro\imbAVR.BassZeroProMicro.vcxproj", "{20331CB4-EACF-4393-B39F-D48F198AAB74}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGenerator", "imbAVR.DedicatedSignalGenerator\imbAVR.DedicatedSignalGenerator.vcxproj", "{5365C4A9-CA1B-4217-B85C-495052BF3140}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGeneratorTestPartner", "imbAVR.DedicatedSignalGeneratorTestPartner\imbAVR.DedicatedSignalGeneratorTestPartner.vcxproj", "{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGeneratorLibrary", "imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems", "{87BD9F7B-779A-4062-B267-383884A5CEBF}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{072244d1-855f-4a4f-9987-aebc82c8d001}*SharedItemsImports = 4
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
+		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5eb5ff4c-cb59-4a58-bc63-67fe34f5e211}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5eb5ff4c-cb59-4a58-bc63-67fe34f5e211}*SharedItemsImports = 4
+		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{62eac980-b866-43d5-ac05-9b0ffa0aee71}*SharedItemsImports = 4
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{87bd9f7b-779a-4062-b267-383884a5cebf}*SharedItemsImports = 9
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{8c5a7585-b0be-4991-8d2f-bbec89d4f881}*SharedItemsImports = 9
 		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{f5380a71-ef86-4e69-82bf-a28106b5f81b}*SharedItemsImports = 9
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{f7ff83a9-5bf2-446a-b2ba-ff6990d35bf2}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{072244D1-855F-4A4F-9987-AEBC82C8D001}.Debug|x86.ActiveCfg = Debug|Win32
-		{072244D1-855F-4A4F-9987-AEBC82C8D001}.Debug|x86.Build.0 = Debug|Win32
-		{072244D1-855F-4A4F-9987-AEBC82C8D001}.Release|x86.ActiveCfg = Release|Win32
-		{072244D1-855F-4A4F-9987-AEBC82C8D001}.Release|x86.Build.0 = Release|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x86.ActiveCfg = Debug|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x86.Build.0 = Debug|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x86.ActiveCfg = Release|Win32
@@ -45,6 +56,22 @@ Global
 		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Debug|x86.Build.0 = Debug|Win32
 		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Release|x86.ActiveCfg = Release|Win32
 		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Release|x86.Build.0 = Release|Win32
+		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Debug|x86.ActiveCfg = Debug|Win32
+		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Debug|x86.Build.0 = Debug|Win32
+		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Release|x86.ActiveCfg = Release|Win32
+		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Release|x86.Build.0 = Release|Win32
+		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.ActiveCfg = Debug|Win32
+		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.Build.0 = Debug|Win32
+		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.ActiveCfg = Release|Win32
+		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.Build.0 = Release|Win32
+		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Debug|x86.ActiveCfg = Debug|Win32
+		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Debug|x86.Build.0 = Debug|Win32
+		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x86.ActiveCfg = Release|Win32
+		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x86.Build.0 = Release|Win32
+		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Debug|x86.ActiveCfg = Debug|Win32
+		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Debug|x86.Build.0 = Debug|Win32
+		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Release|x86.ActiveCfg = Release|Win32
+		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -40,3 +40,43 @@ byte MathTool::Interpolation(byte from, byte to, unsigned int index, unsigned in
 		return from - step;
 	}
 }
+
+byte MathTool::GetPhaseShift(byte CCValue)
+{
+	byte w = CCValue / 20;
+	return w;
+}
+
+byte MathTool::GetPWMWaveform(byte CCValue)
+{
+
+	byte w = CCValue / 20;
+
+	switch (w) {
+	case 0:
+		return B10000000;
+		break;
+	case 1:
+		return B11000000;
+		break;
+	case 2:
+		return B11100000;
+		break;
+	case 3:
+		return B11110000;
+		break;
+	case 4:
+		return B11111000;
+		break;
+	case 5:
+		return B11111100;
+		break;
+	default:
+	case 6:
+		return B11111110;
+		break;
+	
+	}
+
+	return byte();
+}

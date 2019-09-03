@@ -28,6 +28,12 @@
 // C (analog input pins) 
 // D (digital pins 0 to 7)   0 1 are RX TX, don't use 
 
+
+
+
+#include <SoftwareSerial.h>
+#include <MIDI.h>
+
 #include <TM16XXFonts.h>
 #include <TM16XX.h>
 #include <TM1640.h>
@@ -47,6 +53,8 @@
 #include "RowTwoByteFields.h"
 #include "RowHeading.h"
 #include "MidiConfig.h"
+
+
 
 ACEMegaHostTFTClass Display = ACEMegaHostTFTClass();
 GuiScreen GUI = GuiScreen();

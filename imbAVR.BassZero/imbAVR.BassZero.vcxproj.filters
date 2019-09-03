@@ -21,28 +21,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\UsbMidiSynth\DigPotUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\UsbMidiSynth\MidiSoundControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\UsbMidiSynth\ADSRUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Text Include="note.txt">
+      <Filter>Misc Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="__vm\.imbAVR.BassZero.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\UsbMidiSynth\DigPotUnit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\UsbMidiSynth\ADSRUnit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\UsbMidiSynth\MidiSoundControl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

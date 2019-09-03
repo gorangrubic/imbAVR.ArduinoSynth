@@ -26,5 +26,16 @@ struct SynthState {
 
 	byte out_waveform_mix = 0;
 
+
+
+	byte out_perkA_amp = 0;
+	byte out_perkB_amp = 0;
+
+
+	byte out_shapeA_pwm = 0;
+	byte out_shapeB_pwm = 0;
+
+	
+
 	unsigned int cT = 0;
 };

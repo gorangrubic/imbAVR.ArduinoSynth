@@ -21,4 +21,8 @@ public:
 
 	static float GetRatio(unsigned int part, unsigned int total, float whenPartIsZero, float whenTotalIsZero);
 	static byte Interpolation(byte from, byte to, unsigned int index, unsigned int length);
+
+	static byte GetPhaseShift(byte CCValue);
+
+	static byte GetPWMWaveform(byte CCValue);
 };
