@@ -34,7 +34,7 @@ void GuiScreenView::PrintLabels(ACEMegaHostTFTClass * Display)
 	for (size_t i = 0; i < ActiveRows; i++)
 	{
 		
-		Rows[i]->PrintLabels(Display);
+		Rows[i]->PrintLabels(Display, Screen);
 		
 
 		//Rows[i].
@@ -48,7 +48,7 @@ void GuiScreenView::UpdateFields(ACEMegaHostTFTClass * Display)
 	{
 		
 
-		Rows[i]->UpdateFields(Display);
+		Rows[i]->UpdateFields(Display, Screen);
 
 		//Rows[i].
 	}

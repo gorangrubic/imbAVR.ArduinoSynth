@@ -4,10 +4,11 @@
 
 byte RowHeading::Deploy(GuiScreen screen)
 {
-	y = screen.GetYPosition(Row);
+	/*y = screen.GetYPosition(Row);
 	
 	w = screen.ScreenWidth;
-	h = screen.GetHeight(1);
+	h = screen.GetHeight(1);*/
+	screen.DeployLabel(&LeftLabel, this, true);
 
 	int mid_x = screen.ScreenWidth / 2;
 	
@@ -16,11 +17,11 @@ byte RowHeading::Deploy(GuiScreen screen)
 	x = 0;
 
 	LeftLabel.x = mid_x - (hw / 2);
-	LeftLabel.y = y;
+	
 	 //= heading;
 	
-	TextColor = screen.LabelBackColor;
-	BackColor = screen.LabelColor;
+	/*TextColor = screen.LabelBackColor;
+	BackColor = screen.LabelColor;*/
 
 	return 1;
 }
@@ -36,14 +37,16 @@ RowHeading::RowHeading()
 	
 }
 
-void RowHeading::PrintLabels(ACEMegaHostTFTClass * Display)
+void RowHeading::PrintLabels(ACEMegaHostTFTClass * Display, GuiScreen * Screen)
 {
-	Display->fillRect(0, y, w, h, BackColor);
-	LeftLabel.TextColor = TextColor;
-	LeftLabel.print(Display);
+	Screen->FillBackground(this, Display, Screen->BackColor, Screen->generalMarginX, Screen->generalMarginY, RowHeight);
+	
+
+	
+	LeftLabel.print(Display,Screen,this, Screen->ScreenWidth);
 }
 
-void RowHeading::UpdateFields(ACEMegaHostTFTClass * Display)
+void RowHeading::UpdateFields(ACEMegaHostTFTClass * Display, GuiScreen * Screen)
 {
 }
 

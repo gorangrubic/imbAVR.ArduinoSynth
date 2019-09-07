@@ -16,9 +16,11 @@
 class LCDLabel : public LCDField {
 
 public:
-	String label;
-	void LCDLabel::print(ACEMegaHostTFTClass * Display);
+	String label = "";
+	//void LCDLabel::print(ACEMegaHostTFTClass * Display);
 
-	
+	virtual void print(ACEMegaHostTFTClass * Display, GuiScreen * Screen, RowBase * row, unsigned int width);
+
+	//virtual void print(ACEMegaHostTFTClass * Display, GuiScreen * Screen, RowBase * row, unsigned int width);
 
 };

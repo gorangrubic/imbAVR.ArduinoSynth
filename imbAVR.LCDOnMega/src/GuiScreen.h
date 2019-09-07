@@ -25,7 +25,24 @@ class GuiScreen {
 
 public:
 
+	//void FillBackground(RowBase * row, ACEMegaHostTFTClass * Display, uint16_t Color);
 
+	byte generalMarginY = 1;
+	byte generalMarginX = 1;
+
+	void DeployField(LCDField * field, RowBase * row, boolean invert=false);
+
+	void DeployLabel(LCDLabel * label, RowBase * row, boolean invert = false);
+
+	void drawBitBoxes(unsigned int y, unsigned int x, unsigned int w, unsigned int h, byte bits, byte bitCount, ACEMegaHostTFTClass * Display, uint16_t ColorOn, uint16_t ColorOff);
+
+	void drawValue(unsigned int y, unsigned int x, unsigned int width, unsigned int height, float r, FieldValueRenderMode mode, ACEMegaHostTFTClass * Display, uint16_t ColorOn, uint16_t ColorOff);
+
+	void drawValue(unsigned int y, unsigned int x, unsigned int width, unsigned int height, int v, unsigned int total, FieldValueRenderMode mode, ACEMegaHostTFTClass * Display, uint16_t ColorOn, uint16_t ColorOff);
+
+	void FillBackground(RowBase * row, ACEMegaHostTFTClass * Display, uint16_t Color, byte yMargin=0, byte xMargin=0, byte rowHeight = 1);
+
+	void FillBackground(uint16_t xStart, uint16_t xEnd, RowBase * row, ACEMegaHostTFTClass * Display, uint16_t Color, byte yMargin=0, byte xMargin=0,byte rowHeight = 1);
 
 	uint16_t LabelColor = GLCD_CL_LIGHT_GRAY;
 	uint16_t FieldColor = GLCD_CL_YELLOW;

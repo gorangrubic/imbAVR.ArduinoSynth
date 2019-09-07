@@ -9,10 +9,13 @@
 	#include "WProgram.h"
 #endif
 
+
+#include <ACEMegaHostTFT.h>
+
 #include <LCDField.h>
 
 #include <GuiScreen.h>
-#include <ACEMegaHostTFT.h>
+
 
 class RowBase : public LCDField {
 
@@ -21,11 +24,11 @@ public:
 
 	unsigned int Row = 0;
 
-	
+	byte RowHeight = 1;
 
-	virtual void PrintLabels(ACEMegaHostTFTClass * Display) = 0;
+	virtual void PrintLabels(ACEMegaHostTFTClass * Display, GuiScreen * Screen) = 0;
 
-	virtual void UpdateFields(ACEMegaHostTFTClass * Display) = 0;
+	virtual void UpdateFields(ACEMegaHostTFTClass * Display, GuiScreen * Screen) = 0;
 	
 	/// <summary>
 	/// Returns number of rows (height, in row unit) that this row element takes. Normally, it is 1. 

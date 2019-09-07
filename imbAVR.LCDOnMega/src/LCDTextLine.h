@@ -9,6 +9,21 @@
 	#include "WProgram.h"
 #endif
 
+#include "LCDField.h"
+
+class LCDTextField : public LCDField {
+
+	String lastValue;
+
+	String * value;
+
+public:
+
+	void SetValue(String * inValue);
+
+	virtual void print(ACEMegaHostTFTClass * Display, GuiScreen * Screen, RowBase * row, unsigned int width);
+
+};
 
 #endif
 

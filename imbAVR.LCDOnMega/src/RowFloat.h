@@ -9,6 +9,24 @@
 	#include "WProgram.h"
 #endif
 
+#include "RowWithUnit.h"
+#include "LCDFloat.h"
+
+class RowFloat : public RowWithUnit {
+
+
+public:
+
+	LCDFloatField Field = LCDFloatField();
+
+	virtual byte Deploy(GuiScreen screen);
+
+	RowFloat(String prefix, float * value, String unit);
+
+
+
+	virtual void UpdateFields(ACEMegaHostTFTClass * Display, GuiScreen * Screen);
+};
 
 #endif
 

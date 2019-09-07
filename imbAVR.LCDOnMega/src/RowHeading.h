@@ -29,10 +29,6 @@ public:
 	
 
 
-
-	uint16_t w = 0;
-	uint16_t h = 0;
-
 	//void Deploy(GuiScreen screen, String heading);
 
 	virtual byte Deploy(GuiScreen screen);
@@ -41,9 +37,9 @@ public:
 
 	RowHeading();
 
-	virtual void PrintLabels(ACEMegaHostTFTClass * Display);
+	virtual void PrintLabels(ACEMegaHostTFTClass * Display, GuiScreen * Screen);
 
-	virtual void UpdateFields(ACEMegaHostTFTClass * Display);
+	virtual void UpdateFields(ACEMegaHostTFTClass * Display, GuiScreen * Screen);
 
 };
 

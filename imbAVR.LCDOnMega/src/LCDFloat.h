@@ -10,5 +10,27 @@
 #endif
 
 
+#include "LCDField.h"
+
+class LCDFloatField : public LCDField {
+
+	float lastValue;
+
+	float * value;
+
+public:
+
+	void SetValue(float * inValue);
+
+	
+
+	void printValue(float v, ACEMegaHostTFTClass * Display, GuiScreen * Screen, RowBase * row, unsigned int width, unsigned int y, uint16_t Color);
+
+
+
+	virtual void print(ACEMegaHostTFTClass * Display, GuiScreen * Screen, RowBase * row, unsigned int width);
+
+};
+
 #endif
 

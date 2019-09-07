@@ -29,9 +29,9 @@ public:
 
 	// void Deploy(GuiScreen screen, uint16_t fieldColor);
 
-	virtual void PrintLabels(ACEMegaHostTFTClass * Display);
+	virtual void PrintLabels(ACEMegaHostTFTClass * Display, GuiScreen * Screen);
 
-	virtual void UpdateFields(ACEMegaHostTFTClass * Display);
+	virtual void UpdateFields(ACEMegaHostTFTClass * Display, GuiScreen * Screen);
 
 	void Set(String leftLabel, String rightLabel, byte * leftValue, byte * rightValue);
 
