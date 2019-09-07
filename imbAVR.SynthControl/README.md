@@ -9,9 +9,12 @@ Purpose of shift register is to reduce number of pins used for CS (chip selectio
 		Normally, you would use 2 (SCLK, MOSI) + 8 (CS for each MPC410-10) = 10 pins
 		Like this, you use to 2 (SCLK, MOSI) + 3 (Latch clock, clock, data) = 5 pins
 
+
+## volCluster
+Controls 3 stereo electronic-volume chips (FM62429) using digital 4 pins in total.
+
 ## ADSR
 Resource effitient class for Attack-Decay-Sustain-Release ENV function computation.
-
 
 ## MathTool
 Computation functions used for ADSR and other ENV functions
