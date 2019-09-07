@@ -44,4 +44,4 @@ Supports transfer up to 16 different structure types, per single TransferLink in
       
 - imbAVR.DedicatedSignalGeneratorLibrary
 
-Turns Arduino Nano, Mini, Micro.. into square-pulse audio-signal generator, with up to 12 separate outputs - each having its PWM, pitch and automation. 
+Turns Arduino Nano, Mini, Micro.. into square-pulse audio-signal generator, with up to 12 separate outputs - each having its PWM, pitch, phase shifts and automation. Arduino that is turned into dedicated signal generator is controled by another Arduno via (software)serial  and powerful signal control instruction protocol. 
