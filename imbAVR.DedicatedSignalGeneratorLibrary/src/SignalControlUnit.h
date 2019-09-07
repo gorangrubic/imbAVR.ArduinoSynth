@@ -9,6 +9,8 @@
 	#include "WProgram.h"
 #endif
 
+#include "SignalInstruction.h"
+
 #define PWMCycleSize 8
 
 /// <summary>
@@ -37,7 +39,20 @@ class SignalControlUnitClass
 	 // default PWM pattern is 50% square pulse waveform
 	 byte pwmPatternByte = B11110000;
 	 
+	 bool pwmContinualMode = false;
+	 byte pwmContinualSClockIndexChange = 0;
+	 bool isOn = true;
 
+	 byte sClockPrescalar = 1;
+
+
+
+
+
+	 SignalChangeInstruction PWMChange;
+	 SignalChangeInstruction PhaseChange;
+	 SignalChangeInstruction PitchChange;
+	 SignalChangeInstruction ResetClock;
 
 };
 

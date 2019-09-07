@@ -17,6 +17,10 @@ struct SynthState {
 	byte CCValues[127];
 
 	byte out_amp_value = 0;
+
+	byte out_mainComponent_pan = 127;
+	byte out_mainComponent_gain = 127;
+
 	byte out_flt_value = 64;
 	byte out_flt_gain = 0;
 
@@ -26,7 +30,7 @@ struct SynthState {
 
 	byte out_waveform_mix = 0;
 
-
+	byte out_distortion_mix = 127;
 
 	byte out_perkA_amp = 0;
 	byte out_perkB_amp = 0;

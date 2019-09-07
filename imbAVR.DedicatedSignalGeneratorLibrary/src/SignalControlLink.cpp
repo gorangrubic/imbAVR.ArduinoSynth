@@ -4,6 +4,8 @@
 #include <SignalInstruction.h>
 #include "SignalControlLink.h"
 
+#include "SignalControlManager.h"
+
 
 
 void SignalControlLink::setupMaster(int address)
@@ -37,19 +39,6 @@ void SignalControlLink::setup(int rx_pin, int tx_pin, unsigned int baudrate)
 	// ET.begin(details(instruction), &SoftSerial);
 }
 
-/// <summary>
-/// Call this from loop(). 
-/// </summary>
-/// <returns>True if instruction is updated</returns>
-bool SignalControlLink::receive()
-{
-	bool output = false;
-
-
-	
-
-	return output;
-}
 
 String SignalControlLink::readStringChar(String input)
 {
@@ -150,201 +139,248 @@ bool SignalControlLink::readAsString(String instructionString)
 
 bool SignalControlLink::readInstruction(HardwareSerial * serialOut) {
 
-	//if (mode == 1) {
-	//	//return ETC.receiveData();
-	//} 
-	//if (mode == 0) {
-	//	bool output = readAsString(serialOut); //ET.receiveData();
-	//	//delay(RXDELAY);
-	//	return output;
-	//}
-	//bool output = true;
+	
+}
 
-	//byte data[SIGNALINSTRUCTION_SIZE];
-	//SoftSerial.readBytes(data, SIGNALINSTRUCTION_SIZE);
+byte SignalControlLink::getBytePackage(byte cc_id, SignalInstruction & instructionToSend) {
 
 
-	//bool prefix = false;
-
-	//byte prefixFirstByte = SoftSerial.read();
-
-	//while (prefixFirstByte != SIGNAL_STARTBYTE) {
-	//	prefixFirstByte = SoftSerial.read();
-	//}
-
-	//byte prefixSecondByte = SoftSerial.read();
-
-	//while ((prefixFirstByte == SIGNAL_STARTBYTE && prefixSecondByte == SIGNAL_ENDBYTE)) {
-	//	prefixFirstByte = SoftSerial.read();
-	//	prefixSecondByte = SoftSerial.read();
-	//}
-
-	//
-	//
-	//
-	//
-	////data[0] = startByte;
-
-	//
-
-	//byte i = 1;
-	//// data[i];
-	////i++;
-
-	//
-	//byte SignalID = 0; // data[0] >> 4; i++;
-
-	//byte f1 = 0;//data[1]; i++;
-	//byte f2 = 0; // data[2]; i++;
+	byte valueByte = 0;
 
 
-	//byte phase = 0; //data[3]; i++;
-	//byte pwmPattern = 0; // = data[4]; i++;
+	switch (cc_id) {
 
-	///*byte controlByteTest = 0;
-	//for (size_t y = 1; y < i; y++)
-	//{
-	//	controlByteTest += data[y];
-	//}
-
-	//byte controlByte = data[i]; i++;;*/
-
-	//while (i < SIGNALINSTRUCTION_SIZE) {
-
-	//	if (i <= SIGNALINSTRUCTION_DATASIZE) {
-	//		data[i] = SoftSerial.read();
-
-	//		if (i == 1) SignalID = data[i] >> 4;
-	//		if (i == 2) f1= data[i];
-	//		if (i == 3) f2 = data[i];
-	//		if (i == 4) phase = data[i];
-	//		if (i == 5) pwmPattern = data[i];
+	case CCID_PITCHBYTELOW:
+		valueByte = lowByte(instructionToSend.Frequency);
+		break;
+	case CCID_CHANGE_PWM:
+		valueByte = instructionToSend.PWMChange.Change;
+		break;
+	case CCID_CHANGE_PHASE:
+		valueByte = instructionToSend.PhaseChange.Change;
+		break;
+	case CCID_CHANGE_PITCH:
+		valueByte = instructionToSend.PitchChange.Change;
+		break;
+	case CCID_CHANGE_RESET:
+		valueByte = instructionToSend.ResetClock.Change;
 
 
-	//	}
-	//	else {
-	//		byte b = SoftSerial.read();
-	//		data[i] = b;
-	//		if (b != SIGNAL_ENDBYTE) {
-	//			output = false;
-	//			serialOut->print("End byte ");
-	//			serialOut->print(i);
-	//			serialOut->println("not found ");
-	//			break;
-	//		}
-	//	}
-	//	
-	//	i++;
-	//}
+		break;
+
+	case CCID_PWMBYTE:
+		valueByte = instructionToSend.pwmPattern;
+		break;
+	case CCID_PHASEBYTE:
+		valueByte = instructionToSend.Phase;
+		break;
+	case CCID_PITCHBYTEHIGH:
+		valueByte = highByte(instructionToSend.Frequency);
+
+		break;
+	case CCID_MODEBYTE:
+		valueByte = instructionToSend.Mode;
+		break;
+	case CCID_CHANGE_RATE_PHASE:
+		valueByte = instructionToSend.PhaseChange.Rate;
+		break;
+	case CCID_CHANGE_RATE_PITCH:
+		valueByte = instructionToSend.PitchChange.Rate;
+		break;
+	case CCID_CHANGE_RATE_RESET:
+		valueByte = instructionToSend.ResetClock.Rate;
+		break;
+	case CCID_CHANGE_RATE_PWM:
+		valueByte = instructionToSend.PWMChange.Rate;
+		break;
+
+	}
+
+	return valueByte;
+}
 
 
-	//if (SignalID >= 16) {
-	//	output = false;
-	//	serialOut->print("SignalID ");
-	//	serialOut->print(SignalID);
-	//	serialOut->println("out of range");
+/// <summary>
+/// Sends the byte package, if the same value, for the same cc_id and signal id was not altready sent. For two-byte cc_ids, call only the first -- second will be sent automatically.
+/// </summary>
+/// <param name="port">The port.</param>
+/// <param name="cc_id">The cc identifier.</param>
+/// <param name="instructionToSend">The instruction to send.</param>
+void SignalControlLink::sendBytePackage(SoftwareSerial * port, byte cc_id, SignalInstruction & instructionToSend) {
 
-	//}
 
-	//if (output) {
+	byte cc_sid_byte = (cc_id << 4) & instructionToSend.SignalID;
+	byte valueByte = getBytePackage(cc_id, instructionToSend);
 
-	//	instructionIndex++;
+	byte cc_second_id = cc_id;
 
-	//	unsigned int freq = f1;
-	//	freq = freq << 8;
-	//	freq = freq | f2;
+	
+	boolean doSend = true;
+	switch (cc_id) {
 
-	//	instruction.Frequency = freq;
-	//	instruction.SignalID = SignalID;
-	//	instruction.Phase = phase;
-	//	instruction.pwmPattern = pwmPattern;
-	//}
-	//else {
+	case CCID_PITCHBYTELOW:
+		cc_second_id = CCID_PITCHBYTEHIGH;
+		
+		break;
+	case CCID_CHANGE_PWM:
+		cc_second_id = CCID_CHANGE_RATE_PWM;
+		
+		break;
+	case CCID_CHANGE_PHASE:
+		cc_second_id = CCID_CHANGE_RATE_PHASE;
+		
+		break;
+	case CCID_CHANGE_PITCH:
+		cc_second_id = CCID_CHANGE_PITCH;
+		
+		break;
+	case CCID_CHANGE_RESET:
+		cc_second_id = CCID_CHANGE_RESET;
+		
 
-	//	for (size_t y = 0; y < i+1; y++)
-	//	{
-	//		
-	//			serialOut->print("b[");
-	//			serialOut->print(y);
-	//			serialOut->print("]=");
-	//			serialOut->println(data[y]);
-	//	}
-	//}
-	//
-	//return output;
+		
+		break;
+		default:
+			break;
+	}
+
+
+	if (cc_id != cc_second_id) {
+
+		instructionToSend.TempByte = valueByte;
+		valueByte = getBytePackage(cc_second_id, instructionToSend);
+
+		if (instructionToSend.lastSent[cc_id] == instructionToSend.TempByte && instructionToSend.lastSent[cc_second_id] == valueByte) {
+			doSend = false;
+		}
+
+	}
+	else {
+		if (instructionToSend.lastSent[cc_id] == valueByte) {
+			doSend = false;
+		}
+	}
+
+	bool confirmed = true;
+
+	while (!confirmed && (PackageRetryIndex < PackageRetries)) {
+		
+		if (doSend) {
+
+			if (cc_id != cc_second_id) {
+
+				port->write(cc_sid_byte);
+
+				port->write(instructionToSend.TempByte);
+
+				byte cc_sid_byte2 = (cc_second_id << 4) & instructionToSend.SignalID;
+
+				port->write(cc_sid_byte2);
+
+				port->write(valueByte);
+
+
+				if (ConfirmationProtocol) {
+
+					delay(TXDELAY);
+
+					while (port->available() < 0) {
+						delay(TXDELAY);
+					}
+
+					if (port->read() != cc_sid_byte) confirmed = false;
+					if (port->read() != instructionToSend.TempByte) confirmed = false;
+					if (port->read() != cc_sid_byte2) confirmed = false;
+					if (port->read() != valueByte) confirmed = false;
+
+				}
+
+					if (confirmed) {
+
+						instructionToSend.lastSent[cc_id] = instructionToSend.TempByte;
+						instructionToSend.lastSent[cc_second_id] = valueByte;
+						PackageRetryIndex = 0;
+					}
+				
+
+			}
+			else {
+
+				port->write(cc_sid_byte);
+
+				port->write(valueByte);
+
+				if (ConfirmationProtocol) {
+
+					delay(TXDELAY);
+
+					if (port->read() != cc_sid_byte) confirmed = false;
+					if (port->read() != valueByte) confirmed = false;
+				}
+
+				if (confirmed) {
+					instructionToSend.lastSent[cc_id] = valueByte;
+					PackageRetryIndex = 0;
+				}
+			}
+		}
+		if (!confirmed) {
+			PackageRetryIndex++;
+			delay(TXDELAY);
+
+			Serial.print("BytePackage retry");
+			Serial.print(PackageRetryIndex);
+			Serial.print(" / ");
+			Serial.println(PackageRetries);
+			PackageRetryIndex = 0;
+		}
+	}
+
+	if (PackageRetryIndex > 0) {
+		Serial.print("BytePackage failed ");
+		Serial.print(PackageRetryIndex);
+		Serial.println("times.");
+		PackageRetryIndex = 0;
+	}
+
 }
 
 
 
 void SignalControlLink::sendInstruction(SoftwareSerial * port, SignalInstruction & instructionToSend)
 {
-
 	unsigned int last = instructionToSend.GetControlByte();
 	if (instructionToSend.lastControlByte != last) {
 
-		String inst = instructionToSend.GetString(); // sendAsString();
-		instructionToSend.lastControlByte = last;
-		port->println(inst);
+	if (ByteCodeProtocol) {
+
+		sendBytePackage(port, CCID_CHANGE_RATE_PWM, instructionToSend);
+		sendBytePackage(port, CCID_PITCHBYTELOW, instructionToSend);
+
+		sendBytePackage(port, CCID_MODEBYTE, instructionToSend);
+
+		sendBytePackage(port, CCID_CHANGE_PWM, instructionToSend);
+
+		sendBytePackage(port, CCID_CHANGE_PHASE, instructionToSend);
+		sendBytePackage(port, CCID_CHANGE_PITCH, instructionToSend);
+		sendBytePackage(port, CCID_CHANGE_RESET, instructionToSend);
+
+		
 	}
+	else {
+
+		
+
+			String inst = instructionToSend.GetString(); // sendAsString();
+			
+			port->println(inst);
+		}
 
 	
+		instructionToSend.lastControlByte = last;
 
-	//SoftSerial.print(inst);
-
-	/*if (mode == 1) {
-		ETC.sendData(i2c_slave_address);
-		return;
 	}
-*/
 
-	//if (mode == 0) {
-
-	//	
-
-	//	//ET.sendData();
-
-	//	delay(TXDELAY);
-	//}
-
-	//instructionIndex++;
-
-	//byte data[SIGNALINSTRUCTION_SIZE];
-	//byte i = 0;
-
-	//for (size_t y = 0; y < SIGNALINSTRUCTION_PREFIXSIZE; y++)
-	//{
-	//	data[i] = SIGNAL_STARTBYTE; i++;
-	//	data[i] = SIGNAL_ENDBYTE; i++;
-	//}
-
-	//data[i] = SIGNAL_STARTBYTE; i++;
-
-	//	data[i] = instruction.SignalID << 4; i++;
-
-	//	data[i] = lowByte(instruction.Frequency); i++;
-
-	//	data[i] = highByte(instruction.Frequency); i++;
-
-	//	data[i] = instruction.Phase; i++;
-
-	//	data[i] = instruction.pwmPattern; i++;
-	//	///**/
-	//	//byte controlByte = 0;
-	//	//for (size_t y = 1; y < i; y++)
-	//	//{
-	//	//	controlByte += data[y];
-	//	//}
-
-	//	//data[i] = controlByte; i++;
-
-	//	for (size_t y = i; y < SIGNALINSTRUCTION_SIZE; y++)
-	//	{
-	//		data[y] = SIGNAL_ENDBYTE;
-
-	//		
-	//	}
-
-	//SoftSerial.write(data, SIGNALINSTRUCTION_SIZE);
 
 }
 

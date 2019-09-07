@@ -1,7 +1,7 @@
 #include "RowTwoByteFields.h"
 
 
-void RowTwoByteFields::Deploy(GuiScreen screen)
+byte RowTwoByteFields::Deploy(GuiScreen screen)
 {
 	int y = screen.GetYPosition(Row);
 	int cw = screen.GetCharScreenWidth();
@@ -24,14 +24,16 @@ void RowTwoByteFields::Deploy(GuiScreen screen)
 
 	LeftLabel.TextColor = screen.LabelColor;
 	RightLabel.TextColor = screen.LabelColor;
+
+	return 1;
 }
 
-void RowTwoByteFields::Deploy(GuiScreen screen, uint16_t fieldColor)
-{
-	Deploy(screen);
-	LeftField.TextColor = fieldColor;
-	RightField.TextColor = fieldColor;
-}
+//void RowTwoByteFields::Deploy(GuiScreen screen, uint16_t fieldColor)
+//{
+//	Deploy(screen);
+//	LeftField.TextColor = fieldColor;
+//	RightField.TextColor = fieldColor;
+//}
 
 void RowTwoByteFields::PrintLabels(ACEMegaHostTFTClass * Display)
 {
@@ -41,11 +43,20 @@ void RowTwoByteFields::PrintLabels(ACEMegaHostTFTClass * Display)
 
 void RowTwoByteFields::UpdateFields(ACEMegaHostTFTClass * Display)
 {
+
 	LeftField.print(Display);
 	RightField.print(Display);
 }
 
-void RowTwoByteFields::Set(String leftLabel, String rightLabel, byte leftValue, byte rightValue)
+void RowTwoByteFields::Set(String leftLabel, String rightLabel, byte * leftValue, byte * rightValue)
+{
+	LeftLabel.label = leftLabel;
+	RightLabel.label = rightLabel;
+	LeftField.SetValue(leftValue);
+	RightField.SetValue(rightValue);
+}
+
+RowTwoByteFields::RowTwoByteFields(String leftLabel, String rightLabel, byte * leftValue, byte *rightValue)
 {
 	LeftLabel.label = leftLabel;
 	RightLabel.label = rightLabel;

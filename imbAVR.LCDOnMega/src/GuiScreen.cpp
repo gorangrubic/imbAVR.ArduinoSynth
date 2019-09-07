@@ -1,5 +1,9 @@
 #include "GuiScreen.h"
 
+
+
+
+
 int GuiScreen::GetWidth(byte characters)
 {
 	return (6 * TextSize) * characters;

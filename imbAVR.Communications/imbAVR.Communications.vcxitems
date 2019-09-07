@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{ed772ff6-7930-4a87-b777-e5266ff5e331}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+	<Text Include="$(MSBuildThisFileDirectory)library.properties" />
+  	<Text Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.h" />
+  </ItemGroup>
+ <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.Communications.h" /> -->
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceRegistration.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\TransferClassHeader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\TransferLink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DevicePort.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceSignature.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DevicePort.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceSignature.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceRegistration.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\TransferClassHeader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\TransferLink.h" />
+  </ItemGroup>
+  </Project>

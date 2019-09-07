@@ -3,6 +3,8 @@
 
 
 //#define SOUND_OUT 6
+
+#include "SignalInstructionByte.h"
 #define _USE_DIGPOTUNITS // remove _ to turn on the option
 
 #ifdef USE_DIGPOTUNITS
@@ -25,10 +27,10 @@
 
 #endif
 
-#define PIN_VOLCLUSTER_CLOCK A1
-#define PIN_VOLCLUSTER_VOL1 A2
-#define PIN_VOLCLUSTER_VOL2 A0
-#define PIN_VOLCLUSTER_VOL3 A3
+//#define PIN_VOLCLUSTER_CLOCK A1
+//#define PIN_VOLCLUSTER_VOL1 A2
+//#define PIN_VOLCLUSTER_VOL2 A0
+//#define PIN_VOLCLUSTER_VOL3 A3
 
 #define SYNTHDIAG_DEVICE_ON
 #define SYNTHDIAG_DEVICE_SERIAL_RX 10
@@ -43,7 +45,7 @@
 
 #define SIGNAL_DEVICE_SERIAL_RX 8
 #define SIGNAL_DEVICE_SERIAL_TX 9
-#define SIGNAL_DEVICE_BAUDRATE 57600
+#define SIGNAL_DEVICE_BAUDRATE 38400
 
 #include "TwoPointENV.h"
 
@@ -99,6 +101,8 @@ void setup() {
 
 
 LightChrono Engine_Chrono = LightChrono();
+#define EngineTICK 5000
+
 byte lastControl = 0;
 void loop() {
 
@@ -109,18 +113,36 @@ void loop() {
 
 	rx = MidiUSB.read();
 
-	while (SoftSerial.available()) {
+	/*while (SoftSerial.available()) {
 		SoftSerial.read();
 	}
 
 	while (Serial.available()) {
 		Serial.read();
 	}
-
+*/
 	synthDevice.loop(rx, &SoftSerial);
 
 	SoftSerial.flush();
 
+	if (Engine_Chrono.hasPassed(EngineTICK)) {
+
+		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalA_instruction, 0));
+		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalB_instruction, 1));
+		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalFLT_instruction, 2));
+		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.perkA_instruction, 3));
+		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.perkB_instruction, 4));
+
+		synthDevice.mainControl.signalA_instruction.clearCache();
+		synthDevice.mainControl.signalB_instruction.clearCache();
+		synthDevice.mainControl.signalFLT_instruction.clearCache();
+		synthDevice.mainControl.perkA_instruction.clearCache();
+		synthDevice.mainControl.perkB_instruction.clearCache();
+		
+
+		Engine_Chrono.restart();
+	}
+	
 	/*
 	if (rx.header != 0) {
 		

@@ -20,6 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.LCDOnMega.h" /> -->
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\GuiScreenView.h" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\GuiScreenViewSet.h" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\RowHeading.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ACEMegaHostTFT.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDField.h" />
@@ -27,8 +30,25 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDByteField.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDLabel.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\RowTwoByteFields.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDFloat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDInt16.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\LCDTextLine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MultiRowBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowFloat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowFourByteFields.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowIntiger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowMIDIMessage.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowOneByteField.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowSignalInstruction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowTextLine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowTextLineWithPrefix.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\RowWithUnit.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalUnitView.h" />
   </ItemGroup>
   <ItemGroup>
+  <ClCompile Include="$(MSBuildThisFileDirectory)src\GuiScreenView.cpp" />
+  <ClCompile Include="$(MSBuildThisFileDirectory)src\GuiScreenViewSet.cpp" />
+  <ClCompile Include="$(MSBuildThisFileDirectory)src\RowBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\RowHeading.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ACEMegaHostTFT.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDField.cpp" />
@@ -37,5 +57,19 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDLabel.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\RowTwoByteFields.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.LCDOnMega.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDFloat.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDInt16.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\LCDTextLine.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MultiRowBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowFloat.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowFourByteFields.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowIntiger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowMIDIMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowOneByteField.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowSignalInstruction.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowTextLine.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowTextLineWithPrefix.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\RowWithUnit.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalUnitView.cpp" />
   </ItemGroup>
 </Project>

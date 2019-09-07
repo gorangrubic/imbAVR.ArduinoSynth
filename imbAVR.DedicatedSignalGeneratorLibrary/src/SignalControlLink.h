@@ -10,8 +10,6 @@
 #endif
 
 
-#endif
-
 #include <SignalControlManager.h>
 #include <SignalInstruction.h>
 #include <SoftwareSerial.h>
@@ -31,8 +29,8 @@
 #define RXPIN 8
 #define TXPIN 9
 
-#define RXDELAY 100
-#define TXDELAY 50
+#define RXDELAY 1
+#define TXDELAY 5
 
 class SignalControlLink {
 
@@ -43,9 +41,18 @@ public:
 
 	//String buffer = "";
 
-	
+
+
+/// <summary>
+/// Optimized protocol, using bytes instead of strings
+/// </summary>
+	bool ByteCodeProtocol = false;
+	byte PackageRetries = 5;
+	byte PackageRetryIndex = 0;
 
 	SignalInstruction instruction;
+
+	bool ConfirmationProtocol = false;
 
 	byte instructionIndex = 0;
 
@@ -64,36 +71,43 @@ public:
 
 	//// mode 0
 	//SoftEasyTransfer ET;
-	
 
-	void setup(int rx_pin= RXPIN, int tx_pin= TXPIN, unsigned int baudrate= DEFAULT_BAUDRATE);
+
+	void setup(int rx_pin = RXPIN, int tx_pin = TXPIN, unsigned int baudrate = DEFAULT_BAUDRATE);
 
 	void setupMaster(int address);
 
 	void setupSlave(int address);
 
-	bool receive();
+
 
 	String readStringChar(String input);
 
-	
+
 
 	//bool readStringChar(String input);
 
-	
+
 
 	bool readAsString(String instructionString);
 
-	
+
 
 	//String sendAsString();
 
 	bool readInstruction(HardwareSerial * serialOut);
 
+	byte getBytePackage(byte cc_id, SignalInstruction & instructionToSend);
+
+	void sendBytePackage(SoftwareSerial * port, byte cc_id, SignalInstruction & instructionToSend);
+
 	void sendInstruction(SoftwareSerial * port, SignalInstruction & instructionToSend);
 
-	
+
 
 	void send(SoftwareSerial * port, byte signalID, unsigned int frequency, byte waveform = WAVEFORM_HALFCYCLE, byte phase_shift = 0, bool resetPWMStep = true, bool resetSClock = true, bool setPWMStep = true, bool setSClock = false);
 
 };
+
+
+#endif

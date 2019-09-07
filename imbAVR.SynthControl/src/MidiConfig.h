@@ -56,11 +56,11 @@
 #define CC_PERK_PitchALevel 19
 #define CC_PERK_PitchBLevel 2
 
-#define CC_PERK_PWM 4
+#define CC_PERK_PWM 3
 
 #define CC_PERK_PHASE 12
 
 
-#define CC_FLTPitch 3
+#define CC_FLTPitch 4
 
 #define CHANNEL_ID_ALL 0

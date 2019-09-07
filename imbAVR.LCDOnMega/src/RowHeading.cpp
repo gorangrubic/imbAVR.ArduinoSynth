@@ -1,6 +1,8 @@
 #include "RowHeading.h"
 
-void RowHeading::Deploy(GuiScreen screen, String heading)
+
+
+byte RowHeading::Deploy(GuiScreen screen)
 {
 	y = screen.GetYPosition(Row);
 	
@@ -9,18 +11,25 @@ void RowHeading::Deploy(GuiScreen screen, String heading)
 
 	int mid_x = screen.ScreenWidth / 2;
 	
-	int hw = screen.GetWidth(heading.length());
+	int hw = screen.GetWidth(LeftLabel.label.length());
 
 	x = 0;
 
 	LeftLabel.x = mid_x - (hw / 2);
 	LeftLabel.y = y;
-	LeftLabel.label = heading;
+	 //= heading;
 	
 	TextColor = screen.LabelBackColor;
 	BackColor = screen.LabelColor;
 
+	return 1;
 }
+
+RowHeading::RowHeading(String heading)
+{
+	LeftLabel.label = heading;
+}
+
 
 RowHeading::RowHeading(int row)
 {
@@ -33,3 +42,9 @@ void RowHeading::PrintLabels(ACEMegaHostTFTClass * Display)
 	LeftLabel.TextColor = TextColor;
 	LeftLabel.print(Display);
 }
+
+void RowHeading::UpdateFields(ACEMegaHostTFTClass * Display)
+{
+}
+
+

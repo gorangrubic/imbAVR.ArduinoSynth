@@ -98,9 +98,15 @@
 #endif
 
 #define PIN_VOLCLUSTER_CLOCK A1
-#define PIN_VOLCLUSTER_VOL1 A2
-#define PIN_VOLCLUSTER_VOL2 A0
-#define PIN_VOLCLUSTER_VOL3 A3
+
+// A3 is waveform mix
+#define PIN_VOLCLUSTER_VOL1 A3
+
+// A2 Perk stereo mix
+#define PIN_VOLCLUSTER_VOL2 A2
+
+// final amp modulation
+#define PIN_VOLCLUSTER_VOL3 A0
 
 #define SYNTHDIAG_DEVICE_ON
 #define SYNTHDIAG_DEVICE_SERIAL_RX 10

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{25c4e494-da69-4de1-acf7-f467f768e6cc}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+	<Text Include="$(MSBuildThisFileDirectory)library.properties" />
+  	<Text Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthDiagnosticLibrary.h" />
+  </ItemGroup>
+ <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthDiagnosticLibrary.h" />  -->
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthDiagnosticLibrary.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceManager.cpp" />
+  </ItemGroup>
+   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DiagnosticData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceManager.h" />
+  </ItemGroup>
+  
+  </Project>

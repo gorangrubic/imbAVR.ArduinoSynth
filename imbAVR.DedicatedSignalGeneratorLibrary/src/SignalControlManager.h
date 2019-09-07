@@ -14,9 +14,31 @@
 
 #include "HardwareSerial.h"
 
+
+#include "MathTool.h"
+
 #define SIGNAL_UNITS_COUNT 12
 
 
+
+#define CCID_PWMBYTE 0
+#define CCID_PHASEBYTE 1
+#define CCID_PITCHBYTELOW 2
+#define CCID_PITCHBYTEHIGH 3
+#define CCID_MODEBYTE 4
+
+#define CCID_CHANGE_PWM 9
+#define CCID_CHANGE_RATE_PWM 10
+
+#define CCID_CHANGE_PHASE 11
+#define CCID_CHANGE_RATE_PHASE 12
+
+#define CCID_CHANGE_PITCH 13
+#define CCID_CHANGE_RATE_PITCH 14
+
+
+#define CCID_CHANGE_RESET 15
+#define CCID_CHANGE_RATE_RESET 16
 
 
 class SignalControlManagerClass
@@ -25,6 +47,14 @@ class SignalControlManagerClass
 
 
  public:
+
+	 byte CurrentSID = 0;
+
+	 byte CurrentCC = 0;
+
+	 byte TempByte = 0;
+
+	 bool ExpectingValueByte = false;
 
 	 float CycleCompensation = 490.0;
 
@@ -41,13 +71,23 @@ class SignalControlManagerClass
 
 	 static byte DoublePitchInPattern(byte pattern);
 
-	 String Describe(SignalInstruction instruction, unsigned int index);
+	 static String Describe(SignalInstruction instruction, unsigned int index);
 
-	 
+	 void Receive(byte receivedByte);
+
+	 void SetCC(byte cc, byte value, SignalControlUnitClass * signal);
 
 	// static void Describe(HardwareSerial * serialOut, SignalInstruction instruction);
 
+	 //void Set(byte cc_sid, byte value);
+
 	 void DescribeAll(HardwareSerial * serialOut);
+
+	 void PerformPhaseByte(byte Phase, SignalControlUnitClass * signal);
+
+	 void PerformModeByte(byte Phase, SignalControlUnitClass * signal);
+
+	 void PerformPitch(unsigned int Pitch, SignalControlUnitClass * signal);
 
 	 void Perform(SignalInstruction instruction);
 

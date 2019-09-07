@@ -17,23 +17,33 @@
 #include "LCDByteField.h"
 #include "ACEMegaHostTFT.h"
 
-class RowHeading : public LCDField {
+#include <RowBase.h>
+
+
+class RowHeading : public RowBase {
 
 public:
 
 	LCDLabel LeftLabel = LCDLabel();
 	
 	
-	unsigned int Row = 0;
+
 
 
 	uint16_t w = 0;
 	uint16_t h = 0;
 
-	void Deploy(GuiScreen screen, String heading);
+	//void Deploy(GuiScreen screen, String heading);
+
+	virtual byte Deploy(GuiScreen screen);
+
+	RowHeading(String heading);
 
 	RowHeading(int row);
 
-	void PrintLabels(ACEMegaHostTFTClass * Display);
+	virtual void PrintLabels(ACEMegaHostTFTClass * Display);
+
+	virtual void UpdateFields(ACEMegaHostTFTClass * Display);
 
 };
+

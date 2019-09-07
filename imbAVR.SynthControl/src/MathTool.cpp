@@ -80,3 +80,44 @@ byte MathTool::GetPWMWaveform(byte CCValue)
 
 	return byte();
 }
+
+
+byte MathTool::GetCCValueForWaveform(byte pwmPattern)
+{
+
+	byte w = 0; // CCValue / 20;
+
+	switch (w) {
+	case B10000000:
+		w = 0;
+		break;
+	case B11000000:
+		w = 1;
+		
+		break;
+	case B11100000:
+		w = 2;
+		
+		break;
+	case B11110000:
+		w = 3;
+		
+		break;
+	case B11111000:
+		w = 4;
+		
+		break;
+	case B11111100:
+		w = 5;
+		
+		break;
+	default:
+	case B11111110:
+		w = 6;
+		
+		break;
+
+	}
+
+	return w * 20;
+}

@@ -25,4 +25,5 @@ public:
 	static byte GetPhaseShift(byte CCValue);
 
 	static byte GetPWMWaveform(byte CCValue);
+	static byte GetCCValueForWaveform(byte pwmPattern);
 };

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
+    <ProjectGuid>{C7005D2F-B9EC-4A7B-A395-416E8EF51C3A}</ProjectGuid>
     <RootNamespace>imbAVR_SynthDiagnostic</RootNamespace>
     <ProjectName>imbAVR.SynthDiagnostic</ProjectName>
   </PropertyGroup>
@@ -117,6 +117,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.imbAVR.SynthDiagnostic.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DiagnosticData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

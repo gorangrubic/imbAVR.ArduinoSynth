@@ -17,11 +17,11 @@ class LCDByteField : public LCDField {
 
 	byte lastValue;
 
-	byte value;
+	byte * value;
 	
 public:
 
-	void SetValue(byte inValue);
+	void SetValue(byte * inValue);
 
 	void print(ACEMegaHostTFTClass* Display);
 

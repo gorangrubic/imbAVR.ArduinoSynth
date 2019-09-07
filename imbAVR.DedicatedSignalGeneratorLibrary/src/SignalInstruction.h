@@ -28,6 +28,45 @@
 #define SIGNAL_ENDBYTE B11111111
 
 
+class SignalChangeInstruction {
+	
+public:
+	byte Rate = 256;
+	byte RateIndex = 0;
+	// change = 1 => -126, change = 255 = +126
+	byte Change = 0;
+
+
+};
+
+
+//enum SignalAspect {
+//	pwm,
+//	pitch,
+//
+//};
+
+//class SignalInstructionByte {
+//
+//
+//	void Set(byte cc_id, byte s_id, byte value);
+//
+//	
+//
+//	byte GetCCID();
+//
+//	byte GetSID();
+//
+//	//byte cc_id;
+//
+//	//byte s_id;
+//
+//
+//	byte cc_s_id;
+//	byte value;
+//
+//};
+
 class SignalInstruction {
 
 public:
@@ -56,10 +95,25 @@ public:
 	unsigned int lastControlByte = 0;
 	unsigned int GetControlByte();
 
+	static byte GetCCID(byte cc_id);
 
+	static byte GetSID(byte cc_id);
+
+
+	byte Mode = B00000100;
 	
+	// bytes sent last time
+	byte lastSent[16];
+	byte TempByte = 0;
+
+	SignalChangeInstruction PWMChange;
+	SignalChangeInstruction PhaseChange;
+	SignalChangeInstruction PitchChange;
+	SignalChangeInstruction ResetClock;
 
 	String GetString();
+
+	void clearCache();
 	
 	void Set(byte signalID, unsigned int frequency, byte waveform, byte phase_shift, bool resetPWMStep, bool resetSClock, bool setPWMStep, bool setSClock);
 

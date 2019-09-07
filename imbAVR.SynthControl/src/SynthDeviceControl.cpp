@@ -212,6 +212,7 @@ void SynthDeviceControl::loop(midiEventPacket_t rx, SoftwareSerial * port) {
 	float wf_mix_ratio = MathTool::GetRatio(mainControl.State.out_waveform_mix, 100, 1, 0);
 
 
+	float mc_pan_ratio = MathTool::GetRatio(mainControl.State.out_mainComponent_pan, 255, 1, 0);
 
 
 #ifdef USE_DIGPOTUNITS
@@ -227,31 +228,52 @@ void SynthDeviceControl::loop(midiEventPacket_t rx, SoftwareSerial * port) {
 
 #ifdef USE_DIGPOTCLUSTER
 
-	dp_cluster.Write(mainControl.State.out_waveform_a_shaper, mainControl.State.out_waveform_b_flt, mainControl.State.out_amp_value, mainControl.State.out_flt_value, mainControl.State.out_flt_gain, 0, 0, 0);
+	dp_cluster.Write(
+		mainControl.State.out_waveform_a_shaper,
+		mainControl.State.out_flt_value,
+		mainControl.State.out_waveform_b_flt,
+		mainControl.State.out_flt_gain,
+		127,
+		mainControl.State.out_mainComponent_gain,
+		mainControl.State.out_waveform_mix,
+		mainControl.State.out_distortion_mix
+	);
 
 #endif // USE_DIGPOTCLUSTER
 
 
-	vol_cluster.setVolume(mainControl.State.out_amp_value, mainControl.State.out_amp_value, 50 + (wf_mix_ratio * 50), 100 - (wf_mix_ratio * 50), 100, 100);
+	vol_cluster.setVolume(
+
+		mainControl.State.out_perkA_amp,
+		mainControl.State.out_perkB_amp,
+
+		50 + (wf_mix_ratio * 50),
+		100 - (wf_mix_ratio * 50),
+		
+
+		
+		mainControl.State.out_amp_value,
+		mainControl.State.out_amp_value
+	);
 
 
-	link.sendInstruction(port, mainControl.signalA_instruction);
-
-	link.sendInstruction(port, mainControl.signalB_instruction);
-
-	link.sendInstruction(port, mainControl.signalFLT_instruction);
-
-	link.sendInstruction(port, mainControl.perkA_instruction);
-
-	link.sendInstruction(port, mainControl.perkB_instruction);
-
+	
 	//port->flush();
 
 
 
 	if (mainControl.tone_on) {
 
-		
+
+		link.sendInstruction(port, mainControl.signalA_instruction);
+
+		link.sendInstruction(port, mainControl.signalB_instruction);
+
+		link.sendInstruction(port, mainControl.signalFLT_instruction);
+
+		link.sendInstruction(port, mainControl.perkA_instruction);
+
+		link.sendInstruction(port, mainControl.perkB_instruction);
 		
 		/*
 		link.instruction = mainControl.signalB_instruction;
@@ -270,6 +292,8 @@ void SynthDeviceControl::loop(midiEventPacket_t rx, SoftwareSerial * port) {
 	}
 	else {
 		//noTone(SOUND_OUT);
+
+
 	}
 
 

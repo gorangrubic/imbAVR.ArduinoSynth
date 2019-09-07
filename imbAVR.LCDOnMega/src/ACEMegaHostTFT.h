@@ -27,6 +27,10 @@ class ACEMegaHostTFTClass : public Adafruit_GFX
 
 public:
 
+
+	// when true - it will force all LCD fields to reprint values
+	bool redrawScheduled = true;
+
 	unsigned int textsize = 1;
 
 	ACEMegaHostTFTClass(void);

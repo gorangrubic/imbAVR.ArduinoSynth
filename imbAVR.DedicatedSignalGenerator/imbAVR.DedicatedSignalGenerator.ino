@@ -9,6 +9,7 @@
 //#include <SoftEasyTransfer.h>
 //#include <Wire.h>
 //#include <EasyTransferI2C.h>
+#include <MathTool.h>
 
 #include "SignalInstruction.h"
 
@@ -103,14 +104,15 @@ void setup() {
 
 	//SignalControlManager.CycleCompensation = 16;
 
-	SignalControlManager.CycleCompensation = 62;
+	SignalControlManager.CycleCompensation = 31; // 62 / 2;
 
 	SignalControlManager.AddSignalUnit(2); // S0
 	SignalControlManager.AddSignalUnit(3); // S1
 	SignalControlManager.AddSignalUnit(4); // S2
 	SignalControlManager.AddSignalUnit(5); // S3
 	SignalControlManager.AddSignalUnit(6); // S4
-	//SignalControlManager.AddSignalUnit(7); // S5
+	SignalControlManager.AddSignalUnit(7); // S5
+
 	//SignalControlManager.AddSignalUnit(8); // S6
 	//SignalControlManager.AddSignalUnit(9); // S7
 
@@ -147,17 +149,11 @@ ISR(TIMER2_OVF_vect) {
 	
 }
 
-int tIndex = 0;
-int tLimit = 30000;
-
 String input = "";
 
 // the loop function runs over and over again until power down or reset
 void loop() {
   
-
-
-	
 
 	/*if (SoftSerial.available()) {
 		input = SoftSerial.readString();
@@ -173,16 +169,25 @@ void loop() {
 	//}
 	//
 
-	if (SoftSerial.available() > 5) {
 
-		input += SoftSerial.readString();
-		SoftSerial.flushInput();
+	if (link.ByteCodeProtocol) {
+
+		if (SoftSerial.available()) {
+			byte b = SoftSerial.read();
+			SignalControlManager.Receive(b);
+
+			if (link.ConfirmationProtocol) SoftSerial.write(b);
+		}
+
 	}
-	
+	else {
 
-	/*if (in > 5) {
 
-		input += SoftSerial.readString();*/
+		if (SoftSerial.available() > 5) {
+
+			input += SoftSerial.readString();
+			SoftSerial.flushInput();
+		}
 
 		while (input.indexOf("[") > -1) {
 
@@ -194,34 +199,11 @@ void loop() {
 
 				SignalControlManager.Perform(link.instruction);
 
-				//String desc = SignalControlManager.Describe(link.instruction, link.instructionIndex);
-				//////
-				//Serial.println(desc);
-
 			}
 
 
-			//Serial.flush();
-
-			
-
-			//Serial.println(input);
-
 		}
-	//}
-		//ledBeep(link.instruction.SignalID + 1);
-	
 
-	tIndex++;
-	if (tIndex >= tLimit) {
-		tIndex = 0;
-
-		// SignalControlManager.DescribeAll(&Serial);
-		//Serial.println("Alive");
 	}
-
-	//delay(RXDELAY);
-	
-
 	
 }

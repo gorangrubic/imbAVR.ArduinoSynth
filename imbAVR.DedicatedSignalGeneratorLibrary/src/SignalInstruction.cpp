@@ -7,6 +7,17 @@ unsigned int SignalInstruction::GetControlByte()
 	return SignalID + Frequency + pwmPattern + Phase;
 }
 
+byte SignalInstruction::GetCCID(byte cc_id)
+{
+	return (cc_id & B11110000) >> 4;
+}
+
+byte SignalInstruction::GetSID(byte cc_id)
+{
+	return (cc_id & B00001111);
+}
+
+
 String SignalInstruction::GetString()
 {
 
@@ -42,6 +53,15 @@ String SignalInstruction::GetString()
 
 	SoftSerial.print(STRPROTOCOL_END);
 	*/
+}
+
+void SignalInstruction::clearCache()
+{
+	for (size_t i = 0; i < 16; i++)
+	{
+		lastSent[i] = 0;
+
+	}
 }
 
 void SignalInstruction::Set(byte signalID, unsigned int frequency, byte waveform = WAVEFORM_HALFCYCLE, byte phase_shift = 0, bool resetPWMStep = true, bool resetSClock = true, bool setPWMStep = true, bool setSClock = false) {
