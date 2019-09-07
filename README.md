@@ -30,7 +30,7 @@ Concept
 
 
 
-# Projects of general relevance
+# Sub-projects of general relevance
 Development of the synth required number of classes/libraries, having general relevance for Arduino/MCU projects. Here I'll drop some highlights:
 
 - imbAVR.LCDOnMega 
