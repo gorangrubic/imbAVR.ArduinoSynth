@@ -25,36 +25,44 @@ Field value rendering is controlled by FieldValueRenderMode enumeration and LCDF
   numeric_value
   Simply renders the value
   
-  numeric_ratio 
+- numeric_ratio 
   Decimal number from 0 to 1, computed as ratio of data value and type value range. i.e. for **byte** variable: v / 255).
   
-  numeric_percentage
+- numeric_percentage
   Ratio, multiplied by 100 and followed by % symbol
 
 - Graphic
 
-  - graphic_horizontal_bar
+  	- graphic_horizontal_bar
   
-  -	graphic_vertical_bar
+  	- graphic_vertical_bar
   
 	- graphic_horizontal_biased_bar
   
 	- graphic_vertical_biased_bar
 	
-  - graphic_resized_box,
+  	- graphic_resized_box,
 	
-  - graphic_resized_circle,
+  	- graphic_resized_circle,
 	
-  - graphic_bitBoxArray
-  Renders 8 (or 2 x 8 in parallel) array of squares, representing bit states in byte or int16 values
+  	- graphic_bitBoxArray
+  	Renders 8 (or 2 x 8 in parallel) array of squares, representing bit states in byte or int16 values
   
 	- graphic_bitBoxArrayLow4
+	
 	- graphic_bitBoxArrayHigh4
 	
-  - graphic_boolean_box
+  	- graphic_boolean_box
   
 	- graphic_boolean_circle
+	
+	
+# Rendering mechanism
 
+Main parts of the framework:
+- Application level screen/forms classes:  GuiScreen, GuiScreenView and GuiScreenViewSet
+- Rows (Base abstract class: RowBase)
+- Fields (Base abstract class: LCDField)
 
 
 
