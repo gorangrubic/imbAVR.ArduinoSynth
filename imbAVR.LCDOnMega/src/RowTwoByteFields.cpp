@@ -71,7 +71,7 @@ RowTwoByteFields::RowTwoByteFields(String leftLabel, String rightLabel, unsigned
 	Row = row;
 }
 
-RowTwoByteFields::RowTwoByteFields(unsigned int row)
+RowTwoByteFields::RowTwoByteFields()
 {
-	Row = row;
+	
 }

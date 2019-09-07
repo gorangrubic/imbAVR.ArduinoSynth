@@ -45,6 +45,6 @@ public:
 
 	RowTwoByteFields(String leftLabel, String rightLabel, unsigned int row);
 
-	RowTwoByteFields(unsigned int row);
+	RowTwoByteFields();
 
 };

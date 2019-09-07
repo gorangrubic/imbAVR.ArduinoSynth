@@ -11,10 +11,35 @@
 
 //#define TL_CONFIRMATIONTYPE_OFF 0x
 
-#include "TransferClassHeader.h";
-#include "DeviceRegistration.h";
+#include "TransferClassHeader.h"
+
+#include "SoftwareSerial.h"
+#include "HardwareSerial.h"
+
+#include "DevicePort.h"
+
+#define RECEIVERESULTMASK_FAIL B00001100
+#define RECEIVERESULTMASK_SUCCESS B00000011
+
+#define IS_RECEIVE_RESULTSUCCESS(result) (result & B00000011) != B00000011
+
+
+#define TRANSFER_LOADDATA(structToLoadInto, transferLink) \
+memcpy(&structToLoadInto, &transferLink->buffer, sizeof(structToLoadInto)); \
+transferLink->TrimBuffer(sizeof(structToLoadInto) + transferLink->NumberOfControlBytes); \
+
+#define TRANSFER_SENDDATA(transferLink, port, structToSend) \
+byte b[sizeof(structToSend)]; \
+memcpy(b, &structToSend, sizeof(structToSend)); \
+transferLink->Send(port, b); \
 
 #define TRANSFERLINK_MAXCLASSID 16
+
+
+#define TRANSFERCLASSID_DEVICESIGNATURE 2
+#define TRANSFERCLASSID_MONITORMESSAGE 3
+#define TRANSFERCLASSID_SIGNALINSTRUCTION 4
+#define TRANSFERCLASSID_MIDIMESSAGE 5
 
 class TransferLink {
 
@@ -45,7 +70,7 @@ public:
 
 	
 
-	static TransferClassHeader MakeHeader(byte class_id, byte size, bool twoBytePackages, byte confirmationType, byte retries, byte timeout, bool permanent);
+	static TransferClassHeader MakeHeader(byte class_id, byte size, bool twoBytePackages=false, byte confirmationType= 0b11, byte retries= 0b10, byte timeout= 0b10, bool permanent=true);
 
 	static byte ComputeSignatureByte(TransferClassHeader header);
 
@@ -78,12 +103,27 @@ public:
 	byte Receive(SoftwareSerial * port);
 
 	byte Receive(DevicePort * port);
+	
+	/// <summary>
+	/// fills the buffer with specified byte package
+	/// </summary>
+	/// <param name="bytePackage">The byte package.</param>
+	/// <param name="port">The port - to send confirmation onto.</param>
+	/// <returns></returns>
+	byte Receive(byte * bytePackage, DevicePort * port);
 
 	/// <summary>
-	/// Loads data from buffer to struct and trims the buffer. To be called after Receive result confirmed that buffer contains properly loaded data
-	/// </summary>
-	/// <param name="structToLoadInto">The structure to load into.</param>
-	void LoadDataToStruct(byte * structToLoadInto);
+/// Loads data from buffer to struct and trims the buffer. To be called after Receive result confirmed that buffer contains properly loaded data
+/// </summary>
+/// <param name="structToLoadInto">The structure to load into.</param>
+	//void LoadDataToStruct(byte * structToLoadInto);
+
+	//byte BufferCheck(DevicePort * port);
+
+	
+
+
+	//void LoadDataToStruct(byte * structToLoadInto);
 	
 	/// <summary>
 	/// Sends given structure via specified port, returns result: on last four tries (2 bits per try): 
@@ -95,13 +135,15 @@ public:
 	/// <param name="port">The port.</param>
 	/// <param name="structToSend">The structure to send.</param>
 	/// <returns></returns>
-	byte Send(HardwareSerial * port, byte * structToSend);
+	byte Send(HardwareSerial * port, byte * b);
 
 
-	byte Send(SoftwareSerial * port, byte * structToSend);
+	byte Send(SoftwareSerial * port, byte * b);
 
 
-	byte Send(DevicePort * port, byte * structToSend);
+	byte Send(DevicePort * port, byte * b);
+
+	
 	
 };
 

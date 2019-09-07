@@ -11,6 +11,11 @@
 //#include <EasyTransferI2C.h>
 #include <MathTool.h>
 
+#include <TransferClassHeader.h>
+#include <TransferLink.h>
+
+#include "DevicePort.h"
+
 #include "SignalInstruction.h"
 
 #include "SignalControlManager.h"

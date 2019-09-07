@@ -109,15 +109,18 @@ void DiagnosticDeviceManager::Log(String logLine)
 void DiagnosticDeviceManager::setup()
 {
 
-	deviceRegistration.bootStart(&devicePort_SignalGen);
-	deviceRegistration.bootStart(&devicePort_SynthControlToDiagnostic);
-	deviceRegistration.bootStart(&devicePort_SynthControlToSignal);
+	deviceRegistration.bootStart(&devicePort_SignalGen, &deviceLink_SignalGen);
+	deviceRegistration.bootStart(&devicePort_SynthControlToDiagnostic, &deviceLink_SynthControlToDiagnostic);
+	deviceRegistration.bootStart(&devicePort_SynthControlToSignal, &deviceLink_SynthControlToSignal);
 
 	
 
-	while (!(deviceRegistration.bootLoop(Serial1) && deviceRegistration.bootLoop(Serial2) && deviceRegistration.bootLoop(PortSynthDebug))) {
+	while (
+		!(deviceRegistration.bootLoop(&devicePort_SignalGen, &deviceLink_SignalGen)
+			&& deviceRegistration.bootLoop(&devicePort_SynthControlToDiagnostic, &deviceLink_SynthControlToDiagnostic)
+			&& deviceRegistration.bootLoop(&devicePort_SynthControlToSignal, &deviceLink_SynthControlToSignal))) {
 
-
+		delay(50);
 	}
 
 
@@ -194,14 +197,6 @@ void DiagnosticDeviceManager::setup()
 	
 
 
-	Serial2.begin(baudrate_signal_device);
-	Serial1.begin(baudrate_signal_device);
-
-	Serial.begin(baudrate_mainserial);
-	PortSynthDebug.begin(baudrate_mainserial);
-
-	
-
 	SignalControlManager.AddSignalUnit(2); // S0
 	SignalControlManager.AddSignalUnit(3); // S1
 	SignalControlManager.AddSignalUnit(4); // S2
@@ -272,7 +267,6 @@ void DiagnosticDeviceManager::loop()
 		switch (mode) {
 		case 0:
 			displayMode = 0;
-
 			break;
 		case 1:
 			displayMode = 1;
@@ -356,21 +350,22 @@ void DiagnosticDeviceManager::loop()
 		LedToggle(LED_PCTODIAGNOSTIC);
 	}
 
-	SynthToSignalTransfer();
+	// SynthToSignalTransfer();
 
+	if (displayModeAutochange) {
+		if (auto_change_display_chrono.hasPassed(5000)) {
+			displayMode++;
+			if (displayMode > ViewSet.ActiveViews) {
+				displayMode = 0;
+			}
 
-	if (auto_change_display_chrono.hasPassed(5000)) {
-		displayMode++;
-		if (displayMode > ViewSet.ActiveViews) {
-			displayMode = 0;
+			auto_change_display_chrono.restart();
 		}
-
-		auto_change_display_chrono.restart();
 	}
 
 
 
-	while (PortSynthDebug.available()) {
+	/*while (PortSynthDebug.available()) {
 
 		byte b = PortSynthDebug.read();
 		if (mmHeader >= MonitorMessageHeaderSize) {
@@ -390,7 +385,7 @@ void DiagnosticDeviceManager::loop()
 				mmDataIndex = 0;
 			}	
 		}
-	}
+	}*/
 
 
 }

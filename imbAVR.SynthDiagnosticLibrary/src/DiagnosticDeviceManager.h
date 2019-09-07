@@ -10,34 +10,38 @@
 #endif
 
 
-
-
-#include <DiagnosticDeviceManager.h>
-#include "SignalUnitView.h"
-#include "MultiRowBase.h"
-#include "RowSignalInstruction.h"
-#include "RowMIDIMessage.h"
-#include "RowTextLineWithPrefix.h"
-#include "RowTextLine.h"
-#include "RowIntiger.h"
-#include "RowFloat.h"
-#include "RowOneByteField.h"
-#include "RowWithUnit.h"
-#include "RowFourByteFields.h"
-#include "LCDInt16.h"
-#include "LCDFloat.h"
-#include "LCDTextLine.h"
-#include <SoftwareSerial.h>
-#include <MIDI.h>
-
 #include <gfxfont.h>
 #include <Adafruit_SPITFT_Macros.h>
 #include <Adafruit_SPITFT.h>
 #include <Adafruit_GFX.h>
+
 #include "ACEMegaHostTFT.h"
-
+#include <TM1638.h>
 #include "HardwareSerial.h"
+#include <SoftwareSerial.h>
 
+//
+//#include "SignalUnitView.h"
+//#include "MultiRowBase.h"
+//#include "RowSignalInstruction.h"
+//#include "RowMIDIMessage.h"
+//#include "RowTextLineWithPrefix.h"
+//#include "RowTextLine.h"
+//#include "RowIntiger.h"
+//#include "RowFloat.h"
+//#include "RowOneByteField.h"
+//#include "RowWithUnit.h"
+//#include "RowFourByteFields.h"
+//#include "LCDInt16.h"
+//#include "LCDFloat.h"
+//#include "LCDTextLine.h"
+//#include <SoftwareSerial.h>
+//#include <MIDI.h>
+//
+
+//
+
+//
 #include "LCDByteField.h"
 #include "RowTwoByteFields.h"
 #include "RowHeading.h"
@@ -59,18 +63,18 @@
 
 #include "DiagnosticData.h"
 
-#include <TM1638.h>
-
 #include <LightChrono.h>
 #include <SignalControlLink.h>
 
-#include <gfxfont.h>
-#include <Adafruit_SPITFT_Macros.h>
-#include <Adafruit_SPITFT.h>
-#include <Adafruit_GFX.h>
-#include "ACEMegaHostTFT.h"
 
-#include <SoftwareSerial.h>
+#include "TransferClassHeader.h"
+#include "DeviceSignature.h"
+
+#include "DevicePort.h"
+#include "TransferLink.h"
+
+
+#include "DeviceRegistration.h"
 
 #define LED_AUTOCHANGEON 0
 #define LED_MIDIMESSAGE 1
@@ -82,7 +86,7 @@
 #define LED_SYNTHTOSIGNAL 6
 #define LED_HEARTBEAT 7
 
-#include <DeviceRegistration.h>
+
 
 class DiagnosticDeviceManager {
 
@@ -91,17 +95,16 @@ public:
 
 	SoftwareSerial PortSynthDebug = SoftwareSerial(A15, A14);
 
-	DeviceRegistration deviceRegistration = DeviceRegistration(DEVICESIGNATURE_DIAGNOSTICDEVICE, 115200);
-	DevicePort devicePort_SignalGen = DevicePort(Serial1);
-	DevicePort devicePort_SynthControlToSignal = DevicePort(Serial2);
-	DevicePort devicePort_SynthControlToDiagnostic = DevicePort(PortSynthDebug);
+	DeviceRegistration deviceRegistration = DeviceRegistration(DEVICESIGNATURE_DIAGNOSTICDEVICE);
+	DevicePort devicePort_SignalGen = DevicePort(&Serial1);
+	DevicePort devicePort_SynthControlToSignal = DevicePort(&Serial2);
+	DevicePort devicePort_SynthControlToDiagnostic = DevicePort(&PortSynthDebug);
 
-	TransferLink transferLink;
+	TransferLink deviceLink_SignalGen;
+	TransferLink deviceLink_SynthControlToSignal;
+	TransferLink deviceLink_SynthControlToDiagnostic;
 
-	unsigned int baudrate_signal_device = 19200;
-	unsigned int baudrate_mainserial = 57600;
 	
-
 	ACEMegaHostTFTClass Display = ACEMegaHostTFTClass();
 
 
@@ -121,9 +124,9 @@ public:
 
 	MonitorMessage msg;
 
-	byte mmHeader = 0;
+	/*byte mmHeader = 0;
 	byte mmDataIndex = 0;
-	byte mmData[MonitorMessageSize_Bytes];
+	byte mmData[MonitorMessageSize_Bytes];*/
 
 	SignalControlLink link;
 
@@ -142,16 +145,16 @@ public:
 	byte LedState = B00000000;
 
 
-	RowHeading v1_title = RowHeading("Overview");
+	RowHeading v1_title; // = RowHeading("Overview");
 
-	RowHeading v1_subtitle = RowHeading("-- Overview --");
+	RowHeading v1_subtitle; // = RowHeading("-- Overview --");
 
-	RowTwoByteFields v1_SCData = RowTwoByteFields("Head", "Buff", &mmHeader, &mmDataIndex);
+	RowTwoByteFields v1_SCData; // = RowTwoByteFields("Head", "Buff", &mmHeader, &mmDataIndex);
 
-	RowHeading v2_title = RowHeading("Synth state 1");
+	RowHeading v2_title; // = RowHeading("Synth state 1");
 
-	RowTwoByteFields v2_1 = RowTwoByteFields("WFRM A", "WFRM B", msg.State.CCValues[CC_WaveformA_Shaper], msg.State.CCValues[CC_WaveformB_Filter]);
-	RowTwoByteFields v2_2 = RowTwoByteFields("A/B MIX", "--", msg.State.CCValues[CC_WaveformMix], msg.State.CCValues[CC_WaveformMix]);
+	RowTwoByteFields v2_1;// = RowTwoByteFields("WFRM A", "WFRM B", msg.State.CCValues[CC_WaveformA_Shaper], msg.State.CCValues[CC_WaveformB_Filter]);
+	RowTwoByteFields v2_2;// = RowTwoByteFields("A/B MIX", "--", msg.State.CCValues[CC_WaveformMix], msg.State.CCValues[CC_WaveformMix]);
 	//	RowFirst.Set("WFRM A", "WFRM B", msg.State.CCValues[CC_WaveformA_Shaper], msg.State.CCValues[CC_WaveformB_Filter]);
 	//	RowSecond.Set("A/B MIX", "--", msg.State.CCValues[CC_WaveformMix],0);
 

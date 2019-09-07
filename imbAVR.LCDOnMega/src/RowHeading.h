@@ -39,7 +39,7 @@ public:
 
 	RowHeading(String heading);
 
-	RowHeading(int row);
+	RowHeading();
 
 	virtual void PrintLabels(ACEMegaHostTFTClass * Display);
 

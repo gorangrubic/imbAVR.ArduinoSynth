@@ -31,61 +31,61 @@
 
 
 
+//
+//
+////
+////#include <DiagnosticDeviceManager.h>
+////
+////#include "SignalUnitView.h"
+////#include "MultiRowBase.h"
+////#include "RowSignalInstruction.h"
+////#include "RowMIDIMessage.h"
+////#include "RowTextLineWithPrefix.h"
+////#include "RowTextLine.h"
+////#include "RowIntiger.h"
+////#include "RowFloat.h"
+////#include "RowOneByteField.h"
+////#include "RowWithUnit.h"
+////#include "RowFourByteFields.h"
+////#include "LCDInt16.h"
+////#include "LCDFloat.h"
+////#include "LCDTextLine.h"
+//#include <SoftwareSerial.h>
+//#include <MIDI.h>
+//
+//#include <TM1638.h>
+//
+//
+//#include <gfxfont.h>
+//#include <Adafruit_SPITFT_Macros.h>
+//#include <Adafruit_SPITFT.h>
+//#include <Adafruit_GFX.h>
+//#include "ACEMegaHostTFT.h"
+//
+//#include "MonitorMessage.h";
+//
+//#include "HardwareSerial.h"
+//
+//#include "GuiScreen.h"
+//#include "GuiScreenView.h"
+//#include "GuiScreenViewSet.h"
+//
+//#include "LCDByteField.h"
+//#include "RowTwoByteFields.h"
+//#include "RowHeading.h"
+//
+//#include "MidiConfig.h"
+//
+//#include "SignalControlUnit.h"
+//#include "SignalControlManager.h"
+//
+//#include "SynthDeviceControl.h"
+//
+//
 
-#include "DeviceSignature.h"
-#include "DevicePort.h"
-#include "TransferLink.h"
-#include "TransferClassHeader.h"
-#include "DeviceRegistration.h"
-#include <DiagnosticDeviceManager.h>
-#include "SignalUnitView.h"
-#include "MultiRowBase.h"
-#include "RowSignalInstruction.h"
-#include "RowMIDIMessage.h"
-#include "RowTextLineWithPrefix.h"
-#include "RowTextLine.h"
-#include "RowIntiger.h"
-#include "RowFloat.h"
-#include "RowOneByteField.h"
-#include "RowWithUnit.h"
-#include "RowFourByteFields.h"
-#include "LCDInt16.h"
-#include "LCDFloat.h"
-#include "LCDTextLine.h"
-#include <SoftwareSerial.h>
-#include <MIDI.h>
-
-#include <TM1638.h>
+//#include <DeviceRegistration.h>
 
 
-#include <gfxfont.h>
-#include <Adafruit_SPITFT_Macros.h>
-#include <Adafruit_SPITFT.h>
-#include <Adafruit_GFX.h>
-#include "ACEMegaHostTFT.h"
-
-#include "MonitorMessage.h";
-
-#include "HardwareSerial.h"
-
-#include "GuiScreen.h"
-#include "GuiScreenView.h"
-#include "GuiScreenViewSet.h"
-
-#include "LCDByteField.h"
-#include "RowTwoByteFields.h"
-#include "RowHeading.h"
-
-#include "MidiConfig.h"
-
-#include "SignalControlUnit.h"
-#include "SignalControlManager.h"
-
-#include "SynthDeviceControl.h"
-
-
-
-unsigned long startTime;
 //byte displayMode = 0;
 
 //RowHeading RowTopHeading = RowHeading(0);
@@ -155,7 +155,23 @@ unsigned long startTime;
 //
 //RowHeading v5_title = RowHeading("Signal-gen state 2");
 
-#include <DeviceRegistration.h>
+
+
+#include <TM16XXFonts.h>
+#include <TM16XX.h>
+#include <TM1640.h>
+#include <TM1638QYF.h>
+#include <TM1638.h>
+#include <InvertedTM1638.h>
+#include <gfxfont.h>
+#include <Adafruit_SPITFT_Macros.h>
+#include <Adafruit_SPITFT.h>
+#include <Adafruit_GFX.h>
+#include <SoftwareSerial.h>
+
+
+#include <DiagnosticDeviceManager.h>
+
 
 DiagnosticDeviceManager diagnosticDevice;
 

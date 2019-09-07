@@ -29,7 +29,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.Communications", "im
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		imbAVR.Communications\imbAVR.Communications.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.SynthDiagnosticLibrary\imbAVR.SynthDiagnosticLibrary.vcxitems*{25c4e494-da69-4de1-acf7-f467f768e6cc}*SharedItemsImports = 9

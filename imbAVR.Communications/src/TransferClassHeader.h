@@ -10,8 +10,6 @@
 #endif
 
 
-#include <DeviceRegistration.h>
-
 
 struct TransferClassHeader {
 	

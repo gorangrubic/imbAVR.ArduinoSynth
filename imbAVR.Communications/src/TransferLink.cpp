@@ -10,8 +10,6 @@
 #define TRANSFER_SENDPROCEDURE	\
 RetryIndex = 0;	\
 byte result = B00000000; \
-byte b[sizeof(structToSend)]; \
-memcpy(b, &structToSend, sizeof(structToSend)); \
 byte controlByte = 0; \
 for (size_t i = 0; i < sizeof(b); i++) \
 { \
@@ -50,11 +48,20 @@ if ((activeHeader.protocol & B00000100) == B00000100) { \
 
 
 
-byte TransferLink::Send(HardwareSerial * port, byte * structToSend) {
+
+
+byte TransferLink::Send(HardwareSerial * port, byte * b) {
+
 	TRANSFER_SENDPROCEDURE	
 }
 
-byte TransferLink::Send(SoftwareSerial * port, byte * structToSend) {
+byte TransferLink::Send(SoftwareSerial * port, byte * b) {
+
+	TRANSFER_SENDPROCEDURE
+}
+
+byte TransferLink::Send(DevicePort * port, byte * b)
+{
 	TRANSFER_SENDPROCEDURE
 }
 
@@ -238,20 +245,24 @@ void TransferLink::SetHeader(TransferClassHeader header)
 }
 
 
+#define PORT_RECEIVE		\
+byte result = B00000000;	\
+if (port->available()) {	\
+							\
+		if (bufferIndex < sizeof(buffer)) {			\
+				bufferIndex++;																								\
+				buffer[bufferIndex] = port->read();																			\
+				lastBufferChange = millis();																				\
+		}																									\
+}								\
+
+
+
 
 #define TRANSFER_RECEIVE																										\
 																							\
 																										\
-	byte result = B00000000;																										\
-	if (port->available()) {																										\
-																										\
-		if (bufferIndex < sizeof(buffer)) {																										\
-																										\
-			bufferIndex++;																										\
-			buffer[bufferIndex] = port->read();																										\
-			lastBufferChange = millis();																										\
-		}																										\
-	}																										\
+																			\
 																											\
 	long sinceLastBufferChange = millis() - lastBufferChange;																										\
 																										\
@@ -386,20 +397,54 @@ void TransferLink::SetHeader(TransferClassHeader header)
 
 byte TransferLink::Receive(HardwareSerial * port)
 {
+	PORT_RECEIVE
 	TRANSFER_RECEIVE
 		return result;
 }
 
 byte TransferLink::Receive(SoftwareSerial * port)
 {
+	PORT_RECEIVE
 	TRANSFER_RECEIVE
 		return result;
 }
 
-void TransferLink::LoadDataToStruct(byte * structToLoadInto)
+byte TransferLink::Receive(DevicePort * port)
 {
-
-	memcpy(&structToLoadInto, &buffer, sizeof(structToLoadInto));
-	TrimBuffer(sizeof(structToLoadInto) + NumberOfControlBytes);
-
+	PORT_RECEIVE
+		TRANSFER_RECEIVE
+		return result;
 }
+
+byte TransferLink::Receive(byte * bytePackage, DevicePort * port)
+{
+	byte result = B00000000;	
+		
+	for (size_t i = 0; i < sizeof(bytePackage); i++)
+	{
+		if (bufferIndex < sizeof(buffer)) {
+
+			bufferIndex++;
+			buffer[bufferIndex] = bytePackage[i];
+			lastBufferChange = millis();
+		}
+
+	}
+	
+	TRANSFER_RECEIVE
+	return byte();
+}
+
+//byte TransferLink::BufferCheck(DevicePort * port)
+//{
+//	return byte();
+//}
+
+
+//void TransferLink::LoadDataToStruct(byte * structToLoadInto)
+//{
+//
+//	memcpy(&structToLoadInto, &buffer, sizeof(structToLoadInto));
+//	TrimBuffer(sizeof(structToLoadInto) + NumberOfControlBytes);
+//
+//}

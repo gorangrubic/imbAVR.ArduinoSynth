@@ -31,9 +31,9 @@ RowHeading::RowHeading(String heading)
 }
 
 
-RowHeading::RowHeading(int row)
+RowHeading::RowHeading()
 {
-	Row = row;
+	
 }
 
 void RowHeading::PrintLabels(ACEMegaHostTFTClass * Display)

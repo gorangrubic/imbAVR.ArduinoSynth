@@ -9,6 +9,40 @@
 	#include "WProgram.h"
 #endif
 
+#include "DeviceSignature.h"
+
+#include "SoftwareSerial.h"
+#include "HardwareSerial.h"
+
+
+
+class DevicePort {
+
+public:
+	DeviceSignature Signature;
+
+	SoftwareSerial * softwarePort;
+	HardwareSerial * hardwarePort;
+
+	// 0 - hardware
+	// 1 - software
+	byte portType = 0;
+
+	DevicePort(SoftwareSerial * softSerial);
+	DevicePort(HardwareSerial * hardSerial);
+
+
+	// initially max baudrate, after boot procedure: baudrate negotiated between two devices
+	unsigned int baudrate = 115200;
+
+	byte read();
+	void write(byte data);
+	int available();
+	void flush();
+	void begin(unsigned int rate);
+	void end();
+
+};
 
 #endif
 
