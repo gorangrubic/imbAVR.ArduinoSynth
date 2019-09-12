@@ -52,42 +52,26 @@ void setup() {
 	
 	SPI.setClockDivider(SPI_CLOCK_DIV8);
 
-	dataSender.protocol = B00000100; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
-
-	dataSender.protocol = B00000001; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
-
-	dataSender.protocol = B00000011; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
-
 }
 
 customMessage msg;
 
-unsigned int MSG_COUNT = 0;
-
 void loop() {
 
+	msg.parameterA = i * 100;
+	msg.parameterB = i * 200;
+	msg.parameterC = i * 5;
+	msg.parameterD = i * 1;
 
+	i++;
+
+	if (i > 10) i = 0;
+
+	dataSender.Send(msg);
 	
 
-	if (MSG_COUNT < 10000) {
+	log(msg);
 
-		MSG_COUNT++;
-
-		msg.parameterA = i * 100;
-		msg.parameterB = i * 200;
-		msg.parameterC = i * 5;
-		msg.parameterD = i * 1;
-
-		i++;
-
-		if (i > 10) i = 0;
-
-		dataSender.Send(msg);
-
-
-		log(msg);
-
-		delay(500);
-	}
+	delay(1000);
 }
 

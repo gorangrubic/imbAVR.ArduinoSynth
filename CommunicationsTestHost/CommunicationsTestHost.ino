@@ -17,6 +17,7 @@
 #include <ACEMegaHostTFT.h>
 #include "customMessage.h"
 #include "spiReceiver.h"
+#include "MathTool.h"
 
 ACEMegaHostTFTClass Display;
 
@@ -24,6 +25,11 @@ int pinSS = 53;
 
 customMessage message;
 
+unsigned int MSG_COUNT;
+unsigned int MSG_FAIL;
+unsigned int MSG_PASS;
+unsigned int MSG_LOST;
+int last_d = -1;
 spiReceiver<customMessage, 5> dataReceiver = spiReceiver<customMessage, 5>();
 
 // the setup function runs once when you press reset or power the board
@@ -40,6 +46,10 @@ void setup() {
 	
 	 // turn on SPI in slave mode
 	SPCR |= _BV(SPE);
+
+	dataReceiver.protocol = B00000100; //SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
+	dataReceiver.protocol = B00000001;
+	dataReceiver.protocol = B00000011;
 
 	dataReceiver.setup();
 
@@ -66,17 +76,74 @@ void log(String msg) {
 	di++;
 }
 
+byte overflowTest = 0;
+
 void log(customMessage msg) {
 
+
+	//overflowTest += 50;
 	
-	Display.fillScreen(GLCD_CL_BLACK);
-	Display.setCursor(0, 0);
-	di = 0;
+
+	bool correct = false;
 	
-	log("A " + String(msg.parameterA));
-	log("B " + String(msg.parameterB));
-	log("C " + String(msg.parameterC));
-	log("D " + String(msg.parameterD));
+	if ((msg.parameterA + msg.parameterB + msg.parameterC + msg.parameterD) == 0) {
+		correct = true;
+	}
+	else if ((msg.parameterA / msg.parameterD == 100) && (msg.parameterB / msg.parameterD == 200) && (msg.parameterC / msg.parameterD == 5)) {
+		correct = true;
+	}
+
+	MSG_COUNT++;
+	if (correct) {
+		MSG_PASS++;
+	}
+	else {
+		MSG_FAIL++;
+	}
+
+	//Display.fillScreen(GLCD_CL_BLACK);
+	//Display.setCursor(0, 0);
+//	di = 0;
+
+
+	/*
+	Serial.println("A " + String(msg.parameterA));
+	Serial.println("B " + String(msg.parameterB));
+	Serial.println("C " + String(msg.parameterC));
+	Serial.println("D " + String(msg.parameterD));
+	*/
+
+	if (last_d == -1) {
+		
+	}
+	else {
+
+		int dD = (msg.parameterD - last_d);
+		if (dD == 1) {}
+		else if (dD == 0) {
+
+		}
+		else if (dD == -10) {
+
+		}
+		else {
+			MSG_LOST += abs(dD - 1);
+		}
+	}
+	last_d = msg.parameterD;
+
+	//log("B " + String(msg.parameterB));
+	//log("C " + String(msg.parameterC));
+	//log("D " + String(msg.parameterD));
+	//log("o " + String(overflowTest));
+	log("M " + String(MSG_COUNT));
+	//float error_rate = MathTool::GetRatio(MSG_FAIL, MSG_COUNT, 0, 0);
+
+	log(" Err: " + String(MSG_FAIL));
+
+	//float loss_rate = MathTool::GetRatio(MSG_LOST, MSG_COUNT, 0, 0);
+
+	log(" Loss: " + String(MSG_LOST));
 }
 
 ISR(SPI_STC_vect)
@@ -85,19 +152,25 @@ ISR(SPI_STC_vect)
 }
 
 
+
 void loop(void)
 {
-
-	if (dataReceiver.loop()) {
+	byte result = dataReceiver.loop();
+	if ((result & B11110000) == B11110000) {
 		//log(String(dataReceiver.InstanceBufferIndex));
 
 		for (size_t i = 0; i < dataReceiver.InstanceBufferIndex; i++)
 		{
-			log(i);
 			log(dataReceiver.InstanceBuffer[i]);
 
 		}
 		dataReceiver.ClearInstanceBuffer();
+
+
+		
+	}
+	else if (result != B00000000) {
+		log(String(result, BIN));
 	}
 
 } 

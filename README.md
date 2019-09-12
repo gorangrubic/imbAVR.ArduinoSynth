@@ -36,12 +36,11 @@ Development of the synth required number of classes/libraries, having general re
 - imbAVR.LCDOnMega 
       
 Elementary data-representation GUI framework, embedded with lower-level drivers to run 4'' LCD touchscreen panel on Arduino MEGA 2569.
-      
-- imbAVR.Communications
 
-Supports transfer up to 16 different structure types, per single TransferLink instance. Customizble protocol provides data consistency and recipient confirmation checks. DeviceRegistration and DevicePort classes provide auto-discovery and bandwidth negotiation between multiple Arduinos.
-      
-      
+- imbAVR.StructTransferSPI
+
+Lightweight library for sending structured data (structs) to another Arduino using SPI protocol. 
+
 - imbAVR.DedicatedSignalGeneratorLibrary
 
 Turns Arduino Nano, Mini, Micro.. into square-pulse audio-signal generator, with up to 12 separate outputs - each having its PWM, pitch, phase shifts and automation. Arduino that is turned into dedicated signal generator is controled by another Arduno via (software)serial  and powerful signal control instruction protocol. 

@@ -19,10 +19,16 @@ class spiSender
 	/// </summary>
 	byte pinSS;
 
-	byte pinSSPostDelay = 10;
+	byte pinSSPostDelay;
 
 public:
+
+	byte protocol;
+
 	spiSender(byte _pinSS);
+
+
+	
 	void Send(TData data);
 
 };
@@ -42,11 +48,42 @@ inline void spiSender<TData>::Send(TData data)
 	wrapper.instance = data;
 
 	digitalWrite(pinSS, LOW);
+	
+	if (protocol == B00000000) {
 
-	for (size_t i = 0; i < sizeof(TData); i++)
-	{
-		SPI.transfer(wrapper.bytes[i]);
+		for (size_t i = 0; i < sizeof(TData); i++)
+		{
+			SPI.transfer(wrapper.bytes[i]);
+		}
+
 	}
+	else {
+
+
+
+		byte sendTimes = 1;
+
+		if ((protocol & B00000010) == B00000010) sendTimes++;
+
+		while (sendTimes > 0) {
+
+			byte controlByte = 0;
+			for (size_t i = 0; i < sizeof(TData); i++)
+			{
+				byte b = wrapper.bytes[i];
+				if ((protocol & B00000001) == B00000001) {
+					controlByte = controlByte + b;
+				}
+				SPI.transfer(b);
+			}
+
+			if ((protocol & B00000001) == B00000001) {
+				SPI.transfer(controlByte);
+			}
+			sendTimes--;
+		}
+	}
+
 	delay(pinSSPostDelay);
 	digitalWrite(pinSS, HIGH);
 

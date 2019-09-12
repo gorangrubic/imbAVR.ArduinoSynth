@@ -21,10 +21,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.CommunicationsTestHost.vsarduino.h">
+    <ClInclude Include="customMessage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="customMessage.h">
+    <ClInclude Include="__vm\.CommunicationsTestHost.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

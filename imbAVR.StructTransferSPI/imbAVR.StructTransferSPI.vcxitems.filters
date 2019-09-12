@@ -11,8 +11,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
     <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\spiSender.h">
