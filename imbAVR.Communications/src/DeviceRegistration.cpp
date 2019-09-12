@@ -7,35 +7,66 @@
 bool DeviceRegistration::bootStart(DevicePort * port, TransferLink * transferLink)
 {
 
-	transferLink->SetHeader(TransferLink::MakeHeader(TRANSFERCLASSID_DEVICESIGNATURE, sizeof(DeviceSignature)));
+	transferLink->SetHeader(TransferLink::MakeHeader(TRANSFERCLASSID_DEVICESIGNATURE, sizeof(DeviceSignature), false, 0b00));
 	port->begin(9600);
 
-	
+	delay(2000);
+
 	DeviceSignature signatureToSend;
 	signatureToSend.deviceType = deviceType;
 	signatureToSend.maxBaudrate = port->baudrate;
-	
-	TRANSFER_SENDDATA(transferLink, port, signatureToSend)
 
+
+byte b[sizeof(signatureToSend)];
+memcpy(b, (byte *)&signatureToSend, sizeof(signatureToSend));
+Serial.println("Send");
+for (size_t i = 0; i < sizeof(signatureToSend); i++)
+{
+	Serial.print(b[i], HEX);
+	Serial.print(" ");
+}
+transferLink->Send(port, b); 
+
+	// TRANSFER_SENDDATA(transferLink, port, signatureToSend)
+
+		
 }
 
 bool DeviceRegistration::bootLoop(DevicePort * port, TransferLink * transferLink)
 {
+
+
+
+	
+
 	if (port->Signature.deviceType == DEVICESIGNATURE_UNKNOWN) {
 		byte result = transferLink->Receive(port);
 		if (IS_RECEIVE_RESULTSUCCESS(result)) {
 
+			if (transferLink->bufferIndex > 0) {
+				Serial.println("Receive");
+			}
+
+			for (size_t i = 0; i < transferLink->bufferIndex; i++)
+			{
+				Serial.print(transferLink->buffer[i], HEX);
+				Serial.print(" ");
+			}
+
 			TRANSFER_LOADDATA(port->Signature, transferLink)
+			
+				
 
 				devices |= port->Signature.deviceType;
 
 			return true;
 		}
 		else {
-			if (millis()  > REGISTRATION_TIMEOUT) {
+			if (millis() > REGISTRATION_TIMEOUT) {
 				return true;
 			}
 		}
+		return false;
 	}
 	else {
 		return true;
@@ -48,7 +79,7 @@ void DeviceRegistration::bootComplete(DevicePort * port)
 	if (port->Signature.deviceType == DEVICESIGNATURE_UNKNOWN) {
 		port->baudrate = min(port->Signature.maxBaudrate, port->baudrate);
 		port->end();
-		port->begin(port->baudrate);
+		port->begin(port->baudrate*100);
 		delay(50);
 	}
 }
@@ -56,5 +87,5 @@ void DeviceRegistration::bootComplete(DevicePort * port)
 
 DeviceRegistration::DeviceRegistration(byte _deviceType)
 {
-	deviceType = deviceType;
+	deviceType = _deviceType;
 }

@@ -26,14 +26,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ampControlCluster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\digPotCluster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ADSR.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\MathTool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiConfig.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MonitorMessage.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthState.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthDeviceControl.h" />
   </ItemGroup>
   <ItemGroup>
-   <ClInclude Include="$(MSBuildThisFileDirectory)src\TwoPointENV.cpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\TwoPointENV.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\LightChrono.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DigPotUnit.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MidiSoundControl.cpp" />
@@ -41,7 +40,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\digPotCluster.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ADSR.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthControl.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\MathTool.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MonitorMessage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SynthDeviceControl.cpp" />
   </ItemGroup>

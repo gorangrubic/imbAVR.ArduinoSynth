@@ -33,7 +33,8 @@ public:
 
 
 	// initially max baudrate, after boot procedure: baudrate negotiated between two devices
-	unsigned int baudrate = 115200;
+	// specified in 100s, i.e. 1152 is 115200
+	unsigned int baudrate = 1152;
 
 	byte read();
 	void write(byte data);

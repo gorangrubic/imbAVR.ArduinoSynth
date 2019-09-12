@@ -108,22 +108,10 @@ void DiagnosticDeviceManager::Log(String logLine)
 
 void DiagnosticDeviceManager::setup()
 {
-
-	deviceRegistration.bootStart(&devicePort_SignalGen, &deviceLink_SignalGen);
-	deviceRegistration.bootStart(&devicePort_SynthControlToDiagnostic, &deviceLink_SynthControlToDiagnostic);
-	deviceRegistration.bootStart(&devicePort_SynthControlToSignal, &deviceLink_SynthControlToSignal);
-
 	
 
-	while (
-		!(deviceRegistration.bootLoop(&devicePort_SignalGen, &deviceLink_SignalGen)
-			&& deviceRegistration.bootLoop(&devicePort_SynthControlToDiagnostic, &deviceLink_SynthControlToDiagnostic)
-			&& deviceRegistration.bootLoop(&devicePort_SynthControlToSignal, &deviceLink_SynthControlToSignal))) {
-
-		delay(50);
-	}
-
-
+	
+	
 
 	link.mode = 0;
 
@@ -133,28 +121,75 @@ void DiagnosticDeviceManager::setup()
 	Display.begin();
 	Display.setRotation(1);
 	Display.fillScreen(GLCD_CL_BLACK);
-	Display.println("Starting");
-
+	
 	module.setupDisplay(true, 7);
-	
-	
 
-	ViewSet.ActiveViews = 4;
+	Display.println("Communication boot");
 
-	ViewSet.Views[0].AddRow(&v1_title);
-	ViewSet.Views[0].AddRow(&v1_subtitle);
-	ViewSet.Views[0].AddRow(&v1_SCData);
-
-	ViewSet.Views[1].AddRow(&v2_title);
-	ViewSet.Views[1].AddRow(&v2_1);
-	ViewSet.Views[1].AddRow(&v2_2);
+	deviceRegistration.bootStart(&devicePort_SignalGen, &deviceLink_SignalGen);
+	deviceRegistration.bootStart(&devicePort_SynthControlToDiagnostic, &deviceLink_SynthControlToDiagnostic);
+	deviceRegistration.bootStart(&devicePort_SynthControlToSignal, &deviceLink_SynthControlToSignal);
 
 
-	ViewSet.Views[2].AddRow(&v3_title);
 
-	ViewSet.Views[3].AddRow(&v4_title);
+	while (millis() < REGISTRATION_TIMEOUT)
+	{
+		deviceRegistration.bootLoop(&devicePort_SignalGen, &deviceLink_SignalGen);
 
-	ViewSet.Views[4].AddRow(&v5_title);
+		deviceRegistration.bootLoop(&devicePort_SynthControlToDiagnostic, &deviceLink_SynthControlToDiagnostic);
+
+		deviceRegistration.bootLoop(&devicePort_SynthControlToSignal, &deviceLink_SynthControlToSignal);
+
+		delay(500);
+	}
+
+	deviceRegistration.bootComplete(&devicePort_SignalGen);
+	deviceRegistration.bootComplete(&devicePort_SynthControlToDiagnostic);
+	deviceRegistration.bootComplete(&devicePort_SynthControlToSignal);
+
+
+
+
+	SignalControlManager.AddSignalUnit(2); // S0
+	SignalControlManager.AddSignalUnit(3); // S1
+	SignalControlManager.AddSignalUnit(4); // S2
+	SignalControlManager.AddSignalUnit(5); // S3
+	SignalControlManager.AddSignalUnit(6); // S4
+	SignalControlManager.AddSignalUnit(7); // S5
+
+	ViewSet.Data = &Data;
+	ViewSet.deviceLink_SynthControlToSignal = &deviceLink_SynthControlToSignal;
+	ViewSet.deviceLink_SynthControlToDiagnostic = &deviceLink_SynthControlToDiagnostic;
+	ViewSet.SignalControlManager = &SignalControlManager;
+	ViewSet.msg = &msg;
+	ViewSet.deviceRegistration = &deviceRegistration;
+	ViewSet.devicePort_SignalGen = &devicePort_SignalGen;
+	ViewSet.devicePort_SynthControlToDiagnostic = &devicePort_SynthControlToDiagnostic;
+	ViewSet.deviceLink_SynthControlToSignal = &deviceLink_SynthControlToSignal;
+
+	ViewSet.Deploy(&GUI);
+
+
+	//Display.println("ViewSet deployed");
+
+	//ViewSet.Deploy(this, &GUI);
+
+	//ViewSet.ActiveViews = 4;
+
+	//ViewSet.Views[0].AddRow(&v1_title);
+	//ViewSet.Views[0].AddRow(&v1_subtitle);
+	//ViewSet.Views[0].AddRow(&v1_SCData);
+
+	//ViewSet.Views[1].AddRow(&v2_title);
+	//ViewSet.Views[1].AddRow(&v2_1);
+	//ViewSet.Views[1].AddRow(&v2_2);
+
+
+	//ViewSet.Views[2].AddRow(&v3_title);
+
+	//ViewSet.Views[3].AddRow(&v4_title);
+
+	//ViewSet.Views[4].AddRow(&v5_title);
 
 	//GuiScreenView * currentView = &ViewSet.CreateView();
 	//currentView->AddRow(RowHeading("Overview"));
@@ -197,30 +232,19 @@ void DiagnosticDeviceManager::setup()
 	
 
 
-	SignalControlManager.AddSignalUnit(2); // S0
-	SignalControlManager.AddSignalUnit(3); // S1
-	SignalControlManager.AddSignalUnit(4); // S2
-	SignalControlManager.AddSignalUnit(5); // S3
-	SignalControlManager.AddSignalUnit(6); // S4
-	SignalControlManager.AddSignalUnit(7); // S5
 }
 
 void DiagnosticDeviceManager::UpdateLedDisplay() {
 
-	LedSet(LED_AUTOCHANGEON, displayModeAutochange);
+	LedSet(LED_AUTOCHANGEON, ViewSet.GetAutoviewChange());
 
 	module.setLEDs(LedState);
 
-	if (lastDisplayMode != displayMode) {
-		String toDisplay = "_____  ";
-		toDisplay += displayMode;
+	String toDisplay = "_____  ";
+	toDisplay += ViewSet.GetCurrentViewID();
 
 
-		module.setDisplayToString(toDisplay);
-		//module->setDisplayDigit(0, displayMode, true);
-		//module.setDisplayToDecNumber(diagnosticDevice.displayMode, dots, false);
-		//module.setLED(TM1638_COLOR_RED, displayMode);
-	}
+	module.setDisplayToString(toDisplay);
 }
 
 void DiagnosticDeviceManager::LedSet(byte led_id, boolean state) {
@@ -254,40 +278,35 @@ void DiagnosticDeviceManager::loop()
 	// ----- buttons read
 	word buttons = module.getButtons();
 	
-//	byte mode = 0;
 
 	// button pressed - change mode
 	if (buttons != 0) {
 		byte mode = buttons >> 1;
-		if (mode < 128) {
-			module.clearDisplay();
-			delay(50);
-		}
-
+		
 		switch (mode) {
 		case 0:
-			displayMode = 0;
+			ViewSet.command = COMMAND_HOMEVIEW;
 			break;
 		case 1:
-			displayMode = 1;
+			ViewSet.command = COMMAND_PREVVIEW;
 			break;
 		case 2:
-			displayMode = 2;
+			ViewSet.command = COMMAND_NEXTVIEW;
 			break;
 		case 4:
-			displayMode = 3;
+			ViewSet.command = COMMAND_AUTOVIEW;
 			break;
 		case 8:
-			displayMode = 4;
+			ViewSet.command = COMMAND_VIEWCMD_A;
 			break;
 		case 16:
-			displayMode = 5;
+			ViewSet.command = COMMAND_VIEWCMD_B;
 			break;
 		case 32:
-			displayMode = 6;
+			ViewSet.command = COMMAND_VIEWCMD_D;
 			break;
 		case 64:
-			displayMode = 7;
+			ViewSet.command = COMMAND_VIEWCMD_C;
 			break;
 		case 128:
 			//displayMode = 8;
@@ -300,67 +319,41 @@ void DiagnosticDeviceManager::loop()
 	}
 	// ---
 
-	if (refresh_display_chrono.hasPassed(250)) {
+	if (refresh_display_chrono.hasPassed(1000)) {
 
-		
+		ViewSet.ProcessCommand();
+
 		UpdateLedDisplay();
 
-		ViewSet.UpdateScreen(displayMode, &Display);
+		ViewSet.RenderScreen(&GUI, &Display);
+
+		
 		refresh_display_chrono.restart();
 	}
 
 	if (auto_change_display_chrono.hasPassed(5000)) {
-		displayMode++;
+		/*displayMode++;
 		if (displayMode > ViewSet.ActiveViews) {
 			displayMode = 0;
 		}
 
-		auto_change_display_chrono.restart();
+		auto_change_display_chrono.restart();*/
 	}
 
 
 	
-	char command = ' ';
-	if (Serial.available()) {
-
-		command = Serial.read();
-
-		switch (command) {
-			case '0':
-				displayMode = 0;
-				break;
-			case '1':
-				displayMode = 1;
-				break;
-			case '2':
-				displayMode = 2;
-				break;
-			case '3':
-				displayMode = 3;
-				break;
-			case '4':
-				displayMode = 4;
-				break;
-			case 'C':
-				break;
-			default:
-				break;
-		}
-
-		LedToggle(LED_PCTODIAGNOSTIC);
-	}
-
+	
 	// SynthToSignalTransfer();
 
 	if (displayModeAutochange) {
-		if (auto_change_display_chrono.hasPassed(5000)) {
+	/*	if (auto_change_display_chrono.hasPassed(5000)) {
 			displayMode++;
 			if (displayMode > ViewSet.ActiveViews) {
 				displayMode = 0;
 			}
 
 			auto_change_display_chrono.restart();
-		}
+		}*/
 	}
 
 

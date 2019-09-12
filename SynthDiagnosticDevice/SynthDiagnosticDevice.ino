@@ -156,6 +156,19 @@
 //RowHeading v5_title = RowHeading("Signal-gen state 2");
 
 
+//
+//#include <TM16XXFonts.h>
+//#include <TM16XX.h>
+//#include <TM1640.h>
+//#include <TM1638QYF.h>
+//#include <TM1638.h>
+//#include <InvertedTM1638.h>
+//#include <gfxfont.h>
+//#include <Adafruit_SPITFT_Macros.h>
+//#include <Adafruit_SPITFT.h>
+//#include <Adafruit_GFX.h>
+//#include <SoftwareSerial.h>
+
 
 #include <TM16XXFonts.h>
 #include <TM16XX.h>
@@ -163,20 +176,18 @@
 #include <TM1638QYF.h>
 #include <TM1638.h>
 #include <InvertedTM1638.h>
-#include <gfxfont.h>
-#include <Adafruit_SPITFT_Macros.h>
-#include <Adafruit_SPITFT.h>
-#include <Adafruit_GFX.h>
+#include <SPI.h>
 #include <SoftwareSerial.h>
-
-
 #include <DiagnosticDeviceManager.h>
+#include <GuiScreenViewSet.h>
+
 
 
 DiagnosticDeviceManager diagnosticDevice;
 
 void setup() {
 	
+	Serial.begin(19200);
 
 	diagnosticDevice.setup();
 

@@ -24,9 +24,5 @@
     <ClInclude Include="__vm\.SynthDiagnosticDevice.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
-  </ItemGroup>
-  <ItemGroup>
-
   </ItemGroup>
 </Project>

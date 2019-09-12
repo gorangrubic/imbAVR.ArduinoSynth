@@ -247,12 +247,13 @@ void TransferLink::SetHeader(TransferClassHeader header)
 
 #define PORT_RECEIVE		\
 byte result = B00000000;	\
-if (port->available()) {	\
+while (port->available()) {	\
 							\
-		if (bufferIndex < sizeof(buffer)) {			\
-				bufferIndex++;																								\
+		if (bufferIndex < TRANSFERLINK_BUFFERSIZE) {			\
+																											\
 				buffer[bufferIndex] = port->read();																			\
-				lastBufferChange = millis();																				\
+				lastBufferChange = millis();	\
+bufferIndex++;	\
 		}																									\
 }								\
 
@@ -394,6 +395,14 @@ if (port->available()) {	\
 		BufferChecked = false;																									\
 	}																									\
 																										\
+
+
+void TransferLink::ReceiveStart() {
+
+	bufferIndex = 0;
+	lastBufferChange = millis();
+}
+
 
 byte TransferLink::Receive(HardwareSerial * port)
 {

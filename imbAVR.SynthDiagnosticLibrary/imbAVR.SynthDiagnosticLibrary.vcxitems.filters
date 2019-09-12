@@ -14,10 +14,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.SynthDiagnosticLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-        <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticData.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceViewSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DiagnosticDeviceViewSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

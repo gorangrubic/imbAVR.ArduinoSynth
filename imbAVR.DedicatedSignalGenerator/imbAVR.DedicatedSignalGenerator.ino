@@ -4,8 +4,8 @@
  Author:	gorangrubic
 */
 
-#include <AltSoftSerial.h>
-//#include <SoftwareSerial.h>
+//#include <AltSoftSerial.h>
+#include <SoftwareSerial.h>
 //#include <SoftEasyTransfer.h>
 //#include <Wire.h>
 //#include <EasyTransferI2C.h>
@@ -23,6 +23,9 @@
 #include "SignalControlLink.h"
 
 
+#include "DeviceSignature.h"
+#include "DeviceRegistration.h"
+
 #define SIGNAL_DEVICE_SERIAL_RX 8
 #define SIGNAL_DEVICE_SERIAL_TX 9
 #define SIGNAL_DEVICE_BAUDRATE 19200
@@ -33,7 +36,7 @@
 
 SignalControlManagerClass SignalControlManager = SignalControlManagerClass();
 
-SignalControlLink link;
+//SignalControlLink link;
 
 
 
@@ -75,29 +78,52 @@ void ledToggle() {
 
 void receive(int numBytes) {}
 
+DeviceRegistration deviceRegistration = DeviceRegistration(DEVICESIGNATURE_SIGNALGENERATOR);
 
 
-AltSoftSerial SoftSerial;
+
+SoftwareSerial SoftSerial = SoftwareSerial(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX);
+DevicePort deviceSynthControl_port(&SoftSerial);
+TransferLink deviceSynthControl_link;
+//AltSoftSerial SoftSerial;
 
 void setup() {
-	pinMode(LED, OUTPUT);
+
+
+	//SoftSerial.begin(SIGNAL_DEVICE_BAUDRATE);
+	Serial.begin(SIGNAL_DEVICE_BAUDRATE);
+
+
+	deviceSynthControl_port.baudrate = 384;
 	
-	link.setup(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX, SIGNAL_DEVICE_BAUDRATE);
+	deviceSynthControl_port.Signature.maxBaudrate = 384;
+	deviceRegistration.deviceType = DEVICESIGNATURE_SIGNALGENERATOR;
+
+	deviceRegistration.bootStart(&deviceSynthControl_port, &deviceSynthControl_link);
+
+	while (millis() < REGISTRATION_TIMEOUT) {
+		deviceRegistration.bootLoop(&deviceSynthControl_port, &deviceSynthControl_link);
+	}
+
+	deviceRegistration.bootComplete(&deviceSynthControl_port);
+
+
+	//pinMode(LED, OUTPUT);
+	
+	//link.setup(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX, SIGNAL_DEVICE_BAUDRATE);
 	
 	//link.setupSlave(I2C_SLAVE_ADDRESS);
 	//define handler function on receiving data
 	//Wire.onReceive(receive);
 
-	SoftSerial.begin(SIGNAL_DEVICE_BAUDRATE);
-	Serial.begin(SIGNAL_DEVICE_BAUDRATE);
 
-	SoftSerial.listen();
+	//SoftSerial.listen();
 	
 
 	//link.serialOut = &Serial;
 	//link.SerialReport = false;
 
-	ledBeep(10);
+	//ledBeep(10);
 
 	// for mini
 	//SignalControlManager.CycleCompensation = 238.75;
@@ -175,7 +201,7 @@ void loop() {
 	//
 
 
-	if (link.ByteCodeProtocol) {
+	/*if (link.ByteCodeProtocol) {
 
 		if (SoftSerial.available()) {
 			byte b = SoftSerial.read();
@@ -209,6 +235,6 @@ void loop() {
 
 		}
 
-	}
+	}*/
 	
 }

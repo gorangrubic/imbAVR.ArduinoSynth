@@ -159,7 +159,7 @@ typedef struct
 
 #include "MidiConfig.h"
 #include "MathTool.h"
-#include "SignalInstruction.h"
+
 #include "TwoPointENV.h"
 
 

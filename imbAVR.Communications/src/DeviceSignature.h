@@ -32,7 +32,7 @@ struct DeviceSignature {
 	//// 0000 0010 - the device is waving back
 	//byte messageType;
 
-	unsigned int maxBaudrate = 115200;
+	unsigned int maxBaudrate = 1152;
 };
 
 #endif

@@ -20,15 +20,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TransferLink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-        <ClInclude Include="$(MSBuildThisFileDirectory)src\DevicePort.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\DevicePort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceSignature.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiSender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiReceiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiLinkBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
-    <ItemGroup>
-        <ClCompile Include="$(MSBuildThisFileDirectory)src\DevicePort.cpp">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\DevicePort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceSignature.cpp">
@@ -43,7 +52,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\TransferLink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-        <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiSender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiReceiver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiLinkBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,5 +72,4 @@
       <Filter>Header Files</Filter>
     </Text>
   </ItemGroup>
-      
 </Project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,13 +15,16 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
-	<Text Include="$(MSBuildThisFileDirectory)library.properties" />
-  	<Text Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.h" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.h" />
   </ItemGroup>
- <ItemGroup>
+  <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.Communications.h" /> -->
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiLinkBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiReceiver.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiSender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceRegistration.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\TransferClassHeader.cpp" />
@@ -30,10 +33,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceSignature.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiLinkBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiReceiver.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiSender.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DevicePort.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceSignature.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceRegistration.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TransferClassHeader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TransferLink.h" />
   </ItemGroup>
-  </Project>
+</Project>

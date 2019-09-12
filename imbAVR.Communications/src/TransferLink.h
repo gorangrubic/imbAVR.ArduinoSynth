@@ -21,7 +21,7 @@
 #define RECEIVERESULTMASK_FAIL B00001100
 #define RECEIVERESULTMASK_SUCCESS B00000011
 
-#define IS_RECEIVE_RESULTSUCCESS(result) (result & B00000011) != B00000011
+#define IS_RECEIVE_RESULTSUCCESS(result) (result & B00000011) == B00000011
 
 
 #define TRANSFER_LOADDATA(structToLoadInto, transferLink) \
@@ -30,7 +30,7 @@ transferLink->TrimBuffer(sizeof(structToLoadInto) + transferLink->NumberOfContro
 
 #define TRANSFER_SENDDATA(transferLink, port, structToSend) \
 byte b[sizeof(structToSend)]; \
-memcpy(b, &structToSend, sizeof(structToSend)); \
+memcpy(b, (byte *)&structToSend, sizeof(structToSend)); \
 transferLink->Send(port, b); \
 
 #define TRANSFERLINK_MAXCLASSID 16
@@ -41,11 +41,15 @@ transferLink->Send(port, b); \
 #define TRANSFERCLASSID_SIGNALINSTRUCTION 4
 #define TRANSFERCLASSID_MIDIMESSAGE 5
 
+
+#define TRANSFERLINK_BUFFERSIZE 255
+
+
 class TransferLink {
 
 public:
 
-	byte buffer[256];
+	byte buffer[TRANSFERLINK_BUFFERSIZE];
 	byte bufferIndex = 0;
 
 
@@ -65,7 +69,7 @@ public:
 	
 	unsigned int ConfirmationTimeout = 50;
 
-	unsigned int bufferFlushTimeout = 1000;
+	unsigned int bufferFlushTimeout = 2500;
 	
 
 	
@@ -95,6 +99,8 @@ public:
 	/// ---- 0100 : control bytes missmatched
 	/// ---- 1100 : buffer flushed for time out, no data received
 	 
+	void ReceiveStart();
+
 	/// </summary>
 	/// <param name="port">The port.</param>
 	/// <returns></returns>
