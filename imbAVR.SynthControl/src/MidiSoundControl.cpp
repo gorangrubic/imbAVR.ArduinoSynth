@@ -1,6 +1,3 @@
-// 
-// 
-// 
 
 #include "MidiSoundControl.h"
 
@@ -27,47 +24,47 @@ void MidiSoundControlClass::setPreset(byte presetID)
 	//CCValues[CC_WaveformB_Filter] = 64;
 	//CCValues[CC_WaveformMix] = 64;
 
-	State.CCValues[CC_PERK_AmpATime] = 24;
-	State.CCValues[CC_PERK_AmpBTime] = 24;
-	State.CCValues[CC_PERK_AmpBLevel] = 0;
-	State.CCValues[CC_PERK_AmpALevel] = 127;
+	State.CCValues.SetValue(CC_PERK_AmpATime, 24);
+	State.CCValues.SetValue(CC_PERK_AmpBTime, 24);
+	State.CCValues.SetValue(CC_PERK_AmpBLevel, 0);
+	State.CCValues.SetValue(CC_PERK_AmpALevel, 127);
 
-	State.CCValues[CC_PERK_PitchATime] = 24;
-	State.CCValues[CC_PERK_PitchBTime] = 24;
-	State.CCValues[CC_PERK_PitchBLevel] = 0;
-	State.CCValues[CC_PERK_PitchALevel] = 127;
+	State.CCValues.SetValue(CC_PERK_PitchATime, 24);
+	State.CCValues.SetValue(CC_PERK_PitchBTime, 24);
+	State.CCValues.SetValue(CC_PERK_PitchBLevel, 0);
+	State.CCValues.SetValue(CC_PERK_PitchALevel, 127);
 
-	State.CCValues[CC_PERK_AmpBLevel] = 0;
+	State.CCValues.SetValue(CC_PERK_AmpBLevel, 0);
 
-	State.CCValues[CC_AmpAttack] = 5;
-	State.CCValues[CC_AmpDecayTime] = 5;
-	State.CCValues[CC_AmpRelease] = 5;
-	State.CCValues[CC_AmpInitLevel] = 0;
-	State.CCValues[CC_AmpSustainLevel] = 60;
+	State.CCValues.SetValue(CC_AmpAttack, 5);
+	State.CCValues.SetValue(CC_AmpDecayTime, 5);
+	State.CCValues.SetValue(CC_AmpRelease, 5);
+	State.CCValues.SetValue(CC_AmpInitLevel, 0);
+	State.CCValues.SetValue(CC_AmpSustainLevel, 60);
 
-	State.CCValues[CC_FLTAttack] = 10;
-	State.CCValues[CC_FLTInitLevel] = 100;
-	State.CCValues[CC_FLTRelease] = 10;
-	State.CCValues[CC_FLTSustainLevel] = 10;
+	//State.CCValues.SetValue(CC_FLTAttack, 10);
+	State.CCValues.SetValue(CC_FLTInitLevel, 100);
+	State.CCValues.SetValue(CC_FLTRelease, 10);
+	State.CCValues.SetValue(CC_FLTSustainLevel, 10);
 
-	State.CCValues[CC_WaveformMix] = 64;
-	State.CCValues[CC_WaveformA_Shaper] = 64;
-	State.CCValues[CC_WaveformB_Filter] = 64;
+	State.CCValues.SetValue(CC_WaveformMix, 64);
+	State.CCValues.SetValue(CC_WaveformA_Shaper, 64);
+	State.CCValues.SetValue(CC_WaveformB_Filter, 64);
 
-	State.CCValues[CC_WaveformA_PWM] = 64;
-	State.CCValues[CC_WaveformB_PWM] = 64;
+	State.CCValues.SetValue(CC_WaveformA_PWM, 64);
+		State.CCValues.SetValue(CC_WaveformB_PWM, 64);
 
-	State.CCValues[CC_WaveformA_OctaveUp] = 0;
-	State.CCValues[CC_WaveformB_OctaveUp] = 0;
+		State.CCValues.SetValue(CC_WaveformA_OctaveUp, 0);
+		State.CCValues.SetValue(CC_WaveformB_OctaveUp, 0);
 
-	State.CCValues[CC_PerkA_OctaveUp] = 127;
-	State.CCValues[CC_PerkB_OctaveUp] = 127;
+		State.CCValues.SetValue(CC_PerkA_OctaveUp, 127);
+		State.CCValues.SetValue(CC_PerkB_OctaveUp, 127);
 
-	State.CCValues[CC_FLTPitch] = 30;
+		State.CCValues.SetValue(CC_FLTPitch, 30);
 
-	State.CCValues[CC_FLT_ADSR_Mix] = 64;
+		State.CCValues.SetValue(CC_FLT_ADSR_Mix, 64);
 
-	State.CCValues[CC_PERK_PWM] = 64;
+		State.CCValues.SetValue(CC_PERK_PWM, 64);
 
 }
 
@@ -108,9 +105,9 @@ void MidiSoundControlClass::controlChange(byte channel, byte control, byte value
 	
 	if (channel_id != CHANNEL_ID_ALL && channel != channel_id) return;
 
-	State.CCValues[control] = value;
+	State.CCValues.SetValue(control, value);
 
-	ApplyControls();
+	//ApplyControls();
 }
 
 void MidiSoundControlClass::systemMessage(byte sysMsg, byte paramA, byte paramB)
@@ -120,6 +117,9 @@ void MidiSoundControlClass::systemMessage(byte sysMsg, byte paramA, byte paramB)
 void MidiSoundControlClass::ApplyControls() {
 
 	
+	CF_ADSR_A.Update(&State.CCValues);
+	CF_ADSR_B.Update(&State.CCValues);
+
 
 	ADSR_Amp.SetLevels(State.CCValues[CC_AmpInitLevel], 127 , State.CCValues[CC_AmpSustainLevel]);
 

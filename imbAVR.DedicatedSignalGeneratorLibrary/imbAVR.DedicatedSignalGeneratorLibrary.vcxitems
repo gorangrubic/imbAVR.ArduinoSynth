@@ -20,13 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.DedicatedSignalGeneratorLibrary.h" /> -->
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlLink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalMacroControl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalMacroInstruction.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlUnit.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalInstruction.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlLink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalMacroControl.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalMacroInstruction.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlUnit.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.DedicatedSignalGeneratorLibrary.cpp" />

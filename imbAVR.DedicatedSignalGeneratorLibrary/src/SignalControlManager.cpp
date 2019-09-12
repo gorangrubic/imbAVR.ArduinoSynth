@@ -471,6 +471,11 @@ void SignalControlManagerClass::loop()
 				if (SUNIT_i.PhaseChange.RateIndex > SUNIT_i.PhaseChange.Rate) {
 					PerformPhaseByte(SUNIT_i.PhaseChange.Change, &SUNIT_i);
 					SUNIT_i.PhaseChange.RateIndex = 0;
+
+					if (SUNIT_i.PhaseChange.mode > 0) {
+
+						SUNIT_i.PhaseChange.PerformPeriod();
+					}
 				}
 			}
 			
@@ -488,6 +493,12 @@ void SignalControlManagerClass::loop()
 						SUNIT_i.pwmPatternByte = MathTool::GetCCValueForWaveform(SUNIT_i.pwmPatternByte) + (SUNIT_i.PWMChange.Change - 126) / 6.0;
 					}
 					SUNIT_i.PWMChange.RateIndex = 0;
+
+					if (SUNIT_i.PWMChange.mode > 0) {
+
+						SUNIT_i.PWMChange.PerformPeriod();
+
+					}
 				}
 			}
 
@@ -498,6 +509,10 @@ void SignalControlManagerClass::loop()
 				if (SUNIT_i.PitchChange.RateIndex > SUNIT_i.PitchChange.Rate) {
 					PerformPitch(SUNIT_i.freq + (SUNIT_i.PitchChange.Change - 126), &SUNIT_i);
 					SUNIT_i.PitchChange.RateIndex = 0;
+					if (SUNIT_i.PitchChange.mode > 0) {
+
+						SUNIT_i.PitchChange.PerformPeriod();
+					}
 				}
 			}
 		}

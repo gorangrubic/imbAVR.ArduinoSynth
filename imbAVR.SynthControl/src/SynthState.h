@@ -11,10 +11,13 @@
 
 #endif
 
+#include "MonitoredArray.h"
+
 struct SynthState {
 
+	MonitoredArray<16> CCValues;
 
-	byte CCValues[127];
+	
 
 	byte out_amp_value = 0;
 

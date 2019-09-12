@@ -1,5 +1,3 @@
-// SignalControlUnit.h
-
 #ifndef _SIGNALCONTROLUNIT_h
 #define _SIGNALCONTROLUNIT_h
 
@@ -44,6 +42,9 @@ class SignalControlUnitClass
 	 bool isOn = true;
 
 	 byte sClockPrescalar = 1;
+
+	 // relationship with master pitch
+	 byte masterPitchRelationship = 0;
 
 
 

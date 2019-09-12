@@ -19,6 +19,11 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunction2PEnv.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionADSR.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionChaos.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionLFO.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionMix.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TwoPointENV.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\LightChrono.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DigPotUnit.h" />
@@ -32,6 +37,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthDeviceControl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunction2PEnv.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionADSR.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionChaos.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionLFO.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionMix.cpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\TwoPointENV.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\LightChrono.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DigPotUnit.cpp" />

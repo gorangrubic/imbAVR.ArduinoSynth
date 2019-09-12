@@ -8,9 +8,6 @@
 #include <SPI.h>
 
 
-#include <SoftwareSerial.h>
-
-
 #include "customMessage.h"
 
 #include "spiSender.h"

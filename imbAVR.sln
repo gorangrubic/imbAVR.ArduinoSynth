@@ -11,10 +11,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.LCDOnMega", "imbAVR.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSoundGenerator", "TestSoundGenerator\TestSoundGenerator.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.TestDigPotCluster", "imbAVR.TestDigPotCluster\imbAVR.TestDigPotCluster.vcxproj", "{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.BassZeroNano", "imbAVR.BassZeroNano\imbAVR.BassZeroNano.vcxproj", "{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.BassZeroProMicro", "imbAVR.BassZeroProMicro\imbAVR.BassZeroProMicro.vcxproj", "{20331CB4-EACF-4393-B39F-D48F198AAB74}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGenerator", "imbAVR.DedicatedSignalGenerator\imbAVR.DedicatedSignalGenerator.vcxproj", "{5365C4A9-CA1B-4217-B85C-495052BF3140}"
@@ -38,18 +34,17 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{1fa523ac-3999-4cdf-b752-f5e4fdfee3e2}*SharedItemsImports = 9
+		imbAVR.Common\imbAVR.Common.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
+		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.SynthDiagnosticLibrary\imbAVR.SynthDiagnosticLibrary.vcxitems*{25c4e494-da69-4de1-acf7-f467f768e6cc}*SharedItemsImports = 9
 		imbAVR.Common\imbAVR.Common.vcxitems*{4b314583-d201-470b-8518-8ee7f590ac55}*SharedItemsImports = 4
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{4b314583-d201-470b-8518-8ee7f590ac55}*SharedItemsImports = 4
 		imbAVR.Common\imbAVR.Common.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
-		imbAVR.Communications\imbAVR.Communications.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
+		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
-		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5eb5ff4c-cb59-4a58-bc63-67fe34f5e211}*SharedItemsImports = 4
-		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5eb5ff4c-cb59-4a58-bc63-67fe34f5e211}*SharedItemsImports = 4
-		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{62eac980-b866-43d5-ac05-9b0ffa0aee71}*SharedItemsImports = 4
 		imbAVR.Common\imbAVR.Common.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
 		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
@@ -79,14 +74,6 @@ Global
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
-		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Debug|x86.ActiveCfg = Debug|Win32
-		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Debug|x86.Build.0 = Debug|Win32
-		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Release|x86.ActiveCfg = Release|Win32
-		{5EB5FF4C-CB59-4A58-BC63-67FE34F5E211}.Release|x86.Build.0 = Release|Win32
-		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Debug|x86.ActiveCfg = Debug|Win32
-		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Debug|x86.Build.0 = Debug|Win32
-		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Release|x86.ActiveCfg = Release|Win32
-		{62EAC980-B866-43D5-AC05-9B0FFA0AEE71}.Release|x86.Build.0 = Release|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.ActiveCfg = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.Build.0 = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.ActiveCfg = Release|Win32

@@ -13,16 +13,7 @@ typedef struct customMessage {
 	unsigned int parameterB;
 	byte parameterC;
 	byte parameterD;
-} b_s;
-
-typedef union customMessageUnion {
-	b_s message;
-	unsigned char bytes[sizeof(b_s)];
-} b_u;
-
-
-
-
+};
 
 #endif
 

@@ -4,17 +4,9 @@
  Author:	gorangrubic
 */
 
-//#include <AltSoftSerial.h>
-#include <SoftwareSerial.h>
-//#include <SoftEasyTransfer.h>
-//#include <Wire.h>
-//#include <EasyTransferI2C.h>
 #include <MathTool.h>
 
-#include <TransferClassHeader.h>
-#include <TransferLink.h>
-
-#include "DevicePort.h"
+#include "spiReceiver.h"
 
 #include "SignalInstruction.h"
 
@@ -23,8 +15,6 @@
 #include "SignalControlLink.h"
 
 
-#include "DeviceSignature.h"
-#include "DeviceRegistration.h"
 
 #define SIGNAL_DEVICE_SERIAL_RX 8
 #define SIGNAL_DEVICE_SERIAL_TX 9
@@ -78,35 +68,14 @@ void ledToggle() {
 
 void receive(int numBytes) {}
 
-DeviceRegistration deviceRegistration = DeviceRegistration(DEVICESIGNATURE_SIGNALGENERATOR);
 
-
-
-SoftwareSerial SoftSerial = SoftwareSerial(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX);
-DevicePort deviceSynthControl_port(&SoftSerial);
-TransferLink deviceSynthControl_link;
-//AltSoftSerial SoftSerial;
+spiReceiver<SignalChangeInstruction, 10> DataReceiver;
 
 void setup() {
 
+	DataReceiver.setup(B00000011);
 
-	//SoftSerial.begin(SIGNAL_DEVICE_BAUDRATE);
-	Serial.begin(SIGNAL_DEVICE_BAUDRATE);
-
-
-	deviceSynthControl_port.baudrate = 384;
 	
-	deviceSynthControl_port.Signature.maxBaudrate = 384;
-	deviceRegistration.deviceType = DEVICESIGNATURE_SIGNALGENERATOR;
-
-	deviceRegistration.bootStart(&deviceSynthControl_port, &deviceSynthControl_link);
-
-	while (millis() < REGISTRATION_TIMEOUT) {
-		deviceRegistration.bootLoop(&deviceSynthControl_port, &deviceSynthControl_link);
-	}
-
-	deviceRegistration.bootComplete(&deviceSynthControl_port);
-
 
 	//pinMode(LED, OUTPUT);
 	

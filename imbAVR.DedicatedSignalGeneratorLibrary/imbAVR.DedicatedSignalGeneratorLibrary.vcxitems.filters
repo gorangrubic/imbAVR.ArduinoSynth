@@ -20,10 +20,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlUnit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlLink.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalInstruction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalInstruction.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalMacroControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalMacroInstruction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,10 +44,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlLink.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalInstruction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalInstruction.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalMacroControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalMacroInstruction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,10 +15,11 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
-	<Text Include="$(MSBuildThisFileDirectory)library.properties" />
-  	<Text Include="$(MSBuildThisFileDirectory)src\imbAVR.Common.h" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)src\imbAVR.Common.h" />
   </ItemGroup>
- <ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MonitoredArray.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MathTool.h" />
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.Common.h" /> -->
   </ItemGroup>
@@ -26,4 +27,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Common.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MathTool.cpp" />
   </ItemGroup>
-  </Project>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MonitoredArray.h" />
+  </ItemGroup>
+</Project>
