@@ -13,18 +13,4 @@ union spiLinkDataInstance {
 };
 
 
-template<typename TData, byte ISize>
-class spiLinkBuffer
-{
-	byte InstanceBufferIndex = 0;
-	TData InstanceBuffer[ISize];
-
-	byte DataBufferIndex = 0;
-	char DataBuffer[(sizeof(TData)*2)+5];
-
-	boolean process_it;
-
-public:
-
-};
 

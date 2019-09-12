@@ -6,11 +6,10 @@
 
 
 #include <SPI.h>
-#include <SoftEasyTransfer.h>
-#include "customMessage.h"
+
+
 #include <SoftwareSerial.h>
-#include <DevicePort.h>
-#include <TransferLink.h>
+
 
 #include "customMessage.h"
 
@@ -25,8 +24,6 @@ void log(String msg) {
 int pinSS = 10;
 
 spiSender<customMessage> dataSender = spiSender<customMessage>(pinSS);
-
-
 
 void log(customMessage msg) {
 
@@ -57,22 +54,6 @@ void setup() {
 
 }
 
-void send(customMessage table)
-{
-	customMessageUnion msgUnion;
-	msgUnion.message = table;
-
-	digitalWrite(pinSS, LOW);
-
-	for (size_t i = 0; i < sizeof(b_s); i++)
-	{
-		SPI.transfer(msgUnion.bytes[i]);
-	}
-	delay(10);
-	digitalWrite(pinSS, HIGH);
-
-}
-
 customMessage msg;
 
 void loop() {
@@ -87,7 +68,7 @@ void loop() {
 	if (i > 10) i = 0;
 
 	dataSender.Send(msg);
-	//send(msg);
+	
 
 	log(msg);
 
