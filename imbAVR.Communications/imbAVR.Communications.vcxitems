@@ -22,9 +22,6 @@
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.Communications.h" /> -->
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiLinkBuffer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiReceiver.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\spiSender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\imbAVR.Communications.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceRegistration.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\TransferClassHeader.cpp" />
@@ -33,9 +30,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\DeviceSignature.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiLinkBuffer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiReceiver.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\spiSender.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DevicePort.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceSignature.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\DeviceRegistration.h" />

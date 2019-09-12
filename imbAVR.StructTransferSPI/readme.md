@@ -2,7 +2,12 @@
 
 Lightweight library for sending structured data (structs) to another Arduino using SPI protocol. 
 
-	spiSender<TData> and spiReceiver<TData, ISize> are class templates that facilitate transfer, serialization and deserialization of your struct TData. 
+*spiSender<TData>* and *spiReceiver<TData, ISize>* are class templates that facilitate transfer, serialization and deserialization of your struct TData. 
+
+
+	spiSender<customMessage> dataSender = spiSender<customMessage>(pinSS);
+
+
 
 Size of buffer memory allocated by spiReceiver is result of: 
   - sizeof(TData)
