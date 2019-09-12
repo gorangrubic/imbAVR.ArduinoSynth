@@ -8,6 +8,48 @@ Lightweight library for sending structured data (structs) to another Arduino usi
 	spiSender<customMessage> dataSender = spiSender<customMessage>(pinSS);
 
 
+## How to use
+
+On SPI Slave side (Arduino that receives the data):
+
+    
+	spiReceiver<customMessage, 5> dataReceiver = spiReceiver<customMessage, 5>();
+
+	void setup() {
+
+		pinMode(MISO, OUTPUT);
+
+		SPCR |= _BV(SPE);
+
+		dataReceiver.setup(B00000011);
+
+		SPI.attachInterrupt();
+
+	}
+
+	ISR(SPI_STC_vect)
+	{
+		dataReceiver.Receive(SPDR);
+	}
+
+
+	void loop()
+	{
+		byte result = dataReceiver.loop();
+
+		if ((result & B11110000) == B11110000) {
+			for (size_t i = 0; i < dataReceiver.InstanceBufferIndex; i++)
+			{
+				log(dataReceiver.InstanceBuffer[i]);
+
+			}
+			dataReceiver.ClearInstanceBuffer();
+		}
+		else if (result != B00000000) {
+			log(String(result, BIN));
+		}
+	} 
+
 
 Size of buffer memory allocated by spiReceiver is result of: 
   - sizeof(TData)

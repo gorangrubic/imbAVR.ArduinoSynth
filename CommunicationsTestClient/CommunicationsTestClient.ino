@@ -23,7 +23,7 @@ void log(String msg) {
 
 int pinSS = 10;
 
-spiSender<customMessage> dataSender = spiSender<customMessage>(pinSS);
+spiSender<customMessage> dataSender = spiSender<customMessage>();
 
 void log(customMessage msg) {
 
@@ -52,11 +52,13 @@ void setup() {
 	
 	SPI.setClockDivider(SPI_CLOCK_DIV8);
 
-	dataSender.protocol = B00000100; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
+	dataSender.setup(pinSS, B00000011);
 
-	dataSender.protocol = B00000001; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
+	//dataSender.protocol = B00000100; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
 
-	dataSender.protocol = B00000011; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
+	//dataSender.protocol = B00000001; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
+
+	//dataSender.protocol = B00000011; // SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
 
 }
 

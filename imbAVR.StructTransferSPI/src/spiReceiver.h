@@ -25,11 +25,12 @@ public:
 	
 	byte protocol;
 
+	spiReceiver();
 
 	/// <summary>
 	/// Call setup after adjusting the protocol bytes. 
 	/// </summary>
-	void setup();
+	void setup(byte _protocol=B00000000);
 
 	byte InstanceBufferIndex = 0;
 	TData InstanceBuffer[ISize];
@@ -39,11 +40,11 @@ public:
 	byte DataBufferIndex = 0;
 	char DataBuffer[(sizeof(TData) + 2 ) * ISize];
 
-	/* returns TRUE if new instance was received */
+	/* returns TRUE if new instance was received, this should be called from the main loop() */
 	byte loop();
 
 
-
+	/* this should be called from SPI interupt */
 	void Receive(byte input);
 };
 
@@ -72,9 +73,12 @@ inline void spiReceiver<TData, ISize>::AddInstanceBuffer(TData instance)
 	}
 }
 
+
 template<typename TData, byte ISize>
-inline void spiReceiver<TData, ISize>::setup()
+inline void spiReceiver<TData, ISize>::setup(byte _protocol)
 {
+	protocol = _protocol;
+
 	transactionSize = sizeof(TData);
 
 	if ((protocol & B00000001) == B00000001) {
@@ -84,12 +88,6 @@ inline void spiReceiver<TData, ISize>::setup()
 	if ((protocol & B00000010) == B00000010) {
 		transactionSize += transactionSize;
 	}
-
-	//pinMode(MISO, OUTPUT);
-	// turn on SPI in slave mode
-//	SPCR |= _BV(SPE);
-
-	
 }
 
 template<typename TData, byte ISize>

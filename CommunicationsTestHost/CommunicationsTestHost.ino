@@ -30,6 +30,8 @@ unsigned int MSG_FAIL;
 unsigned int MSG_PASS;
 unsigned int MSG_LOST;
 int last_d = -1;
+
+
 spiReceiver<customMessage, 5> dataReceiver = spiReceiver<customMessage, 5>();
 
 // the setup function runs once when you press reset or power the board
@@ -47,11 +49,8 @@ void setup() {
 	 // turn on SPI in slave mode
 	SPCR |= _BV(SPE);
 
-	dataReceiver.protocol = B00000100; //SPI_TRANSFER_PROTOCOL_DOUBLESENDANDCONTROLBYTE;
-	dataReceiver.protocol = B00000001;
-	dataReceiver.protocol = B00000011;
 
-	dataReceiver.setup();
+	dataReceiver.setup(B00000011);
 
 	// now turn on interrupts
 	SPI.attachInterrupt();

@@ -25,9 +25,11 @@ public:
 
 	byte protocol;
 
-	spiSender(byte _pinSS);
+	//spiSender(byte _pinSS);
 
+	void setup(byte _pinSS, byte protocol);
 
+	spiSender();
 	
 	void Send(TData data);
 
