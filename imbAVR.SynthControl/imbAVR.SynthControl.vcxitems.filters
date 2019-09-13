@@ -53,6 +53,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionMix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)library.properties" />
@@ -110,6 +116,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionMix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

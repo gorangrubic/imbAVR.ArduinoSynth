@@ -9,23 +9,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.SynthControl", "imbA
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.LCDOnMega", "imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems", "{F5380A71-EF86-4E69-82BF-A28106B5F81B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSoundGenerator", "TestSoundGenerator\TestSoundGenerator.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.BassZeroProMicro", "imbAVR.BassZeroProMicro\imbAVR.BassZeroProMicro.vcxproj", "{20331CB4-EACF-4393-B39F-D48F198AAB74}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGenerator", "imbAVR.DedicatedSignalGenerator\imbAVR.DedicatedSignalGenerator.vcxproj", "{5365C4A9-CA1B-4217-B85C-495052BF3140}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGeneratorTestPartner", "imbAVR.DedicatedSignalGeneratorTestPartner\imbAVR.DedicatedSignalGeneratorTestPartner.vcxproj", "{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.DedicatedSignalGeneratorLibrary", "imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems", "{87BD9F7B-779A-4062-B267-383884A5CEBF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.SynthDiagnosticLibrary", "imbAVR.SynthDiagnosticLibrary\imbAVR.SynthDiagnosticLibrary.vcxitems", "{25C4E494-DA69-4DE1-ACF7-F467F768E6CC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.Communications", "imbAVR.Communications\imbAVR.Communications.vcxitems", "{ED772FF6-7930-4A87-B777-E5266FF5E331}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommunicationsTestHost", "CommunicationsTestHost\CommunicationsTestHost.vcxproj", "{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommunicationsTestClient", "CommunicationsTestClient\CommunicationsTestClient.vcxproj", "{4B314583-D201-470B-8518-8EE7F590AC55}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.Common", "imbAVR.Common\imbAVR.Common.vcxitems", "{8C5FEF79-7D8B-43E1-A03C-6C3E1BA45C07}"
 EndProject
@@ -39,15 +31,10 @@ Global
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{20331cb4-eacf-4393-b39f-d48f198aab74}*SharedItemsImports = 4
 		imbAVR.SynthDiagnosticLibrary\imbAVR.SynthDiagnosticLibrary.vcxitems*{25c4e494-da69-4de1-acf7-f467f768e6cc}*SharedItemsImports = 9
-		imbAVR.Common\imbAVR.Common.vcxitems*{4b314583-d201-470b-8518-8ee7f590ac55}*SharedItemsImports = 4
-		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{4b314583-d201-470b-8518-8ee7f590ac55}*SharedItemsImports = 4
 		imbAVR.Common\imbAVR.Common.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
-		imbAVR.Common\imbAVR.Common.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
-		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
-		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
 		imbAVR.Common\imbAVR.Common.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.Communications\imbAVR.Communications.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
@@ -59,41 +46,32 @@ Global
 		imbAVR.Common\imbAVR.Common.vcxitems*{8c5fef79-7d8b-43e1-a03c-6c3e1ba45c07}*SharedItemsImports = 9
 		imbAVR.Communications\imbAVR.Communications.vcxitems*{ed772ff6-7930-4a87-b777-e5266ff5e331}*SharedItemsImports = 9
 		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{f5380a71-ef86-4e69-82bf-a28106b5f81b}*SharedItemsImports = 9
-		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{f7ff83a9-5bf2-446a-b2ba-ff6990d35bf2}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x64.ActiveCfg = Debug|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x86.ActiveCfg = Debug|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x86.Build.0 = Debug|Win32
+		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x64.ActiveCfg = Release|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x86.ActiveCfg = Release|Win32
 		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x86.Build.0 = Release|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
-		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x64.ActiveCfg = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.ActiveCfg = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.Build.0 = Debug|Win32
+		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x64.ActiveCfg = Release|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.ActiveCfg = Release|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.Build.0 = Release|Win32
+		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Debug|x64.ActiveCfg = Debug|Win32
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Debug|x86.ActiveCfg = Debug|Win32
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Debug|x86.Build.0 = Debug|Win32
+		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x64.ActiveCfg = Release|Win32
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x86.ActiveCfg = Release|Win32
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x86.Build.0 = Release|Win32
-		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Debug|x86.ActiveCfg = Debug|Win32
-		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Debug|x86.Build.0 = Debug|Win32
-		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Release|x86.ActiveCfg = Release|Win32
-		{F7FF83A9-5BF2-446A-B2BA-FF6990D35BF2}.Release|x86.Build.0 = Release|Win32
-		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Debug|x86.ActiveCfg = Debug|Win32
-		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Debug|x86.Build.0 = Debug|Win32
-		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Release|x86.ActiveCfg = Release|Win32
-		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Release|x86.Build.0 = Release|Win32
-		{4B314583-D201-470B-8518-8EE7F590AC55}.Debug|x86.ActiveCfg = Debug|Win32
-		{4B314583-D201-470B-8518-8EE7F590AC55}.Debug|x86.Build.0 = Debug|Win32
-		{4B314583-D201-470B-8518-8EE7F590AC55}.Release|x86.ActiveCfg = Release|Win32
-		{4B314583-D201-470B-8518-8EE7F590AC55}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

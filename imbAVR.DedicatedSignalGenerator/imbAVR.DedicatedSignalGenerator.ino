@@ -4,6 +4,7 @@
  Author:	gorangrubic
 */
 
+#include <SPI.h>
 #include <MathTool.h>
 
 #include "spiReceiver.h"

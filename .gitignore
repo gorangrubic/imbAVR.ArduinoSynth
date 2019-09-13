@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/imbAVR.BassZeroVST/Builds/VisualStudio2017
+/imbAVR.BassZeroVST

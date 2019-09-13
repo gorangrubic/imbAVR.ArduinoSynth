@@ -6,14 +6,16 @@
 #endif
 
 #include "MathTool.h"
+#include "MonitoredArray.h"
 
-template<byte ccTime, byte ccSpread>
+template<byte ccTime, byte ccSpread, byte ccTimeFactor>
 class ControlFunctionChaos
 {
 
 
 protected:
 
+	byte TimeFactor = 1;
 	unsigned int ATime = 25;
 
 	byte Spread = 0;
@@ -28,11 +30,11 @@ public:
 	
 	byte Compute(unsigned int cT);
 
-	void Update(MonitoredArray<16> * CCValues);
+	void Update(CCValuesType * CCValues);
 };
 
-template<byte ccTime, byte ccSpread>
-inline byte ControlFunctionChaos<ccTime, ccSpread>::Compute(unsigned int cT)
+template<byte ccTime, byte ccSpread, byte ccTimeFactor>
+inline byte ControlFunctionChaos<ccTime, ccSpread, ccTimeFactor>::Compute(unsigned int cT)
 {
 	if (lastChange == 0) {
 		// initiation
@@ -48,11 +50,13 @@ inline byte ControlFunctionChaos<ccTime, ccSpread>::Compute(unsigned int cT)
 	return MathTool::Interpolation(ALevel, BLevel, cT - lastChange, ATime);
 }
 
-template<byte ccTime, byte ccSpread>
-inline void ControlFunctionChaos<ccTime, ccSpread>::Update(MonitoredArray<16>* CCValues)
+template<byte ccTime, byte ccSpread, byte ccTimeFactor>
+inline void ControlFunctionChaos<ccTime, ccSpread, ccTimeFactor>::Update(CCValuesType* CCValues)
 {
-	if (CCValues->IsChanged(ccTime, ccSpread)) {
-		ATime = CCValues[ccTime];
+	if (CCValues->IsChanged(ccTime, ccSpread, ccTimeFactor)) {
+
+		TimeFactor = CCValues->Data[ccTimeFactor];
+		ATime = CCValues->Data[ccTime] * TimeFactor;
 		Spread = CCValues[ccSpread];
 
 	}

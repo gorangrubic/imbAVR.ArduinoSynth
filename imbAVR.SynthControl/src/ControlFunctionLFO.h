@@ -6,6 +6,9 @@
 #include "WProgram.h"
 #endif
 
+#include "MonitoredArray.h"
+#include "SynthState.h"
+
 template<byte ccTime, byte ccTimeFactor, byte ccLevel>
 class ControlFunctionLFO
 {
@@ -15,13 +18,16 @@ class ControlFunctionLFO
 	
 	unsigned int lastChange = 0;
 
+	// internal time position
+	unsigned int int_cT;
+
 public:
 
 	//byte ATimeFactor = 1;
 
 	byte Compute(unsigned int cT);
 
-	void Update(MonitoredArray<16> * CCValues);
+	void Update(CCValuesType * CCValues);
 
 
 };
@@ -29,14 +35,29 @@ public:
 template<byte ccTime, byte ccTimeFactor, byte ccLevel>
 inline byte ControlFunctionLFO<ccTime, ccTimeFactor, ccLevel>::Compute(unsigned int cT)
 {
-	unsigned int since = cT - lastChange;
+	unsigned int cTc = 0;
+
+	if (cT < int_cT) {
+		// global time overflow occured
+		cTc = (65535 - int_cT) + cT; // compensates overflow
+	}
+	else {
+		cTc = cT;
+	}
+
+	// stores global time, to detect overflow
+	int_cT = cT;
+
+
+
+	unsigned int since = cTc - lastChange;
 
 	if (since > ATime) {
-		lastChange = cT;
+		lastChange = cTc;
 		since = 0;
 	}
 
-
+	
 	if (since > (ATime / 2)) {
 		return MathTool::Interpolation(ALevel, 0, since- (ATime / 2), ATime/2);
 	}
@@ -48,7 +69,7 @@ inline byte ControlFunctionLFO<ccTime, ccTimeFactor, ccLevel>::Compute(unsigned 
 }
 
 template<byte ccTime, byte ccTimeFactor, byte ccLevel>
-inline void ControlFunctionLFO<ccTime, ccTimeFactor, ccLevel>::Update(MonitoredArray<16>* CCValues)
+inline void ControlFunctionLFO<ccTime, ccTimeFactor, ccLevel>::Update(CCValuesType* CCValues)
 {
 	if (CCValues->IsChanged(ccTime, ccTimeFactor, ccLevel)) {
 

@@ -27,7 +27,7 @@ public:
 
 	//spiSender(byte _pinSS);
 
-	void setup(byte _pinSS, byte protocol);
+	void setup(byte _pinSS, byte _protocol);
 
 	spiSender();
 	
@@ -35,11 +35,23 @@ public:
 
 };
 
+//template<typename TData>
+//inline spiSender<TData>::spiSender(byte _pinSS)
+//{
+//	pinSS = _pinSS;
+//	pinMode(pinSS, OUTPUT);
+//}
+
 template<typename TData>
-inline spiSender<TData>::spiSender(byte _pinSS)
+inline void spiSender<TData>::setup(byte _pinSS, byte _protocol)
 {
 	pinSS = _pinSS;
-	pinMode(pinSS, OUTPUT);
+	protocol = _protocol;
+}
+
+template<typename TData>
+inline spiSender<TData>::spiSender()
+{
 }
 
 template<typename TData>

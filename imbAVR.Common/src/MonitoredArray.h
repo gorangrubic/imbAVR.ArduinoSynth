@@ -20,12 +20,20 @@ public:
 
 	void SetValue(byte Position, byte Value);
 
+
+
+	void SetValue(byte p1, byte v1, byte p2, byte v2);
+
+	void SetValue(byte p1, byte v1, byte p2, byte v2, byte p3, byte v3);
+	void SetValue(byte p1, byte v1, byte p2, byte v2, byte p3, byte v3, byte p4, byte v4);
+
+	void SetValue(byte p1, byte v1, byte p2, byte v2, byte p3, byte v3, byte p4, byte v4, byte p5, byte v5);
+
 	bool IsChanged(byte p1);
 	bool IsChanged(byte p1, byte p2);
 	bool IsChanged(byte p1, byte p2, byte p3);
 	bool IsChanged(byte p1, byte p2, byte p3, byte p4);
 	bool IsChanged(byte p1, byte p2, byte p3, byte p4, byte p5);
-
 
 	void FlushChanges();
 
@@ -58,6 +66,40 @@ inline void MonitoredArray<SIZE>::SetValue(byte Position, byte Value)
 	if (change) SetChanged(Position);
 
 	Data[Position] = Value;
+}
+
+template<byte SIZE>
+inline void MonitoredArray<SIZE>::SetValue(byte p1, byte v1, byte p2, byte v2)
+{
+	SetValue(p1, v1);
+	SetValue(p2, v2);
+}
+
+template<byte SIZE>
+inline void MonitoredArray<SIZE>::SetValue(byte p1, byte v1, byte p2, byte v2, byte p3, byte v3)
+{
+	SetValue(p1, v1);
+	SetValue(p2, v2);
+	SetValue(p3, v3);
+}
+
+template<byte SIZE>
+inline void MonitoredArray<SIZE>::SetValue(byte p1, byte v1, byte p2, byte v2, byte p3, byte v3, byte p4, byte v4)
+{
+	SetValue(p1, v1);
+	SetValue(p2, v2);
+	SetValue(p3, v3);
+	SetValue(p4, v4);
+}
+
+template<byte SIZE>
+inline void MonitoredArray<SIZE>::SetValue(byte p1, byte v1, byte p2, byte v2, byte p3, byte v3, byte p4, byte v4, byte p5, byte v5)
+{
+	SetValue(p1, v1);
+	SetValue(p2, v2);
+	SetValue(p3, v3);
+	SetValue(p4, v4);
+	SetValue(p5, v5);
 }
 
 template<byte SIZE>

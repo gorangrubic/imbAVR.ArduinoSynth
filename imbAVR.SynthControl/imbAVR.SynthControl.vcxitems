@@ -19,6 +19,8 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunction2PEnv.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionADSR.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionChaos.h" />
@@ -37,6 +39,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthDeviceControl.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunction2PEnv.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionADSR.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionChaos.cpp" />

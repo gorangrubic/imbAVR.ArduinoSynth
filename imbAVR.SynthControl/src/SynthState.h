@@ -13,13 +13,36 @@
 
 #include "MonitoredArray.h"
 
+
+
+typedef MonitoredArray<16> CCValuesType;
+typedef MonitoredArray< 2 > MDFValuesType;
+typedef MonitoredArray< 3 > CSValuesType;
+
+
 struct SynthState {
 
-	MonitoredArray<16> CCValues;
+	//// Received MIDI CC values
+	//CCValuesType CCValues;
 
-	
+	//// Computed values of Time-based ControlFunctions (ADSR, LFO...)
+	///* position 0 is reserved to OFF */
+	//MDFValuesType MDFValues;
 
-	byte out_amp_value = 0;
+	//// Control Synth values -- applied to hardware
+	//MDFValuesType CSValues;
+
+	// Received MIDI CC values
+	CCValuesType CCValues;
+
+	// Computed values of Time-based ControlFunctions (ADSR, LFO...)
+	/* position 0 is reserved to OFF */
+	MDFValuesType MDFValues;
+
+	// Control Synth values -- applied to hardware
+	CSValuesType CSValues;
+
+	/*byte out_amp_value = 0;
 
 	byte out_mainComponent_pan = 127;
 	byte out_mainComponent_gain = 127;
@@ -44,5 +67,5 @@ struct SynthState {
 
 	
 
-	unsigned int cT = 0;
+	unsigned int cT = 0;*/
 };

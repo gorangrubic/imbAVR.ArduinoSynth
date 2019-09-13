@@ -75,6 +75,11 @@ inline void spiReceiver<TData, ISize>::AddInstanceBuffer(TData instance)
 
 
 template<typename TData, byte ISize>
+inline spiReceiver<TData, ISize>::spiReceiver()
+{
+}
+
+template<typename TData, byte ISize>
 inline void spiReceiver<TData, ISize>::setup(byte _protocol)
 {
 	protocol = _protocol;

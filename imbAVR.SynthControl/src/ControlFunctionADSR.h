@@ -6,10 +6,16 @@
 #include "WProgram.h"
 #endif
 
+#include "MonitoredArray.h"
+#include "SynthState.h"
 
 template<byte ccAttack, byte ccDecay, byte ccRelease, byte ccInitLevel, byte ccSustainLevel>
 class ControlFunctionADSR
 {
+
+public:
+
+	byte TimeFactor = 2;
 
 	unsigned int AttackTime = 0;
 
@@ -22,25 +28,21 @@ class ControlFunctionADSR
 	byte PeakLevel;
 	byte SustainLevel;
 
-public:
 
-
-
-	byte ComputeADS(unsigned int cT);
-	byte ComputeR(unsigned int cT);
-
-	void Update(MonitoredArray<16> * CCValues);
+	
+	void Update(CCValuesType * CCValues);
+	byte Compute(unsigned int cT, bool IsReleaseStage);
 };
 
 template<byte ccAttack, byte ccDecay, byte ccRelease, byte ccInitLevel, byte ccSustainLevel>
-inline void ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel>::Update(MonitoredArray<16>* CCValues)
+inline void ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel>::Update(CCValuesType* CCValues)
 {
 	if (CCValues->IsChanged(ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel)) {
 
-		AttackTime = CCValues[ccAttack] + 1;
-		DecayTime = CCValues[ccDecay] + 1;
+		AttackTime = CCValues[ccAttack] * TimeFactor + 1;
+		DecayTime = CCValues[ccDecay]*TimeFactor + 1;
 
-		ReleaseTime = CCValues[ccRelease] + 1;
+		ReleaseTime = CCValues[ccRelease]*TimeFactor + 1;
 
 		InitLevel = CCValues[ccInitLevel];
 		PeakLevel = 127;
@@ -49,26 +51,24 @@ inline void ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSus
 }
 
 template<byte ccAttack, byte ccDecay, byte ccRelease, byte ccInitLevel, byte ccSustainLevel>
-byte ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel>::ComputeADS(unsigned int cT)
+byte ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel>::Compute(unsigned int cT, bool IsReleaseStage)
 {
-	if (cT >= (AttackTime + DecayTime)) {
-		// sustain phase
-		return SustainLevel;
-	}
-	else if (cT > AttackTime) {
-		// decay phase
-		return MathTool::Interpolation(PeakLevel, SustainLevel, cT - AttackTime, DecayTime);
+	if (IsReleaseStage) {
+		if (cT > ReleaseTime) return 0;
+		return MathTool::Interpolation(SustainLevel, 0, cT, ReleaseTime);
 	}
 	else {
-		// attack phase
-		return  MathTool::Interpolation(InitLevel, PeakLevel, cT, AttackTime);
+		if (cT >= (AttackTime + DecayTime)) {
+			// sustain phase
+			return SustainLevel;
+		}
+		else if (cT > AttackTime) {
+			// decay phase
+			return MathTool::Interpolation(PeakLevel, SustainLevel, cT - AttackTime, DecayTime);
+		}
+		else {
+			// attack phase
+			return  MathTool::Interpolation(InitLevel, PeakLevel, cT, AttackTime);
+		}
 	}
-
-}
-
-template<byte ccAttack, byte ccDecay, byte ccRelease, byte ccInitLevel, byte ccSustainLevel>
-byte ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel>::ComputeR(unsigned int cT)
-{
-	if (cT > ReleaseTime) return 0;
-	return MathTool::Interpolation(SustainLevel, 0, cT, ReleaseTime);
 }
