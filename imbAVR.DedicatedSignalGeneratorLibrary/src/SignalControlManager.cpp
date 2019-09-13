@@ -192,7 +192,7 @@ void SignalControlManagerClass::SetCC(byte cc, byte value, SignalControlUnitClas
 		break;
 
 	case CCID_PWMBYTE:
-		signal->pwmPatternByte = value;
+		signal->pwmByte = value;
 		signal->pwmContinualSClockIndexChange = 0;
 		break;
 	case CCID_PHASEBYTE:
@@ -275,7 +275,7 @@ void SignalControlManagerClass::DescribeAll(HardwareSerial * serialOut) {
 		serialOut->print("]");
 
 		serialOut->print("[");
-		serialOut->print(SignalUnits[i].pwmPatternByte, BIN);
+		serialOut->print(SignalUnits[i].pwmByte, BIN);
 		serialOut->println("]");
 
 
@@ -423,7 +423,7 @@ void SignalControlManagerClass::loop()
 					SUNIT_i.pwmStepIndex = SUNIT_i.pwmStepIndex % PWMCycleSize;
 				}
 
-				digitalWrite(SUNIT_i.pin, bitRead(SUNIT_i.pwmPatternByte, SUNIT_i.pwmStepIndex));
+				digitalWrite(SUNIT_i.pin, bitRead(SUNIT_i.pwmByte, SUNIT_i.pwmStepIndex));
 
 				SUNIT_i.sClockIndex = 0;
 			}
@@ -434,7 +434,7 @@ void SignalControlManagerClass::loop()
 
 			if (SUNIT_i.pwmContinualSClockIndexChange == 0) {
 
-				SUNIT_i.pwmContinualSClockIndexChange = floor(((float)SUNIT_i.pwmPatternByte / 255.0) * (SUNIT_i.sClockPerPWMStep * 8));
+				SUNIT_i.pwmContinualSClockIndexChange = floor(((float)SUNIT_i.pwmByte / 255.0) * (SUNIT_i.sClockPerPWMStep * 8));
 
 			}
 
@@ -486,11 +486,11 @@ void SignalControlManagerClass::loop()
 				if (SUNIT_i.PWMChange.RateIndex > SUNIT_i.PWMChange.Rate) {
 
 					if (SUNIT_i.pwmContinualMode) {
-						SUNIT_i.pwmPatternByte += (SUNIT_i.PWMChange.Change - 126);
+						SUNIT_i.pwmByte += (SUNIT_i.PWMChange.Change - 126);
 					}
 					else {
 						
-						SUNIT_i.pwmPatternByte = MathTool::GetCCValueForWaveform(SUNIT_i.pwmPatternByte) + (SUNIT_i.PWMChange.Change - 126) / 6.0;
+						SUNIT_i.pwmByte = MathTool::GetCCValueForWaveform(SUNIT_i.pwmByte) + (SUNIT_i.PWMChange.Change - 126) / 6.0;
 					}
 					SUNIT_i.PWMChange.RateIndex = 0;
 

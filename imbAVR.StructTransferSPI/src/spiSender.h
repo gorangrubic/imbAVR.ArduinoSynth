@@ -19,15 +19,18 @@ class spiSender
 	/// </summary>
 	byte pinSS;
 
-	byte pinSSPostDelay;
-
-public:
+	byte pinSSPostDelay=10;
 
 	byte protocol;
 
-	//spiSender(byte _pinSS);
+public:
 
-	void setup(byte _pinSS, byte _protocol);
+	/// <summary>
+	/// Sets the chip selection pin and protocol options
+	/// </summary>
+	/// <param name="_pinSS">The pin ss.</param>
+	/// <param name="_protocol">The protocol.</param>
+	void setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay=10);
 
 	spiSender();
 	
@@ -43,10 +46,11 @@ public:
 //}
 
 template<typename TData>
-inline void spiSender<TData>::setup(byte _pinSS, byte _protocol)
+inline void spiSender<TData>::setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay = 10)
 {
 	pinSS = _pinSS;
 	protocol = _protocol;
+	pinSSPostDelay = _pinSSPostDelay;
 }
 
 template<typename TData>

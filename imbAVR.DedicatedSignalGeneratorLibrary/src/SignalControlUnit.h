@@ -7,14 +7,15 @@
 	#include "WProgram.h"
 #endif
 
-#include "SignalInstruction.h"
+#include "SignalChangeInstruction.h"
+#include "SignalControlBase.h"
 
 #define PWMCycleSize 8
 
 /// <summary>
-/// 
+/// Instance of SignalControlUnit, containing clock indexes and other "runtime" information
 /// </summary>
-class SignalControlUnitClass
+class SignalControlUnitClass : public SignalControlBase
 {
  protected:
 
@@ -22,38 +23,23 @@ class SignalControlUnitClass
  public:
 
 	 byte pin = 3;
-	 
-	 unsigned int freq = 110;
+
 
 	 // this controls the pitch
-		byte sClockPerPWMStep = 18;
+	 byte sClockPerPWMStep = 18;
 
-		byte sClockPerPWMStepB = 0;
+	 byte sClockPerPWMStepB = 0;
 
 	 byte sClockIndex;
 
 	 byte pwmStepIndex;
 
-	 // default PWM pattern is 50% square pulse waveform
-	 byte pwmPatternByte = B11110000;
+
 	 
 	 bool pwmContinualMode = false;
 	 byte pwmContinualSClockIndexChange = 0;
-	 bool isOn = true;
-
-	 byte sClockPrescalar = 1;
-
-	 // relationship with master pitch
-	 byte masterPitchRelationship = 0;
 
 
-
-
-
-	 SignalChangeInstruction PWMChange;
-	 SignalChangeInstruction PhaseChange;
-	 SignalChangeInstruction PitchChange;
-	 SignalChangeInstruction ResetClock;
 
 };
 

@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.DedicatedSignalGeneratorLibrary.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalChangeInstruction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalMacroControl.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalMacroInstruction.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalControlManager.h" />
@@ -27,6 +29,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SignalInstruction.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalChangeInstruction.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalMacroControl.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalMacroInstruction.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\SignalControlManager.cpp" />

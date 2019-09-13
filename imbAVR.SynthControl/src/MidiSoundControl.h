@@ -150,8 +150,7 @@ typedef struct
 
 #include "MidiConfig.h"
 #include "MathTool.h"
-#include "SignalInstruction.h"
-#include "TwoPointENV.h"
+
 
 
 #define signalA_SID 4
@@ -169,6 +168,9 @@ typedef struct
 #include "MidiSoundControlClassBase.h"
 
 #include "SynthState.h"
+
+#include "spiLinkBuffer.h"
+#include "SignalMacroInstruction.h"
 
 //
 //class MidiSoundControlBase {
@@ -232,6 +234,7 @@ typedef struct
 //};
 
 #include "MonitoredArray.h"
+
 #define CCVALUESMDF(p, v1, v2, v3) CCValues->SetValue(p##_ModSrc, v1, p##_ModAmt, v2, p##_Val, v3)
 
 class MidiSoundControlClass : public MidiSoundControlClassBase
@@ -245,6 +248,8 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 
 	 SynthState State;
 
+	 //spiLinkBuffer<SignalMacroInstruction> 
+
 	 SignalInstruction signalA_instruction;
 	 SignalInstruction signalB_instruction;
 
@@ -253,7 +258,9 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	 SignalInstruction perkA_instruction;
 	 SignalInstruction perkB_instruction;
 
-	// byte CCValues[127]; 
+
+
+
 
 	 unsigned long NoteOnTime;
 
@@ -262,10 +269,7 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	 float tone_pitch = 0;
 	 bool tone_on = false;
 	 byte tone_velocity = 100;
-	// byte amp_ChannelVolume = 127;
-
-	 byte gate_margin = 5;
-
+	
 	 void setPreset(byte presetID, CCValuesType * CCValues);
 
 	 void noteOn(byte channel, byte pitch, byte velocity);
@@ -300,7 +304,7 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	 //
 
 	 unsigned int time_factor = 2;
-
+	 byte gate_margin = 5;
 
 	// byte out_amp_value = 0;
 	// byte out_flt_value = 64;

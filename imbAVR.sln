@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SynthDiagnosticDevice", "SynthDiagnosticDevice\SynthDiagnosticDevice.vcxproj", "{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.SynthControl", "imbAVR.SynthControl\imbAVR.SynthControl.vcxitems", "{8C5A7585-B0BE-4991-8D2F-BBEC89D4F881}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.LCDOnMega", "imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems", "{F5380A71-EF86-4E69-82BF-A28106B5F81B}"
@@ -35,12 +33,6 @@ Global
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
-		imbAVR.Common\imbAVR.Common.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
-		imbAVR.Communications\imbAVR.Communications.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
-		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
-		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
-		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
-		imbAVR.SynthDiagnosticLibrary\imbAVR.SynthDiagnosticLibrary.vcxitems*{7d3fd53a-bb73-4de5-b04b-f36d3bd0dee8}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{87bd9f7b-779a-4062-b267-383884a5cebf}*SharedItemsImports = 9
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{8c5a7585-b0be-4991-8d2f-bbec89d4f881}*SharedItemsImports = 9
 		imbAVR.Common\imbAVR.Common.vcxitems*{8c5fef79-7d8b-43e1-a03c-6c3e1ba45c07}*SharedItemsImports = 9
@@ -54,12 +46,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x64.ActiveCfg = Debug|Win32
-		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x86.ActiveCfg = Debug|Win32
-		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Debug|x86.Build.0 = Debug|Win32
-		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x64.ActiveCfg = Release|Win32
-		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x86.ActiveCfg = Release|Win32
-		{7D3FD53A-BB73-4DE5-B04B-F36D3BD0DEE8}.Release|x86.Build.0 = Release|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x64.ActiveCfg = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.ActiveCfg = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.Build.0 = Debug|Win32
