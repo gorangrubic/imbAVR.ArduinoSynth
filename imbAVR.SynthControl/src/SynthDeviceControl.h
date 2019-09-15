@@ -8,7 +8,7 @@
 
 #include <SignalControlManager.h>
 #include <SignalControlUnit.h>
-#include <SignalControlLink.h>
+
 
 #include <SPI.h>
 
@@ -121,9 +121,7 @@
 
 #define READ_MIDI_SERIAL_BAUDRATE 115200
 
-#define SIGNAL_DEVICE_SERIAL_RX 8
-#define SIGNAL_DEVICE_SERIAL_TX 9
-#define SIGNAL_DEVICE_BAUDRATE  19200
+
 
 #define ENGINE_TIMEFACTOR 2
 

@@ -7,6 +7,7 @@
 
 #include "MathTool.h"
 #include "MonitoredArray.h"
+#include "SynthState.h"
 
 template<byte ccTime, byte ccSpread, byte ccTimeFactor>
 class ControlFunctionChaos
@@ -57,7 +58,7 @@ inline void ControlFunctionChaos<ccTime, ccSpread, ccTimeFactor>::Update(CCValue
 
 		TimeFactor = CCValues->Data[ccTimeFactor];
 		ATime = CCValues->Data[ccTime] * TimeFactor;
-		Spread = CCValues[ccSpread];
+		Spread = CCValues->Data[ccSpread];
 
 	}
 

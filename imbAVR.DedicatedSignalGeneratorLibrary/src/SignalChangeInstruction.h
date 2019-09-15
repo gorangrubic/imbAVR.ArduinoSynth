@@ -1,4 +1,9 @@
 #pragma once
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "arduino.h"
+#else
+#include "WProgram.h"
+#endif
 
 #include "SignalMacroInstruction.h"
 
@@ -13,7 +18,7 @@ class SignalChangeInstruction
 		byte RateIndex = 0;
 		byte PeriodIndex = 0;
 	
-		byte Rate = 256;
+		byte Rate = 255;
 		
 		// change = 1 => -126, change = 255 = +126
 		byte Change = 0;

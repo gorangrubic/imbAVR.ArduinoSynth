@@ -8,6 +8,7 @@
 
 #include "MonitoredArray.h"
 #include "SynthState.h"
+#include "MathTool.h"
 
 template<byte ccTime, byte ccTimeFactor, byte ccLevel>
 class ControlFunctionLFO
@@ -73,7 +74,7 @@ inline void ControlFunctionLFO<ccTime, ccTimeFactor, ccLevel>::Update(CCValuesTy
 {
 	if (CCValues->IsChanged(ccTime, ccTimeFactor, ccLevel)) {
 
-		ATime = CCValues[ccTime] * (CCValues[ccTimeFactor] + 1);
-		ALevel = CCValues[ccLevel];
+		ATime = CCValues->Data[ccTime] * (CCValues->Data[ccTimeFactor] + 1);
+		ALevel = CCValues->Data[ccLevel];
 	}
 }

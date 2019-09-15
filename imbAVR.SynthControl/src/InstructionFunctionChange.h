@@ -30,13 +30,21 @@ inline SignalMacroInstruction InstructionFunctionChange<SID, cid_target, ccChang
 
 		byte b1 = (SID << 4) | (cid_target);
 
-		byte period = contrain(CCValues->Data[ccPeriod], 0, 64);
+		byte period = constrain(CCValues->Data[ccPeriod], 0, 64);
 		byte options = mode << 6;
 		options |= period;
 
 		SignalMacroInstruction output;
 
-		output.data = (b1 << 24) | (CCValues->Data[ccChange] << 16) | (CCValues->Data[ccRate] << 8) | options;
+		output.data += b1;
+		output.data = output.data << 8;
+		output.data += CCValues->Data[ccChange];
+		output.data = output.data << 8;
+		output.data += CCValues->Data[ccRate];
+		output.data = output.data << 8;
+		output.data += options;
+
+		//output.data = (b1 << 24) | (CCValues->Data[ccChange] << 16) | (CCValues->Data[ccRate] << 8) | options;
 		return output;
 
 	}

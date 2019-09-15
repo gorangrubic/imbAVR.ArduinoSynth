@@ -4,20 +4,10 @@
 
 //#define SOUND_OUT 6
 
-#include "InstructionConstructorPreset.h"
-#include "InstructionFunction.h"
-#include "SignalInstructionByte.h"
+
 #define _USE_DIGPOTUNITS // remove _ to turn on the option
 
-#ifdef USE_DIGPOTUNITS
 
-#define PIN_WAVEFORM_A_SHAPER A2
-#define PIN_WAVEFORM_B_FILTER A3
-
-#define PIN_FILTER_GAIN A0
-#define PIN_FILTER_FREQ A1
-
-#endif // USE_DIGPOTUNITS
 
 #define USE_DIGPOTCLUSTER
 
@@ -145,31 +135,7 @@ void loop() {
 		Engine_Chrono.restart();
 	}
 	
-	/*
-	if (rx.header != 0) {
-		
-		
-		//Serial.println(synthDevice.DescribeMidi(rx));
-		//Serial.println(synthDevice.mainControl.DescribeState());
-		/*synthDevice.link.instruction.Frequency = floor(synthDevice.mainControl.tone_pitch);
-		synthDevice.link.instruction.SignalID = 0;
-
-		byte controlByte = synthDevice.link.instruction.GetControlByte();
-
-		if (controlByte != lastControl) {
-
-			String ins = synthDevice.link.sendAsString();
-			SoftSerial.println(ins);
-			lastControl = controlByte;
-		}*/
-		//synthDevice.link.SoftSerial.print(ins);
-		//Serial.print(ins);
-
-		//
-		//Serial.flush();
-
-		
-//	}
+	
 
 
 

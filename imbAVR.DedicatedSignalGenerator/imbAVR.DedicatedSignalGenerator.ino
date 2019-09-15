@@ -9,36 +9,18 @@
 
 #include "spiReceiver.h"
 
-#include "SignalInstruction.h"
+#include "SignalMacroInstruction.h";
 
 #include "SignalControlManager.h"
-#include "SignalControlUnit.h"
-#include "SignalControlLink.h"
 
-
-
-#define SIGNAL_DEVICE_SERIAL_RX 8
-#define SIGNAL_DEVICE_SERIAL_TX 9
-#define SIGNAL_DEVICE_BAUDRATE 19200
-
-// how many hardware clock ticks is counted as single software tick
-
+#include "SignalMacroControl.h"
 
 
 SignalControlManagerClass SignalControlManager = SignalControlManagerClass();
-
-//SignalControlLink link;
-
-
-
-//define slave i2c address
-#define I2C_SLAVE_ADDRESS 9
+SignalMacroControl signalMacroControl = SignalMacroControl();
 
 
 #define LED A7
-#define LEDB A6
-
-
 
 
 bool LED_ON = true;
@@ -70,23 +52,26 @@ void ledToggle() {
 void receive(int numBytes) {}
 
 
-spiReceiver<SignalChangeInstruction, 30> DataReceiver;
+spiReceiver<SignalMacroInstruction, 30> DataReceiver;
 
 void setup() {
 
+	pinMode(MISO, OUTPUT);
+
+	SPCR |= _BV(SPE);
+
 	DataReceiver.setup(B00000011);
+
+	SPI.attachInterrupt();
 
 
 
 	// for mini
-	//SignalControlManager.CycleCompensation = 238.75;
-
-
+	// --- SignalControlManager.CycleCompensation = 238.75;
 
 	// for nano
-	//SignalControlManager.CycleCompensation = 477.5;
-
-	//SignalControlManager.CycleCompensation = 16;
+	// --- SignalControlManager.CycleCompensation = 477.5;
+	// ---- SignalControlManager.CycleCompensation = 16;
 
 	SignalControlManager.CycleCompensation = 31; // 62 / 2;
 
@@ -106,9 +91,12 @@ void setup() {
 
 	TIMSK2 = (TIMSK2 & B11111110) | 0x01; // enabling overvlow interrupt
 
-	//SignalControlManager.DescribeAll(&Serial);
-	//Serial.println("Starting");
 	
+}
+
+ISR(SPI_STC_vect)
+{
+	DataReceiver.Receive(SPDR);
 }
 
 
@@ -122,56 +110,18 @@ String input = "";
 // the loop function runs over and over again until power down or reset
 void loop() {
   
+	byte result = DataReceiver.loop();
 
-	/*if (SoftSerial.available()) {
-		input = SoftSerial.readString();
-		Serial.println("ss:" + input);
-	} */
-	
-	//else if (Serial.available()) {
-
-	////String input = link.SoftSerial.readString();
-
-	//	input = Serial.readString();
-	//	Serial.println("hs:" + input);
-	//}
-	//
-
-
-	/*if (link.ByteCodeProtocol) {
-
-		if (SoftSerial.available()) {
-			byte b = SoftSerial.read();
-			SignalControlManager.Receive(b);
-
-			if (link.ConfirmationProtocol) SoftSerial.write(b);
+	if ((result & B11110000) == B11110000) {
+		for (size_t i = 0; i < DataReceiver.InstanceBufferIndex; i++)
+		{
+			signalMacroControl.Run(DataReceiver.InstanceBuffer[i], &SignalControlManager);
+			
 		}
-
+		DataReceiver.ClearInstanceBuffer();
 	}
-	else {
-
-
-		if (SoftSerial.available() > 5) {
-
-			input += SoftSerial.readString();
-			SoftSerial.flushInput();
-		}
-
-		while (input.indexOf("[") > -1) {
-
-			byte lastIndex = link.instructionIndex;
-
-			input = link.readStringChar(input);
-
-			if (lastIndex != link.instructionIndex) {
-
-				SignalControlManager.Perform(link.instruction);
-
-			}
-
-
-		}
-
-	}*/
+	else if (result != B00000000) {
+		
+	}
 	
 }

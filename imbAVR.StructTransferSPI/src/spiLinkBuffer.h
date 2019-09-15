@@ -108,7 +108,7 @@ template<typename TData, byte ISize>
 inline bool spiLinkBuffer<TData, ISize>::Add(TData instance)
 {
 	if (bufferIndex < ISize) {
-		Data[InstanceBufferIndex] = instance;
+		Data[bufferIndex] = instance;
 		bufferIndex++;
 		return true;
 	}

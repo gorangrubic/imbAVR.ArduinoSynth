@@ -46,7 +46,7 @@ public:
 //}
 
 template<typename TData>
-inline void spiSender<TData>::setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay = 10)
+inline void spiSender<TData>::setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay)
 {
 	pinSS = _pinSS;
 	protocol = _protocol;
@@ -63,6 +63,7 @@ inline void spiSender<TData>::Send(TData data)
 {
 
 	spiLinkDataInstance<TData> wrapper;
+
 	wrapper.instance = data;
 
 	digitalWrite(pinSS, LOW);

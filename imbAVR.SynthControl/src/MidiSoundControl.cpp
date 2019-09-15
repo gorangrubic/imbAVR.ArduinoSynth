@@ -12,6 +12,15 @@ void MidiSoundControlClass::AddInstructionToBuffer(SignalMacroInstruction instru
 }
 
 
+void MidiSoundControlClass::setup()
+{
+	setOperationMode(0, &State.CCValues);
+	setPreset(0, &State.CCValues);
+
+	CF_ADSR_A.TimeFactor = time_factor;
+	CF_ADSR_B.TimeFactor = time_factor;
+}
+
 void MidiSoundControlClass::setOperationMode(byte opm_id, CCValuesType * CCValues)
 {
 	AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
@@ -171,22 +180,24 @@ void MidiSoundControlClass::ApplyControls() {
 
 }
 
-String MidiSoundControlClass::DescribeState() {
 
-	String output = "pitch: ";
-	output += tone_pitch;
-	output += " on: ";
-	output += tone_on;
-
-	return output;
-
-}
 
 /// <summary>
 /// Performs all computations and stores results to synth control values
 /// </summary>
 /// <returns></returns>
 unsigned int MidiSoundControlClass::DoTick() {
+
+	// checking numeric input calls
+
+	if (NI_OPM_Call.Update(&State.CSValues, &State.CCValues)) {
+		setOperationMode(State.CCValues.Data[CS_NIA], &State.CCValues);
+	}
+
+	if (NI_SoundPreset_Call.Update(&State.CSValues, &State.CCValues)) {
+		setPreset(State.CCValues.Data[CS_NIB], &State.CCValues);
+	}
+
 
 #pragma region Modulation_sources
 
@@ -198,6 +209,8 @@ unsigned int MidiSoundControlClass::DoTick() {
 	CF_ENV_B.Update(&State.CCValues);
 	CF_LFO_A.Update(&State.CCValues);
 	CF_LFO_B.Update(&State.CCValues);
+
+
 
 	// Computing time position of the current note
 	bool IsReleaseStage = NoteOnTime < NoteOffTime;

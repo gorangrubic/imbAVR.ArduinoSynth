@@ -1,4 +1,9 @@
 #pragma once
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "arduino.h"
+#else
+#include "WProgram.h"
+#endif
 
 #include "SynthState.h"
 #include "SignalMacroInstruction.h"
@@ -22,7 +27,15 @@ inline SignalMacroInstruction InstructionFunction<SID, cid_target, ccB2, ccB3, c
 		byte b1 = (SID << 4) | (cid_target);
 		SignalMacroInstruction output;
 
-		output.data = (b1 << 24) | (CSValues->Data[ccB2] << 16) | (CSValues->Data[ccB3] << 8) | CSValues->Data[ccB4];
+		output.data += b1;
+		output.data = output.data << 8;
+		output.data += CSValues->Data[ccB2];
+		output.data = output.data << 8;
+		output.data += CSValues->Data[ccB3];
+		output.data = output.data << 8;
+		output.data += CSValues->Data[ccB4];
+
+	//	output.data = (b1 << 24) | (CSValues->Data[ccB2] << 16) | (CSValues->Data[ccB3] << 8) | CSValues->Data[ccB4];
 		return output;
 	}
 	else {

@@ -1,4 +1,31 @@
 #pragma once
+
+// ====== numeric inputs
+
+#define CC_NIA_N0 34
+#define CC_NIA_N1 35
+#define CC_NIA_N2 36
+#define CC_NIA_N3 37
+#define CC_NIA_N4 38
+#define CC_NIA_N5 39
+#define CC_NIA_N6 40
+#define CC_NIA_N7 41
+#define CC_NIA_N8 42
+#define CC_NIA_N9 43
+
+#define CC_NIB_N0 81
+#define CC_NIB_N1 82
+#define CC_NIB_N2 83
+#define CC_NIB_N3 84
+#define CC_NIB_N4 85
+#define CC_NIB_N5 86
+#define CC_NIB_N6 87
+#define CC_NIB_N7 88
+#define CC_NIB_N8 89
+#define CC_NIB_N9 90
+
+// ==========================
+
 #define CHANNEL_ID_ALL 0
 
 #define CC_ChannelVolume 01
@@ -188,6 +215,11 @@
 #define CS_OPM_VALA 27
 #define CS_OPM_VALB 28
 #define CS_OPM_VALC 29
+
+// <-- numeric input A
+#define CS_NIA 30
+// <-- numeric input B
+#define CS_NIB 31 
 
 
 // ======================================== MDF 

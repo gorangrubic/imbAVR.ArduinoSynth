@@ -71,6 +71,15 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionNumericInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructorPreset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructorPreset.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)library.properties" />
@@ -148,6 +157,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionNumericInput.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)README.md" />

@@ -169,7 +169,10 @@ typedef struct
 
 #include "InstructionFunction.h"
 #include "InstructionConstructor.h"
+#include "InstructionConstructorPreset.h"
 #include "CSFunctionStereoPan.h"
+#include "CSFunctionNumericInput.h"
+
 
 
 //
@@ -332,6 +335,9 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	 InstructionConstructorPreset<SID_PerkA> ICP_PERKA;
 	 InstructionConstructorPreset<SID_PerkB> ICP_PERKB;
 
+	 CSFunctionNumericInput<CS_NIA, CC_NIA_N0, CC_NIA_N1, CC_NIA_N2, CC_NIA_N3, CC_NIA_N4, CC_NIA_N5, CC_NIA_N6, CC_NIA_N7, CC_NIA_N8, CC_NIA_N9> NI_OPM_Call;
+	 CSFunctionNumericInput<CS_NIB, CC_NIB_N0, CC_NIB_N1, CC_NIB_N2, CC_NIB_N3, CC_NIB_N4, CC_NIB_N5, CC_NIB_N6, CC_NIB_N7, CC_NIB_N8, CC_NIB_N9> NI_SoundPreset_Call;
+
 
 	 /// <summary>
 	 /// Adds the instruction to linkBuffer -- if its not empty instruction
@@ -357,6 +363,7 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	// bool tone_on = false;
 	 byte tone_velocity = 100;
 	
+	 void setup();
 	 
 	 void setOperationMode(byte opm_id, CCValuesType * CCValues);
 
@@ -378,13 +385,12 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 
 	 void ApplyControls();
 
-	 String DescribeState();
-
+	 
 	 unsigned int DoTick();
 
 
 	 unsigned int time_factor = 2;
-	 byte gate_margin = 5;
+	 
 
 
 	 byte channel_id = 0;

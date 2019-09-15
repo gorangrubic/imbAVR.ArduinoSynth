@@ -20,8 +20,10 @@
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
     <ClInclude Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.h" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionNumericInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionFunction.h" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructorPreset.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionFunctionChange.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.h" />
@@ -44,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionNumericInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructorPreset.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionFunction.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionFunctionChange.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.cpp" />

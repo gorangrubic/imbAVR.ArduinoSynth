@@ -39,7 +39,7 @@ class SignalControlUnitClass : public SignalControlBase
 	 bool pwmContinualMode = false;
 	 byte pwmContinualSClockIndexChange = 0;
 
-
+	 void ResetClocks(bool reset_pwmIndex, bool reset_sClock, bool reset_changes);
 
 };
 

@@ -7,6 +7,8 @@
 #endif
 
 #include "MonitoredArray.h"
+#include "SynthState.h"
+#include "MathTool.h"
 
 template<byte ccATime, byte ccBTime, byte ccALevel, byte ccBLevel>
 class ControlFunction2PEnv
@@ -50,11 +52,11 @@ inline void ControlFunction2PEnv<ccATime, ccBTime, ccALevel, ccBLevel>::Update(C
 {
 
 	
-	ATime = CCValues[ccATime] * ATimeFactor;
-	BTime = CCValues[ccBTime] * BTimeFactor;
+	ATime = CCValues->Data[ccATime] * ATimeFactor;
+	BTime = CCValues->Data[ccBTime] * BTimeFactor;
 
-	ALevel = CCValues[ccALevel];
-	BLevel = CCValues[ccBLevel];
+	ALevel = CCValues->Data[ccALevel];
+	BLevel = CCValues->Data[ccBLevel];
 
 
 

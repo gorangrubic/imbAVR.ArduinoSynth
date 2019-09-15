@@ -53,8 +53,8 @@ void SynthDeviceControl::setup() {
 	//pinMode(SOUND_OUT, OUTPUT);
 	mainControl.time_factor = ENGINE_TIMEFACTOR;
 
-	mainControl.setPreset(1);
-	mainControl.ApplyControls();
+	mainControl.setup();
+	
 
 	Engine_Chrono.start();
 

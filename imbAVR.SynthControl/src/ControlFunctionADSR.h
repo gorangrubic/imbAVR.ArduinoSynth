@@ -9,6 +9,8 @@
 #include "MonitoredArray.h"
 #include "SynthState.h"
 
+#include "MathTool.h"
+
 template<byte ccAttack, byte ccDecay, byte ccRelease, byte ccInitLevel, byte ccSustainLevel>
 class ControlFunctionADSR
 {
@@ -39,14 +41,14 @@ inline void ControlFunctionADSR<ccAttack, ccDecay, ccRelease, ccInitLevel, ccSus
 {
 	if (CCValues->IsChanged(ccAttack, ccDecay, ccRelease, ccInitLevel, ccSustainLevel)) {
 
-		AttackTime = CCValues[ccAttack] * TimeFactor + 1;
-		DecayTime = CCValues[ccDecay]*TimeFactor + 1;
+		AttackTime = CCValues->Data[ccAttack] * TimeFactor + 1;
+		DecayTime = CCValues->Data[ccDecay]*TimeFactor + 1;
 
-		ReleaseTime = CCValues[ccRelease]*TimeFactor + 1;
+		ReleaseTime = CCValues->Data[ccRelease]*TimeFactor + 1;
 
-		InitLevel = CCValues[ccInitLevel];
+		InitLevel = CCValues->Data[ccInitLevel];
 		PeakLevel = 127;
-		SustainLevel = CCValues[ccSustainLevel];
+		SustainLevel = CCValues->Data[ccSustainLevel];
 	}
 }
 

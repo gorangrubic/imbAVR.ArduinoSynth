@@ -1,6 +1,16 @@
 #pragma once
+
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "arduino.h"
+#else
+#include "WProgram.h"
+#endif
+
+
 #include "SynthState.h"
 #include "MathTool.h"
+
+
 
 template<byte csLChannel, byte csRChannel, byte maxVolume>
 class CSFunctionStereoPan
@@ -14,8 +24,8 @@ public:
 template<byte csLChannel, byte csRChannel, byte maxVolume>
 inline void CSFunctionStereoPan<csLChannel, csRChannel, maxVolume>::Update(CSValuesType * csValues, byte pan)
 {
-	csValues.SetValue(csLChannel, MathTool::GetChannelVolumeForPan(pan, false, maxVolume));
-	csValues.SetValue(csRChannel, MathTool::GetChannelVolumeForPan(pan, true, maxVolume));
+	csValues->SetValue(csLChannel, MathTool::GetChannelVolumeForPan(pan, false, maxVolume));
+	csValues->SetValue(csRChannel, MathTool::GetChannelVolumeForPan(pan, true, maxVolume));
 
 }
 
@@ -24,7 +34,7 @@ inline void CSFunctionStereoPan<csLChannel, csRChannel, maxVolume>::Update(CSVal
 {
 	vol = MathTool::ScaleByte(vol, 127, maxVolume);
 
-	csValues.SetValue(csLChannel, MathTool::GetChannelVolumeForPan(pan, false, vol));
-	csValues.SetValue(csRChannel, MathTool::GetChannelVolumeForPan(pan, true, vol));
+	csValues->SetValue(csLChannel, MathTool::GetChannelVolumeForPan(pan, false, vol));
+	csValues->SetValue(csRChannel, MathTool::GetChannelVolumeForPan(pan, true, vol));
 
 }

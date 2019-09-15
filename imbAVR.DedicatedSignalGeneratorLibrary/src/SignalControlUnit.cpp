@@ -1,10 +1,22 @@
-// 
-// 
-// 
-
 #include "SignalControlUnit.h"
 
-SignalMacroInstruction SignalControlUnitClass::GetMacroInstruction(byte s_id, byte cc_id)
+void SignalControlUnitClass::ResetClocks(bool reset_pwmIndex, bool reset_sClock, bool reset_changes)
 {
-	return SignalMacroInstruction();
+	if (reset_pwmIndex) {
+		pwmStepIndex = 0;
+	}
+
+	if (reset_sClock) {
+		sClockIndex = 0;
+	}
+
+	if (reset_changes) {
+		PhaseChange.RateIndex = 0;
+		PhaseChange.PeriodIndex = 0;
+		PWMChange.RateIndex = 0;
+		PWMChange.PeriodIndex = 0;
+		PitchChange.RateIndex = 0;
+		PitchChange.PeriodIndex = 0;
+	}
 }
+

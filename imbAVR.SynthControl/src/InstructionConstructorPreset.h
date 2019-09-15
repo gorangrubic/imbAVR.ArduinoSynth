@@ -1,6 +1,5 @@
 #pragma once
 
-
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
 #else
@@ -10,13 +9,13 @@
 #include "SynthState.h"
 #include "MathTool.h"
 #include "SignalChangeInstruction.h"
+#include "SignalMacroInstruction.h"
+#include "MidiConfig.h"
 
 template<byte SID>
 class InstructionConstructorPreset
 {
 public:
-
-	
 
 	SignalMacroInstruction CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode, byte sid_override=255);
 
@@ -24,7 +23,7 @@ public:
 };
 
 template<byte SID>
-inline SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode, byte sid_override)
+SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode, byte sid_override)
 {
 	SignalMacroInstruction output;
 
@@ -41,14 +40,22 @@ inline SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeIns
 
 	byte options = mode << 6;
 	options |= period;
+	output.data = 0;
+	output.data += b1;
+	output.data = output.data << 8;
+	output.data += change;
+	output.data = output.data << 8;
+	output.data += rate;
+	output.data = output.data << 8;
+	output.data += options;
 
-	output.data = (b1 << 24) | change << 16) | rate << 8 | options;
+//	output.data = b12 << 16 | b34; //(b1 << 24) | change << 16 | rate << 8 | options;
 	return output;
 
 }
 
 template<byte SID>
-inline SignalMacroInstruction InstructionConstructorPreset<SID>::CreateModeInstruction(bool IsPWMCycle, bool IsDoublePrescalar, bool IsSignalON, bool IsPitchSlave, bool IsPositiveRelation, bool IsRelativeDistance, bool IsPitchMidiNote, unsigned int Pitch, byte sid_override)
+SignalMacroInstruction InstructionConstructorPreset<SID>::CreateModeInstruction(bool IsPWMCycle, bool IsDoublePrescalar, bool IsSignalON, bool IsPitchSlave, bool IsPositiveRelation, bool IsRelativeDistance, bool IsPitchMidiNote, unsigned int Pitch, byte sid_override)
 {
 	byte modeByte = 0;
 
@@ -71,8 +78,14 @@ inline SignalMacroInstruction InstructionConstructorPreset<SID>::CreateModeInstr
 	else {
 		b1 = (SID << 4) | (CID_NoteControl);
 	}
-	
-	output.data = (b1 << 24) | modeByte << 16) | Pitch;
+	output.data = 0;
+	output.data += b1;
+	output.data = output.data << 8;
+	output.data += modeByte;
+	output.data = output.data << 8;
+	output.data += Pitch;
+
+	//output.data = (b1 << 24) | modeByte << 16 | Pitch;
 	return output;
 
 }

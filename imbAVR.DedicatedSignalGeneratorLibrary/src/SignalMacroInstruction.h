@@ -11,7 +11,7 @@
 /// </summary>
 struct SignalMacroInstruction
 {
-	long data = 0;
+	long data;
 
 };
 

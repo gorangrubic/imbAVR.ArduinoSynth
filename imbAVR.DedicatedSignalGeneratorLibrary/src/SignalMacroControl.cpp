@@ -7,6 +7,8 @@
 
 void SignalMacroControl::RunPitchRelation(byte s_id, unsigned int freq, SignalControlManagerClass * manager) {
 	
+	SUNIT_sid.ResetClocks(true, true, true);
+
 	if (SUNIT_sid.IsPitchSlave) {
 
 		// is slave relationship
@@ -65,6 +67,8 @@ void SignalMacroControl::Run(byte s_id, byte cc_id, byte b2, byte b3, byte b4, S
 	switch (cc_id) {
 
 	case 1:
+
+		SUNIT_sid.ResetClocks(true, true, true);
 
 		// applying mode byte
 		SUNIT_sid.pwmContinualMode = (bitRead(b2, 0) == 1);

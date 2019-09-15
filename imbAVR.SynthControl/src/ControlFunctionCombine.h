@@ -8,6 +8,9 @@
 #endif
 
 #include "MonitoredArray.h"
+#include "SynthState.h"
+
+#include "MathTool.h"
 
 #define MODSOURCES 8
 
@@ -33,9 +36,9 @@ public:
 };
 
 template<byte ccModSource, byte ccModAmount, byte ccValue>
-inline byte ControlFunctionCombine<ccModSource, ccModAmount, ccValue>::Compute(MDFValuesType MDFValues)
+byte ControlFunctionCombine<ccModSource, ccModAmount, ccValue>::Compute(MDFValuesType MDFValues)
 {
-	floar r = MathTool::GetRatio(ModAmount, 127, 0, 0);
+	float r = MathTool::GetRatio(ModAmount, 127, 0, 0);
 
 	byte modValue = MDFValues.Data[ModSourceID];
 
@@ -44,7 +47,7 @@ inline byte ControlFunctionCombine<ccModSource, ccModAmount, ccValue>::Compute(M
 }
 
 template<byte ccModSource, byte ccModAmount, byte ccValue>
-inline void ControlFunctionCombine<ccModSource, ccModAmount, ccValue>::Update(CCValuesType* CCValues)
+void ControlFunctionCombine<ccModSource, ccModAmount, ccValue>::Update(CCValuesType* CCValues)
 {
 	ModSourceID = BYTE2MODSOURCE(CCValues->Data[ccModSource]); // / (127 / MODSOURCES);
 	ModAmount = CCValues->Data[ccModAmount];
