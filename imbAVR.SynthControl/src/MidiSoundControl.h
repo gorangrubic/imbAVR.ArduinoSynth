@@ -153,11 +153,6 @@ typedef struct
 
 
 
-#define signalA_SID 4
-#define signalB_SID 3
-#define signalFLT_SID 2
-#define perkA_SID 0
-#define perkB_SID 1
 
 #include "ControlFunctionADSR.h"
 #include "ControlFunction2PEnv.h"
@@ -171,6 +166,11 @@ typedef struct
 
 #include "spiLinkBuffer.h"
 #include "SignalMacroInstruction.h"
+
+#include "InstructionFunction.h"
+#include "InstructionConstructor.h"
+#include "CSFunctionStereoPan.h"
+
 
 //
 //class MidiSoundControlBase {
@@ -235,6 +235,7 @@ typedef struct
 
 #include "MonitoredArray.h"
 
+
 #define CCVALUESMDF(p, v1, v2, v3) CCValues->SetValue(p##_ModSrc, v1, p##_ModAmt, v2, p##_Val, v3)
 
 class MidiSoundControlClass : public MidiSoundControlClassBase
@@ -244,32 +245,116 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 
  public:
 
-	// MonitoredArray<8> presets[8];
+	 /*
+	* Modulation source functions:
+	* ADSR A	- Attack, Decay, Sustain, Release ENV function
+	* ADSR B	- Attack, Decay, Sustain, Release ENV function
+	* Chaos	- Random function, with time (target position change) and spread (range for target positions) parameters
+	* ENV A	- Two point (A and B; time and value) linear interpolation, looped
+	* ENV B	- Two point (A and B; time and value) linear interpolation, looped
+	* LFO A	- One point (cycle time and peak value) linear interpolation, looped
+	* LFO B	- One point (cycle time and peak value) linear interpolation, looped
+	*/
+
+	 ControlFunctionADSR<CC_AmpAttack, CC_AmpDecayTime, CC_AmpRelease, CC_AmpInitLevel, CC_AmpSustainLevel> CF_ADSR_A;
+	 ControlFunctionADSR<CC_FLTAttack, CC_FLTDecayTime, CC_FLTRelease, CC_FLTInitLevel, CC_FLTSustainLevel> CF_ADSR_B;
+	 ControlFunctionChaos<CC_ChaosTime, CC_ChaosSpread, CC_ChaosTimeFactor> CF_Chaos;
+	 ControlFunction2PEnv<CC_ENVA_ATime, CC_ENVA_BTime, CC_ENVA_ALevel, CC_ENVA_BLevel> CF_ENV_A;
+	 ControlFunction2PEnv<CC_ENVB_ATime, CC_ENVB_BTime, CC_ENVB_ALevel, CC_ENVB_BLevel> CF_ENV_B;
+	 ControlFunctionLFO<CC_LFOATime, CC_LFOATimeFactor, CC_LFOAValue> CF_LFO_A;
+	 ControlFunctionLFO<CC_LFOBTime, CC_LFOBTimeFactor, CC_LFOBValue> CF_LFO_B;
+
+	 /*
+	 * Modulation target functions:
+	 * *_ModSrc		-- assigns modulation source
+	 * *_ModAmt		-- controls in what proportion the modulation function affects the controled value
+	 * *_Val		-- direct value control (applied in complement proportion to *_ModAmt)
+	 */
+
+	 /*
+	 * CF_FLT_Cutoff	- Controls cut-off frequency at main low-pass filter circuit
+	 * CF_FLT_Dist		- Controls distortion dry/wet mix for the main sound component
+	 * CF_FLT_Res		- Controls resonance amount (i.e. Q factor) at main low-pass filer circuit
+	 * CF_FLT_Freq		- Controls resonant frequency at main low-pass filter circuit
+	 */
+
+	 ControlFunctionCombine<CC_FLT_CutOff_ModSrc, CC_FLT_CutOff_ModAmt, CC_FLT_CutOff_Val> CF_FLT_CutOff;
+	 ControlFunctionCombine<CC_FLT_Dist_ModSrc, CC_FLT_Dist_ModAmt, CC_FLT_Dist_Val> CF_FLT_Dist;
+	 ControlFunctionCombine<CC_FLT_Res_ModSrc, CC_FLT_Res_ModAmt, CC_FLT_Res_Val> CF_FLT_Res;
+	 ControlFunctionCombine<CC_FLT_Freq_ModSrc, CC_FLT_Freq_ModAmt, CC_FLT_Freq_Val> CF_FLT_Freq;
+
+	 /*
+	 * CF_PERKA_Amp		- Controls volume (amplitude modulation) for PERK A square oscilator
+	 * CF_PERKB_Amp		- Controls volume (amplitude modulation) for PERK B square oscilator
+	 */
+	 ControlFunctionCombine<CC_PERKA_Amp_ModSrc, CC_PERKA_Amp_ModAmt, CC_PERKA_Amp_Val> CF_PERKA_Amp;
+	 ControlFunctionCombine<CC_PERKB_Amp_ModSrc, CC_PERKB_Amp_ModAmt, CC_PERKB_Amp_Val> CF_PERKB_Amp;
+
+
+	 ControlFunctionCombine<CC_PERKA_Pan_ModSrc, CC_PERKA_Pan_ModAmt, CC_PERKA_Pan_Val> CF_PERKA_Pan;
+	 ControlFunctionCombine<CC_PERKB_Pan_ModSrc, CC_PERKB_Pan_ModAmt, CC_PERKB_Pan_Val> CF_PERKB_Pan;
+
+
+	 /*
+	* CF_WFB_Shaper		- Controls waveform B shaper
+	* CF_WFA_Shaper		- Controls waveform A shaper
+	*/
+	 ControlFunctionCombine<CC_WaveformB_Shaper_ModSrc, CC_WaveformB_Shaper_ModAmt, CC_WaveformB_Shaper_Val> CF_WFB_Shaper;
+	 ControlFunctionCombine<CC_WaveformA_Shaper_ModSrc, CC_WaveformA_Shaper_ModAmt, CC_WaveformA_Shaper_Val> CF_WFA_Shaper;
+	
+
+	 /*
+	 * CF_MAINCOMPONENT_Pan	- Controls stereo position (L/R pan) for the main component (mix of waveform A and B)
+	 */
+	 ControlFunctionCombine<CC_MASTER_Pan_ModSrc, CC_MASTER_Pan_ModAmt, CC_MASTER_Pan_Val> CF_MASTER_Pan;
+
+	 
+	 CSFunctionStereoPan<CS_MASTER_L_AMP, CS_MASTER_R_AMP, 100> CSF_Master_Pan;
+	 CSFunctionStereoPan<CS_PERKA_L_AMP, CS_PERKA_R_AMP, 100> CSF_PERKA_Pan;
+	 CSFunctionStereoPan<CS_PERKB_L_AMP, CS_PERKB_R_AMP, 100> CSF_PERKB_Pan;
+
+
+	 InstructionFunction<SID_WaveformA, CID_Live, CS_WAVEFORMA_MODBYTE, CS_WAVEFORMA_PWM, CS_WAVEFORMA_PHASE> IC_WFA_Live;
+	 InstructionFunction<SID_WaveformB, CID_Live, CS_WAVEFORMB_MODBYTE, CS_WAVEFORMB_PWM, CS_WAVEFORMB_PHASE> IC_WFB_Live;
+
+	 InstructionFunction<SID_PerkA, CID_Live, CS_PERKA_MODBYTE, CS_PERKA_PWM, CS_PERKA_PHASE> IC_PERKA_Live;
+	 InstructionFunction<SID_PerkB, CID_Live, CS_PERKB_MODBYTE, CS_PERKB_PWM, CS_PERKB_PHASE> IC_PERKB_Live;
+
+	 InstructionConstructor<SID_Master, CID_NoteControl> IC_MASTER_NoteControl;
+
+	 InstructionConstructorPreset<SID_FLT_Freq> ICP_FLT_Freq;
+	 InstructionConstructorPreset<SID_WaveformA> ICP_WFA;
+	 InstructionConstructorPreset<SID_WaveformB> ICP_WFB;
+	 InstructionConstructorPreset<SID_PerkA> ICP_PERKA;
+	 InstructionConstructorPreset<SID_PerkB> ICP_PERKB;
+
+
+	 /// <summary>
+	 /// Adds the instruction to linkBuffer -- if its not empty instruction
+	 /// </summary>
+	 /// <param name="instruction">The instruction.</param>
+	 void AddInstructionToBuffer(SignalMacroInstruction instruction);
+
+	 
+	 /// <summary>
+	 /// Current Operation Mode  identifier
+	 /// </summary>
+	 byte opm_current_id = 0;
 
 	 SynthState State;
 
-	 //spiLinkBuffer<SignalMacroInstruction> 
-
-	 SignalInstruction signalA_instruction;
-	 SignalInstruction signalB_instruction;
-
-	 SignalInstruction signalFLT_instruction;
-
-	 SignalInstruction perkA_instruction;
-	 SignalInstruction perkB_instruction;
-
-
-
-
+	 spiLinkBuffer<SignalMacroInstruction, 20> linkBuffer;
 
 	 unsigned long NoteOnTime;
 
 	 unsigned long NoteOffTime=0;
 
-	 float tone_pitch = 0;
-	 bool tone_on = false;
+	// float tone_pitch = 0;
+	// bool tone_on = false;
 	 byte tone_velocity = 100;
 	
+	 void setOperationMode(byte presetID);
+
 	 void setPreset(byte presetID, CCValuesType * CCValues);
 
 	 void noteOn(byte channel, byte pitch, byte velocity);
@@ -292,35 +377,13 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 
 	 unsigned int DoTick();
 
-	 //ADSRUnitClass ADSR_Filter = ADSRUnitClass();
-	 //ADSRUnitClass ADSR_Amp = ADSRUnitClass();
-	 //
-	 //ADSRFunction ADSR_Amp = ADSRFunction();
-	 //ADSRFunction ADSR_Filter = ADSRFunction();
-
-	 //TwoPointENV ENV_PerkAmp = TwoPointENV();
-	 //TwoPointENV ENV_PerkPitch = TwoPointENV();
-
-	 //
 
 	 unsigned int time_factor = 2;
 	 byte gate_margin = 5;
 
-	// byte out_amp_value = 0;
-	// byte out_flt_value = 64;
-	// byte out_flt_gain = 0;
-	 
-
-	// byte out_waveform_b_flt = 0;
-	// byte out_waveform_a_shaper = 0;
-
-	// byte out_waveform_mix = 0;
-
 
 	 byte channel_id = 0;
 
-
-	void init();
 };
 
 // extern MidiSoundControlClass MidiSoundControl;

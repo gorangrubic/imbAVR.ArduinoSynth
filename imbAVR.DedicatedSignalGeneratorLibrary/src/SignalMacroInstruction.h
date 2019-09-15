@@ -6,8 +6,12 @@
 #include "WProgram.h"
 #endif
 
+/// <summary>
+/// Instruction for SignalGenerator
+/// </summary>
 struct SignalMacroInstruction
 {
-	long data;
+	long data = 0;
+
 };
 

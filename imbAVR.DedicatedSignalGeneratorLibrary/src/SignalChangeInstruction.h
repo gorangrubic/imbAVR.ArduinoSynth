@@ -2,6 +2,11 @@
 
 #include "SignalMacroInstruction.h"
 
+#define SIGNALCHANGE_MODE_Continual 0
+#define SIGNALCHANGE_MODE_OneShot 0
+#define SIGNALCHANGE_MODE_Loop 0
+#define SIGNALCHANGE_MODE_Mirror 0
+
 class SignalChangeInstruction
 {
 	public:
@@ -18,7 +23,7 @@ class SignalChangeInstruction
 		/*
 		* 0 - continual / unlimited
 		* 1 - one-shot / limited
-		* 2 -  loop
+		* 2 - loop
 		* 3 - mirror / bounce
 		*/
 		byte mode;

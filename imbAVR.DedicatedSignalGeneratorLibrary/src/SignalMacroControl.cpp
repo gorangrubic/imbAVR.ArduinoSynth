@@ -40,6 +40,21 @@ void SignalMacroControl::Run(byte s_id, byte cc_id, byte b2, byte b3, byte b4, S
 	;
 }
 
+byte SignalMacroControl::MakeModeByte(bool IsPWMCycle, bool IsDoublePrescalar, bool IsSignalON, bool IsPitchSlave, bool IsPositiveRelation, bool IsRelativeDistance, bool IsPitchMidiNote)
+{
+	byte output = 0;
+
+	if (IsPWMCycle) bitSet(output, 0);
+	if (IsDoublePrescalar) bitSet(output, 1);
+	if (IsSignalON) bitSet(output, 2);
+	if (IsPitchSlave) bitSet(output, 3);
+	if (IsPositiveRelation) bitSet(output, 4);
+	if (IsRelativeDistance) bitSet(output, 5);
+	if (IsPitchMidiNote) bitSet(output, 6);
+
+	return output;
+}
+
 
 void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlManagerClass * manager)
 {

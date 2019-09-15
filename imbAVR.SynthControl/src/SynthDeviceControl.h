@@ -18,6 +18,8 @@
 #include "ampControlCluster.h"
 #include "digPotCluster.h"
 
+#include "spiSender.h"
+#include "SignalMacroInstruction.h"
 
 //#ifndef SOUND_OUT
 
@@ -139,9 +141,9 @@ class SynthDeviceControl
 {
 public:
 
+	spiSender<SignalMacroInstruction> SignalGeneratorLink;
 
-
-	SignalControlLink link;
+	//SignalControlLink link;
 	
 
 	LightChrono Engine_Chrono = LightChrono();
@@ -185,9 +187,9 @@ public:
 #endif // USE_DIGPOTCLUSTER
 
 
-	// vol1 --> master amp
-	// vol2 --> waveform mixer (A/B)
-	// vol3 --> empty
+	// vol1 --> PERKA L/R
+	// vol2 --> PERKB L/R
+	// vol3 --> MASTER L/R
 	ampControlCluster vol_cluster = ampControlCluster();
 
 	MidiSoundControlClass mainControl = MidiSoundControlClass();
@@ -205,6 +207,10 @@ public:
 #endif // SERIAL_ON
 
 	byte Data[MonitorMessageSize_Bytes];
+
+
+	
+
 
 	SynthDeviceControl();
 	~SynthDeviceControl();

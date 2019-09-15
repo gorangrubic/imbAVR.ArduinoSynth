@@ -93,7 +93,7 @@ void SynthDeviceControl::setup() {
 
 
 
-	link.setup(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX, SIGNAL_DEVICE_BAUDRATE);
+	//link.setup(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX, SIGNAL_DEVICE_BAUDRATE);
 
 	
 
@@ -209,92 +209,55 @@ void SynthDeviceControl::loop(midiEventPacket_t rx, SoftwareSerial * port) {
 
 	unsigned int cT = mainControl.DoTick();
 
-	float wf_mix_ratio = MathTool::GetRatio(mainControl.State.out_waveform_mix, 100, 1, 0);
 
-
-	float mc_pan_ratio = MathTool::GetRatio(mainControl.State.out_mainComponent_pan, 255, 1, 0);
-
-
-#ifdef USE_DIGPOTUNITS
-
-	dp_waveform_b_flt.Write(mainControl.State.out_waveform_b_flt);
-	dp_waveform_a_shaper.Write(mainControl.State.out_waveform_a_shaper);
-
-
-	dp_filter_gain.Write(mainControl.State.out_flt_gain);
-	dp_filter.Write(mainControl.State.out_flt_value);
-
-#endif // USE_DIGPOTUNITS
 
 #ifdef USE_DIGPOTCLUSTER
 
 	dp_cluster.Write(
-		mainControl.State.out_waveform_a_shaper,
-		mainControl.State.out_flt_value,
-		mainControl.State.out_waveform_b_flt,
-		mainControl.State.out_flt_gain,
+		mainControl.State.CSValues.Data[CS_WAVEFORMA_MOD],
+		mainControl.State.CSValues.Data[CS_FLT_CutOff],
+		mainControl.State.CSValues.Data[CS_WAVEFORMB_MOD],
+		mainControl.State.CSValues.Data[CS_FLT_Resonance],
 		127,
-		mainControl.State.out_mainComponent_gain,
-		mainControl.State.out_waveform_mix,
-		mainControl.State.out_distortion_mix
+		127,
+		127,	
+		mainControl.State.CSValues.Data[CS_WAVEFORMAB_MIX]
 	);
+
+	//dp_cluster.Write(
+	//	mainControl.State.out_waveform_a_shaper,
+	//	mainControl.State.out_flt_value,
+	//	mainControl.State.out_waveform_b_flt,
+	//	mainControl.State.out_flt_gain,
+	//	127,
+	//	mainControl.State.out_mainComponent_gain,
+	//	mainControl.State.out_waveform_mix,
+	//	mainControl.State.out_distortion_mix
+	//);
 
 #endif // USE_DIGPOTCLUSTER
 
 
 	vol_cluster.setVolume(
-
-		mainControl.State.out_perkA_amp,
-		mainControl.State.out_perkB_amp,
-
-		50 + (wf_mix_ratio * 50),
-		100 - (wf_mix_ratio * 50),
+		mainControl.State.CSValues.Data[CS_PERKA_L_AMP],
+		mainControl.State.CSValues.Data[CS_PERKA_R_AMP],
 		
-
-		
-		mainControl.State.out_amp_value,
-		mainControl.State.out_amp_value
+		mainControl.State.CSValues.Data[CS_PERKB_L_AMP],
+		mainControl.State.CSValues.Data[CS_PERKB_R_AMP],
+				
+		mainControl.State.CSValues.Data[CS_MASTER_L_AMP],
+		mainControl.State.CSValues.Data[CS_MASTER_R_AMP]
 	);
 
 
-	
-	//port->flush();
 
+	// ----------- sending all scheduled instructions to signal generator
+	while (mainControl.linkBuffer.GetIndex() > 0) {
 
-
-	if (mainControl.tone_on) {
-
-
-		link.sendInstruction(port, mainControl.signalA_instruction);
-
-		link.sendInstruction(port, mainControl.signalB_instruction);
-
-		link.sendInstruction(port, mainControl.signalFLT_instruction);
-
-		link.sendInstruction(port, mainControl.perkA_instruction);
-
-		link.sendInstruction(port, mainControl.perkB_instruction);
-		
-		/*
-		link.instruction = mainControl.signalB_instruction;
-		link.sendInstruction();
-
-		link.instruction = mainControl.signalFLT_instruction;
-		link.sendInstruction();
-
-		link.instruction = mainControl.perkA_instruction;
-		link.sendInstruction();
-
-		link.instruction = mainControl.perkB_instruction;
-		link.sendInstruction();
-		*/
-		//tone(SOUND_OUT, mainControl.tone_pitch);
+		SignalGeneratorLink.Send(mainControl.linkBuffer.GetLast());
 	}
-	else {
-		//noTone(SOUND_OUT);
 
 
-	}
 
 
 	if (Engine_Chrono.hasPassed(Engine_Tick)) {

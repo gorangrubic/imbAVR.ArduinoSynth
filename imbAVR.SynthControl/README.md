@@ -16,5 +16,31 @@ Controls 3 stereo electronic-volume chips (FM62429) using digital 4 pins in tota
 ## ADSR
 Resource effitient class for Attack-Decay-Sustain-Release ENV function computation.
 
-## MathTool
-Computation functions used for ADSR and other ENV functions
+
+# Notes on the synth control operation
+
+## Prefixes at **MidiConfig.h** 
+
+### SynthState computation variables 
+
+#### CS - Control Synth
+Identifiers for synth control variables (State.CSValues array) that are applied to external hardware components (SignalGenerator MCU, digital potentiometers, electronic volume control chips). These values are product of MidiSoundControl.DoTick() method and internal control functions.
+
+
+#### MDF - Modification Functions
+Identifiers for computed values (State.MDFValues array) of time-based control functions, like: ADSR, LFO, ENV, Chaos. 
+	
+#### CC - Control Channel
+MIDI CC channels interpreted by the synth i.e. used in CS computations
+
+### Signal Generator 
+
+#### SID - Signal ID
+Identifiers of SignalControlUnits (i.e. waveform sources, oscilators) at SignalGenerator
+
+#### CID - Control ID
+
+
+
+
+

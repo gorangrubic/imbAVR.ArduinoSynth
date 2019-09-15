@@ -121,3 +121,27 @@ byte MathTool::GetCCValueForWaveform(byte pwmPattern)
 
 	return w * 20;
 }
+
+byte MathTool::GetChannelVolumeForPan(byte ccPAN, bool IsRightChannel, byte maxVolume)
+{
+	
+	if (ccPAN > (127-PANROOFZONE) && ccPAN < (127 + PANROOFZONE)) {
+		return maxVolume;
+	}
+
+	if (ccPAN > 126) {
+		if (IsRightChannel) return maxVolume;
+		return GetRatio(ccPAN - 127, 127) * maxVolume;
+	}
+	else {
+		if (!IsRightChannel) return maxVolume;
+		return GetRatio(127-ccPAN, 127) * maxVolume;
+	}
+
+}
+
+byte MathTool::ScaleByte(byte ccValue, byte ccMaxValue, byte maxValue)
+{
+	return GetRatio(ccValue, ccMaxValue) * maxValue;
+}
+

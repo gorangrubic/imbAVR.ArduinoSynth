@@ -120,7 +120,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InstructionConstructorPreset.h" />
     <ClInclude Include="__vm\.imbAVR.BassZeroProMicro.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InstructionConstructorPreset.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

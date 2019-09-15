@@ -4,6 +4,8 @@
 
 //#define SOUND_OUT 6
 
+#include "InstructionConstructorPreset.h"
+#include "InstructionFunction.h"
 #include "SignalInstructionByte.h"
 #define _USE_DIGPOTUNITS // remove _ to turn on the option
 
@@ -127,7 +129,7 @@ void loop() {
 
 	if (Engine_Chrono.hasPassed(EngineTICK)) {
 
-		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalA_instruction, 0));
+		/*Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalA_instruction, 0));
 		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalB_instruction, 1));
 		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalFLT_instruction, 2));
 		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.perkA_instruction, 3));
@@ -138,7 +140,7 @@ void loop() {
 		synthDevice.mainControl.signalFLT_instruction.clearCache();
 		synthDevice.mainControl.perkA_instruction.clearCache();
 		synthDevice.mainControl.perkB_instruction.clearCache();
-		
+		*/
 
 		Engine_Chrono.restart();
 	}

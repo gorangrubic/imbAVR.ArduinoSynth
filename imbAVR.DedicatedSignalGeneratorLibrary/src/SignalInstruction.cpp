@@ -104,7 +104,7 @@ void SignalChangeInstruction::SetOptions(byte options)
 
 byte SignalChangeInstruction::GetOptions()
 {
-	byte options = mode << 66;
+	byte options = mode << 6;
 	options |= period;
 
 	return options;
