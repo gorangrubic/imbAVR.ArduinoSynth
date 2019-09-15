@@ -16,17 +16,29 @@ class InstructionConstructorPreset
 {
 public:
 
-	SignalMacroInstruction CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode);
+	
+
+	SignalMacroInstruction CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode, byte sid_override=255);
 
 	SignalMacroInstruction CreateModeInstruction(bool IsPWMCycle, bool IsDoublePrescalar, bool IsSignalON, bool IsPitchSlave, bool IsPositiveRelation, bool IsRelativeDistance, bool IsPitchMidiNote, unsigned int Pitch, byte sid_override=255);
 };
 
 template<byte SID>
-inline SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode)
+inline SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeInstruction(byte cid, byte change, byte rate, byte period, byte mode, byte sid_override)
 {
 	SignalMacroInstruction output;
 
-	byte b1 = (SID << 4) | (change);
+	//byte b1 = (SID << 4) | (change);
+
+	byte b1 = 0;
+
+	if (sid_override != 255) {
+		b1 = (sid_override << 4) | (cid);
+	}
+	else {
+		b1 = (SID << 4) | (cid);
+	}
+
 	byte options = mode << 6;
 	options |= period;
 

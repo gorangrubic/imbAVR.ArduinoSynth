@@ -70,30 +70,13 @@ void ledToggle() {
 void receive(int numBytes) {}
 
 
-spiReceiver<SignalChangeInstruction, 10> DataReceiver;
+spiReceiver<SignalChangeInstruction, 30> DataReceiver;
 
 void setup() {
 
 	DataReceiver.setup(B00000011);
 
-	
 
-	//pinMode(LED, OUTPUT);
-	
-	//link.setup(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX, SIGNAL_DEVICE_BAUDRATE);
-	
-	//link.setupSlave(I2C_SLAVE_ADDRESS);
-	//define handler function on receiving data
-	//Wire.onReceive(receive);
-
-
-	//SoftSerial.listen();
-	
-
-	//link.serialOut = &Serial;
-	//link.SerialReport = false;
-
-	//ledBeep(10);
 
 	// for mini
 	//SignalControlManager.CycleCompensation = 238.75;
@@ -107,26 +90,13 @@ void setup() {
 
 	SignalControlManager.CycleCompensation = 31; // 62 / 2;
 
-	SignalControlManager.AddSignalUnit(2); // S0
-	SignalControlManager.AddSignalUnit(3); // S1
-	SignalControlManager.AddSignalUnit(4); // S2
-	SignalControlManager.AddSignalUnit(5); // S3
-	SignalControlManager.AddSignalUnit(6); // S4
-	SignalControlManager.AddSignalUnit(7); // S5
-
-	//SignalControlManager.AddSignalUnit(8); // S6
-	//SignalControlManager.AddSignalUnit(9); // S7
-
-
-	SignalInstruction demoInstruction = SignalInstruction();
-
-	demoInstruction.Set(0, 110, B11110000, 0, true, true, true, true);
-	SignalControlManager.Perform(demoInstruction);
-
-
-	demoInstruction.Set(1, 220, B11110000, 0, true, true, true, true);
-	SignalControlManager.Perform(demoInstruction);
-
+	SignalControlManager.AddSignalUnit(2); // S0 -- PERKA
+	SignalControlManager.AddSignalUnit(3); // S1 -- PERKB
+	SignalControlManager.AddSignalUnit(4); // S2 -- FLT_RES
+	SignalControlManager.AddSignalUnit(5); // S3 -- FLT_RESB
+	SignalControlManager.AddSignalUnit(6); // S4 -- WFA
+	SignalControlManager.AddSignalUnit(7); // S5 -- WFB
+	
 
 	//TCCR2B = (TCCR2B & B11111000) | 0x03; // setting divisor at timer2 to 16
 
@@ -140,9 +110,6 @@ void setup() {
 	//Serial.println("Starting");
 	
 }
-
-
-
 
 
 ISR(TIMER2_OVF_vect) {

@@ -19,10 +19,10 @@
   </ItemGroup>
   <ItemGroup>
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)imbAVR.SynthControl.h" /> -->
-    <ClInclude Include="$(MSBuildThisFileDirectory)CSFunctionStereoPan.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)InstructionConstructor.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)InstructionFunction.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)InstructionFunctionChange.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionFunction.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionFunctionChange.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ControlFunction2PEnv.h" />
@@ -43,10 +43,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthDeviceControl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)CSFunctionStereoPan.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)InstructionConstructor.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)InstructionFunction.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)InstructionFunctionChange.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionFunction.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionFunctionChange.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunctionCombine.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\ControlFunction2PEnv.cpp" />

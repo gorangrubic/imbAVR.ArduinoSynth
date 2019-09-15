@@ -59,16 +59,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)InstructionFunctionChange.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionFunctionChange.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)CSFunctionStereoPan.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)InstructionFunction.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionFunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)InstructionConstructor.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -136,16 +136,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MidiSoundControlClassBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)InstructionFunctionChange.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionFunctionChange.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)CSFunctionStereoPan.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)InstructionFunction.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)InstructionConstructor.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\InstructionConstructor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

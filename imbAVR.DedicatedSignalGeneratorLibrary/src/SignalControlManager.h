@@ -48,13 +48,6 @@ class SignalControlManagerClass
 
  public:
 
-	 byte CurrentSID = 0;
-
-	 byte CurrentCC = 0;
-
-	 byte TempByte = 0;
-
-	 bool ExpectingValueByte = false;
 
 	 float CycleCompensation = 490.0;
 
@@ -71,11 +64,11 @@ class SignalControlManagerClass
 
 	 static byte DoublePitchInPattern(byte pattern);
 
-	 static String Describe(SignalInstruction instruction, unsigned int index);
+	 //static String Describe(SignalInstruction instruction, unsigned int index);
 
 	 void Receive(byte receivedByte);
 
-	 void SetCC(byte cc, byte value, SignalControlUnitClass * signal);
+	 //void SetCC(byte cc, byte value, SignalControlUnitClass * signal);
 
 	// static void Describe(HardwareSerial * serialOut, SignalInstruction instruction);
 
@@ -89,7 +82,7 @@ class SignalControlManagerClass
 
 	 void PerformPitch(unsigned int Pitch, SignalControlUnitClass * signal);
 
-	 void Perform(SignalInstruction instruction);
+	// void Perform(SignalInstruction instruction);
 
 	 void loop();
 

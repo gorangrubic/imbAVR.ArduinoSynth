@@ -12,40 +12,43 @@ void MidiSoundControlClass::AddInstructionToBuffer(SignalMacroInstruction instru
 }
 
 
-void MidiSoundControlClass::setOperationMode(byte opm_id)
+void MidiSoundControlClass::setOperationMode(byte opm_id, CCValuesType * CCValues)
 {
+	AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+	
 
 	switch (opm_id) {
 
 	case OPM_BassLine:
-		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
+		
 		break;
 	case OPM_KickDrum:
-		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
 		break;
 	case OPM_LeadSynth:
-		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
+		CCValues->SetValue(CC_MASTER_Pan_ModSrc, MODSOURCE2BYTE(MDF_LFO_A), CC_FLT_CutOff_ModSrc, MODSOURCE2BYTE(MDF_LFO_B), CC_FLT_Dist_ModSrc, MODSOURCE2BYTE(MDF_VEL));
 		break;
 	case OPM_ShortFX:
-		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
 		break;
 	case OPM_LongFX:
-		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
 		break;
 	case OPM_Keys:
-		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
 		break;
 	case OPM_FatSynth:
+		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(true, true, false, true, false, true, false, 12));
 		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		AddInstructionToBuffer(ICP_PERKB.CreateModeInstruction(true, true, false, true, true, true, false, 0));
+		AddInstructionToBuffer(ICP_WFB.CreateModeInstruction(true, true, false, true, true, true, false, 0));
 		break;
 	case OPM_Uplifters:
 		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
 		AddInstructionToBuffer(ICP_PERKA.CreateModeInstruction(true, false, false, true, true, false, false, 1200));
 		AddInstructionToBuffer(ICP_PERKB.CreateModeInstruction(true, false, false, true, true, false, false, 800));
-
-		AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, 255, 10, 64, SIGNALCHANGE_MODE_Continual));
-		AddInstructionToBuffer(ICP_PERKB.CreateChangeInstruction(CID_Pitch, 160, 10, 64, SIGNALCHANGE_MODE_Continual));
-
 
 		break;
 	case OPM_Downlifters:
@@ -53,8 +56,11 @@ void MidiSoundControlClass::setOperationMode(byte opm_id)
 		break;
 	case OPM_ChaosFX:
 		AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
+		CCValues->SetValue(CC_MASTER_Pan_ModSrc, MODSOURCE2BYTE(MDF_Chaos), CC_PERKA_Pan_ModSrc, MODSOURCE2BYTE(MDF_LFO_A), CC_PERKB_Pan_ModSrc, MODSOURCE2BYTE(MDF_LFO_B));
 		break;
 	}
+
+	opm_current_id = opm_id;
 }
 
 void MidiSoundControlClass::setPreset(byte presetID, CCValuesType * CCValues)
@@ -195,7 +201,7 @@ unsigned int MidiSoundControlClass::DoTick() {
 
 	// Computing time position of the current note
 	bool IsReleaseStage = NoteOnTime < NoteOffTime;
-	
+
 	/* Current global time position, consumed by LFO's */
 	unsigned int cTglobal = millis(); // <--- uint16 overflow can cause LFO values to jump every ~60 seconds, overflow compensation is included in Compute function
 
@@ -203,7 +209,7 @@ unsigned int MidiSoundControlClass::DoTick() {
 	unsigned int cT = 0;
 	/* Current time position since NoteOn */
 	unsigned int cTall = millis() - NoteOnTime;
-	
+
 	if (IsReleaseStage) {
 		cT = millis() - NoteOffTime;
 	}
@@ -214,8 +220,8 @@ unsigned int MidiSoundControlClass::DoTick() {
 	// Computing values of modulation sources
 	State.MDFValues.SetValue(MDF_ADSR_A, CF_ADSR_A.Compute(cT, IsReleaseStage));
 	State.MDFValues.SetValue(MDF_ADSR_B, CF_ADSR_B.Compute(cT, IsReleaseStage));
-	State.MDFValues.SetValue(MDF_Chaos,	CF_Chaos.Compute(cTall));
-	State.MDFValues.SetValue(MDF_ENV_A,	CF_ENV_A.Compute(cTall));
+	State.MDFValues.SetValue(MDF_Chaos, CF_Chaos.Compute(cTall));
+	State.MDFValues.SetValue(MDF_ENV_A, CF_ENV_A.Compute(cTall));
 	State.MDFValues.SetValue(MDF_ENV_B, CF_ENV_B.Compute(cTall));
 	State.MDFValues.SetValue(MDF_LFO_A, CF_LFO_A.Compute(cTglobal));
 	State.MDFValues.SetValue(MDF_LFO_B, CF_LFO_B.Compute(cTglobal));
@@ -225,7 +231,7 @@ unsigned int MidiSoundControlClass::DoTick() {
 #pragma endregion Modulation_sources
 
 
-	// Updating settings of other control functions
+	// Updating settings for modification target control functions
 	CF_FLT_CutOff.Update(&State.CCValues);
 	CF_FLT_Dist.Update(&State.CCValues);
 	CF_FLT_Res.Update(&State.CCValues);
@@ -237,17 +243,17 @@ unsigned int MidiSoundControlClass::DoTick() {
 	CF_MASTER_Pan.Update(&State.CCValues);
 	CF_PERKA_Pan.Update(&State.CCValues);
 	CF_PERKB_Pan.Update(&State.CCValues);
-	
 
+	CF_OPM_MODA.Update(&State.CCValues);
+	CF_OPM_MODB.Update(&State.CCValues);
+
+
+	// Computation of electronic volume control CS variables
 	CSF_Master_Pan.Update(&State.CSValues, CF_MASTER_Pan.Compute(State.MDFValues), State.MDFValues.Data[MDF_ADSR_A]);
-
 	CSF_PERKA_Pan.Update(&State.CSValues, CF_PERKA_Pan.Compute(State.MDFValues), CF_PERKA_Amp.Compute(State.MDFValues));
 	CSF_PERKB_Pan.Update(&State.CSValues, CF_PERKB_Pan.Compute(State.MDFValues), CF_PERKB_Amp.Compute(State.MDFValues));
 
-
-
 	// Computing values of combined functions
-
 	State.CSValues.SetValue(CS_DIST_Mix, CF_FLT_Dist.Compute(State.MDFValues) * 2);
 	State.CSValues.SetValue(CS_FLT_CutOff, CF_FLT_CutOff.Compute(State.MDFValues) * 2);
 	State.CSValues.SetValue(CS_FLT_Resonance, CF_FLT_Res.Compute(State.MDFValues) * 2);
@@ -256,9 +262,18 @@ unsigned int MidiSoundControlClass::DoTick() {
 	State.CSValues.SetValue(CS_WAVEFORMA_MOD, CF_WFA_Shaper.Compute(State.MDFValues) * 2);
 	State.CSValues.SetValue(CS_WAVEFORMB_MOD, CF_WFB_Shaper.Compute(State.MDFValues) * 2);
 
-	// Appling direct (non-modulated) values
+	State.CSValues.SetValue(CS_OPM_MODA, CF_OPM_MODA.Compute(State.MDFValues) * 2);
+	State.CSValues.SetValue(CS_OPM_MODB, CF_OPM_MODB.Compute(State.MDFValues) * 2);
 
+
+	// Direct CC->CS transfers
 	State.CSValues.SetValue(CS_WAVEFORMAB_MIX, State.CCValues.Data[CC_WaveformMix] * 2);
+
+	State.CSValues.SetValue(CS_OPM_VALA, State.CCValues.Data[CC_OPM_VAL_A] * 2);
+	State.CSValues.SetValue(CS_OPM_VALB, State.CCValues.Data[CC_OPM_VAL_B] * 2);
+	State.CSValues.SetValue(CS_OPM_VALC, State.CCValues.Data[CC_OPM_VAL_C] * 2);
+
+
 	State.CSValues.SetValue(CS_WAVEFORMA_PWM, State.CCValues.Data[CC_WaveformA_PWM] * 2);
 	State.CSValues.SetValue(CS_WAVEFORMB_PWM, State.CCValues.Data[CC_WaveformB_PWM] * 2);
 	State.CSValues.SetValue(CS_PERKA_PWM, State.CCValues.Data[CC_PERKA_PWM] * 2);
@@ -269,7 +284,7 @@ unsigned int MidiSoundControlClass::DoTick() {
 
 	State.CSValues.SetValue(CS_WAVEFORMA_PHASE, State.CCValues.Data[CC_WaveformA_Phase]);
 	State.CSValues.SetValue(CS_WAVEFORMB_PHASE, State.CCValues.Data[CC_WaveformB_Phase]);
-	
+
 
 	// ------------ prepering PWM instructions
 	AddInstructionToBuffer(IC_WFA_Live.Update(&State.CSValues));
@@ -277,8 +292,95 @@ unsigned int MidiSoundControlClass::DoTick() {
 
 	AddInstructionToBuffer(IC_PERKA_Live.Update(&State.CSValues));
 	AddInstructionToBuffer(IC_PERKB_Live.Update(&State.CSValues));
-	
+
+	// ======================================== OPM Specific implementation of CS_OPM variables
+	switch (opm_current_id) {
+	case OPM_BassLine:
+		// -- no OPM mods
+		break;
+	case OPM_KickDrum:
+		if (State.CSValues.IsChanged(CS_OPM_VALA, CS_OPM_VALB, CS_OPM_VALC)) {
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch,
+				State.CSValues.Data[CS_OPM_VALA],
+				State.CSValues.Data[CS_OPM_VALB],
+				State.CSValues.Data[CS_OPM_VALC],
+				SIGNALCHANGE_MODE_OneShot, SID_Group1));
+		}
+		break;
+	case OPM_LeadSynth:
+		// --
+		break;
+	case OPM_ShortFX:
+		if (State.CSValues.IsChanged(CS_OPM_VALA, CS_OPM_MODA))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALA], 10, State.CSValues.Data[CS_OPM_MODA], SIGNALCHANGE_MODE_Loop, SID_Group1));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALB, CS_OPM_MODB))
+			AddInstructionToBuffer(ICP_WFA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALB], 10, State.CSValues.Data[CS_OPM_MODB], SIGNALCHANGE_MODE_Loop, SID_Group3));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALC))
+			AddInstructionToBuffer(ICP_WFA.CreateChangeInstruction(CID_PWM, State.CSValues.Data[CS_OPM_VALC], 20, 20, SIGNALCHANGE_MODE_Loop));
+
+		break;
+	case OPM_LongFX:
+		if (State.CSValues.IsChanged(CS_OPM_VALA, CS_OPM_MODA))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALA], 20, State.CSValues.Data[CS_OPM_MODA], SIGNALCHANGE_MODE_Mirror, SID_Group1));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALB, CS_OPM_MODB))
+			AddInstructionToBuffer(ICP_WFA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALB], 20, State.CSValues.Data[CS_OPM_MODB], SIGNALCHANGE_MODE_Mirror, SID_Group3));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALC))
+			AddInstructionToBuffer(ICP_WFA.CreateChangeInstruction(CID_PWM, State.CSValues.Data[CS_OPM_VALC], 20, 20, SIGNALCHANGE_MODE_Mirror));
+		break;
+	case OPM_Keys:
+
+		if (State.CSValues.IsChanged(CS_OPM_VALA))
+			AddInstructionToBuffer(ICP_WFB.CreateModeInstruction(true, false, false, true, true, true, false, MathTool::ScaleByte(State.CSValues.Data[CS_OPM_VALA], 127, 12)));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALB))
+			AddInstructionToBuffer(ICP_PERKA.CreateModeInstruction(true, false, false, true, true, true, false, MathTool::ScaleByte(State.CSValues.Data[CS_OPM_VALB], 127, 12), SID_Group1));
+
+		break;
+	case OPM_FatSynth:
+		if (State.CSValues.IsChanged(CS_OPM_VALA, CS_OPM_MODA))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_MODA], 20, State.CSValues.Data[CS_OPM_VALA], SIGNALCHANGE_MODE_Mirror, SID_Group1));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALB, CS_OPM_MODB))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_MODB], 20, State.CSValues.Data[CS_OPM_VALB], SIGNALCHANGE_MODE_Mirror, SID_Group3));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALC, CS_OPM_VALA))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Phase, State.CSValues.Data[CS_OPM_VALC], 20, State.CSValues.Data[CS_OPM_VALA], SIGNALCHANGE_MODE_Mirror, SID_Group3));
+		break;
+	case OPM_Uplifters:
+
+		if (State.CSValues.IsChanged(CS_OPM_VALA, CS_OPM_MODA))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALA], State.CSValues.Data[CS_OPM_MODA], 64, SIGNALCHANGE_MODE_Continual, SID_Group1));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALB, CS_OPM_MODB))
+			AddInstructionToBuffer(ICP_PERKA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALB], State.CSValues.Data[CS_OPM_MODB], 64, SIGNALCHANGE_MODE_Continual, SID_Group3));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALC))
+			AddInstructionToBuffer(ICP_FLT_Freq.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALC], 20, 64, SIGNALCHANGE_MODE_Continual));
+
+		// to do
+		break;
+	case OPM_Downlifters:
+		// to do
+		break;
+	case OPM_ChaosFX:
+		// to do
+		if (State.CSValues.IsChanged(CS_OPM_VALA, CS_OPM_MODA))
+			AddInstructionToBuffer(ICP_FLT_Freq.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALA], 10, State.CSValues.Data[CS_OPM_MODA], SIGNALCHANGE_MODE_Loop));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALB, CS_OPM_MODB))
+			AddInstructionToBuffer(ICP_WFA.CreateChangeInstruction(CID_Pitch, State.CSValues.Data[CS_OPM_VALB], 10, State.CSValues.Data[CS_OPM_MODB], SIGNALCHANGE_MODE_Loop, SID_Group3));
+
+		if (State.CSValues.IsChanged(CS_OPM_VALC))
+			AddInstructionToBuffer(ICP_WFA.CreateChangeInstruction(CID_PWM, State.CSValues.Data[CS_OPM_VALC], 20, 20, SIGNALCHANGE_MODE_Loop));
+
+		break;
+
+	}
+
 	return cT;
-	
-	
+
 }

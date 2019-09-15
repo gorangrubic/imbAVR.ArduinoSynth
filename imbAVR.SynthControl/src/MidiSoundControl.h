@@ -302,6 +302,10 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	 ControlFunctionCombine<CC_WaveformB_Shaper_ModSrc, CC_WaveformB_Shaper_ModAmt, CC_WaveformB_Shaper_Val> CF_WFB_Shaper;
 	 ControlFunctionCombine<CC_WaveformA_Shaper_ModSrc, CC_WaveformA_Shaper_ModAmt, CC_WaveformA_Shaper_Val> CF_WFA_Shaper;
 	
+	 /* Operation mode specific control functions */
+	 ControlFunctionCombine<CC_OPM_MODA_ModSrc, CC_OPM_MODA_ModAmt, CC_OPM_MODA_Val> CF_OPM_MODA;
+	 ControlFunctionCombine<CC_OPM_MODB_ModSrc, CC_OPM_MODB_ModAmt, CC_OPM_MODB_Val> CF_OPM_MODB;
+
 
 	 /*
 	 * CF_MAINCOMPONENT_Pan	- Controls stereo position (L/R pan) for the main component (mix of waveform A and B)
@@ -353,7 +357,8 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	// bool tone_on = false;
 	 byte tone_velocity = 100;
 	
-	 void setOperationMode(byte presetID);
+	 
+	 void setOperationMode(byte opm_id, CCValuesType * CCValues);
 
 	 void setPreset(byte presetID, CCValuesType * CCValues);
 

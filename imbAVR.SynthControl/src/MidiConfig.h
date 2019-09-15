@@ -183,6 +183,13 @@
 #define CS_PERKA_MODBYTE 23
 #define CS_PERKB_MODBYTE 24
 
+#define CS_OPM_MODA 25
+#define CS_OPM_MODB 26
+#define CS_OPM_VALA 27
+#define CS_OPM_VALB 28
+#define CS_OPM_VALC 29
+
+
 // ======================================== MDF 
 
 #define MDF_OFF 0
@@ -218,6 +225,7 @@
 #define CID_Phase 3
 #define CID_Pitch 4
 #define CID_Live 5
+
 
 
 // ======================================= Synth Operation Modes

@@ -16,10 +16,19 @@ public:
 
 
 	unsigned int freq = 110;
+	unsigned int delta_freq = 0;
 
+
+	bool IsPitchSlave = false;
+	bool IsPositiveRelation = true;
+	bool IsRelativeDistanceMode = true;
+
+	bool IsMidiNote = false;
 
 	// relationship with master pitch
 	byte masterPitchRelationship = 0;
+
+	byte modulationByte = 0;
 
 	SignalChangeInstruction PWMChange;
 	SignalChangeInstruction PhaseChange;

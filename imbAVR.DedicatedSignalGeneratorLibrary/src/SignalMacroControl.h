@@ -16,16 +16,17 @@ class SignalMacroControl
 {
 public:
 	
-	unsigned int master_pitch; 
-
-
-	byte master_modulation;
-
 	void Run(SignalMacroInstruction instruction, SignalControlManagerClass * manager);
 	
+	/// <summary>
+	/// Sets frequency of the s_id signal in respect to pitch slave settings
+	/// </summary>
+	/// <param name="s_id">The s identifier.</param>
+	/// <param name="freq">The freq.</param>
+	/// <param name="manager">The manager.</param>
+	void RunPitchRelation(byte s_id, unsigned int freq, SignalControlManagerClass * manager);
+
 	void Run(byte s_id, byte cc_id, byte b2, byte b3, byte b4, SignalControlManagerClass * manager);
-
-
 
 
 	/// <summary>
