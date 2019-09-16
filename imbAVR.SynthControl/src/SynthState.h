@@ -16,8 +16,8 @@
 
 
 typedef MonitoredArray<16> CCValuesType;
-typedef MonitoredArray< 2 > MDFValuesType;
-typedef MonitoredArray< 3 > CSValuesType;
+typedef MonitoredArray<2> MDFValuesType;
+typedef MonitoredArray<5> CSValuesType;
 
 
 struct SynthState {

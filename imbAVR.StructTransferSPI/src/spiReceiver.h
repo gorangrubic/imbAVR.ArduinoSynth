@@ -96,7 +96,7 @@ inline void spiReceiver<TData, ISize>::setup(byte _protocol)
 }
 
 template<typename TData, byte ISize>
-inline void spiReceiver<TData, ISize>::ClearInstanceBuffer()
+void spiReceiver<TData, ISize>::ClearInstanceBuffer()
 {
 	InstanceBufferIndex = 0;
 }
@@ -218,81 +218,7 @@ inline byte spiReceiver<TData, ISize>::loop()
 
 			DataBufferIndex = 0;
 
-			//result = B00000001;
-
-			////while (readTimes > 0) {
-
-			//byte controlByte = 0;
-			//byte controlSentByte = 0;
-
-			//for (size_t i = 0; i < sizeof(TData); i++)
-			//{
-			//	if ((protocol & B00000001) == B00000001) {
-			//		controlByte = controlByte + DataBuffer[i];
-			//	}
-
-			//	wrapper.bytes[i] = DataBuffer[i];
-			//}
-
-			//if ((protocol & B00000001) == B00000001) {
-			//	controlSentByte = DataBuffer[sizeof(TData)];
-
-			//	if (controlByte == controlSentByte) {
-			//		isOk = true;
-			//	}
-			//}
-			//else {
-			//	isOk = true;
-			//}
-
-			//if (isOk) {
-			//	result |= B00000011;
-			//}
-			//else {
-			//	result = B00000010;
-			//}
-
-			//if (!isOk) {
-
-			//	// if its not ok, reads the second copy
-			//	if ((protocol & B00000010) == B00000010) {
-
-			//		controlByte = 0;
-			//		unsigned int start = sizeof(TData) + 1;
-			//		//unsigned int end = start + sizeof(TData); // sizeof(TData) + 1;
-
-			//		for (size_t i = 0; i < sizeof(TData); i++)
-			//		{
-			//			byte b = DataBuffer[i + start];
-			//			if ((protocol & B00000001) == B00000001) {
-			//				controlByte = controlByte + b;
-			//			}
-
-			//			wrapper.bytes[i] = b;
-			//		}
-
-			//		controlSentByte = DataBuffer[start * 2];
-
-			//		isOk = (controlByte == controlSentByte);
-
-			//		if (isOk) {
-			//			result = B00001111;
-			//		}
-			//		else {
-			//			result = B00001010;
-			//		}
-			//	}
-
-			//}
-
-			//if (isOk) {
-			//	result |= B11110000;
-			//}
-
-
-			////	readTimes--;
-			////}
-
+			
 
 		}
 

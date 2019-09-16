@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.Common", "imbAVR.Com
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imbAVR.StructTransferSPI", "imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems", "{1FA523AC-3999-4CDF-B752-F5E4FDFEE3E2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommunicationsTestHost", "CommunicationsTestHost\CommunicationsTestHost.vcxproj", "{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{1fa523ac-3999-4cdf-b752-f5e4fdfee3e2}*SharedItemsImports = 9
@@ -33,6 +35,11 @@ Global
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{5365c4a9-ca1b-4217-b85c-495052bf3140}*SharedItemsImports = 4
+		imbAVR.Common\imbAVR.Common.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
+		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
+		imbAVR.LCDOnMega\imbAVR.LCDOnMega.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
+		imbAVR.StructTransferSPI\imbAVR.StructTransferSPI.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
+		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{7c6bcfcc-39a9-4b67-870a-0f35faa6bc38}*SharedItemsImports = 4
 		imbAVR.DedicatedSignalGeneratorLibrary\imbAVR.DedicatedSignalGeneratorLibrary.vcxitems*{87bd9f7b-779a-4062-b267-383884a5cebf}*SharedItemsImports = 9
 		imbAVR.SynthControl\imbAVR.SynthControl.vcxitems*{8c5a7585-b0be-4991-8d2f-bbec89d4f881}*SharedItemsImports = 9
 		imbAVR.Common\imbAVR.Common.vcxitems*{8c5fef79-7d8b-43e1-a03c-6c3e1ba45c07}*SharedItemsImports = 9
@@ -48,7 +55,6 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x64.ActiveCfg = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.ActiveCfg = Debug|Win32
-		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Debug|x86.Build.0 = Debug|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x64.ActiveCfg = Release|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.ActiveCfg = Release|Win32
 		{20331CB4-EACF-4393-B39F-D48F198AAB74}.Release|x86.Build.0 = Release|Win32
@@ -58,6 +64,12 @@ Global
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x64.ActiveCfg = Release|Win32
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x86.ActiveCfg = Release|Win32
 		{5365C4A9-CA1B-4217-B85C-495052BF3140}.Release|x86.Build.0 = Release|Win32
+		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Debug|x64.ActiveCfg = Debug|Win32
+		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Debug|x86.ActiveCfg = Debug|Win32
+		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Debug|x86.Build.0 = Debug|Win32
+		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Release|x64.ActiveCfg = Release|Win32
+		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Release|x86.ActiveCfg = Release|Win32
+		{7C6BCFCC-39A9-4B67-870A-0F35FAA6BC38}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

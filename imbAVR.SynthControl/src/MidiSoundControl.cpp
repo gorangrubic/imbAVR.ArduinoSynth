@@ -2,13 +2,27 @@
 #include "MidiSoundControl.h"
 
 
+#define ADDINSTRUCTION(instruction) if (instruction.cid == 0) { } else { linkBuffer.Add(instruction); }
 
 
 void MidiSoundControlClass::AddInstructionToBuffer(SignalMacroInstruction instruction)
 {
-	if (instruction.data > 0) {
+#ifdef SMI_UNPACKED_FORM
+	
+
+	if (instruction.cid == 0) {
+		
+	} else {
+		linkBuffer.Add(instruction);
+		//Serial.println(instruction.cid);
+	}
+#else
+	if (instruction.data != 0) {
 		linkBuffer.Add(instruction);
 	}
+#endif
+
+	
 }
 
 
@@ -20,17 +34,16 @@ void MidiSoundControlClass::setup()
 	CF_ADSR_A.TimeFactor = time_factor;
 	CF_ADSR_B.TimeFactor = time_factor;
 }
-
 void MidiSoundControlClass::setOperationMode(byte opm_id, CCValuesType * CCValues)
 {
 	AddInstructionToBuffer(ICP_WFA.CreateModeInstruction(true, false, false, true, true, false, false, 0, SID_Master));
-	
+
 
 	switch (opm_id) {
 
 	case OPM_BassLine:
 		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
-		
+
 		break;
 	case OPM_KickDrum:
 		AddInstructionToBuffer(ICP_FLT_Freq.CreateModeInstruction(false, false, true, false, false, false, false, 30));
@@ -86,7 +99,7 @@ void MidiSoundControlClass::setPreset(byte presetID, CCValuesType * CCValues)
 
 	CCValues->SetValue(CC_ENVA_BLevel, 127, CC_ENVA_ATime, 50, CC_ENVA_ALevel, 0, CC_ENVA_BTime, 100);
 	CCValues->SetValue(CC_ENVB_ALevel, 127, CC_ENVB_ATime, 50, CC_ENVB_BLevel, 0, CC_ENVB_BTime, 100);
-	
+
 	/* Setting direct controls*/
 	//CCValues->SetValue(CC_WaveformA_PWM, 127, CC_WaveformB_PWM, 127, CC_WaveformA_Shaper, 64, CC_WaveformB_Shaper, 64, CC_WaveformMix, 64);
 	CCValues->SetValue(CC_WAVEFORMA_PITCH, 63, CC_WAVEFORMB_PITCH, 63, CC_PERKA_PITCH, 127, CC_PERKB_PITCH, 127);

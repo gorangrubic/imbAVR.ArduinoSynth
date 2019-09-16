@@ -46,7 +46,7 @@ public:
 //}
 
 template<typename TData>
-inline void spiSender<TData>::setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay)
+void spiSender<TData>::setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay)
 {
 	pinSS = _pinSS;
 	protocol = _protocol;

@@ -19,6 +19,8 @@
 #include "spiReceiver.h"
 #include "MathTool.h"
 
+#include "SignalMacroInstruction.h"
+
 ACEMegaHostTFTClass Display;
 
 int pinSS = 53;
@@ -32,7 +34,7 @@ unsigned int MSG_LOST;
 int last_d = -1;
 
 
-spiReceiver<customMessage, 5> dataReceiver = spiReceiver<customMessage, 5>();
+spiReceiver<SignalMacroInstruction, 30> dataReceiver = spiReceiver<SignalMacroInstruction, 30>();
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -50,7 +52,7 @@ void setup() {
 	SPCR |= _BV(SPE);
 
 
-	dataReceiver.setup(B00000011);
+	dataReceiver.setup(B00000111);
 
 	// now turn on interrupts
 	SPI.attachInterrupt();
@@ -77,11 +79,33 @@ void log(String msg) {
 
 byte overflowTest = 0;
 
+// #define ISCOMTEST
+
+void log(SignalMacroInstruction instruction) {
+
+	byte b1 = instruction.data >> 24;
+	byte b2 = instruction.data >> 16;
+	byte b3 = instruction.data >> 8;
+	byte b4 = instruction.data;
+
+	byte s_id = (b1 & B11110000) >> 4;
+	byte cc_id = b1 & B00001111;
+	log("smi->" + String(s_id) + ":" + String(cc_id) + "|" + String(b2) + ":" + String(b3) + ":" + String(b4) + "[" + String(dataReceiver.InstanceBufferIndex) + "]");
+	//Serial.println("smi->" + String(s_id) + ":" + String(cc_id) + "|" + String(b2) + ":" + String(b3) + ":" + String(b4) + "[" + String(index) + "]");
+}
+
+#ifdef  ISCOMTEST
+
 void log(customMessage msg) {
 
 
 	//overflowTest += 50;
 	
+
+
+
+
+
 
 	bool correct = false;
 	
@@ -144,6 +168,8 @@ void log(customMessage msg) {
 
 	log(" Loss: " + String(MSG_LOST));
 }
+
+#endif
 
 ISR(SPI_STC_vect)
 {

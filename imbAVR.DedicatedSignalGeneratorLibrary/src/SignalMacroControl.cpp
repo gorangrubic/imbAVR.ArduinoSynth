@@ -135,7 +135,15 @@ byte SignalMacroControl::MakeModeByte(bool IsPWMCycle, bool IsDoublePrescalar, b
 
 void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlManagerClass * manager)
 {
+#ifdef SMI_UNPACKED_FORM
+	
+	byte b2 = instruction.b2;
+	byte b3 = instruction.b3;
+	byte b4 = instruction.b4;
 
+	byte s_id = instruction.sid;
+	byte cc_id = instruction.cid;
+#else
 	byte b1 = instruction.data >> 24;
 	byte b2 = instruction.data >> 16;
 	byte b3 = instruction.data >> 8;
@@ -143,6 +151,8 @@ void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlMa
 
 	byte s_id = b1 >> 4;
 	byte cc_id = b1 & B00001111;
+#endif
+
 
 	if (s_id == SID_Master) {
 

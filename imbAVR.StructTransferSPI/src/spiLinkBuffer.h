@@ -19,9 +19,11 @@ union spiLinkDataInstance {
 template<typename TData, byte ISize>
 class spiLinkBuffer {
 
-	byte bufferIndex = 0;
-public:
 	
+public:
+
+	byte bufferIndex = 0;
+
 	TData Data[ISize];
 
 	/// <summary>
@@ -35,7 +37,7 @@ public:
 	/// Clears the buffer
 	/// </summary>
 	void ClearAll();
-	
+
 	/// <summary>
 	/// Gets the last entry and removes it from buffer
 	/// </summary>
@@ -47,7 +49,7 @@ public:
 	/// Removes specified number of entries from beginning to <c>lefttrim</c>, copies data from <c>lefttrim</c> to buffer index to position 0, and sets buffer index to 0
 	/// </summary>
 	/// <param name="lefttrim">The lefttrim.</param>
-	void TrimBuffer(byte lefttrim);	
+	void TrimBuffer(byte lefttrim);
 
 	/// <summary>
 	/// Adds entry to buffer

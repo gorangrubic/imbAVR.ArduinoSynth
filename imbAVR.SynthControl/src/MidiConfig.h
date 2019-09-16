@@ -244,10 +244,10 @@
 #define SID_PerkA 0
 #define SID_PerkB 1
 
-#define SID_Group1 13
-#define SID_Group2 14
-#define SID_Group3 15
-#define SID_Master 16
+#define SID_Group1 12
+#define SID_Group2 13
+#define SID_Group3 14
+#define SID_Master 15
 
 
 // ===================================== ID of signal instruction CC 

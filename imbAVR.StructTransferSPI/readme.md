@@ -58,6 +58,8 @@ Lightweight library for sending structured data (structs) to another Arduino usi
 
 	void setup() {
 
+		pinMode(pinSS, OUTPUT);
+
 		digitalWrite(pinSS, HIGH);
 
 		SPI.begin();

@@ -353,7 +353,7 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 
 	 SynthState State;
 
-	 spiLinkBuffer<SignalMacroInstruction, 20> linkBuffer;
+	 spiLinkBuffer<SignalMacroInstruction, 30> linkBuffer;
 
 	 unsigned long NoteOnTime;
 
@@ -364,10 +364,16 @@ class MidiSoundControlClass : public MidiSoundControlClassBase
 	 byte tone_velocity = 100;
 	
 	 void setup();
-	 
+
 	 void setOperationMode(byte opm_id, CCValuesType * CCValues);
 
 	 void setPreset(byte presetID, CCValuesType * CCValues);
+
+	 
+	 
+	 
+
+	
 
 	 void noteOn(byte channel, byte pitch, byte velocity);
 

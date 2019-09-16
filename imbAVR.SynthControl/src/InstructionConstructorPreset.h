@@ -27,6 +27,25 @@ SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeInstructio
 {
 	SignalMacroInstruction output;
 
+
+#ifdef SMI_UNPACKED_FORM
+
+	if (sid_override != 255) {
+		output.sid = sid_override;
+	}
+	else {
+		output.sid = SID;
+	}
+
+	byte options = mode << 6;
+	options |= period;
+
+	output.cid = cid;
+	output.b2 = change;
+	output.b3 = rate;
+	output.b4 = options;
+
+#else
 	//byte b1 = (SID << 4) | (change);
 
 	byte b1 = 0;
@@ -49,6 +68,11 @@ SignalMacroInstruction InstructionConstructorPreset<SID>::CreateChangeInstructio
 	output.data = output.data << 8;
 	output.data += options;
 
+
+#endif //  UNPACKED_FORM
+
+	
+
 //	output.data = b12 << 16 | b34; //(b1 << 24) | change << 16 | rate << 8 | options;
 	return output;
 
@@ -70,20 +94,40 @@ SignalMacroInstruction InstructionConstructorPreset<SID>::CreateModeInstruction(
 
 	SignalMacroInstruction output;
 
-	byte b1 = 0;
-	
+#ifdef SMI_UNPACKED_FORM
 	if (sid_override != 255) {
-		b1 = (sid_override << 4) | (CID_NoteControl);
+		output.sid = sid_override;
 	}
 	else {
-		b1 = (SID << 4) | (CID_NoteControl);
+		output.sid = SID;
+	}
+
+
+	output.cid = CID_NoteControl;
+	output.b2 = modeByte;
+	output.b3 = highByte(Pitch);
+	output.b4 = lowByte(Pitch);
+#else
+	byte b1 = 0;
+
+	if (sid_override != 255) {
+		b1 = sid_override;
+		b1 = b1 << 4;
+		b1 = b1 + CID_NoteControl;
+	}
+	else {
+		b1 = SID;
+		b1 = b1 << 4;
+		b1 = b1 + CID_NoteControl;
 	}
 	output.data = 0;
-	output.data += b1;
+	output.data |= b1;
 	output.data = output.data << 8;
-	output.data += modeByte;
-	output.data = output.data << 8;
-	output.data += Pitch;
+	output.data |= modeByte;
+	output.data = output.data << 16;
+	output.data |= Pitch;
+
+#endif
 
 	//output.data = (b1 << 24) | modeByte << 16 | Pitch;
 	return output;

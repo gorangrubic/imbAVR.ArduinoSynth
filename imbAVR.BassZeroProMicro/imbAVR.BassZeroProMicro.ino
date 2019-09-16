@@ -35,34 +35,6 @@
 
 #define READ_MIDI_SERIAL_BAUDRATE 115200
 
-#define SIGNAL_DEVICE_SERIAL_RX 8
-#define SIGNAL_DEVICE_SERIAL_TX 9
-#define SIGNAL_DEVICE_BAUDRATE 38400
-
-#include "TwoPointENV.h"
-
-
-	//#include "ADSR.h"
-//#include "MathTool.h"
-
-//#include <Chrono.h>
-//#include <pitchToNote.h>
-//#include <pitchToFrequency.h>
-//
-//#include <frequencyToNote.h>
-//
-//#include "SoftwareSerial.h"
-//
-//#include <SPI.h>
-////#include "ADSRUnit.h"
-//#include "DigPotUnit.h"
-//#include "MidiSoundControl.h"
-//#include "MonitorMessage.h"
-//#include "ampControlCluster.h"
-//#include "digPotCluster.h"
-//#include <MIDIUSB_Defs.h>
-
-
 
 #define ENGINE_TIMEFACTOR 2
 
@@ -78,7 +50,6 @@
 #include <LightChrono.h>
 #include "SynthDeviceControl.h"
 
-SoftwareSerial SoftSerial(SIGNAL_DEVICE_SERIAL_RX, SIGNAL_DEVICE_SERIAL_TX);
 
 SynthDeviceControl synthDevice = SynthDeviceControl();
 
@@ -86,8 +57,9 @@ SynthDeviceControl synthDevice = SynthDeviceControl();
 void setup() {
 
 	synthDevice.setup();
-	Serial.begin(SIGNAL_DEVICE_BAUDRATE);
-	SoftSerial.begin(SIGNAL_DEVICE_BAUDRATE);
+	Serial.begin(SYNTHDIAG_DEVICE_BAUDRATE);
+	
+	//SoftSerial.begin(SIGNAL_DEVICE_BAUDRATE);
 	
 }
 
@@ -113,32 +85,9 @@ void loop() {
 		Serial.read();
 	}
 */
-	synthDevice.loop(rx, &SoftSerial);
+	synthDevice.loop(rx);
 
-	SoftSerial.flush();
-
-	if (Engine_Chrono.hasPassed(EngineTICK)) {
-
-		/*Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalA_instruction, 0));
-		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalB_instruction, 1));
-		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.signalFLT_instruction, 2));
-		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.perkA_instruction, 3));
-		Serial.println(SignalControlManagerClass::Describe(synthDevice.mainControl.perkB_instruction, 4));
-
-		synthDevice.mainControl.signalA_instruction.clearCache();
-		synthDevice.mainControl.signalB_instruction.clearCache();
-		synthDevice.mainControl.signalFLT_instruction.clearCache();
-		synthDevice.mainControl.perkA_instruction.clearCache();
-		synthDevice.mainControl.perkB_instruction.clearCache();
-		*/
-
-		Engine_Chrono.restart();
-	}
 	
-	
-
-
-
 
 #endif // READ_MIDI_USB
 

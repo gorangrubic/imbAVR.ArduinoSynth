@@ -158,19 +158,6 @@ public:
 
 
 
-#ifdef USE_DIGPOTUNITS
-
-	DigPotUnitClass dp_waveform_a_shaper = DigPotUnitClass(PIN_WAVEFORM_A_SHAPER);
-	DigPotUnitClass dp_waveform_b_flt = DigPotUnitClass(PIN_WAVEFORM_B_FILTER);
-
-	DigPotUnitClass dp_filter = DigPotUnitClass(PIN_FILTER_FREQ);
-	DigPotUnitClass dp_filter_gain = DigPotUnitClass(PIN_FILTER_GAIN);
-
-
-	// DigPotUnitClass dp_waveform_mix = DigPotUnitClass(PIN_WAVEFORM_MIX);
-	//DigPotUnitClass dp_master_amp = DigPotUnitClass(PIN_MASTER_AMP);
-
-#endif // USE_DIGPOTUNITS
 
 #ifdef USE_DIGPOTCLUSTER
 
@@ -200,7 +187,7 @@ public:
 
 #ifdef SYNTHDIAG_DEVICE_ON
 
-	SoftwareSerial PortTwo = SoftwareSerial(SYNTHDIAG_DEVICE_SERIAL_RX, SYNTHDIAG_DEVICE_SERIAL_TX);
+	//SoftwareSerial PortTwo = SoftwareSerial(SYNTHDIAG_DEVICE_SERIAL_RX, SYNTHDIAG_DEVICE_SERIAL_TX);
 
 #endif // SERIAL_ON
 
@@ -215,7 +202,8 @@ public:
 	void setup();
 	String DescribeMidi(midiEventPacket_t rx);
 
-	void loop(midiEventPacket_t rx, SoftwareSerial * port);
+	void loop(midiEventPacket_t rx);
+
 	
 	
 

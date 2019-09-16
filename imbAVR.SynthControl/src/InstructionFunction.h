@@ -24,16 +24,37 @@ inline SignalMacroInstruction InstructionFunction<SID, cid_target, ccB2, ccB3, c
 {
 	if (CSValues->IsChanged(ccB2, ccB3, ccB4)) {
 
-		byte b1 = (SID << 4) | (cid_target);
 		SignalMacroInstruction output;
 
-		output.data += b1;
+#ifdef SMI_UNPACKED_FORM
+
+		output.sid = SID;
+
+		output.cid = cid_target;
+		output.b2 = CSValues->Data[ccB2];
+		output.b3 = CSValues->Data[ccB3];
+		output.b4 = CSValues->Data[ccB4];
+
+#else
+
+		byte b1 = SID;
+		b1 = b1 << 4;
+		b1 = b1 + cid_target;
+
+		output.data = b1;
 		output.data = output.data << 8;
 		output.data += CSValues->Data[ccB2];
 		output.data = output.data << 8;
 		output.data += CSValues->Data[ccB3];
 		output.data = output.data << 8;
 		output.data += CSValues->Data[ccB4];
+
+
+
+#endif //  UNPACKED_FORM
+
+
+		//byte b1 = (SID << 4) | (cid_target);
 
 	//	output.data = (b1 << 24) | (CSValues->Data[ccB2] << 16) | (CSValues->Data[ccB3] << 8) | CSValues->Data[ccB4];
 		return output;
