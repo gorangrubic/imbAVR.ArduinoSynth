@@ -72,13 +72,36 @@ struct BoolListener : public AudioProcessorValueTreeState::Listener
 };
 
 
+/// <summary>
+/// Type of MIDI messsage that represents input / output format for this parameter
+/// </summary>
+enum imbControlParameterMessageType {
+			
+	/// <summary>
+	/// Not specified - use default option
+	/// </summary>
+	unspecified = 0,
+	/// <summary>
+	/// Parameter is not supported in MIDI communication
+	/// </summary>
+	NoMIDI = 1,
+	/// <summary>
+	/// Parameter is described with Control Command MIDI message
+	/// </summary>
+	ccMIDI = 2,
+	/// <summary>
+	/// Parameter is described with System Exclusive MIDI message
+	/// </summary>
+	sysExMsg = 3
+
+};
+
 enum imbControlParameterType {
 	Integer=0,
 	Ratio=1,
 	Float=2,
 	Enumeration=3,
 	Boolean=4
-
 };
 
 class imbControlParameter
@@ -137,6 +160,7 @@ public:
 	SynthDeviceModel * Root;
 	SynthDeviceModelComponentBase * Parent;
 	
+	
 
 	FloatListener Listener;
 
@@ -149,9 +173,10 @@ public:
 	void Connect(SynthDeviceModelComponentBase * _parent);
 	
 	void Setup(String _parameterID, String _parameterLabel, 
-                int minValue, int maxValue, int initValue, 
+			float minValue, float maxValue, float initValue,
                 String _parameterUnit,
-                int _ccID=0, bool _isAutomatizable=false, imbControlParameterType typeParameterName=imbControlParameterType::Integer);
+                int _ccID=0, bool _isAutomatizable=false, imbControlParameterType typeParameterName=imbControlParameterType::Integer,
+		imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 	
 	
 	// ========================== Slider assigment
@@ -185,6 +210,7 @@ public:
 	int ccID;
 
 	imbControlParameterType typeParameter;
+	imbControlParameterMessageType typeMIDIMessage = imbControlParameterMessageType::ccMIDI;
 
 	float Value = 0;
 	float MinValue = 0;

@@ -27,8 +27,19 @@ public:
 	unsigned int CurrentRow = 0;
 
 	void Setup(juce::AudioProcessorValueTreeState * _parameters);
+	
+	/// <summary>
+	/// Gets proper next identifier, according to given message type.
+	/// </summary>
+	/// <param name="_msgFormat">The MSG format.</param>
+	/// <returns></returns>
+	unsigned int GetProperID(imbControlParameterMessageType _msgFormat);
 
 	
+	unsigned int CurrentSysExclusinveID = 0;
+
+	unsigned int GetSystemExclusiveID();
+
 
 
 	/// <summary>

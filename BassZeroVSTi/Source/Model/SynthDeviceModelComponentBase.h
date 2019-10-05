@@ -41,16 +41,16 @@ protected:
 
 	   void AddChild(SynthDeviceModelComponentBase* child);
 
-	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false);
+	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
-	   void AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, std::vector<String> * items, String initValue = "", int _ccID = -1, bool _isAutomated = false);
+	   void AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, std::vector<String> * items, String initValue = "", int _ccID = -1, bool _isAutomated = false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
-	   void AddCCParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, int initValue = 0, int minValue = 0, int maxValue = 127,int _ccID = -1, bool _isAutomated = false);
+	   void AddCCParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, int initValue = 0, int minValue = 0, int maxValue = 127,int _ccID = -1, bool _isAutomated = true,  imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
 	   void AddParameter(imbControlParameter * output,String _parameterID, String _parameterLabel,
 		   float minValue, float maxValue, float initValue,
 		   String _parameterUnit,
-		   int _ccID, bool _isAutomatizable, imbControlParameterType _type);
+		   int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
 	   std::list<SynthDeviceModelComponentBase*> ChildComponents;
 

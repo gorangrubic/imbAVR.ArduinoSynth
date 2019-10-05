@@ -22,6 +22,9 @@ public:
 	imbControlParameter ValueA = imbControlParameter();
 	imbControlParameter ValueB = imbControlParameter();
 
+	imbControlParameter StartWithB = imbControlParameter();
+	imbControlParameter Loop = imbControlParameter();
+
 	/// <summary>
 /// Deploys this instance.
 /// </summary>

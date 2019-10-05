@@ -33,11 +33,8 @@ public:
 	std::vector<ModulationSourceMacroControl*> MacroControls;
 	std::vector<ModulationSourceMIDI*> MIDIs;
 
-	std::vector<String> GetListOfSources();
-	int GetSourceIndexByName(String sourceName);
-
-	static std::vector<String> GetLFOFunctionList();
-	static int GetLFOFunctionIndexByName(String functionName);
+	std::vector<String> ListOfSources;
+	std::vector<String> ListOfLFOFunctions;
 
 	/// <summary>
   /// Deploys this instance.

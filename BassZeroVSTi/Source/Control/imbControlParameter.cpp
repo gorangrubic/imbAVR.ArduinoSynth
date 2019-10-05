@@ -91,7 +91,8 @@ void imbControlParameter::Connect(SynthDeviceModelComponentBase * _parent) {
 void imbControlParameter::Setup(String _parameterID, String _parameterLabel, 
 				float minValue, float maxValue, float initValue,
                 String _parameterUnit,
-                int _ccID, bool _isAutomatizable, imbControlParameterType _type) {
+                int _ccID, bool _isAutomatizable, imbControlParameterType _type,
+	imbControlParameterMessageType _msgFormat) {
                     
 	parameterID = _parameterID;
 	parameterLabel = _parameterLabel;
@@ -100,6 +101,10 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
 	MinValue = minValue;
 	MaxValue = maxValue;
 	Value = initValue;
+
+	if (_msgFormat != imbControlParameterMessageType::unspecified) {
+		typeMIDIMessage = _msgFormat;
+	}
 	
 	AudioProcessorValueTreeState& valueTreeState = Root->SynthProcessor->parameters;
 

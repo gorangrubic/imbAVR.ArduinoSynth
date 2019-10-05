@@ -1,11 +1,44 @@
 #include "ParameterController.h"
 
-
+#include "imbControlParameter.h"
 
 
 void ParameterController::Setup(juce::AudioProcessorValueTreeState * _parameters)
 {
 	parameters = _parameters;
+}
+/// <summary>
+/// Gets the proper identifier.
+/// </summary>
+/// <param name="_msgFormat">The MSG format.</param>
+/// <returns></returns>
+unsigned int ParameterController::GetProperID(imbControlParameterMessageType _msgFormat) {
+
+	switch (_msgFormat) {
+	case imbControlParameterMessageType::unspecified:
+	case imbControlParameterMessageType::ccMIDI:
+		return GetKnobCCID();
+		break;
+	case imbControlParameterMessageType::NoMIDI:
+		return -1;
+		break;
+	case imbControlParameterMessageType::sysExMsg:
+		return GetSystemExclusiveID();
+		break;
+	}
+
+	return -1;
+}
+
+/// <summary>
+/// Gets the next ID number for a system exclusive message, describing an OPM parameter.
+/// </summary>
+/// <returns></returns>
+unsigned int ParameterController::GetSystemExclusiveID()
+{
+	unsigned int output = CurrentSysExclusinveID;
+	CurrentSysExclusinveID++;
+	return output;
 }
 
 

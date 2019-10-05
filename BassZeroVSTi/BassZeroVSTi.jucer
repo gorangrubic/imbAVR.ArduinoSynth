@@ -56,6 +56,10 @@
           <FILE id="z1Wlyt" name="OPMSignalUnit.cpp" compile="1" resource="0"
                 file="Source/Model/OPM/OPMSignalUnit.cpp"/>
           <FILE id="SVAiUS" name="OPMSignalUnit.h" compile="0" resource="0" file="Source/Model/OPM/OPMSignalUnit.h"/>
+          <FILE id="BZCcyS" name="OPMSignalUnitChange.cpp" compile="1" resource="0"
+                file="Source/Model/OPM/OPMSignalUnitChange.cpp"/>
+          <FILE id="OiEN9P" name="OPMSignalUnitChange.h" compile="0" resource="0"
+                file="Source/Model/OPM/OPMSignalUnitChange.h"/>
         </GROUP>
         <GROUP id="{800131DF-E7F7-B8D7-66E6-EB00750B90A3}" name="Modulation">
           <FILE id="emIYeY" name="ModulationFunctionADSR.cpp" compile="1" resource="0"

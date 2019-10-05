@@ -83,6 +83,25 @@ protected:
 			return "W";
 		}
 
+		template<typename T>
+		static int GetIndex(std::vector<T>* items, T toFind) {
+			int i = 0;
+			
+			for each (T var in items)
+			{
+				if (var == toFind) {
+					break;
+				}
+				i++;
+			}
+
+			if (i >= items->size) {
+				return -1;
+			}
+
+			return i;
+		}
+
 		/// <summary>
 /// Deploys this instance.
 /// </summary>

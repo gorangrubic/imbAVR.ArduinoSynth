@@ -12,7 +12,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
 #include "../SynthDeviceModel.h"
-
+#include "OscilatorBase.h"
 class Mixer : public ComponentBase {
 
 };

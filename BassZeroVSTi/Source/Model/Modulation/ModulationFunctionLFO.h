@@ -22,6 +22,10 @@ public:
 
 	imbControlParameter Value = imbControlParameter();
 	
+	imbControlParameter Retrigger = imbControlParameter();
+	imbControlParameter Loop = imbControlParameter();
+
+	imbControlParameter Function = imbControlParameter();
 
 	/// <summary>
 /// Deploys this instance.

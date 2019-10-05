@@ -9,7 +9,14 @@
 */
 
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "../SynthDeviceModelComponentBase.h"
+#include "../SynthDeviceModel.h"
 
-class MacroControlLink {
+class MacroControlLink :public SynthDeviceModelComponentBase {
 
-};
+public:
+
+	void Deploy() override;
+
+}; 

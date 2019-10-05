@@ -13,6 +13,49 @@
 #include "../SynthDeviceModelComponentBase.h"
 #include "../SynthDeviceModel.h"
 
-class OPMControlModel {
+#include "OPMSignalUnit.h";
+#include "MacroControlLink.h";
+#include "OPMControlModel.h"
+
+class OPMControlModel:public SynthDeviceModelComponentBase {
+
+public:
+
+	void AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortName, String _longName);
+	void AddMacroControlLink(MacroControlLink * SignalControlLink, String _shortName, String _longName);
+
+	std::vector<String> ListOfPitchUnits;
+	std::vector<String> ListOfModulationModes;
+	std::vector<String> ListOfModulationFunctions;
+	std::vector<String> ListOfModulationParameters;
+
+	std::vector<String> ListOfSignalUnits;
+	
+	// =========================== OPM Signal Units
+	OPMSignalUnit WFA = OPMSignalUnit();
+	OPMSignalUnit WFB = OPMSignalUnit();
+	OPMSignalUnit FLT_RESA = OPMSignalUnit();
+	OPMSignalUnit FLT_RESB = OPMSignalUnit();
+	OPMSignalUnit PERKA = OPMSignalUnit();
+	OPMSignalUnit PERKB = OPMSignalUnit();
+	
+	
+	// =========================== Modulation Macro Controls links
+	
+	MacroControlLink MODA_MCL1 = MacroControlLink();
+	MacroControlLink MODA_MCL2 = MacroControlLink();
+
+	MacroControlLink MODB_MCL1 = MacroControlLink();
+	MacroControlLink MODB_MCL2 = MacroControlLink();
+	
+	MacroControlLink VALA_MCL1 = MacroControlLink();
+	MacroControlLink VALB_MCL1 = MacroControlLink();
+	MacroControlLink VALC_MCL1 = MacroControlLink();
+	MacroControlLink VALC_MCL2 = MacroControlLink();
+	
+    std::vector<MacroControlLink*> Links;
+	std::vector<OPMSignalUnit*> Units;
+	
+	void Deploy() override;
 
 };

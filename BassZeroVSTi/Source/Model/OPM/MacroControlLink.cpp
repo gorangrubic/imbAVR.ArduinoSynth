@@ -9,3 +9,7 @@
 */
 
 #include "MacroControlLink.h"
+
+void MacroControlLink::Deploy()
+{
+}
