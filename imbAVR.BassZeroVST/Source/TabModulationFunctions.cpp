@@ -232,25 +232,28 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <JUCERCOMP name="" id="f2a3a037a92bb9ba" memberName="ADSRA_component" virtualName=""
-             explicitFocusOrder="0" pos="8 168 400 90" sourceFile="ADSREditor.cpp"
+             explicitFocusOrder="0" pos="8 168 400 90" sourceFile="GUI/ADSREditor.cpp"
              constructorParams=""/>
   <JUCERCOMP name="" id="3c7fd89d7ccb94b7" memberName="ADSRB_component" virtualName=""
              explicitFocusOrder="0" pos="0 0R 400 90" posRelativeX="f2a3a037a92bb9ba"
-             posRelativeY="f2a3a037a92bb9ba" sourceFile="ADSREditor.cpp" constructorParams=""/>
+             posRelativeY="f2a3a037a92bb9ba" sourceFile="GUI/ADSREditor.cpp"
+             constructorParams=""/>
   <JUCERCOMP name="" id="5b80aeb0bc6c8d55" memberName="LFOB_component" virtualName=""
              explicitFocusOrder="0" pos="0R 90R 260 90" posRelativeX="cdc6831fdcc2217e"
-             posRelativeY="cdc6831fdcc2217e" sourceFile="LFOEditor.cpp" constructorParams=""/>
+             posRelativeY="cdc6831fdcc2217e" sourceFile="GUI/LFOEditor.cpp"
+             constructorParams=""/>
   <JUCERCOMP name="" id="cdc6831fdcc2217e" memberName="LFOA_component" virtualName=""
-             explicitFocusOrder="0" pos="8 16 260 90" sourceFile="LFOEditor.cpp"
+             explicitFocusOrder="0" pos="8 16 260 90" sourceFile="GUI/LFOEditor.cpp"
              constructorParams=""/>
   <JUCERCOMP name="" id="eeefbf843699b34b" memberName="ENVA_component" virtualName=""
-             explicitFocusOrder="0" pos="496 168 330 90" sourceFile="ENVEditor.cpp"
+             explicitFocusOrder="0" pos="496 168 330 90" sourceFile="GUI/ENVEditor.cpp"
              constructorParams=""/>
   <JUCERCOMP name="" id="88f062d2a86aa048" memberName="ENVB_component" virtualName=""
              explicitFocusOrder="0" pos="0 0R 330 90" posRelativeX="eeefbf843699b34b"
-             posRelativeY="eeefbf843699b34b" sourceFile="ENVEditor.cpp" constructorParams=""/>
+             posRelativeY="eeefbf843699b34b" sourceFile="GUI/ENVEditor.cpp"
+             constructorParams=""/>
   <JUCERCOMP name="" id="a4e85d312cc3f6ed" memberName="CHAOS_Component" virtualName=""
-             explicitFocusOrder="0" pos="568 16 260 90" sourceFile="ChaosEditor.cpp"
+             explicitFocusOrder="0" pos="568 16 260 90" sourceFile="GUI/ChaosEditor.cpp"
              constructorParams=""/>
   <LABEL name="Title" id="d84c82e7581ba2b" memberName="ADSRTitle" virtualName=""
          explicitFocusOrder="0" pos="0 0 64 24" posRelativeX="f2a3a037a92bb9ba"

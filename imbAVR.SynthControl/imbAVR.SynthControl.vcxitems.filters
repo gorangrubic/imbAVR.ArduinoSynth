@@ -160,6 +160,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionNumericInput.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\WProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)README.md" />

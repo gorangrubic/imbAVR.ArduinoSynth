@@ -23,14 +23,14 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
-#include "SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
+#include "GUI/SourceMixerComponent.h"
 
 
 //==============================================================================

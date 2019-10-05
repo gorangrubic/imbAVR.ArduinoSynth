@@ -11,7 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "juce_audio_processors\utilities\juce_AudioParameterInt.h"
+//#include "juce_audio_processors\utilities\juce_AudioParameterInt.h"
 
 #include "imbSynthAudioProcessor.h"
 //#include "juce_audio_processors\processors\juce_AudioProcessorParameterGroup.h"

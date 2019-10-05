@@ -26,18 +26,21 @@ class SignalControlUnitClass : public SignalControlBase
 
 
 	 // this controls the pitch
-	 byte sClockPerPWMStep = 18;
+	 unsigned int sClockPerPWMStep = 18;
 
 	 byte sClockPerPWMStepB = 0;
 
-	 byte sClockIndex;
+	 unsigned int sClockIndex = 0;
 
 	 byte pwmStepIndex;
 
 
 	 
 	 bool pwmContinualMode = false;
-	 byte pwmContinualSClockIndexChange = 0;
+
+	 float pwmContinualChange = 0.5F;
+
+	 unsigned int pwmContinualSClockIndexChange = 0;
 
 	 void ResetClocks(bool reset_pwmIndex, bool reset_sClock, bool reset_changes);
 

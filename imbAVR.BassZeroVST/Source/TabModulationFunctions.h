@@ -23,13 +23,13 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
-#include "ADSREditor.h"
-#include "ADSREditor.h"
-#include "LFOEditor.h"
-#include "LFOEditor.h"
-#include "ENVEditor.h"
-#include "ENVEditor.h"
-#include "ChaosEditor.h"
+#include "GUI/ADSREditor.h"
+#include "GUI/ADSREditor.h"
+#include "GUI/LFOEditor.h"
+#include "GUI/LFOEditor.h"
+#include "GUI/ENVEditor.h"
+#include "GUI/ENVEditor.h"
+#include "GUI/ChaosEditor.h"
 
 
 //==============================================================================

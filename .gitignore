@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 /imbAVR.BassZeroVST/Builds/VisualStudio2017
 /imbAVR.BassZeroVST
+/BassZeroVSTi/JuceLibraryCode
+/BassZeroVSTi/Builds

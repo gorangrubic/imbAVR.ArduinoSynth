@@ -42,5 +42,8 @@ Identifiers of SignalControlUnits (i.e. waveform sources, oscilators) at SignalG
 
 
 
+# Operation modes
+
+Operation modes (OPMs) are hardware level presets controling synthesis and modulation aspects that are not directly controllable from VSTi nor MIDI CC messages. OP MODs and VARs have different role in different OPMs. 
 
 

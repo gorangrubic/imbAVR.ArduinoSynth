@@ -14,12 +14,15 @@
 template<typename TData>
 class spiSender
 {	
+
+	byte sendTimes = 1;
+
 	/// <summary>
 	/// Chip-select pin
 	/// </summary>
 	byte pinSS;
 
-	byte pinSSPostDelay=10;
+	byte pinSSPostDelay=5;
 
 	byte protocol;
 
@@ -51,6 +54,10 @@ void spiSender<TData>::setup(byte _pinSS, byte _protocol, byte _pinSSPostDelay)
 	pinSS = _pinSS;
 	protocol = _protocol;
 	pinSSPostDelay = _pinSSPostDelay;
+
+	if ((protocol & B00000010) == B00000010) sendTimes++;
+	if ((protocol & B00001000) == B00001000) sendTimes++;
+	if ((protocol & B00010000) == B00010000) sendTimes++;
 }
 
 template<typename TData>
@@ -77,29 +84,25 @@ inline void spiSender<TData>::Send(TData data)
 
 	}
 	else {
+		byte sendTimesIndex = sendTimes;
 
+		while (sendTimesIndex > 0) {
 
-
-		byte sendTimes = 1;
-
-		if ((protocol & B00000010) == B00000010) sendTimes++;
-
-		while (sendTimes > 0) {
-
-			byte controlByte = 0;
+			unsigned int controlByte = 0;
 			for (size_t i = 0; i < sizeof(TData); i++)
 			{
 				byte b = wrapper.bytes[i];
 				if ((protocol & B00000001) == B00000001) {
 					controlByte = controlByte + b;
+					controlByte = controlByte % 256;
 				}
 				SPI.transfer(b);
 			}
 
 			if ((protocol & B00000001) == B00000001) {
-				SPI.transfer(controlByte);
+				SPI.transfer((byte)controlByte);
 			}
-			sendTimes--;
+			sendTimesIndex--;
 		}
 	}
 

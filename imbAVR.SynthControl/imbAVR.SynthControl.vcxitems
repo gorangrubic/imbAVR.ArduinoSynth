@@ -43,6 +43,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\MonitorMessage.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthState.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\SynthDeviceControl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\WProgram.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\CSFunctionStereoPan.cpp" />

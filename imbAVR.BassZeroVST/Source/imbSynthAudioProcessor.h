@@ -12,6 +12,9 @@ public:
 
 	ParameterController parameterController;
 
+
+	juce::AudioProcessorValueTreeState parameters; 
+
 	imbSynthAudioProcessor();
 	~imbSynthAudioProcessor();
 };

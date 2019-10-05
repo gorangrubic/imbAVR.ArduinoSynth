@@ -41,6 +41,12 @@
 #define CCID_CHANGE_RATE_RESET 16
 
 
+#define TIMER_PRESCALAR_1 1
+#define TIMER_PRESCALAR_16 2
+#define TIMER_PRESCALAR_128 3
+#define TIMER_PRESCALAR_512 4
+#define TIMER_PRESCALAR_2048 5
+
 class SignalControlManagerClass
 {
  protected:
@@ -48,11 +54,17 @@ class SignalControlManagerClass
 
  public:
 
+	 boolean IsLoopEnabled = true;
 
 	 float CycleCompensation = 490.0;
 
 	 byte ActiveUnitCount = 0;
 	 
+	 byte TimerPrescalar = 0x04;
+
+
+	 float FinalCycleCompensation = 490.0;
+
 	 unsigned int CycleIndex = 0;
 
 	 SignalControlUnitClass SignalUnits[SIGNAL_UNITS_COUNT];
@@ -66,7 +78,7 @@ class SignalControlManagerClass
 
 	 //static String Describe(SignalInstruction instruction, unsigned int index);
 
-	 void Receive(byte receivedByte);
+	// void Receive(byte receivedByte);
 
 	 //void SetCC(byte cc, byte value, SignalControlUnitClass * signal);
 
@@ -83,6 +95,8 @@ class SignalControlManagerClass
 	 void PerformPitch(unsigned int Pitch, SignalControlUnitClass * signal);
 
 	// void Perform(SignalInstruction instruction);
+
+	 void setup();
 
 	 void loop();
 

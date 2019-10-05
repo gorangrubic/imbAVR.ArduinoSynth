@@ -504,7 +504,7 @@ BEGIN_JUCER_METADATA
           textBoxEditable="0" textBoxWidth="50" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <JUCERCOMP name="" id="f783ad21ae1cde8f" memberName="component_FLT_CutOff"
-             virtualName="" explicitFocusOrder="0" pos="424 56 96 112" sourceFile="SourceMixerComponent.cpp"
+             virtualName="" explicitFocusOrder="0" pos="424 56 96 112" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="new label" id="a365bba2f343cade" memberName="Title3" virtualName=""
          explicitFocusOrder="0" pos="0 0r 96 24" posRelativeX="f783ad21ae1cde8f"
@@ -520,7 +520,7 @@ BEGIN_JUCER_METADATA
          typefaceStyle="Bold"/>
   <JUCERCOMP name="" id="4f47fe21802b0b52" memberName="component_FLT_Res"
              virtualName="" explicitFocusOrder="0" pos="0R 0 96 112" posRelativeX="f783ad21ae1cde8f"
-             posRelativeY="f783ad21ae1cde8f" sourceFile="SourceMixerComponent.cpp"
+             posRelativeY="f783ad21ae1cde8f" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="new label" id="3774e162b98c4dbd" memberName="Title5" virtualName=""
          explicitFocusOrder="0" pos="0 0r 96 24" posRelativeX="4f47fe21802b0b52"
@@ -530,7 +530,7 @@ BEGIN_JUCER_METADATA
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <JUCERCOMP name="" id="b56eaad09b7096eb" memberName="component_FLT_Freq"
              virtualName="" explicitFocusOrder="0" pos="-16R 0 96 112" posRelativeX="4f47fe21802b0b52"
-             posRelativeY="4f47fe21802b0b52" sourceFile="SourceMixerComponent.cpp"
+             posRelativeY="4f47fe21802b0b52" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="new label" id="48aaacf0986cbf0a" memberName="Title6" virtualName=""
          explicitFocusOrder="0" pos="0 0r 96 24" posRelativeX="b56eaad09b7096eb"
@@ -540,7 +540,7 @@ BEGIN_JUCER_METADATA
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <JUCERCOMP name="" id="45f28b35571d9af" memberName="component_MASTER_Amp"
              virtualName="" explicitFocusOrder="0" pos="0R 0 96 112" posRelativeX="c46bf90001e86e33"
-             posRelativeY="c46bf90001e86e33" sourceFile="SourceMixerComponent.cpp"
+             posRelativeY="c46bf90001e86e33" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="new label" id="8d041e19741b51f7" memberName="Title7" virtualName=""
          explicitFocusOrder="0" pos="0 0r 96 24" posRelativeX="45f28b35571d9af"
@@ -549,7 +549,7 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <JUCERCOMP name="" id="c46bf90001e86e33" memberName="component_MASTER_Pan"
-             virtualName="" explicitFocusOrder="0" pos="632 240 96 112" sourceFile="SourceMixerComponent.cpp"
+             virtualName="" explicitFocusOrder="0" pos="632 240 96 112" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="new label" id="bb7808287937fa77" memberName="Title8" virtualName=""
          explicitFocusOrder="0" pos="0 0r 96 24" posRelativeX="c46bf90001e86e33"
@@ -559,7 +559,7 @@ BEGIN_JUCER_METADATA
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <JUCERCOMP name="" id="e0d2854f1680301b" memberName="component_FLT_Dist"
              virtualName="" explicitFocusOrder="0" pos="0R 0 96 112" posRelativeX="6403b62a87af5079"
-             posRelativeY="6403b62a87af5079" sourceFile="SourceMixerComponent.cpp"
+             posRelativeY="6403b62a87af5079" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="new label" id="64301b01a91ef216" memberName="Title9" virtualName=""
          explicitFocusOrder="0" pos="0 -24 96 24" posRelativeX="e0d2854f1680301b"
@@ -585,7 +585,7 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <JUCERCOMP name="" id="e563ecd392baaf03" memberName="component_OPMA" virtualName=""
-             explicitFocusOrder="0" pos="8 224 96 112" sourceFile="SourceMixerComponent.cpp"
+             explicitFocusOrder="0" pos="8 224 96 112" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <LABEL name="Title" id="e63b84fabc73ca75" memberName="Title" virtualName=""
          explicitFocusOrder="0" pos="0 0r 96 24" posRelativeX="e563ecd392baaf03"
@@ -601,7 +601,7 @@ BEGIN_JUCER_METADATA
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <JUCERCOMP name="" id="a282c0b20a726e97" memberName="component_OPMB" virtualName=""
              explicitFocusOrder="0" pos="0R 0 96 112" posRelativeX="e563ecd392baaf03"
-             posRelativeY="e563ecd392baaf03" sourceFile="SourceMixerComponent.cpp"
+             posRelativeY="e563ecd392baaf03" sourceFile="GUI/SourceMixerComponent.cpp"
              constructorParams="&quot;DIST&quot;"/>
   <SLIDER name="DirectValue" id="f29fd8d619498ce" memberName="component_OPM_VAL_A"
           virtualName="" explicitFocusOrder="0" pos="1 88 64 64" posRelativeX="5eeb447276336bd"

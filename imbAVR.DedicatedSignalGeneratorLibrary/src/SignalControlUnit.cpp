@@ -2,6 +2,8 @@
 
 void SignalControlUnitClass::ResetClocks(bool reset_pwmIndex, bool reset_sClock, bool reset_changes)
 {
+	pwmContinualSClockIndexChange = 0;
+
 	if (reset_pwmIndex) {
 		pwmStepIndex = 0;
 	}

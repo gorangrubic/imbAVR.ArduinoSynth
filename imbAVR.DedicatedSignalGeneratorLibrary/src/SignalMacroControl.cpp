@@ -17,8 +17,23 @@ void SignalMacroControl::RunPitchRelation(byte s_id, unsigned int freq, SignalCo
 
 			if (SUNIT_sid.IsPositiveRelation) {
 
-				float semitone_freq = MathTool::GetRatio(freq, 12, 0, 1);
-				manager->PerformPitch(freq + SUNIT_sid.delta_freq * semitone_freq, &SUNIT_sid);
+				byte octaves = SUNIT_sid.delta_freq / 12;
+				byte semitones = SUNIT_sid.delta_freq % 12;
+
+				float freq_main = freq;
+
+				for (size_t i = 0; i < octaves; i++)
+				{
+					freq_main = freq_main * 2.0;
+				}
+
+				float freq_sup = freq_main * 2.0;
+				float semitone_freq = (freq_main - freq_sup) / 12;
+
+				freq_main += semitone_freq * semitones;
+
+
+				manager->PerformPitch(freq_main, &SUNIT_sid);
 			}
 			else {
 
@@ -54,7 +69,7 @@ void SignalMacroControl::RunPitchRelation(byte s_id, unsigned int freq, SignalCo
 	}
 	else {
 		
-		manager->PerformPitch(freq, &SUNIT_sid);
+		//manager->PerformPitch(freq, &SUNIT_sid);
 	}
 
 }
@@ -63,10 +78,12 @@ void SignalMacroControl::Run(byte s_id, byte cc_id, byte b2, byte b3, byte b4, S
 {
 
 	//SignalControlUnitClass * unit = 
+	
+	if (SUNIT_sid.isDisabled) return;
 
 	switch (cc_id) {
 
-	case 1:
+	case CID_NoteControl:
 
 		SUNIT_sid.ResetClocks(true, true, true);
 
@@ -97,17 +114,17 @@ void SignalMacroControl::Run(byte s_id, byte cc_id, byte b2, byte b3, byte b4, S
 		
 
 		break;
-	case 2:
+	case CID_PWM:
 		SUNIT_sid.PWMChange.SetBytes(b2, b3, b4);
 		break;
-	case 3:
+	case CID_Pitch:
 		SUNIT_sid.PitchChange.SetBytes(b2, b3, b4);
 		break;
-	case 4:
+	case CID_Phase:
 		SUNIT_sid.PhaseChange.SetBytes(b2, b3, b4);
 		break;
 
-	case 5:
+	case CID_Live:
 		SUNIT_sid.modulationByte = b2;
 		SUNIT_sid.pwmByte = b3;
 		SUNIT_sid.sClockIndex += b4;
@@ -135,6 +152,8 @@ byte SignalMacroControl::MakeModeByte(bool IsPWMCycle, bool IsDoublePrescalar, b
 
 void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlManagerClass * manager)
 {
+	manager->IsLoopEnabled = false;
+
 #ifdef SMI_UNPACKED_FORM
 	
 	byte b2 = instruction.b2;
@@ -149,7 +168,7 @@ void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlMa
 	byte b3 = instruction.data >> 8;
 	byte b4 = instruction.data;
 
-	byte s_id = b1 >> 4;
+	byte s_id = (b1 & B11110000) >> 4;
 	byte cc_id = b1 & B00001111;
 #endif
 
@@ -157,13 +176,24 @@ void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlMa
 	if (s_id == SID_Master) {
 
 		if (cc_id == CID_NoteControl) {
-			unsigned int freq = b3 | (b4 << 8);
+
+			unsigned int freq = b4 | (b3 << 8);
+
+
+		//	Serial.println("Freq: [" + String(freq) + "]->" + String(manager->ActiveUnitCount));
+
+
 			for (size_t i = 0; i < manager->ActiveUnitCount; i++)
 			{
 				RunPitchRelation(i, freq, manager);
 			}
 		}
 		else {
+
+
+			Serial.println("CID: [" + String(cc_id) + "]->" + String(manager->ActiveUnitCount));
+
+
 			for (size_t i = 0; i < manager->ActiveUnitCount; i++)
 			{
 				Run(i, cc_id, b2, b3, b4, manager);
@@ -186,5 +216,7 @@ void SignalMacroControl::Run(SignalMacroInstruction instruction, SignalControlMa
 		Run(s_id, cc_id, b2, b3, b4, manager);
 	}
 
+
+	manager->IsLoopEnabled = true;
 
 }

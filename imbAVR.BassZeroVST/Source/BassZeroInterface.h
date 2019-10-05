@@ -50,10 +50,6 @@ public:
     // Binary resources:
     static const char* basszero_background_jpg;
     static const int basszero_background_jpgSize;
-    static const char* background2_jpg;
-    static const int background2_jpgSize;
-    static const char* background2_jpg2;
-    static const int background2_jpg2Size;
     static const char* background2_jpg3;
     static const int background2_jpg3Size;
 

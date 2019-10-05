@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="J1PyBc" name="BassZeroVSTi" projectType="audioplug" jucerVersion="5.4.4"
+              pluginFormats="buildStandalone,buildVST3" pluginCharacteristicsValue="pluginProducesMidiOut,pluginWantsMidiIn"
+              pluginManufacturer="TesseracT Studio" pluginVST3Category="External,Instrument,Synth"
+              companyName="TesseracT Studio" companyCopyright="2019" companyWebsite="blog.veles.rs"
+              companyEmail="hardy@veles.rs">
+  <MAINGROUP id="u0F6E1" name="BassZeroVSTi">
+    <GROUP id="{D77581B4-8CF9-72FB-081F-DCC82E4EC583}" name="Source">
+      <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
+        <GROUP id="{DBF45F66-8B5D-8ECD-1186-021B70922C11}" name="Core">
+          <FILE id="ISc26E" name="ModelModulatedControl.cpp" compile="1" resource="0"
+                file="Source/Model/Core/ModelModulatedControl.cpp"/>
+          <FILE id="dyOBV4" name="ModelModulatedControl.h" compile="0" resource="0"
+                file="Source/Model/Core/ModelModulatedControl.h"/>
+          <FILE id="UiKZEh" name="ModelParameter.cpp" compile="1" resource="0"
+                file="Source/Model/Core/ModelParameter.cpp"/>
+          <FILE id="jL5dW5" name="ModelParameter.h" compile="0" resource="0"
+                file="Source/Model/Core/ModelParameter.h"/>
+        </GROUP>
+        <GROUP id="{2C5118E3-4EE1-978A-9BA6-CD77D7A3C329}" name="Components">
+          <FILE id="oKJVBV" name="ComponentBase.cpp" compile="1" resource="0"
+                file="Source/Model/Components/ComponentBase.cpp"/>
+          <FILE id="WokwVT" name="ComponentBase.h" compile="0" resource="0" file="Source/Model/Components/ComponentBase.h"/>
+          <FILE id="XnF8bS" name="ComponentHub.cpp" compile="1" resource="0"
+                file="Source/Model/Components/ComponentHub.cpp"/>
+          <FILE id="gV9NWM" name="ComponentHub.h" compile="0" resource="0" file="Source/Model/Components/ComponentHub.h"/>
+          <FILE id="GmgkWa" name="Distortion.cpp" compile="1" resource="0" file="Source/Model/Components/Distortion.cpp"/>
+          <FILE id="GcIYh3" name="Distortion.h" compile="0" resource="0" file="Source/Model/Components/Distortion.h"/>
+          <FILE id="tKHt5a" name="Mixer.cpp" compile="1" resource="0" file="Source/Model/Components/Mixer.cpp"/>
+          <FILE id="Es1QNV" name="Mixer.h" compile="0" resource="0" file="Source/Model/Components/Mixer.h"/>
+          <FILE id="bAnDfi" name="OscilatorBase.cpp" compile="1" resource="0"
+                file="Source/Model/Components/OscilatorBase.cpp"/>
+          <FILE id="lLxWXl" name="OscilatorBase.h" compile="0" resource="0" file="Source/Model/Components/OscilatorBase.h"/>
+          <FILE id="DLpX1C" name="OscilatorPerk.cpp" compile="1" resource="0"
+                file="Source/Model/Components/OscilatorPerk.cpp"/>
+          <FILE id="vnCf0Z" name="OscilatorPerk.h" compile="0" resource="0" file="Source/Model/Components/OscilatorPerk.h"/>
+          <FILE id="rcu3Qw" name="OscilatorWaveform.cpp" compile="1" resource="0"
+                file="Source/Model/Components/OscilatorWaveform.cpp"/>
+          <FILE id="uGkkZf" name="OscilatorWaveform.h" compile="0" resource="0"
+                file="Source/Model/Components/OscilatorWaveform.h"/>
+          <FILE id="Vmf6Sf" name="ResonanceFilter.cpp" compile="1" resource="0"
+                file="Source/Model/Components/ResonanceFilter.cpp"/>
+          <FILE id="fjpR5O" name="ResonanceFilter.h" compile="0" resource="0"
+                file="Source/Model/Components/ResonanceFilter.h"/>
+        </GROUP>
+        <GROUP id="{1B6F2ADE-DBCB-93CA-0AD7-FEC5B5FA25F4}" name="OPM">
+          <FILE id="k1UoiI" name="MacroControlLink.cpp" compile="1" resource="0"
+                file="Source/Model/OPM/MacroControlLink.cpp"/>
+          <FILE id="Qm9wor" name="MacroControlLink.h" compile="0" resource="0"
+                file="Source/Model/OPM/MacroControlLink.h"/>
+          <FILE id="jy7DIc" name="OPMControlModel.cpp" compile="1" resource="0"
+                file="Source/Model/OPM/OPMControlModel.cpp"/>
+          <FILE id="Ar7Gsr" name="OPMControlModel.h" compile="0" resource="0"
+                file="Source/Model/OPM/OPMControlModel.h"/>
+          <FILE id="z1Wlyt" name="OPMSignalUnit.cpp" compile="1" resource="0"
+                file="Source/Model/OPM/OPMSignalUnit.cpp"/>
+          <FILE id="SVAiUS" name="OPMSignalUnit.h" compile="0" resource="0" file="Source/Model/OPM/OPMSignalUnit.h"/>
+        </GROUP>
+        <GROUP id="{800131DF-E7F7-B8D7-66E6-EB00750B90A3}" name="Modulation">
+          <FILE id="emIYeY" name="ModulationFunctionADSR.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionADSR.cpp"/>
+          <FILE id="ijxa3R" name="ModulationFunctionADSR.h" compile="0" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionADSR.h"/>
+          <FILE id="DTNtrx" name="ModulationFunctionENV.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionENV.cpp"/>
+          <FILE id="Pd14wA" name="ModulationFunctionENV.h" compile="0" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionENV.h"/>
+          <FILE id="T0TjSr" name="ModulationFunctionLFO.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionLFO.cpp"/>
+          <FILE id="NGeksM" name="ModulationFunctionLFO.h" compile="0" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionLFO.h"/>
+          <FILE id="UPnjvf" name="ModulationHub.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationHub.cpp"/>
+          <FILE id="Ivu7z3" name="ModulationHub.h" compile="0" resource="0" file="Source/Model/Modulation/ModulationHub.h"/>
+          <FILE id="Dk7soF" name="ModulationSourceBase.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationSourceBase.cpp"/>
+          <FILE id="ZjpE86" name="ModulationSourceBase.h" compile="0" resource="0"
+                file="Source/Model/Modulation/ModulationSourceBase.h"/>
+          <FILE id="mD9uxn" name="ModulationSourceMacroControl.cpp" compile="1"
+                resource="0" file="Source/Model/Modulation/ModulationSourceMacroControl.cpp"/>
+          <FILE id="O7hx2p" name="ModulationSourceMacroControl.h" compile="0"
+                resource="0" file="Source/Model/Modulation/ModulationSourceMacroControl.h"/>
+          <FILE id="eM2ELw" name="ModulationSourceMIDI.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationSourceMIDI.cpp"/>
+          <FILE id="xAoCV5" name="ModulationSourceMIDI.h" compile="0" resource="0"
+                file="Source/Model/Modulation/ModulationSourceMIDI.h"/>
+        </GROUP>
+        <FILE id="YTcNQk" name="MainMenuModel.cpp" compile="1" resource="0"
+              file="Source/Model/MainMenuModel.cpp"/>
+        <FILE id="ekUxg8" name="MainMenuModel.h" compile="0" resource="0" file="Source/Model/MainMenuModel.h"/>
+        <FILE id="nD8Fbd" name="ModelEnumerations.h" compile="0" resource="0"
+              file="Source/Model/ModelEnumerations.h"/>
+        <FILE id="fisMzc" name="SynthDeviceModel.cpp" compile="1" resource="0"
+              file="Source/Model/SynthDeviceModel.cpp"/>
+        <FILE id="AUPdri" name="SynthDeviceModel.h" compile="0" resource="0"
+              file="Source/Model/SynthDeviceModel.h"/>
+        <FILE id="szzicI" name="SynthDeviceModelComponentBase.cpp" compile="1"
+              resource="0" file="Source/Model/SynthDeviceModelComponentBase.cpp"/>
+        <FILE id="qq9CUG" name="SynthDeviceModelComponentBase.h" compile="0"
+              resource="0" file="Source/Model/SynthDeviceModelComponentBase.h"/>
+      </GROUP>
+      <GROUP id="{339FE495-1696-E062-B2C3-4DA5B3929585}" name="Utility">
+        <FILE id="JeNDKS" name="ccTranslationMap.cpp" compile="1" resource="0"
+              file="Source/Utility/ccTranslationMap.cpp"/>
+        <FILE id="rP6GXJ" name="ccTranslationMap.h" compile="0" resource="0"
+              file="Source/Utility/ccTranslationMap.h"/>
+      </GROUP>
+      <GROUP id="{597FEE43-E744-9541-A257-64224B6641A0}" name="Data">
+        <FILE id="dtrqzH" name="imbSynthGeneralConfiguration.cpp" compile="1"
+              resource="0" file="Source/Data/imbSynthGeneralConfiguration.cpp"/>
+        <FILE id="ddDQpP" name="imbSynthGeneralConfiguration.h" compile="0"
+              resource="0" file="Source/Data/imbSynthGeneralConfiguration.h"/>
+        <FILE id="ox8hNz" name="imbSynthPresetDefinition.cpp" compile="1" resource="0"
+              file="Source/Data/imbSynthPresetDefinition.cpp"/>
+        <FILE id="FkoDib" name="imbSynthPresetDefinition.h" compile="0" resource="0"
+              file="Source/Data/imbSynthPresetDefinition.h"/>
+        <FILE id="u9COS8" name="imbSynthStateData.cpp" compile="1" resource="0"
+              file="Source/Data/imbSynthStateData.cpp"/>
+        <FILE id="DzBPYm" name="imbSynthStateData.h" compile="0" resource="0"
+              file="Source/Data/imbSynthStateData.h"/>
+        <FILE id="N4KIrJ" name="imbSynthStatePresetLibrary.cpp" compile="1"
+              resource="0" file="Source/Data/imbSynthStatePresetLibrary.cpp"/>
+        <FILE id="ydJgid" name="imbSynthStatePresetLibrary.h" compile="0" resource="0"
+              file="Source/Data/imbSynthStatePresetLibrary.h"/>
+        <FILE id="M0mI5O" name="imbSynthStateUtilityData.cpp" compile="1" resource="0"
+              file="Source/Data/imbSynthStateUtilityData.cpp"/>
+        <FILE id="yXwa7d" name="imbSynthStateUtilityData.h" compile="0" resource="0"
+              file="Source/Data/imbSynthStateUtilityData.h"/>
+      </GROUP>
+      <GROUP id="{2D365E2E-92D3-1196-4DAA-3D156C632C3C}" name="Control">
+        <FILE id="W8iaun" name="imbControlParameter.cpp" compile="1" resource="0"
+              file="Source/Control/imbControlParameter.cpp"/>
+        <FILE id="rfo4kI" name="imbControlParameter.h" compile="0" resource="0"
+              file="Source/Control/imbControlParameter.h"/>
+        <FILE id="C7PFpw" name="imbParameter.h" compile="0" resource="0" file="Source/Control/imbParameter.h"/>
+        <FILE id="eYYyrU" name="imbParameterGroupBase.cpp" compile="1" resource="0"
+              file="Source/Control/imbParameterGroupBase.cpp"/>
+        <FILE id="bRcY68" name="imbParameterGroupBase.h" compile="0" resource="0"
+              file="Source/Control/imbParameterGroupBase.h"/>
+        <FILE id="w1J5Lg" name="imbSynthAudioProcessor.cpp" compile="1" resource="0"
+              file="Source/Control/imbSynthAudioProcessor.cpp"/>
+        <FILE id="XUeedC" name="imbSynthAudioProcessor.h" compile="0" resource="0"
+              file="Source/Control/imbSynthAudioProcessor.h"/>
+        <FILE id="RFrQVz" name="ParameterController.cpp" compile="1" resource="0"
+              file="Source/Control/ParameterController.cpp"/>
+        <FILE id="jzkWjq" name="ParameterController.h" compile="0" resource="0"
+              file="Source/Control/ParameterController.h"/>
+        <FILE id="BG7YeD" name="ParameterGroupWaveform.cpp" compile="1" resource="0"
+              file="Source/Control/ParameterGroupWaveform.cpp"/>
+        <FILE id="JAbY6V" name="ParameterGroupWaveform.h" compile="0" resource="0"
+              file="Source/Control/ParameterGroupWaveform.h"/>
+        <FILE id="aOcdle" name="SynthConnectedComponent.cpp" compile="1" resource="0"
+              file="Source/Control/SynthConnectedComponent.cpp"/>
+        <FILE id="o7Gmhf" name="SynthConnectedComponent.h" compile="0" resource="0"
+              file="Source/Control/SynthConnectedComponent.h"/>
+      </GROUP>
+      <GROUP id="{A1E69F2B-739B-6421-F522-AAF614DDC146}" name="GUI">
+        <GROUP id="{92AB642D-908E-43B7-D5D1-BB216EA7E2E6}" name="Blocks"/>
+        <GROUP id="{9AE5526F-9065-C3C9-EB1E-58B121707B40}" name="Components">
+          <FILE id="Oqe4ke" name="ADSREditor.cpp" compile="1" resource="0" file="Source/GUI/Components/ADSREditor.cpp"/>
+          <FILE id="wAWKMj" name="ADSREditor.h" compile="0" resource="0" file="Source/GUI/Components/ADSREditor.h"/>
+          <FILE id="Zy5fji" name="ChaosEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/ChaosEditor.cpp"/>
+          <FILE id="qHvx4x" name="ChaosEditor.h" compile="0" resource="0" file="Source/GUI/Components/ChaosEditor.h"/>
+          <FILE id="jYmxeq" name="ENVEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/ENVEditor.cpp"/>
+          <FILE id="KTbcHb" name="ENVEditor.h" compile="0" resource="0" file="Source/GUI/Components/ENVEditor.h"/>
+          <FILE id="Z0WJvM" name="imbSynthGUIComponent.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/imbSynthGUIComponent.cpp"/>
+          <FILE id="YbMOXB" name="imbSynthGUIComponent.h" compile="0" resource="0"
+                file="Source/GUI/Components/imbSynthGUIComponent.h"/>
+          <FILE id="UzZEbk" name="LFOEditor.h" compile="0" resource="0" file="Source/GUI/Components/LFOEditor.h"/>
+          <FILE id="xP5lkq" name="ModulationParamLink.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/ModulationParamLink.cpp"/>
+          <FILE id="o1fWgK" name="ModulationParamLink.h" compile="0" resource="0"
+                file="Source/GUI/Components/ModulationParamLink.h"/>
+          <FILE id="V157i3" name="OPMEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/OPMEditor.cpp"/>
+          <FILE id="WqekeS" name="OPMEditor.h" compile="0" resource="0" file="Source/GUI/Components/OPMEditor.h"/>
+          <FILE id="tjfKoq" name="OPMMacroControlEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/OPMMacroControlEditor.cpp"/>
+          <FILE id="xmBbRm" name="OPMMacroControlEditor.h" compile="0" resource="0"
+                file="Source/GUI/Components/OPMMacroControlEditor.h"/>
+          <FILE id="hqwCQj" name="OPMToSignalChangeEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/OPMToSignalChangeEditor.cpp"/>
+          <FILE id="Savfbq" name="OPMToSignalChangeEditor.h" compile="0" resource="0"
+                file="Source/GUI/Components/OPMToSignalChangeEditor.h"/>
+          <FILE id="mxslri" name="OSCBasicEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/OSCBasicEditor.cpp"/>
+          <FILE id="HH8Orh" name="OSCBasicEditor.h" compile="0" resource="0"
+                file="Source/GUI/Components/OSCBasicEditor.h"/>
+          <FILE id="WfQt3G" name="OSCEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/OSCEditor.cpp"/>
+          <FILE id="Cba7rZ" name="OSCEditor.h" compile="0" resource="0" file="Source/GUI/Components/OSCEditor.h"/>
+          <FILE id="WlEIOk" name="PERKEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/PERKEditor.cpp"/>
+          <FILE id="YHueC7" name="PERKEditor.h" compile="0" resource="0" file="Source/GUI/Components/PERKEditor.h"/>
+          <FILE id="NylUMg" name="SignalChangeEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/SignalChangeEditor.cpp"/>
+          <FILE id="AFwEts" name="SignalChangeEditor.h" compile="0" resource="0"
+                file="Source/GUI/Components/SignalChangeEditor.h"/>
+          <FILE id="MUEbGO" name="SignalControlEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/SignalControlEditor.cpp"/>
+          <FILE id="k3t1Ck" name="SignalControlEditor.h" compile="0" resource="0"
+                file="Source/GUI/Components/SignalControlEditor.h"/>
+          <FILE id="UmG4wa" name="SourceMixerComponent.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/SourceMixerComponent.cpp"/>
+          <FILE id="tfrSlK" name="SourceMixerComponent.h" compile="0" resource="0"
+                file="Source/GUI/Components/SourceMixerComponent.h"/>
+        </GROUP>
+        <GROUP id="{E9963B1E-9292-98E0-5EEC-A47DFCC00D47}" name="General">
+          <FILE id="oibK6B" name="PathBrowser.cpp" compile="1" resource="0" file="Source/GUI/General/PathBrowser.cpp"/>
+          <FILE id="ufwvJu" name="PathBrowser.h" compile="0" resource="0" file="Source/GUI/General/PathBrowser.h"/>
+          <FILE id="RtnoME" name="PathBrowserModel.cpp" compile="1" resource="0"
+                file="Source/GUI/General/PathBrowserModel.cpp"/>
+          <FILE id="zwiGLi" name="PathBrowserModel.h" compile="0" resource="0"
+                file="Source/GUI/General/PathBrowserModel.h"/>
+          <FILE id="yiKacr" name="Pattern32BitModel.cpp" compile="1" resource="0"
+                file="Source/GUI/General/Pattern32BitModel.cpp"/>
+          <FILE id="EPSnPh" name="Pattern32BitModel.h" compile="0" resource="0"
+                file="Source/GUI/General/Pattern32BitModel.h"/>
+          <FILE id="ta9lKk" name="PatternEditor8bit.cpp" compile="1" resource="0"
+                file="Source/GUI/General/PatternEditor8bit.cpp"/>
+          <FILE id="DRRuPB" name="PatternEditor8bit.h" compile="0" resource="0"
+                file="Source/GUI/General/PatternEditor8bit.h"/>
+          <FILE id="Vu0ZOz" name="PatternEditor32bit.cpp" compile="1" resource="0"
+                file="Source/GUI/General/PatternEditor32bit.cpp"/>
+          <FILE id="kthxWV" name="PatternEditor32bit.h" compile="0" resource="0"
+                file="Source/GUI/General/PatternEditor32bit.h"/>
+          <FILE id="HdveOF" name="PresetDefinitionEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/General/PresetDefinitionEditor.cpp"/>
+          <FILE id="utlKHL" name="PresetDefinitionEditor.h" compile="0" resource="0"
+                file="Source/GUI/General/PresetDefinitionEditor.h"/>
+          <FILE id="M94XYI" name="PresetFileBrowser.cpp" compile="1" resource="0"
+                file="Source/GUI/General/PresetFileBrowser.cpp"/>
+          <FILE id="spIBcg" name="PresetFileBrowser.h" compile="0" resource="0"
+                file="Source/GUI/General/PresetFileBrowser.h"/>
+          <FILE id="mpKuFX" name="PresetFileBrowserModel.cpp" compile="1" resource="0"
+                file="Source/GUI/General/PresetFileBrowserModel.cpp"/>
+          <FILE id="SjRfmw" name="PresetFileBrowserModel.h" compile="0" resource="0"
+                file="Source/GUI/General/PresetFileBrowserModel.h"/>
+        </GROUP>
+        <GROUP id="{36A4A682-D439-2BE4-9272-EF79482CE161}" name="Global">
+          <FILE id="KgbzVJ" name="ControlStateDisplay.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/ControlStateDisplay.cpp"/>
+          <FILE id="ZbSILo" name="ControlStateDisplay.h" compile="0" resource="0"
+                file="Source/GUI/Global/ControlStateDisplay.h"/>
+          <FILE id="c6o8ia" name="ControlStateDisplayModel.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/ControlStateDisplayModel.cpp"/>
+          <FILE id="W3rS0j" name="ControlStateDisplayModel.h" compile="0" resource="0"
+                file="Source/GUI/Global/ControlStateDisplayModel.h"/>
+          <FILE id="qg3fx3" name="SynthStateDisplay.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/SynthStateDisplay.cpp"/>
+          <FILE id="tznV59" name="SynthStateDisplay.h" compile="0" resource="0"
+                file="Source/GUI/Global/SynthStateDisplay.h"/>
+          <FILE id="q9wHQW" name="SynthStateDisplayModel.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/SynthStateDisplayModel.cpp"/>
+          <FILE id="Dq9rq7" name="SynthStateDisplayModel.h" compile="0" resource="0"
+                file="Source/GUI/Global/SynthStateDisplayModel.h"/>
+        </GROUP>
+        <GROUP id="{943E644A-022E-2CC4-7AA8-5E7617F65FF2}" name="Tabs">
+          <GROUP id="{43A79DD7-86EA-CDEF-77E1-03380E1252C2}" name="MainViews">
+            <FILE id="Iqb3Ro" name="MainViewTabConfiguration.cpp" compile="1" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabConfiguration.cpp"/>
+            <FILE id="DuegKm" name="MainViewTabConfiguration.h" compile="0" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabConfiguration.h"/>
+            <FILE id="FyaAgA" name="MainViewTabInOut.cpp" compile="1" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabInOut.cpp"/>
+            <FILE id="IVvo3I" name="MainViewTabInOut.h" compile="0" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabInOut.h"/>
+            <FILE id="C8fePI" name="MainViewTabPresetManager.cpp" compile="1" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabPresetManager.cpp"/>
+            <FILE id="AFciS2" name="MainViewTabPresetManager.h" compile="0" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabPresetManager.h"/>
+            <FILE id="jVFhD5" name="MainViewTabTools.cpp" compile="1" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabTools.cpp"/>
+            <FILE id="cBCSow" name="MainViewTabTools.h" compile="0" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabTools.h"/>
+          </GROUP>
+          <FILE id="u6K4Vp" name="TabMainControl.cpp" compile="1" resource="0"
+                file="Source/GUI/Tabs/TabMainControl.cpp"/>
+          <FILE id="QqxOux" name="TabMainControl.h" compile="0" resource="0"
+                file="Source/GUI/Tabs/TabMainControl.h"/>
+          <FILE id="KqhrfP" name="TabMasterFilter.cpp" compile="1" resource="0"
+                file="Source/GUI/Tabs/TabMasterFilter.cpp"/>
+          <FILE id="W4yE7s" name="TabMasterFilter.h" compile="0" resource="0"
+                file="Source/GUI/Tabs/TabMasterFilter.h"/>
+          <FILE id="EJgutp" name="TabModulationFunctions.cpp" compile="1" resource="0"
+                file="Source/GUI/Tabs/TabModulationFunctions.cpp"/>
+          <FILE id="a4cdk7" name="TabModulationFunctions.h" compile="0" resource="0"
+                file="Source/GUI/Tabs/TabModulationFunctions.h"/>
+          <FILE id="jaAub7" name="TabOPM.cpp" compile="1" resource="0" file="Source/GUI/Tabs/TabOPM.cpp"/>
+          <FILE id="wHUC9m" name="TabOPM.h" compile="0" resource="0" file="Source/GUI/Tabs/TabOPM.h"/>
+          <FILE id="jvilZE" name="TabWaveforms.cpp" compile="1" resource="0"
+                file="Source/GUI/Tabs/TabWaveforms.cpp"/>
+          <FILE id="xi01vk" name="TabWaveforms.h" compile="0" resource="0" file="Source/GUI/Tabs/TabWaveforms.h"/>
+        </GROUP>
+        <FILE id="imWhaC" name="BassZeroInterface.cpp" compile="1" resource="0"
+              file="Source/GUI/BassZeroInterface.cpp"/>
+        <FILE id="RZlVee" name="BassZeroInterface.h" compile="0" resource="0"
+              file="Source/GUI/BassZeroInterface.h"/>
+      </GROUP>
+      <FILE id="UtQ2t7" name="BassZeroSynthModel.cpp" compile="1" resource="0"
+            file="Source/BassZeroSynthModel.cpp"/>
+      <FILE id="menble" name="BassZeroSynthModel.h" compile="0" resource="0"
+            file="Source/BassZeroSynthModel.h"/>
+      <FILE id="nWS9nj" name="BassZeroVstiAudioProcessor.cpp" compile="1"
+            resource="0" file="Source/BassZeroVstiAudioProcessor.cpp"/>
+      <FILE id="s9vCnF" name="BassZeroVstiAudioProcessor.h" compile="0" resource="0"
+            file="Source/BassZeroVstiAudioProcessor.h"/>
+      <FILE id="xHymwd" name="BassZeroVstiAudioProcessorEditor.cpp" compile="1"
+            resource="0" file="Source/BassZeroVstiAudioProcessorEditor.cpp"/>
+      <FILE id="XcVO5n" name="BassZeroVstiAudioProcessorEditor.h" compile="0"
+            resource="0" file="Source/BassZeroVstiAudioProcessorEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="D:/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2017 targetFolder="Builds/VisualStudio2017" externalLibraries="G:\imbVelesOpenSource\imbAVR\imbAVR.SynthControl\src&#10;G:\imbVelesOpenSource\imbAVR\imbAVR.DedicatedSignalGeneratorLibrary\src">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="D:/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2017>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="D:/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="D:/JUCE/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
+  <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+</JUCERPROJECT>

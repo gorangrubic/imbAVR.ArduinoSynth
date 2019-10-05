@@ -149,32 +149,60 @@ void SignalControlManagerClass::PerformPitch(unsigned int Pitch, SignalControlUn
 
 	//SignalUnits[instruction.SignalID].pwmPatternByte = instruction.pwmPattern;
 
-	float wavelength = 1 / (float)((float)Pitch / (float)PWMCycleSize);
+	if (signal->pwmContinualMode) {
 
-	float sClockPerPWMStep = wavelength * CycleCompensation;
+		float wavelength = 1 / (float)Pitch;
 
-	float sClockPerPWMStepA = floor(sClockPerPWMStep);
-	float sClockPerPWMStepB = floor((sClockPerPWMStep - sClockPerPWMStepA) * 10);
+		float sClockPerPWMStep = wavelength * FinalCycleCompensation * PWMCycleSize*4;
 
-	signal->sClockPerPWMStep = constrain(sClockPerPWMStepA, 1, 255);
-	signal->sClockPerPWMStepB = constrain(sClockPerPWMStepB, 1, 255);
+		float sClockPerPWMStepA = floor(sClockPerPWMStep);
+		float sClockPerPWMStepB = floor((sClockPerPWMStep - sClockPerPWMStepA) * 10);
+
+		signal->sClockPerPWMStep = constrain(sClockPerPWMStepA, 1, 1024);
+		signal->sClockPerPWMStepB = constrain(sClockPerPWMStepB, 1, 255);
+
+	}
+	else {
+
+		float wavelength = 1 / (float)Pitch;
+
+		//float wavelength = 1 / (float)((float)Pitch / (float)PWMCycleSize);
+
+		float sClockPerPWMStep = wavelength * FinalCycleCompensation * PWMCycleSize;
+
+		float sClockPerPWMStepA = floor(sClockPerPWMStep);
+		float sClockPerPWMStepB = floor((sClockPerPWMStep - sClockPerPWMStepA) * 10);
+
+		signal->sClockPerPWMStep = constrain(sClockPerPWMStepA, 1, 1024);
+		signal->sClockPerPWMStepB = constrain(sClockPerPWMStepB, 1, 255);
+
+	}
+
+
 
 
 }
 
 
 
+void SignalControlManagerClass::setup()
+{
+	FinalCycleCompensation = CycleCompensation / (pow(2, TimerPrescalar));
+}
+
 void SignalControlManagerClass::loop()
 {
+	if (!IsLoopEnabled) return;
+
 	CycleIndex++;
 
 	for (size_t i = 0; i < ActiveUnitCount; i++)
 	{
 		if (!SUNIT_i.isOn) continue;
-
+		if (SUNIT_i.isDisabled) continue;
 
 		// CYCLE index control ----------------------------------------------------------------------------------------
-		SUNIT_i.sClockIndex++;
+		SUNIT_i.sClockIndex += SUNIT_i.sClockPrescalar;
 
 
 
@@ -188,20 +216,18 @@ void SignalControlManagerClass::loop()
 
 		bool sClockTick = false;
 
-		if (CycleIndex < SUNIT_i.sClockPerPWMStepB) {
-			sClockTick = SUNIT_i.sClockIndex > SUNIT_i.sClockPerPWMStep;
-		}
-		else {
-			sClockTick = SUNIT_i.sClockIndex >= SUNIT_i.sClockPerPWMStep;
-		}
 
 
 		if (!SUNIT_i.pwmContinualMode) {
 
-			
+			if (CycleIndex < SUNIT_i.sClockPerPWMStepB) {
+				sClockTick = SUNIT_i.sClockIndex > SUNIT_i.sClockPerPWMStep;
+			}
+			else {
+				sClockTick = SUNIT_i.sClockIndex >= SUNIT_i.sClockPerPWMStep;
+			}
 
 			if (sClockTick) {
-
 
 				SUNIT_i.pwmStepIndex++;
 
@@ -218,14 +244,25 @@ void SignalControlManagerClass::loop()
 		}
 		else {
 
+		//	unsigned int cycle_time = SUNIT_i.sClockPerPWMStep*PWMCycleSize;
+
+			/*if (CycleIndex < SUNIT_i.sClockPerPWMStepB) {
+				sClockTick = SUNIT_i.sClockIndex > SUNIT_i.sClockPerPWMStep;
+			}
+			else {
+				sClockTick = SUNIT_i.sClockIndex >= SUNIT_i.sClockPerPWMStep;
+			}*/
+
 			if (SUNIT_i.pwmContinualSClockIndexChange == 0) {
 
-				SUNIT_i.pwmContinualSClockIndexChange = floor(((float)SUNIT_i.pwmByte / 255.0) * (SUNIT_i.sClockPerPWMStep * 8));
+				SUNIT_i.pwmContinualSClockIndexChange = (MathTool::GetRatio(SUNIT_i.pwmByte, 255, 0, 1) * SUNIT_i.sClockPerPWMStep);
+				  //(SUNIT_i.pwmContinualChange * SUNIT_i.sClockPerPWMStep); // ((float)SUNIT_i.pwmByte / 255.0) * SUNIT_i.sClockPerPWMStep;
 
 			}
 
+			
 
-			if (SUNIT_i.sClockIndex < SUNIT_i.pwmContinualSClockIndexChange) {
+			if (SUNIT_i.sClockIndex <= SUNIT_i.pwmContinualSClockIndexChange) {
 				digitalWrite(SUNIT_i.pin, HIGH);
 			}
 			else {
@@ -233,18 +270,15 @@ void SignalControlManagerClass::loop()
 			}
 
 
-			if (sClockTick) {
+			if (SUNIT_i.sClockIndex >= SUNIT_i.sClockPerPWMStep) {
 
-				SUNIT_i.pwmStepIndex++;
-				
-				if (SUNIT_i.pwmStepIndex >= PWMCycleSize) {
-					SUNIT_i.pwmStepIndex = SUNIT_i.pwmStepIndex % PWMCycleSize;
-					SUNIT_i.sClockIndex = 0;
-				}
-
+				SUNIT_i.sClockIndex = 0;
 			}
 
 		}
+
+
+
 
 		if (SUNIT_i.sClockIndex == 0) {
 

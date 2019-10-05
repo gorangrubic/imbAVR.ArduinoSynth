@@ -51,14 +51,18 @@ void SynthDeviceControl::setup() {
 	
 	SPI.begin();
 
-	SPI.setClockDivider(SPI_CLOCK_DIV128);
+	SPI.beginTransaction(SPISettings(140000, MSBFIRST, SPI_MODE0));
+
+	//SPISettings settingsA(2000000, MSBFIRST, SPI_MODE1);
+
+	//SPI.setClockDivider(SPI_CLOCK_DIV128);
 
 	//pinMode(SOUND_OUT, OUTPUT);
 	mainControl.time_factor = ENGINE_TIMEFACTOR;
 
 	mainControl.setup();
 	
-	SignalGeneratorLink.setup(7, B00000111, 10);
+	SignalGeneratorLink.setup(7, B00011111, 10);
 
 	Engine_Chrono.start();
 
@@ -271,14 +275,14 @@ void SynthDeviceControl::loop(midiEventPacket_t rx) {
 		
 		Serial.println(":" + String(cc_id) + "|" + String(b2) + ":" + String(b3) + ":" + String(b4) + "[" + String(index) + "]");
 #else
-		byte b1 = instruction.data >> 24;
+		/*byte b1 = instruction.data >> 24;
 		byte b2 = instruction.data >> 16;
 		byte b3 = instruction.data >> 8;
 		byte b4 = instruction.data;
 
 		byte s_id = (b1 & B11110000) >> 4;
 		byte cc_id = b1 & B00001111;
-		Serial.println("smi->" + String(s_id) + ":" + String(cc_id) + "|" + String(b2) + ":" + String(b3) + ":" + String(b4) + "[" + String(index) + "]");
+		Serial.println("smi->" + String(s_id) + ":" + String(cc_id) + "|" + String(b2) + ":" + String(b3) + ":" + String(b4) + "[" + String(index) + "]");*/
 #endif
 		//byte b1 = (smi.data >> 24)&B11111111;  //smi.data&B11111111;
 
@@ -297,7 +301,7 @@ void SynthDeviceControl::loop(midiEventPacket_t rx) {
 #endif
 
 		
-
+		delay(20);
 
 	}
 

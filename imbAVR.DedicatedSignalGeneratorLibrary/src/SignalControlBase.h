@@ -17,12 +17,13 @@ class SignalControlBase
 
 public:
 
+	bool isDisabled = false;
 	bool isOn = true;
 
 	byte sClockPrescalar = 1;
 
 	// default PWM pattern is 50% square pulse waveform
-	byte pwmByte = B11110000;
+	byte pwmByte = 0b11110000;
 
 
 	unsigned int freq = 110;
@@ -30,8 +31,8 @@ public:
 
 
 	bool IsPitchSlave = false;
-	bool IsPositiveRelation = true;
-	bool IsRelativeDistanceMode = true;
+	bool IsPositiveRelation = false;
+	bool IsRelativeDistanceMode = false;
 
 	bool IsMidiNote = false;
 
