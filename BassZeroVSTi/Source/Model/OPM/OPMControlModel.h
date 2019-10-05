@@ -21,6 +21,8 @@ class OPMControlModel:public SynthDeviceModelComponentBase {
 
 public:
 
+	
+
 	void AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortName, String _longName);
 	void AddMacroControlLink(MacroControlLink * SignalControlLink, String _shortName, String _longName);
 
@@ -57,5 +59,9 @@ public:
 	std::vector<OPMSignalUnit*> Units;
 	
 	void Deploy() override;
+
+	OPMControlModel();
+
+	OPMControlModel(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
 
 };

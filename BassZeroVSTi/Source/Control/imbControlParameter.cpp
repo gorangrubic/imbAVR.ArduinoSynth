@@ -159,6 +159,13 @@ void imbControlParameter::SliderUpdate()
 	assignedSlider->setValue(Value);
 }
 
+void imbControlParameter::SetHelp(String _parameterHelp, String _parameterHelpUrl, String _parameterUnit)
+{
+	if (_parameterHelp != "") parameterHelp = _parameterHelp;
+	if (_parameterHelpUrl != "") parameterHelpUrl = _parameterHelpUrl;
+	if (_parameterUnit != "") parameterUnit = _parameterUnit;
+}
+
 bool imbControlParameter::SetMidiMessage(MidiMessage * message)
 {
 	return false;

@@ -42,10 +42,12 @@ void OPMControlModel::Deploy()
 	ListOfPitchUnits.push_back("1000 Hz");
 	ListOfPitchUnits.push_back("2000 Hz");
 
+	ListOfModulationParameters.push_back("OFF");
 	ListOfModulationParameters.push_back("Rate");
 	ListOfModulationParameters.push_back("Period");
 	ListOfModulationParameters.push_back("Change");
 	
+	ListOfModulationModes.push_back("OFF");
 	ListOfModulationModes.push_back("Pitch");
 	ListOfModulationModes.push_back("PWM");
 	ListOfModulationModes.push_back("Phase");
@@ -75,4 +77,8 @@ void OPMControlModel::Deploy()
 	
 	AddSignalUnit(&PERKA, "PERKA", "PERK A");
 	AddSignalUnit(&PERKB, "PERKB", "PERK B");
+}
+
+OPMControlModel::OPMControlModel()
+{
 }

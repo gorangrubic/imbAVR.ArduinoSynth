@@ -194,6 +194,24 @@ public:
 	String parameterID;
 	String parameterLabel;
 	String parameterUnit;
+	
+	/// <summary>
+	/// Short help on this parameter
+	/// </summary>
+	String parameterHelp;
+
+	/// <summary>
+	/// URL with more information on the parameter
+	/// </summary>
+	String parameterHelpUrl;
+	
+	/// <summary>
+	/// Sets additional information on this parameter
+	/// </summary>
+	/// <param name="_parameterHelp">The parameter help.</param>
+	/// <param name="_parameterHelpUrl">The parameter help URL.</param>
+	/// <param name="_parameterUnit">The parameter unit.</param>
+	void SetHelp(String _parameterHelp, String _parameterHelpUrl = "", String _parameterUnit = "");
 
 	bool isMetaValue;
 	bool isAutomatizable;

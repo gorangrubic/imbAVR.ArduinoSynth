@@ -10,14 +10,14 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+
+#include "../Source/Model/OPM/OPMSignalUnitChange.h"
 #include "../SynthDeviceModelComponentBase.h"
 #include "../SynthDeviceModel.h"
 #include "../../imbAVR.DedicatedSignalGeneratorLibrary/src/SignalChangeInstruction.h"
 #include "../../imbAVR.DedicatedSignalGeneratorLibrary/src/SignalControlUnit.h"
 #include "../Source/Control/imbControlParameter.h"
-
-#include "../Source/Model/OPM/OPMSignalUnitChange.h"
-
+#include "../Source/Model/OPM/OPMControlModel.h"
 
 
 
@@ -43,9 +43,12 @@ public:
 	OPMSignalUnitChange PWMChange = OPMSignalUnitChange();
 	OPMSignalUnitChange PitchChange = OPMSignalUnitChange();
 
-	OPMSignalUnit OPMSignalUnit();
 
-	OPMSignalUnit OPMSignalUnit(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
+	OPMControlModel * opmParent;
+
+	OPMSignalUnit();
+
+	OPMSignalUnit(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
 
 	void Deploy() override;
 
