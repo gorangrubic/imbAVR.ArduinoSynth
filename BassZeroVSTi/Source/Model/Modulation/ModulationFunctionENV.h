@@ -16,21 +16,21 @@ class ModulationFunctionENV : public ModulationSourceBase {
 
 public:
 
-	imbControlParameter TimeA = imbControlParameter();
-	imbControlParameter TimeB = imbControlParameter();
+	imbControlParameter TimeA;
+	imbControlParameter TimeB;
 	
-	imbControlParameter ValueA = imbControlParameter();
-	imbControlParameter ValueB = imbControlParameter();
+	imbControlParameter ValueA;
+	imbControlParameter ValueB;
 
-	imbControlParameter StartWithB = imbControlParameter();
-	imbControlParameter Loop = imbControlParameter();
+	imbControlParameter StartWithB;
+	imbControlParameter Loop;
 
 	/// <summary>
 /// Deploys this instance.
 /// </summary>
-	void Deploy() override;
+	void Deploy();
 
 	ModulationFunctionENV();
-	ModulationFunctionENV(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName);
+//	ModulationFunctionENV(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {};
 
 };

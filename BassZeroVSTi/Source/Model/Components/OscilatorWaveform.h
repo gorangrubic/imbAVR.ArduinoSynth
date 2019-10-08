@@ -12,9 +12,22 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
 #include "../SynthDeviceModel.h"
+
 #include "OscilatorBase.h"
 
-class OscilatorWaveform : public OscilatorBase {
+class OscilatorWaveform : 
+	public SynthDeviceModelComponentBase,
+	public ModelComponentWithChildren 
+{
 
 
+public:
+
+
+
+	void Deploy();
+
+	OscilatorWaveform();
+
+//	OscilatorWaveform(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
 };

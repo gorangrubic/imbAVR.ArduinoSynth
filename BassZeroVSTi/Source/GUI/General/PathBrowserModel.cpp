@@ -9,3 +9,8 @@
 */
 
 #include "PathBrowserModel.h"
+
+
+  PathBrowserModel::PathBrowserModel()
+  {
+  }

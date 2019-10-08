@@ -9,3 +9,8 @@
 */
 
 #include "Pattern32BitModel.h"
+
+
+  Pattern32BitModel::Pattern32BitModel()
+  {
+  }

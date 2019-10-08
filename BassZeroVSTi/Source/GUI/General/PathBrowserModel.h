@@ -9,6 +9,7 @@
 */
 
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
 
 class PathBrowserModel {
  
@@ -19,4 +20,4 @@ class PathBrowserModel {
        
     
     PathBrowserModel();
-}
+};

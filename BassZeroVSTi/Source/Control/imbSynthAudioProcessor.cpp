@@ -14,6 +14,18 @@ AudioProcessorValueTreeState::ParameterLayout imbSynthAudioProcessor::CreatePara
 
 }
 
+void imbSynthAudioProcessor::audioProcessorParameterChanged(AudioProcessor * processor, int parameterIndex, float newValue)
+{
+}
+
+void imbSynthAudioProcessor::audioProcessorParameterChangeGestureEnd(AudioProcessor * processor, int parameterIndex)
+{
+}
+
+void imbSynthAudioProcessor::audioProcessorChanged(AudioProcessor * processor)
+{
+}
+
 imbSynthAudioProcessor::imbSynthAudioProcessor() : AudioProcessor(BusesProperties()
 #if ! JucePlugin_IsMidiEffect
 #if ! JucePlugin_IsSynth

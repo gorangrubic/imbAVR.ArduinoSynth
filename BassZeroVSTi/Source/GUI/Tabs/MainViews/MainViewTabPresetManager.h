@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/GUI/Components/imbSynthGUIComponent.h"
+#include "../Source/Data/imbSynthStateData.h"
 //[/Headers]
 
 #include "../../General/PresetFileBrowser.h"
@@ -41,7 +43,7 @@ class MainViewTabPresetManager  : public Component,
 {
 public:
     //==============================================================================
-    MainViewTabPresetManager (imbSynthStateData * synthState, String nameSufix);
+    MainViewTabPresetManager (imbSynthStateData * synthState, String nameSufix)
     ~MainViewTabPresetManager();
 
     //==============================================================================

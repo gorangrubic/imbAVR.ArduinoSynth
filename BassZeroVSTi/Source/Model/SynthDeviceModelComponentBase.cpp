@@ -9,11 +9,8 @@
 */
 
 #include "SynthDeviceModelComponentBase.h"
+#include "../Source/Utility/imbSynthTools.h"
 
-void SynthDeviceModelComponentBase::AddChild(SynthDeviceModelComponentBase * child)
-{
-	ChildComponents.push_back(child);
-}
 
 void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
@@ -33,7 +30,7 @@ void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * outpu
 		_initIndexValue = 0;
 	}
 	else {
-		_initIndexValue = SynthDeviceModel::GetIndex(items, initValue);
+		_initIndexValue = imbSynthTools::GetIndex(items, initValue);
 	}
 	AddParameter(output, _parameterID, _parameterLabel, 0, items->size,_initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat);
 }
@@ -53,7 +50,7 @@ void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * outpu
 void SynthDeviceModelComponentBase::AddCCParameter(imbControlParameter* output, String _parameterID, String _parameterLabel,
 	int initValue, int minValue, int maxValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
-	if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
+	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
 	AddParameter(output, _parameterID, _parameterLabel, minValue, maxValue, initValue, "", _ccID, _isAutomated, imbControlParameterType::Integer, _msgFormat);
 }
 
@@ -70,9 +67,9 @@ void SynthDeviceModelComponentBase::AddParameter(imbControlParameter* output,Str
 
 void SynthDeviceModelComponentBase::BuildParameters()
 {
-	processorParameterGroup = juce::AudioProcessorParameterGroup(ShortName, LongName, ".");
+	//processorParameterGroup = juce::AudioProcessorParameterGroup(ShortName, LongName, ".");
 	  
-	juce::AudioProcessorValueTreeState& vt = Root->SynthProcessor->parameters;
+	/*juce::AudioProcessorValueTreeState& vt = Root->SynthProcessor->parameters;
 	
 	for each (imbControlParameter * par in Parameters)
 	{
@@ -83,10 +80,10 @@ void SynthDeviceModelComponentBase::BuildParameters()
 	for each (SynthDeviceModelComponentBase * child in ChildComponents)
 	{
 		child->BuildParameters();
-	}
+	}*/
 }
 
-void SynthDeviceModelComponentBase::PreDeploy(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
+void SynthDeviceModelComponentBase::PreDeploy(SynthDeviceModel * _root, ModelComponentDescription * _parent, String _shortName, String _longName)
 {
 	if (NamePrefix == "") {
 		ShortName = _shortName;
@@ -106,14 +103,12 @@ void SynthDeviceModelComponentBase::PreDeploy(SynthDeviceModel * _root, SynthDev
 	Root = _root;
 	Parent = _parent;
 
-
-	
 }
 
-SynthDeviceModelComponentBase::SynthDeviceModelComponentBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
-{
-	PreDeploy(_root, _parent, _shortName, _longName);
-}
+//SynthDeviceModelComponentBase::SynthDeviceModelComponentBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
+//{
+//	PreDeploy(_root, _parent, _shortName, _longName);
+//}
 
 SynthDeviceModelComponentBase::SynthDeviceModelComponentBase()
 {

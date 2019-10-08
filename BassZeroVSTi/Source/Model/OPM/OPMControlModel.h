@@ -11,13 +11,17 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
-#include "../SynthDeviceModel.h"
+#include "../Core/ModelComponentWithChildren.h"
+//#include "../SynthDeviceModel.h"
 
-#include "OPMSignalUnit.h";
 #include "MacroControlLink.h";
-#include "OPMControlModel.h"
+#include "OPMSignalUnit.h";
 
-class OPMControlModel:public SynthDeviceModelComponentBase {
+
+
+class OPMControlModel:
+	public SynthDeviceModelComponentBase,
+	public ModelComponentWithChildren {
 
 public:
 
@@ -33,35 +37,15 @@ public:
 
 	std::vector<String> ListOfSignalUnits;
 	
-	// =========================== OPM Signal Units
-	OPMSignalUnit WFA = OPMSignalUnit();
-	OPMSignalUnit WFB = OPMSignalUnit();
-	OPMSignalUnit FLT_RESA = OPMSignalUnit();
-	OPMSignalUnit FLT_RESB = OPMSignalUnit();
-	OPMSignalUnit PERKA = OPMSignalUnit();
-	OPMSignalUnit PERKB = OPMSignalUnit();
 	
-	
-	// =========================== Modulation Macro Controls links
-	
-	MacroControlLink MODA_MCL1 = MacroControlLink();
-	MacroControlLink MODA_MCL2 = MacroControlLink();
-
-	MacroControlLink MODB_MCL1 = MacroControlLink();
-	MacroControlLink MODB_MCL2 = MacroControlLink();
-	
-	MacroControlLink VALA_MCL1 = MacroControlLink();
-	MacroControlLink VALB_MCL1 = MacroControlLink();
-	MacroControlLink VALC_MCL1 = MacroControlLink();
-	MacroControlLink VALC_MCL2 = MacroControlLink();
 	
     std::vector<MacroControlLink*> Links;
 	std::vector<OPMSignalUnit*> Units;
 	
-	void Deploy() override;
+	void Deploy() ;
 
 	OPMControlModel();
 
-	OPMControlModel(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
+//	OPMControlModel(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
 
 };

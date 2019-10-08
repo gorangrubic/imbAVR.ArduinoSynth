@@ -9,3 +9,9 @@
 */
 
 #include "ControlStateDisplayModel.h"
+
+
+
+ControlStateDisplayModel::ControlStateDisplayModel()
+{
+}

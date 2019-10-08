@@ -11,45 +11,43 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#include "../Source/Model/OPM/OPMSignalUnitChange.h"
+#include "OPMSignalUnitChange.h"
 #include "../SynthDeviceModelComponentBase.h"
 #include "../SynthDeviceModel.h"
-#include "../../imbAVR.DedicatedSignalGeneratorLibrary/src/SignalChangeInstruction.h"
-#include "../../imbAVR.DedicatedSignalGeneratorLibrary/src/SignalControlUnit.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "../Source/Model/OPM/OPMControlModel.h"
+#include "OPMControlModel.h"
 
 
 
 class OPMSignalUnit:
-	public SignalControlUnitClass,
-	public SynthDeviceModelComponentBase
+	public SynthDeviceModelComponentBase,
+	public ModelComponentWithChildren
 {
 
 public:
 
-	imbControlParameter Enabled = imbControlParameter();
-	imbControlParameter Sync = imbControlParameter();
+	imbControlParameter Enabled;
+	imbControlParameter Sync;
 
-	imbControlParameter PitchUnit = imbControlParameter();
-	imbControlParameter RelativeToNote = imbControlParameter();
-	imbControlParameter DoublePrescalar = imbControlParameter();
-	imbControlParameter PWMCycleMode = imbControlParameter();
+	imbControlParameter PitchUnit;
+	imbControlParameter RelativeToNote;
+	imbControlParameter DoublePrescalar;
+	imbControlParameter PWMCycleMode;
 
-	imbControlParameter WaveformPattern = imbControlParameter();
-	imbControlParameter ModByte = imbControlParameter();
+	imbControlParameter WaveformPattern;
+	imbControlParameter ModByte;
 
-	OPMSignalUnitChange PhaseChange = OPMSignalUnitChange();
-	OPMSignalUnitChange PWMChange = OPMSignalUnitChange();
-	OPMSignalUnitChange PitchChange = OPMSignalUnitChange();
+	OPMSignalUnitChange PhaseChange;
+	OPMSignalUnitChange PWMChange;
+	OPMSignalUnitChange PitchChange;
 
 
-	OPMControlModel * opmParent;
+	//OPMControlModel * opmParent;
 
 	OPMSignalUnit();
 
-	OPMSignalUnit(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
+//	OPMSignalUnit(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
 
-	void Deploy() override;
+	void Deploy() ;
 
 };

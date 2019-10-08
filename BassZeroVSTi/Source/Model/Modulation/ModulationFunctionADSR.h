@@ -18,20 +18,20 @@ class ModulationFunctionADSR : public ModulationSourceBase {
 
 public:
 
-	imbControlParameter AttackTime = imbControlParameter();
-	imbControlParameter DecayTime = imbControlParameter();
-	imbControlParameter ReleaseTime = imbControlParameter();
+	imbControlParameter AttackTime;
+	imbControlParameter DecayTime;
+	imbControlParameter ReleaseTime;
 
-	imbControlParameter InitValue = imbControlParameter();
-	imbControlParameter SustainValue = imbControlParameter();
+	imbControlParameter InitValue;
+	imbControlParameter SustainValue;
 
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
-	void Deploy() override;
+	void Deploy();
 
 	ModulationFunctionADSR();
 
-	ModulationFunctionADSR(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {}
+//	ModulationFunctionADSR(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {}
 
 };

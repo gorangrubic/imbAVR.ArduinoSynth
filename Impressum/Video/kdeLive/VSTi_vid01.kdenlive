@@ -1,0 +1,1362 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mlt title="Anonymous Submission" LC_NUMERIC="en_US" producer="main_bin" version="6.16.0" root="G:/imbVelesOpenSource/imbAVR/Impressum/Video/kdeLive">
+ <profile frame_rate_num="10" sample_aspect_num="1" display_aspect_den="1024" colorspace="709" progressive="1" description="1912x1024 10.00fps" display_aspect_num="1908" frame_rate_den="1" width="1912" height="1024" sample_aspect_den="1"/>
+ <producer title="Anonymous Submission" id="producer0" in="00:00:00.000" out="00:00:01.267">
+  <property name="length">39</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1429_40.avi</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">65317693</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="kdenlive:clipname"/>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:id">2</property>
+  <property name="kdenlive:file_size">9800192</property>
+  <property name="kdenlive:file_hash">6daa6d4ff18bb12799c8af7f796362fe</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer1" in="00:00:00.000" out="00:00:14.700">
+  <property name="length">148</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1358_32.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">3</property>
+  <property name="kdenlive:file_size">123970560</property>
+  <property name="kdenlive:file_hash">d038aeb239e44b110461869016017029</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">67005919</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer2" in="00:00:00.000" out="00:00:07.700">
+  <property name="length">78</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1319_04.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">4</property>
+  <property name="kdenlive:file_size">55596032</property>
+  <property name="kdenlive:file_hash">2bc0c7f73c653efc820dfa9a0e753f80</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">57755607</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer3" in="00:00:00.000" out="00:00:03.500">
+  <property name="length">36</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190930_1912_56.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">5</property>
+  <property name="kdenlive:file_size">51784704</property>
+  <property name="kdenlive:file_hash">6b3a8406a33d88894e79feacb873f4a8</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">116688924</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer4" in="00:00:00.000" out="00:00:01.600">
+  <property name="length">17</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190930_1847_58.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">6</property>
+  <property name="kdenlive:file_size">27926528</property>
+  <property name="kdenlive:file_hash">fe3836dd09ec0f4a927cdf156dfacbe4</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">135386579</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer5" in="00:00:00.000" out="00:00:02.700">
+  <property name="length">28</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190929_2216_18.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">8</property>
+  <property name="kdenlive:file_size">38607872</property>
+  <property name="kdenlive:file_hash">a513c526543b9b34569622862014c05d</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1916</property>
+  <property name="meta.media.0.codec.height">1032</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">112303767</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1916</property>
+  <property name="meta.media.height">1032</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer6" in="00:00:00.000" out="00:00:41.400">
+  <property name="length">415</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1530_14.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">11</property>
+  <property name="kdenlive:file_size">180638208</property>
+  <property name="kdenlive:file_hash">c0e5824cc375013428b0815c64a751d4</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">34903573</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer7" in="00:00:00.000" out="00:00:07.100">
+  <property name="length">72</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1608_42.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">10</property>
+  <property name="kdenlive:file_size">26772992</property>
+  <property name="kdenlive:file_hash">37b0b6305262505d84914e95a7a73883</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">30161943</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer8" in="00:00:00.000" out="00:00:01.700">
+  <property name="length">18</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190929_2156_46.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">9</property>
+  <property name="kdenlive:file_size">24912896</property>
+  <property name="kdenlive:file_hash">cdf549ea2091d6238cf6e3eabc4945ba</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1916</property>
+  <property name="meta.media.0.codec.height">1032</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">117222974</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1916</property>
+  <property name="meta.media.height">1032</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer9" in="00:00:00.000" out="00:00:31.100">
+  <property name="length">312</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1437_26.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">12</property>
+  <property name="kdenlive:file_size">127904768</property>
+  <property name="kdenlive:file_hash">531c5c341215039225fa59bd9db45926</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">32899063</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer10" in="00:00:00.000" out="00:00:01.900">
+  <property name="length">20</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190929_2247_27.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">7</property>
+  <property name="kdenlive:file_size">20923392</property>
+  <property name="kdenlive:file_hash">7aca2d3ddb85c045920f16d55333b6ba</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1916</property>
+  <property name="meta.media.0.codec.height">1032</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">83681352</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1916</property>
+  <property name="meta.media.height">1032</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer11" in="00:00:00.000" out="00:08:06.200">
+  <property name="length">4863</property>
+  <property name="eof">pause</property>
+  <property name="resource">D:/Projects2018/_exports/_PROMO/2018_2019/hardyVeles_Lekophilians_140bpm.wav</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s32</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s24le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 24-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">2116800</property>
+  <property name="seekable">1</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">13</property>
+  <property name="kdenlive:file_size">128682278</property>
+  <property name="kdenlive:file_hash">4f79d44a80a32ea367c378fc9de96577</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer12" in="00:00:00.000" out="00:00:44.700">
+  <property name="length">448</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1643_27.avi</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">31054376</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="kdenlive:clipname"/>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="kdenlive:id">14</property>
+  <property name="kdenlive:file_size">173529600</property>
+  <property name="kdenlive:file_hash">d16e31f8b50090e0c1bb84c4f10190f1</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="global_feed">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer13" in="00:00:00.000" out="00:00:38.900">
+  <property name="length">390</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1655_44.avi</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">29914519</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="kdenlive:clipname"/>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="kdenlive:id">15</property>
+  <property name="kdenlive:file_size">145470976</property>
+  <property name="kdenlive:file_hash">5dbdc28bd70cc3a1a031799645bb6dc8</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="global_feed">1</property>
+ </producer>
+ <playlist id="main_bin">
+  <property name="kdenlive:docproperties.activeTrack">3</property>
+  <property name="kdenlive:docproperties.audioTarget">1</property>
+  <property name="kdenlive:docproperties.decimalPoint">.</property>
+  <property name="kdenlive:docproperties.disablepreview">0</property>
+  <property name="kdenlive:docproperties.documentid">1570285501022</property>
+  <property name="kdenlive:docproperties.enableTimelineZone">0</property>
+  <property name="kdenlive:docproperties.enableexternalproxy">0</property>
+  <property name="kdenlive:docproperties.enableproxy">0</property>
+  <property name="kdenlive:docproperties.externalproxyparams"/>
+  <property name="kdenlive:docproperties.generateimageproxy">0</property>
+  <property name="kdenlive:docproperties.generateproxy">0</property>
+  <property name="kdenlive:docproperties.kdenliveversion">19.07.70</property>
+  <property name="kdenlive:docproperties.position">750</property>
+  <property name="kdenlive:docproperties.previewextension">avi</property>
+  <property name="kdenlive:docproperties.previewparameters">f=avi vcodec=mjpeg progressive=1 qscale=1</property>
+  <property name="kdenlive:docproperties.profile">C:/Users/gorangrubic/AppData/Roaming/kdenlive/profiles/customprofile1</property>
+  <property name="kdenlive:docproperties.proxyextension"/>
+  <property name="kdenlive:docproperties.proxyimageminsize">2000</property>
+  <property name="kdenlive:docproperties.proxyimagesize">800</property>
+  <property name="kdenlive:docproperties.proxyminsize">1000</property>
+  <property name="kdenlive:docproperties.proxyparams"/>
+  <property name="kdenlive:docproperties.scrollPos">0</property>
+  <property name="kdenlive:docproperties.seekOffset">30000</property>
+  <property name="kdenlive:docproperties.storagefolder">/1570285501022</property>
+  <property name="kdenlive:docproperties.version">0.99</property>
+  <property name="kdenlive:docproperties.verticalzoom">1</property>
+  <property name="kdenlive:docproperties.videoTarget">2</property>
+  <property name="kdenlive:docproperties.zonein">0</property>
+  <property name="kdenlive:docproperties.zoneout">1</property>
+  <property name="kdenlive:docproperties.zoom">8</property>
+  <property name="kdenlive:documentnotes"/>
+  <property name="kdenlive:docproperties.groups">[
+]
+</property>
+  <property name="kdenlive:docproperties.guides">[
+    {
+        "comment": "guide",
+        "pos": 365,
+        "type": 0
+    }
+]
+</property>
+  <property name="kdenlive:docproperties.dirtypreviewchunks"/>
+  <property name="kdenlive:docproperties.previewchunks"/>
+  <property name="kdenlive:docproperties.renderaudioquality">160</property>
+  <property name="kdenlive:docproperties.rendercategory">Generic (HD for web, mobile devices...)</property>
+  <property name="kdenlive:docproperties.renderendguide">0</property>
+  <property name="kdenlive:docproperties.renderexportaudio">0</property>
+  <property name="kdenlive:docproperties.renderfield">0</property>
+  <property name="kdenlive:docproperties.renderguide">0</property>
+  <property name="kdenlive:docproperties.renderplay">0</property>
+  <property name="kdenlive:docproperties.renderprofile">MP4 - the dominating format (H264/AAC)</property>
+  <property name="kdenlive:docproperties.renderquality">23</property>
+  <property name="kdenlive:docproperties.renderratio">1</property>
+  <property name="kdenlive:docproperties.renderrescale">0</property>
+  <property name="kdenlive:docproperties.renderrescaleheight">512</property>
+  <property name="kdenlive:docproperties.renderrescalewidth">956</property>
+  <property name="kdenlive:docproperties.renderscanning">0</property>
+  <property name="kdenlive:docproperties.renderspeed">2</property>
+  <property name="kdenlive:docproperties.renderstartguide">0</property>
+  <property name="kdenlive:docproperties.rendertcoverlay">0</property>
+  <property name="kdenlive:docproperties.rendertctype">0</property>
+  <property name="kdenlive:docproperties.rendertwopass">0</property>
+  <property name="kdenlive:docproperties.renderurl">untitled.mp4</property>
+  <property name="kdenlive:docproperties.renderzone">0</property>
+  <property name="xml_retain">1</property>
+  <entry producer="producer0" in="00:00:00.000" out="00:00:01.267"/>
+  <entry producer="producer1" in="00:00:00.000" out="00:00:14.700"/>
+  <entry producer="producer2" in="00:00:00.000" out="00:00:07.700"/>
+  <entry producer="producer3" in="00:00:00.000" out="00:00:03.500"/>
+  <entry producer="producer4" in="00:00:00.000" out="00:00:01.600"/>
+  <entry producer="producer5" in="00:00:00.000" out="00:00:02.700"/>
+  <entry producer="producer6" in="00:00:00.000" out="00:00:41.400"/>
+  <entry producer="producer7" in="00:00:00.000" out="00:00:07.100"/>
+  <entry producer="producer8" in="00:00:00.000" out="00:00:01.700"/>
+  <entry producer="producer9" in="00:00:00.000" out="00:00:31.100"/>
+  <entry producer="producer10" in="00:00:00.000" out="00:00:01.900"/>
+  <entry producer="producer11" in="00:00:00.000" out="00:08:06.200"/>
+  <entry producer="producer12" in="00:00:00.000" out="00:00:44.700"/>
+  <entry producer="producer13" in="00:00:00.000" out="00:00:38.900"/>
+ </playlist>
+ <producer id="black_track" in="00:00:00.000" out="00:17:05.967">
+  <property name="length">2147483647</property>
+  <property name="eof">continue</property>
+  <property name="resource">black</property>
+  <property name="aspect_ratio">1</property>
+  <property name="mlt_service">color</property>
+  <property name="set.test_audio">0</property>
+ </producer>
+ <playlist id="playlist0">
+  <property name="kdenlive:audio_track">1</property>
+ </playlist>
+ <playlist id="playlist1">
+  <property name="kdenlive:audio_track">1</property>
+ </playlist>
+ <tractor id="tractor0" in="00:00:00.000">
+  <property name="kdenlive:audio_track">1</property>
+  <property name="kdenlive:trackheight">50</property>
+  <property name="kdenlive:collapsed">0</property>
+  <property name="kdenlive:thumbs_format"/>
+  <property name="kdenlive:audio_rec"/>
+  <track hide="video" producer="playlist0"/>
+  <track hide="video" producer="playlist1"/>
+ </tractor>
+ <producer title="Anonymous Submission" id="producer14" in="00:00:00.000" out="00:08:06.200">
+  <property name="length">4863</property>
+  <property name="eof">pause</property>
+  <property name="resource">D:/Projects2018/_exports/_PROMO/2018_2019/hardyVeles_Lekophilians_140bpm.wav</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">audio</property>
+  <property name="meta.media.0.codec.sample_fmt">s32</property>
+  <property name="meta.media.0.codec.sample_rate">44100</property>
+  <property name="meta.media.0.codec.channels">2</property>
+  <property name="meta.media.0.codec.name">pcm_s24le</property>
+  <property name="meta.media.0.codec.long_name">PCM signed 24-bit little-endian</property>
+  <property name="meta.media.0.codec.bit_rate">2116800</property>
+  <property name="seekable">1</property>
+  <property name="audio_index">0</property>
+  <property name="video_index">-1</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">13</property>
+  <property name="kdenlive:file_size">128682278</property>
+  <property name="kdenlive:file_hash">4f79d44a80a32ea367c378fc9de96577</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="set.test_audio">0</property>
+  <property name="set.test_image">1</property>
+ </producer>
+ <playlist id="playlist2">
+  <property name="kdenlive:audio_track">1</property>
+  <entry producer="producer14" in="00:01:09.900" out="00:02:27.700">
+   <property name="kdenlive:id">13</property>
+   <property name="kdenlive:activeeffect">0</property>
+   <filter id="filter0">
+    <property name="window">75</property>
+    <property name="max_gain">20dB</property>
+    <property name="level">00:01:09.900=-100;00:01:10.100=-7.58293;00:01:12.100=0;00:01:48.800=0;00:02:20.900=0;00:02:26.900=-13.2857</property>
+    <property name="mlt_service">volume</property>
+    <property name="kdenlive_id">volume</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+ </playlist>
+ <playlist id="playlist3">
+  <property name="kdenlive:audio_track">1</property>
+ </playlist>
+ <tractor id="tractor1" in="00:00:00.000" out="00:00:25.933">
+  <property name="kdenlive:audio_track">1</property>
+  <property name="kdenlive:trackheight">50</property>
+  <property name="kdenlive:collapsed">0</property>
+  <property name="kdenlive:thumbs_format"/>
+  <property name="kdenlive:audio_rec">0</property>
+  <track hide="video" producer="playlist2"/>
+  <track hide="video" producer="playlist3"/>
+ </tractor>
+ <producer title="Anonymous Submission" id="producer15" in="00:00:00.000" out="00:00:02.700">
+  <property name="length">28</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190929_2216_18.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">8</property>
+  <property name="kdenlive:file_size">38607872</property>
+  <property name="kdenlive:file_hash">a513c526543b9b34569622862014c05d</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1916</property>
+  <property name="meta.media.0.codec.height">1032</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">112303767</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1916</property>
+  <property name="meta.media.height">1032</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer16" in="00:00:00.000" out="00:00:01.900">
+  <property name="length">20</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190929_2247_27.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">7</property>
+  <property name="kdenlive:file_size">20923392</property>
+  <property name="kdenlive:file_hash">7aca2d3ddb85c045920f16d55333b6ba</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1916</property>
+  <property name="meta.media.0.codec.height">1032</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">83681352</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1916</property>
+  <property name="meta.media.height">1032</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer17" in="00:00:00.000" out="00:00:01.700">
+  <property name="length">18</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190929_2156_46.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">9</property>
+  <property name="kdenlive:file_size">24912896</property>
+  <property name="kdenlive:file_hash">cdf549ea2091d6238cf6e3eabc4945ba</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1916</property>
+  <property name="meta.media.0.codec.height">1032</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">117222974</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1916</property>
+  <property name="meta.media.height">1032</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer18" in="00:00:00.000" out="00:00:01.600">
+  <property name="length">17</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190930_1847_58.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">6</property>
+  <property name="kdenlive:file_size">27926528</property>
+  <property name="kdenlive:file_hash">fe3836dd09ec0f4a927cdf156dfacbe4</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">135386579</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer19" in="00:00:00.000" out="00:00:03.500">
+  <property name="length">36</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20190930_1912_56.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">5</property>
+  <property name="kdenlive:file_size">51784704</property>
+  <property name="kdenlive:file_hash">6b3a8406a33d88894e79feacb873f4a8</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">116688924</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer20" in="00:00:00.000" out="00:00:07.700">
+  <property name="length">78</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1319_04.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">4</property>
+  <property name="kdenlive:file_size">55596032</property>
+  <property name="kdenlive:file_hash">2bc0c7f73c653efc820dfa9a0e753f80</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">57755607</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer id="producer21" in="00:00:00.000" out="00:00:09.800">
+  <property name="length">99</property>
+  <property name="eof">pause</property>
+  <property name="resource">1.5:G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1358_32.avi</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">20</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">20</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">67005919</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="warp_speed">1.5</property>
+  <property name="warp_resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1358_32.avi</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="meta.media.frame_rate_num">20</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer22" in="00:00:00.000" out="00:00:03.800">
+  <property name="length">39</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1429_40.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">2</property>
+  <property name="kdenlive:file_size">9800192</property>
+  <property name="kdenlive:file_hash">6daa6d4ff18bb12799c8af7f796362fe</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">65317693</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <producer id="producer23" in="00:00:00.000" out="00:00:17.200">
+  <property name="length">173</property>
+  <property name="eof">pause</property>
+  <property name="resource">1.8:G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1437_26.avi</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">32899063</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="warp_speed">1.8</property>
+  <property name="warp_resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1437_26.avi</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer id="producer24" in="00:00:00.000" out="00:00:19.800">
+  <property name="length">199</property>
+  <property name="eof">pause</property>
+  <property name="resource">2.09:G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1530_14.avi</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">34903573</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="warp_speed">2.09</property>
+  <property name="warp_resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1530_14.avi</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <producer title="Anonymous Submission" id="producer25" in="00:00:00.000" out="00:00:07.100">
+  <property name="length">72</property>
+  <property name="eof">pause</property>
+  <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1608_42.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="seekable">1</property>
+  <property name="aspect_ratio">1</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:id">10</property>
+  <property name="kdenlive:file_size">26772992</property>
+  <property name="kdenlive:file_hash">37b0b6305262505d84914e95a7a73883</property>
+  <property name="kdenlive:folderid">-1</property>
+  <property name="global_feed">1</property>
+  <property name="xml">was here</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">30161943</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+ </producer>
+ <playlist id="playlist4">
+  <entry producer="producer15" in="00:00:00.000" out="00:00:02.700">
+   <property name="kdenlive:id">8</property>
+  </entry>
+  <entry producer="producer16" in="00:00:00.000" out="00:00:01.900">
+   <property name="kdenlive:id">7</property>
+  </entry>
+  <entry producer="producer17" in="00:00:00.000" out="00:00:01.700">
+   <property name="kdenlive:id">9</property>
+  </entry>
+  <entry producer="producer18" in="00:00:00.000" out="00:00:01.600">
+   <property name="kdenlive:id">6</property>
+  </entry>
+  <entry producer="producer19" in="00:00:00.000" out="00:00:03.500">
+   <property name="kdenlive:id">5</property>
+  </entry>
+  <entry producer="producer20" in="00:00:00.000" out="00:00:07.700">
+   <property name="kdenlive:id">4</property>
+  </entry>
+  <entry producer="producer21" in="00:00:00.000" out="00:00:09.800">
+   <property name="kdenlive:id">3</property>
+   <property name="kdenlive:activeeffect">0</property>
+   <filter id="filter1">
+    <property name="rotate_center">1</property>
+    <property name="mlt_service">qtblend</property>
+    <property name="kdenlive_id">qtblend</property>
+    <property name="rect">00:00:00.000=0 0 1912 1024 1</property>
+    <property name="rotation">00:00:00.000=0</property>
+    <property name="compositing">0</property>
+    <property name="distort">0</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+  <entry producer="producer22" in="00:00:00.000" out="00:00:03.800">
+   <property name="kdenlive:id">2</property>
+  </entry>
+  <entry producer="producer23" in="00:00:00.000" out="00:00:17.200">
+   <property name="kdenlive:id">12</property>
+  </entry>
+  <entry producer="producer24" in="00:00:00.000" out="00:00:19.700">
+   <property name="kdenlive:id">11</property>
+  </entry>
+  <entry producer="producer25" in="00:00:00.000" out="00:00:07.100">
+   <property name="kdenlive:id">10</property>
+  </entry>
+ </playlist>
+ <playlist id="playlist5"/>
+ <tractor id="tractor2" in="00:00:00.000" out="00:00:25.900">
+  <property name="kdenlive:trackheight">50</property>
+  <property name="kdenlive:collapsed">0</property>
+  <property name="kdenlive:thumbs_format"/>
+  <property name="kdenlive:audio_rec"/>
+  <track hide="audio" producer="playlist4"/>
+  <track hide="audio" producer="playlist5"/>
+ </tractor>
+ <producer id="producer26" in="00:00:00.000" out="00:00:26.400">
+  <property name="length">265</property>
+  <property name="eof">pause</property>
+  <property name="resource">1.47:G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1655_44.avi</property>
+  <property name="aspect_ratio">1</property>
+  <property name="meta.media.nb_streams">1</property>
+  <property name="meta.media.0.stream.type">video</property>
+  <property name="meta.media.0.stream.frame_rate">10</property>
+  <property name="meta.media.0.stream.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.width">1908</property>
+  <property name="meta.media.0.codec.height">1024</property>
+  <property name="meta.media.0.codec.rotate">0</property>
+  <property name="meta.media.0.codec.frame_rate">10</property>
+  <property name="meta.media.0.codec.pix_fmt">rgb555le</property>
+  <property name="meta.media.0.codec.sample_aspect_ratio">0</property>
+  <property name="meta.media.0.codec.colorspace">709</property>
+  <property name="meta.media.0.codec.name">msvideo1</property>
+  <property name="meta.media.0.codec.long_name">Microsoft Video 1</property>
+  <property name="meta.media.0.codec.bit_rate">29914519</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.sample_aspect_num">1</property>
+  <property name="meta.media.sample_aspect_den">1</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="warp_speed">1.47</property>
+  <property name="warp_resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1655_44.avi</property>
+  <property name="mlt_service">timewarp</property>
+  <property name="set.test_audio">1</property>
+  <property name="set.test_image">0</property>
+  <property name="meta.media.frame_rate_num">10</property>
+  <property name="meta.media.frame_rate_den">1</property>
+  <property name="meta.media.colorspace">709</property>
+  <property name="meta.media.color_trc">2</property>
+  <property name="meta.media.width">1908</property>
+  <property name="meta.media.height">1024</property>
+  <property name="meta.media.top_field_first">0</property>
+  <property name="meta.media.progressive">1</property>
+ </producer>
+ <playlist id="playlist6">
+  <blank length="00:00:51.400"/>
+  <entry producer="producer26" in="00:00:00.000" out="00:00:26.400">
+   <property name="kdenlive:id">15</property>
+   <property name="kdenlive:activeeffect">0</property>
+   <filter id="filter2">
+    <property name="version">0.1</property>
+    <property name="mlt_service">frei0r.scale0tilt</property>
+    <property name="kdenlive_id">frei0r.scale0tilt</property>
+    <property name="Clip left">00:00:00.000=0.275628;00:00:22.800=0.275628;00:00:25.500=0.275628</property>
+    <property name="Clip right">00:00:00.000=0.268828;00:00:22.800=0.268828;00:00:25.500=0.268828</property>
+    <property name="Clip top">00:00:00.000=0.245117;00:00:22.800=0.245117;00:00:25.500=0.245117</property>
+    <property name="Clip bottom">00:00:00.000=0.209961;00:00:22.800=0.209961;00:00:25.500=0.209961</property>
+    <property name="Scale X">0.5</property>
+    <property name="Scale Y">0.5</property>
+    <property name="Tilt X">00:00:00.000=0.514121;00:00:22.800=0.514121;00:00:25.500=0</property>
+    <property name="Tilt Y">00:00:00.000=0.511719;00:00:22.800=0.58;00:00:25.500=0.58</property>
+    <property name="kdenlive:collapsed">0</property>
+    <property name="disable">0</property>
+   </filter>
+  </entry>
+ </playlist>
+ <playlist id="playlist7"/>
+ <tractor id="tractor3" in="00:00:00.000" out="00:00:25.933">
+  <property name="kdenlive:trackheight">50</property>
+  <property name="kdenlive:collapsed">0</property>
+  <property name="kdenlive:thumbs_format"/>
+  <property name="kdenlive:audio_rec"/>
+  <property name="kdenlive:timeline_active">1</property>
+  <track hide="audio" producer="playlist6"/>
+  <track hide="audio" producer="playlist7"/>
+ </tractor>
+ <tractor title="Anonymous Submission" id="tractor4" global_feed="1" in="00:00:00.000" out="00:51:17.900">
+  <track producer="black_track"/>
+  <track producer="tractor0"/>
+  <track producer="tractor1"/>
+  <track producer="tractor2"/>
+  <track producer="tractor3"/>
+  <transition id="transition0">
+   <property name="a_track">0</property>
+   <property name="b_track">1</property>
+   <property name="mlt_service">mix</property>
+   <property name="kdenlive_id">mix</property>
+   <property name="internal_added">237</property>
+   <property name="always_active">1</property>
+   <property name="sum">1</property>
+  </transition>
+  <transition id="transition1">
+   <property name="a_track">0</property>
+   <property name="b_track">2</property>
+   <property name="mlt_service">mix</property>
+   <property name="kdenlive_id">mix</property>
+   <property name="internal_added">237</property>
+   <property name="always_active">1</property>
+   <property name="sum">1</property>
+  </transition>
+  <transition id="transition2">
+   <property name="a_track">0</property>
+   <property name="b_track">3</property>
+   <property name="compositing">0</property>
+   <property name="distort">0</property>
+   <property name="rotate_center">0</property>
+   <property name="mlt_service">qtblend</property>
+   <property name="kdenlive_id">qtblend</property>
+   <property name="internal_added">237</property>
+   <property name="always_active">1</property>
+  </transition>
+  <transition id="transition3">
+   <property name="a_track">0</property>
+   <property name="b_track">4</property>
+   <property name="compositing">0</property>
+   <property name="distort">0</property>
+   <property name="rotate_center">0</property>
+   <property name="mlt_service">qtblend</property>
+   <property name="kdenlive_id">qtblend</property>
+   <property name="internal_added">237</property>
+   <property name="always_active">1</property>
+  </transition>
+ </tractor>
+</mlt>

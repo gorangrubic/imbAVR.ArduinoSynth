@@ -11,10 +11,14 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "imbControlParameterEnumerations.h"
 
-#include "imbControlParameter.h"
-#include "../Model/SynthDeviceModel.h"
-#include "../Model/SynthDeviceModelComponentBase.h"
+//#include "../Model/SynthDeviceModelComponentBase.h"
+//#include "../Model/SynthDeviceModel.h"
+// #include "../Source/Model/SynthDeviceModelComponentBase.h"
+
+
+
 #include <vector>
 #include <list>
 
@@ -72,37 +76,7 @@ struct BoolListener : public AudioProcessorValueTreeState::Listener
 };
 
 
-/// <summary>
-/// Type of MIDI messsage that represents input / output format for this parameter
-/// </summary>
-enum imbControlParameterMessageType {
-			
-	/// <summary>
-	/// Not specified - use default option
-	/// </summary>
-	unspecified = 0,
-	/// <summary>
-	/// Parameter is not supported in MIDI communication
-	/// </summary>
-	NoMIDI = 1,
-	/// <summary>
-	/// Parameter is described with Control Command MIDI message
-	/// </summary>
-	ccMIDI = 2,
-	/// <summary>
-	/// Parameter is described with System Exclusive MIDI message
-	/// </summary>
-	sysExMsg = 3
 
-};
-
-enum imbControlParameterType {
-	Integer=0,
-	Ratio=1,
-	Float=2,
-	Enumeration=3,
-	Boolean=4
-};
 
 class imbControlParameter
 {
@@ -111,55 +85,13 @@ class imbControlParameter
 public:
 
 	
-	static float ProcessValue(float _value, imbControlParameterType TP) {
-		switch (TP) {
-		case imbControlParameterType::Boolean:
-			return _value ? 1.0f : 0.0f;
-			break;
-		default:
-			return _value;
-			break;
-		}
 
-	}
-
-	template<imbControlParameterType TP>
-	static float textToFloat(const String& s) {
-		//imbControlParameterType TP = imbControlParameterType::Integer;
-		switch (TP) {
-		case imbControlParameterType::Boolean:
-			return s == "yes" ? 1.0f : 0.0f;
-		
-			break;
-		default:
-			return s.getFloatValue();
-			break;
-		}
-
-		return s.getFloatValue(); 
-	}
-	
-	template<imbControlParameterType TP>
-	static String floatToText(float fi) {
-
-		//imbControlParameterType TP = imbControlParameterType::Integer;
-		switch (TP) {
-			case imbControlParameterType::Boolean:
-				return fi < 0.5f ? "no" : "yes";
-			break;
-			default:
-				return String((int)fi);
-			break;
-		}
-
-		return String((int)fi);
-	}
 
 	// ============= references
 
-	SynthDeviceModel * Root;
-	SynthDeviceModelComponentBase * Parent;
 	
+	//SynthDeviceModelComponentBase * Parent;
+	//SynthDeviceModel * Root;
 	
 
 	FloatListener Listener;
@@ -170,7 +102,7 @@ public:
 
 	// ============= setup methods
 
-	void Connect(SynthDeviceModelComponentBase * _parent);
+	
 	
 	void Setup(String _parameterID, String _parameterLabel, 
 			float minValue, float maxValue, float initValue,
@@ -260,7 +192,7 @@ public:
 	
 	SliderAttachment* pSliderAttachment;
 
-	imbControlParameter();
+	 imbControlParameter() :Listener(Value, 1.0F) { };
 
 	~imbControlParameter();
 };

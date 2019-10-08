@@ -9,11 +9,12 @@
 */
 
 #pragma once
-
+#include "../JuceLibraryCode/JuceHeader.h"
 class PresetFileBrowserModel {
     
  public:
  
  
+	 PresetFileBrowserModel();
  
-}
+};

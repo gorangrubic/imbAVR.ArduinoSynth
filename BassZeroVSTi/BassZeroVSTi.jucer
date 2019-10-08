@@ -9,26 +9,24 @@
     <GROUP id="{D77581B4-8CF9-72FB-081F-DCC82E4EC583}" name="Source">
       <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
         <GROUP id="{DBF45F66-8B5D-8ECD-1186-021B70922C11}" name="Core">
+          <FILE id="NkErMT" name="ModelComponentDescription.cpp" compile="1"
+                resource="0" file="Source/Model/Core/ModelComponentDescription.cpp"/>
+          <FILE id="gQmVkK" name="ModelComponentDescription.h" compile="0" resource="0"
+                file="Source/Model/Core/ModelComponentDescription.h"/>
+          <FILE id="jI9yR9" name="ModelComponentWithChildren.cpp" compile="1"
+                resource="0" file="Source/Model/Core/ModelComponentWithChildren.cpp"/>
+          <FILE id="bMokzL" name="ModelComponentWithChildren.h" compile="0" resource="0"
+                file="Source/Model/Core/ModelComponentWithChildren.h"/>
           <FILE id="ISc26E" name="ModelModulatedControl.cpp" compile="1" resource="0"
                 file="Source/Model/Core/ModelModulatedControl.cpp"/>
           <FILE id="dyOBV4" name="ModelModulatedControl.h" compile="0" resource="0"
                 file="Source/Model/Core/ModelModulatedControl.h"/>
-          <FILE id="UiKZEh" name="ModelParameter.cpp" compile="1" resource="0"
-                file="Source/Model/Core/ModelParameter.cpp"/>
-          <FILE id="jL5dW5" name="ModelParameter.h" compile="0" resource="0"
-                file="Source/Model/Core/ModelParameter.h"/>
+          <FILE id="Spv6ad" name="README.md" compile="0" resource="1" file="Source/Model/Core/README.md"/>
         </GROUP>
         <GROUP id="{2C5118E3-4EE1-978A-9BA6-CD77D7A3C329}" name="Components">
-          <FILE id="oKJVBV" name="ComponentBase.cpp" compile="1" resource="0"
-                file="Source/Model/Components/ComponentBase.cpp"/>
-          <FILE id="WokwVT" name="ComponentBase.h" compile="0" resource="0" file="Source/Model/Components/ComponentBase.h"/>
           <FILE id="XnF8bS" name="ComponentHub.cpp" compile="1" resource="0"
                 file="Source/Model/Components/ComponentHub.cpp"/>
           <FILE id="gV9NWM" name="ComponentHub.h" compile="0" resource="0" file="Source/Model/Components/ComponentHub.h"/>
-          <FILE id="GmgkWa" name="Distortion.cpp" compile="1" resource="0" file="Source/Model/Components/Distortion.cpp"/>
-          <FILE id="GcIYh3" name="Distortion.h" compile="0" resource="0" file="Source/Model/Components/Distortion.h"/>
-          <FILE id="tKHt5a" name="Mixer.cpp" compile="1" resource="0" file="Source/Model/Components/Mixer.cpp"/>
-          <FILE id="Es1QNV" name="Mixer.h" compile="0" resource="0" file="Source/Model/Components/Mixer.h"/>
           <FILE id="bAnDfi" name="OscilatorBase.cpp" compile="1" resource="0"
                 file="Source/Model/Components/OscilatorBase.cpp"/>
           <FILE id="lLxWXl" name="OscilatorBase.h" compile="0" resource="0" file="Source/Model/Components/OscilatorBase.h"/>
@@ -39,10 +37,7 @@
                 file="Source/Model/Components/OscilatorWaveform.cpp"/>
           <FILE id="uGkkZf" name="OscilatorWaveform.h" compile="0" resource="0"
                 file="Source/Model/Components/OscilatorWaveform.h"/>
-          <FILE id="Vmf6Sf" name="ResonanceFilter.cpp" compile="1" resource="0"
-                file="Source/Model/Components/ResonanceFilter.cpp"/>
-          <FILE id="fjpR5O" name="ResonanceFilter.h" compile="0" resource="0"
-                file="Source/Model/Components/ResonanceFilter.h"/>
+          <FILE id="KBtARb" name="README.md" compile="0" resource="1" file="Source/Model/Components/README.md"/>
         </GROUP>
         <GROUP id="{1B6F2ADE-DBCB-93CA-0AD7-FEC5B5FA25F4}" name="OPM">
           <FILE id="k1UoiI" name="MacroControlLink.cpp" compile="1" resource="0"
@@ -60,6 +55,7 @@
                 file="Source/Model/OPM/OPMSignalUnitChange.cpp"/>
           <FILE id="OiEN9P" name="OPMSignalUnitChange.h" compile="0" resource="0"
                 file="Source/Model/OPM/OPMSignalUnitChange.h"/>
+          <FILE id="ED6UqS" name="README.md" compile="0" resource="1" file="Source/Model/OPM/README.md"/>
         </GROUP>
         <GROUP id="{800131DF-E7F7-B8D7-66E6-EB00750B90A3}" name="Modulation">
           <FILE id="emIYeY" name="ModulationFunctionADSR.cpp" compile="1" resource="0"
@@ -70,15 +66,15 @@
                 file="Source/Model/Modulation/ModulationFunctionENV.cpp"/>
           <FILE id="Pd14wA" name="ModulationFunctionENV.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationFunctionENV.h"/>
-          <FILE id="T0TjSr" name="ModulationFunctionLFO.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationFunctionLFO.cpp"/>
+          <FILE id="Dk7soF" name="ModulationSourceBase.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationSourceBase.cpp"/>
           <FILE id="NGeksM" name="ModulationFunctionLFO.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationFunctionLFO.h"/>
+          <FILE id="T0TjSr" name="ModulationFunctionLFO.cpp" compile="1" resource="0"
+                file="Source/Model/Modulation/ModulationFunctionLFO.cpp"/>
           <FILE id="UPnjvf" name="ModulationHub.cpp" compile="1" resource="0"
                 file="Source/Model/Modulation/ModulationHub.cpp"/>
           <FILE id="Ivu7z3" name="ModulationHub.h" compile="0" resource="0" file="Source/Model/Modulation/ModulationHub.h"/>
-          <FILE id="Dk7soF" name="ModulationSourceBase.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationSourceBase.cpp"/>
           <FILE id="ZjpE86" name="ModulationSourceBase.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationSourceBase.h"/>
           <FILE id="mD9uxn" name="ModulationSourceMacroControl.cpp" compile="1"
@@ -89,12 +85,8 @@
                 file="Source/Model/Modulation/ModulationSourceMIDI.cpp"/>
           <FILE id="xAoCV5" name="ModulationSourceMIDI.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationSourceMIDI.h"/>
+          <FILE id="wHWnhb" name="README.md" compile="0" resource="1" file="Source/Model/Modulation/README.md"/>
         </GROUP>
-        <FILE id="YTcNQk" name="MainMenuModel.cpp" compile="1" resource="0"
-              file="Source/Model/MainMenuModel.cpp"/>
-        <FILE id="ekUxg8" name="MainMenuModel.h" compile="0" resource="0" file="Source/Model/MainMenuModel.h"/>
-        <FILE id="nD8Fbd" name="ModelEnumerations.h" compile="0" resource="0"
-              file="Source/Model/ModelEnumerations.h"/>
         <FILE id="fisMzc" name="SynthDeviceModel.cpp" compile="1" resource="0"
               file="Source/Model/SynthDeviceModel.cpp"/>
         <FILE id="AUPdri" name="SynthDeviceModel.h" compile="0" resource="0"
@@ -103,12 +95,25 @@
               resource="0" file="Source/Model/SynthDeviceModelComponentBase.cpp"/>
         <FILE id="qq9CUG" name="SynthDeviceModelComponentBase.h" compile="0"
               resource="0" file="Source/Model/SynthDeviceModelComponentBase.h"/>
+        <FILE id="JCDkxA" name="ModelConstructionTools.cpp" compile="1" resource="0"
+              file="Source/Model/ModelConstructionTools.cpp"/>
+        <FILE id="lGGKpq" name="ModelConstructionTools.h" compile="0" resource="0"
+              file="Source/Model/ModelConstructionTools.h"/>
+        <FILE id="Bk6BiC" name="README.md" compile="0" resource="1" file="Source/Model/README.md"/>
       </GROUP>
       <GROUP id="{339FE495-1696-E062-B2C3-4DA5B3929585}" name="Utility">
         <FILE id="JeNDKS" name="ccTranslationMap.cpp" compile="1" resource="0"
               file="Source/Utility/ccTranslationMap.cpp"/>
         <FILE id="rP6GXJ" name="ccTranslationMap.h" compile="0" resource="0"
               file="Source/Utility/ccTranslationMap.h"/>
+        <FILE id="Yj4RCC" name="imbSynthModelExporter.cpp" compile="1" resource="0"
+              file="Source/Utility/imbSynthModelExporter.cpp"/>
+        <FILE id="RSA4UV" name="imbSynthModelExporter.h" compile="0" resource="0"
+              file="Source/Utility/imbSynthModelExporter.h"/>
+        <FILE id="tSMT4t" name="imbSynthTools.cpp" compile="1" resource="0"
+              file="Source/Utility/imbSynthTools.cpp"/>
+        <FILE id="AI3QUG" name="imbSynthTools.h" compile="0" resource="0" file="Source/Utility/imbSynthTools.h"/>
+        <FILE id="K295Do" name="README.md" compile="0" resource="1" file="Source/Utility/README.md"/>
       </GROUP>
       <GROUP id="{597FEE43-E744-9541-A257-64224B6641A0}" name="Data">
         <FILE id="dtrqzH" name="imbSynthGeneralConfiguration.cpp" compile="1"
@@ -131,13 +136,15 @@
               file="Source/Data/imbSynthStateUtilityData.cpp"/>
         <FILE id="yXwa7d" name="imbSynthStateUtilityData.h" compile="0" resource="0"
               file="Source/Data/imbSynthStateUtilityData.h"/>
+        <FILE id="LvWOG2" name="README.md" compile="0" resource="1" file="Source/Data/README.md"/>
       </GROUP>
       <GROUP id="{2D365E2E-92D3-1196-4DAA-3D156C632C3C}" name="Control">
         <FILE id="W8iaun" name="imbControlParameter.cpp" compile="1" resource="0"
               file="Source/Control/imbControlParameter.cpp"/>
         <FILE id="rfo4kI" name="imbControlParameter.h" compile="0" resource="0"
               file="Source/Control/imbControlParameter.h"/>
-        <FILE id="C7PFpw" name="imbParameter.h" compile="0" resource="0" file="Source/Control/imbParameter.h"/>
+        <FILE id="tOsxjf" name="imbControlParameterEnumerations.h" compile="0"
+              resource="0" file="Source/Control/imbControlParameterEnumerations.h"/>
         <FILE id="eYYyrU" name="imbParameterGroupBase.cpp" compile="1" resource="0"
               file="Source/Control/imbParameterGroupBase.cpp"/>
         <FILE id="bRcY68" name="imbParameterGroupBase.h" compile="0" resource="0"
@@ -150,17 +157,9 @@
               file="Source/Control/ParameterController.cpp"/>
         <FILE id="jzkWjq" name="ParameterController.h" compile="0" resource="0"
               file="Source/Control/ParameterController.h"/>
-        <FILE id="BG7YeD" name="ParameterGroupWaveform.cpp" compile="1" resource="0"
-              file="Source/Control/ParameterGroupWaveform.cpp"/>
-        <FILE id="JAbY6V" name="ParameterGroupWaveform.h" compile="0" resource="0"
-              file="Source/Control/ParameterGroupWaveform.h"/>
-        <FILE id="aOcdle" name="SynthConnectedComponent.cpp" compile="1" resource="0"
-              file="Source/Control/SynthConnectedComponent.cpp"/>
-        <FILE id="o7Gmhf" name="SynthConnectedComponent.h" compile="0" resource="0"
-              file="Source/Control/SynthConnectedComponent.h"/>
+        <FILE id="dAizFc" name="README.md" compile="0" resource="1" file="Source/Control/README.md"/>
       </GROUP>
       <GROUP id="{A1E69F2B-739B-6421-F522-AAF614DDC146}" name="GUI">
-        <GROUP id="{92AB642D-908E-43B7-D5D1-BB216EA7E2E6}" name="Blocks"/>
         <GROUP id="{9AE5526F-9065-C3C9-EB1E-58B121707B40}" name="Components">
           <FILE id="Oqe4ke" name="ADSREditor.cpp" compile="1" resource="0" file="Source/GUI/Components/ADSREditor.cpp"/>
           <FILE id="wAWKMj" name="ADSREditor.h" compile="0" resource="0" file="Source/GUI/Components/ADSREditor.h"/>
@@ -172,7 +171,6 @@
                 file="Source/GUI/Components/imbSynthGUIComponent.cpp"/>
           <FILE id="YbMOXB" name="imbSynthGUIComponent.h" compile="0" resource="0"
                 file="Source/GUI/Components/imbSynthGUIComponent.h"/>
-          <FILE id="UzZEbk" name="LFOEditor.h" compile="0" resource="0" file="Source/GUI/Components/LFOEditor.h"/>
           <FILE id="xP5lkq" name="ModulationParamLink.cpp" compile="1" resource="0"
                 file="Source/GUI/Components/ModulationParamLink.cpp"/>
           <FILE id="o1fWgK" name="ModulationParamLink.h" compile="0" resource="0"
@@ -295,11 +293,15 @@
                 file="Source/GUI/Tabs/TabWaveforms.cpp"/>
           <FILE id="xi01vk" name="TabWaveforms.h" compile="0" resource="0" file="Source/GUI/Tabs/TabWaveforms.h"/>
         </GROUP>
-        <FILE id="imWhaC" name="BassZeroInterface.cpp" compile="1" resource="0"
-              file="Source/GUI/BassZeroInterface.cpp"/>
-        <FILE id="RZlVee" name="BassZeroInterface.h" compile="0" resource="0"
-              file="Source/GUI/BassZeroInterface.h"/>
+        <FILE id="P6zbT7" name="README.md" compile="0" resource="1" file="Source/GUI/README.md"/>
       </GROUP>
+      <FILE id="IjEwJo" name="BassZeroInterface.cpp" compile="1" resource="0"
+            file="Source/BassZeroInterface.cpp"/>
+      <FILE id="EWAjAg" name="BassZeroInterface.h" compile="0" resource="0"
+            file="Source/BassZeroInterface.h"/>
+      <FILE id="Gngb8C" name="MainMenuModel.cpp" compile="1" resource="0"
+            file="Source/MainMenuModel.cpp"/>
+      <FILE id="spZEdV" name="MainMenuModel.h" compile="0" resource="0" file="Source/MainMenuModel.h"/>
       <FILE id="UtQ2t7" name="BassZeroSynthModel.cpp" compile="1" resource="0"
             file="Source/BassZeroSynthModel.cpp"/>
       <FILE id="menble" name="BassZeroSynthModel.h" compile="0" resource="0"
@@ -312,6 +314,7 @@
             resource="0" file="Source/BassZeroVstiAudioProcessorEditor.cpp"/>
       <FILE id="XcVO5n" name="BassZeroVstiAudioProcessorEditor.h" compile="0"
             resource="0" file="Source/BassZeroVstiAudioProcessorEditor.h"/>
+      <FILE id="RBVx98" name="README.md" compile="0" resource="1" file="Source/README.md"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

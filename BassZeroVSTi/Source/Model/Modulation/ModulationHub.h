@@ -20,9 +20,10 @@
 
 #include <cstddef> // for NULL
 
-class ModulationHub : public SynthDeviceModelComponentBase {
+class ModulationHub : 
+	public SynthDeviceModelComponentBase,
+	public ModelComponentWithChildren {
 
-protected:
 
 	
 public:
@@ -39,12 +40,12 @@ public:
 	/// <summary>
   /// Deploys this instance.
   /// </summary>
-	void Deploy() override;
+	void Deploy() ;
 	
-	ModulationFunctionADSR AddADSR();
-	ModulationFunctionENV AddENV();
-	ModulationFunctionLFO AddLFO();
-	ModulationSourceMacroControl AddMacroControl();
+	void AddADSR(ModulationFunctionADSR * output);
+	void AddENV(ModulationFunctionENV * output);
+	void AddLFO(ModulationFunctionLFO * output);
+	void AddMacroControl(ModulationSourceMacroControl * output);
 
-	ModulationSourceMIDI AddMIDI(ModulationSourceMIDIType _midiType, String _shortName, String _longName);
+	void AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, String _shortName, String _longName);
 };

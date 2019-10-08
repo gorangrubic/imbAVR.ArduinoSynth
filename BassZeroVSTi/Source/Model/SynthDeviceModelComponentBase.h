@@ -12,34 +12,26 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Control/imbControlParameter.h"
 #include "SynthDeviceModel.h"
+#include "Core/ModelComponentDescription.h"
+#include "Core/ModelComponentWithChildren.h"
 #include <vector>
-#include <list>
+//#include <list>
 
-enum ModelComponentTypeEnum {
 
-	Modulation,
-	MacroControl,
-
-};
-
-class SynthDeviceModelComponentBase {
+class SynthDeviceModelComponentBase:
+	public ModelComponentDescription {
  
-protected:
 
 	
-	void BuildParameters();
+	
     public:
     
-	   String NamePrefix;
-       String ShortName;
-	   String LongName;
 
-	   SynthDeviceModel * Root;
-	   SynthDeviceModelComponentBase * Parent;
+	SynthDeviceModel * Root;
+	ModelComponentDescription * Parent;
+	
+	   void PreDeploy(SynthDeviceModel * _root, ModelComponentDescription * _parent, String _shortName, String _longName);
 
-	   void PreDeploy(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName);
-
-	   void AddChild(SynthDeviceModelComponentBase* child);
 
 	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
@@ -52,22 +44,31 @@ protected:
 		   String _parameterUnit,
 		   int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
-	   std::list<SynthDeviceModelComponentBase*> ChildComponents;
 
-	   std::vector<imbControlParameter*> Parameters;
+	   void BuildParameters();
+
+	   std::list<imbControlParameter*> Parameters;
 
 	   
-	   juce::AudioProcessorParameterGroup processorParameterGroup;
+	//   juce::AudioProcessorParameterGroup processorParameterGroup;
 
 	   
 	 
 	   /// <summary>
 	   /// Deploys this instance.
 	   /// </summary>
-	   virtual void Deploy() = 0;
+	   //void Deploy() = 0;
+	  // virtual void Deploy() = 0;
 	   
        
-	   SynthDeviceModelComponentBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName);
+	   //SynthDeviceModelComponentBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
+	   //{
+
+		  // : Root(_root),
+			 //  Parent(_parent),
+			 //  ShortName(_shortName),
+			 //  LongName(_longName)
+	   //};
 
 	   SynthDeviceModelComponentBase();
 

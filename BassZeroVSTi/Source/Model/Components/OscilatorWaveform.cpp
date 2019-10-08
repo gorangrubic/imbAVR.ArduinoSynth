@@ -9,3 +9,11 @@
 */
 
 #include "OscilatorWaveform.h"
+
+void OscilatorWaveform::Deploy()
+{
+}
+
+OscilatorWaveform::OscilatorWaveform()
+{
+}

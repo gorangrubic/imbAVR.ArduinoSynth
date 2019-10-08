@@ -1,4 +1,5 @@
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
 /// <summary>
 /// Utility data describe VSTi variables like: 
 /// - currently/last selected MIDI input and outputs

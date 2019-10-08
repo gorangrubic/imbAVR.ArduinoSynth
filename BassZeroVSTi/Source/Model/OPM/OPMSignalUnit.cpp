@@ -31,8 +31,8 @@ void OPMSignalUnit::Deploy()
 	AddBoolParameter(&PWMCycleMode, "PWMCycleMode", "Continual Pulse Width from 0 to 100%", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
 
-	AddEnumParameter(&PitchUnit, "PitchUnit", "Pitch Unit", &opmParent->ListOfPitchUnits, "Semitones", -1,
-		false, imbControlParameterMessageType::sysExMsg);
+	/*AddEnumParameter(&PitchUnit, "PitchUnit", "Pitch Unit", &opmParent->ListOfPitchUnits, "Semitones", -1,
+		false, imbControlParameterMessageType::sysExMsg);*/
 
 	AddCCParameter(&WaveformPattern, "PWMPattern", "Waveform pattern", 64, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
 

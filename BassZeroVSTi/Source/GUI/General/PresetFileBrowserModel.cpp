@@ -9,3 +9,8 @@
 */
 
 #include "PresetFileBrowserModel.h"
+
+
+  PresetFileBrowserModel::PresetFileBrowserModel()
+  {
+  }

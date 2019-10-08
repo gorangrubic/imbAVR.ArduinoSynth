@@ -10,31 +10,29 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../SynthDeviceModelComponentBase.h"
-#include "../SynthDeviceModel.h"
-#include "../Source/Model/OPM/OPMSignalUnitChange.h"
-
-#include "../../imbAVR.DedicatedSignalGeneratorLibrary/src/SignalChangeInstruction.h"
-#include "../../imbAVR.DedicatedSignalGeneratorLibrary/src/SignalControlUnit.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "../Source/Model/OPM/OPMControlModel.h"
+#include "../Source/Model/SynthDeviceModelComponentBase.h"
+//#include "../SynthDeviceModel.h"
+#include "../SynthDeviceModelComponentBase.h"
+//#include "OPMSignalUnitChange.h"
+//#include "OPMControlModel.h"
 
 class MacroControlLink :public SynthDeviceModelComponentBase {
 
 public:
 
-	OPMControlModel * opmParent;
+//	OPMControlModel * opmParent;
 
-	imbControlParameter ModAmt = imbControlParameter();
-	imbControlParameter Signal = imbControlParameter();
+	imbControlParameter ModAmt;
+	imbControlParameter Signal;
 
-	imbControlParameter ModTar = imbControlParameter();
-	imbControlParameter ModPar = imbControlParameter();
+	imbControlParameter ModTar;
+	imbControlParameter ModPar;
 
-	void Deploy() override;
+	void Deploy() ;
 
 	MacroControlLink();
 
-	MacroControlLink(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
+	//MacroControlLink(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
 
 }; 

@@ -9,3 +9,11 @@
 */
 
 #include "OscilatorPerk.h"
+
+void OscilatorPerk::Deploy()
+{
+}
+
+OscilatorPerk::OscilatorPerk()
+{
+}

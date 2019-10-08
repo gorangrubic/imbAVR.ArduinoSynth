@@ -8,12 +8,11 @@
   ==============================================================================
 */
 
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
+#include "BassZeroVstiAudioProcessor.h"
+#include "BassZeroVstiAudioProcessorEditor.h"
 
 //==============================================================================
 BassZeroVstiAudioProcessor::BassZeroVstiAudioProcessor()
-
 {
 }
 
@@ -178,5 +177,5 @@ void BassZeroVstiAudioProcessor::setStateInformation (const void* data, int size
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new BassZeroVstiAudioProcessor();
+	return new BassZeroVstiAudioProcessor();
 }

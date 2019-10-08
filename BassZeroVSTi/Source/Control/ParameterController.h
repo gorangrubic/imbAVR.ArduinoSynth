@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
+#include "imbControlParameterEnumerations.h"
 
 /// <summary>
 /// Manages all synth parameters, assigns ccID to imbControlParameters

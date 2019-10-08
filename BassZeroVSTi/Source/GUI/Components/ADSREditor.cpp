@@ -155,12 +155,12 @@ ADSREditor::ADSREditor (imbSynthStateData * synthState, String nameSufix)
 
 
     //[Constructor] You can add your own custom stuff here..
-	Link_AttackTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_AttackTime, *AttackTime));
-	Link_DecayTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_DecayTime, *DecayTime));
-	Link_ReleaseTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_ReleaseTime, *ReleaseTime));
+	//Link_AttackTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_AttackTime, *AttackTime));
+	//Link_DecayTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_DecayTime, *DecayTime));
+	//Link_ReleaseTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_ReleaseTime, *ReleaseTime));
 
-	Link_InitLevel.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_InitLevel, *InitLevel));
-	Link_SustainLevel.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_SustainLevel, *SustainLevel));
+	//Link_InitLevel.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_InitLevel, *InitLevel));
+	//Link_SustainLevel.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_SustainLevel, *SustainLevel));
 
     //[/Constructor]
 }

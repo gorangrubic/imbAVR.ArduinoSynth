@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "../Source/Data/imbSynthStateData.h"
 //[/Headers]
 
 #include "PatternEditor32bit.h"

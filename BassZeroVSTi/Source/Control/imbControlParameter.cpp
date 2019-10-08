@@ -12,7 +12,9 @@
 
 #include "imbControlParameter.h"
 
+#include "../Source/Utility/imbSynthTools.h"
 
+//#define Root Parent->Root
 
 bool imbControlParameter::SetValue(int _newValue)
   {
@@ -31,61 +33,10 @@ void imbControlParameter::detachControl()
 void imbControlParameter::attachControl(Slider & slider)
 {
 	detachControl();
-	pSliderAttachment = new SliderAttachment(Root->SynthProcessor->parameters, parameterIDPath, slider);
+//	pSliderAttachment = new SliderAttachment(_parent->Root->SynthProcessor->parameters, parameterIDPath, slider);
 
 }
 
-
-void imbControlParameter::Connect(SynthDeviceModelComponentBase * _parent) {
-	Parent = _parent;
-	Root = Parent->Root;
-
-	parameterIDPath = Parent->ShortName + "_" + parameterID;
-
-	AudioProcessorValueTreeState& valueTreeState = Root->SynthProcessor->parameters;
-
-	std::function<String(float)> valueToTextFunction = floatToText<imbControlParameterType::Boolean>;
-	std::function<float(const String&)> textToValueFunction = textToFloat<imbControlParameterType::Boolean>;
-
-	switch (typeParameter) {
-		case imbControlParameterType::Float:
-			valueToTextFunction = floatToText<imbControlParameterType::Float>;
-			textToValueFunction = textToFloat<imbControlParameterType::Float>;
-			break;
-		case imbControlParameterType::Ratio:
-			valueToTextFunction = floatToText<imbControlParameterType::Ratio>;
-			textToValueFunction = textToFloat<imbControlParameterType::Ratio>;
-			break;
-		case imbControlParameterType::Enumeration:
-			valueToTextFunction = floatToText<imbControlParameterType::Enumeration>;
-			textToValueFunction = textToFloat<imbControlParameterType::Enumeration>;
-			break;
-		case imbControlParameterType::Integer:
-			valueToTextFunction = floatToText<imbControlParameterType::Integer>;
-			textToValueFunction = textToFloat<imbControlParameterType::Integer>;
-			break;
-		case imbControlParameterType::Boolean:
-			valueToTextFunction = floatToText<imbControlParameterType::Boolean>;
-			textToValueFunction = textToFloat<imbControlParameterType::Boolean>;
-			break;
-	}
-
-	parameter = valueTreeState.createAndAddParameter(parameterIDPath, parameterID, parameterLabel,
-		NormalisableRange<float>(MinValue, MaxValue, IntervalValue),
-		imbControlParameter::ProcessValue(Value, typeParameter),
-		valueToTextFunction,
-		textToValueFunction,
-		false,
-		isAutomatizable,
-		isDescreteValue,
-		category,
-		typeParameter == imbControlParameterType::Boolean
-	);
-
-	
-	valueTreeState.addParameterListener(parameterIDPath, &Listener);
-
-}
 
 
 void imbControlParameter::Setup(String _parameterID, String _parameterLabel, 
@@ -106,7 +57,7 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
 		typeMIDIMessage = _msgFormat;
 	}
 	
-	AudioProcessorValueTreeState& valueTreeState = Root->SynthProcessor->parameters;
+	//AudioProcessorValueTreeState& valueTreeState = Root->SynthProcessor->parameters;
 
 	ccID = _ccID;
 
@@ -179,9 +130,10 @@ juce::MidiMessage imbControlParameter::GetMidiMessage()
 	return msg;
 }
 
-imbControlParameter::imbControlParameter():Listener(Value)
-{
-}
+//imbControlParameter::imbControlParameter()
+//:Listener(Value, 1.0F)
+//{
+//}
 
 imbControlParameter::~imbControlParameter()
 {

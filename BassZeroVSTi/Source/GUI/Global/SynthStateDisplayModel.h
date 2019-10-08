@@ -9,3 +9,11 @@
 */
 
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
+
+class SynthStateDisplayModel {
+
+public:
+
+	SynthStateDisplayModel();
+};

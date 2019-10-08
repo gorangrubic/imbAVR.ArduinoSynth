@@ -8,8 +8,8 @@
   ==============================================================================
 */
 
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
+#include "BassZeroVstiAudioProcessor.h"
+#include "BassZeroVstiAudioProcessorEditor.h"
 
 //==============================================================================
 BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVstiAudioProcessor& p)

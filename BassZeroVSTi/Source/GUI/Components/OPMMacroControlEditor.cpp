@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "../Source/GUI/Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 #include "OPMMacroControlEditor.h"

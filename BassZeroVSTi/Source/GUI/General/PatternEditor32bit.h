@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "Pattern32BitModel.h"
 //[/Headers]
 
 #include "PatternEditor8bit.h"

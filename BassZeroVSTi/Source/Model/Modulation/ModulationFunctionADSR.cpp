@@ -27,7 +27,7 @@ void ModulationFunctionADSR::Deploy()
 	NamePrefix = "ADSR";
 }
 
-ModulationFunctionADSR::ModulationFunctionADSR(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {
-	type = ModulationSourceType::ADSR;
-	NamePrefix = "ADSR";
-}
+//ModulationFunctionADSR::ModulationFunctionADSR(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {
+//	type = ModulationSourceType::ADSR;
+//	NamePrefix = "ADSR";
+//}

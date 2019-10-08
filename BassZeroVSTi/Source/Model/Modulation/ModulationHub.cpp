@@ -9,88 +9,89 @@
 */
 
 #include "ModulationHub.h"
-
+#include "../Source/Utility/imbSynthTools.h"
 #include "../SynthDeviceModel.h"
 
-std::vector<String> ModulationHub::GetListOfSources()
-{
-	auto output = std::vector<String>();
-}
+//std::vector<String> ModulationHub::GetListOfSources()
+//{
+//	auto output = std::vector<String>();
+//}
 
+/* Call Deploy after adding components externally */
 void ModulationHub::Deploy()
 {
 }
 
-ModulationFunctionADSR ModulationHub::AddADSR()
+void ModulationHub::AddADSR(ModulationFunctionADSR * output)
 {
-	ModulationFunctionADSR output = ModulationFunctionADSR();
-	auto ptr = &output;
-	AddChild(ptr);
+	 
+	//auto ptr = &output;
+	AddChild(output);
 	
-	String letter = SynthDeviceModel::GetLetter(ADSRs.size);
-	output.PreDeploy(Root, Parent, letter, "Attack Decay Sustain Release function " + letter);
+	String letter = imbSynthTools::GetLetter(ADSRs.size);
+	output->PreDeploy(Root, Parent, letter, "Attack Decay Sustain Release function " + letter);
 
-	ADSRs.push_back(ptr);
+	ADSRs.push_back(output);
 
-	return output;
+	
 }
 
-ModulationFunctionENV ModulationHub::AddENV()
+void ModulationHub::AddENV(ModulationFunctionENV * output)
 {
-	ModulationFunctionENV output = ModulationFunctionENV();
-	auto ptr = &output;
+	 
+	//auto ptr = &output;
 
-	AddChild(ptr);
-	String letter = SynthDeviceModel::GetLetter(ENVs.size);
-	output.PreDeploy(Root, Parent, letter, "Two-point Envelope " + letter);
+	AddChild(output);
+	String letter = imbSynthTools::GetLetter(ENVs.size);
+	output->PreDeploy(Root, Parent, letter, "Two-point Envelope " + letter);
 
-	ENVs.push_back(ptr);
+	ENVs.push_back(output);
 
-	return output;
+	
 }
 
-ModulationFunctionLFO ModulationHub::AddLFO()
+void ModulationHub::AddLFO(ModulationFunctionLFO * output)
 {
-	ModulationFunctionLFO output = ModulationFunctionLFO();
-	auto ptr = &output;
+	 
+	///auto ptr = &output;
 
-	AddChild(ptr);
-	String letter = SynthDeviceModel::GetLetter(LFOs.size);
-	output.PreDeploy(Root, Parent, letter, "Low Frequency Oscilator " + letter);
+	AddChild(output);
+	String letter = imbSynthTools::GetLetter(LFOs.size);
+	output->PreDeploy(Root, Parent, letter, "Low Frequency Oscilator " + letter);
 
-	LFOs.push_back(ptr);
+	LFOs.push_back(output);
 
-	return output;
+	
 }
 
-ModulationSourceMacroControl ModulationHub::AddMacroControl()
+void ModulationHub::AddMacroControl(ModulationSourceMacroControl * output)
 {
-	ModulationSourceMacroControl output = ModulationSourceMacroControl();
-	auto ptr = &output;
+	 
+	 //auto ptr = &output;
 
-	AddChild(ptr);
-	String letter = SynthDeviceModel::GetLetter(MacroControls.size);
-	output.PreDeploy(Root, Parent, "CTRL " + letter, "Control Macro " + letter);
+	AddChild(output);
+	String letter = imbSynthTools::GetLetter(MacroControls.size);
+	output->PreDeploy(Root, Parent, "CTRL " + letter, "Control Macro " + letter);
 
-	MacroControls.push_back(ptr);
+	MacroControls.push_back(output);
 	
 
-	return output;
+	
 }
 
 
-ModulationSourceMIDI ModulationHub::AddMIDI(ModulationSourceMIDIType _midiType, String _shortName, String _longName)
+void ModulationHub::AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, String _shortName, String _longName)
 {
-	ModulationSourceMIDI output = ModulationSourceMIDI();
-	output.typeMidi = _midiType;
+	
+	output->typeMidi = _midiType;
 
-	auto ptr = &output;
+	
 
-	AddChild(ptr);
+	AddChild(output);
 
-	output.PreDeploy(Root, Parent, _shortName, _longName);
+	output->PreDeploy(Root, Parent, _shortName, _longName);
+	
+	MIDIs.push_back(output);
 
-	MIDIs.push_back(ptr);
 
-	return output;
 }

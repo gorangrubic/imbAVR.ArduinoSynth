@@ -24,3 +24,7 @@ void SynthDeviceModel::PreDeployModel()
   void SynthDeviceModel::Deploy()
   {
   }
+
+  SynthDeviceModel::SynthDeviceModel()
+  {
+  }

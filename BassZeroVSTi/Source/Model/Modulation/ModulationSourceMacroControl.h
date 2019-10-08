@@ -16,14 +16,17 @@ class ModulationSourceMacroControl : public ModulationSourceBase {
 
 public:
 
-	imbControlParameter Value = imbControlParameter();
+	imbControlParameter Value;
 
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
-	void Deploy() override;
+	void Deploy();
 
 	ModulationSourceMacroControl();
 
-	ModulationSourceMacroControl(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {	}
+	//ModulationSourceMacroControl(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
+	//	:ModulationSourceBase(_root, _parent, _shortName, _longName),
+	//	Value()
+	//{	}
 };

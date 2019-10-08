@@ -9,3 +9,9 @@
 */
 
 #include "SynthStateDisplayModel.h"
+
+
+
+SynthStateDisplayModel::SynthStateDisplayModel()
+{
+}

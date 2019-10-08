@@ -9,3 +9,11 @@
 */
 
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
+
+class ControlStateDisplayModel {
+
+public:
+
+	ControlStateDisplayModel();
+};

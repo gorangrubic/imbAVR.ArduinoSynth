@@ -22,7 +22,7 @@ public:
 
 // ======================== STATE DATA
 
-	juce::AudioProcessorValueTreeState parameters;
+	juce::AudioProcessorValueTreeState * parameters;
 
 	ParameterController parameterController;
 

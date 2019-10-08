@@ -9,6 +9,7 @@
 */
 
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
 
 class Pattern32BitModel {
  
@@ -18,5 +19,6 @@ class Pattern32BitModel {
     char block2;
     char block3;
     char block4;
-    
-}
+  
+	Pattern32BitModel();
+};

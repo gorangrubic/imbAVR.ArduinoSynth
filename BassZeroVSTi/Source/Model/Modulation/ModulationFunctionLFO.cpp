@@ -20,7 +20,7 @@ ModulationFunctionLFO::ModulationFunctionLFO() {
 
 }
 
-ModulationFunctionLFO::ModulationFunctionLFO(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {
-	type = ModulationSourceType::LFO;
-	NamePrefix = "LFO";
-}
+//ModulationFunctionLFO::ModulationFunctionLFO(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {
+//	type = ModulationSourceType::LFO;
+//	NamePrefix = "LFO";
+//}

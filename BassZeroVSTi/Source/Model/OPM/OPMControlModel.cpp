@@ -53,30 +53,7 @@ void OPMControlModel::Deploy()
 	ListOfModulationModes.push_back("Phase");
 	
 
-	// =================== Deploying Macro Control Links
-	AddMacroControlLink(&MODA_MCL1, "MODA_MCL1", "OPM Macro Modulation A - 1");
-	AddMacroControlLink(&MODA_MCL2, "MODA_MCL2", "OPM Macro Modulation A - 2");
-	AddMacroControlLink(&MODB_MCL1, "MODB_MCL1", "OPM Macro Modulation B - 1");
-	AddMacroControlLink(&MODB_MCL2, "MODB_MCL2", "OPM Macro Modulation B - 2");
-
-	AddMacroControlLink(&VALA_MCL1, "VALA_MCL1", "OPM Macro Value A");
-	AddMacroControlLink(&VALB_MCL1, "VALB_MCL1", "OPM Macro Value B");
-	AddMacroControlLink(&VALC_MCL1, "VALC_MCL1", "OPM Macro Value C");
-	AddMacroControlLink(&VALC_MCL2, "VALC_MCL2", "OPM Macro Value C");
-
-	AddMacroControlLink(&MODA_MCL1, "MODA_MCL1", "OPM Macro Modulation A - 1");
-
-
-	// =================== OPM COntrol parameters for the signal generator units
-
-	AddSignalUnit(&WFA, "WFA", "Waveform A");
-	AddSignalUnit(&WFB, "WFB", "Waveform B");
 	
-	AddSignalUnit(&FLT_RESA, "FLT_RESA", "Filter Resonance A");
-	AddSignalUnit(&FLT_RESB, "FLT_RESB", "Filter Resonance B");
-	
-	AddSignalUnit(&PERKA, "PERKA", "PERK A");
-	AddSignalUnit(&PERKB, "PERKB", "PERK B");
 }
 
 OPMControlModel::OPMControlModel()
