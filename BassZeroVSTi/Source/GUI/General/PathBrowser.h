@@ -42,7 +42,7 @@ class PathBrowser  : public Component,
 {
 public:
     //==============================================================================
-    PathBrowser (PathBrowserModel * _model);
+    PathBrowser ();
     ~PathBrowser();
 
     //==============================================================================

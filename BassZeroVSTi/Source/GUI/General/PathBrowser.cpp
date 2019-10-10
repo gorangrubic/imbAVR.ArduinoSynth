@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-PathBrowser::PathBrowser (PathBrowserModel * _model)
+PathBrowser::PathBrowser ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -156,9 +156,9 @@ void PathBrowser::buttonClicked (Button* buttonThatWasClicked)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PathBrowser" componentName=""
-                 parentClasses="public Component" constructorParams="PathBrowserModel * _model"
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="0" initialWidth="600" initialHeight="24">
+                 parentClasses="public Component" constructorParams="" variableInitialisers=""
+                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 fixedSize="0" initialWidth="600" initialHeight="24">
   <BACKGROUND backgroundColour="ff323e44"/>
   <LABEL name="new label" id="90a0ed2ca4c0eebc" memberName="Path" virtualName=""
          explicitFocusOrder="0" pos="-4R 0 172M 0M" posRelativeX="84f7b5d81fc26926"

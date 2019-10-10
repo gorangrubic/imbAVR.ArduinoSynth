@@ -28,7 +28,7 @@ void ModulationHub::AddADSR(ModulationFunctionADSR * output)
 	//auto ptr = &output;
 	AddChild(output);
 	
-	String letter = imbSynthTools::GetLetter(ADSRs.size);
+	String letter = imbSynthTools::GetLetter(ADSRs.size());
 	output->PreDeploy("ADSR_" + letter, "Attack Decay Sustain Release function " + letter);
 
 	ADSRs.push_back(output);
@@ -42,7 +42,7 @@ void ModulationHub::AddENV(ModulationFunctionENV * output)
 	//auto ptr = &output;
 
 	AddChild(output);
-	String letter = imbSynthTools::GetLetter(ENVs.size);
+	String letter = imbSynthTools::GetLetter(ENVs.size());
 	output->PreDeploy("ENV_" + letter, "Two-point Envelope " + letter);
 
 	ENVs.push_back(output);
@@ -56,7 +56,7 @@ void ModulationHub::AddLFO(ModulationFunctionLFO * output)
 	///auto ptr = &output;
 
 	AddChild(output);
-	String letter = imbSynthTools::GetLetter(LFOs.size);
+	String letter = imbSynthTools::GetLetter(LFOs.size());
 	output->PreDeploy("LFO_" + letter, "Low Frequency Oscilator " + letter);
 
 	LFOs.push_back(output);
@@ -70,7 +70,7 @@ void ModulationHub::AddMacroControl(ModulationSourceMacroControl * output)
 	 //auto ptr = &output;
 
 	AddChild(output);
-	String letter = imbSynthTools::GetLetter(MacroControls.size);
+	String letter = imbSynthTools::GetLetter(MacroControls.size());
 	output->PreDeploy("CTRL " + letter, "Control Macro " + letter);
 
 	MacroControls.push_back(output);

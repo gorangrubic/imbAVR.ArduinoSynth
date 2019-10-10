@@ -10,12 +10,11 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-
-#include "OPMSignalUnitChange.h"
 #include "../SynthDeviceModelComponentBase.h"
-#include "../SynthDeviceModel.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "OPMControlModel.h"
+#include "../Core/ModelComponentWithChildren.h"
+#include "OPMSignalUnitChange.h"
+//#include "OPMControlModel.h"
 
 
 

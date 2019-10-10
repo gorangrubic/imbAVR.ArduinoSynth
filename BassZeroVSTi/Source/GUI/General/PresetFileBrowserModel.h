@@ -15,7 +15,7 @@ class PresetFileBrowserModel {
     
  public:
  
-    PathBrowserModel pathModel;
+		PathBrowserModel pathModel;
  
 	 PresetFileBrowserModel();
  

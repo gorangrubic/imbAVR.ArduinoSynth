@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-PatternEditor8bit::PatternEditor8bit (char _pattern)
+PatternEditor8bit::PatternEditor8bit ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -243,9 +243,9 @@ void PatternEditor8bit::buttonClicked (Button* buttonThatWasClicked)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PatternEditor8bit" componentName=""
-                 parentClasses="public Component" constructorParams="char _pattern"
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="1" initialWidth="128" initialHeight="16">
+                 parentClasses="public Component" constructorParams="" variableInitialisers=""
+                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 fixedSize="1" initialWidth="128" initialHeight="16">
   <BACKGROUND backgroundColour="323e44">
     <RECT pos="0 0 64 16" fill="solid: 25ffffff" hasStroke="1" stroke="0.1, mitered, butt"
           strokeColour="solid: 50602aa5"/>

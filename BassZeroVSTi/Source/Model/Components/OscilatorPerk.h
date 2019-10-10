@@ -10,11 +10,10 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Core/ModelComponentWithChildren.h"
 #include "../SynthDeviceModelComponentBase.h"
-#include "../SynthDeviceModel.h"
+#include "../Core/ModelComponentWithChildren.h"
 
-#include "OscilatorBase.h"
+
 
 class OscilatorPerk : 
 	public SynthDeviceModelComponentBase,

@@ -40,7 +40,7 @@ class PatternEditor8bit  : public Component,
 {
 public:
     //==============================================================================
-    PatternEditor8bit (char _pattern);
+    PatternEditor8bit ();
     ~PatternEditor8bit();
 
     //==============================================================================

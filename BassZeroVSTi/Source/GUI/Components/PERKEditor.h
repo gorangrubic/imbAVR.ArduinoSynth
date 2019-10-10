@@ -62,7 +62,7 @@ private:
     //==============================================================================
     std::unique_ptr<Label> Title4;
     std::unique_ptr<SourceMixerComponent> Shaper;
-    std::unique_ptr<OSCEditor> Oscilator;
+    std::unique_ptr<OSCEditor> OSC;
 
 
     //==============================================================================

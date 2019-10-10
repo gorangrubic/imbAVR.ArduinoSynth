@@ -20,7 +20,6 @@
 
 
 class OPMControlModel:
-	public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren {
 
 public:

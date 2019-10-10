@@ -34,9 +34,9 @@ class ComponentHub :
 
 public:
 
-	std::vector<ModelModulatedControl *> modulatedControls;
-	std::vector<OscilatorWaveform *> oscilatorWaveforms;
-	std::vector<OscilatorPerk *> oscilatorPerks;
+	std::vector<ModelModulatedControl*> modulatedControls;
+	std::vector<OscilatorWaveform*> oscilatorWaveforms;
+	std::vector<OscilatorPerk*> oscilatorPerks;
 
 	void Deploy();
 

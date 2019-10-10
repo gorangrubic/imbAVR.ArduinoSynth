@@ -24,7 +24,7 @@
 #include "../Source/Data/imbSynthStateData.h"
 #include "../Components/imbSynthGUIComponent.h"
 #include "PresetFileBrowserModel.h"
-#include "FileBrowserModel.h"
+#include "PathBrowserModel.h"
 //[/Headers]
 
 #include "PathBrowser.h"

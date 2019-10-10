@@ -9,6 +9,9 @@
 */
 
 #pragma once
+#include "../SynthDeviceModelComponentBase.h"
+#include "../Core/ModelComponentWithChildren.h"
+
 #include "ModulationFunctionADSR.h"
 #include "ModulationFunctionENV.h"
 #include "ModulationFunctionLFO.h"

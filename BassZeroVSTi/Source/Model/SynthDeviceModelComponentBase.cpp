@@ -26,13 +26,15 @@ void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * outpu
 	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
 	int _initIndexValue = 0;
 
+	//imbSynthTools::findInVector(items, initValue);
+
 	if (initValue == "") {
 		_initIndexValue = 0;
 	}
 	else {
-		_initIndexValue = imbSynthTools::GetIndex(items, initValue);
+		//_initIndexValue = imbSynthTools::GetIndex(&items, initValue);
 	}
-	AddParameter(output, _parameterID, _parameterLabel, 0, items->size,_initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat);
+	AddParameter(output, _parameterID, _parameterLabel, 0, items->size(),_initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat);
 }
 
 /// <summary>

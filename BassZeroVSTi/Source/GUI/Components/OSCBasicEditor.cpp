@@ -45,13 +45,13 @@ OSCBasicEditor::OSCBasicEditor (imbSynthStateData * synthState, String nameSufix
 
     Title2->setBounds (200, 0, 96, 16);
 
-    Shaper.reset (new SourceMixerComponent());
+    Shaper.reset (new SourceMixerComponent (synthState, "Shaper"));
     addAndMakeVisible (Shaper.get());
     Shaper->setBounds (200, 16, 96, 96);
 
-    Oscilator.reset (new OSCEditor());
-    addAndMakeVisible (Oscilator.get());
-    Oscilator->setBounds (0, 0, 192, 112);
+    OSC.reset (new OSCEditor (synthState, "OSC"));
+    addAndMakeVisible (OSC.get());
+    OSC->setBounds (0, 0, 192, 112);
 
 
     //[UserPreSize]
@@ -71,7 +71,7 @@ OSCBasicEditor::~OSCBasicEditor()
 
     Title2 = nullptr;
     Shaper = nullptr;
-    Oscilator = nullptr;
+    OSC = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -126,12 +126,12 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="SHAPER" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="6dc4e4d5157c3da" memberName="Shaper" virtualName=""
+  <JUCERCOMP name="Shaper" id="6dc4e4d5157c3da" memberName="Shaper" virtualName=""
              explicitFocusOrder="0" pos="200 16 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="57bcfacd6198a2e" memberName="Oscilator" virtualName=""
+             constructorParams="synthState, &quot;Shaper&quot;"/>
+  <JUCERCOMP name="OSC" id="57bcfacd6198a2e" memberName="OSC" virtualName=""
              explicitFocusOrder="0" pos="0 0 192 112" sourceFile="OSCEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;OSC&quot;"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

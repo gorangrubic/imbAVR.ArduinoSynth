@@ -71,7 +71,7 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
 
     text_name2->setBounds (584, 424, 176, 24);
 
-    component.reset (new PathBrowser ("Presets", ""));
+    component.reset (new PathBrowser());
     addAndMakeVisible (component.get());
     component->setBounds (208, 32, 440, 24);
 
@@ -261,7 +261,7 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
 
     label9->setBounds (208, 8, 150, 24);
 
-    component2.reset (new PathBrowser ("Presets", ""));
+    component2.reset (new PathBrowser());
     addAndMakeVisible (component2.get());
     component2->setBounds (210, 83, 440, 24);
 
@@ -396,7 +396,7 @@ BEGIN_JUCER_METADATA
               retKeyStartsLine="0" readonly="0" scrollbars="1" caret="1" popupmenu="1"/>
   <JUCERCOMP name="" id="d2dfb90203789c8b" memberName="component" virtualName=""
              explicitFocusOrder="0" pos="208 32 440 24" sourceFile="../../General/PathBrowser.cpp"
-             constructorParams="&quot;Presets&quot;, &quot;&quot;"/>
+             constructorParams=""/>
   <TEXTEDITOR name="new text editor" id="922d1416b90b6e43" memberName="needle_device_1"
               virtualName="" explicitFocusOrder="0" pos="16 56 180 24" tooltip="Title of the Operation Mode"
               bkgcol="ff181f22" initialText="Pro Micro" multiline="0" retKeyStartsLine="0"
@@ -463,7 +463,7 @@ BEGIN_JUCER_METADATA
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <JUCERCOMP name="" id="4773bf4b55a56372" memberName="component2" virtualName=""
              explicitFocusOrder="0" pos="210 83 440 24" sourceFile="../../General/PathBrowser.cpp"
-             constructorParams="&quot;Presets&quot;, &quot;&quot;"/>
+             constructorParams=""/>
   <LABEL name="new label" id="6d09ce8849b41101" memberName="label10" virtualName=""
          explicitFocusOrder="0" pos="210 59 150 24" edTextCol="ff000000"
          edBkgCol="0" labelText="Default library path" editableSingleClick="0"

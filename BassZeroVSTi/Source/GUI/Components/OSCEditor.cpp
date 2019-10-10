@@ -45,7 +45,7 @@ OSCEditor::OSCEditor (imbSynthStateData * synthState, String nameSufix)
 
     Title3->setBounds (96, 0, 96, 16);
 
-    PWM.reset (new SourceMixerComponent());
+    PWM.reset (new SourceMixerComponent (synthState, "PWM"));
     addAndMakeVisible (PWM.get());
     PWM->setBounds (96, 16, 96, 96);
 
@@ -190,9 +190,9 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="PWM" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="a487ba0e5e2a8184" memberName="PWM" virtualName=""
+  <JUCERCOMP name="PWM" id="a487ba0e5e2a8184" memberName="PWM" virtualName=""
              explicitFocusOrder="0" pos="96 16 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;PWM&quot;"/>
   <SLIDER name="DirectValue" id="698565b936711330" memberName="Phase" virtualName=""
           explicitFocusOrder="0" pos="0 88 96 24" tooltip="Attack time"
           textboxoutline="8e989b" min="0.0" max="100.0" int="1.0" style="LinearHorizontal"

@@ -348,7 +348,7 @@
         <MODULEPATH id="juce_opengl" path="D:/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2017 targetFolder="Builds/VisualStudio2017" externalLibraries="G:\imbVelesOpenSource\imbAVR\imbAVR.SynthControl\src&#10;G:\imbVelesOpenSource\imbAVR\imbAVR.DedicatedSignalGeneratorLibrary\src">
+    <VS2017 targetFolder="Builds/VisualStudio2017">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
         <CONFIGURATION isDebug="0" name="Release"/>

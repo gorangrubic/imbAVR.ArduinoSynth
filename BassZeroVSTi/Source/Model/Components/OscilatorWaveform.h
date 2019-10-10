@@ -11,9 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
-#include "../SynthDeviceModel.h"
-
-#include "OscilatorBase.h"
+#include "../Core/ModelComponentWithChildren.h"
 
 class OscilatorWaveform : 
 	public SynthDeviceModelComponentBase,

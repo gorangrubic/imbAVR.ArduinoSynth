@@ -40,7 +40,7 @@ MainViewTabPresetManager::MainViewTabPresetManager (imbSynthStateData * synthSta
 
     toggle_autoLoadOPM->setBounds (440, 312, 200, 16);
 
-    presetLibraryView.reset (new PresetFileBrowser());
+    presetLibraryView.reset (new PresetFileBrowser (&SynthState->libraryFileBrowserModel));
     addAndMakeVisible (presetLibraryView.get());
     presetDefinitionDisplay.reset (new PresetDefinitionEditor());
     addAndMakeVisible (presetDefinitionDisplay.get());
@@ -132,7 +132,7 @@ BEGIN_JUCER_METADATA
                 radioGroupId="0" state="0"/>
   <JUCERCOMP name="" id="4a47e8e5c4db0633" memberName="presetLibraryView"
              virtualName="" explicitFocusOrder="0" pos="0 0 440 4M" sourceFile="../../General/PresetFileBrowser.cpp"
-             constructorParams=""/>
+             constructorParams="&amp;SynthState-&gt;libraryFileBrowserModel"/>
   <JUCERCOMP name="" id="b0a6f0fa687bc200" memberName="presetDefinitionDisplay"
              virtualName="" explicitFocusOrder="0" pos="440 8 448M 40M" sourceFile="../../General/PresetDefinitionEditor.cpp"
              constructorParams=""/>

@@ -11,9 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
-#include "../SynthDeviceModel.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "OPMControlModel.h"
 
 
 class OPMSignalUnitChange :

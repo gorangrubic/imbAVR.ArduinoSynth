@@ -30,7 +30,7 @@
 PresetFileBrowser::PresetFileBrowser (PresetFileBrowserModel * _model)
 {
     //[Constructor_pre] You can add your own custom stuff here..
-    model = _model;
+    //model = _model;
     //[/Constructor_pre]
 
     treeView.reset (new TreeView ("new treeview"));
@@ -64,7 +64,7 @@ PresetFileBrowser::PresetFileBrowser (PresetFileBrowserModel * _model)
 
     toggle_showFilenames->setBounds (184, 808, 150, 24);
 
-    PATH.reset (new PathBrowser (model->pathModel));
+    PATH.reset (new PathBrowser());
     addAndMakeVisible (PATH.get());
 
     //[UserPreSize]
@@ -186,7 +186,7 @@ BEGIN_JUCER_METADATA
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <JUCERCOMP name="" id="d2dfb90203789c8b" memberName="PATH" virtualName=""
              explicitFocusOrder="0" pos="8 8 16M 24" sourceFile="PathBrowser.cpp"
-             constructorParams="model-&gt;pathModel"/>
+             constructorParams=""/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

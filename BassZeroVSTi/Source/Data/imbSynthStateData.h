@@ -12,6 +12,8 @@
 #include "../GUI/Global/ControlStateDisplayModel.h"
 #include "../GUI/Global/SynthStateDisplayModel.h"
 
+#include "../GUI/General/PresetFileBrowserModel.h"
+
 #include "../Model/SynthDeviceModel.h"
 
 class imbSynthStateData
@@ -24,6 +26,8 @@ public:
     CommandBufferDisplayModel bufferDisplayModel;
     ControlStateDisplayModel controlDisplayModel;
     SynthStateDisplayModel stateDisplayModel;
+    
+	PresetFileBrowserModel libraryFileBrowserModel;
 
 
 // ======================== ENVIRONMENT DATA
