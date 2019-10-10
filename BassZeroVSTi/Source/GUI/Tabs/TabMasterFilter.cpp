@@ -32,22 +32,22 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    component_FLT_CutOff.reset (new SourceMixerComponent());
-    addAndMakeVisible (component_FLT_CutOff.get());
-    component_FLT_CutOff->setBounds (424, 56, 96, 96);
+    FLT_Cut.reset (new SourceMixerComponent (synthState, "FLT_Cut"));
+    addAndMakeVisible (FLT_Cut.get());
+    FLT_Cut->setBounds (424, 56, 96, 96);
 
-    component_FLT_Res.reset (new SourceMixerComponent());
-    addAndMakeVisible (component_FLT_Res.get());
-    FLT_Freq.reset (new SourceMixerComponent ("DIST"));
+    FLT_Res.reset (new SourceMixerComponent (synthState, "FLT_Res"));
+    addAndMakeVisible (FLT_Res.get());
+    FLT_Freq.reset (new SourceMixerComponent (synthState, "FLT_Freq"));
     addAndMakeVisible (FLT_Freq.get());
-    MASTER_Amp.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (MASTER_Amp.get());
-    MASTER_Pan.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (MASTER_Pan.get());
-    MASTER_Pan->setBounds (632, 240, 96, 96);
+    MstAmp.reset (new SourceMixerComponent (synthState, "MstAmp"));
+    addAndMakeVisible (MstAmp.get());
+    MstPan.reset (new SourceMixerComponent (synthState, "MstPan"));
+    addAndMakeVisible (MstPan.get());
+    MstPan->setBounds (632, 240, 96, 96);
 
-    FLT_Dist_Mix.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (FLT_Dist_Mix.get());
+    DistMix.reset (new SourceMixerComponent (synthState, "DistMix"));
+    addAndMakeVisible (DistMix.get());
     Title9.reset (new Label ("new label",
                              TRANS("MIX")));
     addAndMakeVisible (Title9.get());
@@ -59,8 +59,8 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
     Title9->setColour (TextEditor::textColourId, Colours::black);
     Title9->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    FLT_Dist_Overdrive.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (FLT_Dist_Overdrive.get());
+    DistDrive.reset (new SourceMixerComponent (synthState, "DistDrive"));
+    addAndMakeVisible (DistDrive.get());
     Title10.reset (new Label ("new label",
                               TRANS("OVERDRIVE\n")));
     addAndMakeVisible (Title10.get());
@@ -187,8 +187,8 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
 
     Title3->setBounds (632, 32, 96, 16);
 
-    FLT_PWM.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (FLT_PWM.get());
+    FLT_Pwm.reset (new SourceMixerComponent (synthState, "FLT_Pwm"));
+    addAndMakeVisible (FLT_Pwm.get());
     Title5.reset (new Label ("new label",
                              TRANS("FILTER MIX")));
     addAndMakeVisible (Title5.get());
@@ -202,9 +202,9 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
 
     Title5->setBounds (312, 32, 96, 16);
 
-    FLT_Mix.reset (new SourceMixerComponent());
-    addAndMakeVisible (FLT_Mix.get());
-    FLT_Mix->setBounds (312, 56, 96, 96);
+    WF_FLT.reset (new SourceMixerComponent (synthState, "WF_FLT"));
+    addAndMakeVisible (WF_FLT.get());
+    WF_FLT->setBounds (312, 56, 96, 96);
 
     Title6.reset (new Label ("new label",
                              TRANS("A/B MIX\n")));
@@ -219,13 +219,13 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
 
     Title6->setBounds (216, 32, 96, 16);
 
-    WAVEFORMAB_Mix.reset (new SourceMixerComponent());
-    addAndMakeVisible (WAVEFORMAB_Mix.get());
-    WAVEFORMAB_Mix->setBounds (216, 56, 96, 96);
+    WF_Mix.reset (new SourceMixerComponent (synthState, "WF_Mix"));
+    addAndMakeVisible (WF_Mix.get());
+    WF_Mix->setBounds (216, 56, 96, 96);
 
-    PERKA_Pan.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (PERKA_Pan.get());
-    PERKA_Pan->setBounds (312, 243, 96, 96);
+    PERKB_Pan.reset (new SourceMixerComponent (synthState, "PERKB_Pan"));
+    addAndMakeVisible (PERKB_Pan.get());
+    PERKB_Pan->setBounds (312, 243, 96, 96);
 
     Title14.reset (new Label ("new label",
                               TRANS("PERK B PAN")));
@@ -240,8 +240,8 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
 
     Title14->setBounds (312, 216, 96, 16);
 
-    PERKB_Pan.reset (new SourceMixerComponent ("DIST"));
-    addAndMakeVisible (PERKB_Pan.get());
+    PERKA_Pan.reset (new SourceMixerComponent (synthState, "PERKA_Pan"));
+    addAndMakeVisible (PERKA_Pan.get());
     Title15.reset (new Label ("new label",
                               TRANS("PERK A PAN")));
     addAndMakeVisible (Title15.get());
@@ -281,7 +281,7 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
 
     Title12->setBounds (520, 32, 96, 16);
 
-    OPM_Controls.reset (new OPMMacroControlEditor());
+    OPM_Controls.reset (new OPMMacroControlEditor (synthState, "OPM_Controls"));
     addAndMakeVisible (OPM_Controls.get());
     OPM_Controls->setBounds (8, 8, 192, 360);
 
@@ -315,14 +315,14 @@ TabMasterFilter::~TabMasterFilter()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    component_FLT_CutOff = nullptr;
-    component_FLT_Res = nullptr;
+    FLT_Cut = nullptr;
+    FLT_Res = nullptr;
     FLT_Freq = nullptr;
-    MASTER_Amp = nullptr;
-    MASTER_Pan = nullptr;
-    FLT_Dist_Mix = nullptr;
+    MstAmp = nullptr;
+    MstPan = nullptr;
+    DistMix = nullptr;
     Title9 = nullptr;
-    FLT_Dist_Overdrive = nullptr;
+    DistDrive = nullptr;
     Title10 = nullptr;
     Title7 = nullptr;
     Title8 = nullptr;
@@ -333,14 +333,14 @@ TabMasterFilter::~TabMasterFilter()
     label_OPM3 = nullptr;
     Title2 = nullptr;
     Title3 = nullptr;
-    FLT_PWM = nullptr;
+    FLT_Pwm = nullptr;
     Title5 = nullptr;
-    FLT_Mix = nullptr;
+    WF_FLT = nullptr;
     Title6 = nullptr;
-    WAVEFORMAB_Mix = nullptr;
-    PERKA_Pan = nullptr;
-    Title14 = nullptr;
+    WF_Mix = nullptr;
     PERKB_Pan = nullptr;
+    Title14 = nullptr;
+    PERKA_Pan = nullptr;
     Title15 = nullptr;
     label_OPM6 = nullptr;
     Title12 = nullptr;
@@ -379,16 +379,16 @@ void TabMasterFilter::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    component_FLT_Res->setBounds (getWidth() - 320, 56, 96, 96);
+    FLT_Res->setBounds (getWidth() - 320, 56, 96, 96);
     FLT_Freq->setBounds (getWidth() - 208, 56 + 0, 96, 96);
-    MASTER_Amp->setBounds (632 + 96, 240 + 0, 96, 96);
-    FLT_Dist_Mix->setBounds (getWidth() - 320, 240, 96, 96);
+    MstAmp->setBounds (632 + 96, 240 + 0, 96, 96);
+    DistMix->setBounds (getWidth() - 320, 240, 96, 96);
     Title9->setBounds (520, 240 + -24, 96, 16);
-    FLT_Dist_Overdrive->setBounds (getWidth() - 416, 240, 96, 96);
+    DistDrive->setBounds (getWidth() - 416, 240, 96, 96);
     Title10->setBounds (424, 240 + -24, 96, 16);
     Title7->setBounds (728, 240 + -24, 96, 16);
-    FLT_PWM->setBounds (getWidth() - 112, 56 + 0, 96, 96);
-    PERKB_Pan->setBounds (getWidth() - 624, 243, 96, 96);
+    FLT_Pwm->setBounds (getWidth() - 112, 56 + 0, 96, 96);
+    PERKA_Pan->setBounds (getWidth() - 624, 243, 96, 96);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -417,34 +417,34 @@ BEGIN_JUCER_METADATA
     <IMAGE pos="0 -66 840 490" resource="background1_jpg" opacity="1.0"
            mode="0"/>
   </BACKGROUND>
-  <JUCERCOMP name="" id="f783ad21ae1cde8f" memberName="component_FLT_CutOff"
-             virtualName="" explicitFocusOrder="0" pos="424 56 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="4f47fe21802b0b52" memberName="component_FLT_Res"
-             virtualName="" explicitFocusOrder="0" pos="320R 56 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="b56eaad09b7096eb" memberName="FLT_Freq" virtualName=""
+  <JUCERCOMP name="FLT_Cut" id="f783ad21ae1cde8f" memberName="FLT_Cut" virtualName=""
+             explicitFocusOrder="0" pos="424 56 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;FLT_Cut&quot;"/>
+  <JUCERCOMP name="FLT_Res" id="4f47fe21802b0b52" memberName="FLT_Res" virtualName=""
+             explicitFocusOrder="0" pos="320R 56 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;FLT_Res&quot;"/>
+  <JUCERCOMP name="FLT_Freq" id="b56eaad09b7096eb" memberName="FLT_Freq" virtualName=""
              explicitFocusOrder="0" pos="208R 0 96 96" posRelativeY="4f47fe21802b0b52"
-             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="&quot;DIST&quot;"/>
-  <JUCERCOMP name="" id="45f28b35571d9af" memberName="MASTER_Amp" virtualName=""
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;FLT_Freq&quot;"/>
+  <JUCERCOMP name="MstAmp" id="45f28b35571d9af" memberName="MstAmp" virtualName=""
              explicitFocusOrder="0" pos="0R 0 96 96" posRelativeX="c46bf90001e86e33"
              posRelativeY="c46bf90001e86e33" sourceFile="../Components/SourceMixerComponent.cpp"
-             constructorParams="&quot;DIST&quot;"/>
-  <JUCERCOMP name="" id="c46bf90001e86e33" memberName="MASTER_Pan" virtualName=""
+             constructorParams="synthState, &quot;MstAmp&quot;"/>
+  <JUCERCOMP name="MstPan" id="c46bf90001e86e33" memberName="MstPan" virtualName=""
              explicitFocusOrder="0" pos="632 240 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
-             constructorParams="&quot;DIST&quot;"/>
-  <JUCERCOMP name="" id="e0d2854f1680301b" memberName="FLT_Dist_Mix" virtualName=""
+             constructorParams="synthState, &quot;MstPan&quot;"/>
+  <JUCERCOMP name="DistMix" id="e0d2854f1680301b" memberName="DistMix" virtualName=""
              explicitFocusOrder="0" pos="320R 240 96 96" posRelativeY="6403b62a87af5079"
-             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="&quot;DIST&quot;"/>
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;DistMix&quot;"/>
   <LABEL name="new label" id="64301b01a91ef216" memberName="Title9" virtualName=""
          explicitFocusOrder="0" pos="520 -24 96 16" posRelativeY="e0d2854f1680301b"
          bkgCol="fff0ffff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
          labelText="MIX" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
          kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="d1f9bd33e87807db" memberName="FLT_Dist_Overdrive"
+  <JUCERCOMP name="DistDrive" id="d1f9bd33e87807db" memberName="DistDrive"
              virtualName="" explicitFocusOrder="0" pos="416R 240 96 96" posRelativeY="6403b62a87af5079"
-             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="&quot;DIST&quot;"/>
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;DistDrive&quot;"/>
   <LABEL name="new label" id="b296ce5de93ef4b1" memberName="Title10" virtualName=""
          explicitFocusOrder="0" pos="424 -24 96 16" posRelativeY="e0d2854f1680301b"
          bkgCol="fff0ffff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
@@ -502,37 +502,37 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="PITCH" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="1fe67d0083c35f0" memberName="FLT_PWM" virtualName=""
+  <JUCERCOMP name="FLT_Pwm" id="1fe67d0083c35f0" memberName="FLT_Pwm" virtualName=""
              explicitFocusOrder="0" pos="112R 0 96 96" posRelativeY="4f47fe21802b0b52"
-             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="&quot;DIST&quot;"/>
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;FLT_Pwm&quot;"/>
   <LABEL name="new label" id="b54c3a5594317ad7" memberName="Title5" virtualName=""
          explicitFocusOrder="0" pos="312 32 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
          edTextCol="ff000000" edBkgCol="0" labelText="FILTER MIX" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="e714266b9ed42a99" memberName="FLT_Mix" virtualName=""
+  <JUCERCOMP name="WF_FLT" id="e714266b9ed42a99" memberName="WF_FLT" virtualName=""
              explicitFocusOrder="0" pos="312 56 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;WF_FLT&quot;"/>
   <LABEL name="new label" id="a1c56561ddda84d0" memberName="Title6" virtualName=""
          explicitFocusOrder="0" pos="216 32 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
          edTextCol="ff000000" edBkgCol="0" labelText="A/B MIX&#10;" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="2864d35105104cbd" memberName="WAVEFORMAB_Mix" virtualName=""
+  <JUCERCOMP name="WF_Mix" id="2864d35105104cbd" memberName="WF_Mix" virtualName=""
              explicitFocusOrder="0" pos="216 56 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="c743adcf78d5e2ff" memberName="PERKA_Pan" virtualName=""
-             explicitFocusOrder="0" pos="312 243 96 96" posRelativeY="6403b62a87af5079"
-             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="&quot;DIST&quot;"/>
+             constructorParams="synthState, &quot;WF_Mix&quot;"/>
+  <JUCERCOMP name="PERKB_Pan" id="c743adcf78d5e2ff" memberName="PERKB_Pan"
+             virtualName="" explicitFocusOrder="0" pos="312 243 96 96" posRelativeY="6403b62a87af5079"
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;PERKB_Pan&quot;"/>
   <LABEL name="new label" id="bb977033edf56b53" memberName="Title14" virtualName=""
          explicitFocusOrder="0" pos="312 216 96 16" bkgCol="fff0ffff"
          textCol="ff181f22" edTextCol="ff000000" edBkgCol="0" labelText="PERK B PAN"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
-  <JUCERCOMP name="" id="a1552a2901577880" memberName="PERKB_Pan" virtualName=""
-             explicitFocusOrder="0" pos="624R 243 96 96" posRelativeY="6403b62a87af5079"
-             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="&quot;DIST&quot;"/>
+  <JUCERCOMP name="PERKA_Pan" id="a1552a2901577880" memberName="PERKA_Pan"
+             virtualName="" explicitFocusOrder="0" pos="624R 243 96 96" posRelativeY="6403b62a87af5079"
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;PERKA_Pan&quot;"/>
   <LABEL name="new label" id="17c549a758294aef" memberName="Title15" virtualName=""
          explicitFocusOrder="0" pos="216 216 96 16" bkgCol="fff0ffff"
          textCol="ff181f22" edTextCol="ff000000" edBkgCol="0" labelText="PERK A PAN"
@@ -552,7 +552,7 @@ BEGIN_JUCER_METADATA
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <JUCERCOMP name="" id="2e0054d4f6fc8b7c" memberName="OPM_Controls" virtualName=""
              explicitFocusOrder="0" pos="8 8 192 360" sourceFile="../Components/OPMMacroControlEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;OPM_Controls&quot;"/>
   <LABEL name="new label" id="4f31b07a5f6c7dbe" memberName="label_OPM7"
          virtualName="" explicitFocusOrder="0" pos="216 8 192 24" bkgCol="ffed6216"
          textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="WAVEFORM A/B"

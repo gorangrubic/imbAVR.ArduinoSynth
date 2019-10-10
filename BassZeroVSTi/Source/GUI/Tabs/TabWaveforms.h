@@ -64,10 +64,10 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<OSCBasicEditor> label_wfa_shape;
-    std::unique_ptr<OSCBasicEditor> component_WFB;
-    std::unique_ptr<PERKEditor> component_PERKA;
-    std::unique_ptr<PERKEditor> component_PERKB;
+    std::unique_ptr<OSCBasicEditor> WFA;
+    std::unique_ptr<OSCBasicEditor> WFB;
+    std::unique_ptr<PERKEditor> PERKA;
+    std::unique_ptr<PERKEditor> PERKB;
     std::unique_ptr<Label> label_WFA;
     std::unique_ptr<Label> Label_WFB;
     std::unique_ptr<Label> label_perkA;

@@ -30,6 +30,7 @@
 PresetFileBrowser::PresetFileBrowser (PresetFileBrowserModel * _model)
 {
     //[Constructor_pre] You can add your own custom stuff here..
+    model = _model;
     //[/Constructor_pre]
 
     treeView.reset (new TreeView ("new treeview"));
@@ -63,8 +64,8 @@ PresetFileBrowser::PresetFileBrowser (PresetFileBrowserModel * _model)
 
     toggle_showFilenames->setBounds (184, 808, 150, 24);
 
-    component.reset (new PathBrowser());
-    addAndMakeVisible (component.get());
+    PATH.reset (new PathBrowser (model->pathModel));
+    addAndMakeVisible (PATH.get());
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -86,7 +87,7 @@ PresetFileBrowser::~PresetFileBrowser()
     Save = nullptr;
     Refresh = nullptr;
     toggle_showFilenames = nullptr;
-    component = nullptr;
+    PATH = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -112,7 +113,7 @@ void PresetFileBrowser::resized()
     Load->setBounds (8, getHeight() - 6 - 24, 80, 24);
     Save->setBounds (8 + 80 - -8, getHeight() - 6 - 24, 80, 24);
     Refresh->setBounds (getWidth() - 8 - 80, getHeight() - 8 - 24, 80, 24);
-    component->setBounds (8, 8, getWidth() - 16, 24);
+    PATH->setBounds (8, 8, getWidth() - 16, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -183,9 +184,9 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="new toggle button" id="b4dc69e4c7772b74" memberName="toggle_showFilenames"
                 virtualName="" explicitFocusOrder="0" pos="184 808 150 24" buttonText="Show filenames"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
-  <JUCERCOMP name="" id="d2dfb90203789c8b" memberName="component" virtualName=""
+  <JUCERCOMP name="" id="d2dfb90203789c8b" memberName="PATH" virtualName=""
              explicitFocusOrder="0" pos="8 8 16M 24" sourceFile="PathBrowser.cpp"
-             constructorParams=""/>
+             constructorParams="model-&gt;pathModel"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

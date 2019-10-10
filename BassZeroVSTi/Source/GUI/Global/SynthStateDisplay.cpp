@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "../Source/Data/imbSynthStateData.h"
 //[/Headers]
 
 #include "SynthStateDisplay.h"
@@ -27,7 +28,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-SynthStateDisplay::SynthStateDisplay ()
+SynthStateDisplay::SynthStateDisplay (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -117,9 +118,10 @@ void SynthStateDisplay::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="SynthStateDisplay" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="600" initialHeight="24">
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="600" initialHeight="24">
   <BACKGROUND backgroundColour="ff323e44"/>
   <LABEL name="new label" id="ddf7b13950d11ebf" memberName="label_status"
          virtualName="" explicitFocusOrder="0" pos="0 0 64 24" bkgCol="50181f22"

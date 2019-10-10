@@ -32,18 +32,18 @@ TabWaveforms::TabWaveforms (imbSynthStateData * synthState, String nameSufix)
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    label_wfa_shape.reset (new OSCBasicEditor());
-    addAndMakeVisible (label_wfa_shape.get());
-    label_wfa_shape->setBounds (16, 48, 300, 112);
+    WFA.reset (new OSCBasicEditor (synthState, "WFA"));
+    addAndMakeVisible (WFA.get());
+    WFA->setBounds (16, 48, 300, 112);
 
-    component_WFB.reset (new OSCBasicEditor());
-    addAndMakeVisible (component_WFB.get());
-    component_PERKA.reset (new PERKEditor());
-    addAndMakeVisible (component_PERKA.get());
-    component_PERKA->setBounds (16, 216, 300, 112);
+    WFB.reset (new OSCBasicEditor (synthState, "WFB"));
+    addAndMakeVisible (WFB.get());
+    PERKA.reset (new PERKEditor (synthState, "PERKA"));
+    addAndMakeVisible (PERKA.get());
+    PERKA->setBounds (16, 216, 300, 112);
 
-    component_PERKB.reset (new PERKEditor());
-    addAndMakeVisible (component_PERKB.get());
+    PERKB.reset (new PERKEditor (synthState, "PERKB"));
+    addAndMakeVisible (PERKB.get());
     label_WFA.reset (new Label ("Title",
                                 TRANS("WF A")));
     addAndMakeVisible (label_WFA.get());
@@ -102,10 +102,10 @@ TabWaveforms::~TabWaveforms()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    label_wfa_shape = nullptr;
-    component_WFB = nullptr;
-    component_PERKA = nullptr;
-    component_PERKB = nullptr;
+    WFA = nullptr;
+    WFB = nullptr;
+    PERKA = nullptr;
+    PERKB = nullptr;
     label_WFA = nullptr;
     Label_WFB = nullptr;
     label_perkA = nullptr;
@@ -151,8 +151,8 @@ void TabWaveforms::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    component_WFB->setBounds (16 + 305, 48 + 112 - 112, 300, 112);
-    component_PERKB->setBounds ((16 + 305) + 300 - 300, 216 + 0, 300, 112);
+    WFB->setBounds (16 + 305, 48 + 112 - 112, 300, 112);
+    PERKB->setBounds ((16 + 305) + 300 - 300, 216 + 0, 300, 112);
     label_WFA->setBounds (16 + 0, 48 + -24, 96, 24);
     Label_WFB->setBounds ((16 + 305) + 0, (48 + 112 - 112) + -24, 96, 24);
     label_perkA->setBounds (16 + 0, 216 + -24, 96, 24);
@@ -187,20 +187,20 @@ BEGIN_JUCER_METADATA
     <IMAGE pos="635 97 193 193" resource="basszero_vstiwaveform_png2" opacity="1.0"
            mode="0"/>
   </BACKGROUND>
-  <JUCERCOMP name="" id="7f2b83568bc74387" memberName="label_wfa_shape" virtualName=""
+  <JUCERCOMP name="WFA" id="7f2b83568bc74387" memberName="WFA" virtualName=""
              explicitFocusOrder="0" pos="16 48 300 112" sourceFile="../Components/OSCBasicEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="3980a735eeaa4277" memberName="component_WFB" virtualName=""
+             constructorParams="synthState, &quot;WFA&quot;"/>
+  <JUCERCOMP name="WFB" id="3980a735eeaa4277" memberName="WFB" virtualName=""
              explicitFocusOrder="0" pos="305 112R 300 112" posRelativeX="7f2b83568bc74387"
              posRelativeY="7f2b83568bc74387" sourceFile="../Components/OSCBasicEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="b67e636837fe23b5" memberName="component_PERKA" virtualName=""
+             constructorParams="synthState, &quot;WFB&quot;"/>
+  <JUCERCOMP name="PERKA" id="b67e636837fe23b5" memberName="PERKA" virtualName=""
              explicitFocusOrder="0" pos="16 216 300 112" sourceFile="../Components/PERKEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="871da425eb243fd6" memberName="component_PERKB" virtualName=""
+             constructorParams="synthState, &quot;PERKA&quot;"/>
+  <JUCERCOMP name="PERKB" id="871da425eb243fd6" memberName="PERKB" virtualName=""
              explicitFocusOrder="0" pos="300R 0 300 112" posRelativeX="3980a735eeaa4277"
              posRelativeY="b67e636837fe23b5" sourceFile="../Components/PERKEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;PERKB&quot;"/>
   <LABEL name="Title" id="1298f19adf91ae02" memberName="label_WFA" virtualName=""
          explicitFocusOrder="0" pos="0 -24 96 24" posRelativeX="7f2b83568bc74387"
          posRelativeY="7f2b83568bc74387" bkgCol="ffed6216" edTextCol="ff000000"

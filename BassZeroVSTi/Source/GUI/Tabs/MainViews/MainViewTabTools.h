@@ -20,7 +20,9 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/GUI/Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 

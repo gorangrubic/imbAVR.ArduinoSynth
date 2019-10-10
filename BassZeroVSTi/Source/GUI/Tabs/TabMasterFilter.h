@@ -71,14 +71,14 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<SourceMixerComponent> component_FLT_CutOff;
-    std::unique_ptr<SourceMixerComponent> component_FLT_Res;
+    std::unique_ptr<SourceMixerComponent> FLT_Cut;
+    std::unique_ptr<SourceMixerComponent> FLT_Res;
     std::unique_ptr<SourceMixerComponent> FLT_Freq;
-    std::unique_ptr<SourceMixerComponent> MASTER_Amp;
-    std::unique_ptr<SourceMixerComponent> MASTER_Pan;
-    std::unique_ptr<SourceMixerComponent> FLT_Dist_Mix;
+    std::unique_ptr<SourceMixerComponent> MstAmp;
+    std::unique_ptr<SourceMixerComponent> MstPan;
+    std::unique_ptr<SourceMixerComponent> DistMix;
     std::unique_ptr<Label> Title9;
-    std::unique_ptr<SourceMixerComponent> FLT_Dist_Overdrive;
+    std::unique_ptr<SourceMixerComponent> DistDrive;
     std::unique_ptr<Label> Title10;
     std::unique_ptr<Label> Title7;
     std::unique_ptr<Label> Title8;
@@ -89,14 +89,14 @@ private:
     std::unique_ptr<Label> label_OPM3;
     std::unique_ptr<Label> Title2;
     std::unique_ptr<Label> Title3;
-    std::unique_ptr<SourceMixerComponent> FLT_PWM;
+    std::unique_ptr<SourceMixerComponent> FLT_Pwm;
     std::unique_ptr<Label> Title5;
-    std::unique_ptr<SourceMixerComponent> FLT_Mix;
+    std::unique_ptr<SourceMixerComponent> WF_FLT;
     std::unique_ptr<Label> Title6;
-    std::unique_ptr<SourceMixerComponent> WAVEFORMAB_Mix;
-    std::unique_ptr<SourceMixerComponent> PERKA_Pan;
-    std::unique_ptr<Label> Title14;
+    std::unique_ptr<SourceMixerComponent> WF_Mix;
     std::unique_ptr<SourceMixerComponent> PERKB_Pan;
+    std::unique_ptr<Label> Title14;
+    std::unique_ptr<SourceMixerComponent> PERKA_Pan;
     std::unique_ptr<Label> Title15;
     std::unique_ptr<Label> label_OPM6;
     std::unique_ptr<Label> Title12;

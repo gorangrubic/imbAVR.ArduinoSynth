@@ -11,9 +11,9 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Control/imbControlParameter.h"
-#include "SynthDeviceModel.h"
+//#include "SynthDeviceModel.h"
 #include "Core/ModelComponentDescription.h"
-#include "Core/ModelComponentWithChildren.h"
+//#include "Core/ModelComponentWithChildren.h"
 #include <vector>
 //#include <list>
 
@@ -27,10 +27,10 @@ class SynthDeviceModelComponentBase:
     public:
     
 
-	SynthDeviceModel * Root;
-	ModelComponentDescription * Parent;
+	//SynthDeviceModel * Root;
+	//ModelComponentDescription * Parent;
 	
-	   void PreDeploy(SynthDeviceModel * _root, ModelComponentDescription * _parent, String _shortName, String _longName);
+	   void PreDeploy(String _shortName, String _longName);
 
 
 	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);

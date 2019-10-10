@@ -10,7 +10,7 @@
 
 #include "SynthDeviceModel.h"
 
-void SynthDeviceModel::PreDeployModel()
+  void SynthDeviceModel::PreDeployModel()
   {
   }
 
@@ -27,4 +27,6 @@ void SynthDeviceModel::PreDeployModel()
 
   SynthDeviceModel::SynthDeviceModel()
   {
+	  
+
   }

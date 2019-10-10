@@ -14,7 +14,7 @@
 void BassZeroSynthModel::DeployModel(imbSynthAudioProcessor * synthProcessor)
 {
 //	SynthProcessor = synthProcessor;
-
+/*
 	modulations.AddADSR(&ADSR_A);
 	modulations.AddADSR(&ADSR_B);
 
@@ -88,7 +88,7 @@ void BassZeroSynthModel::DeployModel(imbSynthAudioProcessor * synthProcessor)
 	components.AddCCParameter(&OPM_VALB, "OPM_VALB", "Value B", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 
 	components.AddCCParameter(&OPM_VALC, "OPM_VALC", "Value C", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
-	
+	*/
 }
 
 BassZeroSynthModel::BassZeroSynthModel()

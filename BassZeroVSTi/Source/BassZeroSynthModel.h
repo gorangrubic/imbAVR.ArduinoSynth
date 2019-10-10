@@ -26,10 +26,12 @@
 #include "Model/OPM/OPMControlModel.h"
 
 #include "Control\imbControlParameterEnumerations.h"
+#include "../Source/Control/imbSynthAudioProcessor.h"
 
 class BassZeroSynthModel : public SynthDeviceModel {
 
 public:
+
 
 
 

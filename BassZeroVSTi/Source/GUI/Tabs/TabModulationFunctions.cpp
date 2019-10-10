@@ -32,28 +32,28 @@ TabModulationFunctions::TabModulationFunctions (imbSynthStateData * synthState, 
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    ADSRA.reset (new ADSREditor());
-    addAndMakeVisible (ADSRA.get());
-    ADSRA->setBounds (8, 48, 260, 76);
+    ADSR_A.reset (new ADSREditor (synthState, "ADSR_A"));
+    addAndMakeVisible (ADSR_A.get());
+    ADSR_A->setBounds (8, 48, 260, 76);
 
-    ADSRB.reset (new ADSREditor());
+    ADSRB.reset (new ADSREditor (synthState, "ADSR_B"));
     addAndMakeVisible (ADSRB.get());
-    LFOA.reset (new ChaosEditor());
-    addAndMakeVisible (LFOA.get());
-    LFOA->setBounds (288, 48, 241, 100);
+    LFO_A.reset (new ChaosEditor (synthState, "LFO_A"));
+    addAndMakeVisible (LFO_A.get());
+    LFO_A->setBounds (288, 48, 241, 100);
 
-    ENVA.reset (new ENVEditor());
-    addAndMakeVisible (ENVA.get());
-    ENVA->setBounds (8, 280, 264, 68);
+    ENV_A.reset (new ENVEditor (synthState, "ENV_A"));
+    addAndMakeVisible (ENV_A.get());
+    ENV_A->setBounds (8, 280, 264, 68);
 
-    ENVB.reset (new ENVEditor());
-    addAndMakeVisible (ENVB.get());
-    LFOB.reset (new ChaosEditor());
-    addAndMakeVisible (LFOB.get());
-    LFOC.reset (new ChaosEditor());
-    addAndMakeVisible (LFOC.get());
-    LFOD.reset (new ChaosEditor());
-    addAndMakeVisible (LFOD.get());
+    ENV_B.reset (new ENVEditor (synthState, "ENV_B"));
+    addAndMakeVisible (ENV_B.get());
+    LFO_B.reset (new ChaosEditor (synthState, "LFO_B"));
+    addAndMakeVisible (LFO_B.get());
+    LFO_C.reset (new ChaosEditor (synthState, "LFO_C"));
+    addAndMakeVisible (LFO_C.get());
+    LFO_D.reset (new ChaosEditor (synthState, "LFO_D"));
+    addAndMakeVisible (LFO_D.get());
     label_WFA.reset (new Label ("Title",
                                 TRANS("A")));
     addAndMakeVisible (label_WFA.get());
@@ -74,8 +74,8 @@ TabModulationFunctions::TabModulationFunctions (imbSynthStateData * synthState, 
     label_WFA2->setColour (TextEditor::textColourId, Colours::black);
     label_WFA2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    ENVC.reset (new ENVEditor());
-    addAndMakeVisible (ENVC.get());
+    ENV_C.reset (new ENVEditor (synthState, "ENV_C"));
+    addAndMakeVisible (ENV_C.get());
     label_WFA3.reset (new Label ("Title",
                                  TRANS("A")));
     addAndMakeVisible (label_WFA3.get());
@@ -193,17 +193,17 @@ TabModulationFunctions::~TabModulationFunctions()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    ADSRA = nullptr;
+    ADSR_A = nullptr;
     ADSRB = nullptr;
-    LFOA = nullptr;
-    ENVA = nullptr;
-    ENVB = nullptr;
-    LFOB = nullptr;
-    LFOC = nullptr;
-    LFOD = nullptr;
+    LFO_A = nullptr;
+    ENV_A = nullptr;
+    ENV_B = nullptr;
+    LFO_B = nullptr;
+    LFO_C = nullptr;
+    LFO_D = nullptr;
     label_WFA = nullptr;
     label_WFA2 = nullptr;
-    ENVC = nullptr;
+    ENV_C = nullptr;
     label_WFA3 = nullptr;
     label_WFA4 = nullptr;
     label_WFA5 = nullptr;
@@ -248,13 +248,13 @@ void TabModulationFunctions::resized()
     //[/UserPreResize]
 
     ADSRB->setBounds (8 + 0, 48 + 76 - -12, 260, 76);
-    ENVB->setBounds (8 + 280, 280 + 68 - 68, 264, 68);
-    LFOB->setBounds (288 + 0, 48 + 100 - -12, 240, 100);
-    LFOC->setBounds ((288 + 0) + 280, (48 + 100 - -12) + 100 - 212, 240, 100);
-    LFOD->setBounds ((288 + 0) + 280, ((48 + 100 - -12) + 100 - 212) + 100 - -4, 240, 100);
+    ENV_B->setBounds (8 + 280, 280 + 68 - 68, 264, 68);
+    LFO_B->setBounds (288 + 0, 48 + 100 - -12, 240, 100);
+    LFO_C->setBounds ((288 + 0) + 280, (48 + 100 - -12) + 100 - 212, 240, 100);
+    LFO_D->setBounds ((288 + 0) + 280, ((48 + 100 - -12) + 100 - 212) + 100 - -4, 240, 100);
     label_WFA->setBounds (8 + 0, 48 + 0, 28, 24);
     label_WFA2->setBounds (8 + 0, (48 + 76 - -12) + 0, 28, 24);
-    ENVC->setBounds (8 + 560, 280 + 68 - 68, 264, 68);
+    ENV_C->setBounds (8 + 560, 280 + 68 - 68, 264, 68);
     label_WFA3->setBounds (8 + 0, 280 + 0, 28, 24);
     label_WFA4->setBounds ((8 + 280) + 0, (280 + 68 - 68) + 0, 28, 24);
     label_WFA5->setBounds ((8 + 560) + 0, (280 + 68 - 68) + 0, 28, 24);
@@ -293,35 +293,35 @@ BEGIN_JUCER_METADATA
     <IMAGE pos="0 -66 840 490" resource="background1_jpg" opacity="1.0"
            mode="0"/>
   </BACKGROUND>
-  <JUCERCOMP name="" id="f2a3a037a92bb9ba" memberName="ADSRA" virtualName=""
+  <JUCERCOMP name="" id="f2a3a037a92bb9ba" memberName="ADSR_A" virtualName=""
              explicitFocusOrder="0" pos="8 48 260 76" sourceFile="../Components/ADSREditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;ADSR_A&quot;"/>
   <JUCERCOMP name="" id="3c7fd89d7ccb94b7" memberName="ADSRB" virtualName=""
              explicitFocusOrder="0" pos="0 -12R 260 76" posRelativeX="f2a3a037a92bb9ba"
              posRelativeY="f2a3a037a92bb9ba" sourceFile="../Components/ADSREditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="cdc6831fdcc2217e" memberName="LFOA" virtualName=""
+             constructorParams="synthState, &quot;ADSR_B&quot;"/>
+  <JUCERCOMP name="LFO_A" id="cdc6831fdcc2217e" memberName="LFO_A" virtualName=""
              explicitFocusOrder="0" pos="288 48 241 100" sourceFile="../Components/ChaosEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="eeefbf843699b34b" memberName="ENVA" virtualName=""
+             constructorParams="synthState, &quot;LFO_A&quot;"/>
+  <JUCERCOMP name="ENV_A" id="eeefbf843699b34b" memberName="ENV_A" virtualName=""
              explicitFocusOrder="0" pos="8 280 264 68" sourceFile="../Components/ENVEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="88f062d2a86aa048" memberName="ENVB" virtualName=""
+             constructorParams="synthState, &quot;ENV_A&quot;"/>
+  <JUCERCOMP name="ENV_B" id="88f062d2a86aa048" memberName="ENV_B" virtualName=""
              explicitFocusOrder="0" pos="280 68R 264 68" posRelativeX="eeefbf843699b34b"
              posRelativeY="eeefbf843699b34b" sourceFile="../Components/ENVEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="f2b391a335a81fcf" memberName="LFOB" virtualName=""
+             constructorParams="synthState, &quot;ENV_B&quot;"/>
+  <JUCERCOMP name="LFO_B" id="f2b391a335a81fcf" memberName="LFO_B" virtualName=""
              explicitFocusOrder="0" pos="0 -12R 240 100" posRelativeX="cdc6831fdcc2217e"
              posRelativeY="cdc6831fdcc2217e" sourceFile="../Components/ChaosEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="c46fa60f26f8df16" memberName="LFOC" virtualName=""
+             constructorParams="synthState, &quot;LFO_B&quot;"/>
+  <JUCERCOMP name="LFO_C" id="c46fa60f26f8df16" memberName="LFO_C" virtualName=""
              explicitFocusOrder="0" pos="280 212R 240 100" posRelativeX="f2b391a335a81fcf"
              posRelativeY="f2b391a335a81fcf" sourceFile="../Components/ChaosEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="1aac79be353a0397" memberName="LFOD" virtualName=""
+             constructorParams="synthState, &quot;LFO_C&quot;"/>
+  <JUCERCOMP name="LFO_D" id="1aac79be353a0397" memberName="LFO_D" virtualName=""
              explicitFocusOrder="0" pos="280 -4R 240 100" posRelativeX="f2b391a335a81fcf"
              posRelativeY="c46fa60f26f8df16" sourceFile="../Components/ChaosEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;LFO_D&quot;"/>
   <LABEL name="Title" id="1298f19adf91ae02" memberName="label_WFA" virtualName=""
          explicitFocusOrder="0" pos="0 0 28 24" posRelativeX="f2a3a037a92bb9ba"
          posRelativeY="f2a3a037a92bb9ba" bkgCol="ff42a2c8" edTextCol="ff000000"
@@ -334,10 +334,10 @@ BEGIN_JUCER_METADATA
          edBkgCol="0" labelText="B" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
-  <JUCERCOMP name="" id="6b1b7f8f2634ccc3" memberName="ENVC" virtualName=""
+  <JUCERCOMP name="ENV_C" id="6b1b7f8f2634ccc3" memberName="ENV_C" virtualName=""
              explicitFocusOrder="0" pos="560 68R 264 68" posRelativeX="eeefbf843699b34b"
              posRelativeY="eeefbf843699b34b" sourceFile="../Components/ENVEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;ENV_C&quot;"/>
   <LABEL name="Title" id="61e7d4615724c59f" memberName="label_WFA3" virtualName=""
          explicitFocusOrder="0" pos="0 0 28 24" posRelativeX="eeefbf843699b34b"
          posRelativeY="eeefbf843699b34b" bkgCol="ffd2691e" edTextCol="ff000000"

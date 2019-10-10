@@ -38,7 +38,7 @@ class TabOPM  : public Component
 {
 public:
     //==============================================================================
-    TabOPM ();
+    TabOPM (imbSynthStateData * synthState, String nameSufix);
     ~TabOPM();
 
     //==============================================================================

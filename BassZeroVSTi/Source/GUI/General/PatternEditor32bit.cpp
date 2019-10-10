@@ -33,19 +33,19 @@ PatternEditor32bit::PatternEditor32bit (Pattern32BitModel _pattern)
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    block1.reset (new PatternEditor8bit());
+    block1.reset (new PatternEditor8bit (_pattern.block1));
     addAndMakeVisible (block1.get());
     block1->setBounds (0, 0, 128, 16);
 
-    block2.reset (new PatternEditor8bit());
+    block2.reset (new PatternEditor8bit (_pattern.block2));
     addAndMakeVisible (block2.get());
     block2->setBounds (128, 0, 128, 16);
 
-    block3.reset (new PatternEditor8bit());
+    block3.reset (new PatternEditor8bit (_pattern.block3));
     addAndMakeVisible (block3.get());
     block3->setBounds (256, 0, 128, 16);
 
-    block4.reset (new PatternEditor8bit());
+    block4.reset (new PatternEditor8bit (_pattern.block4));
     addAndMakeVisible (block4.get());
     block4->setBounds (384, 0, 128, 16);
 
@@ -149,16 +149,16 @@ BEGIN_JUCER_METADATA
   </BACKGROUND>
   <JUCERCOMP name="" id="577892e8a3af699c" memberName="block1" virtualName=""
              explicitFocusOrder="0" pos="0 0 128 16" sourceFile="PatternEditor8bit.cpp"
-             constructorParams=""/>
+             constructorParams="_pattern.block1"/>
   <JUCERCOMP name="" id="f4bf847837e253a9" memberName="block2" virtualName=""
              explicitFocusOrder="0" pos="128 0 128 16" sourceFile="PatternEditor8bit.cpp"
-             constructorParams=""/>
+             constructorParams="_pattern.block2"/>
   <JUCERCOMP name="" id="c75fabcc6dcbf73b" memberName="block3" virtualName=""
              explicitFocusOrder="0" pos="256 0 128 16" sourceFile="PatternEditor8bit.cpp"
-             constructorParams=""/>
+             constructorParams="_pattern.block3"/>
   <JUCERCOMP name="" id="81054733362e694b" memberName="block4" virtualName=""
              explicitFocusOrder="0" pos="384 0 128 16" sourceFile="PatternEditor8bit.cpp"
-             constructorParams=""/>
+             constructorParams="_pattern.block4"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

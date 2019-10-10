@@ -61,13 +61,13 @@ SignalControlEditor::SignalControlEditor (imbSynthStateData * synthState, String
 
     label->setBounds (8, 96, 140, 16);
 
-    PitchModulation.reset (new SignalChangeEditor());
+    PitchModulation.reset (new SignalChangeEditor (synthState, "PITCH"));
     addAndMakeVisible (PitchModulation.get());
     PulsePattern.reset (new PatternEditor8bit());
     addAndMakeVisible (PulsePattern.get());
     PulsePattern->setBounds (8, 240, 132, 16);
 
-    PhaseModulation.reset (new SignalChangeEditor());
+    PhaseModulation.reset (new SignalChangeEditor (synthState, "PHASE"));
     addAndMakeVisible (PhaseModulation.get());
     PhaseModulation->setBounds (192, 40, 300, 86);
 
@@ -78,7 +78,7 @@ SignalControlEditor::SignalControlEditor (imbSynthStateData * synthState, String
 
     toggle_DoublePrescalar->setBounds (8, 168, 120, 18);
 
-    PWMModulation.reset (new SignalChangeEditor());
+    PWMModulation.reset (new SignalChangeEditor (synthState, "PWM"));
     addAndMakeVisible (PWMModulation.get());
     toggle_Enabled.reset (new ToggleButton ("Phase modulation"));
     addAndMakeVisible (toggle_Enabled.get());
@@ -341,23 +341,23 @@ BEGIN_JUCER_METADATA
          edBkgCol="0" labelText="Pitch Unit" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="14.0"
          kerning="0.0" bold="0" italic="0" justification="33"/>
-  <JUCERCOMP name="" id="7f1d0d3bdc7671de" memberName="PitchModulation" virtualName=""
-             explicitFocusOrder="0" pos="0 -12R 290 86" posRelativeX="8f92a8fb69d2fac7"
+  <JUCERCOMP name="PitchModulation" id="7f1d0d3bdc7671de" memberName="PitchModulation"
+             virtualName="" explicitFocusOrder="0" pos="0 -12R 290 86" posRelativeX="8f92a8fb69d2fac7"
              posRelativeY="8f92a8fb69d2fac7" sourceFile="SignalChangeEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;PITCH&quot;"/>
   <JUCERCOMP name="" id="3ab1288f6225dbb5" memberName="PulsePattern" virtualName=""
              explicitFocusOrder="0" pos="8 240 132 16" sourceFile="../General/PatternEditor8bit.cpp"
              constructorParams=""/>
-  <JUCERCOMP name="" id="6f9f204dacc67317" memberName="PhaseModulation" virtualName=""
-             explicitFocusOrder="0" pos="192 40 300 86" sourceFile="SignalChangeEditor.cpp"
-             constructorParams=""/>
+  <JUCERCOMP name="PhaseModulation" id="6f9f204dacc67317" memberName="PhaseModulation"
+             virtualName="" explicitFocusOrder="0" pos="192 40 300 86" sourceFile="SignalChangeEditor.cpp"
+             constructorParams="synthState, &quot;PHASE&quot;"/>
   <TOGGLEBUTTON name="PWM mode" id="6abda0a4a43af997" memberName="toggle_DoublePrescalar"
                 virtualName="" explicitFocusOrder="0" pos="8 168 120 18" buttonText="Double prescalar"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
-  <JUCERCOMP name="" id="8f92a8fb69d2fac7" memberName="PWMModulation" virtualName=""
-             explicitFocusOrder="0" pos="0 -12R 290 86" posRelativeX="6f9f204dacc67317"
+  <JUCERCOMP name="PWMModulation" id="8f92a8fb69d2fac7" memberName="PWMModulation"
+             virtualName="" explicitFocusOrder="0" pos="0 -12R 290 86" posRelativeX="6f9f204dacc67317"
              posRelativeY="6f9f204dacc67317" sourceFile="SignalChangeEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;PWM&quot;"/>
   <TOGGLEBUTTON name="Phase modulation" id="77d6c8b2aec05069" memberName="toggle_Enabled"
                 virtualName="" explicitFocusOrder="0" pos="8 40 80 18" buttonText="Enabled"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>

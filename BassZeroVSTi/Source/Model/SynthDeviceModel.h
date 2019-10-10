@@ -35,8 +35,7 @@
 
 #include <vector>
 
-#include "../Control/imbSynthAudioProcessor.h";
-
+#include "../Source/Control/imbSynthAudioProcessor.h"
 
 
 class SynthDeviceModel : 
@@ -45,7 +44,10 @@ class SynthDeviceModel :
 { //: public SynthDeviceModelComponentBase {
  
 
-
+		/// <summary>
+	/// The synth processor
+	/// </summary>
+	imbSynthAudioProcessor * SynthProcessor;
     
     public:
 
@@ -53,9 +55,11 @@ class SynthDeviceModel :
 		void AfterDeployModel();
 
 
-		//imbSynthAudioProcessor * SynthProcessor;
-
-		//ParameterController parameterController;
+		
+		/// <summary>
+		/// The parameter controller - machanism for CC / SysExc ID synthnronization
+		/// </summary>
+		ParameterController parameterController;
 
 		
 		/// <summary>

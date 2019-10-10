@@ -21,7 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
-#include "../Source/GUI/Components/imbSynthGUIComponent.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 #include "SignalChangeEditor.h"

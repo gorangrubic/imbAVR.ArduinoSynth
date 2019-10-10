@@ -28,7 +28,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-OPMMacroControlEditor::OPMMacroControlEditor ()
+OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -50,12 +50,12 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
     addAndMakeVisible (VALA.get());
     VALA->setTooltip (TRANS("Decay time\n"));
     VALA->setRange (1, 100, 1);
-    VALA->setSliderStyle (Slider::RotaryHorizontalDrag);
-    VALA->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    VALA->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    VALA->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
     VALA->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     VALA->addListener (this);
 
-    VALA->setBounds (0, 160, 64, 76);
+    VALA->setBounds (0, 160, 64, 68);
 
     Title5.reset (new Label ("new label",
                              TRANS("VAL A")));
@@ -83,9 +83,9 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
 
     Title6->setBounds (0, 24, 96, 16);
 
-    MODA.reset (new SourceMixerComponent());
-    addAndMakeVisible (MODA.get());
-    MODA->setBounds (0, 40, 96, 96);
+    OPM_MODA.reset (new SourceMixerComponent (synthState, "OPM_MODA"));
+    addAndMakeVisible (OPM_MODA.get());
+    OPM_MODA->setBounds (0, 40, 96, 96);
 
     Title14.reset (new Label ("new label",
                               TRANS("PERK B PAN")));
@@ -126,20 +126,20 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
 
     label_OPM6->setBounds (0, 0, 192, 24);
 
-    MODB.reset (new SourceMixerComponent());
-    addAndMakeVisible (MODB.get());
-    MODB->setBounds (96, 40, 96, 96);
+    OPM_MODB.reset (new SourceMixerComponent (synthState, "OPM_MODB"));
+    addAndMakeVisible (OPM_MODB.get());
+    OPM_MODB->setBounds (96, 40, 96, 96);
 
     VALB.reset (new Slider ("DirectValue"));
     addAndMakeVisible (VALB.get());
     VALB->setTooltip (TRANS("Decay time\n"));
     VALB->setRange (1, 100, 1);
-    VALB->setSliderStyle (Slider::RotaryHorizontalDrag);
-    VALB->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    VALB->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    VALB->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
     VALB->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     VALB->addListener (this);
 
-    VALB->setBounds (64, 160, 64, 76);
+    VALB->setBounds (64, 160, 64, 68);
 
     Title3.reset (new Label ("new label",
                              TRANS("VAL B")));
@@ -158,12 +158,12 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
     addAndMakeVisible (VALB2.get());
     VALB2->setTooltip (TRANS("Decay time\n"));
     VALB2->setRange (1, 100, 1);
-    VALB2->setSliderStyle (Slider::RotaryHorizontalDrag);
-    VALB2->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    VALB2->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    VALB2->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
     VALB2->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     VALB2->addListener (this);
 
-    VALB2->setBounds (128, 160, 64, 76);
+    VALB2->setBounds (128, 160, 64, 68);
 
     Title4.reset (new Label ("new label",
                              TRANS("VAL C")));
@@ -234,8 +234,8 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
     addAndMakeVisible (CTRLA.get());
     CTRLA->setTooltip (TRANS("Decay time\n"));
     CTRLA->setRange (1, 100, 1);
-    CTRLA->setSliderStyle (Slider::RotaryHorizontalDrag);
-    CTRLA->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLA->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLA->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
     CTRLA->setColour (Slider::thumbColourId, Colour (0xff029d4d));
     CTRLA->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     CTRLA->addListener (this);
@@ -246,8 +246,8 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
     addAndMakeVisible (CTRLB.get());
     CTRLB->setTooltip (TRANS("Decay time\n"));
     CTRLB->setRange (1, 100, 1);
-    CTRLB->setSliderStyle (Slider::RotaryHorizontalDrag);
-    CTRLB->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLB->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLB->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
     CTRLB->setColour (Slider::thumbColourId, Colour (0xff029d4d));
     CTRLB->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     CTRLB->addListener (this);
@@ -258,8 +258,8 @@ OPMMacroControlEditor::OPMMacroControlEditor ()
     addAndMakeVisible (CTRLC.get());
     CTRLC->setTooltip (TRANS("Decay time\n"));
     CTRLC->setRange (1, 100, 1);
-    CTRLC->setSliderStyle (Slider::RotaryHorizontalDrag);
-    CTRLC->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLC->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLC->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
     CTRLC->setColour (Slider::thumbColourId, Colour (0xff029d4d));
     CTRLC->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     CTRLC->addListener (this);
@@ -286,11 +286,11 @@ OPMMacroControlEditor::~OPMMacroControlEditor()
     VALA = nullptr;
     Title5 = nullptr;
     Title6 = nullptr;
-    MODA = nullptr;
+    OPM_MODA = nullptr;
     Title14 = nullptr;
     Title15 = nullptr;
     label_OPM6 = nullptr;
-    MODB = nullptr;
+    OPM_MODB = nullptr;
     VALB = nullptr;
     Title3 = nullptr;
     VALB2 = nullptr;
@@ -383,9 +383,10 @@ void OPMMacroControlEditor::sliderValueChanged (Slider* sliderThatWasMoved)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="OPMMacroControlEditor" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="192" initialHeight="360">
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="192" initialHeight="360">
   <BACKGROUND backgroundColour="323e44"/>
   <LABEL name="new label" id="ebca27112e99bb6c" memberName="Title2" virtualName=""
          explicitFocusOrder="0" pos="96 24 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
@@ -393,10 +394,10 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <SLIDER name="DirectValue" id="f29fd8d619498ce" memberName="VALA" virtualName=""
-          explicitFocusOrder="0" pos="0 160 64 76" posRelativeX="5eeb447276336bd"
+          explicitFocusOrder="0" pos="0 160 64 68" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" textboxoutline="8e989b"
-          min="1.0" max="100.0" int="1.0" style="RotaryHorizontalDrag"
-          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="b54c3a5594317ad7" memberName="Title5" virtualName=""
          explicitFocusOrder="0" pos="0 144 64 16" bkgCol="fff0f8ff" textCol="ff181f22"
@@ -408,9 +409,9 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="MOD A" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="2864d35105104cbd" memberName="MODA" virtualName=""
+  <JUCERCOMP name="OPM_MODA" id="2864d35105104cbd" memberName="OPM_MODA" virtualName=""
              explicitFocusOrder="0" pos="0 40 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;OPM_MODA&quot;"/>
   <LABEL name="new label" id="bb977033edf56b53" memberName="Title14" virtualName=""
          explicitFocusOrder="0" pos="-194 -170 96 16" posRelativeX="e0d2854f1680301b"
          posRelativeY="e0d2854f1680301b" bkgCol="fff0ffff" textCol="ff181f22"
@@ -429,14 +430,14 @@ BEGIN_JUCER_METADATA
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.0" kerning="0.0" bold="1"
          italic="0" justification="36" typefaceStyle="Bold"/>
-  <JUCERCOMP name="" id="1dafcc7e8eda101d" memberName="MODB" virtualName=""
+  <JUCERCOMP name="OPM_MODB" id="1dafcc7e8eda101d" memberName="OPM_MODB" virtualName=""
              explicitFocusOrder="0" pos="96 40 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;OPM_MODB&quot;"/>
   <SLIDER name="DirectValue" id="11a6daa6c6f9aa38" memberName="VALB" virtualName=""
-          explicitFocusOrder="0" pos="64 160 64 76" posRelativeX="5eeb447276336bd"
+          explicitFocusOrder="0" pos="64 160 64 68" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" textboxoutline="8e989b"
-          min="1.0" max="100.0" int="1.0" style="RotaryHorizontalDrag"
-          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="5199123e3efd7734" memberName="Title3" virtualName=""
          explicitFocusOrder="0" pos="64 144 64 16" bkgCol="fff0ffff" textCol="ff181f22"
@@ -444,10 +445,10 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <SLIDER name="DirectValue" id="7bc2a0f57e067caa" memberName="VALB2" virtualName=""
-          explicitFocusOrder="0" pos="128 160 64 76" posRelativeX="5eeb447276336bd"
+          explicitFocusOrder="0" pos="128 160 64 68" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" textboxoutline="8e989b"
-          min="1.0" max="100.0" int="1.0" style="RotaryHorizontalDrag"
-          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="758209e6b61653a9" memberName="Title4" virtualName=""
          explicitFocusOrder="0" pos="128 144 64 16" bkgCol="fff0f8ff"
@@ -480,20 +481,20 @@ BEGIN_JUCER_METADATA
   <SLIDER name="DirectValue" id="88dc11d212aae427" memberName="CTRLA" virtualName=""
           explicitFocusOrder="0" pos="-2 272 64 76" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ff029d4d"
-          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalDrag"
-          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="DirectValue" id="f4693b0c161482f7" memberName="CTRLB" virtualName=""
           explicitFocusOrder="0" pos="62 272 64 76" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ff029d4d"
-          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalDrag"
-          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="DirectValue" id="bdac24d826f2a4e0" memberName="CTRLC" virtualName=""
           explicitFocusOrder="0" pos="126 272 64 76" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ff029d4d"
-          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalDrag"
-          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
 </JUCER_COMPONENT>
 

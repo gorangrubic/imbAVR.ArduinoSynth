@@ -21,7 +21,10 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
 #include "PresetFileBrowserModel.h"
+#include "FileBrowserModel.h"
 //[/Headers]
 
 #include "PathBrowser.h"
@@ -55,6 +58,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    PresetFileBrowserModel * model;
     //[/UserVariables]
 
     //==============================================================================
@@ -63,7 +67,7 @@ private:
     std::unique_ptr<TextButton> Save;
     std::unique_ptr<TextButton> Refresh;
     std::unique_ptr<ToggleButton> toggle_showFilenames;
-    std::unique_ptr<PathBrowser> component;
+    std::unique_ptr<PathBrowser> PATH;
 
 
     //==============================================================================

@@ -14,3 +14,7 @@ void ModelComponentWithChildren::AddChild(SynthDeviceModelComponentBase * child)
 {
 	ChildComponents.push_back(child);
 }
+
+  ModelComponentWithChildren::ModelComponentWithChildren()
+  {
+  }

@@ -29,7 +29,7 @@ void ModulationHub::AddADSR(ModulationFunctionADSR * output)
 	AddChild(output);
 	
 	String letter = imbSynthTools::GetLetter(ADSRs.size);
-	output->PreDeploy(Root, Parent, letter, "Attack Decay Sustain Release function " + letter);
+	output->PreDeploy("ADSR_" + letter, "Attack Decay Sustain Release function " + letter);
 
 	ADSRs.push_back(output);
 
@@ -43,7 +43,7 @@ void ModulationHub::AddENV(ModulationFunctionENV * output)
 
 	AddChild(output);
 	String letter = imbSynthTools::GetLetter(ENVs.size);
-	output->PreDeploy(Root, Parent, letter, "Two-point Envelope " + letter);
+	output->PreDeploy("ENV_" + letter, "Two-point Envelope " + letter);
 
 	ENVs.push_back(output);
 
@@ -57,7 +57,7 @@ void ModulationHub::AddLFO(ModulationFunctionLFO * output)
 
 	AddChild(output);
 	String letter = imbSynthTools::GetLetter(LFOs.size);
-	output->PreDeploy(Root, Parent, letter, "Low Frequency Oscilator " + letter);
+	output->PreDeploy("LFO_" + letter, "Low Frequency Oscilator " + letter);
 
 	LFOs.push_back(output);
 
@@ -71,7 +71,7 @@ void ModulationHub::AddMacroControl(ModulationSourceMacroControl * output)
 
 	AddChild(output);
 	String letter = imbSynthTools::GetLetter(MacroControls.size);
-	output->PreDeploy(Root, Parent, "CTRL " + letter, "Control Macro " + letter);
+	output->PreDeploy("CTRL " + letter, "Control Macro " + letter);
 
 	MacroControls.push_back(output);
 	
@@ -89,7 +89,7 @@ void ModulationHub::AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIT
 
 	AddChild(output);
 
-	output->PreDeploy(Root, Parent, _shortName, _longName);
+	output->PreDeploy(_shortName, _longName);
 	
 	MIDIs.push_back(output);
 

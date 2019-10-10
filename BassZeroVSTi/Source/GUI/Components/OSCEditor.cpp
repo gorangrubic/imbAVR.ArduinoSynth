@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-OSCEditor::OSCEditor ()
+OSCEditor::OSCEditor (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -54,7 +54,8 @@ OSCEditor::OSCEditor ()
     Phase->setTooltip (TRANS("Attack time"));
     Phase->setRange (0, 100, 1);
     Phase->setSliderStyle (Slider::LinearHorizontal);
-    Phase->setTextBoxStyle (Slider::NoTextBox, true, 50, 12);
+    Phase->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 12);
+    Phase->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Phase->addListener (this);
 
     Phase->setBounds (0, 88, 96, 24);
@@ -179,9 +180,10 @@ void OSCEditor::sliderValueChanged (Slider* sliderThatWasMoved)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="OSCEditor" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="192" initialHeight="112">
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="192" initialHeight="112">
   <BACKGROUND backgroundColour="323e44"/>
   <LABEL name="new label" id="f88b0f939fb64bd5" memberName="Title3" virtualName=""
          explicitFocusOrder="0" pos="96 0 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
@@ -193,9 +195,9 @@ BEGIN_JUCER_METADATA
              constructorParams=""/>
   <SLIDER name="DirectValue" id="698565b936711330" memberName="Phase" virtualName=""
           explicitFocusOrder="0" pos="0 88 96 24" tooltip="Attack time"
-          min="0.0" max="100.0" int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox"
-          textBoxEditable="0" textBoxWidth="50" textBoxHeight="12" skewFactor="1.0"
-          needsCallback="1"/>
+          textboxoutline="8e989b" min="0.0" max="100.0" int="1.0" style="LinearHorizontal"
+          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxHeight="12" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="5fa84f286e291d78" memberName="Title6" virtualName=""
          explicitFocusOrder="0" pos="0 64 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
          edTextCol="ff000000" edBkgCol="0" labelText="PHASE" editableSingleClick="0"

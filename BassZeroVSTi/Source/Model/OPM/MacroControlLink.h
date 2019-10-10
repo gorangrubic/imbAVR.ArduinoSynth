@@ -12,8 +12,10 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameter.h"
 #include "../Source/Model/SynthDeviceModelComponentBase.h"
+
+
 //#include "../SynthDeviceModel.h"
-#include "../SynthDeviceModelComponentBase.h"
+
 //#include "OPMSignalUnitChange.h"
 //#include "OPMControlModel.h"
 

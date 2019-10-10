@@ -47,15 +47,15 @@ void OPMSignalUnit::Deploy()
 	PWMCycleMode.SetHelp("When [True], width of the pulse is continual (from 0% to 100%) and controlled by PWM parameter of the oscilator. Otherwise, the pulse is driven by WaveformPattern - allowing asymetric pulse widths / customized waveform results.");
 
 	// ======================= Rapid modulation of Signal generator unit properties
-	PhaseChange.PreDeploy(Root, this, "Phase", "Phase Change");
+	PhaseChange.PreDeploy("Phase", "Phase Change");
 	AddChild(&PhaseChange);
 	PhaseChange.Deploy();
 
-	PWMChange.PreDeploy(Root, this, "PWM", "Pulse-Width Change");
+	PWMChange.PreDeploy("PWM", "Pulse-Width Change");
 	AddChild(&PWMChange);
 	PWMChange.Deploy();
 
-	PitchChange.PreDeploy(Root, this, "Pitch", "Pitch Change");
+	PitchChange.PreDeploy("Pitch", "Pitch Change");
 	AddChild(&PitchChange);
 	PitchChange.Deploy();
 

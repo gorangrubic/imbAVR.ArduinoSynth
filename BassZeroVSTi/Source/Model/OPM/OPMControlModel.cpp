@@ -12,7 +12,7 @@
 
 void OPMControlModel::AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortName, String _longName)
 {
-	SignalUnit->PreDeploy(Root, this, _shortName, _longName);
+	SignalUnit->PreDeploy(_shortName, _longName);
 	AddChild(SignalUnit);
 	Units.push_back(SignalUnit);
 	SignalUnit->Deploy();
@@ -20,7 +20,7 @@ void OPMControlModel::AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortNam
 
 void OPMControlModel::AddMacroControlLink(MacroControlLink * SignalControlLink, String _shortName, String _longName)
 {
-	SignalControlLink->PreDeploy(Root, this, _shortName, _longName);
+	SignalControlLink->PreDeploy(_shortName, _longName);
 	AddChild(SignalControlLink);
 	Links.push_back(SignalControlLink);
 	SignalControlLink->Deploy();

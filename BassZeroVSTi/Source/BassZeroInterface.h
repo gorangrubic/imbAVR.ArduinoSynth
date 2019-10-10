@@ -41,7 +41,7 @@ class BassZeroGUI  : public Component,
 {
 public:
     //==============================================================================
-    BassZeroGUI ();
+    BassZeroGUI (imbSynthStateData * synthState);
     ~BassZeroGUI();
 
     //==============================================================================

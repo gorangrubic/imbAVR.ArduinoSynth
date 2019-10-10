@@ -239,6 +239,14 @@
                 file="Source/GUI/General/PresetFileBrowserModel.h"/>
         </GROUP>
         <GROUP id="{36A4A682-D439-2BE4-9272-EF79482CE161}" name="Global">
+          <FILE id="DdFYWj" name="CommandBufferDisplay.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/CommandBufferDisplay.cpp"/>
+          <FILE id="guLaol" name="CommandBufferDisplay.h" compile="0" resource="0"
+                file="Source/GUI/Global/CommandBufferDisplay.h"/>
+          <FILE id="PExVXr" name="CommandBufferDisplayModel.cpp" compile="1"
+                resource="0" file="Source/GUI/Global/CommandBufferDisplayModel.cpp"/>
+          <FILE id="yhM1Eh" name="CommandBufferDisplayModel.h" compile="0" resource="0"
+                file="Source/GUI/Global/CommandBufferDisplayModel.h"/>
           <FILE id="KgbzVJ" name="ControlStateDisplay.cpp" compile="1" resource="0"
                 file="Source/GUI/Global/ControlStateDisplay.cpp"/>
           <FILE id="ZbSILo" name="ControlStateDisplay.h" compile="0" resource="0"
@@ -403,7 +411,7 @@
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <LIVE_SETTINGS>
-    <WINDOWS/>
+    <WINDOWS buildEnabled="1"/>
   </LIVE_SETTINGS>
   <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
 </JUCERPROJECT>

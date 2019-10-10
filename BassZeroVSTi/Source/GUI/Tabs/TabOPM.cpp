@@ -32,7 +32,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-TabOPM::TabOPM ()
+TabOPM::TabOPM (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -40,16 +40,16 @@ TabOPM::TabOPM ()
     tabbedComponent.reset (new TabbedComponent (TabbedButtonBar::TabsAtBottom));
     addAndMakeVisible (tabbedComponent.get());
     tabbedComponent->setTabBarDepth (30);
-    tabbedComponent->addTab (TRANS("WF A"), Colour (0x00181f22), new SignalControlEditor(), true);
-    tabbedComponent->addTab (TRANS("WF B"), Colour (0x00d3d3d3), new SignalControlEditor(), true);
-    tabbedComponent->addTab (TRANS("FLT"), Colour (0x00d3d3d3), new SignalControlEditor(), true);
-    tabbedComponent->addTab (TRANS("PERK A"), Colour (0x00d3d3d3), new SignalControlEditor(), true);
-    tabbedComponent->addTab (TRANS("PERK B"), Colour (0x00d3d3d3), new SignalControlEditor(), true);
+    tabbedComponent->addTab (TRANS("WF A"), Colour (0x00181f22), new SignalControlEditor (synthState, "WFA"), true);
+    tabbedComponent->addTab (TRANS("WF B"), Colour (0x00d3d3d3), new SignalControlEditor (synthState, "WFB"), true);
+    tabbedComponent->addTab (TRANS("FLT"), Colour (0x00d3d3d3), new SignalControlEditor (synthState, "FLT"), true);
+    tabbedComponent->addTab (TRANS("PERK A"), Colour (0x00d3d3d3), new SignalControlEditor (synthState, "PERKA"), true);
+    tabbedComponent->addTab (TRANS("PERK B"), Colour (0x00d3d3d3), new SignalControlEditor (synthState, "PERKB"), true);
     tabbedComponent->setCurrentTabIndex (0);
 
     tabbedComponent->setBounds (0, 0, 508, 360);
 
-    MacroControls.reset (new OPMEditor());
+    MacroControls.reset (new OPMEditor (synthState, "MacroControls"));
     addAndMakeVisible (MacroControls.get());
     MacroControls->setBounds (512, 0, 320, 360);
 
@@ -114,27 +114,27 @@ void TabOPM::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="TabOPM" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="840" initialHeight="360">
+                 parentClasses="public Component" constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="840" initialHeight="360">
   <BACKGROUND backgroundColour="ff323e44"/>
   <TABBEDCOMPONENT name="new tabbed component" id="e9a100ca63a7a802" memberName="tabbedComponent"
                    virtualName="" explicitFocusOrder="0" pos="0 0 508 360" orientation="bottom"
                    tabBarDepth="30" initialTab="0">
     <TAB name="WF A" colour="181f22" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
+         constructorParams="synthState, &quot;WFA&quot;" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
     <TAB name="WF B" colour="d3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
+         constructorParams="synthState, &quot;WFB&quot;" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
     <TAB name="FLT" colour="d3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
+         constructorParams="synthState, &quot;FLT&quot;" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
     <TAB name="PERK A" colour="d3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
+         constructorParams="synthState, &quot;PERKA&quot;" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
     <TAB name="PERK B" colour="d3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
+         constructorParams="synthState, &quot;PERKB&quot;" jucerComponentFile="../Components/SignalControlEditor.cpp"/>
   </TABBEDCOMPONENT>
-  <JUCERCOMP name="" id="1aa1163e1a769e07" memberName="MacroControls" virtualName=""
-             explicitFocusOrder="0" pos="512 0 320 360" sourceFile="../Components/OPMEditor.cpp"
-             constructorParams=""/>
+  <JUCERCOMP name="MacroControls" id="1aa1163e1a769e07" memberName="MacroControls"
+             virtualName="" explicitFocusOrder="0" pos="512 0 320 360" sourceFile="../Components/OPMEditor.cpp"
+             constructorParams="synthState, &quot;MacroControls&quot;"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

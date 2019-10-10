@@ -20,9 +20,11 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Data/imbSynthStateData.h"
 #include "../Components/imbSynthGUIComponent.h"
+#include "CommandBufferDisplayModel.h"
+
 //[/Headers]
 
 
@@ -35,65 +37,39 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class ChaosEditor  : public Component,
-                     public imbSynthGUIComponent,
-                     public Slider::Listener,
-                     public ComboBox::Listener,
-                     public Button::Listener
+class CommandBufferDisplay  : public Component,
+                              public imbSynthGUIComponent
 {
 public:
     //==============================================================================
-    ChaosEditor (imbSynthStateData * synthState, String nameSufix);
-    ~ChaosEditor();
+    CommandBufferDisplay (imbSynthStateData * synthState, String nameSufix);
+    ~CommandBufferDisplay();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-	void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
     //[/UserMethods]
 
     void paint (Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (Slider* sliderThatWasMoved) override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
 
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-
-	String pname_Value;
-	String pname_Curve;
-	String pname_Time;
-	String pname_Factor;
-
-	String pname_Retrigger;
-	String pname_Loop;
-
-
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_AttackTime;
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_DecayTime;
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_ReleaseTime;
-
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_InitLevel;
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_SustainLevel;
-
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Slider> Value;
-    std::unique_ptr<Label> label2;
-    std::unique_ptr<ComboBox> Curve;
-    std::unique_ptr<ToggleButton> toggle_retrigger;
-    std::unique_ptr<ToggleButton> toggle_loop;
+    std::unique_ptr<Label> label;
+    std::unique_ptr<Label> msgs_cc;
     std::unique_ptr<Label> label3;
-    std::unique_ptr<Label> label5;
-    std::unique_ptr<Slider> Time;
-    std::unique_ptr<Slider> Factor;
+    std::unique_ptr<Label> msgs_opm;
+    std::unique_ptr<Label> label2;
+    std::unique_ptr<Label> msgs_cc2;
+    std::unique_ptr<Label> label4;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ChaosEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CommandBufferDisplay)
 };
 
 //[EndFile] You can add extra defines here...

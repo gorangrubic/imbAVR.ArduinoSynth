@@ -32,7 +32,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-BassZeroGUI::BassZeroGUI ()
+BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -41,18 +41,18 @@ BassZeroGUI::BassZeroGUI ()
     tabbedComponent.reset (new TabbedComponent (TabbedButtonBar::TabsAtTop));
     addAndMakeVisible (tabbedComponent.get());
     tabbedComponent->setTabBarDepth (36);
-    tabbedComponent->addTab (TRANS("FX & Master"), Colours::lightgrey, new TabMasterFilter(), true);
-    tabbedComponent->addTab (TRANS("Waveforms"), Colour (0xffad0002), new TabWaveforms(), true);
-    tabbedComponent->addTab (TRANS("Modulation"), Colours::lightgrey, new TabModulationFunctions(), true);
-    tabbedComponent->addTab (TRANS("OPM Control"), Colours::lightgrey, new TabOPM(), true);
-    tabbedComponent->addTab (TRANS("Library & Setup"), Colours::lightgrey, new TabMainControl(), true);
+    tabbedComponent->addTab (TRANS("FX & Master"), Colours::lightgrey, new TabMasterFilter (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Waveforms"), Colour (0xffad0002), new TabWaveforms (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Modulation"), Colours::lightgrey, new TabModulationFunctions (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("OPM Control"), Colours::lightgrey, new TabOPM (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Library & Setup"), Colours::lightgrey, new TabMainControl (synthState, ""), true);
     tabbedComponent->setCurrentTabIndex (1);
 
     tabbedComponent->setBounds (0, 36, 840, 400);
 
-    controlStateDisplay.reset (new ControlStateDisplay());
+    controlStateDisplay.reset (new ControlStateDisplay (synthState, ""));
     addAndMakeVisible (controlStateDisplay.get());
-    synthStatusDisplay.reset (new SynthStateDisplay());
+    synthStatusDisplay.reset (new SynthStateDisplay (synthState, ""));
     addAndMakeVisible (synthStatusDisplay.get());
     synthStatusDisplay->setBounds (536, 8, 300, 24);
 
@@ -167,9 +167,9 @@ BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="BassZeroGUI" componentName="BassZero VSTi"
                  parentClasses="public Component, public imbSynthGUIComponent"
-                 constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
-                 snapShown="1" overlayOpacity="0.330" fixedSize="1" initialWidth="840"
-                 initialHeight="490">
+                 constructorParams="imbSynthStateData * synthState" variableInitialisers=""
+                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 fixedSize="1" initialWidth="840" initialHeight="490">
   <BACKGROUND backgroundColour="ff323e44">
     <IMAGE pos="0 0 840 490" resource="background2_jpg" opacity="0.1" mode="0"/>
     <TEXT pos="19 4 200 30" fill="solid: fff0ffff" hasStroke="0" text="hardy.Veles::BassZero "
@@ -186,22 +186,23 @@ BEGIN_JUCER_METADATA
                    virtualName="" explicitFocusOrder="0" pos="0 36 840 400" orientation="top"
                    tabBarDepth="36" initialTab="1">
     <TAB name="FX &amp; Master" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="GUI/Tabs/TabMasterFilter.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabMasterFilter.cpp"/>
     <TAB name="Waveforms" colour="ffad0002" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="GUI/Tabs/TabWaveforms.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabWaveforms.cpp"/>
     <TAB name="Modulation" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="GUI/Tabs/TabModulationFunctions.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabModulationFunctions.cpp"/>
     <TAB name="OPM Control" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="GUI/Tabs/TabOPM.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabOPM.cpp"/>
     <TAB name="Library &amp; Setup" colour="ffd3d3d3" useJucerComp="1"
-         contentClassName="" constructorParams="" jucerComponentFile="GUI/Tabs/TabMainControl.cpp"/>
+         contentClassName="" constructorParams="synthState, &quot;&quot;"
+         jucerComponentFile="GUI/Tabs/TabMainControl.cpp"/>
   </TABBEDCOMPONENT>
   <JUCERCOMP name="" id="64c75a3190c4aabc" memberName="controlStateDisplay"
              virtualName="" explicitFocusOrder="0" pos="4 440 8M 24" sourceFile="GUI/Global/ControlStateDisplay.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;&quot;"/>
   <JUCERCOMP name="" id="2a52e75071d6398c" memberName="synthStatusDisplay"
              virtualName="" explicitFocusOrder="0" pos="536 8 300 24" sourceFile="GUI/Global/SynthStateDisplay.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;&quot;"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

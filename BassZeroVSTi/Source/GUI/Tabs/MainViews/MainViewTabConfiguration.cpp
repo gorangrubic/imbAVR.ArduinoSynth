@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-MainViewTabConfiguration::MainViewTabConfiguration ()
+MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -375,9 +375,9 @@ BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="MainViewTabConfiguration"
                  componentName="" parentClasses="public Component, public imbSynthGUIComponent"
-                 constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
-                 snapShown="1" overlayOpacity="0.330" fixedSize="1" initialWidth="840"
-                 initialHeight="340">
+                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="840" initialHeight="340">
   <BACKGROUND backgroundColour="323e44"/>
   <LABEL name="new label" id="1ec85516c8bd1f70" memberName="label3" virtualName=""
          explicitFocusOrder="0" pos="16 32 180 24" bkgCol="ff397daa" edTextCol="ff495358"

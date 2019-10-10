@@ -67,17 +67,17 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<ADSREditor> ADSRA;
+    std::unique_ptr<ADSREditor> ADSR_A;
     std::unique_ptr<ADSREditor> ADSRB;
-    std::unique_ptr<ChaosEditor> LFOA;
-    std::unique_ptr<ENVEditor> ENVA;
-    std::unique_ptr<ENVEditor> ENVB;
-    std::unique_ptr<ChaosEditor> LFOB;
-    std::unique_ptr<ChaosEditor> LFOC;
-    std::unique_ptr<ChaosEditor> LFOD;
+    std::unique_ptr<ChaosEditor> LFO_A;
+    std::unique_ptr<ENVEditor> ENV_A;
+    std::unique_ptr<ENVEditor> ENV_B;
+    std::unique_ptr<ChaosEditor> LFO_B;
+    std::unique_ptr<ChaosEditor> LFO_C;
+    std::unique_ptr<ChaosEditor> LFO_D;
     std::unique_ptr<Label> label_WFA;
     std::unique_ptr<Label> label_WFA2;
-    std::unique_ptr<ENVEditor> ENVC;
+    std::unique_ptr<ENVEditor> ENV_C;
     std::unique_ptr<Label> label_WFA3;
     std::unique_ptr<Label> label_WFA4;
     std::unique_ptr<Label> label_WFA5;

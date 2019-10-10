@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 #include "OPMToSignalChangeEditor.h"
@@ -41,11 +43,12 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class OPMEditor  : public Component
+class OPMEditor  : public Component,
+                   public imbSynthGUIComponent
 {
 public:
     //==============================================================================
-    OPMEditor ();
+    OPMEditor (imbSynthStateData * synthState, String nameSufix);
     ~OPMEditor();
 
     //==============================================================================
@@ -62,18 +65,18 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<OPMToSignalChangeEditor> modA1;
-    std::unique_ptr<OPMToSignalChangeEditor> modB1;
-    std::unique_ptr<OPMToSignalChangeEditor> valC1;
-    std::unique_ptr<OPMToSignalChangeEditor> valC2;
+    std::unique_ptr<OPMToSignalChangeEditor> MODA_MCL1;
+    std::unique_ptr<OPMToSignalChangeEditor> MODB_MCL1;
+    std::unique_ptr<OPMToSignalChangeEditor> VALC_MCL1;
+    std::unique_ptr<OPMToSignalChangeEditor> VALC_MCL2;
     std::unique_ptr<Label> labelMODA;
-    std::unique_ptr<OPMToSignalChangeEditor> modA2;
+    std::unique_ptr<OPMToSignalChangeEditor> MODA_MCL2;
     std::unique_ptr<Label> labelMODB;
-    std::unique_ptr<OPMToSignalChangeEditor> modB2;
+    std::unique_ptr<OPMToSignalChangeEditor> MODB_MCL2;
     std::unique_ptr<Label> labelMODA3;
     std::unique_ptr<Label> labelMODA4;
-    std::unique_ptr<OPMToSignalChangeEditor> valA1;
-    std::unique_ptr<OPMToSignalChangeEditor> valB1;
+    std::unique_ptr<OPMToSignalChangeEditor> VALA_MCL1;
+    std::unique_ptr<OPMToSignalChangeEditor> VALB_MCL1;
     std::unique_ptr<Label> LabelVALC;
 
 

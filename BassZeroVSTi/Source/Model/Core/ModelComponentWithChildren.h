@@ -22,4 +22,6 @@ class ModelComponentWithChildren {
 		
 
 		std::list<SynthDeviceModelComponentBase*> ChildComponents;
+
+		ModelComponentWithChildren();
 };

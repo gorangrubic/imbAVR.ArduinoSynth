@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 #include "SourceMixerComponent.h"
@@ -36,11 +38,12 @@
                                                                     //[/Comments]
 */
 class OPMMacroControlEditor  : public Component,
+                               public imbSynthGUIComponent,
                                public Slider::Listener
 {
 public:
     //==============================================================================
-    OPMMacroControlEditor ();
+    OPMMacroControlEditor (imbSynthStateData * synthState, String nameSufix);
     ~OPMMacroControlEditor();
 
     //==============================================================================
@@ -62,11 +65,11 @@ private:
     std::unique_ptr<Slider> VALA;
     std::unique_ptr<Label> Title5;
     std::unique_ptr<Label> Title6;
-    std::unique_ptr<SourceMixerComponent> MODA;
+    std::unique_ptr<SourceMixerComponent> OPM_MODA;
     std::unique_ptr<Label> Title14;
     std::unique_ptr<Label> Title15;
     std::unique_ptr<Label> label_OPM6;
-    std::unique_ptr<SourceMixerComponent> MODB;
+    std::unique_ptr<SourceMixerComponent> OPM_MODB;
     std::unique_ptr<Slider> VALB;
     std::unique_ptr<Label> Title3;
     std::unique_ptr<Slider> VALB2;

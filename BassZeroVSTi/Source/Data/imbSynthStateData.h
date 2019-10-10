@@ -8,12 +8,22 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Control/ParameterController.h"
 
+#include "../GUI/Global/CommandBufferDisplayModel.h"
+#include "../GUI/Global/ControlStateDisplayModel.h"
+#include "../GUI/Global/SynthStateDisplayModel.h"
+
 #include "../Model/SynthDeviceModel.h"
 
 class imbSynthStateData
 {
     
 public:
+
+// ======================== Display models
+
+    CommandBufferDisplayModel bufferDisplayModel;
+    ControlStateDisplayModel controlDisplayModel;
+    SynthStateDisplayModel stateDisplayModel;
 
 
 // ======================== ENVIRONMENT DATA

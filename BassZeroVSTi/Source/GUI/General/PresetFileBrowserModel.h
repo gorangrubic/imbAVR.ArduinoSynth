@@ -10,10 +10,12 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "PathBrowserModel.h"
 class PresetFileBrowserModel {
     
  public:
  
+    PathBrowserModel pathModel;
  
 	 PresetFileBrowserModel();
  

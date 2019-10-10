@@ -14,7 +14,7 @@
 
 void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
-	if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
+	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
 	int _initIndexValue = 0;
 	if (initValue) _initIndexValue = 1;
 
@@ -23,7 +23,7 @@ void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * outpu
 
 void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, std::vector<String>* items, String initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
-	if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
+	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
 	int _initIndexValue = 0;
 
 	if (initValue == "") {
@@ -83,7 +83,7 @@ void SynthDeviceModelComponentBase::BuildParameters()
 	}*/
 }
 
-void SynthDeviceModelComponentBase::PreDeploy(SynthDeviceModel * _root, ModelComponentDescription * _parent, String _shortName, String _longName)
+void SynthDeviceModelComponentBase::PreDeploy(String _shortName, String _longName)
 {
 	if (NamePrefix == "") {
 		ShortName = _shortName;
@@ -100,8 +100,8 @@ void SynthDeviceModelComponentBase::PreDeploy(SynthDeviceModel * _root, ModelCom
 	}
 	
 
-	Root = _root;
-	Parent = _parent;
+	//Root = _root;
+	//Parent = _parent;
 
 }
 

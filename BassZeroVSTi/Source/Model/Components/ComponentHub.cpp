@@ -16,7 +16,7 @@ void ComponentHub::AddModulatedControl(ModelModulatedControl * output, String _s
 {
 	AddChild(output);
 	modulatedControls.push_back(output);
-//	output->PreDeploy(Root, this, _shortName, _longName);
+	output->PreDeploy(_shortName, _longName);
 }
 
 void ComponentHub::AddWaveform(OscilatorWaveform * output)
@@ -28,7 +28,7 @@ void ComponentHub::AddWaveform(OscilatorWaveform * output)
 	String _longName = "Waveform " + letter;
 	
 	oscilatorWaveforms.push_back(output);
-//	output->PreDeploy(Root, this, _shortName, _longName);
+	output->PreDeploy(_shortName, _longName);
 }
 
 void ComponentHub::AddPerk(OscilatorPerk * output)
@@ -40,7 +40,7 @@ void ComponentHub::AddPerk(OscilatorPerk * output)
 	String _longName = "PERK " + letter;
 
 	oscilatorPerks.push_back(output);
-//	output->PreDeploy(Root, this, _shortName, _longName);
+	output->PreDeploy(_shortName, _longName);
 }
 
 void ComponentHub::Deploy()

@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+
 //[/Headers]
 
 #include "ControlStateDisplay.h"
@@ -27,7 +28,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-ControlStateDisplay::ControlStateDisplay ()
+ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -219,9 +220,10 @@ void ControlStateDisplay::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="ControlStateDisplay" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="830" initialHeight="24">
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="830" initialHeight="24">
   <BACKGROUND backgroundColour="b0323e44"/>
   <LABEL name="new label" id="a579be9af7298cb3" memberName="label" virtualName=""
          explicitFocusOrder="0" pos="152 0 80 24" bkgCol="50181f22" edTextCol="ff000000"

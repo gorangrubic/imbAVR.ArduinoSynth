@@ -39,10 +39,10 @@ TabMainControl::TabMainControl (imbSynthStateData * synthState, String nameSufix
     tabbedComponent.reset (new TabbedComponent (TabbedButtonBar::TabsAtBottom));
     addAndMakeVisible (tabbedComponent.get());
     tabbedComponent->setTabBarDepth (30);
-    tabbedComponent->addTab (TRANS("Presets"), Colour (0xff181f22), new MainViewTabPresetManager(), true);
-    tabbedComponent->addTab (TRANS("Input / Output"), Colour (0xff181f22), new MainViewTabInOut(), true);
-    tabbedComponent->addTab (TRANS("Configuration"), Colour (0xff181f22), new MainViewTabConfiguration(), true);
-    tabbedComponent->addTab (TRANS("Tools"), Colour (0xff181f22), new MainViewTabTools(), true);
+    tabbedComponent->addTab (TRANS("Presets"), Colour (0xff181f22), new MainViewTabPresetManager (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Input / Output"), Colour (0xff181f22), new MainViewTabInOut (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Configuration"), Colour (0xff181f22), new MainViewTabConfiguration (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Tools"), Colour (0xff181f22), new MainViewTabTools (synthState, ""), true);
     tabbedComponent->setCurrentTabIndex (1);
 
     cachedImage_basszero_background_jpg2_1 = ImageCache::getFromMemory (basszero_background_jpg2, basszero_background_jpg2Size);
@@ -127,13 +127,13 @@ BEGIN_JUCER_METADATA
                    virtualName="" explicitFocusOrder="0" pos="0 0 0M 0M" orientation="bottom"
                    tabBarDepth="30" initialTab="1">
     <TAB name="Presets" colour="ff181f22" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="MainViews/MainViewTabPresetManager.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="MainViews/MainViewTabPresetManager.cpp"/>
     <TAB name="Input / Output" colour="ff181f22" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="MainViews/MainViewTabInOut.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="MainViews/MainViewTabInOut.cpp"/>
     <TAB name="Configuration" colour="ff181f22" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="MainViews/MainViewTabConfiguration.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="MainViews/MainViewTabConfiguration.cpp"/>
     <TAB name="Tools" colour="ff181f22" useJucerComp="1" contentClassName=""
-         constructorParams="" jucerComponentFile="MainViews/MainViewTabTools.cpp"/>
+         constructorParams="synthState, &quot;&quot;" jucerComponentFile="MainViews/MainViewTabTools.cpp"/>
   </TABBEDCOMPONENT>
 </JUCER_COMPONENT>
 

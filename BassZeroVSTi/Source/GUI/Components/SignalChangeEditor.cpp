@@ -61,7 +61,8 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
     Rate->setTooltip (TRANS("Number of clock cycles after which the Change is applied"));
     Rate->setRange (0, 127, 1);
     Rate->setSliderStyle (Slider::LinearHorizontal);
-    Rate->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
+    Rate->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    Rate->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Rate->addListener (this);
 
     Rate->setBounds (80, 20, 100, 24);
@@ -78,9 +79,11 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
     Period.reset (new Slider ("new slider"));
     addAndMakeVisible (Period.get());
     Period->setTooltip (TRANS("Rate x value = number of clock cycles per modulation function cycle"));
-    Period->setRange (0, 64, 0);
+    Period->setRange (0, 64, 1);
     Period->setSliderStyle (Slider::LinearHorizontal);
-    Period->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
+    Period->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    Period->setColour (Slider::textBoxHighlightColourId, Colour (0x0042a2c8));
+    Period->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Period->addListener (this);
 
     Period->setBounds (80, 60, 100, 24);
@@ -117,6 +120,7 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
     toggle_Enabled->setTooltip (TRANS("If modulation is activated"));
     toggle_Enabled->setButtonText (TRANS("Enabled"));
     toggle_Enabled->addListener (this);
+    toggle_Enabled->setToggleState (true, dontSendNotification);
 
     toggle_Enabled->setBounds (4, 28, 80, 18);
 
@@ -347,9 +351,9 @@ BEGIN_JUCER_METADATA
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <SLIDER name="new slider" id="a4af4153ed7eefd3" memberName="Rate" virtualName=""
           explicitFocusOrder="0" pos="80 20 100 24" tooltip="Number of clock cycles after which the Change is applied"
-          min="0.0" max="127.0" int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox"
-          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="1"/>
+          textboxoutline="8e989b" min="0.0" max="127.0" int="1.0" style="LinearHorizontal"
+          textBoxPos="TextBoxBelow" textBoxEditable="1" textBoxWidth="80"
+          textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="3f68c02d60b8de97" memberName="label2" virtualName=""
          explicitFocusOrder="0" pos="0 0r 100 12" posRelativeX="a4af4153ed7eefd3"
          posRelativeY="a4af4153ed7eefd3" edTextCol="ff000000" edBkgCol="0"
@@ -358,7 +362,8 @@ BEGIN_JUCER_METADATA
          kerning="0.0" bold="0" italic="0" justification="36"/>
   <SLIDER name="new slider" id="9bfc93658cb0ac69" memberName="Period" virtualName=""
           explicitFocusOrder="0" pos="80 60 100 24" tooltip="Rate x value = number of clock cycles per modulation function cycle"
-          min="0.0" max="64.0" int="0.0" style="LinearHorizontal" textBoxPos="NoTextBox"
+          textboxhighlight="42a2c8" textboxoutline="8e989b" min="0.0" max="64.0"
+          int="1.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <LABEL name="new label" id="1cc0e884482ee698" memberName="label3" virtualName=""
@@ -380,7 +385,7 @@ BEGIN_JUCER_METADATA
   <TOGGLEBUTTON name="new toggle button" id="212792f83b14bfef" memberName="toggle_Enabled"
                 virtualName="" explicitFocusOrder="0" pos="4 28 80 18" tooltip="If modulation is activated"
                 buttonText="Enabled" connectedEdges="0" needsCallback="1" radioGroupId="0"
-                state="0"/>
+                state="1"/>
   <TOGGLEBUTTON name="new toggle button" id="9cd767994aa0d5e2" memberName="toggle_Sync"
                 virtualName="" explicitFocusOrder="0" pos="0 0R 80 18" posRelativeX="212792f83b14bfef"
                 posRelativeY="212792f83b14bfef" tooltip="Resets modulation function on Note On"

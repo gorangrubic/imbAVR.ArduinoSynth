@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 
@@ -33,11 +35,12 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class SynthStateDisplay  : public Component
+class SynthStateDisplay  : public Component,
+                           public imbSynthGUIComponent
 {
 public:
     //==============================================================================
-    SynthStateDisplay ();
+    SynthStateDisplay (imbSynthStateData * synthState, String nameSufix);
     ~SynthStateDisplay();
 
     //==============================================================================

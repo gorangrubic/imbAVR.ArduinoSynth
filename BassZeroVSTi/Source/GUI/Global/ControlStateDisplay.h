@@ -20,7 +20,10 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
+#include "ControlStateDisplayModel.h"
 //[/Headers]
 
 
@@ -33,11 +36,12 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class ControlStateDisplay  : public Component
+class ControlStateDisplay  : public Component,
+                             public imbSynthGUIComponent
 {
 public:
     //==============================================================================
-    ControlStateDisplay ();
+    ControlStateDisplay (imbSynthStateData * synthState, String nameSufix);
     ~ControlStateDisplay();
 
     //==============================================================================

@@ -27,19 +27,19 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-OPMEditor::OPMEditor ()
+OPMEditor::OPMEditor (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    modA1.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (modA1.get());
-    modB1.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (modB1.get());
-    valC1.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (valC1.get());
-    valC2.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (valC2.get());
+    MODA_MCL1.reset (new OPMToSignalChangeEditor (synthState, "MODA_MCL1"));
+    addAndMakeVisible (MODA_MCL1.get());
+    MODB_MCL1.reset (new OPMToSignalChangeEditor (synthState, "MODB_MCL1"));
+    addAndMakeVisible (MODB_MCL1.get());
+    VALC_MCL1.reset (new OPMToSignalChangeEditor (synthState, "VALC_MCL1"));
+    addAndMakeVisible (VALC_MCL1.get());
+    VALC_MCL2.reset (new OPMToSignalChangeEditor (synthState, "VALC_MCL2"));
+    addAndMakeVisible (VALC_MCL2.get());
     labelMODA.reset (new Label ("new label",
                                 TRANS("MOD A")));
     addAndMakeVisible (labelMODA.get());
@@ -53,8 +53,8 @@ OPMEditor::OPMEditor ()
 
     labelMODA->setBounds (0, 2, 160, 18);
 
-    modA2.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (modA2.get());
+    MODA_MCL2.reset (new OPMToSignalChangeEditor (synthState, "MODA_MCL2"));
+    addAndMakeVisible (MODA_MCL2.get());
     labelMODB.reset (new Label ("new label",
                                 TRANS("MOD B")));
     addAndMakeVisible (labelMODB.get());
@@ -66,8 +66,8 @@ OPMEditor::OPMEditor ()
     labelMODB->setColour (TextEditor::textColourId, Colours::black);
     labelMODB->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    modB2.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (modB2.get());
+    MODB_MCL2.reset (new OPMToSignalChangeEditor (synthState, "MODB_MCL2"));
+    addAndMakeVisible (MODB_MCL2.get());
     labelMODA3.reset (new Label ("new label",
                                  TRANS("VAL A")));
     addAndMakeVisible (labelMODA3.get());
@@ -92,10 +92,10 @@ OPMEditor::OPMEditor ()
     labelMODA4->setColour (TextEditor::textColourId, Colours::black);
     labelMODA4->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    valA1.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (valA1.get());
-    valB1.reset (new OPMToSignalChangeEditor());
-    addAndMakeVisible (valB1.get());
+    VALA_MCL1.reset (new OPMToSignalChangeEditor (synthState, "VALA_MCL1"));
+    addAndMakeVisible (VALA_MCL1.get());
+    VALB_MCL1.reset (new OPMToSignalChangeEditor (synthState, "VALB_MCL1"));
+    addAndMakeVisible (VALB_MCL1.get());
     LabelVALC.reset (new Label ("new label",
                                 TRANS("VAL C")));
     addAndMakeVisible (LabelVALC.get());
@@ -125,18 +125,18 @@ OPMEditor::~OPMEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    modA1 = nullptr;
-    modB1 = nullptr;
-    valC1 = nullptr;
-    valC2 = nullptr;
+    MODA_MCL1 = nullptr;
+    MODB_MCL1 = nullptr;
+    VALC_MCL1 = nullptr;
+    VALC_MCL2 = nullptr;
     labelMODA = nullptr;
-    modA2 = nullptr;
+    MODA_MCL2 = nullptr;
     labelMODB = nullptr;
-    modB2 = nullptr;
+    MODB_MCL2 = nullptr;
     labelMODA3 = nullptr;
     labelMODA4 = nullptr;
-    valA1 = nullptr;
-    valB1 = nullptr;
+    VALA_MCL1 = nullptr;
+    VALB_MCL1 = nullptr;
     LabelVALC = nullptr;
 
 
@@ -161,16 +161,16 @@ void OPMEditor::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    modA1->setBounds (0, 2 + 18, 160, 76);
-    modB1->setBounds (0 + 160 - -4, 2 + 18, 160, 76);
-    valC1->setBounds (0, 264 + 18, 160, 76);
-    valC2->setBounds (0 + 160 - -4, 264 + 18, 160, 76);
-    modA2->setBounds (0, (2 + 18) + 76 - 4, 160, 76);
+    MODA_MCL1->setBounds (0, 2 + 18, 160, 76);
+    MODB_MCL1->setBounds (0 + 160 - -4, 2 + 18, 160, 76);
+    VALC_MCL1->setBounds (0, 264 + 18, 160, 76);
+    VALC_MCL2->setBounds (0 + 160 - -4, 264 + 18, 160, 76);
+    MODA_MCL2->setBounds (0, (2 + 18) + 76 - 4, 160, 76);
     labelMODB->setBounds (0 + 160 - -4, 2, 160, 18);
-    modB2->setBounds ((0 + 160 - -4) + 0, (2 + 18) + 76 - 4, 160, 76);
+    MODB_MCL2->setBounds ((0 + 160 - -4) + 0, (2 + 18) + 76 - 4, 160, 76);
     labelMODA4->setBounds (0 + 160 - -4, 168, 160, 18);
-    valA1->setBounds (0, 168 + 18, 160, 76);
-    valB1->setBounds (0 + 160 - -4, (168 + 18) + 0, 160, 76);
+    VALA_MCL1->setBounds (0, 168 + 18, 160, 76);
+    VALB_MCL1->setBounds (0 + 160 - -4, (168 + 18) + 0, 160, 76);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -191,24 +191,25 @@ void OPMEditor::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="OPMEditor" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="324" initialHeight="360">
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="324" initialHeight="360">
   <BACKGROUND backgroundColour="ff323e44"/>
-  <JUCERCOMP name="" id="1474ddf3224b6bf5" memberName="modA1" virtualName=""
-             explicitFocusOrder="0" pos="0 0R 160 76" posRelativeY="995d370610ffd3e1"
-             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams=""/>
-  <JUCERCOMP name="" id="fa8cf6b4b2235e5" memberName="modB1" virtualName=""
-             explicitFocusOrder="0" pos="-4R 0R 160 76" posRelativeX="1474ddf3224b6bf5"
+  <JUCERCOMP name="MODA_MCL1" id="1474ddf3224b6bf5" memberName="MODA_MCL1"
+             virtualName="" explicitFocusOrder="0" pos="0 0R 160 76" posRelativeY="995d370610ffd3e1"
+             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams="synthState, &quot;MODA_MCL1&quot;"/>
+  <JUCERCOMP name="MODB_MCL1" id="fa8cf6b4b2235e5" memberName="MODB_MCL1"
+             virtualName="" explicitFocusOrder="0" pos="-4R 0R 160 76" posRelativeX="1474ddf3224b6bf5"
              posRelativeY="d5b6addb2e4190e6" sourceFile="OPMToSignalChangeEditor.cpp"
-             constructorParams=""/>
-  <JUCERCOMP name="" id="cc6b5c20302ca164" memberName="valC1" virtualName=""
-             explicitFocusOrder="0" pos="0 0R 160 76" posRelativeY="ceaeec3d2ebe5aa6"
-             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams=""/>
-  <JUCERCOMP name="" id="3cd1decada909c47" memberName="valC2" virtualName=""
-             explicitFocusOrder="0" pos="-4R 0R 160 76" posRelativeX="cc6b5c20302ca164"
+             constructorParams="synthState, &quot;MODB_MCL1&quot;"/>
+  <JUCERCOMP name="VALC_MCL1" id="cc6b5c20302ca164" memberName="VALC_MCL1"
+             virtualName="" explicitFocusOrder="0" pos="0 0R 160 76" posRelativeY="ceaeec3d2ebe5aa6"
+             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams="synthState, &quot;VALC_MCL1&quot;"/>
+  <JUCERCOMP name="VALC_MCL2" id="3cd1decada909c47" memberName="VALC_MCL2"
+             virtualName="" explicitFocusOrder="0" pos="-4R 0R 160 76" posRelativeX="cc6b5c20302ca164"
              posRelativeY="ceaeec3d2ebe5aa6" sourceFile="OPMToSignalChangeEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;VALC_MCL2&quot;"/>
   <LABEL name="new label" id="995d370610ffd3e1" memberName="labelMODA"
          virtualName="" explicitFocusOrder="0" pos="0 2 160 18" posRelativeX="6f9f204dacc67317"
          posRelativeY="6f9f204dacc67317" bkgCol="fff0ffff" textCol="ff181f22"
@@ -216,9 +217,9 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="14.0" kerning="0.0" bold="1" italic="0" justification="33"
          typefaceStyle="Bold"/>
-  <JUCERCOMP name="" id="11a6440739bbbbb7" memberName="modA2" virtualName=""
-             explicitFocusOrder="0" pos="0 4R 160 76" posRelativeY="1474ddf3224b6bf5"
-             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams=""/>
+  <JUCERCOMP name="MODA_MCL2" id="11a6440739bbbbb7" memberName="MODA_MCL2"
+             virtualName="" explicitFocusOrder="0" pos="0 4R 160 76" posRelativeY="1474ddf3224b6bf5"
+             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams="synthState, &quot;MODA_MCL2&quot;"/>
   <LABEL name="new label" id="d5b6addb2e4190e6" memberName="labelMODB"
          virtualName="" explicitFocusOrder="0" pos="-4R 2 160 18" posRelativeX="995d370610ffd3e1"
          posRelativeY="6f9f204dacc67317" bkgCol="fff0ffff" textCol="ff181f22"
@@ -226,10 +227,10 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="14.0" kerning="0.0" bold="1" italic="0" justification="33"
          typefaceStyle="Bold"/>
-  <JUCERCOMP name="" id="1cd4b6143caa5ed8" memberName="modB2" virtualName=""
-             explicitFocusOrder="0" pos="0 4R 160 76" posRelativeX="fa8cf6b4b2235e5"
+  <JUCERCOMP name="MODB_MCL2" id="1cd4b6143caa5ed8" memberName="MODB_MCL2"
+             virtualName="" explicitFocusOrder="0" pos="0 4R 160 76" posRelativeX="fa8cf6b4b2235e5"
              posRelativeY="fa8cf6b4b2235e5" sourceFile="OPMToSignalChangeEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;MODB_MCL2&quot;"/>
   <LABEL name="new label" id="17686cde2f9a7ac4" memberName="labelMODA3"
          virtualName="" explicitFocusOrder="0" pos="0 168 160 18" posRelativeX="6f9f204dacc67317"
          posRelativeY="6f9f204dacc67317" bkgCol="fff0ffff" textCol="ff181f22"
@@ -244,13 +245,13 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="14.0" kerning="0.0" bold="1" italic="0" justification="33"
          typefaceStyle="Bold"/>
-  <JUCERCOMP name="" id="10d33e3002129c6" memberName="valA1" virtualName=""
-             explicitFocusOrder="0" pos="0 0R 160 76" posRelativeY="17686cde2f9a7ac4"
-             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams=""/>
-  <JUCERCOMP name="" id="ac05be0a6548b1d4" memberName="valB1" virtualName=""
-             explicitFocusOrder="0" pos="-4R 0 160 76" posRelativeX="10d33e3002129c6"
+  <JUCERCOMP name="VALA_MCL1" id="10d33e3002129c6" memberName="VALA_MCL1"
+             virtualName="" explicitFocusOrder="0" pos="0 0R 160 76" posRelativeY="17686cde2f9a7ac4"
+             sourceFile="OPMToSignalChangeEditor.cpp" constructorParams="synthState, &quot;VALA_MCL1&quot;"/>
+  <JUCERCOMP name="VALB_MCL1" id="ac05be0a6548b1d4" memberName="VALB_MCL1"
+             virtualName="" explicitFocusOrder="0" pos="-4R 0 160 76" posRelativeX="10d33e3002129c6"
              posRelativeY="10d33e3002129c6" sourceFile="OPMToSignalChangeEditor.cpp"
-             constructorParams=""/>
+             constructorParams="synthState, &quot;VALB_MCL1&quot;"/>
   <LABEL name="new label" id="ceaeec3d2ebe5aa6" memberName="LabelVALC"
          virtualName="" explicitFocusOrder="0" pos="0 264 324 18" posRelativeX="6f9f204dacc67317"
          posRelativeY="6f9f204dacc67317" bkgCol="fff0ffff" textCol="ff181f22"

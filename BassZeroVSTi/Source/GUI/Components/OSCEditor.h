@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 #include "SourceMixerComponent.h"
@@ -35,11 +37,12 @@
                                                                     //[/Comments]
 */
 class OSCEditor  : public Component,
+                   public imbSynthGUIComponent,
                    public Slider::Listener
 {
 public:
     //==============================================================================
-    OSCEditor ();
+    OSCEditor (imbSynthStateData * synthState, String nameSufix);
     ~OSCEditor();
 
     //==============================================================================

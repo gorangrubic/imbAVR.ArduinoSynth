@@ -21,6 +21,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/GUI/Components/imbSynthGUIComponent.h"
 //[/Headers]
 
 #include "../../General/PathBrowser.h"
@@ -41,7 +43,7 @@ class MainViewTabConfiguration  : public Component,
 {
 public:
     //==============================================================================
-    MainViewTabConfiguration ();
+    MainViewTabConfiguration (imbSynthStateData * synthState, String nameSufix);
     ~MainViewTabConfiguration();
 
     //==============================================================================
