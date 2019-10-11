@@ -2,6 +2,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "imbControlParameterEnumerations.h"
+#include "imbEnumerationList.h"
 
 /// <summary>
 /// Manages all synth parameters, assigns ccID to imbControlParameters
@@ -13,6 +14,20 @@ class ParameterController
 public:
 
 	juce::AudioProcessorValueTreeState * parameters;
+
+	imbEnumerationList ListOfPitchUnits;
+	imbEnumerationList ListOfModulationModes;
+	imbEnumerationList ListOfModulationFunctions;
+	imbEnumerationList ListOfModulationParameters;
+
+	imbEnumerationList ListOfSignalUnits;
+
+	imbEnumerationList ListOfMacroLinks;
+
+	imbEnumerationList ListOfSources;
+
+	imbEnumerationList ListOfLFOFunctions;
+
 
 	unsigned int PageSize = 47;
 	unsigned int PageColumnCount = 8;

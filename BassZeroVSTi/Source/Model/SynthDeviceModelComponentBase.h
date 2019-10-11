@@ -18,6 +18,7 @@
 //#include <list>
 
 
+
 class SynthDeviceModelComponentBase:
 	public ModelComponentDescription {
  
@@ -27,15 +28,19 @@ class SynthDeviceModelComponentBase:
     public:
     
 
+
+
 	//SynthDeviceModel * Root;
 	//ModelComponentDescription * Parent;
 	
-	   void PreDeploy(String _shortName, String _longName);
+	 //  void PreDeploy(String _shortName, String _longName);
 
 
 	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
-	   void AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, std::vector<String> * items, String initValue = "", int _ccID = -1, bool _isAutomated = false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
+	   
+
+	   void AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList * items, int initIndexValue=0, int _ccID = -1, bool _isAutomated = false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 
 	   void AddCCParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, int initValue = 0, int minValue = 0, int maxValue = 127,int _ccID = -1, bool _isAutomated = true,  imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
 

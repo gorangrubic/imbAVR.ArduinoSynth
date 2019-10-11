@@ -26,8 +26,8 @@ void OPMSignalUnitChange::Deploy()
 
 	AddCCParameter(&Change, "Change", "Change Period", 0, -64, 64, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	//AddEnumParameter(&Function, "Function", "Modulation function",
-	//	&opmParent->ListOfModulationFunctions, "Loop", -1, false, imbControlParameterMessageType::sysExMsg);
+	AddEnumParameter(&Function, "Function", "Modulation function",
+		&parameterControllerPtr->ListOfModulationFunctions, 0, -1, false, imbControlParameterMessageType::sysExMsg);
 
 	Enabled.SetHelp("If this Signal Generator modulation LFO is running.");
 

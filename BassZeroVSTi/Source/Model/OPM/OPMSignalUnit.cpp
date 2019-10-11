@@ -31,8 +31,8 @@ void OPMSignalUnit::Deploy()
 	AddBoolParameter(&PWMCycleMode, "PWMCycleMode", "Continual Pulse Width from 0 to 100%", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
 
-	/*AddEnumParameter(&PitchUnit, "PitchUnit", "Pitch Unit", &opmParent->ListOfPitchUnits, "Semitones", -1,
-		false, imbControlParameterMessageType::sysExMsg);*/
+	AddEnumParameter(&PitchUnit, "PitchUnit", "Pitch Unit", &parameterControllerPtr->ListOfPitchUnits, 0, -1,
+		false, imbControlParameterMessageType::sysExMsg);
 
 	AddCCParameter(&WaveformPattern, "PWMPattern", "Waveform pattern", 64, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
 
@@ -47,15 +47,16 @@ void OPMSignalUnit::Deploy()
 	PWMCycleMode.SetHelp("When [True], width of the pulse is continual (from 0% to 100%) and controlled by PWM parameter of the oscilator. Otherwise, the pulse is driven by WaveformPattern - allowing asymetric pulse widths / customized waveform results.");
 
 	// ======================= Rapid modulation of Signal generator unit properties
-	PhaseChange.PreDeploy("Phase", "Phase Change");
+	PhaseChange.SetDescription("Phase", "Phase Change", parameterControllerPtr);
+	//PhaseChange.PreDeploy("Phase", "Phase Change");
 	AddChild(&PhaseChange);
 	PhaseChange.Deploy();
 
-	PWMChange.PreDeploy("PWM", "Pulse-Width Change");
+	PhaseChange.SetDescription("PWM", "Pulse-Width Change", parameterControllerPtr);
 	AddChild(&PWMChange);
 	PWMChange.Deploy();
 
-	PitchChange.PreDeploy("Pitch", "Pitch Change");
+	PhaseChange.SetDescription("Pitch", "Pitch Change", parameterControllerPtr);
 	AddChild(&PitchChange);
 	PitchChange.Deploy();
 

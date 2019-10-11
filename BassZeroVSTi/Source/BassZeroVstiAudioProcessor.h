@@ -12,6 +12,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Control\imbSynthAudioProcessor.h"
+#include "Model\SynthDeviceModel.h"
+#include "BassZeroSynthModel.h"
 
 //==============================================================================
 /**
@@ -19,8 +21,14 @@
 class BassZeroVstiAudioProcessor  : public imbSynthAudioProcessor
 {
 public:
+
+	BassZeroSynthModel bassZeroModel;
+
     //==============================================================================
-    BassZeroVstiAudioProcessor();
+	BassZeroVstiAudioProcessor() :
+		bassZeroModel(),
+		imbSynthAudioProcessor((SynthDeviceModel *)&bassZeroModel, "BassZero") {
+	};
     ~BassZeroVstiAudioProcessor();
 
     //==============================================================================

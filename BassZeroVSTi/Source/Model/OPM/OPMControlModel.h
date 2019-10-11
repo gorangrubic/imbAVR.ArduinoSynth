@@ -12,6 +12,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
 #include "../Core/ModelComponentWithChildren.h"
+#include "../Core/ModelComponentDescription.h"
 //#include "../SynthDeviceModel.h"
 
 #include "MacroControlLink.h";
@@ -20,6 +21,7 @@
 
 
 class OPMControlModel:
+	public ModelComponentDescription,
 	public ModelComponentWithChildren {
 
 public:
@@ -29,12 +31,7 @@ public:
 	void AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortName, String _longName);
 	void AddMacroControlLink(MacroControlLink * SignalControlLink, String _shortName, String _longName);
 
-	std::vector<String> ListOfPitchUnits;
-	std::vector<String> ListOfModulationModes;
-	std::vector<String> ListOfModulationFunctions;
-	std::vector<String> ListOfModulationParameters;
 
-	std::vector<String> ListOfSignalUnits;
 	
 	
 	

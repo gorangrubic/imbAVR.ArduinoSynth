@@ -12,6 +12,16 @@
 
   void SynthDeviceModel::PreDeployModel()
   {
+	  //modulations.model = this;
+	  //modulations.parameterControllerPtr = &this->parameterController;
+
+	  modulations.SetParent(this, this);
+	  components.SetParent(this, this);
+	  opmControl.SetParent(this, this);
+
+	  modulations.SetDescription("MOD", "Modulation sources", &this->parameterController);
+	  components.SetDescription("MAIN", "Main components", &this->parameterController);
+	  opmControl.SetDescription("OPM", "Operation Mode control", &this->parameterController);
   }
 
   void SynthDeviceModel::AfterDeployModel()

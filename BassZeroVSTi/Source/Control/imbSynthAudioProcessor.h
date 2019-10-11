@@ -4,7 +4,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 //#include "ParameterController.h"
 //#include "../Source/Model/SynthDeviceModel.h"
-//#include "../Model/SynthDeviceModel.h"
+#include "../Model/SynthDeviceModel.h"
 
 class imbSynthAudioProcessor 
 		: public AudioProcessor, 
@@ -15,11 +15,12 @@ public:
 
 	UndoManager undoManager;
 
-	//SynthDeviceModel * model;
+	SynthDeviceModel * model;
 
 //	ParameterController parameterController;
 
 	juce::AudioProcessorValueTreeState parameters;
+	juce::Identifier rootIdentifier;
 	
 
 	AudioProcessorValueTreeState::ParameterLayout CreateParameterLayout();
@@ -33,6 +34,12 @@ public:
 
 	void audioProcessorChanged(AudioProcessor* processor);
 
-	imbSynthAudioProcessor();
+	imbSynthAudioProcessor(SynthDeviceModel *_model, String name) :AudioProcessor(BusesProperties()),
+		model{ _model },
+		undoManager(),
+		rootIdentifier(name),
+		parameters(*this, &this->undoManager, name, CreateParameterLayout())
+	{};
+	
 	~imbSynthAudioProcessor();
 };

@@ -23,6 +23,7 @@
 
 #include <cstddef> // for NULL
 
+
 class ModulationHub : 
 	public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren {
@@ -31,18 +32,18 @@ class ModulationHub :
 	
 public:
 
+
 	std::vector<ModulationFunctionADSR*> ADSRs;
 	std::vector<ModulationFunctionENV*> ENVs;
 	std::vector<ModulationFunctionLFO*> LFOs;
 	std::vector<ModulationSourceMacroControl*> MacroControls;
 	std::vector<ModulationSourceMIDI*> MIDIs;
 
-	std::vector<String> ListOfSources;
-	std::vector<String> ListOfLFOFunctions;
+
 
 	/// <summary>
-  /// Deploys this instance.
-  /// </summary>
+	/// Deploys this instance.
+	/// </summary>
 	void Deploy() ;
 	
 	void AddADSR(ModulationFunctionADSR * output);
@@ -51,4 +52,6 @@ public:
 	void AddMacroControl(ModulationSourceMacroControl * output);
 
 	void AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, String _shortName, String _longName);
+
+	ModulationHub();
 };

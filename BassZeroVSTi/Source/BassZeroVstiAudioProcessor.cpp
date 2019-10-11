@@ -12,9 +12,9 @@
 #include "BassZeroVstiAudioProcessorEditor.h"
 
 //==============================================================================
-BassZeroVstiAudioProcessor::BassZeroVstiAudioProcessor()
-{
-}
+//BassZeroVstiAudioProcessor::BassZeroVstiAudioProcessor()
+//{
+//}
 
 BassZeroVstiAudioProcessor::~BassZeroVstiAudioProcessor()
 {

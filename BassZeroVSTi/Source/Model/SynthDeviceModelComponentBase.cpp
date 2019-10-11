@@ -14,27 +14,20 @@
 
 void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
-	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
+	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
 	int _initIndexValue = 0;
 	if (initValue) _initIndexValue = 1;
 
 	AddParameter(output, _parameterID, _parameterLabel, 0, 1, _initIndexValue, "", _ccID, _isAutomated, imbControlParameterType::Boolean, _msgFormat);
 }
 
-void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, std::vector<String>* items, String initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
+void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList* items, int initIndexValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
-	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
-	int _initIndexValue = 0;
+	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
 
-	//imbSynthTools::findInVector(items, initValue);
-
-	if (initValue == "") {
-		_initIndexValue = 0;
-	}
-	else {
-		//_initIndexValue = imbSynthTools::GetIndex(&items, initValue);
-	}
-	AddParameter(output, _parameterID, _parameterLabel, 0, items->size(),_initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat);
+	output->enumerationList = items;
+	
+	AddParameter(output, _parameterID, _parameterLabel, 0, (float) items->Count(),initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat);
 }
 
 /// <summary>
@@ -52,7 +45,7 @@ void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * outpu
 void SynthDeviceModelComponentBase::AddCCParameter(imbControlParameter* output, String _parameterID, String _parameterLabel,
 	int initValue, int minValue, int maxValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
 {
-	//if (_ccID == -1) _ccID = Root->parameterController.GetProperID(_msgFormat);
+	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
 	AddParameter(output, _parameterID, _parameterLabel, minValue, maxValue, initValue, "", _ccID, _isAutomated, imbControlParameterType::Integer, _msgFormat);
 }
 
@@ -84,28 +77,37 @@ void SynthDeviceModelComponentBase::BuildParameters()
 		child->BuildParameters();
 	}*/
 }
+//
+//void SynthDeviceModelComponentBase::SetParent(SynthDeviceModelComponentBase * _model, ModelComponentWithChildren * _parent, ParameterController * _parameterControllerPtr)
+//{
+//
+//	model = _model;
+//	parent = _parent;
+//	parameterControllerPtr = _parameterControllerPtr;
+//}
 
-void SynthDeviceModelComponentBase::PreDeploy(String _shortName, String _longName)
-{
-	if (NamePrefix == "") {
-		ShortName = _shortName;
-	}
-	else {
-		ShortName = NamePrefix + "_" + _shortName;
-	}
 
-	if (LongName == "") {
-		LongName = NamePrefix + " " + _shortName;
-	} 
-	else {
-		LongName = _longName;
-	}
-	
-
-	//Root = _root;
-	//Parent = _parent;
-
-}
+//void SynthDeviceModelComponentBase::PreDeploy(String _shortName, String _longName)
+//{
+//	if (NamePrefix == "") {
+//		ShortName = _shortName;
+//	}
+//	else {
+//		ShortName = NamePrefix + "_" + _shortName;
+//	}
+//
+//	if (LongName == "") {
+//		LongName = NamePrefix + " " + _shortName;
+//	} 
+//	else {
+//		LongName = _longName;
+//	}
+//	
+//
+//	//Root = _root;
+//	//Parent = _parent;
+//
+//}
 
 //SynthDeviceModelComponentBase::SynthDeviceModelComponentBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
 //{

@@ -10,7 +10,14 @@
 
 #include "ModelComponentWithChildren.h"
 
-void ModelComponentWithChildren::AddChild(SynthDeviceModelComponentBase * child)
+void ModelComponentWithChildren::SetParent(SynthDeviceModelComponentBase * _model, ModelComponentWithChildren * _parent)
+  {
+	model = _model;
+	parent = _parent;
+	//parameterControllerPtr = _parameterControllerPtr;
+  }
+
+  void ModelComponentWithChildren::AddChild(SynthDeviceModelComponentBase * child)
 {
 	ChildComponents.push_back(child);
 }

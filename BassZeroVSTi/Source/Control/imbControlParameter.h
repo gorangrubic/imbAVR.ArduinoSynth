@@ -85,7 +85,7 @@ class imbControlParameter
 public:
 
 	
-
+	imbEnumerationList * enumerationList;
 
 	// ============= references
 

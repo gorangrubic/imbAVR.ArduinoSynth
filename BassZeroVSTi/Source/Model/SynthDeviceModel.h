@@ -10,7 +10,7 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Model/Core/ModelComponentDescription.h"
+#include "Core\ModelComponentDescription.h"
 
 #include "../Control/ParameterController.h"
 #include "../Control/imbControlParameter.h"
@@ -35,21 +35,27 @@
 
 #include <vector>
 
-#include "../Source/Control/imbSynthAudioProcessor.h"
+//#include "../Source/Control/imbSynthAudioProcessor.h"
 
 
 class SynthDeviceModel : 
-	public ModelComponentDescription 
+	public ModelComponentWithChildren,
+	public SynthDeviceModelComponentBase
 
-{ //: public SynthDeviceModelComponentBase {
+{ //: {
  
+
 
 		/// <summary>
 	/// The synth processor
 	/// </summary>
-	imbSynthAudioProcessor * SynthProcessor;
+//	imbSynthAudioProcessor * SynthProcessor;
     
     public:
+
+		ModulationHub modulations;
+		ComponentHub components;
+		OPMControlModel opmControl;
 
 		void PreDeployModel();
 		void AfterDeployModel();
@@ -67,7 +73,9 @@ class SynthDeviceModel :
 /// </summary>
 		void Deploy();
 
-		//virtual void DeployModel(imbSynthAudioProcessor * synthProcessor) = 0;
+
+		/*Deploys model*/
+		virtual void DeployModel() = 0;
 
 
 

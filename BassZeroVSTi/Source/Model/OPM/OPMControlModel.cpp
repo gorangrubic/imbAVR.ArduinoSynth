@@ -12,47 +12,60 @@
 
 void OPMControlModel::AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortName, String _longName)
 {
-	SignalUnit->PreDeploy(_shortName, _longName);
+	
 	AddChild(SignalUnit);
 	Units.push_back(SignalUnit);
-	SignalUnit->Deploy();
+	SignalUnit->SetDescription(_shortName, _longName, parameterControllerPtr);
+	SignalUnit->SetParent(model, this);
+	//SignalUnit->Deploy();
 }
 
 void OPMControlModel::AddMacroControlLink(MacroControlLink * SignalControlLink, String _shortName, String _longName)
 {
-	SignalControlLink->PreDeploy(_shortName, _longName);
+	SignalControlLink->SetDescription(_shortName, _longName, parameterControllerPtr);
 	AddChild(SignalControlLink);
 	Links.push_back(SignalControlLink);
-	SignalControlLink->Deploy();
+	
 }
 
 void OPMControlModel::Deploy()
 {
-	ListOfModulationFunctions.push_back("One-shot");
-	ListOfModulationFunctions.push_back("Loop");
-	ListOfModulationFunctions.push_back("Mirror");
-	ListOfModulationFunctions.push_back("Continual");
+	parameterControllerPtr->ListOfModulationFunctions.Add("One-shot");
+	parameterControllerPtr->ListOfModulationFunctions.Add("Loop");
+	parameterControllerPtr->ListOfModulationFunctions.Add("Mirror");
+	parameterControllerPtr->ListOfModulationFunctions.Add("Continual");
 
-	ListOfPitchUnits.push_back("Semitones");
-	ListOfPitchUnits.push_back("Octaves");
-	ListOfPitchUnits.push_back("1 Hz");
-	ListOfPitchUnits.push_back("10 Hz");
-	ListOfPitchUnits.push_back("100 Hz");
-	ListOfPitchUnits.push_back("500 Hz");
-	ListOfPitchUnits.push_back("1000 Hz");
-	ListOfPitchUnits.push_back("2000 Hz");
+	parameterControllerPtr->ListOfPitchUnits.Add("Semitones");
+	parameterControllerPtr->ListOfPitchUnits.Add("Octaves");
+	parameterControllerPtr->ListOfPitchUnits.Add("1 Hz");
+	parameterControllerPtr->ListOfPitchUnits.Add("10 Hz");
+	parameterControllerPtr->ListOfPitchUnits.Add("100 Hz");
+	parameterControllerPtr->ListOfPitchUnits.Add("500 Hz");
+	parameterControllerPtr->ListOfPitchUnits.Add("1000 Hz");
+	parameterControllerPtr->ListOfPitchUnits.Add("2000 Hz");
 
-	ListOfModulationParameters.push_back("OFF");
-	ListOfModulationParameters.push_back("Rate");
-	ListOfModulationParameters.push_back("Period");
-	ListOfModulationParameters.push_back("Change");
+	parameterControllerPtr->ListOfModulationParameters.Add("OFF");
+	parameterControllerPtr->ListOfModulationParameters.Add("Rate");
+	parameterControllerPtr->ListOfModulationParameters.Add("Period");
+	parameterControllerPtr->ListOfModulationParameters.Add("Change");
 	
-	ListOfModulationModes.push_back("OFF");
-	ListOfModulationModes.push_back("Pitch");
-	ListOfModulationModes.push_back("PWM");
-	ListOfModulationModes.push_back("Phase");
+	parameterControllerPtr->ListOfModulationModes.Add("OFF");
+	parameterControllerPtr->ListOfModulationModes.Add("Pitch");
+	parameterControllerPtr->ListOfModulationModes.Add("PWM");
+	parameterControllerPtr->ListOfModulationModes.Add("Phase");
 	
+	// ==== registrating units and links
+	for each (OPMSignalUnit * var in Units)
+	{
+		parameterControllerPtr->ListOfSignalUnits.Add(var->ShortName);
+	}
 
+	// ===== links
+
+	for each (MacroControlLink * var in Links)
+	{
+		parameterControllerPtr->ListOfMacroLinks.Add(var->ShortName);
+	}
 	
 }
 

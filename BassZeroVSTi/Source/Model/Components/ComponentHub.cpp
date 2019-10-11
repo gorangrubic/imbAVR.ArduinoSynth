@@ -16,7 +16,8 @@ void ComponentHub::AddModulatedControl(ModelModulatedControl * output, String _s
 {
 	AddChild(output);
 	modulatedControls.push_back(output);
-	output->PreDeploy(_shortName, _longName);
+	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	//output->SetParent(model, this);
 }
 
 void ComponentHub::AddWaveform(OscilatorWaveform * output)
@@ -28,7 +29,8 @@ void ComponentHub::AddWaveform(OscilatorWaveform * output)
 	String _longName = "Waveform " + letter;
 	
 	oscilatorWaveforms.push_back(output);
-	output->PreDeploy(_shortName, _longName);
+	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	output->SetParent(model, this);
 }
 
 void ComponentHub::AddPerk(OscilatorPerk * output)
@@ -40,11 +42,28 @@ void ComponentHub::AddPerk(OscilatorPerk * output)
 	String _longName = "PERK " + letter;
 
 	oscilatorPerks.push_back(output);
-	output->PreDeploy(_shortName, _longName);
+	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	output->SetParent(model,this);
 }
 
 void ComponentHub::Deploy()
 {
+
+	for each (ModelModulatedControl * var in modulatedControls)
+	{
+		var->Deploy();
+	}
+
+	for each (OscilatorPerk * var in oscilatorPerks)
+	{
+		var->Deploy();
+	}
+
+	for each (OscilatorWaveform * var in oscilatorWaveforms)
+	{
+		var->Deploy();
+	}
+
 }
 
 

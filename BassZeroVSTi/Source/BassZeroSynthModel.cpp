@@ -11,10 +11,10 @@
 #include "BassZeroSynthModel.h"
 
 
-void BassZeroSynthModel::DeployModel(imbSynthAudioProcessor * synthProcessor)
+void BassZeroSynthModel::DeployModel()
 {
 //	SynthProcessor = synthProcessor;
-/*
+
 	modulations.AddADSR(&ADSR_A);
 	modulations.AddADSR(&ADSR_B);
 
@@ -26,6 +26,8 @@ void BassZeroSynthModel::DeployModel(imbSynthAudioProcessor * synthProcessor)
 	modulations.AddLFO(&LFO_B);
 	modulations.AddLFO(&LFO_C);
 	modulations.AddLFO(&LFO_D);
+
+	modulations.Deploy();
 
 	// =================== Deploying Macro Control Links
 	opmControl.AddMacroControlLink(&MODA_MCL1, "MODA_MCL1", "OPM Macro Modulation A - 1");
@@ -51,6 +53,10 @@ void BassZeroSynthModel::DeployModel(imbSynthAudioProcessor * synthProcessor)
 
 	opmControl.AddSignalUnit(&OPM_PERKA, "PERKA", "PERK A");
 	opmControl.AddSignalUnit(&OPM_PERKB, "PERKB", "PERK B");
+
+
+	opmControl.Deploy();
+
 
 
 	// =================== MST components
@@ -88,7 +94,9 @@ void BassZeroSynthModel::DeployModel(imbSynthAudioProcessor * synthProcessor)
 	components.AddCCParameter(&OPM_VALB, "OPM_VALB", "Value B", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 
 	components.AddCCParameter(&OPM_VALC, "OPM_VALC", "Value C", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
-	*/
+	
+
+	components.Deploy();
 }
 
 BassZeroSynthModel::BassZeroSynthModel()

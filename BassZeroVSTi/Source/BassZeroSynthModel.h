@@ -28,16 +28,15 @@
 #include "Control\imbControlParameterEnumerations.h"
 #include "../Source/Control/imbSynthAudioProcessor.h"
 
-class BassZeroSynthModel : public SynthDeviceModel {
+class BassZeroSynthModel 
+	: public SynthDeviceModel {
 
 public:
 
 
 
 
-	ModulationHub modulations;
-	ComponentHub components;
-	OPMControlModel opmControl;
+
 
 	// === ==== MODULATION SOURCES
 
@@ -122,7 +121,7 @@ public:
 	ModelModulatedControl OSC_WF_FLT = ModelModulatedControl();
 	
 
-	void DeployModel(imbSynthAudioProcessor * synthProcessor);
+	void DeployModel();
 
 	BassZeroSynthModel();
 
