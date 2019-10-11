@@ -11,13 +11,34 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameterEnumerations.h"
-
+#include "../Source/Control/imbControlParameter.h"
+#include "../Source/Model/ModelConstructionTools.h"
 #include <vector>
 
 class imbSynthTools {
  
     public:
     
+
+
+		//static void imbSynthTools::SetParameter(AudioProcessorParameterGroup * group, imbControlParameter p)
+		//{
+
+		//	NormalisableRange<float> valueRange = NormalisableRange<float>(p.MinValue, p.MaxValue, p.IntervalValue);
+
+		//	/*pt p = pt(parameterIDPath, parameterID, parameterLabel, valueRange, Value, nullptr, nullptr, isMetaValue, isAutomatizable, isDescreteValue, category, typeParameter == imbControlParameterType::Boolean);
+		//	parameter = &p;
+		//	parameter->addListener(this);
+		//	std::unique_ptr<RangedAudioParameter> ptr = std::unique_ptr<RangedAudioParameter>(&p);*/
+
+		//	//parameterControllerPtr->parameters->createAndAddParameter(ptr);
+
+		//	auto pe = modelConstructionTools.parameterController.parameters->createAndAddParameter(p.parameterIDPath, p.parameterID, p.parameterLabel, valueRange, p.Value, nullptr, nullptr, p.isMetaValue, p.isAutomatizable, p.isDescreteValue, p.category, p.typeParameter == imbControlParameterType::Boolean);
+		//	
+
+		//}
+
+
 		static float ProcessValue(float _value, imbControlParameterType TP);
 		
 		
@@ -53,7 +74,7 @@ class imbSynthTools {
 			return String((int)fi);
 		}
 
-		static String GetLetter(unsigned int input);
+		static std::string GetLetter(unsigned int input);
     
 
 		template <typename T>

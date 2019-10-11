@@ -10,6 +10,10 @@
 
 #include "SynthDeviceModel.h"
 
+#define PARAMCONTROL parameterController
+#define CONTROLLER  parameterController.
+
+// modelConstructionTools.parameterController.
   void SynthDeviceModel::PreDeployModel()
   {
 	  //modulations.model = this;
@@ -22,27 +26,108 @@
 	  //modulations = std::unique_ptr<ModulationHub>(); //  std::make_unique<ModulationHub>();
 	  //components = std::unique_ptr<ComponentHub>();
 	  //opmControl = std::unique_ptr<OPMControlModel>();
-
-	  this->parameterController = ParameterController();
 	  
+
+	  //parameterController.Reset();
+	  
+	  //modulations = ModulationHub();
+	  //components = ComponentHub();
+	  //opmControl = OPMControlModel();
 
 	  //MODULATIONS SetParent(std::shared_ptr<SynthDeviceModelComponentBase>(this), std::shared_ptr<ModelComponentWithChildren>(this));
 	  //COMPONENTS SetParent(std::shared_ptr<SynthDeviceModelComponentBase>(this), std::shared_ptr<ModelComponentWithChildren>(this));
 	  //OPMCONTROL SetParent(std::shared_ptr<SynthDeviceModelComponentBase>(this), std::shared_ptr<ModelComponentWithChildren>(this));
+	 /* parameterUnique = std::make_unique<ParameterController>(parameterController);
+	  parameterUnique->Reset();*/
 
-	  parameterControllerPtr = std::make_shared<ParameterController>(this->parameterController);
+	 // auto s = std::shared_ptr<ParameterController>(&parameterController);
 
-	  MODULATIONS SetDescription(MODHUB_ID, MODHUB_LABEL, parameterControllerPtr);
-	  COMPONENTS SetDescription(COMP_ID, COMP_LABEL, parameterControllerPtr);
-	  OPMCONTROL SetDescription(OPM_ID, OPM_LABEL, parameterControllerPtr);
+	//  parameterControllerPtr = s;
+
+	//  ModelComponentDescription::parameterControllerPtr.swap(s);
+	  //modulations.parameterControllerPtr.reset(std::shared_ptr<ParameterController>(&parameterController));
+
+	//  MODULATIONS SetDescription("", ""); // , std::shared_ptr<ParameterController>(&parameterController));
+	//  COMPONENTS SetDescription("", ""); // std::shared_ptr<ParameterController>(&parameterController));
+	//  OPMCONTROL SetDescription("", ""); //, std::shared_ptr<ParameterController>(&parameterController));
   }
 
   void SynthDeviceModel::AfterDeployModel()
   {
 
-	  MODULATIONS Deploy();
-	  OPMCONTROL Deploy();
-	  COMPONENTS Deploy();
+	  // ========================== populates list of sources ===========
+	  for each (auto var in modulations.ADSRs)
+	  {
+
+		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
+	  }
+
+	  for each (auto var in modulations.ENVs)
+	  {
+		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		  //ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	  }
+
+	  for each (auto var in modulations.LFOs)
+	  {
+		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		  //	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	  }
+
+	  for each (auto var in modulations.MacroControls)
+	  {
+		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		  //	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	  }
+
+	  for each (auto var in modulations.MIDIs)
+	  {
+		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		  //	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	  }
+
+
+	  PARAMCONTROL.ListOfModulationFunctions.Add("One-shot");
+	  PARAMCONTROL.ListOfModulationFunctions.Add("Loop");
+	  CONTROLLER ListOfModulationFunctions.Add("Mirror");
+	  CONTROLLER ListOfModulationFunctions.Add("Continual");
+
+	  CONTROLLER ListOfPitchUnits.Add("Semitones");
+	  CONTROLLER ListOfPitchUnits.Add("Octaves");
+	  CONTROLLER ListOfPitchUnits.Add("1 Hz");
+	  CONTROLLER ListOfPitchUnits.Add("10 Hz");
+	  CONTROLLER ListOfPitchUnits.Add("100 Hz");
+	  CONTROLLER ListOfPitchUnits.Add("500 Hz");
+	  CONTROLLER ListOfPitchUnits.Add("1000 Hz");
+	  CONTROLLER ListOfPitchUnits.Add("2000 Hz");
+
+	  CONTROLLER ListOfModulationParameters.Add("OFF");
+	  CONTROLLER ListOfModulationParameters.Add("Rate");
+	  CONTROLLER ListOfModulationParameters.Add("Period");
+	  CONTROLLER ListOfModulationParameters.Add("Change");
+
+	  CONTROLLER ListOfModulationModes.Add("OFF");
+	  CONTROLLER ListOfModulationModes.Add("Pitch");
+	  CONTROLLER ListOfModulationModes.Add("PWM");
+	  CONTROLLER ListOfModulationModes.Add("Phase");
+
+	  // ==== registrating units and links
+	  for each (auto var in OPMCONTROL Units)
+	  {
+		  CONTROLLER ListOfSignalUnits.Add(var->ShortName);
+	  }
+
+	  // ===== links
+
+	  for each (auto var in OPMCONTROL Links)
+	  {
+		  CONTROLLER ListOfMacroLinks.Add(var->ShortName);
+	  }
+
+
+		MODULATIONS Deploy(parameterController);
+		OPMCONTROL Deploy(parameterController);
+		COMPONENTS Deploy(parameterController);
 	  
 	
   }
@@ -51,21 +136,21 @@
   void SynthDeviceModel::Deploy()
   {
 
-	  PreDeployModel();
-	  DeployModel();
-	  AfterDeployModel();
+
 
   }
 
-  void SynthDeviceModel::ConstructParameters(juce::AudioProcessorValueTreeState * parameters, AudioProcessor * processor)
+  void SynthDeviceModel::ConstructParameters(juce::AudioProcessorValueTreeState & parameters)
   {
-	  parameterController.Setup(parameters, processor);
+	 // CONTROLLER Setup(parameters);
+	 // modelConstructionTools.parameterController.Setup(parameters, processor);
+	  //parameterController.Setup(parameters, processor);
 
-	  MODULATIONS ConstructComponentAndChildComponentParameters();
-	  OPMCONTROL ConstructComponentAndChildComponentParameters();
-	  COMPONENTS ConstructComponentAndChildComponentParameters();
+	  MODULATIONS ConstructComponentAndChildComponentParameters(parameterController, parameters);
+	  OPMCONTROL ConstructComponentAndChildComponentParameters( parameterController, parameters);
+	  COMPONENTS ConstructComponentAndChildComponentParameters(parameterController, parameters);
 	  
-
+	  parameters.state = ValueTree("BassZero");
 
   }
 

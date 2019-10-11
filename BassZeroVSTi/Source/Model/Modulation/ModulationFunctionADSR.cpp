@@ -10,14 +10,14 @@
 
 #include "ModulationFunctionADSR.h"
 
-void ModulationFunctionADSR::Deploy()
+void ModulationFunctionADSR::Deploy(ParameterController & parameterController)
 {
-	AddCCParameter(&AttackTime, "Attack", "Attack Time", 5);
-	AddCCParameter(&DecayTime, "Decay", "Decay Time", 15);
-	AddCCParameter(&ReleaseTime, "Release", "Release Time", 25);
+	AddCCParameter(parameterController,&AttackTime, "Attack", "Attack Time", 5);
+	AddCCParameter(parameterController, &DecayTime, "Decay", "Decay Time", 15);
+	AddCCParameter(parameterController, &ReleaseTime, "Release", "Release Time", 25);
 
-	AddCCParameter(&InitValue, "InitValue", "Initial Value", 0);
-	AddCCParameter(&SustainValue, "SustainValue", "Sustain Value", 60);
+	AddCCParameter(parameterController, &InitValue, "InitValue", "Initial Value", 0);
+	AddCCParameter(parameterController, &SustainValue, "SustainValue", "Sustain Value", 60);
 
 	//AddParameter(&AttackTime,"Attack", "Attack", 0, 127, 5, "tu", 0, true, imbControlParameterType::Integer);
 }

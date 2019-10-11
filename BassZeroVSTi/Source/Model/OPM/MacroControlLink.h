@@ -12,7 +12,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameter.h"
 #include "../Source/Model/SynthDeviceModelComponentBase.h"
-
+#include "../Source/Model/ModelConstructionTools.h"
 
 //#include "../SynthDeviceModel.h"
 
@@ -33,7 +33,7 @@ public:
 
 
 
-	void Deploy() ;
+	void Deploy(ParameterController & parameterController) ;
 
 	MacroControlLink();
 

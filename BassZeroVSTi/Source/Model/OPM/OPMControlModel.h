@@ -13,8 +13,9 @@
 #include "../SynthDeviceModelComponentBase.h"
 #include "../Core/ModelComponentWithChildren.h"
 #include "../Core/ModelComponentDescription.h"
+#include "../Core/SharedPointerVector.h"
 //#include "../SynthDeviceModel.h"
-
+#include "..\Source\Model\ModelConstructionTools.h"
 #include "MacroControlLink.h"
 #include "OPMSignalUnit.h"
 
@@ -28,19 +29,19 @@ public:
 
 	
 
-	void AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortName, String _longName);
-	void AddMacroControlLink(MacroControlLink * SignalControlLink, String _shortName, String _longName);
+	void AddSignalUnit(OPMSignalUnit * SignalUnit, std::string _shortName, std::string _longName);
+	void AddMacroControlLink(MacroControlLink * SignalControlLink, std::string _shortName, std::string _longName);
 
 
-	
-	
-	
-    std::vector<MacroControlLink*> Links;
-	std::vector<OPMSignalUnit*> Units;
-	
-	void Deploy() ;
+	SharedPointerVector<MacroControlLink> Links;
+	SharedPointerVector<OPMSignalUnit> Units;
 
-	OPMControlModel();
+ //   std::vector<MacroControlLink*> Links;
+	//std::vector<OPMSignalUnit*> Units;
+	
+	void Deploy(ParameterController & parameterController) ;
+
+	OPMControlModel() :ModelComponentWithChildren("OPM", "OPM","Operation Modes") {}
 
 //	OPMControlModel(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
 

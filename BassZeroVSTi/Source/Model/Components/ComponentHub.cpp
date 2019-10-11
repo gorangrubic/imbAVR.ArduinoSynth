@@ -12,11 +12,11 @@
 #include "../Source/Utility/imbSynthTools.h"
 
 
-void ComponentHub::AddModulatedControl(ModelModulatedControl * output, String _shortName, String _longName)
+void ComponentHub::AddModulatedControl(ModelModulatedControl * output, std::string _shortName, std::string _longName)
 {
 	AddChild(output);
-	modulatedControls.push_back(output);
-	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	modulatedControls.Add(output);
+	output->SetDescription(_shortName, _longName);
 	//output->SetParent(model, this);
 }
 
@@ -24,12 +24,12 @@ void ComponentHub::AddWaveform(OscilatorWaveform * output)
 {
 	AddChild(output);
 
-	String letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
-	String _shortName = "WF" + letter;
-	String _longName = "Waveform " + letter;
+	std::string letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
+	std::string _shortName = "WF" + letter;
+	std::string _longName = "Waveform " + letter;
 	
-	oscilatorWaveforms.push_back(output);
-	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	oscilatorWaveforms.Add(output);
+	output->SetDescription(_shortName, _longName);
 	//output->SetParent(model, this);
 }
 
@@ -37,31 +37,31 @@ void ComponentHub::AddPerk(OscilatorPerk * output)
 {
 	AddChild(output);
 
-	String letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
-	String _shortName = "PERK" + letter;
-	String _longName = "PERK " + letter;
+	std::string letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
+	std::string _shortName = "PERK" + letter;
+	std::string _longName = "PERK " + letter;
 
-	oscilatorPerks.push_back(output);
-	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	oscilatorPerks.Add(output);
+	output->SetDescription(_shortName, _longName);
 //	output->SetParent(model,this);
 }
 
-void ComponentHub::Deploy()
+void ComponentHub::Deploy(ParameterController & parameterController)
 {
 
-	for each (ModelModulatedControl * var in modulatedControls)
+	for each (auto var in modulatedControls)
 	{
-		var->Deploy();
+		var->Deploy(parameterController);
 	}
 
-	for each (OscilatorPerk * var in oscilatorPerks)
+	for each (auto var in oscilatorPerks)
 	{
-		var->Deploy();
+		var->Deploy( parameterController);
 	}
 
-	for each (OscilatorWaveform * var in oscilatorWaveforms)
+	for each (auto var in oscilatorWaveforms)
 	{
-		var->Deploy();
+		var->Deploy(parameterController);
 	}
 
 }

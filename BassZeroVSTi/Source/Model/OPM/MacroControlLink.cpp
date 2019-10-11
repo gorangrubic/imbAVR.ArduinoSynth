@@ -11,16 +11,16 @@
 #include "MacroControlLink.h"
 
 
-void MacroControlLink::Deploy()
+void MacroControlLink::Deploy(ParameterController & parameterController)
 {
 
-	AddCCParameter(&ModAmt, "ModAmt", "Modulation amount", 0, -64, 64, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddCCParameter(parameterController, &ModAmt, "ModAmt", "Modulation amount", 0, -64, 64, -1, false, imbControlParameterMessageType::sysExMsg);
+	
+	AddEnumParameter(parameterController, &Signal, "Signal", "Signal/oscilator", &parameterController.ListOfLFOFunctions,1, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	//AddEnumParameter(&Signal, "Signal", "Signal/oscilator", &opmParent->ListOfSignalUnits, "WFA", -1, false, imbControlParameterMessageType::sysExMsg);
+	AddEnumParameter(parameterController, &ModTar, "ModTar", "Targeted Change", &parameterController.ListOfModulationModes, 0, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	//AddEnumParameter(&ModTar, "ModTar", "Targeted Change", &opmParent->ListOfModulationModes, "Pitch", -1, false, imbControlParameterMessageType::sysExMsg);
-
-	//AddEnumParameter(&ModPar, "ModPar", "Targeted Parameter", &opmParent->ListOfModulationModes, "Rate", -1, false, imbControlParameterMessageType::sysExMsg);
+	AddEnumParameter(parameterController, &ModPar, "ModPar", "Targeted Parameter", &parameterController.ListOfModulationParameters, 0, -1, false, imbControlParameterMessageType::sysExMsg);
 
 
 }

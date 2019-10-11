@@ -13,7 +13,7 @@
 #include "../SynthDeviceModel.h"
 
 
-
+#include "../Source/Model/ModelConstructionTools.h"
 
 
 //std::vector<String> ModulationHub::GetListOfSources()
@@ -22,34 +22,8 @@
 //}
 
 /* Call Deploy after adding components externally */
-void ModulationHub::Deploy()
+void ModulationHub::Deploy(ParameterController & parameterController)
 {
-
-	// ========================== populates list of sources ===========
-	for each (auto var in ADSRs)
-	{
-		parameterControllerPtr->ListOfSources.Add(var->ShortName);
-	}
-
-	for each (auto var in ENVs)
-	{
-		parameterControllerPtr->ListOfSources.Add(var->ShortName);
-	}
-
-	for each (auto var in LFOs)
-	{
-		parameterControllerPtr->ListOfSources.Add(var->ShortName);
-	}
-
-	for each (auto var in MacroControls)
-	{
-		parameterControllerPtr->ListOfSources.Add(var->ShortName);
-	}
-
-	for each (auto var in MIDIs)
-	{
-		parameterControllerPtr->ListOfSources.Add(var->ShortName);
-	}
 
 
 }
@@ -60,8 +34,11 @@ void ModulationHub::AddADSR(ModulationFunctionADSR * output)
 	//auto ptr = &output;
 	AddChild(output);
 	
-	String letter = imbSynthTools::GetLetter(ADSRs.size());
-	output->SetDescription("ADSR_" + letter, "Attack Decay Sustain Release function " + letter, parameterControllerPtr);
+	//ParameterController &pc = *parameterControllerPtr;
+
+
+	std::string letter = imbSynthTools::GetLetter(ADSRs.size());
+	output->SetDescription("ADSR_" + letter, "Attack Decay Sustain Release function " + letter); //, &pc);
 
 	ADSRs.Add(output);
 
@@ -74,8 +51,11 @@ void ModulationHub::AddENV(ModulationFunctionENV * output)
 	//auto ptr = &output;
 
 	AddChild(output);
-	String letter = imbSynthTools::GetLetter(ENVs.size());
-	output->SetDescription("ENV_" + letter, "Two-point Envelope " + letter, parameterControllerPtr);
+	std::string letter = imbSynthTools::GetLetter(ENVs.size());
+
+	//ParameterController &pc = *parameterControllerPtr;
+
+	output->SetDescription("ENV_" + letter, "Two-point Envelope "); // + letter, &pc);
 
 	ENVs.Add(output);
 
@@ -86,10 +66,10 @@ void ModulationHub::AddLFO(ModulationFunctionLFO * output)
 {
 	 
 	///auto ptr = &output;
-
+//	ParameterController &pc = *parameterControllerPtr;
 	AddChild(output);
-	String letter = imbSynthTools::GetLetter(LFOs.size());
-	output->SetDescription("LFO_" + letter, "Low Frequency Oscilator " + letter, parameterControllerPtr);
+	std::string letter = imbSynthTools::GetLetter(LFOs.size());
+	output->SetDescription("LFO_" + letter, "Low Frequency Oscilator "); // + letter, &pc);
 
 	LFOs.Add(output);
 
@@ -99,11 +79,13 @@ void ModulationHub::AddLFO(ModulationFunctionLFO * output)
 void ModulationHub::AddMacroControl(ModulationSourceMacroControl * output)
 {
 	 
-	 //auto ptr = &output;
+//	 //auto ptr = &output;
+	//ParameterController &pc = *parameterControllerPtr;
 
 	AddChild(output);
-	String letter = imbSynthTools::GetLetter(MacroControls.size());
-	output->SetDescription("CTRL " + letter, "Control Macro " + letter, parameterControllerPtr);
+	std::string letter = imbSynthTools::GetLetter(MacroControls.size());
+	//output->SetDescription("CTRL " + letter, "Control Macro " + letter, &pc);
+	output->SetDescription("CTRL " + letter, "Control Macro "); // +letter, &pc);
 
 	MacroControls.Add(output);
 	
@@ -112,18 +94,19 @@ void ModulationHub::AddMacroControl(ModulationSourceMacroControl * output)
 }
 
 
-void ModulationHub::AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, String _shortName, String _longName)
+void ModulationHub::AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, std::string _shortName, std::string _longName)
 {
 	
-	//output->typeMidi = _midiType;
+	output->typeMidi = _midiType;
 
-	
+//	ParameterController &pc = *parameterControllerPtr;
+
 
 	AddChild(output);
-	output->SetDescription(_shortName, _longName, parameterControllerPtr);
+	output->SetDescription(_shortName, _longName); //, &pc);
 	MIDIs.Add(output);
 	
-//	MIDIs.push_back(output);
+//	MIDIs.Add(_back(output);
 
 
 }

@@ -10,12 +10,12 @@
 
 #include "ModelModulatedControl.h"
 
-void ModelModulatedControl::Deploy()
+void ModelModulatedControl::Deploy(ParameterController & parameterController)
 {
-	AddCCParameter(&ModAmt, "ModAmt", "Modulation direction", 0,-64,64);
-	AddCCParameter(&Val, "Val", "Value (dry)", 0, 0, 127);
+	AddCCParameter(parameterController,&ModAmt, "ModAmt", "Modulation direction", 0,-64,64);
+	AddCCParameter(parameterController,&Val, "Val", "Value (dry)", 0, 0, 127);
 	
-	AddEnumParameter(&ModSrc, "ModSrc", "Modulation source", &parameterControllerPtr->ListOfSources);
+	AddEnumParameter(parameterController,&ModSrc, "ModSrc", "Modulation source", &parameterController.ListOfSources);
 }
 
 ModelModulatedControl::ModelModulatedControl()

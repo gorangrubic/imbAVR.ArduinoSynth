@@ -1,13 +1,13 @@
 #include "ParameterController.h"
 
-#include "imbControlParameter.h"
 
 
 
-void ParameterController::Setup(juce::AudioProcessorValueTreeState * _parameters, AudioProcessor * _processor)
+
+void ParameterController::Setup(juce::AudioProcessorValueTreeState * _parameters)
 {
-	parameters = _parameters;
-	processor = _processor;
+	//parameters = std::make_shared<AudioProcessorValueTreeState>(_parameters);
+//	processor = std::make_shared<imbSynthAudioProcessor>(_processor);
 }
 /// <summary>
 /// Gets the proper identifier.
@@ -92,6 +92,36 @@ bool ParameterController::Next()
 		NextColumn();
 		return true;
 	}
+}
+void ParameterController::Reset()
+{
+	/*ListOfLFOFunctions = imbEnumerationList();
+
+	ListOfMacroLinks = imbEnumerationList();
+
+	ListOfModulationFunctions = imbEnumerationList();
+
+	ListOfModulationModes = imbEnumerationList();
+
+	ListOfModulationParameters = imbEnumerationList();
+
+	ListOfPitchUnits = imbEnumerationList();
+
+	ListOfSignalUnits = imbEnumerationList();
+
+	ListOfSources = imbEnumerationList();
+*/
+
+	CurrentColumn = 0U;
+
+	CurrentPage = 0U;
+	CurrentRow = 0U;
+	CurrentSysExclusinveID = 0U;
+	PageColumnCount = 8U;
+	PageSize = 47U;
+	RowCCIDSpan = 8U;
+	RowInColumnCount = 3U;
+	StartingCCID = 10U;
 }
 //
 //ParameterController::ParameterController()

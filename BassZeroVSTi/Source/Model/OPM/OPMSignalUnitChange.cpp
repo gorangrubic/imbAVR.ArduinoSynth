@@ -11,23 +11,22 @@
 #include "OPMSignalUnitChange.h"
 
 
-void OPMSignalUnitChange::Deploy()
+void OPMSignalUnitChange::Deploy(ParameterController & parameterController)
 {
 
-	AddBoolParameter(&Enabled, "Enabled", "Signal Enabled", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &Enabled, "Enabled", "Signal Enabled", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddBoolParameter(&Sync, "Sync", "Restart phase with new Note On", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &Sync, "Sync", "Restart phase with new Note On", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddBoolParameter(&Chaos, "Chaos", "Chaos function", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &Chaos, "Chaos", "Chaos function", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddCCParameter(&Rate, "Rate", "Change Rate", 0, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddCCParameter(parameterController, &Rate, "Rate", "Change Rate", 0, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddCCParameter(&Period, "Period", "Change Period", 0, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddCCParameter(parameterController, &Period, "Period", "Change Period", 0, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddCCParameter(&Change, "Change", "Change Period", 0, -64, 64, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddCCParameter(parameterController, &Change, "Change", "Change Period", 0, -64, 64, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddEnumParameter(&Function, "Function", "Modulation function",
-		&parameterControllerPtr->ListOfModulationFunctions, 0, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddEnumParameter(parameterController, &Function, "Function", "Modulation function", &parameterController.ListOfModulationFunctions, 0, -1, false, imbControlParameterMessageType::sysExMsg);
 
 	Enabled.SetHelp("If this Signal Generator modulation LFO is running.");
 

@@ -18,13 +18,15 @@
 #include "../Source/Control/ParameterController.h"
 #include "../Source/Control/imbControlParameter.h"
 
+#include "../Source/Model/ModelConstructionTools.h"
+
 class ModelComponentWithChildren:
 	public SynthDeviceModelComponentBase {
     
     public:
 
-		std::shared_ptr<SynthDeviceModelComponentBase> model = nullptr;
-		std::shared_ptr<ModelComponentWithChildren> parent = nullptr;
+		std::shared_ptr<SynthDeviceModelComponentBase> model{ nullptr };
+		std::shared_ptr<ModelComponentWithChildren> parent{ nullptr };
 
 		/// <summary>
 		/// The parameter controller - machanism for CC / SysExc ID synthnronization
@@ -44,8 +46,8 @@ class ModelComponentWithChildren:
 
 		void AddChild(ModelComponentWithChildren* child);
 
+		void ConstructComponentAndChildComponentParameters(ParameterController & parameterController, juce::AudioProcessorValueTreeState & parameters);
 
-		void ConstructComponentAndChildComponentParameters();
 
 		
 		//std::shared_ptr<imbControlParameter> shared = std::shared_ptr<imbControlParameter>(output);
@@ -61,5 +63,7 @@ class ModelComponentWithChildren:
 
 		std::vector<ModelComponentWithChildren*> ChildWithChildren;*/
 
-		ModelComponentWithChildren() : SynthDeviceModelComponentBase() {};
+		ModelComponentWithChildren(std::string _namePrefix = "", std::string _shortName = "", std::string _longName = "") : SynthDeviceModelComponentBase(_namePrefix, _shortName, _longName)
+		{
+		};
 };

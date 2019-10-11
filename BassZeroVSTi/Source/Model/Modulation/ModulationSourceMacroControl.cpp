@@ -10,7 +10,7 @@
 
 #include "ModulationSourceMacroControl.h"
 
-void ModulationSourceMacroControl::Deploy()
+void ModulationSourceMacroControl::Deploy(ParameterController & parameterController)
 {
 }
 

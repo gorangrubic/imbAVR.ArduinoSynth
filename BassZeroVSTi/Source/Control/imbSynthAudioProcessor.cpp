@@ -6,9 +6,14 @@ void imbSynthAudioProcessor::DeployModel()
 {
 	model->Deploy();
 
+	model->PreDeployModel();
+	model->DeployModel();
+	model->AfterDeployModel();
+
 //	model->DeployModel();
 
-	model->ConstructParameters(&parameters, this);
+
+	model->ConstructParameters(parameters);
 }
 
 //AudioProcessorValueTreeState::ParameterLayout imbSynthAudioProcessor::CreateParameterLayout()

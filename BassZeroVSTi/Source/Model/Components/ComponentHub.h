@@ -19,12 +19,14 @@
 // #include "../SynthDeviceModel.h"
 #include "../Core/ModelModulatedControl.h"
 
+#include "../Source/Model/Core/SharedPointerVector.h"
+
 
 #include <vector>
 
 #include "OscilatorPerk.h"
 #include "OscilatorWaveform.h"
-
+#include "..\Source\Model\ModelConstructionTools.h"
 
 
 class ComponentHub : 
@@ -33,19 +35,24 @@ class ComponentHub :
 
 
 public:
-
+	/*
 	std::vector<ModelModulatedControl*> modulatedControls;
 	std::vector<OscilatorWaveform*> oscilatorWaveforms;
 	std::vector<OscilatorPerk*> oscilatorPerks;
+	*/
 
-	void Deploy();
+	SharedPointerVector<ModelModulatedControl> modulatedControls;
+	SharedPointerVector<OscilatorWaveform> oscilatorWaveforms;
+	SharedPointerVector<OscilatorPerk> oscilatorPerks;
 
-	void AddModulatedControl(ModelModulatedControl * output, String _shortName, String _longName);
+	void Deploy(ParameterController & parameterController);
+
+	void AddModulatedControl(ModelModulatedControl * output, std::string _shortName, std::string _longName);
 
 	void AddWaveform(OscilatorWaveform * output);
 	void AddPerk(OscilatorPerk * output);
 
-	ComponentHub() :ModelComponentWithChildren() {};
+	ComponentHub() :ModelComponentWithChildren("Synth","SYN","Synth components") {};
 
 	//ComponentHub(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
 

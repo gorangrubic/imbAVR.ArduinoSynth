@@ -10,13 +10,13 @@
 
 #include "ModulationFunctionENV.h"
 
-void ModulationFunctionENV::Deploy()
+void ModulationFunctionENV::Deploy(ParameterController & parameterController)
   {
 
-	AddCCParameter(&TimeA, "TimeA", "Time A to B", 40);
-	AddCCParameter(&TimeB, "TimeB", "Time B to A", 127);
-	AddCCParameter(&ValueA, "ValueA", "Value A", 100);
-	AddCCParameter(&ValueB, "ValueB", "Value B", 20);
+	AddCCParameter(parameterController,&TimeA, "TimeA", "Time A to B", 40);
+	AddCCParameter(parameterController,&TimeB, "TimeB", "Time B to A", 127);
+	AddCCParameter(parameterController,&ValueA, "ValueA", "Value A", 100);
+	AddCCParameter(parameterController,&ValueB, "ValueB", "Value B", 20);
 
   }
 

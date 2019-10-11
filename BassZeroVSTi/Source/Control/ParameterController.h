@@ -3,6 +3,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "imbControlParameterEnumerations.h"
 #include "imbEnumerationList.h"
+//#include "imbSynthAudioProcessor.h"
 
 /// <summary>
 /// Manages all synth parameters, assigns ccID to imbControlParameters
@@ -13,8 +14,8 @@ class ParameterController
 	
 public:
 
-	juce::AudioProcessorValueTreeState * parameters;
-	AudioProcessor * processor;
+	//juce::AudioProcessorValueTreeState* parameters;
+	//std::shared_ptr<imbSynthAudioProcessor> processor;
 
 //	std::vector<std::unique_ptr<AudioProcessorParameterGroup::AudioProcessorParameterNode>> params;
 
@@ -44,10 +45,10 @@ public:
 	imbEnumerationList ListOfLFOFunctions;
 
 
-	unsigned int PageSize = 47;
-	unsigned int PageColumnCount = 8;
-	unsigned int StartingCCID = 10;
-	unsigned int RowCCIDSpan = 8;
+	unsigned int PageSize = 47U;
+	unsigned int PageColumnCount = 8U;
+	unsigned int StartingCCID = 10U;
+	unsigned int RowCCIDSpan = 8U;
 	unsigned int RowInColumnCount = 3;
 	//unsigned int CurrentCCID = 10;
 
@@ -56,7 +57,7 @@ public:
 	unsigned int CurrentPage = 0;
 	unsigned int CurrentRow = 0;
 
-	void Setup(juce::AudioProcessorValueTreeState * _parameters, AudioProcessor * _processor);
+	void Setup(juce::AudioProcessorValueTreeState * _parameters);
 	
 	/// <summary>
 	/// Gets proper next identifier, according to given message type.
@@ -96,10 +97,10 @@ public:
 
 	bool Next();
 
-	ParameterController() :
-		ListOfLFOFunctions(), ListOfMacroLinks(), ListOfModulationFunctions(), ListOfModulationModes(), ListOfModulationParameters(), ListOfPitchUnits(), ListOfSignalUnits(), ListOfSources(),
-		CurrentColumn{ 0 }, CurrentPage{ 0 }, CurrentRow{ 0 }, CurrentSysExclusinveID{ 0 }, PageColumnCount{ 8 }, PageSize{ 47 }, RowCCIDSpan{ 8 }, RowInColumnCount{3}, StartingCCID{10}
-	
+
+	void Reset();
+
+	ParameterController()
 	{
 
 	};

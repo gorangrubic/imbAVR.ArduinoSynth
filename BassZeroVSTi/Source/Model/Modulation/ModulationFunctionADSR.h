@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
-	void Deploy();
+	void Deploy(ParameterController & parameterController);
 
 	ModulationFunctionADSR();
 

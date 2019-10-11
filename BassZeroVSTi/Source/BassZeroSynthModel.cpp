@@ -14,6 +14,11 @@
 
 void BassZeroSynthModel::DeployModel()
 {
+	parameterController.Reset();
+	//modelConstructionTools.parameterController.Reset();
+
+	//ModelConstructionTools::parameterController.Reset();
+
 //	SynthProcessor = synthProcessor;
 
 	MODULATIONS AddADSR(&ADSR_A);
@@ -85,11 +90,11 @@ void BassZeroSynthModel::DeployModel()
 	COMPONENTS AddModulatedControl(&OPM_MODA, "OPM_MODA", "Modulated parameter A");
 	COMPONENTS AddModulatedControl(&OPM_MODB, "OPM_MODB", "Modulated parameter B");
 
-	COMPONENTS AddCCParameter(&OPM_VALA, "OPM_VALA", "Value A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+	COMPONENTS AddCCParameter(parameterController,&OPM_VALA, "OPM_VALA", "Value A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 
-	COMPONENTS AddCCParameter(&OPM_VALB, "OPM_VALB", "Value B", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+	COMPONENTS AddCCParameter(parameterController, &OPM_VALB, "OPM_VALB", "Value B", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 
-	COMPONENTS AddCCParameter(&OPM_VALC, "OPM_VALC", "Value C", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+	COMPONENTS AddCCParameter(parameterController, &OPM_VALC, "OPM_VALC", "Value C", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 	
 
 	

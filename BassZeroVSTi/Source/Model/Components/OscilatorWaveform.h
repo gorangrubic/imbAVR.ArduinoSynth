@@ -13,6 +13,8 @@
 #include "../SynthDeviceModelComponentBase.h"
 #include "../Core/ModelComponentWithChildren.h"
 
+#include "../Source/Model/ModelConstructionTools.h"
+
 class OscilatorWaveform : 
 	//public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren 
@@ -23,7 +25,7 @@ public:
 
 
 
-	void Deploy();
+	void Deploy(ParameterController & parameterController);
 
 	OscilatorWaveform();
 

@@ -11,7 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
-
+#include "..\Source\Model\ModelConstructionTools.h"
 
 class ModelModulatedControl:
 	public SynthDeviceModelComponentBase {
@@ -25,7 +25,7 @@ public:
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
-	void Deploy();
+	void Deploy(ParameterController & parameterController);
 
 	ModelModulatedControl();
 

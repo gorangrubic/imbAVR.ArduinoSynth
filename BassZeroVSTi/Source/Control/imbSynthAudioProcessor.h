@@ -42,7 +42,7 @@ public:
 		parameters(*this, &this->undoManager)
 		//parameters(*this, &this->undoManager, name, CreateParameterLayout())
 	{
-		DeployModel();
+		//DeployModel();
 
 	
 	};

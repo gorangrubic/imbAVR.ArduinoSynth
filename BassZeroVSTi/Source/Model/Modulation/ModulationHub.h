@@ -19,7 +19,7 @@
 #include "ModulationSourceMIDI.h"
 #include "ModulationSourceBase.h"
 //#include "../Core/SharedPointerVector.h"
-
+#include "..\Source\Model\ModelConstructionTools.h"
 #include <vector>
 
 #include <cstddef> // for NULL
@@ -55,16 +55,18 @@ public:
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
-	void Deploy() ;
+	void Deploy(ParameterController & parameterController) ;
+
+	//void Reset();
 	
 	void AddADSR(ModulationFunctionADSR * output);
 	void AddENV(ModulationFunctionENV * output);
 	void AddLFO(ModulationFunctionLFO * output);
 	void AddMacroControl(ModulationSourceMacroControl * output);
 
-	void AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, String _shortName, String _longName);
+	void AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, std::string _shortName, std::string _longName);
 
-	ModulationHub() :ModelComponentWithChildren(), 
+	ModulationHub() :ModelComponentWithChildren("MOD", "MOD", "Modulation sources"),
 		MIDIs{ SharedPointerVector<ModulationSourceMIDI>() }
 	{
 

@@ -28,7 +28,7 @@ public:
 	/// <summary>
 /// Deploys this instance.
 /// </summary>
-	void Deploy();
+	void Deploy(ParameterController & parameterController);
 
 	ModulationFunctionENV();
 //	ModulationFunctionENV(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {};

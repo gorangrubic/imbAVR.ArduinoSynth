@@ -12,7 +12,7 @@
 #include "../Source/Utility/imbSynthTools.h"
 
 
-void SynthDeviceModelComponentBase::ConstructComponentParameters()
+void SynthDeviceModelComponentBase::ConstructComponentParameters(ParameterController & parameterController, juce::AudioProcessorValueTreeState & parameters)
   {
 	
 	/*if (group == nullptr) {
@@ -22,26 +22,37 @@ void SynthDeviceModelComponentBase::ConstructComponentParameters()
 
 	for each (auto var in Parameters)
 	{
-		var->SetParameter(parameterControllerPtr,nullptr);
+		NormalisableRange<float> valueRange = NormalisableRange<float>(var->MinValue, var->MaxValue, var->IntervalValue);
+
+		parameters.createAndAddParameter(var->parameterIDPath,
+			var->parameterID, var->parameterLabel, valueRange, var->Value, nullptr, nullptr, 
+			var->isMetaValue, var->isAutomatizable, var->isDescreteValue, 
+			var->category, var->typeParameter == imbControlParameterType::Boolean);
+
+	//	imbSynthTools::SetParameter(nullptr, *var);
+		//modelConstructionTools.SetParameter(nullptr, *var);
+//		var->SetParameter(nullptr);
 	}
   }
 
-  void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
+#define CONTROLLER  parameterController.
+
+  void SynthDeviceModelComponentBase::AddBoolParameter(ParameterController & parameterController, imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
-	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
+	  if (_ccID == -1) _ccID = CONTROLLER GetProperID(_msgFormat);
 	int _initIndexValue = 0;
 	if (initValue) _initIndexValue = 1;
 
-	AddParameter(output, _parameterID, _parameterLabel, 0, 1, _initIndexValue, "", _ccID, _isAutomated, imbControlParameterType::Boolean, _msgFormat, _parameterParentPath);
+	AddParameter(parameterController, output, _parameterID, _parameterLabel, 0, 1, _initIndexValue, "", _ccID, _isAutomated, imbControlParameterType::Boolean, _msgFormat, _parameterParentPath);
 }
 
-void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList* items, int initIndexValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
+void SynthDeviceModelComponentBase::AddEnumParameter(ParameterController & parameterController, imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList* items, int initIndexValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
-	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
+	if (_ccID == -1) _ccID = CONTROLLER GetProperID(_msgFormat);
 
 	output->enumerationList = items;
 	
-	AddParameter(output, _parameterID, _parameterLabel, 0, (float) items->Count(),initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat, _parameterParentPath);
+	AddParameter(parameterController, output, _parameterID, _parameterLabel, 0, (float) items->Count(),initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat, _parameterParentPath);
 }
 
 /// <summary>
@@ -56,14 +67,14 @@ void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * outpu
 /// <param name="_ccID">The cc identifier.</param>
 /// <param name="_isAutomated">if set to <c>true</c> [is automated].</param>
 /// <param name="_msgFormat">The MSG format.</param>
-void SynthDeviceModelComponentBase::AddCCParameter(imbControlParameter* output, String _parameterID, String _parameterLabel,
+void SynthDeviceModelComponentBase::AddCCParameter(ParameterController & parameterController, imbControlParameter* output, String _parameterID, String _parameterLabel,
 	int initValue, int minValue, int maxValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
-	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
-	AddParameter(output, _parameterID, _parameterLabel, minValue, maxValue, initValue, "", _ccID, _isAutomated, imbControlParameterType::Integer, _msgFormat, _parameterParentPath);
+	if (_ccID == -1) _ccID = CONTROLLER GetProperID(_msgFormat);
+	AddParameter(parameterController, output, _parameterID, _parameterLabel, minValue, maxValue, initValue, "", _ccID, _isAutomated, imbControlParameterType::Integer, _msgFormat, _parameterParentPath);
 }
 
-void SynthDeviceModelComponentBase::AddParameter(imbControlParameter* output,String _parameterID, String _parameterLabel,
+void SynthDeviceModelComponentBase::AddParameter(ParameterController & parameterController, imbControlParameter* output,String _parameterID, String _parameterLabel,
 	float minValue, float maxValue, float initValue,
 	String _parameterUnit,
 	int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
@@ -72,9 +83,9 @@ void SynthDeviceModelComponentBase::AddParameter(imbControlParameter* output,Str
 	output->parameterParentPath = _parameterParentPath;
 	output->Setup(_parameterID, _parameterLabel, minValue, maxValue, initValue, _parameterUnit, _ccID,_isAutomatizable,_type, _msgFormat);
 
-	std::shared_ptr<imbControlParameter> shared = std::shared_ptr<imbControlParameter>(output);
-
-	Parameters.push_back(shared);
+	//std::shared_ptr<imbControlParameter> shared = std::shared_ptr<imbControlParameter>(output);
+	Parameters.Add(output);
+	//Parameters.push_back(shared);
 }
 
 //void SynthDeviceModelComponentBase::BuildParameters()

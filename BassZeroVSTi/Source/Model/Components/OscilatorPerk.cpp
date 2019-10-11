@@ -10,7 +10,7 @@
 
 #include "OscilatorPerk.h"
 
-void OscilatorPerk::Deploy()
+void OscilatorPerk::Deploy(ParameterController & parameterController)
 {
 }
 

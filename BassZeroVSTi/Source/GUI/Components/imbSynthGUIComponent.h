@@ -13,7 +13,7 @@ public:
 	/// Declares plugin parameters 
 	/// </summary>
 	/// <param name="params">The parameters.</param>
-	virtual void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
+//	virtual void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
 
 	imbSynthGUIComponent();
 	imbSynthGUIComponent(imbSynthStateData * synthState, String nameSufix);

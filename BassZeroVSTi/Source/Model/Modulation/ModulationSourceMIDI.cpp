@@ -10,7 +10,7 @@
 
 #include "ModulationSourceMIDI.h"
 
-void ModulationSourceMIDI::Deploy()
+void ModulationSourceMIDI::Deploy(ParameterController & parameterController)
   {
   }
 

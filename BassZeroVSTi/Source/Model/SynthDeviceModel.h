@@ -26,6 +26,8 @@
 #include "Modulation\ModulationSourceMIDI.h"
 #include "Modulation\ModulationSourceBase.h"
 
+#include "..\Source\Model\ModelConstructionTools.h"
+
 
 #include "Modulation\ModulationHub.h"
 #include "Components\ComponentHub.h"
@@ -68,6 +70,8 @@ class SynthDeviceModel :
 		ComponentHub components;
 		OPMControlModel opmControl;
 
+		//std::unique_ptr<ParameterController> parameterUnique;
+
 	//std::unique_ptr<ModulationHub> modulations;
 	//std::unique_ptr<ComponentHub> components;
 	//std::unique_ptr<OPMControlModel> opmControl;
@@ -89,7 +93,7 @@ class SynthDeviceModel :
 /// </summary>
 		void Deploy();
 
-		void ConstructParameters(juce::AudioProcessorValueTreeState * parameters, AudioProcessor * processor);
+		void ConstructParameters(juce::AudioProcessorValueTreeState & parameters);
 
 		
 
@@ -98,8 +102,8 @@ class SynthDeviceModel :
 
 
 
-		SynthDeviceModel() :ModelComponentWithChildren(),
-			parameterController(),
+		SynthDeviceModel() :ModelComponentWithChildren("Main", "Main","Synth"),
+			//parameterController(),
 			modulations(), 
 			components(), 
 			opmControl()

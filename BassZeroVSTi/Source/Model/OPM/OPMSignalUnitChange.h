@@ -12,7 +12,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../SynthDeviceModelComponentBase.h"
 #include "../Source/Control/imbControlParameter.h"
-
+#include "..\Source\Model\ModelConstructionTools.h"
 
 class OPMSignalUnitChange :
 	public SynthDeviceModelComponentBase
@@ -30,7 +30,7 @@ public:
 	imbControlParameter Change;
 	imbControlParameter Function;
 
-	void Deploy() ;
+	void Deploy(ParameterController & parameterController) ;
 
 	OPMSignalUnitChange();
 

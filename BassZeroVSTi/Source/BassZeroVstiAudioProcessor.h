@@ -30,6 +30,17 @@ public:
 	BassZeroVstiAudioProcessor() :
 		bassZeroModel(),
 		imbSynthAudioProcessor(&bassZeroModel, "BassZero") {
+
+
+		this->bassZeroModel.PreDeployModel();
+		this->bassZeroModel.Deploy();
+
+		this->bassZeroModel.DeployModel();
+
+		this->bassZeroModel.AfterDeployModel();
+
+		this->bassZeroModel.ConstructParameters(parameters);
+
 	};
     ~BassZeroVstiAudioProcessor();
 

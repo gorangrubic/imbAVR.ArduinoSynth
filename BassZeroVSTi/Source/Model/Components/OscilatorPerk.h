@@ -15,6 +15,7 @@
 
 
 
+
 class OscilatorPerk : 
 	//public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren {
@@ -23,7 +24,7 @@ public:
 
 
 
-	void Deploy();
+	void Deploy(ParameterController & parameterController);
 
 	OscilatorPerk();
 

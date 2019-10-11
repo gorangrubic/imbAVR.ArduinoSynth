@@ -13,29 +13,33 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/ParameterController.h"
 
+#define STRLEN 127
 class ModelComponentDescription {
  
     public:
 
-		juce::String NamePrefix = juce::String();
-		juce::String ShortName = juce::String();
-		juce::String LongName = juce::String();
+		juce::String NamePrefix { juce::String("", STRLEN) };
+		juce::String ShortName { juce::String("", STRLEN) };
+		juce::String LongName { juce::String("", STRLEN) };
 
 			//String ParentPath;
 
 			//virtual void SetParentPath(String _parentPath) = 0;
 
-			/// <summary>
-			/// The parameter controller - machanism for CC / SysExc ID synthnronization
-			/// </summary>
-			std::shared_ptr<ParameterController> parameterControllerPtr = nullptr;
-	        
-			void SetDescription(juce::String _shortName, juce::String _longName, std::shared_ptr<ParameterController> _parameterControllerPtr);
-
-			ModelComponentDescription():
-				NamePrefix{ "" }, ShortName{ "" }, LongName{ "" } 
-			{
 			
+
+			//void SetDescription(std::string _shortName, std::string _longName, std::shared_ptr<ParameterController> _parameterControllerPtr);
+
+			void SetDescription(std::string _shortName, std::string _longName); //, std::shared_ptr<ParameterController> _parameterControllerPtr);
+
+			//void SetDescription(std::string _shortName, std::string _longName, ParameterController* _parameterController);
+
+			ModelComponentDescription(std::string _namePrefix="", std::string _shortName="", std::string _longName="")
+			{
+				if (_namePrefix != "") NamePrefix = juce::String(_namePrefix);
+				if (_shortName != "") ShortName = juce::String(_shortName);
+				if (_longName != "") LongName = juce::String(_longName);
+				
 			};
 
 };

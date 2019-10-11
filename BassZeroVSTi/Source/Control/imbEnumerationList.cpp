@@ -12,14 +12,26 @@
 
 void imbEnumerationList::Add(String item)
 {
-	Items.add(item);
+	//Items.add(item);
 
-	//Items.push_back(item);
+	Items.push_back(item);
 }
 
 int imbEnumerationList::IndexOf(String item)
   {
-	return Items.indexOf(item, false, 0);
+
+	
+	int index = -1;
+
+	std::vector<String>::iterator iter = std::find(Items.begin(), Items.end(), item);
+
+	if (iter != Items.end())
+	{
+		index = std::distance(Items.begin(), iter);
+		
+	}
+
+	return index;//td::find(Items.begin(),  // Items.indexOf(item, false, 0);
 
 	//int i = 0;
 	//int output = -1;
@@ -39,11 +51,11 @@ int imbEnumerationList::Count()
 	return Items.size();
 }
 
-StringArray imbEnumerationList::GetItems()
-{
-	return Items;
-	
-}
+//StringArray imbEnumerationList::GetItems()
+//{
+//	return Items;
+//	
+//}
 //
 //imbEnumerationList::imbEnumerationList()
 //{

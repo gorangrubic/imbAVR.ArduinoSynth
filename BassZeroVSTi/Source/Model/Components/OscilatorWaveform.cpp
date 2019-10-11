@@ -10,7 +10,7 @@
 
 #include "OscilatorWaveform.h"
 
-void OscilatorWaveform::Deploy()
+void OscilatorWaveform::Deploy(ParameterController & parameterController)
 {
 }
 

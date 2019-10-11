@@ -24,9 +24,8 @@ public:
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
-	void Deploy() ;
-
-//	ModulationSourceMIDIType typeMidi = ModulationSourceMIDIType::velocity;
+	void Deploy(ParameterController & parameterController) ;
+	ModulationSourceMIDIType typeMidi = ModulationSourceMIDIType::velocity;
 
 	ModulationSourceMIDI();
 

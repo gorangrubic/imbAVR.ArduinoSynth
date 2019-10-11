@@ -67,21 +67,21 @@ void ModelComponentWithChildren::SetParent(std::shared_ptr<SynthDeviceModelCompo
 	  //ChildWithChildren.push_back(shared);
   }
 
-  void ModelComponentWithChildren::ConstructComponentAndChildComponentParameters()
+  void ModelComponentWithChildren::ConstructComponentAndChildComponentParameters(ParameterController & parameterController, juce::AudioProcessorValueTreeState & parameters)
   {
 
 	 // group = AudioProcessorParameterGroup(ShortName, LongName, ".");
 
-	  ConstructComponentParameters();
+	  ConstructComponentParameters(parameterController, parameters);
 
 	  for each (auto var in ChildComponents)
 	  {
-		  var->ConstructComponentParameters();
+		  var->ConstructComponentParameters(parameterController, parameters);
 	  }
 
 	  for each (auto var in ChildWithChildren)
 	  {
-		  var->ConstructComponentAndChildComponentParameters();
+		  var->ConstructComponentAndChildComponentParameters(parameterController, parameters);
 	  }
 
 	/*  if (group != nullptr) {

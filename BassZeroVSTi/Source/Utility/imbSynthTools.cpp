@@ -10,7 +10,7 @@
 
 #include "imbSynthTools.h"
 
-String imbSynthTools::GetLetter(unsigned int input) {
+std::string imbSynthTools::GetLetter(unsigned int input) {
 			switch (input) {
 			case 0:
 				return "A";

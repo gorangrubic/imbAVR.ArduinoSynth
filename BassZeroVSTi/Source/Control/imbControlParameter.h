@@ -15,6 +15,11 @@
 #include "imbEnumerationList.h"
 #include "ParameterController.h"
 
+
+
+
+//
+
 //#include "../Model/SynthDeviceModelComponentBase.h"
 //#include "../Model/SynthDeviceModel.h"
 // #include "../Source/Model/SynthDeviceModelComponentBase.h"
@@ -176,7 +181,7 @@ public:
 	//RangedAudioParameter * rangedParameter;
 	//std::unique_ptr<RangedAudioParameter> ptr;
 
-	void SetParameter(std::shared_ptr<ParameterController> parameterControllerPtr, AudioProcessorParameterGroup * group);
+	//void SetParameter(std::shared_ptr<ParameterController> parameterControllerPtr, AudioProcessorParameterGroup * group);
 
 	// ========================== CC MIDI parameters
 
@@ -189,6 +194,7 @@ public:
 	float MinValue = 0;
 	float MaxValue = 0;
 	float IntervalValue = 1;
+
 
 	/// <summary>
 	/// Reads given MIDI message(s) and updates the ccValue, if the message is of CC type and with matching Channel ID. Otherwise ignores the message.

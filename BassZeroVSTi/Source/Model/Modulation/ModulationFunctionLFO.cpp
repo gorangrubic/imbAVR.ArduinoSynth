@@ -10,7 +10,7 @@
 
 #include "ModulationFunctionLFO.h"
 
-void ModulationFunctionLFO::Deploy()
+void ModulationFunctionLFO::Deploy(ParameterController & parameterController)
 {
 }
 

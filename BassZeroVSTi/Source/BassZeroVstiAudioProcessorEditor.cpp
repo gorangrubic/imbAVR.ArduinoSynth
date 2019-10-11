@@ -10,18 +10,25 @@
 
 #include "BassZeroVstiAudioProcessor.h"
 #include "BassZeroVstiAudioProcessorEditor.h"
+#include "BassZeroInterface.h"
+
+#define WIDTH 840
+#define HEIGHT 500
 
 //==============================================================================
 BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVstiAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+    : AudioProcessorEditor (&p), processor (p), bassZeroGUI(&p.bassZeroState)
 {
 	
 	
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 300);
+    setSize (WIDTH, HEIGHT);
 
-
+	addAndMakeVisible(bassZeroGUI);
+	bassZeroGUI.setTopLeftPosition(0, 0);
+	bassZeroGUI.setSize(WIDTH, HEIGHT);
+	
 	//addChildComponent(bassZeroGUI);
 }
 
@@ -37,7 +44,7 @@ void BassZeroVstiAudioProcessorEditor::paint (Graphics& g)
 
     g.setColour (Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
+   // g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
 }
 
 void BassZeroVstiAudioProcessorEditor::resized()

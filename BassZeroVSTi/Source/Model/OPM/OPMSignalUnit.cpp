@@ -19,26 +19,26 @@ OPMSignalUnit::OPMSignalUnit()
 //OPMSignalUnit::OPMSignalUnit(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) {
 //
 //}
-void OPMSignalUnit::Deploy()
+void OPMSignalUnit::Deploy(ParameterController & parameterController)
 {
-	AddBoolParameter(&Enabled, "Enabled", "Signal/Oscilator enabled", true, -1, false, imbControlParameterMessageType::sysExMsg);
-	AddBoolParameter(&Sync, "Sync", "Oscilator reset with Note On", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController,&Enabled, "Enabled", "Signal/Oscilator enabled", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &Sync, "Sync", "Oscilator reset with Note On", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddBoolParameter(&RelativeToNote, "Relative", "Frequency is relative to MIDI Note", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &RelativeToNote, "Relative", "Frequency is relative to MIDI Note", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddBoolParameter(&DoublePrescalar, "DoublePrescalar", "Double pitch [+12]", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &DoublePrescalar, "DoublePrescalar", "Double pitch [+12]", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
-	AddBoolParameter(&PWMCycleMode, "PWMCycleMode", "Continual Pulse Width from 0 to 100%", true, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddBoolParameter(parameterController, &PWMCycleMode, "PWMCycleMode", "Continual Pulse Width from 0 to 100%", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
 
-	AddEnumParameter(&PitchUnit, "PitchUnit", "Pitch Unit", &parameterControllerPtr->ListOfPitchUnits, 0, -1,
+	AddEnumParameter(parameterController, &PitchUnit, "PitchUnit", "Pitch Unit", &parameterController.ListOfPitchUnits, 0, -1,
 		false, imbControlParameterMessageType::sysExMsg);
 
-	AddCCParameter(&WaveformPattern, "PWMPattern", "Waveform pattern", 64, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddCCParameter(parameterController, &WaveformPattern, "PWMPattern", "Waveform pattern", 64, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
 
 	WaveformPattern.SetHelp("8-steps On/Off pattern, directly controlling HIGH/LOW signal state. The pattern is mapped to single oscilation cycle, i.e. for pattern 11110000 you'll have 50% square pulse waveform. With 10101010 you'll have the same waveform, but pitched for +24 semitones (+2 octaves), as oscilator state will change four times in one oscilation cycle, instead once. This allows asymetric waveform behaviour, like: 11001101 - for more exotic results.");
 
-	AddCCParameter(&ModByte, "ModByte", "ModByte pattern", 64, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddCCParameter(parameterController, &ModByte, "ModByte", "ModByte pattern", 64, 0, 127, -1, false, imbControlParameterMessageType::sysExMsg);
 
 	ModByte.SetHelp("Experimental data point");
 
@@ -47,18 +47,18 @@ void OPMSignalUnit::Deploy()
 	PWMCycleMode.SetHelp("When [True], width of the pulse is continual (from 0% to 100%) and controlled by PWM parameter of the oscilator. Otherwise, the pulse is driven by WaveformPattern - allowing asymetric pulse widths / customized waveform results.");
 
 	// ======================= Rapid modulation of Signal generator unit properties
-	PhaseChange.SetDescription("Phase", "Phase Change", parameterControllerPtr);
+	PhaseChange.SetDescription("Phase", "Phase Change");
 	//PhaseChange.PreDeploy("Phase", "Phase Change");
 	AddChild(&PhaseChange);
-	PhaseChange.Deploy();
+	PhaseChange.Deploy(parameterController);
 
-	PhaseChange.SetDescription("PWM", "Pulse-Width Change", parameterControllerPtr);
+	PhaseChange.SetDescription("PWM", "Pulse-Width Change");
 	AddChild(&PWMChange);
-	PWMChange.Deploy();
+	PWMChange.Deploy(parameterController);
 
-	PhaseChange.SetDescription("Pitch", "Pitch Change", parameterControllerPtr);
+	PhaseChange.SetDescription("Pitch", "Pitch Change");
 	AddChild(&PitchChange);
-	PitchChange.Deploy();
+	PitchChange.Deploy(parameterController);
 
 
 }

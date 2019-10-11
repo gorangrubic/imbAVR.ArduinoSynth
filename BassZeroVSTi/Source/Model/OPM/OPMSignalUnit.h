@@ -15,7 +15,7 @@
 #include "../Core/ModelComponentWithChildren.h"
 #include "OPMSignalUnitChange.h"
 //#include "OPMControlModel.h"
-
+#include "..\Source\Model\ModelConstructionTools.h"
 
 
 class OPMSignalUnit:
@@ -47,6 +47,6 @@ public:
 
 //	OPMSignalUnit(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) : SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { };
 
-	void Deploy() ;
+	void Deploy(ParameterController & parameterController) ;
 
 };
