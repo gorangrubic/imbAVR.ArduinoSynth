@@ -2,20 +2,32 @@
 
 
 
-AudioProcessorValueTreeState::ParameterLayout imbSynthAudioProcessor::CreateParameterLayout()
+void imbSynthAudioProcessor::DeployModel()
 {
-	model->PreDeployModel();
-	model->DeployModel();
+	model->Deploy();
 
-	std::vector<std::unique_ptr<AudioParameterInt>> params;
+//	model->DeployModel();
 
-	params.push_back(std::make_unique<AudioParameterInt>("ParA", "Par", 0,255,127));
-
-	
-	return { params.begin(), params.end() };
-
-
+	model->ConstructParameters(&parameters, this);
 }
+
+//AudioProcessorValueTreeState::ParameterLayout imbSynthAudioProcessor::CreateParameterLayout()
+//{
+//	model->Deploy();
+//
+//	model->DeployModel();
+//	
+//	model->ConstructParameters(&parameters);
+//
+//	//params.push_back(std::make_unique<AudioParameterInt>("ParA", "Par", 0,255,127));
+//	//AudioProcessorValueTreeState::ParameterLayout layout = AudioProcessorValueTreeState::ParameterLayout();
+//	//layout.add({ model->parameterControllerPtr->params.begin(),  model->parameterControllerPtr->params.end() });
+//
+//	
+//	return { model->parameterControllerPtr->params.begin(),  model->parameterControllerPtr->params.end() };
+//
+//
+//}
 
 void imbSynthAudioProcessor::audioProcessorParameterChanged(AudioProcessor * processor, int parameterIndex, float newValue)
 {

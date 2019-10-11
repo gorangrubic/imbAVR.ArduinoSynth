@@ -18,14 +18,16 @@
 #include "ModulationSourceMacroControl.h"
 #include "ModulationSourceMIDI.h"
 #include "ModulationSourceBase.h"
+//#include "../Core/SharedPointerVector.h"
 
 #include <vector>
 
 #include <cstddef> // for NULL
 
 
+
 class ModulationHub : 
-	public SynthDeviceModelComponentBase,
+//	public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren {
 
 
@@ -33,11 +35,20 @@ class ModulationHub :
 public:
 
 
-	std::vector<ModulationFunctionADSR*> ADSRs;
-	std::vector<ModulationFunctionENV*> ENVs;
-	std::vector<ModulationFunctionLFO*> LFOs;
-	std::vector<ModulationSourceMacroControl*> MacroControls;
-	std::vector<ModulationSourceMIDI*> MIDIs;
+
+	SharedPointerVector<ModulationFunctionADSR> ADSRs{ };
+	SharedPointerVector<ModulationFunctionENV> ENVs{ };
+	SharedPointerVector<ModulationFunctionLFO> LFOs{ };
+	SharedPointerVector<ModulationSourceMacroControl> MacroControls{ };
+	SharedPointerVector<ModulationSourceMIDI> MIDIs;
+
+
+
+	//std::vector<ModulationFunctionADSR*> ADSRs;
+	//std::vector<ModulationFunctionENV*> ENVs;
+	//std::vector<ModulationFunctionLFO*> LFOs;
+	//std::vector<ModulationSourceMacroControl*> MacroControls;
+//	std::vector<ModulationSourceMIDI*> MIDIs;
 
 
 
@@ -53,5 +64,10 @@ public:
 
 	void AddMIDI(ModulationSourceMIDI * output, ModulationSourceMIDIType _midiType, String _shortName, String _longName);
 
-	ModulationHub();
+	ModulationHub() :ModelComponentWithChildren(), 
+		MIDIs{ SharedPointerVector<ModulationSourceMIDI>() }
+	{
+
+	}
+
 };

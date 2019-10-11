@@ -16,13 +16,13 @@
 #include "Model/Modulation/ModulationHub.h"
 #include "Control/imbSynthAudioProcessor.h"
 
-#include "Model/Components/OscilatorPerk.h";
-#include "Model/Components/OscilatorWaveform.h";
+#include "Model/Components/OscilatorPerk.h"
+#include "Model/Components/OscilatorWaveform.h"
 
 #include "Model/Core/ModelModulatedControl.h"
 
-#include "Model/OPM/OPMSignalUnit.h";
-#include "Model/OPM/MacroControlLink.h";
+#include "Model/OPM/OPMSignalUnit.h"
+#include "Model/OPM/MacroControlLink.h"
 #include "Model/OPM/OPMControlModel.h"
 
 #include "Control\imbControlParameterEnumerations.h"
@@ -40,54 +40,54 @@ public:
 
 	// === ==== MODULATION SOURCES
 
-	ModulationFunctionADSR ADSR_A = ModulationFunctionADSR();
-	ModulationFunctionADSR ADSR_B = ModulationFunctionADSR();
+	ModulationFunctionADSR ADSR_A;
+	ModulationFunctionADSR ADSR_B;
 	
-	ModulationFunctionENV ENV_A = ModulationFunctionENV();
-	ModulationFunctionENV ENV_B = ModulationFunctionENV();
-	ModulationFunctionENV ENV_C = ModulationFunctionENV();
+	ModulationFunctionENV ENV_A;
+	ModulationFunctionENV ENV_B;
+	ModulationFunctionENV ENV_C;
 
-	ModulationFunctionLFO LFO_A = ModulationFunctionLFO();
-	ModulationFunctionLFO LFO_B = ModulationFunctionLFO();
-	ModulationFunctionLFO LFO_C = ModulationFunctionLFO();
-	ModulationFunctionLFO LFO_D = ModulationFunctionLFO();
+	ModulationFunctionLFO LFO_A;
+	ModulationFunctionLFO LFO_B;
+	ModulationFunctionLFO LFO_C;
+	ModulationFunctionLFO LFO_D;
 
 	imbControlParameter CTRL_A;
 	imbControlParameter CTRL_B;
 	imbControlParameter CTRL_C;
 
-	ModulationSourceMIDI VEL = ModulationSourceMIDI();
+	ModulationSourceMIDI VEL;
 
 	// =========================== OPM Macro Controls
 
-	ModelModulatedControl OPM_MODA = ModelModulatedControl();
-	ModelModulatedControl OPM_MODB = ModelModulatedControl();
+	ModelModulatedControl OPM_MODA;
+	ModelModulatedControl OPM_MODB;
 
 	imbControlParameter OPM_VALA;
 	imbControlParameter OPM_VALB;
 	imbControlParameter OPM_VALC;
 
 	// =========================== OPM Signal Units
-	OPMSignalUnit OPM_WFA = OPMSignalUnit();
-	OPMSignalUnit OPM_WFB = OPMSignalUnit();
-	OPMSignalUnit FLT_RESA = OPMSignalUnit();
-	OPMSignalUnit FLT_RESB = OPMSignalUnit();
-	OPMSignalUnit OPM_PERKA = OPMSignalUnit();
-	OPMSignalUnit OPM_PERKB = OPMSignalUnit();
+	OPMSignalUnit OPM_WFA;
+	OPMSignalUnit OPM_WFB;
+	OPMSignalUnit FLT_RESA;
+	OPMSignalUnit FLT_RESB;
+	OPMSignalUnit OPM_PERKA;
+	OPMSignalUnit OPM_PERKB;
 
 
 	// =========================== Modulation Macro Controls links
 
-	MacroControlLink MODA_MCL1 = MacroControlLink();
-	MacroControlLink MODA_MCL2 = MacroControlLink();
+	MacroControlLink MODA_MCL1;
+	MacroControlLink MODA_MCL2;
 
-	MacroControlLink MODB_MCL1 = MacroControlLink();
-	MacroControlLink MODB_MCL2 = MacroControlLink();
+	MacroControlLink MODB_MCL1;
+	MacroControlLink MODB_MCL2;
 
-	MacroControlLink VALA_MCL1 = MacroControlLink();
-	MacroControlLink VALB_MCL1 = MacroControlLink();
-	MacroControlLink VALC_MCL1 = MacroControlLink();
-	MacroControlLink VALC_MCL2 = MacroControlLink();
+	MacroControlLink VALA_MCL1;
+	MacroControlLink VALB_MCL1;
+	MacroControlLink VALC_MCL1;
+	MacroControlLink VALC_MCL2;
 
 	// ========================== Main components
 
@@ -123,6 +123,7 @@ public:
 
 	void DeployModel();
 
-	BassZeroSynthModel();
+	BassZeroSynthModel():SynthDeviceModel()
+	{ };
 
 };

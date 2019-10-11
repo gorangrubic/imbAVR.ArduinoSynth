@@ -12,22 +12,36 @@
 #include "../Source/Utility/imbSynthTools.h"
 
 
-void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
+void SynthDeviceModelComponentBase::ConstructComponentParameters()
+  {
+	
+	/*if (group == nullptr) {
+		group = &AudioProcessorParameterGroup(ShortName, LongName, ".");
+	}*/
+	//AudioProcessorParameterGroup g = ;
+
+	for each (auto var in Parameters)
+	{
+		var->SetParameter(parameterControllerPtr,nullptr);
+	}
+  }
+
+  void SynthDeviceModelComponentBase::AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
 	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
 	int _initIndexValue = 0;
 	if (initValue) _initIndexValue = 1;
 
-	AddParameter(output, _parameterID, _parameterLabel, 0, 1, _initIndexValue, "", _ccID, _isAutomated, imbControlParameterType::Boolean, _msgFormat);
+	AddParameter(output, _parameterID, _parameterLabel, 0, 1, _initIndexValue, "", _ccID, _isAutomated, imbControlParameterType::Boolean, _msgFormat, _parameterParentPath);
 }
 
-void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList* items, int initIndexValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
+void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList* items, int initIndexValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
 	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
 
 	output->enumerationList = items;
 	
-	AddParameter(output, _parameterID, _parameterLabel, 0, (float) items->Count(),initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat);
+	AddParameter(output, _parameterID, _parameterLabel, 0, (float) items->Count(),initIndexValue , "", _ccID, _isAutomated, imbControlParameterType::Enumeration, _msgFormat, _parameterParentPath);
 }
 
 /// <summary>
@@ -43,40 +57,43 @@ void SynthDeviceModelComponentBase::AddEnumParameter(imbControlParameter * outpu
 /// <param name="_isAutomated">if set to <c>true</c> [is automated].</param>
 /// <param name="_msgFormat">The MSG format.</param>
 void SynthDeviceModelComponentBase::AddCCParameter(imbControlParameter* output, String _parameterID, String _parameterLabel,
-	int initValue, int minValue, int maxValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat)
+	int initValue, int minValue, int maxValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
 	if (_ccID == -1) _ccID = parameterControllerPtr->GetProperID(_msgFormat);
-	AddParameter(output, _parameterID, _parameterLabel, minValue, maxValue, initValue, "", _ccID, _isAutomated, imbControlParameterType::Integer, _msgFormat);
+	AddParameter(output, _parameterID, _parameterLabel, minValue, maxValue, initValue, "", _ccID, _isAutomated, imbControlParameterType::Integer, _msgFormat, _parameterParentPath);
 }
 
 void SynthDeviceModelComponentBase::AddParameter(imbControlParameter* output,String _parameterID, String _parameterLabel,
 	float minValue, float maxValue, float initValue,
 	String _parameterUnit,
-	int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat)
+	int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
 	
+	output->parameterParentPath = _parameterParentPath;
 	output->Setup(_parameterID, _parameterLabel, minValue, maxValue, initValue, _parameterUnit, _ccID,_isAutomatizable,_type, _msgFormat);
 
-	Parameters.push_back(output);
+	std::shared_ptr<imbControlParameter> shared = std::shared_ptr<imbControlParameter>(output);
+
+	Parameters.push_back(shared);
 }
 
-void SynthDeviceModelComponentBase::BuildParameters()
-{
-	//processorParameterGroup = juce::AudioProcessorParameterGroup(ShortName, LongName, ".");
-	  
-	/*juce::AudioProcessorValueTreeState& vt = Root->SynthProcessor->parameters;
-	
-	for each (imbControlParameter * par in Parameters)
-	{
-		par->Connect(Parent);
-
-	}
-
-	for each (SynthDeviceModelComponentBase * child in ChildComponents)
-	{
-		child->BuildParameters();
-	}*/
-}
+//void SynthDeviceModelComponentBase::BuildParameters()
+//{
+//	//processorParameterGroup = juce::AudioProcessorParameterGroup(ShortName, LongName, ".");
+//	  
+//	/*juce::AudioProcessorValueTreeState& vt = Root->SynthProcessor->parameters;
+//	
+//	for each (imbControlParameter * par in Parameters)
+//	{
+//		par->Connect(Parent);
+//
+//	}
+//
+//	for each (SynthDeviceModelComponentBase * child in ChildComponents)
+//	{
+//		child->BuildParameters();
+//	}*/
+//}
 //
 //void SynthDeviceModelComponentBase::SetParent(SynthDeviceModelComponentBase * _model, ModelComponentWithChildren * _parent, ParameterController * _parameterControllerPtr)
 //{
@@ -114,6 +131,6 @@ void SynthDeviceModelComponentBase::BuildParameters()
 //	PreDeploy(_root, _parent, _shortName, _longName);
 //}
 
-SynthDeviceModelComponentBase::SynthDeviceModelComponentBase()
-{
-}
+//SynthDeviceModelComponentBase::SynthDeviceModelComponentBase()
+//{
+//}

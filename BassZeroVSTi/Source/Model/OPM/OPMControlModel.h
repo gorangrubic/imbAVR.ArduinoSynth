@@ -15,13 +15,13 @@
 #include "../Core/ModelComponentDescription.h"
 //#include "../SynthDeviceModel.h"
 
-#include "MacroControlLink.h";
-#include "OPMSignalUnit.h";
+#include "MacroControlLink.h"
+#include "OPMSignalUnit.h"
 
 
 
 class OPMControlModel:
-	public ModelComponentDescription,
+	//public ModelComponentDescription,
 	public ModelComponentWithChildren {
 
 public:

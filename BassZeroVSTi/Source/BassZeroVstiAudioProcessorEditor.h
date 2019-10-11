@@ -12,14 +12,18 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "BassZeroVstiAudioProcessor.h"
+#include "BassZeroInterface.h"
 
 //==============================================================================
 /**
 */
 class BassZeroVstiAudioProcessorEditor  : public AudioProcessorEditor
 {
+
+	
+
 public:
-    BassZeroVstiAudioProcessorEditor (BassZeroVstiAudioProcessor&);
+	BassZeroVstiAudioProcessorEditor(BassZeroVstiAudioProcessor&);
     ~BassZeroVstiAudioProcessorEditor();
 
     //==============================================================================
@@ -30,6 +34,6 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     BassZeroVstiAudioProcessor& processor;
-
+	//BassZeroGUI bassZeroGUI;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BassZeroVstiAudioProcessorEditor)
 };

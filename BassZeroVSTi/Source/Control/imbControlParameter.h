@@ -12,6 +12,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "imbControlParameterEnumerations.h"
+#include "imbEnumerationList.h"
+#include "ParameterController.h"
 
 //#include "../Model/SynthDeviceModelComponentBase.h"
 //#include "../Model/SynthDeviceModel.h"
@@ -76,13 +78,24 @@ struct BoolListener : public AudioProcessorValueTreeState::Listener
 };
 
 
+class imbProcessorParameterListener : public AudioProcessorParameter::Listener {
 
+	void parameterValueChanged(int parameterIndex, float newValue);
 
-class imbControlParameter
+	void parameterGestureChanged(int parameterIndex, bool gestureIsStarting);
+
+	imbProcessorParameterListener() {};
+};
+
+using pt = AudioProcessorValueTreeState::Parameter;
+
+class imbControlParameter 
+	
 {
 
 
 public:
+
 
 	
 	imbEnumerationList * enumerationList;
@@ -94,11 +107,11 @@ public:
 	//SynthDeviceModel * Root;
 	
 
-	FloatListener Listener;
+	//imbProcessorParameterListener Listener;
 
-	std::vector<juce::String> choiceItems;
+//	std::vector<juce::String> choiceItems;
 
-	AudioProcessorParameter::Category category;
+	AudioProcessorParameter::Category category = AudioProcessorParameter::Category::genericParameter;
 
 	// ============= setup methods
 
@@ -112,17 +125,23 @@ public:
 	
 	
 	// ========================== Slider assigment
-	Slider* assignedSlider;
+	//Slider* assignedSlider;
 
-	bool SliderMoved(Slider* sliderThatWasMoved);
+	//bool SliderMoved(Slider* sliderThatWasMoved);
 
-	void SliderUpdate();
+	//void SliderUpdate();
+
+	juce::String valueToString(float v, int maxLen);
+	float stringToValue(juce::String input);
 
 
-
+/*
+	std::function<String> valueToString;
+	std::function<float> stringToValue;
+*/
 	// ========================== VSTi parameters
 	String parameterIDPath;
-
+	String parameterParentPath;
 	String parameterID;
 	String parameterLabel;
 	String parameterUnit;
@@ -152,8 +171,12 @@ public:
 
 	//std::unique_ptr<AudioParameterInt> parameter;
 
-	juce::RangedAudioParameter * parameter; // = AudioParameterInt(&parameterID, &parameterID, MinValue, MaxValue, Value);
+	//pt * parameter; // = AudioParameterInt(&parameterID, &parameterID, MinValue, MaxValue, Value);
 
+	//RangedAudioParameter * rangedParameter;
+	//std::unique_ptr<RangedAudioParameter> ptr;
+
+	void SetParameter(std::shared_ptr<ParameterController> parameterControllerPtr, AudioProcessorParameterGroup * group);
 
 	// ========================== CC MIDI parameters
 
@@ -187,12 +210,12 @@ public:
 	/// <returns>true if given value was different from existing ccValue</returns>
 	bool SetValue(int _newValue);
 
-	void detachControl();
-	void attachControl(Slider& slider);
+	//void detachControl();
+	//void attachControl(Slider& slider);
 	
-	SliderAttachment* pSliderAttachment;
+	//SliderAttachment* pSliderAttachment;
 
-	 imbControlParameter() :Listener(Value, 1.0F) { };
+	imbControlParameter(); //:Listener(Value, 1.0F) { };
 
 	~imbControlParameter();
 };

@@ -16,17 +16,26 @@
 class ModelComponentDescription {
  
     public:
-    	    String NamePrefix;
-            String ShortName;
-	        String LongName;
+
+		juce::String NamePrefix = juce::String();
+		juce::String ShortName = juce::String();
+		juce::String LongName = juce::String();
+
+			//String ParentPath;
+
+			//virtual void SetParentPath(String _parentPath) = 0;
 
 			/// <summary>
-/// The parameter controller - machanism for CC / SysExc ID synthnronization
-/// </summary>
-			ParameterController * parameterControllerPtr;
+			/// The parameter controller - machanism for CC / SysExc ID synthnronization
+			/// </summary>
+			std::shared_ptr<ParameterController> parameterControllerPtr = nullptr;
 	        
-			void SetDescription(String _shortName, String _longName, ParameterController * _parameterControllerPtr);
+			void SetDescription(juce::String _shortName, juce::String _longName, std::shared_ptr<ParameterController> _parameterControllerPtr);
 
-	        ModelComponentDescription();
+			ModelComponentDescription():
+				NamePrefix{ "" }, ShortName{ "" }, LongName{ "" } 
+			{
+			
+			};
 
 };

@@ -27,8 +27,11 @@ class SynthDeviceModelComponentBase:
 	
     public:
     
+		void ConstructComponentParameters();
+		std::vector<std::shared_ptr<imbControlParameter>> Parameters { };
 
 
+		//AudioProcessorParameterGroup * group;
 
 	//SynthDeviceModel * Root;
 	//ModelComponentDescription * Parent;
@@ -36,23 +39,23 @@ class SynthDeviceModelComponentBase:
 	 //  void PreDeploy(String _shortName, String _longName);
 
 
-	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
+	   void AddBoolParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified, String _parameterParentPath = "");
 
 	   
 
-	   void AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList * items, int initIndexValue=0, int _ccID = -1, bool _isAutomated = false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
+	   void AddEnumParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, imbEnumerationList * items, int initIndexValue=0, int _ccID = -1, bool _isAutomated = false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified, String _parameterParentPath = "");
 
-	   void AddCCParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, int initValue = 0, int minValue = 0, int maxValue = 127,int _ccID = -1, bool _isAutomated = true,  imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
+	   void AddCCParameter(imbControlParameter * output, String _parameterID, String _parameterLabel, int initValue = 0, int minValue = 0, int maxValue = 127,int _ccID = -1, bool _isAutomated = true,  imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified, String _parameterParentPath = "");
 
 	   void AddParameter(imbControlParameter * output,String _parameterID, String _parameterLabel,
 		   float minValue, float maxValue, float initValue,
 		   String _parameterUnit,
-		   int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified);
+		   int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified, String _parameterParentPath = "");
 
 
-	   void BuildParameters();
+	  // void BuildParameters();
 
-	   std::list<imbControlParameter*> Parameters;
+	   
 
 	   
 	//   juce::AudioProcessorParameterGroup processorParameterGroup;
@@ -75,6 +78,6 @@ class SynthDeviceModelComponentBase:
 			 //  LongName(_longName)
 	   //};
 
-	   SynthDeviceModelComponentBase();
+	   SynthDeviceModelComponentBase() :ModelComponentDescription() {};
 
 };

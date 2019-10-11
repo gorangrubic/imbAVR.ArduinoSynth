@@ -15,7 +15,7 @@ void ModulationSourceMIDI::Deploy()
   }
 
   ModulationSourceMIDI::ModulationSourceMIDI() {
-	type = ModulationSourceType::MIDI;
+	//type = ModulationSourceType::MIDI;
 
 }
 

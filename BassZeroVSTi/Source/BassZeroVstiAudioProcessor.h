@@ -14,6 +14,7 @@
 #include "Control\imbSynthAudioProcessor.h"
 #include "Model\SynthDeviceModel.h"
 #include "BassZeroSynthModel.h"
+#include "../Source/Data/imbSynthStateData.h"
 
 //==============================================================================
 /**
@@ -23,11 +24,12 @@ class BassZeroVstiAudioProcessor  : public imbSynthAudioProcessor
 public:
 
 	BassZeroSynthModel bassZeroModel;
+	imbSynthStateData bassZeroState;
 
     //==============================================================================
 	BassZeroVstiAudioProcessor() :
 		bassZeroModel(),
-		imbSynthAudioProcessor((SynthDeviceModel *)&bassZeroModel, "BassZero") {
+		imbSynthAudioProcessor(&bassZeroModel, "BassZero") {
 	};
     ~BassZeroVstiAudioProcessor();
 

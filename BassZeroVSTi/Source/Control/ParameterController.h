@@ -14,6 +14,21 @@ class ParameterController
 public:
 
 	juce::AudioProcessorValueTreeState * parameters;
+	AudioProcessor * processor;
+
+//	std::vector<std::unique_ptr<AudioProcessorParameterGroup::AudioProcessorParameterNode>> params;
+
+	//template<typename T>
+	//void AddParam(AudioProcessorParameter * parameter, AudioProcessorParameterGroup * group) {
+	//	
+	//	auto up = std::unique_ptr<T>(parameter);
+	//	group->addChild(up);
+	//	
+	//	//
+	//	//		//group->addChild(parameter);
+	//	processor->addParameter(parameter);
+	//}
+
 
 	imbEnumerationList ListOfPitchUnits;
 	imbEnumerationList ListOfModulationModes;
@@ -41,7 +56,7 @@ public:
 	unsigned int CurrentPage = 0;
 	unsigned int CurrentRow = 0;
 
-	void Setup(juce::AudioProcessorValueTreeState * _parameters);
+	void Setup(juce::AudioProcessorValueTreeState * _parameters, AudioProcessor * _processor);
 	
 	/// <summary>
 	/// Gets proper next identifier, according to given message type.
@@ -81,7 +96,14 @@ public:
 
 	bool Next();
 
-	ParameterController();
+	ParameterController() :
+		ListOfLFOFunctions(), ListOfMacroLinks(), ListOfModulationFunctions(), ListOfModulationModes(), ListOfModulationParameters(), ListOfPitchUnits(), ListOfSignalUnits(), ListOfSources(),
+		CurrentColumn{ 0 }, CurrentPage{ 0 }, CurrentRow{ 0 }, CurrentSysExclusinveID{ 0 }, PageColumnCount{ 8 }, PageSize{ 47 }, RowCCIDSpan{ 8 }, RowInColumnCount{3}, StartingCCID{10}
+	
+	{
+
+	};
+
 	~ParameterController();
 };
 

@@ -12,22 +12,26 @@
 
 void imbEnumerationList::Add(String item)
 {
-	Items.push_back(item);
+	Items.add(item);
+
+	//Items.push_back(item);
 }
 
 int imbEnumerationList::IndexOf(String item)
   {
-	int i = 0;
-	int output = -1;
-	for each (String var in Items)
-	{
-		if (var == item) {
-			output = i;
-			break;
-		}
-		i++;
-	}
-	return output;
+	return Items.indexOf(item, false, 0);
+
+	//int i = 0;
+	//int output = -1;
+	//for each (String var in Items)
+	//{
+	//	if (var == item) {
+	//		output = i;
+	//		break;
+	//	}
+	//	i++;
+	//}
+	//return output;
   }
 
 int imbEnumerationList::Count()
@@ -35,6 +39,12 @@ int imbEnumerationList::Count()
 	return Items.size();
 }
 
-imbEnumerationList::imbEnumerationList()
+StringArray imbEnumerationList::GetItems()
 {
+	return Items;
+	
 }
+//
+//imbEnumerationList::imbEnumerationList()
+//{
+//}

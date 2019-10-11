@@ -11,6 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Core\ModelComponentDescription.h"
+#include "../Model/Core/SharedPointerVector.h"
 
 #include "../Control/ParameterController.h"
 #include "../Control/imbControlParameter.h"
@@ -32,15 +33,25 @@
 
 #include "SynthDeviceModelComponentBase.h"
 
+#define MODULATIONS modulations.
+#define OPMCONTROL opmControl.
+#define COMPONENTS components.
 
 #include <vector>
 
 //#include "../Source/Control/imbSynthAudioProcessor.h"
+static juce::String MODHUB_ID = juce::String("MOD");
+static juce::String MODHUB_LABEL = juce::String("Modulation sources");
 
+static juce::String COMP_ID = juce::String("COMP");
+static juce::String COMP_LABEL = juce::String("Synth Components");
+
+static juce::String OPM_ID = juce::String("OPM");
+static juce::String OPM_LABEL = juce::String("Operation Mode Control");
 
 class SynthDeviceModel : 
-	public ModelComponentWithChildren,
-	public SynthDeviceModelComponentBase
+	public ModelComponentWithChildren
+	//public SynthDeviceModelComponentBase
 
 { //: {
  
@@ -57,6 +68,10 @@ class SynthDeviceModel :
 		ComponentHub components;
 		OPMControlModel opmControl;
 
+	//std::unique_ptr<ModulationHub> modulations;
+	//std::unique_ptr<ComponentHub> components;
+	//std::unique_ptr<OPMControlModel> opmControl;
+
 		void PreDeployModel();
 		void AfterDeployModel();
 
@@ -68,18 +83,29 @@ class SynthDeviceModel :
 		ParameterController parameterController;
 
 		
+		
 		/// <summary>
 /// Deploys this instance.
 /// </summary>
 		void Deploy();
 
+		void ConstructParameters(juce::AudioProcessorValueTreeState * parameters, AudioProcessor * processor);
+
+		
 
 		/*Deploys model*/
 		virtual void DeployModel() = 0;
 
 
 
-		SynthDeviceModel();
+		SynthDeviceModel() :ModelComponentWithChildren(),
+			parameterController(),
+			modulations(), 
+			components(), 
+			opmControl()
+		{ 
+		
+		};
 
 	/*	SynthDeviceModel(String _shortName, String _longName) :SynthDeviceModelComponentBase(NULL, NULL, _shortName, _longName) {
 		

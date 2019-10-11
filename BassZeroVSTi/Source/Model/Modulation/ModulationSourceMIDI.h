@@ -26,7 +26,7 @@ public:
 	/// </summary>
 	void Deploy() ;
 
-	ModulationSourceMIDIType typeMidi = ModulationSourceMIDIType::velocity;
+//	ModulationSourceMIDIType typeMidi = ModulationSourceMIDIType::velocity;
 
 	ModulationSourceMIDI();
 

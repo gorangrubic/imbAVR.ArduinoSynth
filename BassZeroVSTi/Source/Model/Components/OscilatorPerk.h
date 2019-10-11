@@ -16,7 +16,7 @@
 
 
 class OscilatorPerk : 
-	public SynthDeviceModelComponentBase,
+	//public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren {
 
 public:

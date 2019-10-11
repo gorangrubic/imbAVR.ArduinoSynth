@@ -16,7 +16,7 @@ void OPMControlModel::AddSignalUnit(OPMSignalUnit * SignalUnit, String _shortNam
 	AddChild(SignalUnit);
 	Units.push_back(SignalUnit);
 	SignalUnit->SetDescription(_shortName, _longName, parameterControllerPtr);
-	SignalUnit->SetParent(model, this);
+	//SignalUnit->SetParent(model, this);
 	//SignalUnit->Deploy();
 }
 

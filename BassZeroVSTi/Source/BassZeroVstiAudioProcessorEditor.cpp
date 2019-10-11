@@ -15,9 +15,14 @@
 BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVstiAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
+	
+	
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+
+
+	//addChildComponent(bassZeroGUI);
 }
 
 BassZeroVstiAudioProcessorEditor::~BassZeroVstiAudioProcessorEditor()

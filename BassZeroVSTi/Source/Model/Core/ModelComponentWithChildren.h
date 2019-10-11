@@ -12,31 +12,54 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Model/SynthDeviceModelComponentBase.h"
 #include "ModelComponentDescription.h"
+#include "SharedPointerVector.h"
+#include <vector>
 
 #include "../Source/Control/ParameterController.h"
 #include "../Source/Control/imbControlParameter.h"
 
-class ModelComponentWithChildren {
+class ModelComponentWithChildren:
+	public SynthDeviceModelComponentBase {
     
     public:
 
-		SynthDeviceModelComponentBase * model;
-		ModelComponentWithChildren * parent;
+		std::shared_ptr<SynthDeviceModelComponentBase> model = nullptr;
+		std::shared_ptr<ModelComponentWithChildren> parent = nullptr;
 
 		/// <summary>
 		/// The parameter controller - machanism for CC / SysExc ID synthnronization
 		/// </summary>
 		//ParameterController * parameterControllerPtr;
 
+		String GetParentPath(ModelComponentDescription current);
 
-		void SetParent(SynthDeviceModelComponentBase * _model, ModelComponentWithChildren * _parent);
+		void SetParent(std::shared_ptr<SynthDeviceModelComponentBase> _model, ModelComponentWithChildren * _parent);
+
+		//void SetParent(SynthDeviceModelComponentBase * _model, ModelComponentWithChildren * _parent);
 		
     
+		void SetParent(std::shared_ptr<SynthDeviceModelComponentBase> _model, std::shared_ptr<ModelComponentWithChildren> _parent);
+
 		void AddChild(SynthDeviceModelComponentBase* child);
 
+		void AddChild(ModelComponentWithChildren* child);
+
+
+		void ConstructComponentAndChildComponentParameters();
+
 		
+		//std::shared_ptr<imbControlParameter> shared = std::shared_ptr<imbControlParameter>(output);
 
-		std::list<SynthDeviceModelComponentBase*> ChildComponents;
+		//Parameters.push_back(shared);
 
-		ModelComponentWithChildren();
+		SharedPointerVector<SynthDeviceModelComponentBase> ChildComponents;
+		SharedPointerVector<ModelComponentWithChildren> ChildWithChildren;
+		//std::vector<std::shared_ptr<SynthDeviceModelComponentBase>> ChildComponents { };
+		//std::vector<std::shared_ptr<ModelComponentWithChildren>> ChildWithChildren { };
+
+		/*std::vector<SynthDeviceModelComponentBase*> ChildComponents;
+
+		std::vector<ModelComponentWithChildren*> ChildWithChildren;*/
+
+		ModelComponentWithChildren() : SynthDeviceModelComponentBase() {};
 };

@@ -19,7 +19,7 @@
 
 
 class OPMSignalUnit:
-	public SynthDeviceModelComponentBase,
+	//public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren
 {
 

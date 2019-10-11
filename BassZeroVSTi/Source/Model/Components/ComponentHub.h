@@ -28,7 +28,7 @@
 
 
 class ComponentHub : 
-	public SynthDeviceModelComponentBase,
+	//public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren {
 
 
@@ -45,7 +45,7 @@ public:
 	void AddWaveform(OscilatorWaveform * output);
 	void AddPerk(OscilatorPerk * output);
 
-	ComponentHub();
+	ComponentHub() :ModelComponentWithChildren() {};
 
 	//ComponentHub(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }
 

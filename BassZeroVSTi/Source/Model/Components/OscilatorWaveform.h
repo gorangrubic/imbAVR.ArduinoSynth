@@ -14,7 +14,7 @@
 #include "../Core/ModelComponentWithChildren.h"
 
 class OscilatorWaveform : 
-	public SynthDeviceModelComponentBase,
+	//public SynthDeviceModelComponentBase,
 	public ModelComponentWithChildren 
 {
 

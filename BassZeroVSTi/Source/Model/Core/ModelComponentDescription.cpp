@@ -10,25 +10,25 @@
 
 #include "ModelComponentDescription.h"
 
-void ModelComponentDescription::SetDescription(String _shortName, String _longName, ParameterController * _parameterControllerPtr)
+void ModelComponentDescription::SetDescription(juce::String _shortName, juce::String _longName, std::shared_ptr<ParameterController> _parameterControllerPtr)
   {
-	if (NamePrefix == "") {
+	if (NamePrefix.isEmpty()) {
 		ShortName = _shortName;
 	}
 	else {
 		ShortName = NamePrefix + "_" + _shortName;
 	}
 
-	if (LongName == "") {
+	if (LongName.isEmpty()) {
 		LongName = NamePrefix + " " + _shortName;
 	}
 	else {
 		LongName = _longName;
 	}
 
-	parameterControllerPtr = _parameterControllerPtr;
+	parameterControllerPtr = _parameterControllerPtr; //std::shared_ptr<ParameterController>(_parameterControllerPtr);
   }
 
-  ModelComponentDescription::ModelComponentDescription()
-  {
-  }
+//ModelComponentDescription::ModelComponentDescription() :ShortName{ "" }, LongName{ "" }, NamePrefix{""}
+//  {
+//  }

@@ -22,6 +22,10 @@
           <FILE id="dyOBV4" name="ModelModulatedControl.h" compile="0" resource="0"
                 file="Source/Model/Core/ModelModulatedControl.h"/>
           <FILE id="Spv6ad" name="README.md" compile="0" resource="1" file="Source/Model/Core/README.md"/>
+          <FILE id="H0ClhG" name="SharedPointerVector.cpp" compile="1" resource="0"
+                file="Source/Model/Core/SharedPointerVector.cpp"/>
+          <FILE id="sWiQjA" name="SharedPointerVector.h" compile="0" resource="0"
+                file="Source/Model/Core/SharedPointerVector.h"/>
         </GROUP>
         <GROUP id="{2C5118E3-4EE1-978A-9BA6-CD77D7A3C329}" name="Components">
           <FILE id="XnF8bS" name="ComponentHub.cpp" compile="1" resource="0"

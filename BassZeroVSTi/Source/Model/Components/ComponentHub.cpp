@@ -30,7 +30,7 @@ void ComponentHub::AddWaveform(OscilatorWaveform * output)
 	
 	oscilatorWaveforms.push_back(output);
 	output->SetDescription(_shortName, _longName, parameterControllerPtr);
-	output->SetParent(model, this);
+	//output->SetParent(model, this);
 }
 
 void ComponentHub::AddPerk(OscilatorPerk * output)
@@ -43,7 +43,7 @@ void ComponentHub::AddPerk(OscilatorPerk * output)
 
 	oscilatorPerks.push_back(output);
 	output->SetDescription(_shortName, _longName, parameterControllerPtr);
-	output->SetParent(model,this);
+//	output->SetParent(model,this);
 }
 
 void ComponentHub::Deploy()
@@ -67,7 +67,7 @@ void ComponentHub::Deploy()
 }
 
 
-
-ComponentHub::ComponentHub()
-{
-}
+//
+//ComponentHub::ComponentHub()
+//{
+//}

@@ -3,9 +3,11 @@
 #include "imbControlParameter.h"
 
 
-void ParameterController::Setup(juce::AudioProcessorValueTreeState * _parameters)
+
+void ParameterController::Setup(juce::AudioProcessorValueTreeState * _parameters, AudioProcessor * _processor)
 {
 	parameters = _parameters;
+	processor = _processor;
 }
 /// <summary>
 /// Gets the proper identifier.
@@ -91,12 +93,38 @@ bool ParameterController::Next()
 		return true;
 	}
 }
-
-ParameterController::ParameterController()
-{
-}
+//
+//ParameterController::ParameterController()
+//
+//{
+//}
 
 
 ParameterController::~ParameterController()
 {
 }
+
+//void ParameterController::AddParam(AudioProcessorParameter * parameter, AudioProcessorParameterGroup * group)
+//{
+//
+//	
+//		group->addChild<AudioProcessorParameter>(parameter);
+//
+//		//group->addChild(parameter);
+//		processor->addParameter(parameter);
+//
+//		//auto up = std::unique_ptr<AudioProcessorParameter>((AudioProcessorParameter *)parameter);
+//		//
+//		//AudioProcessorParameterGroup::AudioProcessorParameterNode node = AudioProcessorParameterGroup::AudioProcessorParameterNode(up, group);
+//
+//
+//		//auto upn = std::unique_ptr<AudioProcessorParameterGroup::AudioProcessorParameterNode>(node);
+//
+//		////auto up = std::unique_ptr< AudioProcessorParameterGroup::AudioProcessorParameterNode>()
+//		//
+//		////std::unique_ptr<T> up = std::unique_ptr<T>((T*)parameter);
+//		//////	parameters->processor.addParameter(parameter);
+//
+//		//params.push_back(upn);
+//	
+//}

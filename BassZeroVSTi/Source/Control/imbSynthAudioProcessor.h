@@ -22,8 +22,9 @@ public:
 	juce::AudioProcessorValueTreeState parameters;
 	juce::Identifier rootIdentifier;
 	
+	void DeployModel();
 
-	AudioProcessorValueTreeState::ParameterLayout CreateParameterLayout();
+//	AudioProcessorValueTreeState::ParameterLayout CreateParameterLayout();
 
 	void audioProcessorParameterChanged(AudioProcessor* processor,
 		int parameterIndex,
@@ -38,8 +39,13 @@ public:
 		model{ _model },
 		undoManager(),
 		rootIdentifier(name),
-		parameters(*this, &this->undoManager, name, CreateParameterLayout())
-	{};
+		parameters(*this, &this->undoManager)
+		//parameters(*this, &this->undoManager, name, CreateParameterLayout())
+	{
+		DeployModel();
+
+	
+	};
 	
 	~imbSynthAudioProcessor();
 };

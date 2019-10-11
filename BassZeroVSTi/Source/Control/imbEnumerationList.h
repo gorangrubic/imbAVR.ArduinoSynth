@@ -16,7 +16,9 @@ class imbEnumerationList {
 	
 	public:
 
-		std::vector<String> Items;
+		//std::vector<String> Items;
+
+		StringArray Items;
 
 		void Add(String item);
 
@@ -25,5 +27,7 @@ class imbEnumerationList {
 
 		int Count();
 
-		imbEnumerationList();
+		StringArray GetItems();
+
+		imbEnumerationList() :Items() {};
 };
