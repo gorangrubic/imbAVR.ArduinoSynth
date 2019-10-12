@@ -7,6 +7,22 @@
               companyEmail="hardy@veles.rs">
   <MAINGROUP id="u0F6E1" name="BassZeroVSTi">
     <GROUP id="{D77581B4-8CF9-72FB-081F-DCC82E4EC583}" name="Source">
+      <GROUP id="{27EF8916-5484-36E5-E916-591A4447043C}" name="Application">
+        <GROUP id="{8F2357CF-9AC2-D7CD-9D1A-9BE10C4372EE}" name="Help">
+          <FILE id="I1rcQv" name="HelpResourcesManager.cpp" compile="1" resource="0"
+                file="Source/Application/Help/HelpResourcesManager.cpp"/>
+          <FILE id="ifoUgV" name="HelpResourcesManager.h" compile="0" resource="0"
+                file="Source/Application/Help/HelpResourcesManager.h"/>
+          <FILE id="p06sOg" name="RandomTip.cpp" compile="1" resource="0" file="Source/Application/Help/RandomTip.cpp"/>
+          <FILE id="DdJTEY" name="RandomTip.h" compile="0" resource="0" file="Source/Application/Help/RandomTip.h"/>
+        </GROUP>
+        <FILE id="v049wv" name="CommandIDs.cpp" compile="1" resource="0" file="Source/Application/CommandIDs.cpp"/>
+        <FILE id="AzG7R8" name="CommandIDs.h" compile="0" resource="0" file="Source/Application/CommandIDs.h"/>
+        <FILE id="bk5k4u" name="SynthApplicationBase.cpp" compile="1" resource="0"
+              file="Source/Application/SynthApplicationBase.cpp"/>
+        <FILE id="MntATZ" name="SynthApplicationBase.h" compile="0" resource="0"
+              file="Source/Application/SynthApplicationBase.h"/>
+      </GROUP>
       <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
         <GROUP id="{DBF45F66-8B5D-8ECD-1186-021B70922C11}" name="Core">
           <FILE id="NkErMT" name="ModelComponentDescription.cpp" compile="1"
@@ -168,6 +184,18 @@
         <FILE id="dAizFc" name="README.md" compile="0" resource="1" file="Source/Control/README.md"/>
       </GROUP>
       <GROUP id="{A1E69F2B-739B-6421-F522-AAF614DDC146}" name="GUI">
+        <GROUP id="{EBA3489F-B953-DEE7-B265-E1355A74CC1F}" name="Help">
+          <FILE id="DBGqUw" name="AboutScreen.cpp" compile="1" resource="0" file="Source/GUI/Help/AboutScreen.cpp"/>
+          <FILE id="vJ4XXx" name="AboutScreen.h" compile="0" resource="0" file="Source/GUI/Help/AboutScreen.h"/>
+          <FILE id="w8cUY2" name="DocumentReader.cpp" compile="1" resource="0"
+                file="Source/GUI/Help/DocumentReader.cpp"/>
+          <FILE id="vv5jvJ" name="DocumentReader.h" compile="0" resource="0"
+                file="Source/GUI/Help/DocumentReader.h"/>
+          <FILE id="nlQpH4" name="QuickTourScreen.cpp" compile="1" resource="0"
+                file="Source/GUI/Help/QuickTourScreen.cpp"/>
+          <FILE id="yf46i0" name="QuickTourScreen.h" compile="0" resource="0"
+                file="Source/GUI/Help/QuickTourScreen.h"/>
+        </GROUP>
         <GROUP id="{9AE5526F-9065-C3C9-EB1E-58B121707B40}" name="Components">
           <FILE id="Oqe4ke" name="ADSREditor.cpp" compile="1" resource="0" file="Source/GUI/Components/ADSREditor.cpp"/>
           <FILE id="wAWKMj" name="ADSREditor.h" compile="0" resource="0" file="Source/GUI/Components/ADSREditor.h"/>
@@ -330,6 +358,10 @@
             resource="0" file="Source/BassZeroVstiAudioProcessorEditor.cpp"/>
       <FILE id="XcVO5n" name="BassZeroVstiAudioProcessorEditor.h" compile="0"
             resource="0" file="Source/BassZeroVstiAudioProcessorEditor.h"/>
+      <FILE id="sdnkjc" name="BassZeroApplication.cpp" compile="1" resource="0"
+            file="Source/BassZeroApplication.cpp"/>
+      <FILE id="AUdDMv" name="BassZeroApplication.h" compile="0" resource="0"
+            file="Source/BassZeroApplication.h"/>
       <FILE id="RBVx98" name="README.md" compile="0" resource="1" file="Source/README.md"/>
     </GROUP>
   </MAINGROUP>
@@ -419,7 +451,7 @@
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <LIVE_SETTINGS>
-    <WINDOWS buildEnabled="1"/>
+    <WINDOWS buildEnabled="0"/>
   </LIVE_SETTINGS>
   <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
 </JUCERPROJECT>
