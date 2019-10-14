@@ -32,7 +32,8 @@ public:
 	BassZeroVstiAudioProcessor() :
 		bassZeroModel(),
 		imbSynthAudioProcessor(&bassZeroModel, "BassZero"),
-	bassZeroApplication()
+		bassZeroState(&bassZeroModel, &parameters),
+		bassZeroApplication(&bassZeroModel, this, &bassZeroState)
 	{
 
 

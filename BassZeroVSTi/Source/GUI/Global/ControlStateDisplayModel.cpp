@@ -12,6 +12,13 @@
 
 
 
-ControlStateDisplayModel::ControlStateDisplayModel()
+void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
+  {
+	parameterID = parameter->parameterID + " [ " + parameter->parameterLabel + " ]";
+	parameterGroup = parameter->parameterParentPath;
+	parameterValue = juce::String(parameter->Value);
+  }
+
+  ControlStateDisplayModel::ControlStateDisplayModel()
 {
 }

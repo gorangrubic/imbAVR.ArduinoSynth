@@ -8,6 +8,10 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Control/ParameterController.h"
 
+//#include "../GUI/Global/CommandBufferDisplay.h"
+//#include "../GUI/Global/ControlStateDisplay.h"
+//#include "../GUI/Global/SynthStateDisplay.h"
+
 #include "../GUI/Global/CommandBufferDisplayModel.h"
 #include "../GUI/Global/ControlStateDisplayModel.h"
 #include "../GUI/Global/SynthStateDisplayModel.h"
@@ -23,16 +27,22 @@ public:
 
 // ======================== Display models
 
-    CommandBufferDisplayModel bufferDisplayModel;
-    ControlStateDisplayModel controlDisplayModel;
-    SynthStateDisplayModel stateDisplayModel;
+    std::unique_ptr<CommandBufferDisplayModel> bufferDisplayModel;
+
+	//std::shared_ptr<ControlStateDisplay> controlStateDisplay{ nullptr };
+
+	std::unique_ptr<ControlStateDisplayModel> controlDisplayModel;
+    
+	
+	//std::shared_ptr<SynthStateDisplay> synthStateDisplay{ nullptr };
+	std::unique_ptr<SynthStateDisplayModel> stateDisplayModel;
     
 	PresetFileBrowserModel libraryFileBrowserModel;
 
 
 // ======================== ENVIRONMENT DATA
 
-	SynthDeviceModel * model;
+	std::shared_ptr<SynthDeviceModel> model;
 
 // ======================== STATE DATA
 
@@ -47,8 +57,23 @@ public:
 	imbSynthGeneralConfiguration configuration;
 	imbSynthStateUtilityData utilityData;
 
+	juce::String inFocusParameterID{ "" };
 
-	imbSynthStateData();
+	
+
+	void SetParameterInFocus(imbControlParameter * parameter);
+
+
+	imbSynthStateData(SynthDeviceModel * _model, juce::AudioProcessorValueTreeState * _parameters) :
+		model{ _model },
+		parameters{ _parameters },
+		bufferDisplayModel(new CommandBufferDisplayModel()),
+		controlDisplayModel(new ControlStateDisplayModel()),
+		stateDisplayModel( new SynthStateDisplayModel() ),
+		libraryFileBrowserModel{ PresetFileBrowserModel() }
+	{
+
+	}
 	~imbSynthStateData();
 };
 

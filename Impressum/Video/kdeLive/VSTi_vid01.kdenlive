@@ -1,10 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mlt title="Anonymous Submission" LC_NUMERIC="en_US" producer="main_bin" version="6.16.0" root="G:/imbVelesOpenSource/imbAVR/Impressum/Video/kdeLive">
  <profile frame_rate_num="10" sample_aspect_num="1" display_aspect_den="1024" colorspace="709" progressive="1" description="1912x1024 10.00fps" display_aspect_num="1908" frame_rate_den="1" width="1912" height="1024" sample_aspect_den="1"/>
- <producer title="Anonymous Submission" id="producer0" in="00:00:00.000" out="00:00:01.267">
+ <producer title="Anonymous Submission" id="producer0" in="00:00:00.000" out="00:00:01.300">
   <property name="length">39</property>
   <property name="eof">pause</property>
   <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1429_40.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
   <property name="meta.media.nb_streams">1</property>
   <property name="meta.media.0.stream.type">video</property>
   <property name="meta.media.0.stream.frame_rate">10</property>
@@ -23,10 +27,6 @@
   <property name="meta.media.sample_aspect_num">1</property>
   <property name="meta.media.sample_aspect_den">1</property>
   <property name="aspect_ratio">1</property>
-  <property name="audio_index">-1</property>
-  <property name="video_index">0</property>
-  <property name="mute_on_pause">1</property>
-  <property name="mlt_service">avformat-novalidate</property>
   <property name="kdenlive:clipname"/>
   <property name="meta.media.frame_rate_num">10</property>
   <property name="meta.media.frame_rate_den">1</property>
@@ -480,6 +480,10 @@
   <property name="length">448</property>
   <property name="eof">pause</property>
   <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1643_27.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
   <property name="meta.media.nb_streams">1</property>
   <property name="meta.media.0.stream.type">video</property>
   <property name="meta.media.0.stream.frame_rate">10</property>
@@ -498,10 +502,6 @@
   <property name="meta.media.sample_aspect_num">1</property>
   <property name="meta.media.sample_aspect_den">1</property>
   <property name="aspect_ratio">1</property>
-  <property name="audio_index">-1</property>
-  <property name="video_index">0</property>
-  <property name="mute_on_pause">1</property>
-  <property name="mlt_service">avformat-novalidate</property>
   <property name="kdenlive:clipname"/>
   <property name="meta.media.frame_rate_num">10</property>
   <property name="meta.media.frame_rate_den">1</property>
@@ -521,6 +521,10 @@
   <property name="length">390</property>
   <property name="eof">pause</property>
   <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1655_44.avi</property>
+  <property name="audio_index">-1</property>
+  <property name="video_index">0</property>
+  <property name="mute_on_pause">1</property>
+  <property name="mlt_service">avformat-novalidate</property>
   <property name="meta.media.nb_streams">1</property>
   <property name="meta.media.0.stream.type">video</property>
   <property name="meta.media.0.stream.frame_rate">10</property>
@@ -539,10 +543,6 @@
   <property name="meta.media.sample_aspect_num">1</property>
   <property name="meta.media.sample_aspect_den">1</property>
   <property name="aspect_ratio">1</property>
-  <property name="audio_index">-1</property>
-  <property name="video_index">0</property>
-  <property name="mute_on_pause">1</property>
-  <property name="mlt_service">avformat-novalidate</property>
   <property name="kdenlive:clipname"/>
   <property name="meta.media.frame_rate_num">10</property>
   <property name="meta.media.frame_rate_den">1</property>
@@ -562,6 +562,7 @@
   <property name="kdenlive:docproperties.activeTrack">3</property>
   <property name="kdenlive:docproperties.audioTarget">1</property>
   <property name="kdenlive:docproperties.decimalPoint">.</property>
+  <property name="kdenlive:docproperties.dirtypreviewchunks"/>
   <property name="kdenlive:docproperties.disablepreview">0</property>
   <property name="kdenlive:docproperties.documentid">1570285501022</property>
   <property name="kdenlive:docproperties.enableTimelineZone">0</property>
@@ -570,26 +571,6 @@
   <property name="kdenlive:docproperties.externalproxyparams"/>
   <property name="kdenlive:docproperties.generateimageproxy">0</property>
   <property name="kdenlive:docproperties.generateproxy">0</property>
-  <property name="kdenlive:docproperties.kdenliveversion">19.07.70</property>
-  <property name="kdenlive:docproperties.position">750</property>
-  <property name="kdenlive:docproperties.previewextension">avi</property>
-  <property name="kdenlive:docproperties.previewparameters">f=avi vcodec=mjpeg progressive=1 qscale=1</property>
-  <property name="kdenlive:docproperties.profile">C:/Users/gorangrubic/AppData/Roaming/kdenlive/profiles/customprofile1</property>
-  <property name="kdenlive:docproperties.proxyextension"/>
-  <property name="kdenlive:docproperties.proxyimageminsize">2000</property>
-  <property name="kdenlive:docproperties.proxyimagesize">800</property>
-  <property name="kdenlive:docproperties.proxyminsize">1000</property>
-  <property name="kdenlive:docproperties.proxyparams"/>
-  <property name="kdenlive:docproperties.scrollPos">0</property>
-  <property name="kdenlive:docproperties.seekOffset">30000</property>
-  <property name="kdenlive:docproperties.storagefolder">/1570285501022</property>
-  <property name="kdenlive:docproperties.version">0.99</property>
-  <property name="kdenlive:docproperties.verticalzoom">1</property>
-  <property name="kdenlive:docproperties.videoTarget">2</property>
-  <property name="kdenlive:docproperties.zonein">0</property>
-  <property name="kdenlive:docproperties.zoneout">1</property>
-  <property name="kdenlive:docproperties.zoom">8</property>
-  <property name="kdenlive:documentnotes"/>
   <property name="kdenlive:docproperties.groups">[
 ]
 </property>
@@ -601,8 +582,17 @@
     }
 ]
 </property>
-  <property name="kdenlive:docproperties.dirtypreviewchunks"/>
+  <property name="kdenlive:docproperties.kdenliveversion">19.07.70</property>
+  <property name="kdenlive:docproperties.position">222</property>
   <property name="kdenlive:docproperties.previewchunks"/>
+  <property name="kdenlive:docproperties.previewextension">avi</property>
+  <property name="kdenlive:docproperties.previewparameters">f=avi vcodec=mjpeg progressive=1 qscale=1</property>
+  <property name="kdenlive:docproperties.profile">C:/Users/gorangrubic/AppData/Roaming/kdenlive/profiles/customprofile1</property>
+  <property name="kdenlive:docproperties.proxyextension"/>
+  <property name="kdenlive:docproperties.proxyimageminsize">2000</property>
+  <property name="kdenlive:docproperties.proxyimagesize">800</property>
+  <property name="kdenlive:docproperties.proxyminsize">1000</property>
+  <property name="kdenlive:docproperties.proxyparams"/>
   <property name="kdenlive:docproperties.renderaudioquality">160</property>
   <property name="kdenlive:docproperties.rendercategory">Generic (HD for web, mobile devices...)</property>
   <property name="kdenlive:docproperties.renderendguide">0</property>
@@ -624,8 +614,18 @@
   <property name="kdenlive:docproperties.rendertwopass">0</property>
   <property name="kdenlive:docproperties.renderurl">untitled.mp4</property>
   <property name="kdenlive:docproperties.renderzone">0</property>
+  <property name="kdenlive:docproperties.scrollPos">0</property>
+  <property name="kdenlive:docproperties.seekOffset">30000</property>
+  <property name="kdenlive:docproperties.storagefolder">1570285501022</property>
+  <property name="kdenlive:docproperties.version">0.99</property>
+  <property name="kdenlive:docproperties.verticalzoom">1</property>
+  <property name="kdenlive:docproperties.videoTarget">2</property>
+  <property name="kdenlive:docproperties.zonein">0</property>
+  <property name="kdenlive:docproperties.zoneout">1</property>
+  <property name="kdenlive:docproperties.zoom">8</property>
+  <property name="kdenlive:documentnotes"/>
   <property name="xml_retain">1</property>
-  <entry producer="producer0" in="00:00:00.000" out="00:00:01.267"/>
+  <entry producer="producer0" in="00:00:00.000" out="00:00:01.300"/>
   <entry producer="producer1" in="00:00:00.000" out="00:00:14.700"/>
   <entry producer="producer2" in="00:00:00.000" out="00:00:07.700"/>
   <entry producer="producer3" in="00:00:00.000" out="00:00:03.500"/>
@@ -640,7 +640,7 @@
   <entry producer="producer12" in="00:00:00.000" out="00:00:44.700"/>
   <entry producer="producer13" in="00:00:00.000" out="00:00:38.900"/>
  </playlist>
- <producer id="black_track" in="00:00:00.000" out="00:17:05.967">
+ <producer id="black_track" in="00:00:00.000" out="00:51:17.900">
   <property name="length">2147483647</property>
   <property name="eof">continue</property>
   <property name="resource">black</property>
@@ -694,7 +694,6 @@
   <property name="kdenlive:audio_track">1</property>
   <entry producer="producer14" in="00:01:09.900" out="00:02:27.700">
    <property name="kdenlive:id">13</property>
-   <property name="kdenlive:activeeffect">0</property>
    <filter id="filter0">
     <property name="window">75</property>
     <property name="max_gain">20dB</property>
@@ -708,7 +707,7 @@
  <playlist id="playlist3">
   <property name="kdenlive:audio_track">1</property>
  </playlist>
- <tractor id="tractor1" in="00:00:00.000" out="00:00:25.933">
+ <tractor id="tractor1" in="00:00:00.000" out="00:01:17.800">
   <property name="kdenlive:audio_track">1</property>
   <property name="kdenlive:trackheight">50</property>
   <property name="kdenlive:collapsed">0</property>
@@ -1019,8 +1018,9 @@
   <property name="meta.media.height">1024</property>
   <property name="meta.media.top_field_first">0</property>
   <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:id">3</property>
  </producer>
- <producer title="Anonymous Submission" id="producer22" in="00:00:00.000" out="00:00:03.800">
+ <producer title="Anonymous Submission" id="producer22" in="00:00:00.000" out="00:00:01.300">
   <property name="length">39</property>
   <property name="eof">pause</property>
   <property name="resource">G:/imbVelesOpenSource/imbAVR/Impressum/DevScreens/20191005_1429_40.avi</property>
@@ -1102,6 +1102,7 @@
   <property name="meta.media.height">1024</property>
   <property name="meta.media.top_field_first">0</property>
   <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:id">12</property>
  </producer>
  <producer id="producer24" in="00:00:00.000" out="00:00:19.800">
   <property name="length">199</property>
@@ -1141,6 +1142,7 @@
   <property name="meta.media.height">1024</property>
   <property name="meta.media.top_field_first">0</property>
   <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:id">11</property>
  </producer>
  <producer title="Anonymous Submission" id="producer25" in="00:00:00.000" out="00:00:07.100">
   <property name="length">72</property>
@@ -1207,7 +1209,6 @@
   </entry>
   <entry producer="producer21" in="00:00:00.000" out="00:00:09.800">
    <property name="kdenlive:id">3</property>
-   <property name="kdenlive:activeeffect">0</property>
    <filter id="filter1">
     <property name="rotate_center">1</property>
     <property name="mlt_service">qtblend</property>
@@ -1233,7 +1234,7 @@
   </entry>
  </playlist>
  <playlist id="playlist5"/>
- <tractor id="tractor2" in="00:00:00.000" out="00:00:25.900">
+ <tractor id="tractor2" in="00:00:00.000" out="00:01:17.700">
   <property name="kdenlive:trackheight">50</property>
   <property name="kdenlive:collapsed">0</property>
   <property name="kdenlive:thumbs_format"/>
@@ -1279,12 +1280,12 @@
   <property name="meta.media.height">1024</property>
   <property name="meta.media.top_field_first">0</property>
   <property name="meta.media.progressive">1</property>
+  <property name="kdenlive:id">15</property>
  </producer>
  <playlist id="playlist6">
   <blank length="00:00:51.400"/>
   <entry producer="producer26" in="00:00:00.000" out="00:00:26.400">
    <property name="kdenlive:id">15</property>
-   <property name="kdenlive:activeeffect">0</property>
    <filter id="filter2">
     <property name="version">0.1</property>
     <property name="mlt_service">frei0r.scale0tilt</property>
@@ -1303,12 +1304,11 @@
   </entry>
  </playlist>
  <playlist id="playlist7"/>
- <tractor id="tractor3" in="00:00:00.000" out="00:00:25.933">
+ <tractor id="tractor3" in="00:00:00.000" out="00:01:17.800">
   <property name="kdenlive:trackheight">50</property>
   <property name="kdenlive:collapsed">0</property>
   <property name="kdenlive:thumbs_format"/>
   <property name="kdenlive:audio_rec"/>
-  <property name="kdenlive:timeline_active">1</property>
   <track hide="audio" producer="playlist6"/>
   <track hide="audio" producer="playlist7"/>
  </tractor>

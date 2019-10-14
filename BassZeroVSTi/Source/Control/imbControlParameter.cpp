@@ -17,26 +17,57 @@
 
 //#define Root Parent->Root
 
-bool imbControlParameter::SetValue(int _newValue)
-  {
-	  return false;
-  }
+bool imbControlParameter::SetValue(float _newValue)
+{
+	bool isNewValue = false;
 
-//void imbControlParameter::detachControl()
-//{
-//	if (pSliderAttachment != nullptr)
-//	{
-//		delete pSliderAttachment;
-//		pSliderAttachment = nullptr;
-//	}
-//}
-//
-//void imbControlParameter::attachControl(Slider & slider)
-//{
-//	detachControl();
-////	pSliderAttachment = new SliderAttachment(_parent->Root->SynthProcessor->parameters, parameterIDPath, slider);
-//
-//}
+	if (Value != _newValue) {
+		isNewValue = true;
+	}
+	Value = _newValue;
+
+	return isNewValue;
+}
+
+void imbControlParameter::detachControl()
+{
+	if (pSlider != nullptr)
+	{
+		//delete pSlider;
+		pSlider = nullptr;
+	}
+	if (pComboBox != nullptr) {
+		//delete pComboBox;
+		pComboBox = nullptr;
+	}
+	componentType = imbControlParameterComponentType::unassigned;
+
+}
+
+void imbControlParameter::attachControl(Slider * slider)
+{
+	detachControl();
+	componentType = imbControlParameterComponentType::slider;
+	
+	pSlider = std::shared_ptr<Slider>(slider);//new SliderAttachment(valueTreeState, parameterIDPath, slider);
+	//pSlider->setMinValue(MinValue);
+	//pSlider->setMaxValue(MaxValue);
+	//pSlider->setValue(Value);
+	
+//	pSliderAttachment = new SliderAttachment(_parent->Root->SynthProcessor->parameters, parameterIDPath, slider);
+
+}
+
+void imbControlParameter::attachControl(ComboBox * _comboBox)
+{
+	detachControl();
+	componentType = imbControlParameterComponentType::combobox;
+	pComboBox = std::shared_ptr<ComboBox>(_comboBox);
+	
+
+	//pComboBoxAttachment = new ComboBoxAttachment(valueTreeState, parameterIDPath, _comboBox);
+	
+}
 
 
 

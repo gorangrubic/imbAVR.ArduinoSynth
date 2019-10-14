@@ -29,6 +29,7 @@
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
+#define GUIREFRESH_TIMEINTERVAL 250
 //[/MiscUserDefs]
 
 //==============================================================================
@@ -65,6 +66,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 
 
     //[Constructor] You can add your own custom stuff here..
+	startTimer(GUIREFRESH_TIMEINTERVAL);
     //[/Constructor]
 }
 
@@ -79,6 +81,7 @@ BassZeroGUI::~BassZeroGUI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+	stopTimer();
     //[/Destructor]
 }
 
@@ -153,6 +156,9 @@ void BassZeroGUI::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void BassZeroGUI::timerCallback() {
+
+}
 //[/MiscUserCode]
 
 

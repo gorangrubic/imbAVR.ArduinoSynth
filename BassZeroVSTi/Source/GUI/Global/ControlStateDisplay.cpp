@@ -25,6 +25,7 @@
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
+#define GUIREFRESH_TIMEINTERVAL 250
 //[/MiscUserDefs]
 
 //==============================================================================
@@ -152,6 +153,9 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
 
 
     //[Constructor] You can add your own custom stuff here..
+	//synthState->controlStateDisplay = std::shared_ptr<ControlStateDisplay>(this);
+	controlDisplayModel = std::shared_ptr<ControlStateDisplayModel>(synthState->controlDisplayModel.get());
+	startTimer(GUIREFRESH_TIMEINTERVAL);
     //[/Constructor]
 }
 
@@ -185,6 +189,7 @@ void ControlStateDisplay::paint (Graphics& g)
     g.fillAll (Colour (0xb0323e44));
 
     //[UserPaint] Add your own custom painting code here..
+
     //[/UserPaint]
 }
 
@@ -207,6 +212,16 @@ void ControlStateDisplay::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void ControlStateDisplay::Update()
+{
+
+}
+void ControlStateDisplay::timerCallback()
+{
+	Parameter_text->setText(controlDisplayModel->parameterID, juce::NotificationType::dontSendNotification);
+	GroupName_text->setText(controlDisplayModel->parameterGroup, juce::NotificationType::dontSendNotification);
+	Value_Edit->setText(controlDisplayModel->parameterValue, juce::NotificationType::dontSendNotification);
+}
 //[/MiscUserCode]
 
 
@@ -220,7 +235,7 @@ void ControlStateDisplay::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="ControlStateDisplay" componentName=""
-                 parentClasses="public Component, public imbSynthGUIComponent"
+                 parentClasses="public Component, public imbSynthGUIComponent, private Timer"
                  constructorParams="imbSynthStateData * synthState, String nameSufix"
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="830" initialHeight="24">

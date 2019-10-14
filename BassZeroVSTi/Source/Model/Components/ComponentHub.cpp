@@ -46,6 +46,23 @@ void ComponentHub::AddPerk(OscilatorPerk * output)
 //	output->SetParent(model,this);
 }
 
+std::shared_ptr<ModelModulatedControl> ComponentHub::GetModulatedControlByName(juce::String name)
+{
+	std::shared_ptr<ModelModulatedControl> output = nullptr;
+
+	//juce::String needleString = juce::String(name);
+
+	for each (auto var in modulatedControls)
+	{
+		if (var->ShortName.equalsIgnoreCase(name)) {
+			output = var;
+			break;
+		}
+	}
+	
+	return output;
+}
+
 void ComponentHub::Deploy(ParameterController & parameterController)
 {
 

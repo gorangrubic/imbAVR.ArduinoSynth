@@ -102,7 +102,8 @@ class imbControlParameter
 public:
 
 
-	
+	imbControlParameterComponentType componentType;
+
 	imbEnumerationList * enumerationList;
 
 	// ============= references
@@ -214,12 +215,17 @@ public:
 	/// </summary>
 	/// <param name="_newValue">New value to set</param>
 	/// <returns>true if given value was different from existing ccValue</returns>
-	bool SetValue(int _newValue);
+	bool SetValue(float _newValue);
 
-	//void detachControl();
-	//void attachControl(Slider& slider);
+	void detachControl();
+	void attachControl(Slider* _slider);
+	void attachControl(ComboBox* _comboBox);
 	
+	std::shared_ptr<Slider> pSlider;
+	std::shared_ptr<ComboBox> pComboBox;
+
 	//SliderAttachment* pSliderAttachment;
+	//ComboBoxAttachment * pComboBoxAttachment;
 
 	imbControlParameter(); //:Listener(Value, 1.0F) { };
 

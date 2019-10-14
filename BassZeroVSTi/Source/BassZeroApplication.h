@@ -18,6 +18,7 @@
 #include "BassZeroSynthModel.h"
 #include "../Source/Data/imbSynthStateData.h"
 #include "BassZeroApplication.h"
+//#include "BassZeroVstiAudioProcessor.h"
 
 
 class BassZeroApplication: public SynthApplicationBase {
@@ -27,11 +28,11 @@ class BassZeroApplication: public SynthApplicationBase {
 public :
 
 	std::shared_ptr<BassZeroSynthModel> bassZeroModel;
-	std::shared_ptr<BassZeroVstiAudioProcessor> bassZeroProcessor;
+//	std::shared_ptr<BassZeroVstiAudioProcessor> bassZeroProcessor;
 
-	BassZeroApplication(BassZeroSynthModel * _synthModel, BassZeroVstiAudioProcessor * _synthProcessor, imbSynthStateData * _synthState) 
+	BassZeroApplication(BassZeroSynthModel * _synthModel, imbSynthAudioProcessor * _synthProcessor, imbSynthStateData * _synthState)
 		:SynthApplicationBase(_synthModel, _synthProcessor, _synthState),
-		bassZeroModel(_synthModel), bassZeroProcessor(_synthProcessor)
+		bassZeroModel(_synthModel)//, bassZeroProcessor(_synthProcessor)
 	{
 
 	};

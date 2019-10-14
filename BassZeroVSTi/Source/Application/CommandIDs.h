@@ -11,17 +11,17 @@
 #pragma once
 //==============================================================================
 	/** A list of the commands that this demo responds to. */
-enum class CommandIDs
+enum CommandIDs
 {
 	file_initState = 1,
-	file_loadPreset,
-	file_savePreset,
-	file_loadOPM,
-	file_saveOPM,
-	file_selectLibrary,
-	file_loadSettings,
-	file_saveSettings,
-	midi_factoryCCMap,
+	file_loadPreset=2,
+	file_savePreset=3,
+	file_loadOPM=4,
+	file_saveOPM=5,
+	file_selectLibrary=6,
+	file_loadSettings=7,
+	file_saveSettings=8,
+	midi_factoryCCMap=9,
 	midi_loadCCMap,
 	midi_saveCCMap,
 	midi_editCCMap,
@@ -60,7 +60,7 @@ enum class CommandIDs
 	devTools_viewLog
 };
 
-enum class MenuGroupIDS {
+enum  MenuGroupIDS {
 	file = 0,
 	midi = 1,
 	edit = 2,

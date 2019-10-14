@@ -30,7 +30,7 @@
 SourceMixerComponent::SourceMixerComponent (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
-
+	state = std::shared_ptr<imbSynthStateData>(synthState);
     //[/Constructor_pre]
 
     ModAmt.reset (new Slider ("Modulation amount"));
@@ -87,6 +87,22 @@ SourceMixerComponent::SourceMixerComponent (imbSynthStateData * synthState, Stri
 
 
     //[Constructor] You can add your own custom stuff here..
+
+	modelComponent = synthState->model->components.GetModulatedControlByName(nameSufix);
+	if (modelComponent != nullptr) {
+
+		modelComponent->ModAmt.attachControl(ModAmt.get());
+		modelComponent->ModSrc.attachControl(ModSrc.get());
+		modelComponent->Val.attachControl(Val.get());
+
+		setEnabled(true);
+		setAlpha(1.0f);
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
     //[/Constructor]
 }
 
@@ -166,11 +182,15 @@ void SourceMixerComponent::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == ModAmt.get())
     {
         //[UserSliderCode_ModAmt] -- add your slider handling code here..
+		modelComponent->ModAmt.SetValue(ModAmt->getValue());
+		state->controlDisplayModel->SetParameter(&modelComponent->ModAmt);
         //[/UserSliderCode_ModAmt]
     }
     else if (sliderThatWasMoved == Val.get())
     {
         //[UserSliderCode_Val] -- add your slider handling code here..
+		modelComponent->Val.SetValue(Val->getValue());
+		state->controlDisplayModel->SetParameter(&modelComponent->Val);
         //[/UserSliderCode_Val]
     }
 
@@ -186,6 +206,8 @@ void SourceMixerComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == ModSrc.get())
     {
         //[UserComboBoxCode_ModSrc] -- add your combo box handling code here..
+		modelComponent->ModSrc.SetValue(ModSrc->getSelectedItemIndex());
+		state->controlDisplayModel->SetParameter(&modelComponent->ModSrc);
         //[/UserComboBoxCode_ModSrc]
     }
 
@@ -196,9 +218,7 @@ void SourceMixerComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void SourceMixerComponent::ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params)
-{
-}
+
 //[/MiscUserCode]
 
 

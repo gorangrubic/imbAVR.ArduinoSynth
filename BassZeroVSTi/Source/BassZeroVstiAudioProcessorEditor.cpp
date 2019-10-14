@@ -14,10 +14,11 @@
 
 #define WIDTH 840
 #define HEIGHT 500
+#define MENU_HEIGHT 30
 
 //==============================================================================
 BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVstiAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p), bassZeroGUI(&p.bassZeroState)
+    : AudioProcessorEditor (&p), processor (p), bassZeroGUI(&p.bassZeroState), mainMenuModel(&p.bassZeroApplication)
 {
 	
 	
@@ -26,8 +27,16 @@ BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVsti
     setSize (WIDTH, HEIGHT);
 
 	addAndMakeVisible(bassZeroGUI);
-	bassZeroGUI.setTopLeftPosition(0, 0);
-	bassZeroGUI.setSize(WIDTH, HEIGHT);
+	bassZeroGUI.setTopLeftPosition(0, MENU_HEIGHT);
+	bassZeroGUI.setSize(WIDTH, HEIGHT- MENU_HEIGHT);
+	
+	
+	mainMenuModel.setEnabled(true);
+	mainMenuModel.setName("Menu");
+	addAndMakeVisible(mainMenuModel);
+	mainMenuModel.setTopLeftPosition(0, 0);
+	mainMenuModel.setSize(WIDTH, MENU_HEIGHT);
+	
 	
 	//addChildComponent(bassZeroGUI);
 }

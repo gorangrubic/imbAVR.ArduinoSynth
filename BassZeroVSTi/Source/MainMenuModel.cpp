@@ -12,11 +12,26 @@
 #include "MainMenuModel.h"
 
 //==============================================================================
-MainMenuModel::MainMenuModel()
+MainMenuModel::MainMenuModel(BassZeroApplication * application):
+	bassZeroApplication(application)
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
+	menuBar.reset(new MenuBarComponent(this));
+	addAndMakeVisible(menuBar.get());
+	setEnabled(true);
+
+	setApplicationCommandManagerToWatch(&commandManager);
+
+	
+	commandManager.setFirstCommandTarget(this);
+	commandManager.registerAllCommandsForTarget(this);
+
+	// this lets the command manager use keypresses that arrive in our window to send out commands
+	addKeyListener(commandManager.getKeyMappings());
+
+	
 }
 
 MainMenuModel::~MainMenuModel()
@@ -37,10 +52,10 @@ void MainMenuModel::paint (Graphics& g)
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
-    g.setColour (Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("MainMenuModel", getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    //g.setColour (Colours::white);
+    //g.setFont (14.0f);
+    //g.drawText ("MainMenuModel", getLocalBounds(),
+    //            Justification::centred, true);   // draw some placeholder text
 }
 
 void MainMenuModel::resized()
@@ -48,28 +63,36 @@ void MainMenuModel::resized()
     // This method is where you should set the bounds of any child
     // components that your component contains..
 
+	auto b = getLocalBounds();
+
+	menuBar->setBounds(b.removeFromTop(LookAndFeel::getDefaultLookAndFeel()
+		.getDefaultMenuBarHeight()));
+
+	//outerCommandTarget.setBounds(b);
+
 }
 
-StringArray MainMenuModel::getMenuBarNames()
+StringArray MainMenuModel::getMenuBarNames() 
 {
-	const char* const names[] = { "File", "MIDI", "Edit", "Tools", "Help", "DevTools" };
+	//const char* const names[] = {  };
 
-	return StringArray(names);
+	return { "File", "MIDI", "Edit", "Tools", "Help", "DevTools" };
 }
 
-PopupMenu MainMenuModel::getMenuForIndex(int menuIndex, const String &)
+PopupMenu MainMenuModel::getMenuForIndex(int menuIndex, const String &) 
 {
 	PopupMenu menu;
 
 	if (menuIndex == MenuGroupIDS::file) {
-		menu.addCommandItem(&commandManager, CommandIDs::file_initState,"Init state");
-		menu.addCommandItem(&commandManager, CommandIDs::file_loadPreset, "Load preset");
-		menu.addCommandItem(&commandManager, CommandIDs::file_savePreset, "Save preset");
-		menu.addCommandItem(&commandManager, CommandIDs::file_loadOPM, "Load OPM");
-		menu.addCommandItem(&commandManager, CommandIDs::file_saveOPM, "Save OPM");
-		menu.addCommandItem(&commandManager, CommandIDs::file_selectLibrary, "Select library");
-		menu.addCommandItem(&commandManager, CommandIDs::file_loadSettings, "Load settings");
-		menu.addCommandItem(&commandManager, CommandIDs::file_saveSettings, "Save settings");
+		
+		menu.addCommandItem(&commandManager, CommandIDs::file_initState);
+		menu.addCommandItem(&commandManager, CommandIDs::file_loadPreset);
+		menu.addCommandItem(&commandManager, CommandIDs::file_savePreset);
+		menu.addCommandItem(&commandManager, CommandIDs::file_loadOPM);
+		menu.addCommandItem(&commandManager, CommandIDs::file_saveOPM);
+		menu.addCommandItem(&commandManager, CommandIDs::file_selectLibrary);
+		menu.addCommandItem(&commandManager, CommandIDs::file_loadSettings);
+		menu.addCommandItem(&commandManager, CommandIDs::file_saveSettings);
 	}
 	else if (menuIndex == MenuGroupIDS::midi) {
 		menu.addCommandItem(&commandManager, CommandIDs::midi_factoryCCMap, "Factory CC map");
@@ -114,17 +137,20 @@ PopupMenu MainMenuModel::getMenuForIndex(int menuIndex, const String &)
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_viewBuffer, "View buffer");
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_viewLog, "View log");
 	}
+
+	return menu;
 }
 
 ApplicationCommandTarget * MainMenuModel::getNextCommandTarget()
 {
-	return nullptr;
+	return findFirstTargetParentComponent();
 }
 
 void MainMenuModel::getAllCommands(Array<CommandID>& c)
 {
 
-	Array<CommandID> commands{ CommandIDs::file_initState,
+	Array<CommandID> commands{ 
+		CommandIDs::file_initState,
 CommandIDs::file_loadPreset,
 CommandIDs::file_savePreset,
 CommandIDs::file_loadOPM,
@@ -164,100 +190,126 @@ CommandIDs::devTools_reportModel,
 CommandIDs::devTools_CCDefine,
 CommandIDs::devTools_FirmwareModel,
 CommandIDs::devTools_viewBuffer,
-CommandIDs::devTools_viewLog };
+CommandIDs::devTools_viewLog 
+	};
 	c.addArray(commands);
 }
 
 void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo & result)
 {
+	//result.commandID = commandID;
+	
 	switch (commandID) {
 	case CommandIDs::file_initState:
 		result.setInfo("Init state", "Resets all preset and OPM settings to defaults.", "File",0);
 		result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		//result.setActive(true);
+		
 		break;
 	case CommandIDs::file_loadPreset:
 		result.setInfo("Load preset", "Imports preset from a preset XML file, outside the library", "File", 0);
+		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_savePreset:
 		result.setInfo("Save preset", "Exports preset to a preset XML file, outside the library", "File", 0);
+		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_loadOPM:
 		result.setInfo("Load OPM", "Imports OPM settings from XML file, without changing other parameters of the current preset\state", "File", 0);
+		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_saveOPM:
 		result.setInfo("Save OPM", "Exports OPM settings to XML file, without other parameters of the current preset\state", "File", 0);
+		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_selectLibrary:
 		result.setInfo("Select library", "Select another library directory path", "File", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_loadSettings:
 		result.setInfo("Load settings", "Import VSTi settings from custom location", "File", 0);
+		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_saveSettings:
 		result.setInfo("Save settings", "Export current VSTi settings to a custom location", "File", 0);
+		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_factoryCCMap:
 		result.setInfo("Factory CC map", "Resets current CC mapping to factory defaults", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_loadCCMap:
 		result.setInfo("Load CC map", "Loads CC map table file", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_saveCCMap:
 		result.setInfo("Save CC map", "Saves current CC map table into external file", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_editCCMap:
 		result.setInfo("Edit CC map", "Tabelar editor for current CC map", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_presetToMidiInstructions:
 		result.setInfo("Preset to MIDI", "Serializes current preset and OPM into sequence of MIDI instructions and saves it to MIDI file", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_executeMidiInstructions:
 		result.setInfo("Execute MIDI", "Executes sequence of MIDI instructions imported from a MIDI file", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_inputOutput:
 		result.setInfo("Input Output", "Configure devices, MIDI input output routing", "MIDI", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 
 	case CommandIDs::edit_copy:
 		result.setInfo("Copy", "Stores values and CC mapping of selected component(s) into clipboard", "EDIT", 0);
+	//	result.setActive(true);
 		result.addDefaultKeypress('c', ModifierKeys::ctrlModifier);
 		break;
 	case CommandIDs::edit_pasteValues:
 		result.setInfo("Paste", "Stores values and CC mapping of selected component(s) into clipboard", "EDIT", 0);
+	//	result.setActive(true);
 		result.addDefaultKeypress('v', ModifierKeys::ctrlModifier);
 		break;
 	case CommandIDs::edit_pasteCCMaps:
 		result.setInfo("Copy", "Stores values and CC mapping of selected component(s) into clipboard", "EDIT", 0);
+	//	result.setActive(true);
 		result.addDefaultKeypress('v', ModifierKeys::altModifier);
 		break;
 	case CommandIDs::edit_showValues:
 		result.setInfo("Show values", "Show values for each component in overlayed textbox", "EDIT", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_showCCMap:
 		result.setInfo("Show CC map", "In overlayed textbox, shows current CC map settings for each component", "EDIT", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_showBufferState:
 		result.setInfo("Show buffer", "Shows current MIDI CC & SysExc messages, waiting for transfer", "EDIT", 0);
+	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_showScopeOutline:
 		result.setInfo("Show scope", "Outlines currently selected component(s) - for easier copy'n'paste operations", "EDIT", 0);
+		
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_settings:
@@ -318,10 +370,37 @@ void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo &
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 
+	case CommandIDs::devTools_reportModel:
+		result.setInfo("Report model", "Reports synth model", "DevTools", 0);
+		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
+	case CommandIDs::devTools_CCDefine:
+		result.setInfo("CC Define", "Generates #define instructions for CC values", "DevTools", 0);
+		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
+	case CommandIDs::devTools_FirmwareModel:
+		result.setInfo("Firmware model", "Opens About splash screen", "DevTools", 0);
+		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
+	case CommandIDs::devTools_viewBuffer:
+		result.setInfo("View Buffer", "Opens About splash screen", "DevTools", 0);
+		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
+	case CommandIDs::devTools_viewLog:
+		result.setInfo("View log", "Opens log content", "DevTools", 0);
+		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
 	}
+	
+	//result.setActive(true);
 }
 
 bool MainMenuModel::perform(const InvocationInfo & info)
 {
-	return false;
+
+	//InvocationInfo inf = info;
+
+	//int cID = (int)inf.commandID;
+
+	return bassZeroApplication->perform((CommandIDs)info.commandID);
 }

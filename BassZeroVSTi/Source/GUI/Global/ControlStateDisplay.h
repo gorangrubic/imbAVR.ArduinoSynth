@@ -37,7 +37,8 @@
                                                                     //[/Comments]
 */
 class ControlStateDisplay  : public Component,
-                             public imbSynthGUIComponent
+                             public imbSynthGUIComponent,
+                             private Timer
 {
 public:
     //==============================================================================
@@ -46,6 +47,8 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+	void Update();
+	void timerCallback() override;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -55,6 +58,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+	std::shared_ptr<ControlStateDisplayModel> controlDisplayModel;
     //[/UserVariables]
 
     //==============================================================================

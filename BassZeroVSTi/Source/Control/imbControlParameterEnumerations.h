@@ -58,3 +58,10 @@ enum class imbControlParameterType:unsigned int {
 	Enumeration=3,
 	Boolean=4
 };
+
+
+enum class imbControlParameterComponentType:unsigned int {
+	unassigned=0,
+	slider=1,
+	combobox = 2
+};

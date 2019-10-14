@@ -14,6 +14,8 @@
 
 #include "Application\CommandIDs.h"
 #include "Application\SynthApplicationBase.h"
+#include "Application\SynthApplicationCommandManager.h"
+#include "BassZeroApplication.h"
 
 //==============================================================================
 /*
@@ -26,7 +28,7 @@ public:
 
  
 
-    MainMenuModel();
+	MainMenuModel(BassZeroApplication * application);
     ~MainMenuModel();
 
     void paint (Graphics&) override;
@@ -47,6 +49,13 @@ public:
    
     
 private:
+    
+    
+	std::shared_ptr<BassZeroApplication> bassZeroApplication;
 	ApplicationCommandManager commandManager;
+
+	std::unique_ptr<MenuBarComponent> menuBar;
+	
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainMenuModel)
 };

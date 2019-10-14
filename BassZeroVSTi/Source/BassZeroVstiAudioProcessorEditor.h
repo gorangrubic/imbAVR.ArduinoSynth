@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "BassZeroVstiAudioProcessor.h"
 #include "BassZeroInterface.h"
+#include "MainMenuModel.h"
 
 //==============================================================================
 /**
@@ -35,5 +36,6 @@ private:
     // access the processor object that created it.
     BassZeroVstiAudioProcessor& processor;
 	BassZeroGUI bassZeroGUI;
+	MainMenuModel mainMenuModel;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (BassZeroVstiAudioProcessorEditor)
 };

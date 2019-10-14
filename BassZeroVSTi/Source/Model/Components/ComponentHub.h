@@ -41,6 +41,8 @@ public:
 	std::vector<OscilatorPerk*> oscilatorPerks;
 	*/
 
+	std::shared_ptr<ModelModulatedControl> GetModulatedControlByName(juce::String name);
+
 	SharedPointerVector<ModelModulatedControl> modulatedControls;
 	SharedPointerVector<OscilatorWaveform> oscilatorWaveforms;
 	SharedPointerVector<OscilatorPerk> oscilatorPerks;

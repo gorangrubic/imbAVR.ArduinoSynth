@@ -22,6 +22,10 @@
               file="Source/Application/SynthApplicationBase.cpp"/>
         <FILE id="MntATZ" name="SynthApplicationBase.h" compile="0" resource="0"
               file="Source/Application/SynthApplicationBase.h"/>
+        <FILE id="WM8a9N" name="SynthApplicationCommandManager.cpp" compile="1"
+              resource="0" file="Source/Application/SynthApplicationCommandManager.cpp"/>
+        <FILE id="BKO7bt" name="SynthApplicationCommandManager.h" compile="0"
+              resource="0" file="Source/Application/SynthApplicationCommandManager.h"/>
       </GROUP>
       <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
         <GROUP id="{DBF45F66-8B5D-8ECD-1186-021B70922C11}" name="Core">

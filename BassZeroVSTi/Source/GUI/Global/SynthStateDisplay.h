@@ -45,6 +45,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+	void Update(SynthStateDisplayModel & model);
     //[/UserMethods]
 
     void paint (Graphics& g) override;
