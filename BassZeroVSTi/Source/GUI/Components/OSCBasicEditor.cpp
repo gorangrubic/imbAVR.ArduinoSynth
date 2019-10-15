@@ -32,23 +32,6 @@ OSCBasicEditor::OSCBasicEditor (imbSynthStateData * synthState, String nameSufix
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    Title2.reset (new Label ("new label",
-                             TRANS("SHAPER")));
-    addAndMakeVisible (Title2.get());
-    Title2->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
-    Title2->setJustificationType (Justification::centred);
-    Title2->setEditable (false, false, false);
-    Title2->setColour (Label::backgroundColourId, Colours::aliceblue);
-    Title2->setColour (Label::textColourId, Colour (0xff181f22));
-    Title2->setColour (TextEditor::textColourId, Colours::black);
-    Title2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
-
-    Title2->setBounds (200, 0, 96, 16);
-
-    Shaper.reset (new SourceMixerComponent (synthState, "Shaper"));
-    addAndMakeVisible (Shaper.get());
-    Shaper->setBounds (200, 16, 96, 96);
-
     OSC.reset (new OSCEditor (synthState, "OSC"));
     addAndMakeVisible (OSC.get());
     OSC->setBounds (0, 0, 192, 112);
@@ -69,8 +52,6 @@ OSCBasicEditor::~OSCBasicEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    Title2 = nullptr;
-    Shaper = nullptr;
     OSC = nullptr;
 
 
@@ -121,14 +102,6 @@ BEGIN_JUCER_METADATA
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="0" initialWidth="330" initialHeight="120">
   <BACKGROUND backgroundColour="323e44"/>
-  <LABEL name="new label" id="4bbeb0561535668a" memberName="Title2" virtualName=""
-         explicitFocusOrder="0" pos="200 0 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
-         edTextCol="ff000000" edBkgCol="0" labelText="SHAPER" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="Shaper" id="6dc4e4d5157c3da" memberName="Shaper" virtualName=""
-             explicitFocusOrder="0" pos="200 16 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams="synthState, &quot;Shaper&quot;"/>
   <JUCERCOMP name="OSC" id="57bcfacd6198a2e" memberName="OSC" virtualName=""
              explicitFocusOrder="0" pos="0 0 192 112" sourceFile="OSCEditor.cpp"
              constructorParams="synthState, &quot;OSC&quot;"/>

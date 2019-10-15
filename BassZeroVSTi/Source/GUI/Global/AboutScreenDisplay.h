@@ -20,10 +20,7 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Data/imbSynthStateData.h"
-#include "../Components/imbSynthGUIComponent.h"
-#include "../Source/Model/Core/ModelModulatedControl.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
 
@@ -36,42 +33,35 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class SourceMixerComponent  : public Component,
-                              public imbSynthGUIComponent,
-                              public Slider::Listener,
-                              public ComboBox::Listener
+class AboutScreenDisplay  : public Component
 {
 public:
     //==============================================================================
-    SourceMixerComponent (imbSynthStateData * synthState, String nameSufix);
-    ~SourceMixerComponent();
+    AboutScreenDisplay ();
+    ~AboutScreenDisplay();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-
     //[/UserMethods]
 
     void paint (Graphics& g) override;
     void resized() override;
-    void sliderValueChanged (Slider* sliderThatWasMoved) override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
+    // Binary resources:
+    static const char* background2_jpg;
+    static const int background2_jpgSize;
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-	std::shared_ptr<ModelModulatedControl> modelComponent;
-	std::shared_ptr<imbSynthStateData> state;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Slider> ModAmt;
-    std::unique_ptr<ComboBox> ModSrc;
-    std::unique_ptr<Slider> Val;
+    Image cachedImage_background2_jpg_1;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SourceMixerComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AboutScreenDisplay)
 };
 
 //[EndFile] You can add extra defines here...

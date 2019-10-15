@@ -23,10 +23,20 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
+#include "../Components/OSCEditor.h"
 #include "../Components/OSCBasicEditor.h"
-#include "../Components/OSCBasicEditor.h"
-#include "../Components/PERKEditor.h"
-#include "../Components/PERKEditor.h"
+#include "../Components/OSCEditor.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/OSCEditor.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
 
 
 //==============================================================================
@@ -64,16 +74,35 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<OSCBasicEditor> WFA;
+    std::unique_ptr<OSCEditor> WFA;
     std::unique_ptr<OSCBasicEditor> WFB;
-    std::unique_ptr<PERKEditor> PERKA;
-    std::unique_ptr<PERKEditor> PERKB;
+    std::unique_ptr<OSCEditor> PERKA;
     std::unique_ptr<Label> label_WFA;
     std::unique_ptr<Label> Label_WFB;
     std::unique_ptr<Label> label_perkA;
-    std::unique_ptr<Label> label_perkB;
+    std::unique_ptr<Label> Title2;
+    std::unique_ptr<SourceMixerComponent> WFA_PWM;
+    std::unique_ptr<Label> Title3;
+    std::unique_ptr<SourceMixerComponent> WFA_Shaper;
+    std::unique_ptr<Label> Title4;
+    std::unique_ptr<SourceMixerComponent> PERKA_PWM;
+    std::unique_ptr<Label> Title5;
+    std::unique_ptr<SourceMixerComponent> PERKA_HPFREQ;
+    std::unique_ptr<Label> Title6;
+    std::unique_ptr<SourceMixerComponent> PERKA_AMP;
+    std::unique_ptr<OSCEditor> PERKB;
+    std::unique_ptr<Label> label_perkB2;
+    std::unique_ptr<Label> Title7;
+    std::unique_ptr<SourceMixerComponent> PERKB_PWM;
+    std::unique_ptr<Label> Title8;
+    std::unique_ptr<SourceMixerComponent> PERKB_HPFREQ;
+    std::unique_ptr<Label> Title9;
+    std::unique_ptr<SourceMixerComponent> PERKB_AMP;
+    std::unique_ptr<Label> Title10;
+    std::unique_ptr<SourceMixerComponent> WFB_PWM;
+    std::unique_ptr<Label> Title11;
+    std::unique_ptr<SourceMixerComponent> WFB_Shaper;
     Image cachedImage_background1_jpg_1;
-    Image cachedImage_basszero_vstiwaveform_png2_2;
 
 
     //==============================================================================

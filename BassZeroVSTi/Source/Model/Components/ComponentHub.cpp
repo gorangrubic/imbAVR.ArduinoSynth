@@ -12,45 +12,71 @@
 #include "../Source/Utility/imbSynthTools.h"
 
 
-void ComponentHub::AddModulatedControl(ModelModulatedControl * output, std::string _shortName, std::string _longName)
+void ComponentHub::AddModulatedControl(ModelModulatedControl * output, std::string _shortName, std::string _longName, ControlGroup * group)
 {
 	AddChild(output);
 	modulatedControls.Add(output);
 	output->SetDescription(_shortName, _longName);
+	if (group != nullptr) {
+		output->GroupName = group->ShortName;
+	}
 	//output->SetParent(model, this);
 }
 
-void ComponentHub::AddWaveform(OscilatorWaveform * output)
+void ComponentHub::AddPitchAndPhaseControl(PitchAndPhaseControl * output, std::string _shortName, std::string _longName, ControlGroup * group)
 {
 	AddChild(output);
-
-	std::string letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
-	std::string _shortName = "WF" + letter;
-	std::string _longName = "Waveform " + letter;
-	
-	oscilatorWaveforms.Add(output);
+	pitchAndPhaseControls.Add(output);
 	output->SetDescription(_shortName, _longName);
-	//output->SetParent(model, this);
+	if (group != nullptr) {
+		output->GroupName = group->ShortName;
+	}
 }
 
-void ComponentHub::AddPerk(OscilatorPerk * output)
+//void ComponentHub::AddWaveform(OscilatorWaveform * output)
+//{
+//	AddChild(output);
+//
+//	std::string letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
+//	std::string _shortName = "WF" + letter;
+//	std::string _longName = "Waveform " + letter;
+//	
+//	oscilatorWaveforms.Add(output);
+//	output->SetDescription(_shortName, _longName);
+//	//output->SetParent(model, this);
+//}
+//
+//void ComponentHub::AddPerk(OscilatorPerk * output)
+//{
+//	AddChild(output);
+//
+//	std::string letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
+//	std::string _shortName = "PERK" + letter;
+//	std::string _longName = "PERK " + letter;
+//
+//	oscilatorPerks.Add(output);
+//	output->SetDescription(_shortName, _longName);
+////	output->SetParent(model,this);
+//}
+
+std::shared_ptr<PitchAndPhaseControl> ComponentHub::GetPitchAndPhaseControlByName(juce::String name)
 {
-	AddChild(output);
+	std::shared_ptr<PitchAndPhaseControl> output = nullptr;
 
-	std::string letter = imbSynthTools::GetLetter(oscilatorWaveforms.size());
-	std::string _shortName = "PERK" + letter;
-	std::string _longName = "PERK " + letter;
+	for each (auto var in pitchAndPhaseControls)
+	{
+		if (var->ShortName.equalsIgnoreCase(name)) {
+			output = var;
+			break;
+		}
+	}
 
-	oscilatorPerks.Add(output);
-	output->SetDescription(_shortName, _longName);
-//	output->SetParent(model,this);
+	return output;
 }
 
 std::shared_ptr<ModelModulatedControl> ComponentHub::GetModulatedControlByName(juce::String name)
 {
 	std::shared_ptr<ModelModulatedControl> output = nullptr;
-
-	//juce::String needleString = juce::String(name);
 
 	for each (auto var in modulatedControls)
 	{
@@ -71,15 +97,12 @@ void ComponentHub::Deploy(ParameterController & parameterController)
 		var->Deploy(parameterController);
 	}
 
-	for each (auto var in oscilatorPerks)
-	{
-		var->Deploy( parameterController);
-	}
-
-	for each (auto var in oscilatorWaveforms)
+	for each (auto var in pitchAndPhaseControls)
 	{
 		var->Deploy(parameterController);
 	}
+
+	
 
 }
 

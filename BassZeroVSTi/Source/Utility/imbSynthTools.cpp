@@ -47,6 +47,25 @@ std::string imbSynthTools::GetLetter(unsigned int input) {
 			return "W";
 		}
 
+int imbSynthTools::StringToInt32(juce::String stringValue, float defaultValue)
+{
+	int v = defaultValue;
+	return StringToInt32(stringValue, v);
+}
+
+int imbSynthTools::StringToInt32(juce::String stringValue, int defaultValue)
+  {
+	  if (stringValue.isNotEmpty()) {
+		  if (!stringValue.containsIgnoreCase("ABCDEFGHIJKLMNOPQRSTUVWXYZ")) {
+			  int int_val = stringValue.getIntValue();
+
+			  return int_val;
+		  }
+	  }
+
+	  return defaultValue;
+  }
+
   float imbSynthTools::ProcessValue(float _value, imbControlParameterType TP)
   {
 	  

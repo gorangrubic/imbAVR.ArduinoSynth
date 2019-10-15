@@ -32,23 +32,6 @@ OSCEditor::OSCEditor (imbSynthStateData * synthState, String nameSufix)
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    Title3.reset (new Label ("new label",
-                             TRANS("PWM")));
-    addAndMakeVisible (Title3.get());
-    Title3->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
-    Title3->setJustificationType (Justification::centred);
-    Title3->setEditable (false, false, false);
-    Title3->setColour (Label::backgroundColourId, Colours::aliceblue);
-    Title3->setColour (Label::textColourId, Colour (0xff181f22));
-    Title3->setColour (TextEditor::textColourId, Colours::black);
-    Title3->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
-
-    Title3->setBounds (96, 0, 96, 16);
-
-    PWM.reset (new SourceMixerComponent (synthState, "PWM"));
-    addAndMakeVisible (PWM.get());
-    PWM->setBounds (96, 16, 96, 96);
-
     Phase.reset (new Slider ("DirectValue"));
     addAndMakeVisible (Phase.get());
     Phase->setTooltip (TRANS("Attack time"));
@@ -113,8 +96,6 @@ OSCEditor::~OSCEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    Title3 = nullptr;
-    PWM = nullptr;
     Phase = nullptr;
     Title6 = nullptr;
     Pitch = nullptr;
@@ -185,14 +166,6 @@ BEGIN_JUCER_METADATA
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="192" initialHeight="112">
   <BACKGROUND backgroundColour="323e44"/>
-  <LABEL name="new label" id="f88b0f939fb64bd5" memberName="Title3" virtualName=""
-         explicitFocusOrder="0" pos="96 0 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
-         edTextCol="ff000000" edBkgCol="0" labelText="PWM" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="PWM" id="a487ba0e5e2a8184" memberName="PWM" virtualName=""
-             explicitFocusOrder="0" pos="96 16 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams="synthState, &quot;PWM&quot;"/>
   <SLIDER name="DirectValue" id="698565b936711330" memberName="Phase" virtualName=""
           explicitFocusOrder="0" pos="0 88 96 24" tooltip="Attack time"
           textboxoutline="8e989b" min="0.0" max="100.0" int="1.0" style="LinearHorizontal"

@@ -46,6 +46,10 @@ public:
 
 		this->bassZeroModel.ConstructParameters(parameters);
 
+
+
+		bassZeroState.Initiated();
+
 	};
     ~BassZeroVstiAudioProcessor();
 

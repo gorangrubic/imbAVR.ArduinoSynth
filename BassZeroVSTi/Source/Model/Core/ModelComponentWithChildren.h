@@ -46,6 +46,9 @@ class ModelComponentWithChildren:
 
 		void AddChild(ModelComponentWithChildren* child);
 
+		/* Populates specified vector with all parameters defined in the model*/
+		void CollectAllParameterDefinitions(SharedPointerVector<imbControlParameter> & parameters);
+
 		void ConstructComponentAndChildComponentParameters(ParameterController & parameterController, juce::AudioProcessorValueTreeState & parameters);
 
 

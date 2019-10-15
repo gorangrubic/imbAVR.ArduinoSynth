@@ -67,6 +67,27 @@ void ModelComponentWithChildren::SetParent(std::shared_ptr<SynthDeviceModelCompo
 	  //ChildWithChildren.push_back(shared);
   }
 
+  void ModelComponentWithChildren::CollectAllParameterDefinitions(SharedPointerVector<imbControlParameter>& parameters)
+  {
+	  for each (auto var in Parameters)
+	  {
+		  parameters.Add(var);
+	  }
+
+	  for each (auto varComp in ChildComponents)
+	  {
+		  for each (auto var in varComp->Parameters)
+		  {
+			  parameters.Add(var);
+		  }
+	  }
+
+	  for each (auto var in ChildWithChildren)
+	  {
+		  var->CollectAllParameterDefinitions(parameters);
+	  }
+  }
+
   void ModelComponentWithChildren::ConstructComponentAndChildComponentParameters(ParameterController & parameterController, juce::AudioProcessorValueTreeState & parameters)
   {
 

@@ -183,14 +183,15 @@ void SourceMixerComponent::sliderValueChanged (Slider* sliderThatWasMoved)
     {
         //[UserSliderCode_ModAmt] -- add your slider handling code here..
 		modelComponent->ModAmt.SetValue(ModAmt->getValue());
-		state->controlDisplayModel->SetParameter(&modelComponent->ModAmt);
+		state->SetParameterInFocus(&modelComponent->ModAmt);
         //[/UserSliderCode_ModAmt]
     }
     else if (sliderThatWasMoved == Val.get())
     {
         //[UserSliderCode_Val] -- add your slider handling code here..
 		modelComponent->Val.SetValue(Val->getValue());
-		state->controlDisplayModel->SetParameter(&modelComponent->Val);
+		//state->controlDisplayModel->SetParameter(&modelComponent->Val);
+		state->SetParameterInFocus(&modelComponent->Val);
         //[/UserSliderCode_Val]
     }
 
@@ -207,7 +208,7 @@ void SourceMixerComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     {
         //[UserComboBoxCode_ModSrc] -- add your combo box handling code here..
 		modelComponent->ModSrc.SetValue(ModSrc->getSelectedItemIndex());
-		state->controlDisplayModel->SetParameter(&modelComponent->ModSrc);
+		state->SetParameterInFocus(&modelComponent->ModSrc);
         //[/UserComboBoxCode_ModSrc]
     }
 

@@ -21,6 +21,14 @@ void BassZeroSynthModel::DeployModel()
 
 //	SynthProcessor = synthProcessor;
 
+
+	AddGroup(&MST_Group, "MST", "Master mixer");
+	AddGroup(&OPM_Group, "OPM", "Operation mode controls");
+	AddGroup(&WFA_Group, "WFA", "Waveform A");
+	AddGroup(&WFB_Group, "WFB", "Waveform B");
+	AddGroup(&PERKA_Group, "PERKA", "PERK A");
+	AddGroup(&PERKB_Group, "PERKB", "PERK B");
+
 	MODULATIONS AddADSR(&ADSR_A);
 	MODULATIONS AddADSR(&ADSR_B);
 
@@ -62,33 +70,45 @@ void BassZeroSynthModel::DeployModel()
 
 	// =================== MST components
 
-	COMPONENTS AddModulatedControl(&DIST_Overdrive, "DistDrive", "Distortion overdrive");
-	COMPONENTS AddModulatedControl(&DIST_Mix, "DistMix", "Distortion wet/dry mix");
+	COMPONENTS AddModulatedControl(&DIST_Overdrive, "DistDrive", "Distortion overdrive", &MST_Group);
+	COMPONENTS AddModulatedControl(&DIST_Mix, "DistMix", "Distortion wet/dry mix", &MST_Group);
 
-	COMPONENTS AddModulatedControl(&MST_Pan, "MstPan", "Master PAN");
-	COMPONENTS AddModulatedControl(&MST_Amp, "MstAmp", "Master AMP");
+	COMPONENTS AddModulatedControl(&MST_Pan, "MstPan", "Master PAN", &MST_Group);
+	COMPONENTS AddModulatedControl(&MST_Amp, "MstAmp", "Master AMP", &MST_Group);
 	
-	COMPONENTS AddModulatedControl(&MST_FLT_CUT, "FLT_Cut", "Master CutOff");
-	COMPONENTS AddModulatedControl(&MST_FLT_RES, "FLT_Res", "Master Resonance");
+	COMPONENTS AddModulatedControl(&MST_FLT_CUT, "FLT_Cut", "Master CutOff", &MST_Group);
+	COMPONENTS AddModulatedControl(&MST_FLT_RES, "FLT_Res", "Master Resonance", &MST_Group);
 
-	COMPONENTS AddModulatedControl(&MST_FLT_PITCH, "FLT_Freq", "Resonant oscilator frequency");
-	COMPONENTS AddModulatedControl(&MST_FLT_PWM, "FLT_Pwm", "PWM of resonant oscilator");
+	COMPONENTS AddModulatedControl(&MST_FLT_PITCH, "FLT_Freq", "Resonant oscilator frequency", &MST_Group);
+	COMPONENTS AddModulatedControl(&MST_FLT_PWM, "FLT_Pwm", "PWM of resonant oscilator", &MST_Group);
 
-	COMPONENTS AddModulatedControl(&MST_PAN_PERKA, "PERKA_Pan", "PERKA PAN");
-	COMPONENTS AddModulatedControl(&MST_PAN_PERKB, "PERKB_Pan", "PERKB PAN");
+	COMPONENTS AddModulatedControl(&MST_PAN_PERKA, "PERKA_Pan", "PERKA PAN", &MST_Group);
+	COMPONENTS AddModulatedControl(&MST_PAN_PERKB, "PERKB_Pan", "PERKB PAN", &MST_Group);
 
-	COMPONENTS AddModulatedControl(&OSC_WF_MIX, "WF_Mix", "WF A/B Mix");
-	COMPONENTS AddModulatedControl(&OSC_WF_FLT, "WF_FLT", "WF A/B Filter mix");
+	COMPONENTS AddModulatedControl(&OSC_WF_MIX, "WF_Mix", "WF A/B Mix", &MST_Group);
+	COMPONENTS AddModulatedControl(&OSC_WF_FLT, "WF_FLT", "WF A/B Filter mix", &MST_Group);
 
-	COMPONENTS AddPerk(&OSC_PERKA);
-	COMPONENTS AddPerk(&OSC_PERKB);
+	COMPONENTS AddPitchAndPhaseControl(&WFA, "WFA", "Waveform A", &WFA_Group); 
+	COMPONENTS AddModulatedControl(&WFA_PWM, "WFA_PWM", "PWM for Waveform A", &WFA_Group);
+	COMPONENTS AddModulatedControl(&WFA_Shaper, "WFA_Shaper", "Shape modulation for WFA", &WFA_Group);
 
-	COMPONENTS AddWaveform(&OSC_WFA);
-	COMPONENTS AddWaveform(&OSC_WFB);
+	COMPONENTS AddPitchAndPhaseControl(&WFB, "WFB", "Waveform B", &WFB_Group);
+	COMPONENTS AddModulatedControl(&WFB_PWM, "WFB_PWM", "PWM for Waveform B", &WFB_Group);
+	COMPONENTS AddModulatedControl(&WFB_Shaper, "WFB_Shaper", "Shape modulation for WFB", &WFB_Group);
+
+	COMPONENTS AddPitchAndPhaseControl(&PERKA, "PERKA", "PERK A", &PERKA_Group);
+	COMPONENTS AddModulatedControl(&PERKA_PWM, "PERKA_PWM", "PWM for PERK A", &PERKA_Group);
+	COMPONENTS AddModulatedControl(&PERKA_HPFREQ, "PERKA_HPFREQ", "HP cutoff freq.", &PERKA_Group);
+	COMPONENTS AddModulatedControl(&PERKA_AMP, "PERKA_AMP", "Volume of PERK A", &PERKA_Group);
+
+	COMPONENTS AddPitchAndPhaseControl(&PERKB, "PERKB", "PERK B", &PERKB_Group);
+	COMPONENTS AddModulatedControl(&PERKB_PWM, "PERKB_PWM", "PWM for PERK B", &PERKB_Group);
+	COMPONENTS AddModulatedControl(&PERKB_HPFREQ, "PERKB_HPFREQ", "HP cutoff freq.", &PERKB_Group);
+	COMPONENTS AddModulatedControl(&PERKB_AMP, "PERKB_AMP", "Volume of PERK B", &PERKB_Group);
 
 	// =========================== OPM Macro Controls
-	COMPONENTS AddModulatedControl(&OPM_MODA, "OPM_MODA", "Modulated parameter A");
-	COMPONENTS AddModulatedControl(&OPM_MODB, "OPM_MODB", "Modulated parameter B");
+	COMPONENTS AddModulatedControl(&OPM_MODA, "OPM_MODA", "Modulated parameter A", &OPM_Group);
+	COMPONENTS AddModulatedControl(&OPM_MODB, "OPM_MODB", "Modulated parameter B", &OPM_Group);
 
 	COMPONENTS AddCCParameter(parameterController,&OPM_VALA, "OPM_VALA", "Value A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 

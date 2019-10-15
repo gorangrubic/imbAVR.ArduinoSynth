@@ -1,5 +1,8 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+
+#include "../Source/Utility/ccTranslationMap.h"
+
 /// <summary>
 /// Utility data describe VSTi variables like: 
 /// - currently/last selected MIDI input and outputs
@@ -10,6 +13,11 @@
 class imbSynthStateUtilityData
 {
 public:
+
+	std::string inputToHardwareCCMapFilename{ "" };
+	std::string hardwareToOutputCCMapFilename{ "" };
+
+
 	imbSynthStateUtilityData();
 	~imbSynthStateUtilityData();
 };

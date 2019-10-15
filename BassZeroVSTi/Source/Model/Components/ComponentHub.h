@@ -18,9 +18,10 @@
 
 // #include "../SynthDeviceModel.h"
 #include "../Core/ModelModulatedControl.h"
+#include "../Core/PitchAndPhaseControl.h"
 
 #include "../Source/Model/Core/SharedPointerVector.h"
-
+#include "../Source/Model/Core/ControlGroup.h"
 
 #include <vector>
 
@@ -42,17 +43,22 @@ public:
 	*/
 
 	std::shared_ptr<ModelModulatedControl> GetModulatedControlByName(juce::String name);
+	std::shared_ptr<PitchAndPhaseControl> GetPitchAndPhaseControlByName(juce::String name);
+
+	SharedPointerVector<PitchAndPhaseControl> pitchAndPhaseControls;
 
 	SharedPointerVector<ModelModulatedControl> modulatedControls;
-	SharedPointerVector<OscilatorWaveform> oscilatorWaveforms;
-	SharedPointerVector<OscilatorPerk> oscilatorPerks;
+	//SharedPointerVector<OscilatorWaveform> oscilatorWaveforms;
+	//SharedPointerVector<OscilatorPerk> oscilatorPerks;
 
 	void Deploy(ParameterController & parameterController);
 
-	void AddModulatedControl(ModelModulatedControl * output, std::string _shortName, std::string _longName);
+	void AddModulatedControl(ModelModulatedControl * output, std::string _shortName, std::string _longName, ControlGroup * group=nullptr);
+	void AddPitchAndPhaseControl(PitchAndPhaseControl * output, std::string _shortName, std::string _longName, ControlGroup * group = nullptr);
 
-	void AddWaveform(OscilatorWaveform * output);
-	void AddPerk(OscilatorPerk * output);
+
+	//void AddWaveform(OscilatorWaveform * output);
+	//void AddPerk(OscilatorPerk * output);
 
 	ComponentHub() :ModelComponentWithChildren("Synth","SYN","Synth components") {};
 

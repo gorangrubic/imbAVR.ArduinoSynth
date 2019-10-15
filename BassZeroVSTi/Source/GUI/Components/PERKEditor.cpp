@@ -33,7 +33,7 @@ PERKEditor::PERKEditor (imbSynthStateData * synthState, String nameSufix)
     //[/Constructor_pre]
 
     Title4.reset (new Label ("new label",
-                             TRANS("AMP\n")));
+                             TRANS("HP FREQ\n")));
     addAndMakeVisible (Title4.get());
     Title4->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
     Title4->setJustificationType (Justification::centred);
@@ -45,13 +45,30 @@ PERKEditor::PERKEditor (imbSynthStateData * synthState, String nameSufix)
 
     Title4->setBounds (200, 0, 96, 16);
 
-    Shaper.reset (new SourceMixerComponent (synthState, "Shaper"));
-    addAndMakeVisible (Shaper.get());
-    Shaper->setBounds (200, 16, 96, 96);
+    HP_FREQ.reset (new SourceMixerComponent (synthState, "HP_FREQ"));
+    addAndMakeVisible (HP_FREQ.get());
+    HP_FREQ->setBounds (200, 16, 96, 96);
 
     OSC.reset (new OSCEditor (synthState, "OSC"));
     addAndMakeVisible (OSC.get());
     OSC->setBounds (0, 0, 192, 112);
+
+    AMP.reset (new SourceMixerComponent (synthState, "AMP"));
+    addAndMakeVisible (AMP.get());
+    AMP->setBounds (296, 16, 96, 96);
+
+    Title2.reset (new Label ("new label",
+                             TRANS("AMP")));
+    addAndMakeVisible (Title2.get());
+    Title2->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title2->setJustificationType (Justification::centred);
+    Title2->setEditable (false, false, false);
+    Title2->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title2->setColour (Label::textColourId, Colour (0xff181f22));
+    Title2->setColour (TextEditor::textColourId, Colours::black);
+    Title2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    Title2->setBounds (296, 0, 96, 16);
 
 
     //[UserPreSize]
@@ -70,8 +87,10 @@ PERKEditor::~PERKEditor()
     //[/Destructor_pre]
 
     Title4 = nullptr;
-    Shaper = nullptr;
+    HP_FREQ = nullptr;
     OSC = nullptr;
+    AMP = nullptr;
+    Title2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -123,15 +142,23 @@ BEGIN_JUCER_METADATA
   <BACKGROUND backgroundColour="323e44"/>
   <LABEL name="new label" id="259fd18a7575327c" memberName="Title4" virtualName=""
          explicitFocusOrder="0" pos="200 0 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
-         edTextCol="ff000000" edBkgCol="0" labelText="AMP&#10;" editableSingleClick="0"
+         edTextCol="ff000000" edBkgCol="0" labelText="HP FREQ&#10;" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="Shaper" id="6dc4e4d5157c3da" memberName="Shaper" virtualName=""
+  <JUCERCOMP name="HP_FREQ" id="6dc4e4d5157c3da" memberName="HP_FREQ" virtualName=""
              explicitFocusOrder="0" pos="200 16 96 96" sourceFile="SourceMixerComponent.cpp"
-             constructorParams="synthState, &quot;Shaper&quot;"/>
+             constructorParams="synthState, &quot;HP_FREQ&quot;"/>
   <JUCERCOMP name="OSC" id="57bcfacd6198a2e" memberName="OSC" virtualName=""
              explicitFocusOrder="0" pos="0 0 192 112" sourceFile="OSCEditor.cpp"
              constructorParams="synthState, &quot;OSC&quot;"/>
+  <JUCERCOMP name="AMP" id="9957dec5807785" memberName="AMP" virtualName=""
+             explicitFocusOrder="0" pos="296 16 96 96" sourceFile="SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;AMP&quot;"/>
+  <LABEL name="new label" id="ba1095b3ae0668b6" memberName="Title2" virtualName=""
+         explicitFocusOrder="0" pos="296 0 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
+         edTextCol="ff000000" edBkgCol="0" labelText="AMP" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

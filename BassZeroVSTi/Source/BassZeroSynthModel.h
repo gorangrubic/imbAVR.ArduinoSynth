@@ -16,6 +16,8 @@
 #include "Model/Modulation/ModulationHub.h"
 #include "Control/imbSynthAudioProcessor.h"
 
+#include "../Source/Model/Core/PitchAndPhaseControl.h"
+
 #include "Model/Components/OscilatorPerk.h"
 #include "Model/Components/OscilatorWaveform.h"
 
@@ -91,6 +93,13 @@ public:
 
 	// ========================== Main components
 
+	ControlGroup OPM_Group;
+	ControlGroup MST_Group;
+	ControlGroup WFA_Group;
+	ControlGroup WFB_Group;
+	ControlGroup PERKA_Group;
+	ControlGroup PERKB_Group;
+
 	ModelModulatedControl DIST_Overdrive = ModelModulatedControl();
 	ModelModulatedControl DIST_Mix = ModelModulatedControl();
 
@@ -109,14 +118,24 @@ public:
 	ModelModulatedControl MST_PAN_PERKA = ModelModulatedControl();
 	ModelModulatedControl MST_PAN_PERKB = ModelModulatedControl();
 
-	OscilatorWaveform OSC_WFA = OscilatorWaveform();
-	OscilatorWaveform OSC_WFB = OscilatorWaveform();
+	PitchAndPhaseControl WFA;
+	ModelModulatedControl WFA_PWM;
+	ModelModulatedControl WFA_Shaper;
+
+	PitchAndPhaseControl WFB;
+	ModelModulatedControl WFB_PWM;
+	ModelModulatedControl WFB_Shaper;
+
+	PitchAndPhaseControl PERKA;
+	ModelModulatedControl PERKA_PWM;
+	ModelModulatedControl PERKA_HPFREQ;
+	ModelModulatedControl PERKA_AMP;
+
+	PitchAndPhaseControl PERKB;
+	ModelModulatedControl PERKB_PWM;
+	ModelModulatedControl PERKB_HPFREQ;
+	ModelModulatedControl PERKB_AMP;
 	
-
-
-	OscilatorPerk OSC_PERKA = OscilatorPerk();
-	OscilatorPerk OSC_PERKB = OscilatorPerk();
-
 	ModelModulatedControl OSC_WF_MIX = ModelModulatedControl();
 	ModelModulatedControl OSC_WF_FLT = ModelModulatedControl();
 	

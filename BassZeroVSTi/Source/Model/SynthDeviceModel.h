@@ -11,13 +11,17 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Core\ModelComponentDescription.h"
+
+
 #include "../Model/Core/SharedPointerVector.h"
+
+
 
 #include "../Control/ParameterController.h"
 #include "../Control/imbControlParameter.h"
-
-#include "Components\OscilatorWaveform.h"
-#include "Components\OscilatorPerk.h"
+//
+//#include "Components\OscilatorWaveform.h"
+//#include "Components\OscilatorPerk.h"
 
 #include "Modulation\ModulationFunctionADSR.h"
 #include "Modulation\ModulationFunctionENV.h"
@@ -27,11 +31,13 @@
 #include "Modulation\ModulationSourceBase.h"
 
 #include "..\Source\Model\ModelConstructionTools.h"
-
+#include "../Source/Model/Core/ControlGroup.h"
 
 #include "Modulation\ModulationHub.h"
 #include "Components\ComponentHub.h"
 #include "OPM\OPMControlModel.h"
+
+#include "../Source/Model/Core/ControlGroup.h"
 
 #include "SynthDeviceModelComponentBase.h"
 
@@ -79,14 +85,16 @@ class SynthDeviceModel :
 		void PreDeployModel();
 		void AfterDeployModel();
 
-
+		
 		
 		/// <summary>
 		/// The parameter controller - machanism for CC / SysExc ID synthnronization
 		/// </summary>
 		ParameterController parameterController;
 
-		
+
+
+		SharedPointerVector<ControlGroup> Groups;
 		
 		/// <summary>
 /// Deploys this instance.
@@ -95,11 +103,15 @@ class SynthDeviceModel :
 
 		void ConstructParameters(juce::AudioProcessorValueTreeState & parameters);
 
-		
+		/* Populates specified vector with all parameters defined in the model*/
+		void CollectAllParameters(SharedPointerVector<imbControlParameter> & parameters);
+
 
 		/*Deploys model*/
 		virtual void DeployModel() = 0;
 
+
+		void AddGroup(ControlGroup * output, std::string _shortName, std::string _longName, ControlGroup * group = nullptr);
 
 
 		SynthDeviceModel() :ModelComponentWithChildren("Main", "Main","Synth"),

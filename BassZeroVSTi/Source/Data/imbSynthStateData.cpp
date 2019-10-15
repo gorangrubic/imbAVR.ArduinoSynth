@@ -4,6 +4,20 @@
 
 
 
+void imbSynthStateData::Initiated()
+{
+	model->CollectAllParameters(Parameters);
+
+	for each (auto var in Parameters)
+	{
+		if (var->typeMIDIMessage == imbControlParameterMessageType::ccMIDI) {
+			InputToHardwareMap->SetDefault(var->ccID);
+			HardwareToOutputMap->SetDefault(var->ccID);
+		}
+	}
+	
+}
+
 void imbSynthStateData::SetParameterInFocus(imbControlParameter * parameter)
 {
 	bool newInFocus = false;

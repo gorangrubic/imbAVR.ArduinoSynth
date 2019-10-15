@@ -20,6 +20,10 @@ class imbSynthTools {
     public:
     
 
+		static int StringToInt32(juce::String stringValue, float defaultValue);
+
+		static int StringToInt32(juce::String stringValue, int defaultValue);
+
 
 		//static void imbSynthTools::SetParameter(AudioProcessorParameterGroup * group, imbControlParameter p)
 		//{

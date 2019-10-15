@@ -36,8 +36,8 @@ TabModulationFunctions::TabModulationFunctions (imbSynthStateData * synthState, 
     addAndMakeVisible (ADSR_A.get());
     ADSR_A->setBounds (8, 48, 260, 76);
 
-    ADSRB.reset (new ADSREditor (synthState, "ADSR_B"));
-    addAndMakeVisible (ADSRB.get());
+    ADSR_B.reset (new ADSREditor (synthState, "ADSR_B"));
+    addAndMakeVisible (ADSR_B.get());
     LFO_A.reset (new ChaosEditor (synthState, "LFO_A"));
     addAndMakeVisible (LFO_A.get());
     LFO_A->setBounds (288, 48, 241, 100);
@@ -194,7 +194,7 @@ TabModulationFunctions::~TabModulationFunctions()
     //[/Destructor_pre]
 
     ADSR_A = nullptr;
-    ADSRB = nullptr;
+    ADSR_B = nullptr;
     LFO_A = nullptr;
     ENV_A = nullptr;
     ENV_B = nullptr;
@@ -247,7 +247,7 @@ void TabModulationFunctions::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    ADSRB->setBounds (8 + 0, 48 + 76 - -12, 260, 76);
+    ADSR_B->setBounds (8 + 0, 48 + 76 - -12, 260, 76);
     ENV_B->setBounds (8 + 280, 280 + 68 - 68, 264, 68);
     LFO_B->setBounds (288 + 0, 48 + 100 - -12, 240, 100);
     LFO_C->setBounds ((288 + 0) + 280, (48 + 100 - -12) + 100 - 212, 240, 100);
@@ -293,10 +293,10 @@ BEGIN_JUCER_METADATA
     <IMAGE pos="0 -66 840 490" resource="background1_jpg" opacity="1.0"
            mode="0"/>
   </BACKGROUND>
-  <JUCERCOMP name="" id="f2a3a037a92bb9ba" memberName="ADSR_A" virtualName=""
+  <JUCERCOMP name="ADSR_A" id="f2a3a037a92bb9ba" memberName="ADSR_A" virtualName=""
              explicitFocusOrder="0" pos="8 48 260 76" sourceFile="../Components/ADSREditor.cpp"
              constructorParams="synthState, &quot;ADSR_A&quot;"/>
-  <JUCERCOMP name="" id="3c7fd89d7ccb94b7" memberName="ADSRB" virtualName=""
+  <JUCERCOMP name="ADSR_B" id="3c7fd89d7ccb94b7" memberName="ADSR_B" virtualName=""
              explicitFocusOrder="0" pos="0 -12R 260 76" posRelativeX="f2a3a037a92bb9ba"
              posRelativeY="f2a3a037a92bb9ba" sourceFile="../Components/ADSREditor.cpp"
              constructorParams="synthState, &quot;ADSR_B&quot;"/>

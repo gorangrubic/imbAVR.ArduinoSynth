@@ -27,6 +27,7 @@
 
 #include "SourceMixerComponent.h"
 #include "OSCEditor.h"
+#include "SourceMixerComponent.h"
 
 
 //==============================================================================
@@ -61,8 +62,10 @@ private:
 
     //==============================================================================
     std::unique_ptr<Label> Title4;
-    std::unique_ptr<SourceMixerComponent> Shaper;
+    std::unique_ptr<SourceMixerComponent> HP_FREQ;
     std::unique_ptr<OSCEditor> OSC;
+    std::unique_ptr<SourceMixerComponent> AMP;
+    std::unique_ptr<Label> Title2;
 
 
     //==============================================================================

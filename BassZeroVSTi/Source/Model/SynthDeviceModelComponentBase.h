@@ -31,6 +31,7 @@ class SynthDeviceModelComponentBase:
     
 		void ConstructComponentParameters(ParameterController & parameterController, juce::AudioProcessorValueTreeState & parameters);
 
+		
 		SharedPointerVector<imbControlParameter> Parameters;
 
 	//	std::vector<std::shared_ptr<imbControlParameter>> Parameters { };

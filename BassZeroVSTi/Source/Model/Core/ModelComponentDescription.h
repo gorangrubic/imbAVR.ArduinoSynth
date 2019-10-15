@@ -21,6 +21,7 @@ class ModelComponentDescription {
 		juce::String NamePrefix { juce::String("", STRLEN) };
 		juce::String ShortName { juce::String("", STRLEN) };
 		juce::String LongName { juce::String("", STRLEN) };
+		juce::String GroupName { juce::String("", STRLEN) };
 
 			//String ParentPath;
 

@@ -68,7 +68,7 @@ private:
 
     //==============================================================================
     std::unique_ptr<ADSREditor> ADSR_A;
-    std::unique_ptr<ADSREditor> ADSRB;
+    std::unique_ptr<ADSREditor> ADSR_B;
     std::unique_ptr<ChaosEditor> LFO_A;
     std::unique_ptr<ENVEditor> ENV_A;
     std::unique_ptr<ENVEditor> ENV_B;

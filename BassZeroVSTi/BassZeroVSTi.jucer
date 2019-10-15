@@ -29,6 +29,9 @@
       </GROUP>
       <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
         <GROUP id="{DBF45F66-8B5D-8ECD-1186-021B70922C11}" name="Core">
+          <FILE id="EqUDJw" name="ControlGroup.cpp" compile="1" resource="0"
+                file="Source/Model/Core/ControlGroup.cpp"/>
+          <FILE id="xzwx7R" name="ControlGroup.h" compile="0" resource="0" file="Source/Model/Core/ControlGroup.h"/>
           <FILE id="NkErMT" name="ModelComponentDescription.cpp" compile="1"
                 resource="0" file="Source/Model/Core/ModelComponentDescription.cpp"/>
           <FILE id="gQmVkK" name="ModelComponentDescription.h" compile="0" resource="0"
@@ -41,6 +44,10 @@
                 file="Source/Model/Core/ModelModulatedControl.cpp"/>
           <FILE id="dyOBV4" name="ModelModulatedControl.h" compile="0" resource="0"
                 file="Source/Model/Core/ModelModulatedControl.h"/>
+          <FILE id="XnOkt7" name="PitchAndPhaseControl.cpp" compile="1" resource="0"
+                file="Source/Model/Core/PitchAndPhaseControl.cpp"/>
+          <FILE id="yieAIV" name="PitchAndPhaseControl.h" compile="0" resource="0"
+                file="Source/Model/Core/PitchAndPhaseControl.h"/>
           <FILE id="Spv6ad" name="README.md" compile="0" resource="1" file="Source/Model/Core/README.md"/>
           <FILE id="H0ClhG" name="SharedPointerVector.cpp" compile="1" resource="0"
                 file="Source/Model/Core/SharedPointerVector.cpp"/>
@@ -126,6 +133,10 @@
         <FILE id="Bk6BiC" name="README.md" compile="0" resource="1" file="Source/Model/README.md"/>
       </GROUP>
       <GROUP id="{339FE495-1696-E062-B2C3-4DA5B3929585}" name="Utility">
+        <FILE id="lJkS8T" name="ccTranslationEntry.cpp" compile="1" resource="0"
+              file="Source/Utility/ccTranslationEntry.cpp"/>
+        <FILE id="XgP5dM" name="ccTranslationEntry.h" compile="0" resource="0"
+              file="Source/Utility/ccTranslationEntry.h"/>
         <FILE id="JeNDKS" name="ccTranslationMap.cpp" compile="1" resource="0"
               file="Source/Utility/ccTranslationMap.cpp"/>
         <FILE id="rP6GXJ" name="ccTranslationMap.h" compile="0" resource="0"
@@ -279,6 +290,10 @@
                 file="Source/GUI/General/PresetFileBrowserModel.h"/>
         </GROUP>
         <GROUP id="{36A4A682-D439-2BE4-9272-EF79482CE161}" name="Global">
+          <FILE id="x67kaI" name="AboutScreenDisplay.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/AboutScreenDisplay.cpp"/>
+          <FILE id="AJoW7C" name="AboutScreenDisplay.h" compile="0" resource="0"
+                file="Source/GUI/Global/AboutScreenDisplay.h"/>
           <FILE id="DdFYWj" name="CommandBufferDisplay.cpp" compile="1" resource="0"
                 file="Source/GUI/Global/CommandBufferDisplay.cpp"/>
           <FILE id="guLaol" name="CommandBufferDisplay.h" compile="0" resource="0"
@@ -303,6 +318,14 @@
                 file="Source/GUI/Global/SynthStateDisplayModel.cpp"/>
           <FILE id="Dq9rq7" name="SynthStateDisplayModel.h" compile="0" resource="0"
                 file="Source/GUI/Global/SynthStateDisplayModel.h"/>
+          <FILE id="MkFyJN" name="TextContentModel.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/TextContentModel.cpp"/>
+          <FILE id="X1rA7t" name="TextContentModel.h" compile="0" resource="0"
+                file="Source/GUI/Global/TextContentModel.h"/>
+          <FILE id="Cb1APV" name="TextContentViewer.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/TextContentViewer.cpp"/>
+          <FILE id="OBoJxD" name="TextContentViewer.h" compile="0" resource="0"
+                file="Source/GUI/Global/TextContentViewer.h"/>
         </GROUP>
         <GROUP id="{943E644A-022E-2CC4-7AA8-5E7617F65FF2}" name="Tabs">
           <GROUP id="{43A79DD7-86EA-CDEF-77E1-03380E1252C2}" name="MainViews">

@@ -34,17 +34,15 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    label.reset (new Label ("new label",
-                            TRANS("Parameter")));
-    addAndMakeVisible (label.get());
-    label->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
-    label->setJustificationType (Justification::centred);
-    label->setEditable (false, false, false);
-    label->setColour (Label::backgroundColourId, Colour (0x50181f22));
-    label->setColour (TextEditor::textColourId, Colours::black);
-    label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
-
-    label->setBounds (152, 0, 80, 24);
+    label_parameter.reset (new Label ("new label",
+                                      TRANS("Par.ID")));
+    addAndMakeVisible (label_parameter.get());
+    label_parameter->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label_parameter->setJustificationType (Justification::centred);
+    label_parameter->setEditable (false, false, false);
+    label_parameter->setColour (Label::backgroundColourId, Colour (0x50181f22));
+    label_parameter->setColour (TextEditor::textColourId, Colours::black);
+    label_parameter->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     Parameter_text.reset (new Label ("new label",
                                      TRANS("WFA_PWM")));
@@ -57,17 +55,17 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     Parameter_text->setColour (TextEditor::textColourId, Colours::black);
     Parameter_text->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label3.reset (new Label ("new label",
-                             TRANS("Group")));
-    addAndMakeVisible (label3.get());
-    label3->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
-    label3->setJustificationType (Justification::centred);
-    label3->setEditable (false, false, false);
-    label3->setColour (Label::backgroundColourId, Colour (0x50181f22));
-    label3->setColour (TextEditor::textColourId, Colours::black);
-    label3->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    label_group.reset (new Label ("new label",
+                                  TRANS("Group")));
+    addAndMakeVisible (label_group.get());
+    label_group->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label_group->setJustificationType (Justification::centred);
+    label_group->setEditable (false, false, false);
+    label_group->setColour (Label::backgroundColourId, Colour (0x50181f22));
+    label_group->setColour (TextEditor::textColourId, Colours::black);
+    label_group->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label3->setBounds (0, 0, 64, 24);
+    label_group->setBounds (0, 0, 64, 24);
 
     GroupName_text.reset (new Label ("new label",
                                      TRANS("WFA")));
@@ -80,7 +78,7 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     GroupName_text->setColour (TextEditor::textColourId, Colours::black);
     GroupName_text->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    GroupName_text->setBounds (64, 0, 86, 24);
+    GroupName_text->setBounds (64, 0, 160, 24);
 
     label5.reset (new Label ("new label",
                              TRANS("Value")));
@@ -93,7 +91,7 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     label5->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     CCIn_label.reset (new Label ("new label",
-                                 TRANS("CC in")));
+                                 TRANS("In")));
     addAndMakeVisible (CCIn_label.get());
     CCIn_label->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
     CCIn_label->setJustificationType (Justification::centred);
@@ -103,7 +101,7 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     CCIn_label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     CCOut_label.reset (new Label ("new label",
-                                  TRANS("CC out")));
+                                  TRANS("Out")));
     addAndMakeVisible (CCOut_label.get());
     CCOut_label->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
     CCOut_label->setJustificationType (Justification::centred);
@@ -145,6 +143,26 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     CCOut_edit->setColour (TextEditor::backgroundColourId, Colour (0x2542a2c8));
     CCOut_edit->setText (TRANS("48"));
 
+    CC_label.reset (new Label ("new label",
+                               TRANS("Id")));
+    addAndMakeVisible (CC_label.get());
+    CC_label->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    CC_label->setJustificationType (Justification::centred);
+    CC_label->setEditable (false, false, false);
+    CC_label->setColour (Label::backgroundColourId, Colour (0x25181f22));
+    CC_label->setColour (TextEditor::textColourId, Colours::black);
+    CC_label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    text_ccID.reset (new Label ("new label",
+                                TRANS("5")));
+    addAndMakeVisible (text_ccID.get());
+    text_ccID->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    text_ccID->setJustificationType (Justification::centred);
+    text_ccID->setEditable (false, false, false);
+    text_ccID->setColour (Label::backgroundColourId, Colour (0x25397daa));
+    text_ccID->setColour (TextEditor::textColourId, Colour (0xff397daa));
+    text_ccID->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -154,8 +172,19 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
 
     //[Constructor] You can add your own custom stuff here..
 	//synthState->controlStateDisplay = std::shared_ptr<ControlStateDisplay>(this);
+	blockRefresh = false;
 	controlDisplayModel = std::shared_ptr<ControlStateDisplayModel>(synthState->controlDisplayModel.get());
+	CCOut_edit->onTextChange = [&, this] {
+		this->Update();
+	};
+	CCIn_edit->onTextChange = [&, this] {
+		this->Update();
+	};
+	Value_Edit->onTextChange = [&, this] {
+		this->Update();
+	};
 	startTimer(GUIREFRESH_TIMEINTERVAL);
+	
     //[/Constructor]
 }
 
@@ -164,9 +193,9 @@ ControlStateDisplay::~ControlStateDisplay()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    label = nullptr;
+    label_parameter = nullptr;
     Parameter_text = nullptr;
-    label3 = nullptr;
+    label_group = nullptr;
     GroupName_text = nullptr;
     label5 = nullptr;
     CCIn_label = nullptr;
@@ -174,6 +203,8 @@ ControlStateDisplay::~ControlStateDisplay()
     Value_Edit = nullptr;
     CCIn_edit = nullptr;
     CCOut_edit = nullptr;
+    CC_label = nullptr;
+    text_ccID = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -198,13 +229,16 @@ void ControlStateDisplay::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    Parameter_text->setBounds (232, 0, getWidth() - 570, 24);
-    label5->setBounds ((((((getWidth() - 48) + 0 - 64) + 0 - 48) + 0 - 64) + 0 - 48) + 0 - 64, 0, 64, 24);
-    CCIn_label->setBounds ((((getWidth() - 48) + 0 - 64) + 0 - 48) + 0 - 64, 0, 64, 24);
-    CCOut_label->setBounds ((getWidth() - 48) + 0 - 64, 0, 64, 24);
-    Value_Edit->setBounds (((((getWidth() - 48) + 0 - 64) + 0 - 48) + 0 - 64) + 0 - 48, 0, 48, 24);
-    CCIn_edit->setBounds (((getWidth() - 48) + 0 - 64) + 0 - 48, 0, 48, 24);
-    CCOut_edit->setBounds (getWidth() - 48, 0, 48, 24);
+    label_parameter->setBounds (64 + 160, 0, 62, 24);
+    Parameter_text->setBounds (288, 0, getWidth() - 618, 24);
+    label5->setBounds ((((((792 - 48) + 0 - 36) + -40 - 36) + 0 - 48) + 0 - 36) + 0 - 48, 0, 48, 24);
+    CCIn_label->setBounds ((((792 - 48) + 0 - 36) + -40 - 36) + 0 - 48, 0, 48, 24);
+    CCOut_label->setBounds (792 - 48, 0, 48, 24);
+    Value_Edit->setBounds (((((792 - 48) + 0 - 36) + -40 - 36) + 0 - 48) + 0 - 36, 0, 36, 24);
+    CCIn_edit->setBounds (((792 - 48) + 0 - 36) + -40 - 36, 0, 36, 24);
+    CCOut_edit->setBounds ((792 - 48) + 48, 0, 36, 24);
+    CC_label->setBounds (((792 - 48) + 0 - 36) + 0 - 36, 0, 36, 24);
+    text_ccID->setBounds ((792 - 48) + 0 - 36, 0, 36, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -214,13 +248,40 @@ void ControlStateDisplay::resized()
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void ControlStateDisplay::Update()
 {
-
+	if (!isValueUpdateCall) {
+		blockRefresh = true;
+		controlDisplayModel->UpdateParameter(Value_Edit->getText(), CCIn_edit->getText(), CCOut_edit->getText());
+		blockRefresh = false;
+	}
 }
 void ControlStateDisplay::timerCallback()
 {
+	if (blockRefresh) return;
+	isValueUpdateCall = true;
 	Parameter_text->setText(controlDisplayModel->parameterID, juce::NotificationType::dontSendNotification);
 	GroupName_text->setText(controlDisplayModel->parameterGroup, juce::NotificationType::dontSendNotification);
-	Value_Edit->setText(controlDisplayModel->parameterValue, juce::NotificationType::dontSendNotification);
+
+	//if (!Value_Edit->isTextInputActive())
+		Value_Edit->setText(controlDisplayModel->parameterValue, juce::NotificationType::dontSendNotification);
+
+	if (controlDisplayModel->isCCParameter) {
+		if (!CCIn_edit->isEnabled()) CCIn_edit->setEnabled(true);
+		if (!CCOut_edit->isEnabled()) CCOut_edit->setEnabled(true);
+		//if (!CCIn_edit->i)
+			CCIn_edit->setText(juce::String(controlDisplayModel->parameterCCIn), juce::NotificationType::dontSendNotification);
+		//if (!CCOut_edit->isTextInputActive()) 
+			CCOut_edit->setText(juce::String(controlDisplayModel->parameterCCOut), juce::NotificationType::dontSendNotification);
+		text_ccID->setText(juce::String(controlDisplayModel->parameterCC), juce::NotificationType::dontSendNotification);
+	}
+	else {
+		if (CCIn_edit->isEnabled())  CCIn_edit->setEnabled(false);
+		if (CCOut_edit->isEnabled()) CCOut_edit->setEnabled(false);
+
+		CCIn_edit->setText(juce::String(""), juce::NotificationType::dontSendNotification);
+		CCOut_edit->setText(juce::String(""), juce::NotificationType::dontSendNotification);
+		text_ccID->setText(juce::String(controlDisplayModel->parameterCC), juce::NotificationType::dontSendNotification);
+	}
+	isValueUpdateCall = false;
 }
 //[/MiscUserCode]
 
@@ -240,58 +301,70 @@ BEGIN_JUCER_METADATA
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="830" initialHeight="24">
   <BACKGROUND backgroundColour="b0323e44"/>
-  <LABEL name="new label" id="a579be9af7298cb3" memberName="label" virtualName=""
-         explicitFocusOrder="0" pos="152 0 80 24" bkgCol="50181f22" edTextCol="ff000000"
-         edBkgCol="0" labelText="Parameter" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
-         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <LABEL name="new label" id="a579be9af7298cb3" memberName="label_parameter"
+         virtualName="" explicitFocusOrder="0" pos="0R 0 62 24" posRelativeX="179ecc7c0adbb30b"
+         bkgCol="50181f22" edTextCol="ff000000" edBkgCol="0" labelText="Par.ID"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
   <LABEL name="new label" id="1e18716abad2bc29" memberName="Parameter_text"
-         virtualName="" explicitFocusOrder="0" pos="232 0 570M 24" bkgCol="25f0ffff"
+         virtualName="" explicitFocusOrder="0" pos="288 0 618M 24" bkgCol="25f0ffff"
          textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="WFA_PWM"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="33"/>
-  <LABEL name="new label" id="ddf7b13950d11ebf" memberName="label3" virtualName=""
-         explicitFocusOrder="0" pos="0 0 64 24" bkgCol="50181f22" edTextCol="ff000000"
-         edBkgCol="0" labelText="Group" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
-         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <LABEL name="new label" id="ddf7b13950d11ebf" memberName="label_group"
+         virtualName="" explicitFocusOrder="0" pos="0 0 64 24" bkgCol="50181f22"
+         edTextCol="ff000000" edBkgCol="0" labelText="Group" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <LABEL name="new label" id="179ecc7c0adbb30b" memberName="GroupName_text"
-         virtualName="" explicitFocusOrder="0" pos="64 0 86 24" bkgCol="25f0ffff"
+         virtualName="" explicitFocusOrder="0" pos="64 0 160 24" bkgCol="25f0ffff"
          textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="WFA"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="33"/>
   <LABEL name="new label" id="6a4583e4a56bb802" memberName="label5" virtualName=""
-         explicitFocusOrder="0" pos="0r 0 64 24" posRelativeX="7abd47cb9a66661d"
+         explicitFocusOrder="0" pos="0r 0 48 24" posRelativeX="7abd47cb9a66661d"
          bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="Value"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
   <LABEL name="new label" id="62aa170f7facad24" memberName="CCIn_label"
-         virtualName="" explicitFocusOrder="0" pos="0r 0 64 24" posRelativeX="501460b9a378a69c"
-         bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="CC in"
+         virtualName="" explicitFocusOrder="0" pos="0r 0 48 24" posRelativeX="501460b9a378a69c"
+         bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="In"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
   <LABEL name="new label" id="cb7f4e27d9d9ff20" memberName="CCOut_label"
-         virtualName="" explicitFocusOrder="0" pos="0r 0 64 24" posRelativeX="3e13a6513a5a74e5"
-         bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="CC out"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
-         italic="0" justification="36"/>
+         virtualName="" explicitFocusOrder="0" pos="792r 0 48 24" bkgCol="25181f22"
+         edTextCol="ff000000" edBkgCol="0" labelText="Out" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <TEXTEDITOR name="new text editor" id="7abd47cb9a66661d" memberName="Value_Edit"
-              virtualName="" explicitFocusOrder="0" pos="0r 0 48 24" posRelativeX="62aa170f7facad24"
+              virtualName="" explicitFocusOrder="0" pos="0r 0 36 24" posRelativeX="62aa170f7facad24"
               bkgcol="2542a2c8" initialText="127" multiline="0" retKeyStartsLine="0"
               readonly="0" scrollbars="0" caret="1" popupmenu="0"/>
   <TEXTEDITOR name="new text editor" id="501460b9a378a69c" memberName="CCIn_edit"
-              virtualName="" explicitFocusOrder="0" pos="0r 0 48 24" posRelativeX="cb7f4e27d9d9ff20"
+              virtualName="" explicitFocusOrder="0" pos="-40r 0 36 24" posRelativeX="448107c45cacbe"
               bkgcol="2542a2c8" initialText="70" multiline="0" retKeyStartsLine="0"
               readonly="0" scrollbars="0" caret="1" popupmenu="0"/>
   <TEXTEDITOR name="new text editor" id="3e13a6513a5a74e5" memberName="CCOut_edit"
-              virtualName="" explicitFocusOrder="0" pos="0Rr 0 48 24" bkgcol="2542a2c8"
-              initialText="48" multiline="0" retKeyStartsLine="0" readonly="0"
-              scrollbars="0" caret="1" popupmenu="0"/>
+              virtualName="" explicitFocusOrder="0" pos="0R 0 36 24" posRelativeX="cb7f4e27d9d9ff20"
+              bkgcol="2542a2c8" initialText="48" multiline="0" retKeyStartsLine="0"
+              readonly="0" scrollbars="0" caret="1" popupmenu="0"/>
+  <LABEL name="new label" id="dba2040aff782f3a" memberName="CC_label"
+         virtualName="" explicitFocusOrder="0" pos="0r 0 36 24" posRelativeX="448107c45cacbe"
+         bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="Id"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
+  <LABEL name="new label" id="448107c45cacbe" memberName="text_ccID" virtualName=""
+         explicitFocusOrder="0" pos="0r 0 36 24" posRelativeX="cb7f4e27d9d9ff20"
+         bkgCol="25397daa" edTextCol="ff397daa" edBkgCol="0" labelText="5"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

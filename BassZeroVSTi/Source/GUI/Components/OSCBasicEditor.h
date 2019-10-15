@@ -25,7 +25,6 @@
 #include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
-#include "SourceMixerComponent.h"
 #include "OSCEditor.h"
 
 
@@ -60,8 +59,6 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Label> Title2;
-    std::unique_ptr<SourceMixerComponent> Shaper;
     std::unique_ptr<OSCEditor> OSC;
 
 

@@ -22,12 +22,29 @@ void SynthDeviceModelComponentBase::ConstructComponentParameters(ParameterContro
 
 	for each (auto var in Parameters)
 	{
+		
+		juce::String parentPath = "";
+
+		if (GroupName.isNotEmpty()) {
+			parentPath.append(GroupName,127);
+		}
+
+		if (ShortName.isNotEmpty()) {
+			if (parentPath.isNotEmpty()) parentPath.append(".", 2);
+			parentPath.append(ShortName, 127);
+		}
+
+		var->parameterParentPath = parentPath;
+
 		NormalisableRange<float> valueRange = NormalisableRange<float>(var->MinValue, var->MaxValue, var->IntervalValue);
 
+		
 		parameters.createAndAddParameter(var->parameterIDPath,
 			var->parameterID, var->parameterLabel, valueRange, var->Value, nullptr, nullptr, 
 			var->isMetaValue, var->isAutomatizable, var->isDescreteValue, 
 			var->category, var->typeParameter == imbControlParameterType::Boolean);
+
+
 
 	//	imbSynthTools::SetParameter(nullptr, *var);
 		//modelConstructionTools.SetParameter(nullptr, *var);

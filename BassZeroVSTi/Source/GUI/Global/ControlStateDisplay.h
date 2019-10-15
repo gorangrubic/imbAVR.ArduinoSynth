@@ -59,12 +59,14 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 	std::shared_ptr<ControlStateDisplayModel> controlDisplayModel;
+	bool isValueUpdateCall;
+	bool blockRefresh;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Label> label;
+    std::unique_ptr<Label> label_parameter;
     std::unique_ptr<Label> Parameter_text;
-    std::unique_ptr<Label> label3;
+    std::unique_ptr<Label> label_group;
     std::unique_ptr<Label> GroupName_text;
     std::unique_ptr<Label> label5;
     std::unique_ptr<Label> CCIn_label;
@@ -72,6 +74,8 @@ private:
     std::unique_ptr<TextEditor> Value_Edit;
     std::unique_ptr<TextEditor> CCIn_edit;
     std::unique_ptr<TextEditor> CCOut_edit;
+    std::unique_ptr<Label> CC_label;
+    std::unique_ptr<Label> text_ccID;
 
 
     //==============================================================================

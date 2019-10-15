@@ -32,18 +32,18 @@ TabWaveforms::TabWaveforms (imbSynthStateData * synthState, String nameSufix)
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    WFA.reset (new OSCBasicEditor (synthState, "WFA"));
+    WFA.reset (new OSCEditor (synthState, "WFA"));
     addAndMakeVisible (WFA.get());
-    WFA->setBounds (16, 48, 300, 112);
+    WFA->setBounds (16, 48, 96, 120);
 
     WFB.reset (new OSCBasicEditor (synthState, "WFB"));
     addAndMakeVisible (WFB.get());
-    PERKA.reset (new PERKEditor (synthState, "PERKA"));
-    addAndMakeVisible (PERKA.get());
-    PERKA->setBounds (16, 216, 300, 112);
+    WFB->setBounds (426, 48, 100, 112);
 
-    PERKB.reset (new PERKEditor (synthState, "PERKB"));
-    addAndMakeVisible (PERKB.get());
+    PERKA.reset (new OSCEditor (synthState, "PERKA"));
+    addAndMakeVisible (PERKA.get());
+    PERKA->setBounds (16, 212, 96, 112);
+
     label_WFA.reset (new Label ("Title",
                                 TRANS("WF A")));
     addAndMakeVisible (label_WFA.get());
@@ -64,7 +64,7 @@ TabWaveforms::TabWaveforms (imbSynthStateData * synthState, String nameSufix)
     Label_WFB->setColour (TextEditor::textColourId, Colours::black);
     Label_WFB->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label_perkA.reset (new Label ("Title",
+    label_perkA.reset (new Label ("label_perkA",
                                   TRANS("PERK A")));
     addAndMakeVisible (label_perkA.get());
     label_perkA->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Bold"));
@@ -74,18 +74,151 @@ TabWaveforms::TabWaveforms (imbSynthStateData * synthState, String nameSufix)
     label_perkA->setColour (TextEditor::textColourId, Colours::black);
     label_perkA->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label_perkB.reset (new Label ("Title",
-                                  TRANS("PERK B")));
-    addAndMakeVisible (label_perkB.get());
-    label_perkB->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Bold"));
-    label_perkB->setJustificationType (Justification::centredLeft);
-    label_perkB->setEditable (false, false, false);
-    label_perkB->setColour (Label::backgroundColourId, Colour (0xff397daa));
-    label_perkB->setColour (TextEditor::textColourId, Colours::black);
-    label_perkB->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    Title2.reset (new Label ("new label",
+                             TRANS("PWM\n")));
+    addAndMakeVisible (Title2.get());
+    Title2->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title2->setJustificationType (Justification::centred);
+    Title2->setEditable (false, false, false);
+    Title2->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title2->setColour (Label::textColourId, Colour (0xff181f22));
+    Title2->setColour (TextEditor::textColourId, Colours::black);
+    Title2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    WFA_PWM.reset (new SourceMixerComponent (synthState, "WFA_PWM"));
+    addAndMakeVisible (WFA_PWM.get());
+    Title3.reset (new Label ("new label",
+                             TRANS("Shaper")));
+    addAndMakeVisible (Title3.get());
+    Title3->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title3->setJustificationType (Justification::centred);
+    Title3->setEditable (false, false, false);
+    Title3->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title3->setColour (Label::textColourId, Colour (0xff181f22));
+    Title3->setColour (TextEditor::textColourId, Colours::black);
+    Title3->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    WFA_Shaper.reset (new SourceMixerComponent (synthState, "WFA_Shaper"));
+    addAndMakeVisible (WFA_Shaper.get());
+    Title4.reset (new Label ("new label",
+                             TRANS("PWM\n")));
+    addAndMakeVisible (Title4.get());
+    Title4->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title4->setJustificationType (Justification::centred);
+    Title4->setEditable (false, false, false);
+    Title4->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title4->setColour (Label::textColourId, Colour (0xff181f22));
+    Title4->setColour (TextEditor::textColourId, Colours::black);
+    Title4->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    PERKA_PWM.reset (new SourceMixerComponent (synthState, "PERKA_PWM"));
+    addAndMakeVisible (PERKA_PWM.get());
+    Title5.reset (new Label ("new label",
+                             TRANS("HP FREQ")));
+    addAndMakeVisible (Title5.get());
+    Title5->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title5->setJustificationType (Justification::centred);
+    Title5->setEditable (false, false, false);
+    Title5->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title5->setColour (Label::textColourId, Colour (0xff181f22));
+    Title5->setColour (TextEditor::textColourId, Colours::black);
+    Title5->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    PERKA_HPFREQ.reset (new SourceMixerComponent (synthState, "PERKA_HPFREQ"));
+    addAndMakeVisible (PERKA_HPFREQ.get());
+    Title6.reset (new Label ("new label",
+                             TRANS("AMP")));
+    addAndMakeVisible (Title6.get());
+    Title6->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title6->setJustificationType (Justification::centred);
+    Title6->setEditable (false, false, false);
+    Title6->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title6->setColour (Label::textColourId, Colour (0xff181f22));
+    Title6->setColour (TextEditor::textColourId, Colours::black);
+    Title6->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    PERKA_AMP.reset (new SourceMixerComponent (synthState, "PERKA_AMP"));
+    addAndMakeVisible (PERKA_AMP.get());
+    PERKB.reset (new OSCEditor (synthState, "PERKB"));
+    addAndMakeVisible (PERKB.get());
+    PERKB->setBounds (426, 211, 96, 112);
+
+    label_perkB2.reset (new Label ("label_perkB",
+                                   TRANS("PERK B")));
+    addAndMakeVisible (label_perkB2.get());
+    label_perkB2->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Bold"));
+    label_perkB2->setJustificationType (Justification::centredLeft);
+    label_perkB2->setEditable (false, false, false);
+    label_perkB2->setColour (Label::backgroundColourId, Colour (0xff397daa));
+    label_perkB2->setColour (TextEditor::textColourId, Colours::black);
+    label_perkB2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    Title7.reset (new Label ("new label",
+                             TRANS("PWM\n")));
+    addAndMakeVisible (Title7.get());
+    Title7->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title7->setJustificationType (Justification::centred);
+    Title7->setEditable (false, false, false);
+    Title7->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title7->setColour (Label::textColourId, Colour (0xff181f22));
+    Title7->setColour (TextEditor::textColourId, Colours::black);
+    Title7->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    PERKB_PWM.reset (new SourceMixerComponent (synthState, "PERKB_PWM"));
+    addAndMakeVisible (PERKB_PWM.get());
+    Title8.reset (new Label ("new label",
+                             TRANS("HP FREQ")));
+    addAndMakeVisible (Title8.get());
+    Title8->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title8->setJustificationType (Justification::centred);
+    Title8->setEditable (false, false, false);
+    Title8->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title8->setColour (Label::textColourId, Colour (0xff181f22));
+    Title8->setColour (TextEditor::textColourId, Colours::black);
+    Title8->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    PERKB_HPFREQ.reset (new SourceMixerComponent (synthState, "PERKB_HPFREQ"));
+    addAndMakeVisible (PERKB_HPFREQ.get());
+    Title9.reset (new Label ("new label",
+                             TRANS("AMP")));
+    addAndMakeVisible (Title9.get());
+    Title9->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title9->setJustificationType (Justification::centred);
+    Title9->setEditable (false, false, false);
+    Title9->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title9->setColour (Label::textColourId, Colour (0xff181f22));
+    Title9->setColour (TextEditor::textColourId, Colours::black);
+    Title9->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    PERKB_AMP.reset (new SourceMixerComponent (synthState, "PERKB_AMP"));
+    addAndMakeVisible (PERKB_AMP.get());
+    Title10.reset (new Label ("new label",
+                              TRANS("PWM\n")));
+    addAndMakeVisible (Title10.get());
+    Title10->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title10->setJustificationType (Justification::centred);
+    Title10->setEditable (false, false, false);
+    Title10->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title10->setColour (Label::textColourId, Colour (0xff181f22));
+    Title10->setColour (TextEditor::textColourId, Colours::black);
+    Title10->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    WFB_PWM.reset (new SourceMixerComponent (synthState, "WFB_PWM"));
+    addAndMakeVisible (WFB_PWM.get());
+    Title11.reset (new Label ("new label",
+                              TRANS("Shaper")));
+    addAndMakeVisible (Title11.get());
+    Title11->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title11->setJustificationType (Justification::centred);
+    Title11->setEditable (false, false, false);
+    Title11->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title11->setColour (Label::textColourId, Colour (0xff181f22));
+    Title11->setColour (TextEditor::textColourId, Colours::black);
+    Title11->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    WFB_Shaper.reset (new SourceMixerComponent (synthState, "WFB_Shaper"));
+    addAndMakeVisible (WFB_Shaper.get());
     cachedImage_background1_jpg_1 = ImageCache::getFromMemory (background1_jpg, background1_jpgSize);
-    cachedImage_basszero_vstiwaveform_png2_2 = ImageCache::getFromMemory (basszero_vstiwaveform_png2, basszero_vstiwaveform_png2Size);
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -105,11 +238,31 @@ TabWaveforms::~TabWaveforms()
     WFA = nullptr;
     WFB = nullptr;
     PERKA = nullptr;
-    PERKB = nullptr;
     label_WFA = nullptr;
     Label_WFB = nullptr;
     label_perkA = nullptr;
-    label_perkB = nullptr;
+    Title2 = nullptr;
+    WFA_PWM = nullptr;
+    Title3 = nullptr;
+    WFA_Shaper = nullptr;
+    Title4 = nullptr;
+    PERKA_PWM = nullptr;
+    Title5 = nullptr;
+    PERKA_HPFREQ = nullptr;
+    Title6 = nullptr;
+    PERKA_AMP = nullptr;
+    PERKB = nullptr;
+    label_perkB2 = nullptr;
+    Title7 = nullptr;
+    PERKB_PWM = nullptr;
+    Title8 = nullptr;
+    PERKB_HPFREQ = nullptr;
+    Title9 = nullptr;
+    PERKB_AMP = nullptr;
+    Title10 = nullptr;
+    WFB_PWM = nullptr;
+    Title11 = nullptr;
+    WFB_Shaper = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -132,16 +285,6 @@ void TabWaveforms::paint (Graphics& g)
                      0, 0, cachedImage_background1_jpg_1.getWidth(), cachedImage_background1_jpg_1.getHeight());
     }
 
-    {
-        int x = 635, y = 97, width = 193, height = 193;
-        //[UserPaintCustomArguments] Customize the painting arguments here..
-        //[/UserPaintCustomArguments]
-        g.setColour (Colours::black);
-        g.drawImage (cachedImage_basszero_vstiwaveform_png2_2,
-                     x, y, width, height,
-                     0, 0, cachedImage_basszero_vstiwaveform_png2_2.getWidth(), cachedImage_basszero_vstiwaveform_png2_2.getHeight());
-    }
-
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -151,12 +294,30 @@ void TabWaveforms::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    WFB->setBounds (16 + 305, 48 + 112 - 112, 300, 112);
-    PERKB->setBounds ((16 + 305) + 300 - 300, 216 + 0, 300, 112);
-    label_WFA->setBounds (16 + 0, 48 + -24, 96, 24);
-    Label_WFB->setBounds ((16 + 305) + 0, (48 + 112 - 112) + -24, 96, 24);
-    label_perkA->setBounds (16 + 0, 216 + -24, 96, 24);
-    label_perkB->setBounds (((16 + 305) + 300 - 300) + -1, 192, 96, 24);
+    label_WFA->setBounds (16 + 0, 20, 98, 24);
+    Label_WFB->setBounds (426 + 0, 20, 96, 24);
+    label_perkA->setBounds (16 + 0, 212 + -28, 98, 24);
+    Title2->setBounds (16 + 96, 48, 100, 16);
+    WFA_PWM->setBounds (getWidth() - 725, 66, 96, 96);
+    Title3->setBounds (16 + 96 - -100, 48, 100, 16);
+    WFA_Shaper->setBounds (getWidth() - 626, 66, 96, 96);
+    Title4->setBounds (getWidth() - 728, 212, 100, 16);
+    PERKA_PWM->setBounds (getWidth() - 725, 230, 96, 96);
+    Title5->setBounds (16 + 96 - -100, 212, 100, 16);
+    PERKA_HPFREQ->setBounds (getWidth() - 626, 230, 96, 96);
+    Title6->setBounds (16 + 96 - -198, 212, 100, 16);
+    PERKA_AMP->setBounds (getWidth() - 527, 230, 96, 96);
+    label_perkB2->setBounds (16 + 410, 212 + -29, 98, 24);
+    Title7->setBounds (16 + 96 - -410, 211, 100, 16);
+    PERKB_PWM->setBounds ((16 + 0) + 98 - -413, 229, 96, 96);
+    Title8->setBounds (16 + 96 - -510, 211, 100, 16);
+    PERKB_HPFREQ->setBounds (getWidth() - 216, 229, 96, 96);
+    Title9->setBounds (16 + 96 - -608, 211, 100, 16);
+    PERKB_AMP->setBounds (getWidth() - 117, 229, 96, 96);
+    Title10->setBounds (16 + 96 - -410, 48, 100, 16);
+    WFB_PWM->setBounds (getWidth() - 315, 66, 96, 96);
+    Title11->setBounds (16 + 96 - -510, 48, 100, 16);
+    WFB_Shaper->setBounds (getWidth() - 216, 66, 96, 96);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -184,47 +345,133 @@ BEGIN_JUCER_METADATA
   <BACKGROUND backgroundColour="323e44">
     <IMAGE pos="0 -66 840 490" resource="background1_jpg" opacity="1.0"
            mode="0"/>
-    <IMAGE pos="635 97 193 193" resource="basszero_vstiwaveform_png2" opacity="1.0"
-           mode="0"/>
   </BACKGROUND>
   <JUCERCOMP name="WFA" id="7f2b83568bc74387" memberName="WFA" virtualName=""
-             explicitFocusOrder="0" pos="16 48 300 112" sourceFile="../Components/OSCBasicEditor.cpp"
+             explicitFocusOrder="0" pos="16 48 96 120" sourceFile="../Components/OSCEditor.cpp"
              constructorParams="synthState, &quot;WFA&quot;"/>
   <JUCERCOMP name="WFB" id="3980a735eeaa4277" memberName="WFB" virtualName=""
-             explicitFocusOrder="0" pos="305 112R 300 112" posRelativeX="7f2b83568bc74387"
-             posRelativeY="7f2b83568bc74387" sourceFile="../Components/OSCBasicEditor.cpp"
+             explicitFocusOrder="0" pos="426 48 100 112" sourceFile="../Components/OSCBasicEditor.cpp"
              constructorParams="synthState, &quot;WFB&quot;"/>
   <JUCERCOMP name="PERKA" id="b67e636837fe23b5" memberName="PERKA" virtualName=""
-             explicitFocusOrder="0" pos="16 216 300 112" sourceFile="../Components/PERKEditor.cpp"
+             explicitFocusOrder="0" pos="16 212 96 112" sourceFile="../Components/OSCEditor.cpp"
              constructorParams="synthState, &quot;PERKA&quot;"/>
-  <JUCERCOMP name="PERKB" id="871da425eb243fd6" memberName="PERKB" virtualName=""
-             explicitFocusOrder="0" pos="300R 0 300 112" posRelativeX="3980a735eeaa4277"
-             posRelativeY="b67e636837fe23b5" sourceFile="../Components/PERKEditor.cpp"
-             constructorParams="synthState, &quot;PERKB&quot;"/>
   <LABEL name="Title" id="1298f19adf91ae02" memberName="label_WFA" virtualName=""
-         explicitFocusOrder="0" pos="0 -24 96 24" posRelativeX="7f2b83568bc74387"
-         posRelativeY="7f2b83568bc74387" bkgCol="ffed6216" edTextCol="ff000000"
-         edBkgCol="0" labelText="WF A" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
-         kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
+         explicitFocusOrder="0" pos="0 20 98 24" posRelativeX="7f2b83568bc74387"
+         bkgCol="ffed6216" edTextCol="ff000000" edBkgCol="0" labelText="WF A"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="1"
+         italic="0" justification="33" typefaceStyle="Bold"/>
   <LABEL name="Title" id="20ddfe5157a31e7e" memberName="Label_WFB" virtualName=""
-         explicitFocusOrder="0" pos="0 -24 96 24" posRelativeX="3980a735eeaa4277"
-         posRelativeY="3980a735eeaa4277" bkgCol="ffed6216" edTextCol="ff000000"
-         edBkgCol="0" labelText="WF B" editableSingleClick="0" editableDoubleClick="0"
-         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
-         kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
-  <LABEL name="Title" id="577d7910af9dfd2b" memberName="label_perkA" virtualName=""
-         explicitFocusOrder="0" pos="0 -24 96 24" posRelativeX="b67e636837fe23b5"
+         explicitFocusOrder="0" pos="0 20 96 24" posRelativeX="3980a735eeaa4277"
+         bkgCol="ffed6216" edTextCol="ff000000" edBkgCol="0" labelText="WF B"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="15.0" kerning="0.0" bold="1"
+         italic="0" justification="33" typefaceStyle="Bold"/>
+  <LABEL name="label_perkA" id="577d7910af9dfd2b" memberName="label_perkA"
+         virtualName="" explicitFocusOrder="0" pos="0 -28 98 24" posRelativeX="b67e636837fe23b5"
          posRelativeY="b67e636837fe23b5" bkgCol="ff397daa" edTextCol="ff000000"
          edBkgCol="0" labelText="PERK A" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
-  <LABEL name="Title" id="a7e36be854db518" memberName="label_perkB" virtualName=""
-         explicitFocusOrder="0" pos="-1 192 96 24" posRelativeX="871da425eb243fd6"
-         bkgCol="ff397daa" edTextCol="ff000000" edBkgCol="0" labelText="PERK B"
+  <LABEL name="new label" id="4bbeb0561535668a" memberName="Title2" virtualName=""
+         explicitFocusOrder="0" pos="0R 48 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="PWM&#10;" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="WFA_PWM" id="6dc4e4d5157c3da" memberName="WFA_PWM" virtualName=""
+             explicitFocusOrder="0" pos="725R 66 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;WFA_PWM&quot;"/>
+  <LABEL name="new label" id="20cb7c605be9b700" memberName="Title3" virtualName=""
+         explicitFocusOrder="0" pos="-100R 48 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="Shaper" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="WFA_Shaper" id="38ab92d5c01dd24b" memberName="WFA_Shaper"
+             virtualName="" explicitFocusOrder="0" pos="626R 66 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;WFA_Shaper&quot;"/>
+  <LABEL name="new label" id="5a32b5c2f6d25c05" memberName="Title4" virtualName=""
+         explicitFocusOrder="0" pos="728R 212 100 16" bkgCol="fff0f8ff"
+         textCol="ff181f22" edTextCol="ff000000" edBkgCol="0" labelText="PWM&#10;"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.0" kerning="0.0" bold="1"
-         italic="0" justification="33" typefaceStyle="Bold"/>
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
+  <JUCERCOMP name="PERKA_PWM" id="2f54030abd37d923" memberName="PERKA_PWM"
+             virtualName="" explicitFocusOrder="0" pos="725R 230 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;PERKA_PWM&quot;"/>
+  <LABEL name="new label" id="ad3a513f7073d4af" memberName="Title5" virtualName=""
+         explicitFocusOrder="0" pos="-100R 212 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="HP FREQ" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="PERKA_HPFREQ" id="8cf17791916897fc" memberName="PERKA_HPFREQ"
+             virtualName="" explicitFocusOrder="0" pos="626R 230 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;PERKA_HPFREQ&quot;"/>
+  <LABEL name="new label" id="8092e87417e52596" memberName="Title6" virtualName=""
+         explicitFocusOrder="0" pos="-198R 212 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="AMP" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="PERKA_AMP" id="587db963e5f465ac" memberName="PERKA_AMP"
+             virtualName="" explicitFocusOrder="0" pos="527R 230 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;PERKA_AMP&quot;"/>
+  <JUCERCOMP name="PERKB" id="805277eefae212c4" memberName="PERKB" virtualName=""
+             explicitFocusOrder="0" pos="426 211 96 112" sourceFile="../Components/OSCEditor.cpp"
+             constructorParams="synthState, &quot;PERKB&quot;"/>
+  <LABEL name="label_perkB" id="4d53d1b1bc98d3eb" memberName="label_perkB2"
+         virtualName="" explicitFocusOrder="0" pos="410 -29 98 24" posRelativeX="b67e636837fe23b5"
+         posRelativeY="b67e636837fe23b5" bkgCol="ff397daa" edTextCol="ff000000"
+         edBkgCol="0" labelText="PERK B" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
+         kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
+  <LABEL name="new label" id="ff0a15d235c6c65c" memberName="Title7" virtualName=""
+         explicitFocusOrder="0" pos="-410R 211 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="PWM&#10;" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="PERKB_PWM" id="e85773c0439b0a4b" memberName="PERKB_PWM"
+             virtualName="" explicitFocusOrder="0" pos="-413R 229 96 96" posRelativeX="1298f19adf91ae02"
+             sourceFile="../Components/SourceMixerComponent.cpp" constructorParams="synthState, &quot;PERKB_PWM&quot;"/>
+  <LABEL name="new label" id="2159a76c8cc4ee0a" memberName="Title8" virtualName=""
+         explicitFocusOrder="0" pos="-510R 211 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="HP FREQ" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="PERKB_HPFREQ" id="87c1ff4f7bc34756" memberName="PERKB_HPFREQ"
+             virtualName="" explicitFocusOrder="0" pos="216R 229 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;PERKB_HPFREQ&quot;"/>
+  <LABEL name="new label" id="8981983e4b695732" memberName="Title9" virtualName=""
+         explicitFocusOrder="0" pos="-608R 211 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="AMP" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="PERKB_AMP" id="c528b4bf745f7e4e" memberName="PERKB_AMP"
+             virtualName="" explicitFocusOrder="0" pos="117R 229 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;PERKB_AMP&quot;"/>
+  <LABEL name="new label" id="6dbdc7b932a19d96" memberName="Title10" virtualName=""
+         explicitFocusOrder="0" pos="-410R 48 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="PWM&#10;" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="WFB_PWM" id="8ba061d401a098c" memberName="WFB_PWM" virtualName=""
+             explicitFocusOrder="0" pos="315R 66 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;WFB_PWM&quot;"/>
+  <LABEL name="new label" id="79e14f7e55cdf688" memberName="Title11" virtualName=""
+         explicitFocusOrder="0" pos="-510R 48 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="Shaper" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="WFB_Shaper" id="98f2b70d9c7fc60f" memberName="WFB_Shaper"
+             virtualName="" explicitFocusOrder="0" pos="216R 66 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;WFB_Shaper&quot;"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

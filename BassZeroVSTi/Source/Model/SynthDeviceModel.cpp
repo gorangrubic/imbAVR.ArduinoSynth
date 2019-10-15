@@ -154,6 +154,23 @@
 
   }
 
+  void SynthDeviceModel::CollectAllParameters(SharedPointerVector<imbControlParameter>& parameters)
+  {
+	  components.CollectAllParameterDefinitions(parameters);
+	  opmControl.CollectAllParameterDefinitions(parameters);
+	  modulations.CollectAllParameterDefinitions(parameters);
+
+  }
+
+
+
+  void SynthDeviceModel::AddGroup(ControlGroup * output, std::string _shortName, std::string _longName, ControlGroup * group)
+  {
+	  output->ShortName = _shortName;
+	  output->LongName = _longName;
+	  Groups.Add(output);
+  }
+
   //SynthDeviceModel::SynthDeviceModel()
   //{
 	 // 

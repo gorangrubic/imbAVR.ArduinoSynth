@@ -8,6 +8,9 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Control/ParameterController.h"
 
+#include "../Source/Utility/ccTranslationMap.h"
+#include "../Source/Model/Core/SharedPointerVector.h"
+
 //#include "../GUI/Global/CommandBufferDisplay.h"
 //#include "../GUI/Global/ControlStateDisplay.h"
 //#include "../GUI/Global/SynthStateDisplay.h"
@@ -48,7 +51,10 @@ public:
 
 	juce::AudioProcessorValueTreeState * parameters;
 
-	ParameterController parameterController;
+	SharedPointerVector<imbControlParameter> Parameters;
+
+
+	//ParameterController parameterController;
 
 	imbSynthPresetDefinition currentPreset;
 
@@ -57,9 +63,15 @@ public:
 	imbSynthGeneralConfiguration configuration;
 	imbSynthStateUtilityData utilityData;
 
+	
+	std::unique_ptr<ccTranslationMap> InputToHardwareMap;
+	std::unique_ptr<ccTranslationMap> HardwareToOutputMap;
+
+	
 	juce::String inFocusParameterID{ "" };
 
 	
+	void Initiated();
 
 	void SetParameterInFocus(imbControlParameter * parameter);
 
@@ -67,13 +79,16 @@ public:
 	imbSynthStateData(SynthDeviceModel * _model, juce::AudioProcessorValueTreeState * _parameters) :
 		model{ _model },
 		parameters{ _parameters },
+		InputToHardwareMap(new ccTranslationMap()),
+		HardwareToOutputMap(new ccTranslationMap()),
 		bufferDisplayModel(new CommandBufferDisplayModel()),
-		controlDisplayModel(new ControlStateDisplayModel()),
+		controlDisplayModel(new ControlStateDisplayModel(InputToHardwareMap, HardwareToOutputMap)),
 		stateDisplayModel( new SynthStateDisplayModel() ),
 		libraryFileBrowserModel{ PresetFileBrowserModel() }
 	{
 
 	}
+
 	~imbSynthStateData();
 };
 

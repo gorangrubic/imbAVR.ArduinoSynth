@@ -25,7 +25,6 @@
 #include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 
-#include "SourceMixerComponent.h"
 
 
 //==============================================================================
@@ -60,8 +59,6 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Label> Title3;
-    std::unique_ptr<SourceMixerComponent> PWM;
     std::unique_ptr<Slider> Phase;
     std::unique_ptr<Label> Title6;
     std::unique_ptr<Slider> Pitch;

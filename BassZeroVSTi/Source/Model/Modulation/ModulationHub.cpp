@@ -21,7 +21,32 @@
 //	auto output = std::vector<String>();
 //}
 
-/* Call Deploy after adding components externally */
+std::shared_ptr<ModulationFunctionADSR> ModulationHub::GetADSRByName(juce::String name)
+{
+return GetModulationSourceByName<ModulationFunctionADSR>(name, ADSRs);
+}
+
+  std::shared_ptr<ModulationFunctionENV> ModulationHub::GetENVByName(juce::String name)
+  {
+	  return GetModulationSourceByName<ModulationFunctionENV>(name, ENVs);
+  }
+
+  std::shared_ptr<ModulationFunctionLFO> ModulationHub::GetLFOByName(juce::String name)
+  {
+	  return GetModulationSourceByName<ModulationFunctionLFO>(name, LFOs);// std::shared_ptr<ModulationFunctionLFO>();
+  }
+
+  std::shared_ptr<ModulationSourceMacroControl> ModulationHub::GetMacroByName(juce::String name)
+  {
+	  return  GetModulationSourceByName<ModulationSourceMacroControl>(name, MacroControls);//		  std::shared_ptr<ModulationSourceMacroControl>();
+  }
+
+  std::shared_ptr<ModulationSourceMIDI> ModulationHub::GetMIDIByName(juce::String name)
+  {
+	  return  GetModulationSourceByName<ModulationSourceMIDI>(name, MIDIs);// std::shared_ptr<ModulationSourceMIDI>();
+  }
+
+  /* Call Deploy after adding components externally */
 void ModulationHub::Deploy(ParameterController & parameterController)
 {
 
