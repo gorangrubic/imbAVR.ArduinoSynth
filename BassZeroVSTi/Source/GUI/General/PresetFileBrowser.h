@@ -39,6 +39,7 @@
                                                                     //[/Comments]
 */
 class PresetFileBrowser  : public Component,
+                           public imbSynthGUIComponent,
                            public Button::Listener
 {
 public:

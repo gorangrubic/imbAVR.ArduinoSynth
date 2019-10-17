@@ -23,28 +23,16 @@ void SynthDeviceModelComponentBase::ConstructComponentParameters(ParameterContro
 	for each (auto var in Parameters)
 	{
 		
-		juce::String parentPath = "";
+		var->attachState(parameters);
+		/*NormalisableRange<float> valueRange = NormalisableRange<float>(var->MinValue, var->MaxValue, var->IntervalValue);
 
-		if (GroupName.isNotEmpty()) {
-			parentPath.append(GroupName,127);
-		}
-
-		if (ShortName.isNotEmpty()) {
-			if (parentPath.isNotEmpty()) parentPath.append(".", 2);
-			parentPath.append(ShortName, 127);
-		}
-
-		var->parameterParentPath = parentPath;
-
-		NormalisableRange<float> valueRange = NormalisableRange<float>(var->MinValue, var->MaxValue, var->IntervalValue);
-
-		
-		parameters.createAndAddParameter(var->parameterIDPath,
+		juce::RangedAudioParameter * rngPar = parameters.createAndAddParameter(var->parameterIDPath,
 			var->parameterID, var->parameterLabel, valueRange, var->Value, nullptr, nullptr, 
 			var->isMetaValue, var->isAutomatizable, var->isDescreteValue, 
 			var->category, var->typeParameter == imbControlParameterType::Boolean);
 
-
+		parameters.addParameterListener(var->parameterIDPath, var.get());*/
+		//rngPar->setValueNotifyingHost()
 
 	//	imbSynthTools::SetParameter(nullptr, *var);
 		//modelConstructionTools.SetParameter(nullptr, *var);
@@ -53,6 +41,23 @@ void SynthDeviceModelComponentBase::ConstructComponentParameters(ParameterContro
   }
 
 #define CONTROLLER  parameterController.
+
+  std::shared_ptr<imbControlParameter> SynthDeviceModelComponentBase::GetParameter(juce::String name)
+  {
+	  
+	  std::shared_ptr<imbControlParameter> output = nullptr;
+
+	  for each (auto var in Parameters)
+	  {
+		  if (var->parameterID.equalsIgnoreCase(name)) {
+			  output = var;
+			  break;
+		  }
+	  }
+
+	  return output;
+
+  }
 
   void SynthDeviceModelComponentBase::AddBoolParameter(ParameterController & parameterController, imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue, int _ccID, bool _isAutomated, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
@@ -96,8 +101,25 @@ void SynthDeviceModelComponentBase::AddParameter(ParameterController & parameter
 	String _parameterUnit,
 	int _ccID, bool _isAutomatizable, imbControlParameterType _type, imbControlParameterMessageType _msgFormat, String _parameterParentPath)
 {
+
+	if (_parameterParentPath.isEmpty()) {
+		juce::String parentPath = "";
+
+		if (GroupName.isNotEmpty()) {
+			parentPath.append(GroupName, 127);
+		}
+
+		if (ShortName.isNotEmpty()) {
+			if (parentPath.isNotEmpty()) parentPath.append("_", 2);
+			parentPath.append(ShortName, 127);
+		}
+
+		output->parameterParentPath = parentPath;
+	}
+	else {
+		output->parameterParentPath = _parameterParentPath;
+	}
 	
-	output->parameterParentPath = _parameterParentPath;
 	output->Setup(_parameterID, _parameterLabel, minValue, maxValue, initValue, _parameterUnit, _ccID,_isAutomatizable,_type, _msgFormat);
 
 	//std::shared_ptr<imbControlParameter> shared = std::shared_ptr<imbControlParameter>(output);

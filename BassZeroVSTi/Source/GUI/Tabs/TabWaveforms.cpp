@@ -36,7 +36,7 @@ TabWaveforms::TabWaveforms (imbSynthStateData * synthState, String nameSufix)
     addAndMakeVisible (WFA.get());
     WFA->setBounds (16, 48, 96, 120);
 
-    WFB.reset (new OSCBasicEditor (synthState, "WFB"));
+    WFB.reset (new OSCEditor (synthState, "WFB"));
     addAndMakeVisible (WFB.get());
     WFB->setBounds (426, 48, 100, 112);
 
@@ -350,7 +350,7 @@ BEGIN_JUCER_METADATA
              explicitFocusOrder="0" pos="16 48 96 120" sourceFile="../Components/OSCEditor.cpp"
              constructorParams="synthState, &quot;WFA&quot;"/>
   <JUCERCOMP name="WFB" id="3980a735eeaa4277" memberName="WFB" virtualName=""
-             explicitFocusOrder="0" pos="426 48 100 112" sourceFile="../Components/OSCBasicEditor.cpp"
+             explicitFocusOrder="0" pos="426 48 100 112" sourceFile="../Components/OSCEditor.cpp"
              constructorParams="synthState, &quot;WFB&quot;"/>
   <JUCERCOMP name="PERKA" id="b67e636837fe23b5" memberName="PERKA" virtualName=""
              explicitFocusOrder="0" pos="16 212 96 112" sourceFile="../Components/OSCEditor.cpp"

@@ -117,6 +117,15 @@ OPMEditor::OPMEditor (imbSynthStateData * synthState, String nameSufix)
 
 
     //[Constructor] You can add your own custom stuff here..
+	//synthState->model->opmControl.GetLink("MODA_MCL1");
+	//synthState->model->opmControl.GetLink("MODB_MCL1");
+	//synthState->model->opmControl.GetLink("MODA_MCL2");
+	//synthState->model->opmControl.GetLink("MODB_MCL2");
+	//synthState->model->opmControl.GetLink("VALA_MCL1");
+	//synthState->model->opmControl.GetLink("VALA_MCL1");
+	//synthState->model->opmControl.GetLink("VALC_MCL1");
+	//synthState->model->opmControl.GetLink("VALC_MCL2");
+	//synthState->model->opmControl.
     //[/Constructor]
 }
 

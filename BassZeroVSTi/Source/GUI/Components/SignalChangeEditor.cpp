@@ -144,6 +144,14 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
 
 
     //[Constructor] You can add your own custom stuff here..
+	modelComponent = synthState->model->opmControl.GetSignalUnit(nameSufix);
+	modelComponent->Change.attachControl(Change.get());
+	modelComponent->Rate.attachControl(Rate.get());
+	modelComponent->Chaos.attachControl(toggle_Chaos.get());
+	modelComponent->Enabled.attachControl(toggle_Enabled.get());
+	modelComponent->Function.attachControl(Mode.get());
+	modelComponent->Period.attachControl(Period.get());
+	modelComponent->Sync.attachControl(toggle_Sync.get());
     //[/Constructor]
 }
 

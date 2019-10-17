@@ -36,6 +36,11 @@ public:
 	SharedPointerVector<MacroControlLink> Links;
 	SharedPointerVector<OPMSignalUnit> Units;
 
+
+	std::shared_ptr<MacroControlLink> GetLink(juce::String name);
+	std::shared_ptr<OPMSignalUnit> GetSignalUnit(juce::String name);
+
+
  //   std::vector<MacroControlLink*> Links;
 	//std::vector<OPMSignalUnit*> Units;
 	

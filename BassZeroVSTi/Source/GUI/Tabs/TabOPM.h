@@ -24,6 +24,12 @@
 //[/Headers]
 
 #include "../Components/OPMEditor.h"
+#include "OPMToSignalChangeEditor.h"
+#include "OPMToSignalChangeEditor.h"
+#include "OPMToSignalChangeEditor.h"
+#include "OPMToSignalChangeEditor.h"
+#include "OPMToSignalChangeEditor.h"
+#include "OPMToSignalChangeEditor.h"
 
 
 //==============================================================================
@@ -52,11 +58,17 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    std::unique_ptr<TabbedComponent> tabbedComponent;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<TabbedComponent> tabbedComponent;
     std::unique_ptr<OPMEditor> MacroControls;
+    std::unique_ptr<Component> MODA_MCL1;
+    std::unique_ptr<Component> MODB_MCL1;
+    std::unique_ptr<Component> VALC_MCL1;
+    std::unique_ptr<Component> VALC_MCL2;
+    std::unique_ptr<Component> MODA_MCL2;
+    std::unique_ptr<Component> MODB_MCL2;
 
 
     //==============================================================================

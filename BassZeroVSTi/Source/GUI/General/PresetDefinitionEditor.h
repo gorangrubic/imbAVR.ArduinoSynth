@@ -35,11 +35,12 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class PresetDefinitionEditor  : public Component
+class PresetDefinitionEditor  : public Component,
+                                public imbSynthGUIComponent
 {
 public:
     //==============================================================================
-    PresetDefinitionEditor ();
+    PresetDefinitionEditor (imbSynthPresetDefinition * _preset);
     ~PresetDefinitionEditor();
 
     //==============================================================================

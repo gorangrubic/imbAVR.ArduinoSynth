@@ -15,7 +15,9 @@
 void ControlStateDisplayModel::UpdateParameter(juce::String value, juce::String ccIn, juce::String ccOut)
 {
 	if (parameter_ptr != nullptr) {
+
 		parameter_ptr->SetValue(imbSynthTools::StringToInt32(value, parameter_ptr->Value));
+		parameterValue = juce::String(parameter_ptr->Value);
 
 		if (isCCParameter) {
 			parameterCCIn = imbSynthTools::StringToInt32(ccIn, int(parameterCCIn));

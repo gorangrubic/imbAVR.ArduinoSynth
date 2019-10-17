@@ -37,7 +37,7 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
     Value->setTooltip (TRANS("Decay time\n"));
     Value->setRange (1, 127, 1);
     Value->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    Value->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
+    Value->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
     Value->setColour (Slider::thumbColourId, Colour (0xffed6216));
     Value->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Value->addListener (this);
@@ -139,6 +139,13 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
 
 
     //[Constructor] You can add your own custom stuff here..
+	modelComponent = synthState->model->modulations.GetLFOByName(nameSufix);
+	modelComponent->Value.attachControl(Value.get());
+	modelComponent->Function.attachControl(Curve.get());
+	modelComponent->Retrigger.attachControl(toggle_retrigger.get());
+	modelComponent->Loop.attachControl(toggle_loop.get());
+	modelComponent->Time.attachControl(Time.get());
+	modelComponent->TimeFactor.attachControl(Factor.get());
     //[/Constructor]
 }
 
@@ -247,9 +254,7 @@ void ChaosEditor::buttonClicked (Button* buttonThatWasClicked)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void ChaosEditor::ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params)
-{
-}
+
 //[/MiscUserCode]
 
 
@@ -271,7 +276,7 @@ BEGIN_JUCER_METADATA
   <SLIDER name="DirectValue" id="9258fb4fcb5b6574" memberName="Value" virtualName=""
           explicitFocusOrder="0" pos="86r 16 62 78" tooltip="Decay time&#10;"
           thumbcol="ffed6216" textboxoutline="8e989b" min="1.0" max="127.0"
-          int="1.0" style="RotaryHorizontalVerticalDrag" textBoxPos="TextBoxBelow"
+          int="1.0" style="RotaryHorizontalVerticalDrag" textBoxPos="NoTextBox"
           textBoxEditable="0" textBoxWidth="50" textBoxHeight="10" skewFactor="1.0"
           needsCallback="1"/>
   <LABEL name="new label" id="c3a45ba72ca00580" memberName="label2" virtualName=""

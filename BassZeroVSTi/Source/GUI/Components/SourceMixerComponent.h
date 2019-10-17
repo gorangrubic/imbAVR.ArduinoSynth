@@ -48,7 +48,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-
+	//void Update();
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -61,7 +61,6 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 	std::shared_ptr<ModelModulatedControl> modelComponent;
-	std::shared_ptr<imbSynthStateData> state;
     //[/UserVariables]
 
     //==============================================================================

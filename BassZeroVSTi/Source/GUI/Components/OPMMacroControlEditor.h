@@ -72,7 +72,7 @@ private:
     std::unique_ptr<SourceMixerComponent> OPM_MODB;
     std::unique_ptr<Slider> VALB;
     std::unique_ptr<Label> Title3;
-    std::unique_ptr<Slider> VALB2;
+    std::unique_ptr<Slider> VALC;
     std::unique_ptr<Label> Title4;
     std::unique_ptr<Label> Title7;
     std::unique_ptr<Label> Title8;

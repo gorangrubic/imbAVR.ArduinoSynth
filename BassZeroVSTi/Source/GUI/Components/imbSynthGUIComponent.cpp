@@ -10,9 +10,10 @@ imbSynthGUIComponent::imbSynthGUIComponent()
 imbSynthGUIComponent::imbSynthGUIComponent(imbSynthStateData * synthState, String nameSufix)
 {
 	NameSuffix = nameSufix;
-	SynthState = synthState;
+	state = std::shared_ptr<imbSynthStateData>(synthState);
 }
 
 imbSynthGUIComponent::~imbSynthGUIComponent()
 {
 }
+

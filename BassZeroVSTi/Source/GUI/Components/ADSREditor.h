@@ -47,7 +47,6 @@ public:
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
 
-	void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -58,21 +57,22 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+	std::shared_ptr<ModulationFunctionADSR> modelComponent;
 
-	String pname_AttackTime;
-	String pname_DecayTime;
-	String pname_ReleaseTime;
+	//String pname_AttackTime;
+	//String pname_DecayTime;
+	//String pname_ReleaseTime;
 
-	String pname_InitLevel;
-	String pname_SustainLevel;
+	//String pname_InitLevel;
+	//String pname_SustainLevel;
 
 
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_AttackTime;
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_DecayTime;
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_ReleaseTime;
+	//std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_AttackTime;
+	//std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_DecayTime;
+	//std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_ReleaseTime;
 
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_InitLevel;
-	std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_SustainLevel;
+	//std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_InitLevel;
+	//std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> Link_SustainLevel;
     //[/UserVariables]
 
     //==============================================================================

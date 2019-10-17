@@ -25,7 +25,7 @@
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
-#define GUIREFRESH_TIMEINTERVAL 250
+
 //[/MiscUserDefs]
 
 //==============================================================================
@@ -184,7 +184,7 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
 		this->Update();
 	};
 	startTimer(GUIREFRESH_TIMEINTERVAL);
-	
+
     //[/Constructor]
 }
 
@@ -249,6 +249,9 @@ void ControlStateDisplay::resized()
 void ControlStateDisplay::Update()
 {
 	if (!isValueUpdateCall) {
+
+		//auto val_in = Value_Edit->getText();
+
 		blockRefresh = true;
 		controlDisplayModel->UpdateParameter(Value_Edit->getText(), CCIn_edit->getText(), CCOut_edit->getText());
 		blockRefresh = false;
@@ -257,9 +260,17 @@ void ControlStateDisplay::Update()
 void ControlStateDisplay::timerCallback()
 {
 	if (blockRefresh) return;
+
+	if (hasKeyboardFocus(true)) {
+		return;
+	}
+
 	isValueUpdateCall = true;
 	Parameter_text->setText(controlDisplayModel->parameterID, juce::NotificationType::dontSendNotification);
 	GroupName_text->setText(controlDisplayModel->parameterGroup, juce::NotificationType::dontSendNotification);
+
+
+
 
 	//if (!Value_Edit->isTextInputActive())
 		Value_Edit->setText(controlDisplayModel->parameterValue, juce::NotificationType::dontSendNotification);
@@ -269,7 +280,7 @@ void ControlStateDisplay::timerCallback()
 		if (!CCOut_edit->isEnabled()) CCOut_edit->setEnabled(true);
 		//if (!CCIn_edit->i)
 			CCIn_edit->setText(juce::String(controlDisplayModel->parameterCCIn), juce::NotificationType::dontSendNotification);
-		//if (!CCOut_edit->isTextInputActive()) 
+		//if (!CCOut_edit->isTextInputActive())
 			CCOut_edit->setText(juce::String(controlDisplayModel->parameterCCOut), juce::NotificationType::dontSendNotification);
 		text_ccID->setText(juce::String(controlDisplayModel->parameterCC), juce::NotificationType::dontSendNotification);
 	}

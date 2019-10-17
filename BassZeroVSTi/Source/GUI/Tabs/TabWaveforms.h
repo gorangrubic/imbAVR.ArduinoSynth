@@ -24,7 +24,7 @@
 //[/Headers]
 
 #include "../Components/OSCEditor.h"
-#include "../Components/OSCBasicEditor.h"
+#include "../Components/OSCEditor.h"
 #include "../Components/OSCEditor.h"
 #include "../Components/SourceMixerComponent.h"
 #include "../Components/SourceMixerComponent.h"
@@ -75,7 +75,7 @@ private:
 
     //==============================================================================
     std::unique_ptr<OSCEditor> WFA;
-    std::unique_ptr<OSCBasicEditor> WFB;
+    std::unique_ptr<OSCEditor> WFB;
     std::unique_ptr<OSCEditor> PERKA;
     std::unique_ptr<Label> label_WFA;
     std::unique_ptr<Label> Label_WFB;

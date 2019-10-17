@@ -47,7 +47,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-	void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
+	
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -60,6 +60,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 
+	std::shared_ptr<ModulationFunctionENV> modelComponent;
 
     //[/UserVariables]
 

@@ -32,11 +32,6 @@ ADSREditor::ADSREditor (imbSynthStateData * synthState, String nameSufix)
     //[Constructor_pre] You can add your own custom stuff here..
 
 
-	pname_AttackTime = "ADSR" + NameSuffix + "_AttackTime";
-	pname_DecayTime = "ADSR" + NameSuffix + "_DecayTime";
-	pname_ReleaseTime = "ADSR" + NameSuffix + "_ReleaseTime";
-	pname_InitLevel = "ADSR" + NameSuffix + "_InitLevel";
-	pname_SustainLevel = "ADSR" + NameSuffix + "_SustainLevel";
 
     //[/Constructor_pre]
 
@@ -155,13 +150,12 @@ ADSREditor::ADSREditor (imbSynthStateData * synthState, String nameSufix)
 
 
     //[Constructor] You can add your own custom stuff here..
-	//Link_AttackTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_AttackTime, *AttackTime));
-	//Link_DecayTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_DecayTime, *DecayTime));
-	//Link_ReleaseTime.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_ReleaseTime, *ReleaseTime));
-
-	//Link_InitLevel.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_InitLevel, *InitLevel));
-	//Link_SustainLevel.reset(new AudioProcessorValueTreeState::SliderAttachment(synthState->parameters, pname_SustainLevel, *SustainLevel));
-
+	modelComponent = synthState->model->modulations.GetADSRByName(nameSufix);
+	modelComponent->AttackTime.attachControl(AttackTime.get());
+	modelComponent->DecayTime.attachControl(DecayTime.get());
+	modelComponent->ReleaseTime.attachControl(ReleaseTime.get());
+	modelComponent->InitValue.attachControl(InitLevel.get());
+	modelComponent->SustainValue.attachControl(SustainLevel.get());
     //[/Constructor]
 }
 
@@ -243,17 +237,7 @@ void ADSREditor::sliderValueChanged (Slider* sliderThatWasMoved)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void ADSREditor::ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params)
-{
-	params.push_back(std::make_unique<AudioParameterInt>(pname_AttackTime, pname_AttackTime, 0, 127, 5));
-	params.push_back(std::make_unique<AudioParameterInt>(pname_DecayTime, pname_DecayTime, 0, 127, 50));
-	params.push_back(std::make_unique<AudioParameterInt>(pname_ReleaseTime, pname_ReleaseTime, 0, 127, 100));
-	params.push_back(std::make_unique<AudioParameterInt>(pname_InitLevel, pname_InitLevel, 0, 127, 0));
-	params.push_back(std::make_unique<AudioParameterInt>(pname_SustainLevel, pname_SustainLevel, 0, 127, 60));
 
-
-
-}
 //[/MiscUserCode]
 
 

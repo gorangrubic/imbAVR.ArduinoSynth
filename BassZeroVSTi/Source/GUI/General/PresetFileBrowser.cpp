@@ -164,9 +164,10 @@ void PresetFileBrowser::buttonClicked (Button* buttonThatWasClicked)
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PresetFileBrowser" componentName=""
-                 parentClasses="public Component" constructorParams="PresetFileBrowserModel * _model"
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="1" initialWidth="400" initialHeight="300">
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="PresetFileBrowserModel * _model" variableInitialisers=""
+                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
+                 fixedSize="1" initialWidth="400" initialHeight="300">
   <BACKGROUND backgroundColour="323e44"/>
   <TREEVIEW name="new treeview" id="f7a9ff75ddcfe5b" memberName="treeView"
             virtualName="" explicitFocusOrder="0" pos="8 40 16M 78M" backgroundColour="fff0ffff"

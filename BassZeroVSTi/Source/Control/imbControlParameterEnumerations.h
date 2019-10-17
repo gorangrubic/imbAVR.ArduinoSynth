@@ -63,5 +63,8 @@ enum class imbControlParameterType:unsigned int {
 enum class imbControlParameterComponentType:unsigned int {
 	unassigned=0,
 	slider=1,
-	combobox = 2
+	combobox = 2,
+	checkbox = 3,
+	/* imb custom component that is editor for this parameter */
+	imbParameterComponent = 4
 };

@@ -59,8 +59,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 	std::shared_ptr<ControlStateDisplayModel> controlDisplayModel;
-	bool isValueUpdateCall;
-	bool blockRefresh;
+
     //[/UserVariables]
 
     //==============================================================================

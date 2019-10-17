@@ -58,6 +58,7 @@ public:
 
 	imbSynthPresetDefinition currentPreset;
 
+	imbSynthPresetDefinition presetSelected;
 	imbSynthStatePresetLibrary presetLibrary;
 
 	imbSynthGeneralConfiguration configuration;

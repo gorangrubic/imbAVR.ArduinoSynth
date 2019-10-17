@@ -178,6 +178,14 @@
               file="Source/Control/imbControlParameter.cpp"/>
         <FILE id="rfo4kI" name="imbControlParameter.h" compile="0" resource="0"
               file="Source/Control/imbControlParameter.h"/>
+        <FILE id="KUBtgZ" name="imbControlParameterBinding.cpp" compile="1"
+              resource="0" file="Source/Control/imbControlParameterBinding.cpp"/>
+        <FILE id="eaWGO4" name="imbControlParameterBinding.h" compile="0" resource="0"
+              file="Source/Control/imbControlParameterBinding.h"/>
+        <FILE id="tEu7Cq" name="imbControlParameterBindingManager.cpp" compile="1"
+              resource="0" file="Source/Control/imbControlParameterBindingManager.cpp"/>
+        <FILE id="eLgmDJ" name="imbControlParameterBindingManager.h" compile="0"
+              resource="0" file="Source/Control/imbControlParameterBindingManager.h"/>
         <FILE id="tOsxjf" name="imbControlParameterEnumerations.h" compile="0"
               resource="0" file="Source/Control/imbControlParameterEnumerations.h"/>
         <FILE id="bWRKLg" name="imbEnumerationList.cpp" compile="1" resource="0"
@@ -222,10 +230,10 @@
                 file="Source/GUI/Components/imbSynthGUIComponent.cpp"/>
           <FILE id="YbMOXB" name="imbSynthGUIComponent.h" compile="0" resource="0"
                 file="Source/GUI/Components/imbSynthGUIComponent.h"/>
-          <FILE id="xP5lkq" name="ModulationParamLink.cpp" compile="1" resource="0"
-                file="Source/GUI/Components/ModulationParamLink.cpp"/>
-          <FILE id="o1fWgK" name="ModulationParamLink.h" compile="0" resource="0"
-                file="Source/GUI/Components/ModulationParamLink.h"/>
+          <FILE id="t60fsR" name="imbSynthParameterEditor.cpp" compile="1" resource="0"
+                file="Source/GUI/Components/imbSynthParameterEditor.cpp"/>
+          <FILE id="TgF8mq" name="imbSynthParameterEditor.h" compile="0" resource="0"
+                file="Source/GUI/Components/imbSynthParameterEditor.h"/>
           <FILE id="V157i3" name="OPMEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/OPMEditor.cpp"/>
           <FILE id="WqekeS" name="OPMEditor.h" compile="0" resource="0" file="Source/GUI/Components/OPMEditor.h"/>
           <FILE id="tjfKoq" name="OPMMacroControlEditor.cpp" compile="1" resource="0"
@@ -236,14 +244,8 @@
                 file="Source/GUI/Components/OPMToSignalChangeEditor.cpp"/>
           <FILE id="Savfbq" name="OPMToSignalChangeEditor.h" compile="0" resource="0"
                 file="Source/GUI/Components/OPMToSignalChangeEditor.h"/>
-          <FILE id="mxslri" name="OSCBasicEditor.cpp" compile="1" resource="0"
-                file="Source/GUI/Components/OSCBasicEditor.cpp"/>
-          <FILE id="HH8Orh" name="OSCBasicEditor.h" compile="0" resource="0"
-                file="Source/GUI/Components/OSCBasicEditor.h"/>
-          <FILE id="WfQt3G" name="OSCEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/OSCEditor.cpp"/>
-          <FILE id="Cba7rZ" name="OSCEditor.h" compile="0" resource="0" file="Source/GUI/Components/OSCEditor.h"/>
-          <FILE id="WlEIOk" name="PERKEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/PERKEditor.cpp"/>
-          <FILE id="YHueC7" name="PERKEditor.h" compile="0" resource="0" file="Source/GUI/Components/PERKEditor.h"/>
+          <FILE id="j7fmNv" name="OSCEditor.cpp" compile="1" resource="0" file="Source/GUI/Components/OSCEditor.cpp"/>
+          <FILE id="SQDqgp" name="OSCEditor.h" compile="0" resource="0" file="Source/GUI/Components/OSCEditor.h"/>
           <FILE id="NylUMg" name="SignalChangeEditor.cpp" compile="1" resource="0"
                 file="Source/GUI/Components/SignalChangeEditor.cpp"/>
           <FILE id="AFwEts" name="SignalChangeEditor.h" compile="0" resource="0"
@@ -294,6 +296,8 @@
                 file="Source/GUI/Global/AboutScreenDisplay.cpp"/>
           <FILE id="AJoW7C" name="AboutScreenDisplay.h" compile="0" resource="0"
                 file="Source/GUI/Global/AboutScreenDisplay.h"/>
+          <FILE id="HrPmyC" name="ccMapEditor.cpp" compile="1" resource="0" file="Source/GUI/Global/ccMapEditor.cpp"/>
+          <FILE id="Oezv4q" name="ccMapEditor.h" compile="0" resource="0" file="Source/GUI/Global/ccMapEditor.h"/>
           <FILE id="DdFYWj" name="CommandBufferDisplay.cpp" compile="1" resource="0"
                 file="Source/GUI/Global/CommandBufferDisplay.cpp"/>
           <FILE id="guLaol" name="CommandBufferDisplay.h" compile="0" resource="0"

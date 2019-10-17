@@ -95,6 +95,7 @@ SourceMixerComponent::SourceMixerComponent (imbSynthStateData * synthState, Stri
 		modelComponent->ModSrc.attachControl(ModSrc.get());
 		modelComponent->Val.attachControl(Val.get());
 
+
 		setEnabled(true);
 		setAlpha(1.0f);
 	}
@@ -182,16 +183,16 @@ void SourceMixerComponent::sliderValueChanged (Slider* sliderThatWasMoved)
     if (sliderThatWasMoved == ModAmt.get())
     {
         //[UserSliderCode_ModAmt] -- add your slider handling code here..
-		modelComponent->ModAmt.SetValue(ModAmt->getValue());
-		state->SetParameterInFocus(&modelComponent->ModAmt);
+	//	modelComponent->ModAmt.SetValue(ModAmt->getValue());
+		//state->SetParameterInFocus(&modelComponent->ModAmt);
         //[/UserSliderCode_ModAmt]
     }
     else if (sliderThatWasMoved == Val.get())
     {
         //[UserSliderCode_Val] -- add your slider handling code here..
-		modelComponent->Val.SetValue(Val->getValue());
+	//	modelComponent->Val.SetValue(Val->getValue());
 		//state->controlDisplayModel->SetParameter(&modelComponent->Val);
-		state->SetParameterInFocus(&modelComponent->Val);
+		//state->SetParameterInFocus(&modelComponent->Val);
         //[/UserSliderCode_Val]
     }
 
@@ -207,8 +208,8 @@ void SourceMixerComponent::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == ModSrc.get())
     {
         //[UserComboBoxCode_ModSrc] -- add your combo box handling code here..
-		modelComponent->ModSrc.SetValue(ModSrc->getSelectedItemIndex());
-		state->SetParameterInFocus(&modelComponent->ModSrc);
+		//modelComponent->ModSrc.SetValue(ModSrc->getSelectedItemIndex());
+	//	state->SetParameterInFocus(&modelComponent->ModSrc);
         //[/UserComboBoxCode_ModSrc]
     }
 

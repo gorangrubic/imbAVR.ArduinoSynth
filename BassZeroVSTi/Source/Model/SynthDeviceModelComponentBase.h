@@ -34,15 +34,8 @@ class SynthDeviceModelComponentBase:
 		
 		SharedPointerVector<imbControlParameter> Parameters;
 
-	//	std::vector<std::shared_ptr<imbControlParameter>> Parameters { };
-
-
-		//AudioProcessorParameterGroup * group;
-
-	//SynthDeviceModel * Root;
-	//ModelComponentDescription * Parent;
-	
-	 //  void PreDeploy(String _shortName, String _longName);
+		/* Returns parameter with name == parameterID */
+		std::shared_ptr<imbControlParameter> GetParameter(juce::String name);
 
 
 	   void AddBoolParameter(ParameterController & parameterController, imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified, String _parameterParentPath = "");

@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-PresetDefinitionEditor::PresetDefinitionEditor ()
+PresetDefinitionEditor::PresetDefinitionEditor (imbSynthPresetDefinition * _preset)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -195,7 +195,8 @@ void PresetDefinitionEditor::resized()
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="PresetDefinitionEditor" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
+                 parentClasses="public Component, public imbSynthGUIComponent"
+                 constructorParams="imbSynthPresetDefinition * _preset" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="1" initialWidth="450" initialHeight="200">
   <BACKGROUND backgroundColour="323e44"/>

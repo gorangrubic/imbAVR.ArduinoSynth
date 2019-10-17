@@ -20,14 +20,9 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Data/imbSynthStateData.h"
-#include "../Components/imbSynthGUIComponent.h"
+#include "../../../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
-#include "SourceMixerComponent.h"
-#include "OSCEditor.h"
-#include "SourceMixerComponent.h"
 
 
 //==============================================================================
@@ -38,17 +33,15 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class PERKEditor  : public Component,
-                    public imbSynthGUIComponent
+class ccMapEditor  : public Component
 {
 public:
     //==============================================================================
-    PERKEditor (imbSynthStateData * synthState, String nameSufix);
-    ~PERKEditor();
+    ccMapEditor ();
+    ~ccMapEditor();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-	void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -61,15 +54,10 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Label> Title4;
-    std::unique_ptr<SourceMixerComponent> HP_FREQ;
-    std::unique_ptr<OSCEditor> OSC;
-    std::unique_ptr<SourceMixerComponent> AMP;
-    std::unique_ptr<Label> Title2;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PERKEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ccMapEditor)
 };
 
 //[EndFile] You can add extra defines here...

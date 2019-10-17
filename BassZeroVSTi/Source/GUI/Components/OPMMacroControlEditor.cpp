@@ -51,7 +51,7 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
     VALA->setTooltip (TRANS("Decay time\n"));
     VALA->setRange (1, 100, 1);
     VALA->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    VALA->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
+    VALA->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
     VALA->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     VALA->addListener (this);
 
@@ -135,7 +135,7 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
     VALB->setTooltip (TRANS("Decay time\n"));
     VALB->setRange (1, 100, 1);
     VALB->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    VALB->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
+    VALB->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
     VALB->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     VALB->addListener (this);
 
@@ -154,16 +154,16 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
 
     Title3->setBounds (64, 144, 64, 16);
 
-    VALB2.reset (new Slider ("DirectValue"));
-    addAndMakeVisible (VALB2.get());
-    VALB2->setTooltip (TRANS("Decay time\n"));
-    VALB2->setRange (1, 100, 1);
-    VALB2->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    VALB2->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
-    VALB2->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
-    VALB2->addListener (this);
+    VALC.reset (new Slider ("DirectValue"));
+    addAndMakeVisible (VALC.get());
+    VALC->setTooltip (TRANS("Decay time\n"));
+    VALC->setRange (1, 100, 1);
+    VALC->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    VALC->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    VALC->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    VALC->addListener (this);
 
-    VALB2->setBounds (128, 160, 64, 68);
+    VALC->setBounds (128, 160, 64, 68);
 
     Title4.reset (new Label ("new label",
                              TRANS("VAL C")));
@@ -235,7 +235,7 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
     CTRLA->setTooltip (TRANS("Decay time\n"));
     CTRLA->setRange (1, 100, 1);
     CTRLA->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    CTRLA->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
+    CTRLA->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
     CTRLA->setColour (Slider::thumbColourId, Colour (0xff029d4d));
     CTRLA->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     CTRLA->addListener (this);
@@ -247,7 +247,7 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
     CTRLB->setTooltip (TRANS("Decay time\n"));
     CTRLB->setRange (1, 100, 1);
     CTRLB->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    CTRLB->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
+    CTRLB->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
     CTRLB->setColour (Slider::thumbColourId, Colour (0xff029d4d));
     CTRLB->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     CTRLB->addListener (this);
@@ -259,7 +259,7 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
     CTRLC->setTooltip (TRANS("Decay time\n"));
     CTRLC->setRange (1, 100, 1);
     CTRLC->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
-    CTRLC->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 10);
+    CTRLC->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
     CTRLC->setColour (Slider::thumbColourId, Colour (0xff029d4d));
     CTRLC->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     CTRLC->addListener (this);
@@ -293,7 +293,7 @@ OPMMacroControlEditor::~OPMMacroControlEditor()
     OPM_MODB = nullptr;
     VALB = nullptr;
     Title3 = nullptr;
-    VALB2 = nullptr;
+    VALC = nullptr;
     Title4 = nullptr;
     Title7 = nullptr;
     Title8 = nullptr;
@@ -342,10 +342,10 @@ void OPMMacroControlEditor::sliderValueChanged (Slider* sliderThatWasMoved)
         //[UserSliderCode_VALB] -- add your slider handling code here..
         //[/UserSliderCode_VALB]
     }
-    else if (sliderThatWasMoved == VALB2.get())
+    else if (sliderThatWasMoved == VALC.get())
     {
-        //[UserSliderCode_VALB2] -- add your slider handling code here..
-        //[/UserSliderCode_VALB2]
+        //[UserSliderCode_VALC] -- add your slider handling code here..
+        //[/UserSliderCode_VALC]
     }
     else if (sliderThatWasMoved == CTRLA.get())
     {
@@ -397,7 +397,7 @@ BEGIN_JUCER_METADATA
           explicitFocusOrder="0" pos="0 160 64 68" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" textboxoutline="8e989b"
           min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="b54c3a5594317ad7" memberName="Title5" virtualName=""
          explicitFocusOrder="0" pos="0 144 64 16" bkgCol="fff0f8ff" textCol="ff181f22"
@@ -437,18 +437,18 @@ BEGIN_JUCER_METADATA
           explicitFocusOrder="0" pos="64 160 64 68" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" textboxoutline="8e989b"
           min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="5199123e3efd7734" memberName="Title3" virtualName=""
          explicitFocusOrder="0" pos="64 144 64 16" bkgCol="fff0ffff" textCol="ff181f22"
          edTextCol="ff000000" edBkgCol="0" labelText="VAL B" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <SLIDER name="DirectValue" id="7bc2a0f57e067caa" memberName="VALB2" virtualName=""
+  <SLIDER name="DirectValue" id="7bc2a0f57e067caa" memberName="VALC" virtualName=""
           explicitFocusOrder="0" pos="128 160 64 68" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" textboxoutline="8e989b"
           min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="758209e6b61653a9" memberName="Title4" virtualName=""
          explicitFocusOrder="0" pos="128 144 64 16" bkgCol="fff0f8ff"
@@ -482,19 +482,19 @@ BEGIN_JUCER_METADATA
           explicitFocusOrder="0" pos="-2 272 64 76" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ff029d4d"
           textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="DirectValue" id="f4693b0c161482f7" memberName="CTRLB" virtualName=""
           explicitFocusOrder="0" pos="62 272 64 76" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ff029d4d"
           textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="DirectValue" id="bdac24d826f2a4e0" memberName="CTRLC" virtualName=""
           explicitFocusOrder="0" pos="126 272 64 76" posRelativeX="5eeb447276336bd"
           posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ff029d4d"
           textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
 </JUCER_COMPONENT>
 

@@ -14,6 +14,11 @@ void imbSynthStateData::Initiated()
 			InputToHardwareMap->SetDefault(var->ccID);
 			HardwareToOutputMap->SetDefault(var->ccID);
 		}
+
+		var->onGUIFocus = [&, this](imbControlParameter * parameter) {
+			SetParameterInFocus(parameter);
+
+		};
 	}
 	
 }

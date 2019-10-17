@@ -15,16 +15,26 @@
 #include "../Source/Utility/imbSynthTools.h"
 #include "../Source/Model/ModelConstructionTools.h"
 
+
 //#define Root Parent->Root
 
 bool imbControlParameter::SetValue(float _newValue)
 {
+	if (_newValue < MinValue) _newValue = MinValue;
+	if (_newValue > MaxValue) _newValue = MaxValue;
+
 	bool isNewValue = false;
 
 	if (Value != _newValue) {
 		isNewValue = true;
 	}
+	
 	Value = _newValue;
+
+	if (isNewValue) {
+		updateGUI();
+		updateState();
+	}
 
 	return isNewValue;
 }
@@ -50,12 +60,15 @@ void imbControlParameter::attachControl(Slider * slider)
 	componentType = imbControlParameterComponentType::slider;
 	
 	pSlider = std::shared_ptr<Slider>(slider);//new SliderAttachment(valueTreeState, parameterIDPath, slider);
-	//pSlider->setMinValue(MinValue);
-	//pSlider->setMaxValue(MaxValue);
-	//pSlider->setValue(Value);
-	
-//	pSliderAttachment = new SliderAttachment(_parent->Root->SynthProcessor->parameters, parameterIDPath, slider);
-
+	pSlider->onValueChange = [&, this] {
+		if (!isGUIUpdating) {
+			float f = (float) pSlider->getValue();
+			SetValue(f);
+			onGUIFocus(this);
+		}
+	};
+	updateGUI();
+	updateState();
 }
 
 void imbControlParameter::attachControl(ComboBox * _comboBox)
@@ -63,10 +76,87 @@ void imbControlParameter::attachControl(ComboBox * _comboBox)
 	detachControl();
 	componentType = imbControlParameterComponentType::combobox;
 	pComboBox = std::shared_ptr<ComboBox>(_comboBox);
-	
+	pComboBox->onChange = [&, this] {
+		if (!isGUIUpdating) {
+			SetValue(pComboBox->getSelectedId());
+			onGUIFocus(this);
+		}
+	};
+	updateGUI();
+	updateState();
+}
 
-	//pComboBoxAttachment = new ComboBoxAttachment(valueTreeState, parameterIDPath, _comboBox);
-	
+void imbControlParameter::attachControl(ToggleButton * _button)
+{
+	detachControl();
+	componentType = imbControlParameterComponentType::combobox;
+	pToggleButton = std::shared_ptr<ToggleButton>(_button);
+	pToggleButton->onStateChange = [&, this] {
+		if (!isGUIUpdating) {
+			auto s = pToggleButton->getToggleState();
+			if (s) {
+				SetValue(1);
+			}
+			else {
+				SetValue(0);
+			}
+			onGUIFocus(this);
+		}
+	};
+	updateGUI();
+	updateState();
+}
+
+void imbControlParameter::attachControl(imbSynthParameterEditor * _editor)
+{
+	detachControl();
+	componentType = imbControlParameterComponentType::imbParameterComponent;
+	pParameterEditor = std::shared_ptr<imbSynthParameterEditor>(_editor);
+	pParameterEditor->onValueChange = [&, this] {
+		if (!isGUIUpdating) {
+			SetValue(pParameterEditor->GetValue());
+			onGUIFocus(this);
+		}
+	};
+	updateGUI();
+	updateState();
+}
+
+
+
+void imbControlParameter::updateGUI()
+{
+	isGUIUpdating = true;
+
+	switch (componentType) {
+
+	case imbControlParameterComponentType::combobox:
+		
+		pComboBox->setSelectedId((int)std::floorf(Value), true);
+		break;
+	case imbControlParameterComponentType::slider:
+		pSlider->setValue(Value, juce::NotificationType::dontSendNotification);
+		break;
+	case imbControlParameterComponentType::unassigned:
+
+		break;
+	case imbControlParameterComponentType::checkbox:
+		pToggleButton->setToggleState(Value > 0.5, true);
+		break;
+	case imbControlParameterComponentType::imbParameterComponent:
+		pParameterEditor->SetValue(Value);
+		break;
+	}
+	isGUIUpdating = false;
+}
+
+void imbControlParameter::updateState()
+{
+	isStateUpdating = true;
+
+	pParameter->setValueNotifyingHost(Value);
+
+	isStateUpdating = false;
 }
 
 
@@ -84,8 +174,8 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
 	parameterLabel = _parameterLabel;
 	parameterUnit = _parameterUnit;
 
-	if (parameterParentPath != "") {
-		parameterIDPath = parameterParentPath + "." + parameterID;
+	if (parameterParentPath.isNotEmpty()) {
+		parameterIDPath = parameterParentPath + "" + parameterID;
 	}
 	else {
 		parameterIDPath = parameterID;
@@ -100,8 +190,6 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
 	if (_msgFormat != imbControlParameterMessageType::unspecified) {
 		typeMIDIMessage = _msgFormat;
 	}
-	
-	//AudioProcessorValueTreeState& valueTreeState = Root->SynthProcessor->parameters;
 
 	ccID = _ccID;
 
@@ -136,23 +224,6 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
 
 }
 
-
-//
-//bool imbControlParameter::SliderMoved(juce::Slider * sliderThatWasMoved)
-//{
-//	if (sliderThatWasMoved == assignedSlider)
-//	{
-//		return SetValue(assignedSlider->getValue());
-//	}
-//	else {
-//		return false;
-//	}
-//}
-//
-//void imbControlParameter::SliderUpdate()
-//{
-//	assignedSlider->setValue(Value);
-//}
 
 juce::String imbControlParameter::valueToString(float v, int maxLen)
 {
@@ -190,6 +261,32 @@ juce::MidiMessage imbControlParameter::GetMidiMessage()
 //:Listener(Value, 1.0F)
 //{
 //}
+
+void imbControlParameter::parameterChanged(const String &, float newValue)
+{
+	if (!isStateUpdating) {
+		SetValue(newValue);
+	}
+}
+
+//std::function<void()> imbControlParameter::onGUIFocus(imbControlParameter * parameter)
+//{
+//	return std::function<void()>();
+//}
+
+void imbControlParameter::attachState(juce::AudioProcessorValueTreeState & parameters)
+{
+	NormalisableRange<float> valueRange = NormalisableRange<float>(MinValue, MaxValue, IntervalValue);
+
+	pParameter = std::shared_ptr<juce::RangedAudioParameter>(parameters.createAndAddParameter(parameterIDPath,
+		parameterID, parameterLabel, valueRange, Value, nullptr, nullptr,
+		isMetaValue, isAutomatizable, isDescreteValue,
+		category, typeParameter == imbControlParameterType::Boolean));
+	
+	parameters.addParameterListener(parameterIDPath, this);
+
+	//updateState();
+}
 
 imbControlParameter::imbControlParameter()
 {

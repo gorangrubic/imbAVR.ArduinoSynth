@@ -15,7 +15,7 @@
 #include "imbEnumerationList.h"
 #include "ParameterController.h"
 
-
+#include "../Source/GUI/Components/imbSynthParameterEditor.h"
 
 
 //
@@ -94,10 +94,14 @@ class imbProcessorParameterListener : public AudioProcessorParameter::Listener {
 
 using pt = AudioProcessorValueTreeState::Parameter;
 
-class imbControlParameter 
+class imbControlParameter : public AudioProcessorValueTreeState::Listener
 	
 {
 
+private:
+	/* indicating if GUI is currently updated by internal source */
+	bool isGUIUpdating = false;
+	bool isStateUpdating = false;
 
 public:
 
@@ -220,12 +224,27 @@ public:
 	void detachControl();
 	void attachControl(Slider* _slider);
 	void attachControl(ComboBox* _comboBox);
+	void attachControl(ToggleButton* _button);
+	void attachControl(imbSynthParameterEditor* _editor);
+
+	void attachState(juce::AudioProcessorValueTreeState & parameters);
+
+	void updateGUI();
+	void updateState();
 	
 	std::shared_ptr<Slider> pSlider;
 	std::shared_ptr<ComboBox> pComboBox;
+	std::shared_ptr<ToggleButton> pToggleButton;
+	std::shared_ptr<imbSynthParameterEditor> pParameterEditor;
+	std::shared_ptr<juce::RangedAudioParameter> pParameter;
 
-	//SliderAttachment* pSliderAttachment;
-	//ComboBoxAttachment * pComboBoxAttachment;
+	void parameterChanged(const String&, float newValue) override;
+	
+
+
+	std::function<void(imbControlParameter * parameter)> onGUIFocus;
+	
+	
 
 	imbControlParameter(); //:Listener(Value, 1.0F) { };
 

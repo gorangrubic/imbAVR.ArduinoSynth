@@ -82,12 +82,28 @@ OSCEditor::OSCEditor (imbSynthStateData * synthState, String nameSufix)
 
 
     //[UserPreSize]
+
     //[/UserPreSize]
 
     setSize (192, 112);
 
 
     //[Constructor] You can add your own custom stuff here..
+	modelComponent = synthState->model->components.GetPitchAndPhaseControlByName(nameSufix);
+
+	if (modelComponent != nullptr) {
+
+		modelComponent->Pitch.attachControl(Pitch.get());
+		modelComponent->Phase.attachControl(Phase.get());
+
+		setEnabled(true);
+		setAlpha(1.0f);
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
     //[/Constructor]
 }
 
@@ -148,6 +164,7 @@ void OSCEditor::sliderValueChanged (Slider* sliderThatWasMoved)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+
 //[/MiscUserCode]
 
 

@@ -63,6 +63,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+	std::shared_ptr<OPMSignalUnit> modelComponent;
     //[/UserVariables]
 
     //==============================================================================
