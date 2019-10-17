@@ -23,6 +23,8 @@
 
 #include "../Model/SynthDeviceModel.h"
 
+
+
 class imbSynthStateData
 {
     
@@ -67,6 +69,17 @@ public:
 	
 	std::unique_ptr<ccTranslationMap> InputToHardwareMap;
 	std::unique_ptr<ccTranslationMap> HardwareToOutputMap;
+
+	std::unique_ptr<FileChooser> fc;
+
+
+	ccTranslationMap * GetCCMapByRole(ccTranslationMapRole mapRole);
+
+	ccTranslationMapRole CheckCCMapRole(ccTranslationMapRole mapRole = ccTranslationMapRole::unknown, std::string msg_ins="");
+
+	void LoadCCMap(std::string filepath="", ccTranslationMapRole mapRole= ccTranslationMapRole::unknown);
+
+	void SaveCCMap(std::string filepath = "", ccTranslationMapRole mapRole = ccTranslationMapRole::unknown);
 
 	
 	juce::String inFocusParameterID{ "" };

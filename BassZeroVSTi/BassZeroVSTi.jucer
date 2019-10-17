@@ -4,7 +4,7 @@
               pluginFormats="buildStandalone,buildVST3" pluginCharacteristicsValue="pluginProducesMidiOut,pluginWantsMidiIn"
               pluginManufacturer="TesseracT Studio" pluginVST3Category="External,Instrument,Synth"
               companyName="TesseracT Studio" companyCopyright="2019" companyWebsite="blog.veles.rs"
-              companyEmail="hardy@veles.rs">
+              companyEmail="hardy@veles.rs" pluginVSTNumMidiInputs="4" pluginVSTNumMidiOutputs="4">
   <MAINGROUP id="u0F6E1" name="BassZeroVSTi">
     <GROUP id="{D77581B4-8CF9-72FB-081F-DCC82E4EC583}" name="Source">
       <GROUP id="{27EF8916-5484-36E5-E916-591A4447043C}" name="Application">
@@ -18,6 +18,8 @@
         </GROUP>
         <FILE id="v049wv" name="CommandIDs.cpp" compile="1" resource="0" file="Source/Application/CommandIDs.cpp"/>
         <FILE id="AzG7R8" name="CommandIDs.h" compile="0" resource="0" file="Source/Application/CommandIDs.h"/>
+        <FILE id="hztLim" name="GeneralDefinitions.h" compile="0" resource="0"
+              file="Source/Application/GeneralDefinitions.h"/>
         <FILE id="bk5k4u" name="SynthApplicationBase.cpp" compile="1" resource="0"
               file="Source/Application/SynthApplicationBase.cpp"/>
         <FILE id="MntATZ" name="SynthApplicationBase.h" compile="0" resource="0"
@@ -148,6 +150,8 @@
         <FILE id="tSMT4t" name="imbSynthTools.cpp" compile="1" resource="0"
               file="Source/Utility/imbSynthTools.cpp"/>
         <FILE id="AI3QUG" name="imbSynthTools.h" compile="0" resource="0" file="Source/Utility/imbSynthTools.h"/>
+        <FILE id="kzwgBk" name="imbValueSet.cpp" compile="1" resource="0" file="Source/Utility/imbValueSet.cpp"/>
+        <FILE id="J4rtS4" name="imbValueSet.h" compile="0" resource="0" file="Source/Utility/imbValueSet.h"/>
         <FILE id="K295Do" name="README.md" compile="0" resource="1" file="Source/Utility/README.md"/>
       </GROUP>
       <GROUP id="{597FEE43-E744-9541-A257-64224B6641A0}" name="Data">
@@ -298,6 +302,10 @@
                 file="Source/GUI/Global/AboutScreenDisplay.h"/>
           <FILE id="HrPmyC" name="ccMapEditor.cpp" compile="1" resource="0" file="Source/GUI/Global/ccMapEditor.cpp"/>
           <FILE id="Oezv4q" name="ccMapEditor.h" compile="0" resource="0" file="Source/GUI/Global/ccMapEditor.h"/>
+          <FILE id="TkqHIp" name="ccMapRoleSelection.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/ccMapRoleSelection.cpp"/>
+          <FILE id="adZyoq" name="ccMapRoleSelection.h" compile="0" resource="0"
+                file="Source/GUI/Global/ccMapRoleSelection.h"/>
           <FILE id="DdFYWj" name="CommandBufferDisplay.cpp" compile="1" resource="0"
                 file="Source/GUI/Global/CommandBufferDisplay.cpp"/>
           <FILE id="guLaol" name="CommandBufferDisplay.h" compile="0" resource="0"

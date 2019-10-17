@@ -37,6 +37,10 @@ BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVsti
 	mainMenuModel.setTopLeftPosition(0, 0);
 	mainMenuModel.setSize(WIDTH, MENU_HEIGHT);
 	
+	auto topWindow = TopLevelWindow::getActiveTopLevelWindow();
+	topWindow.
+	JUCEApplication::createInstance();
+	juce::ApplicationProperties::setStorageParameters()
 	
 	//addChildComponent(bassZeroGUI);
 }

@@ -17,6 +17,8 @@ public:
 	std::string inputToHardwareCCMapFilename{ "" };
 	std::string hardwareToOutputCCMapFilename{ "" };
 
+	std::string lastPresetFilePath{ "" };
+
 
 	imbSynthStateUtilityData();
 	~imbSynthStateUtilityData();

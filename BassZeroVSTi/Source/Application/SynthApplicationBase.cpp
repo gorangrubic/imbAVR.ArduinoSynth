@@ -21,6 +21,27 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 
 		break;
 	case CommandIDs::file_loadPreset:
+
+		/*if (synthState->utilityData.lastPresetFilePath.isNotEmpty()) {
+
+		}
+
+		FileChooser fc(TRANS("Load a saved state"), getLastFile(), getFilePatterns(fileSuffix));
+
+		if (fc.browseForFileToOpen())
+		{
+			setLastFile(fc);
+
+			MemoryBlock data;
+
+			if (fc.getResult().loadFileAsData(data))
+				processor->setStateInformation(data.getData(), (int)data.getSize());
+			else
+				AlertWindow::showMessageBoxAsync(AlertWindow::WarningIcon,
+					TRANS("Error whilst loading"),
+					TRANS("Couldn't read from the specified file!"));
+		}*/
+
 		//result.setInfo("Load preset", "Imports preset from a preset XML file, outside the library", "File", 0);
 		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
@@ -46,14 +67,10 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_loadSettings:
-		//result.setInfo("Load settings", "Import VSTi settings from custom location", "File", 0);
-		//result.setActive(true);
-		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->configuration.LoadSettings();
 		break;
 	case CommandIDs::file_saveSettings:
-		//result.setInfo("Save settings", "Export current VSTi settings to a custom location", "File", 0);
-		//result.setActive(true);
-		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->configuration.SaveSettings();
 		break;
 	case CommandIDs::midi_factoryCCMap:
 		//result.setInfo("Factory CC map", "Resets current CC mapping to factory defaults", "MIDI", 0);
@@ -61,6 +78,7 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_loadCCMap:
+		synthState->LoadCCMap("", cc)
 		//result.setInfo("Load CC map", "Loads CC map table file", "MIDI", 0);
 		//	result.setActive(true);
 			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
