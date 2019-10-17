@@ -10,8 +10,8 @@
 
 #pragma once
 
-#define FILEEXTENSION_CCMAP .bzMap
-#define FILEEXTENSION_PRESET .bzPreset
-#define FILEEXTENSION_OPM .bzOpm
-#define FILEEXTENSION_SETTINGS .bzSettings
-#define FILEEXTENSION_DATA .bzData
+#define FILEEXTENSION_CCMAP "*.bzMap"
+#define FILEEXTENSION_PRESET "*.bzPreset"
+#define FILEEXTENSION_OPM "*.bzOpm"
+#define FILEEXTENSION_SETTINGS "*.bzSettings"
+#define FILEEXTENSION_DATA "*.bzData"

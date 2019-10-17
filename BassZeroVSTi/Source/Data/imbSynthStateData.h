@@ -4,6 +4,7 @@
 #include "imbSynthStateUtilityData.h"
 #include "imbSynthStatePresetLibrary.h"
 #include "imbSynthPresetDefinition.h"
+#include "../Source/Application/GeneralDefinitions.h"
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Control/ParameterController.h"

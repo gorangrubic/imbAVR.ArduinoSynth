@@ -78,15 +78,10 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::midi_loadCCMap:
-		synthState->LoadCCMap("", cc)
-		//result.setInfo("Load CC map", "Loads CC map table file", "MIDI", 0);
-		//	result.setActive(true);
-			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->LoadCCMap();
 		break;
 	case CommandIDs::midi_saveCCMap:
-		//result.setInfo("Save CC map", "Saves current CC map table into external file", "MIDI", 0);
-		//	result.setActive(true);
-			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->SaveCCMap();
 		break;
 	case CommandIDs::midi_editCCMap:
 		//result.setInfo("Edit CC map", "Tabelar editor for current CC map", "MIDI", 0);

@@ -45,16 +45,14 @@ ccTranslationMapRole imbSynthStateData::CheckCCMapRole(ccTranslationMapRole mapR
 void imbSynthStateData::LoadCCMap(std::string filepath, ccTranslationMapRole mapRole)
 {
 	mapRole = CheckCCMapRole(mapRole, "to load into.");
-
-	ccTranslationMap * ccMap = GetCCMapByRole(mapRole);
-
+	ccTranslationMap * cc_map = GetCCMapByRole(mapRole);
 
 	fc.reset(new FileChooser("Choose BassZero CC Map file to load...", File::getCurrentWorkingDirectory(),
-		"*.bzMap",true));
+		FILEEXTENSION_CCMAP,true));
 
 	fc->launchAsync(FileBrowserComponent::openMode
 		| FileBrowserComponent::canSelectFiles,
-		[](const FileChooser& chooser)
+		[&, this](const FileChooser& chooser)
 	{
 		String chosen;
 		auto results = chooser.getURLResults();
@@ -64,12 +62,17 @@ void imbSynthStateData::LoadCCMap(std::string filepath, ccTranslationMapRole map
 		auto r = results.getFirst();
 
 		if (r.isLocalFile()) {
-			
-			imbValueSet valueSet = ccMap->ToPropertySet();
+
 			juce::File f = juce::File(r.getLocalFile().getFullPathName());
-			if (f.exists()) f.deleteFile();
-			f.create();
-			f.appendText(valueSet.ToString());
+			if (f.exists()) return;
+
+			imbValueSet valueSet;
+
+			valueSet.FromString(f.loadFileAsString().toStdString());
+			
+			cc_map->FromPropertySet(valueSet);
+
+			
 		}
 		else {
 
@@ -80,6 +83,35 @@ void imbSynthStateData::LoadCCMap(std::string filepath, ccTranslationMapRole map
 
 void imbSynthStateData::SaveCCMap(std::string filepath, ccTranslationMapRole mapRole)
 {
+	mapRole = CheckCCMapRole(mapRole, "to load into.");
+	ccTranslationMap * ccMap = GetCCMapByRole(mapRole);
+
+	fc.reset(new FileChooser("Choose BassZero CC Map file to load...", File::getCurrentWorkingDirectory(),
+		FILEEXTENSION_CCMAP, true));
+
+	fc->launchAsync(FileBrowserComponent::openMode
+		| FileBrowserComponent::canSelectFiles,
+		[&, this](const FileChooser& chooser)
+	{
+		String chosen;
+		auto results = chooser.getURLResults();
+
+		if (results.isEmpty()) return;
+
+		auto r = results.getFirst();
+
+		if (r.isLocalFile()) {
+
+			imbValueSet valueSet = ccMap->ToPropertySet();
+			juce::File f = juce::File(r.getLocalFile().getFullPathName());
+			if (f.exists()) f.deleteFile();
+			f.create();
+			f.appendText(valueSet.ToString());
+		}
+		else {
+
+		}
+	});
 }
 
 void imbSynthStateData::Initiated()
