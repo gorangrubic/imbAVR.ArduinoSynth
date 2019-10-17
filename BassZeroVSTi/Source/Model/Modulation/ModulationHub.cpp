@@ -49,7 +49,40 @@ return GetModulationSourceByName<ModulationFunctionADSR>(name, ADSRs);
   /* Call Deploy after adding components externally */
 void ModulationHub::Deploy(ParameterController & parameterController)
 {
+	// ========================== populates list of sources ===========
+	for each (auto var in ADSRs)
+	{
+		var->Deploy(parameterController);
+		PARAMCONTROL.ListOfSources.Add(var->ShortName);
+	}
 
+	for each (auto var in ENVs)
+	{
+		var->Deploy(parameterController);
+		PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		//ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	}
+
+	for each (auto var in LFOs)
+	{
+		var->Deploy(parameterController);
+		PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		//	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	}
+
+	for each (auto var in MacroControls)
+	{
+		var->Deploy(parameterController);
+		PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		//	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	}
+
+	for each (auto var in MIDIs)
+	{
+		var->Deploy(parameterController);
+		PARAMCONTROL.ListOfSources.Add(var->ShortName);
+		//	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
+	}
 
 }
 
@@ -110,7 +143,7 @@ void ModulationHub::AddMacroControl(ModulationSourceMacroControl * output)
 	AddChild(output);
 	std::string letter = imbSynthTools::GetLetter(MacroControls.size());
 	//output->SetDescription("CTRL " + letter, "Control Macro " + letter, &pc);
-	output->SetDescription("CTRL " + letter, "Control Macro "); // +letter, &pc);
+	output->SetDescription("CTRL_" + letter, "Control Macro " + letter); // +letter, &pc);
 
 	MacroControls.Add(output);
 	

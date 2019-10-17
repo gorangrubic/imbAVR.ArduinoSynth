@@ -43,7 +43,7 @@ class SignalChangeEditor  : public Component,
 {
 public:
     //==============================================================================
-    SignalChangeEditor (imbSynthStateData * synthState, String nameSufix);
+    SignalChangeEditor (imbSynthStateData * synthState, String nameSufix, String parentName);
     ~SignalChangeEditor();
 
     //==============================================================================

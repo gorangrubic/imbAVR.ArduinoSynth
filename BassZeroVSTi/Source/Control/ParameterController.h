@@ -44,6 +44,8 @@ public:
 
 	imbEnumerationList ListOfLFOFunctions;
 
+	//std::vector<String> AttachedToState;
+
 
 	unsigned int PageSize = 47U;
 	unsigned int PageColumnCount = 8U;

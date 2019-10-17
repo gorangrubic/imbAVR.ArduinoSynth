@@ -28,7 +28,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String nameSufix)
+SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String nameSufix, String parentName)
 {
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
@@ -61,7 +61,7 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
     Rate->setTooltip (TRANS("Number of clock cycles after which the Change is applied"));
     Rate->setRange (0, 127, 1);
     Rate->setSliderStyle (Slider::LinearHorizontal);
-    Rate->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    Rate->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
     Rate->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Rate->addListener (this);
 
@@ -81,7 +81,7 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
     Period->setTooltip (TRANS("Rate x value = number of clock cycles per modulation function cycle"));
     Period->setRange (0, 64, 1);
     Period->setSliderStyle (Slider::LinearHorizontal);
-    Period->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    Period->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
     Period->setColour (Slider::textBoxHighlightColourId, Colour (0x0042a2c8));
     Period->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Period->addListener (this);
@@ -144,14 +144,34 @@ SignalChangeEditor::SignalChangeEditor (imbSynthStateData * synthState, String n
 
 
     //[Constructor] You can add your own custom stuff here..
-	modelComponent = synthState->model->opmControl.GetSignalUnit(nameSufix);
-	modelComponent->Change.attachControl(Change.get());
-	modelComponent->Rate.attachControl(Rate.get());
-	modelComponent->Chaos.attachControl(toggle_Chaos.get());
-	modelComponent->Enabled.attachControl(toggle_Enabled.get());
-	modelComponent->Function.attachControl(Mode.get());
-	modelComponent->Period.attachControl(Period.get());
-	modelComponent->Sync.attachControl(toggle_Sync.get());
+	auto signalUnit = synthState->model->opmControl.GetSignalUnit(parentName);
+
+	if (signalUnit != nullptr) {
+
+		modelComponent = signalUnit->GetUnitChange(parentName + "_" + nameSufix);
+		if (modelComponent != nullptr) {
+			modelComponent->Change.attachControl(Change.get());
+			modelComponent->Rate.attachControl(Rate.get());
+			modelComponent->Chaos.attachControl(toggle_Chaos.get());
+			modelComponent->Enabled.attachControl(toggle_Enabled.get());
+			modelComponent->Function.attachControl(Mode.get());
+			modelComponent->Period.attachControl(Period.get());
+			modelComponent->Sync.attachControl(toggle_Sync.get());
+			setEnabled(true);
+			setAlpha(1.0f);
+		}
+		else {
+			setEnabled(false);
+			setAlpha(0.5f);
+		}
+
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
+
     //[/Constructor]
 }
 
@@ -331,7 +351,7 @@ BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="SignalChangeEditor" componentName=""
                  parentClasses="public Component, public imbSynthGUIComponent"
-                 constructorParams="imbSynthStateData * synthState, String nameSufix"
+                 constructorParams="imbSynthStateData * synthState, String nameSufix, String parentName"
                  variableInitialisers="" snapPixels="8" snapActive="0" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="290" initialHeight="86">
   <BACKGROUND backgroundColour="20323e44">
@@ -360,7 +380,7 @@ BEGIN_JUCER_METADATA
   <SLIDER name="new slider" id="a4af4153ed7eefd3" memberName="Rate" virtualName=""
           explicitFocusOrder="0" pos="80 20 100 24" tooltip="Number of clock cycles after which the Change is applied"
           textboxoutline="8e989b" min="0.0" max="127.0" int="1.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="1" textBoxWidth="80"
+          textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="80"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="3f68c02d60b8de97" memberName="label2" virtualName=""
          explicitFocusOrder="0" pos="0 0r 100 12" posRelativeX="a4af4153ed7eefd3"
@@ -371,9 +391,8 @@ BEGIN_JUCER_METADATA
   <SLIDER name="new slider" id="9bfc93658cb0ac69" memberName="Period" virtualName=""
           explicitFocusOrder="0" pos="80 60 100 24" tooltip="Rate x value = number of clock cycles per modulation function cycle"
           textboxhighlight="42a2c8" textboxoutline="8e989b" min="0.0" max="64.0"
-          int="1.0" style="LinearHorizontal" textBoxPos="TextBoxBelow"
-          textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
-          needsCallback="1"/>
+          int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox" textBoxEditable="1"
+          textBoxWidth="80" textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="1cc0e884482ee698" memberName="label3" virtualName=""
          explicitFocusOrder="0" pos="0 0r 100 12" posRelativeX="9bfc93658cb0ac69"
          posRelativeY="9bfc93658cb0ac69" edTextCol="ff000000" edBkgCol="0"

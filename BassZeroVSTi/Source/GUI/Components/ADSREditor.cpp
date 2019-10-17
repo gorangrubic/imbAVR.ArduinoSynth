@@ -151,11 +151,22 @@ ADSREditor::ADSREditor (imbSynthStateData * synthState, String nameSufix)
 
     //[Constructor] You can add your own custom stuff here..
 	modelComponent = synthState->model->modulations.GetADSRByName(nameSufix);
-	modelComponent->AttackTime.attachControl(AttackTime.get());
-	modelComponent->DecayTime.attachControl(DecayTime.get());
-	modelComponent->ReleaseTime.attachControl(ReleaseTime.get());
-	modelComponent->InitValue.attachControl(InitLevel.get());
-	modelComponent->SustainValue.attachControl(SustainLevel.get());
+	if (modelComponent != nullptr) {
+
+		modelComponent->AttackTime.attachControl(AttackTime.get());
+		modelComponent->DecayTime.attachControl(DecayTime.get());
+		modelComponent->ReleaseTime.attachControl(ReleaseTime.get());
+		modelComponent->InitValue.attachControl(InitLevel.get());
+		modelComponent->SustainValue.attachControl(SustainLevel.get());
+
+		setEnabled(true);
+		setAlpha(1.0f);
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
     //[/Constructor]
 }
 

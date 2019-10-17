@@ -167,6 +167,13 @@ public:
 	String parameterHelpUrl;
 	
 	/// <summary>
+	/// Error message
+	/// </summary>
+	String Error;
+	
+
+
+	/// <summary>
 	/// Sets additional information on this parameter
 	/// </summary>
 	/// <param name="_parameterHelp">The parameter help.</param>
@@ -231,6 +238,7 @@ public:
 
 	void updateGUI();
 	void updateState();
+	void updateTooltip();
 	
 	std::shared_ptr<Slider> pSlider;
 	std::shared_ptr<ComboBox> pComboBox;

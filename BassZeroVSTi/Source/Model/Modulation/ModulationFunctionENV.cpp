@@ -18,11 +18,14 @@ void ModulationFunctionENV::Deploy(ParameterController & parameterController)
 	AddCCParameter(parameterController,&ValueA, "ValueA", "Value A", 100);
 	AddCCParameter(parameterController,&ValueB, "ValueB", "Value B", 20);
 
+	AddBoolParameter(parameterController, &StartWithB, "StartB", "Start with ValueB", true);
+	AddBoolParameter(parameterController, &Loop, "Loop", "Loop", false);
+
   }
 
   ModulationFunctionENV::ModulationFunctionENV() {
 	type = ModulationSourceType::ENV;
-	NamePrefix = "ENV";
+//	NamePrefix = "ENV";
 }
 
 //ModulationFunctionENV::ModulationFunctionENV(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName) {

@@ -21,15 +21,11 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/GUI/Components/OPMToSignalChangeEditor.h";
+#include "../Source/GUI/Components/SignalControlEditor.h";
 //[/Headers]
 
 #include "../Components/OPMEditor.h"
-#include "OPMToSignalChangeEditor.h"
-#include "OPMToSignalChangeEditor.h"
-#include "OPMToSignalChangeEditor.h"
-#include "OPMToSignalChangeEditor.h"
-#include "OPMToSignalChangeEditor.h"
-#include "OPMToSignalChangeEditor.h"
 
 
 //==============================================================================
@@ -63,12 +59,6 @@ private:
 
     //==============================================================================
     std::unique_ptr<OPMEditor> MacroControls;
-    std::unique_ptr<Component> MODA_MCL1;
-    std::unique_ptr<Component> MODB_MCL1;
-    std::unique_ptr<Component> VALC_MCL1;
-    std::unique_ptr<Component> VALC_MCL2;
-    std::unique_ptr<Component> MODA_MCL2;
-    std::unique_ptr<Component> MODB_MCL2;
 
 
     //==============================================================================

@@ -38,6 +38,19 @@ class SynthDeviceModelComponentBase:
 		std::shared_ptr<imbControlParameter> GetParameter(juce::String name);
 
 
+		template<typename T>
+		bool AttachParameter(juce::String name, T * guiComponent) {
+			auto p = GetParameter(name);
+			if (p != nullptr) {
+				p->attachControl(guiComponent);
+				return true;
+			}
+			else {
+				// parameter not found
+				return false;
+			}
+		}
+
 	   void AddBoolParameter(ParameterController & parameterController, imbControlParameter * output, String _parameterID, String _parameterLabel, bool initValue = false, int _ccID=-1, bool _isAutomated=false, imbControlParameterMessageType _msgFormat = imbControlParameterMessageType::unspecified, String _parameterParentPath = "");
 
 	   

@@ -12,11 +12,20 @@
 
 void ModulationFunctionLFO::Deploy(ParameterController & parameterController)
 {
+
+	AddCCParameter(parameterController, &Time, "Time", "Cycle time", 25);
+	AddCCParameter(parameterController, &TimeFactor, "TimeFactor", "Time multiplier", 1);
+	AddCCParameter(parameterController, &Value, "Value", "Peak value", 127);
+	
+	AddBoolParameter(parameterController, &Retrigger, "Retrigger", "Note-On retrigger",true);
+	AddBoolParameter(parameterController, &Loop, "Loop", "Loop", true);
+
+	AddEnumParameter(parameterController, &Function, "Function", "Curve function", &parameterController.ListOfLFOFunctions);
 }
 
 ModulationFunctionLFO::ModulationFunctionLFO() {
 	type = ModulationSourceType::LFO;
-	NamePrefix = "LFO";
+//	NamePrefix = "LFO";
 
 }
 

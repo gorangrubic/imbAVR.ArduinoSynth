@@ -37,8 +37,7 @@
                                                                     //[/Comments]
 */
 class BassZeroGUI  : public Component,
-                     public imbSynthGUIComponent,
-					private Timer
+                     public imbSynthGUIComponent
 {
 public:
     //==============================================================================
@@ -47,7 +46,7 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-	void timerCallback() override;
+	//void timerCallback() override;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -60,7 +59,7 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-	
+
     //[/UserVariables]
 
     //==============================================================================

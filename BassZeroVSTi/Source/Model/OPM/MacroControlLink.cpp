@@ -16,7 +16,7 @@ void MacroControlLink::Deploy(ParameterController & parameterController)
 
 	AddCCParameter(parameterController, &ModAmt, "ModAmt", "Modulation amount", 0, -64, 64, -1, false, imbControlParameterMessageType::sysExMsg);
 	
-	AddEnumParameter(parameterController, &Signal, "Signal", "Signal/oscilator", &parameterController.ListOfLFOFunctions,1, -1, false, imbControlParameterMessageType::sysExMsg);
+	AddEnumParameter(parameterController, &Signal, "Signal", "Signal/oscilator", &parameterController.ListOfSignalUnits,1, -1, false, imbControlParameterMessageType::sysExMsg);
 
 	AddEnumParameter(parameterController, &ModTar, "ModTar", "Targeted Change", &parameterController.ListOfModulationModes, 0, -1, false, imbControlParameterMessageType::sysExMsg);
 

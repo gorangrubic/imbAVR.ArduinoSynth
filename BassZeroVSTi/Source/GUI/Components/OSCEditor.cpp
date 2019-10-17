@@ -37,7 +37,7 @@ OSCEditor::OSCEditor (imbSynthStateData * synthState, String nameSufix)
     Phase->setTooltip (TRANS("Attack time"));
     Phase->setRange (0, 100, 1);
     Phase->setSliderStyle (Slider::LinearHorizontal);
-    Phase->setTextBoxStyle (Slider::TextBoxBelow, true, 50, 12);
+    Phase->setTextBoxStyle (Slider::NoTextBox, true, 50, 12);
     Phase->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Phase->addListener (this);
 
@@ -61,7 +61,7 @@ OSCEditor::OSCEditor (imbSynthStateData * synthState, String nameSufix)
     Pitch->setTooltip (TRANS("Attack time"));
     Pitch->setRange (-12, 12, 1);
     Pitch->setSliderStyle (Slider::LinearHorizontal);
-    Pitch->setTextBoxStyle (Slider::TextBoxBelow, false, 50, 12);
+    Pitch->setTextBoxStyle (Slider::NoTextBox, false, 50, 12);
     Pitch->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Pitch->addListener (this);
 
@@ -128,6 +128,15 @@ void OSCEditor::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
+    {
+        int x = 48, y = 24, width = 1, height = 26;
+        Colour fillColour = Colour (0x50181f22);
+        //[UserPaintCustomArguments] Customize the painting arguments here..
+        //[/UserPaintCustomArguments]
+        g.setColour (fillColour);
+        g.fillRect (x, y, width, height);
+    }
+
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -180,13 +189,15 @@ BEGIN_JUCER_METADATA
 <JUCER_COMPONENT documentType="Component" className="OSCEditor" componentName=""
                  parentClasses="public Component, public imbSynthGUIComponent"
                  constructorParams="imbSynthStateData * synthState, String nameSufix"
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
+                 variableInitialisers="" snapPixels="8" snapActive="0" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="192" initialHeight="112">
-  <BACKGROUND backgroundColour="323e44"/>
+  <BACKGROUND backgroundColour="323e44">
+    <RECT pos="48 24 1 26" fill="solid: 50181f22" hasStroke="0"/>
+  </BACKGROUND>
   <SLIDER name="DirectValue" id="698565b936711330" memberName="Phase" virtualName=""
           explicitFocusOrder="0" pos="0 88 96 24" tooltip="Attack time"
           textboxoutline="8e989b" min="0.0" max="100.0" int="1.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="0" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="12" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="5fa84f286e291d78" memberName="Title6" virtualName=""
          explicitFocusOrder="0" pos="0 64 96 16" bkgCol="fff0f8ff" textCol="ff181f22"
@@ -196,7 +207,7 @@ BEGIN_JUCER_METADATA
   <SLIDER name="DirectValue" id="372e7c57fbadf318" memberName="Pitch" virtualName=""
           explicitFocusOrder="0" pos="0 19 96 36" tooltip="Attack time"
           textboxoutline="8e989b" min="-12.0" max="12.0" int="1.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="1" textBoxWidth="50"
+          textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="50"
           textBoxHeight="12" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="329c93008ae0234" memberName="Title7" virtualName=""
          explicitFocusOrder="0" pos="0 0 96 16" bkgCol="fff0f8ff" textCol="ff181f22"

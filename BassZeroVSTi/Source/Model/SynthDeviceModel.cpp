@@ -55,36 +55,7 @@
   void SynthDeviceModel::AfterDeployModel()
   {
 
-	  // ========================== populates list of sources ===========
-	  for each (auto var in modulations.ADSRs)
-	  {
-
-		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
-	  }
-
-	  for each (auto var in modulations.ENVs)
-	  {
-		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
-		  //ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
-	  }
-
-	  for each (auto var in modulations.LFOs)
-	  {
-		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
-		  //	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
-	  }
-
-	  for each (auto var in modulations.MacroControls)
-	  {
-		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
-		  //	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
-	  }
-
-	  for each (auto var in modulations.MIDIs)
-	  {
-		  PARAMCONTROL.ListOfSources.Add(var->ShortName);
-		  //	ModelConstructionTools::parameterController.ListOfSources.Add(var->ShortName);
-	  }
+	 
 
 
 	  PARAMCONTROL.ListOfModulationFunctions.Add("One-shot");
@@ -111,19 +82,21 @@
 	  CONTROLLER ListOfModulationModes.Add("PWM");
 	  CONTROLLER ListOfModulationModes.Add("Phase");
 
-	  // ==== registrating units and links
-	  for each (auto var in OPMCONTROL Units)
-	  {
-		  CONTROLLER ListOfSignalUnits.Add(var->ShortName);
-	  }
+	  CONTROLLER ListOfLFOFunctions.Add("Triangle");
+	  CONTROLLER ListOfLFOFunctions.Add("Ramp Down");
+	  CONTROLLER ListOfLFOFunctions.Add("Ramp Up");
+	  CONTROLLER ListOfLFOFunctions.Add("Square Pulse");
+	  CONTROLLER ListOfLFOFunctions.Add("Sinewave");
+	  CONTROLLER ListOfLFOFunctions.Add("Chaos");
+	  
 
-	  // ===== links
-
-	  for each (auto var in OPMCONTROL Links)
-	  {
-		  CONTROLLER ListOfMacroLinks.Add(var->ShortName);
-	  }
-
+		  
+		  
+		  
+		  
+		  
+		  
+	 
 
 		MODULATIONS Deploy(parameterController);
 		OPMCONTROL Deploy(parameterController);

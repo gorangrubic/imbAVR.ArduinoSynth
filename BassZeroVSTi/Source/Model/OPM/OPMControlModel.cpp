@@ -65,7 +65,19 @@ std::shared_ptr<OPMSignalUnit> OPMControlModel::GetSignalUnit(juce::String name)
 
 void OPMControlModel::Deploy(ParameterController & parameterController)
 {
-	
+	for each (auto var in Units)
+	{
+		parameterController.ListOfSignalUnits.Add(var->ShortName);
+		var->Deploy(parameterController);
+	}
+
+	// ===== links
+
+	for each (auto var in Links)
+	{
+		parameterController.ListOfMacroLinks.Add(var->ShortName);
+		var->Deploy(parameterController);
+	}
 
 	
 }

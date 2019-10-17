@@ -80,10 +80,6 @@ SynthStateDisplay::~SynthStateDisplay()
     //[/Destructor]
 }
 
-void SynthStateDisplay::Update(SynthStateDisplayModel & model)
-{
-}
-
 //==============================================================================
 void SynthStateDisplay::paint (Graphics& g)
 {

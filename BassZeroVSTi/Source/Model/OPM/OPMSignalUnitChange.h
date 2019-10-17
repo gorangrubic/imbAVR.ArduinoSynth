@@ -14,10 +14,26 @@
 #include "../Source/Control/imbControlParameter.h"
 #include "..\Source\Model\ModelConstructionTools.h"
 
+#define NameString_Phase "Phase"
+#define NameString_Pitch "Pitch"
+#define NameString_PWM "PWM"
+#define LabelString_Phase "Phase Change"
+#define LabelString_Pitch "Pitch Change"
+#define LabelString_PWM "Pulse-Width Change"
+
 class OPMSignalUnitChange :
 	public SynthDeviceModelComponentBase
+
+	
 {
 public:
+
+	/*static std::string NameString_Phase = const "Phase";
+	static std::string NameString_Pitch = "Pitch";
+	static std::string NameString_PWM = juce::String("PWM");
+	static std::string LabelString_Phase = juce::String("Phase");
+	static std::string LabelString_Pitch = juce::String("Pitch");
+	static std::string LabelString_PWM = juce::String("Pulse-Width Change");*/
 
 	//OPMControlModel * opmParent;
 

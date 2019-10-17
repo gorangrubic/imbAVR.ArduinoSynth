@@ -12,6 +12,21 @@
 
 
 
+std::shared_ptr<OPMSignalUnitChange> OPMSignalUnit::GetUnitChange(String name)
+{
+	std::shared_ptr<OPMSignalUnitChange> output = nullptr;
+
+	for each (auto var in ChangeUnits)
+	{
+		if (var->ShortName.equalsIgnoreCase(name)) {
+			output = var;
+			break;
+		}
+	}
+
+	return output;
+}
+
 OPMSignalUnit::OPMSignalUnit()
 {
 }
@@ -21,6 +36,8 @@ OPMSignalUnit::OPMSignalUnit()
 //}
 void OPMSignalUnit::Deploy(ParameterController & parameterController)
 {
+
+
 	AddBoolParameter(parameterController,&Enabled, "Enabled", "Signal/Oscilator enabled", true, -1, false, imbControlParameterMessageType::sysExMsg);
 	AddBoolParameter(parameterController, &Sync, "Sync", "Oscilator reset with Note On", true, -1, false, imbControlParameterMessageType::sysExMsg);
 
@@ -47,18 +64,39 @@ void OPMSignalUnit::Deploy(ParameterController & parameterController)
 	PWMCycleMode.SetHelp("When [True], width of the pulse is continual (from 0% to 100%) and controlled by PWM parameter of the oscilator. Otherwise, the pulse is driven by WaveformPattern - allowing asymetric pulse widths / customized waveform results.");
 
 	// ======================= Rapid modulation of Signal generator unit properties
-	PhaseChange.SetDescription("Phase", "Phase Change");
+
+	for each (auto var in ChangeUnits)
+	{
+		auto modMode = var->ShortName.replace(ShortName + "_", "", true);
+
+		parameterController.ListOfModulationModes.Add(modMode);
+		//parameterController.ListOfSignalUnits.Add(var->ShortName);
+		
+		var->Deploy(parameterController);
+	}
+
+
+	//PhaseChange.Deploy(parameterController);
+
+	//PWMChange.SetDescription("PWM", "Pulse-Width Change");
+	//AddChild(&PWMChange);
+	//ChangeUnits.Add(&PWMChange);
+	//PWMChange.Deploy(parameterController);
+
+	//PitchChange.SetDescription("Pitch", "Pitch Change");
+	//AddChild(&PitchChange);
+	//ChangeUnits.Add(&PhaseChange);
+	//PitchChange.Deploy(parameterController);
+
+
+}
+
+void OPMSignalUnit::AddChangeUnit(OPMSignalUnitChange * output, std::string _shortName, std::string _longName, ControlGroup * group)
+{
+	output->NamePrefix = ShortName;
+	output->SetDescription(_shortName, _longName);
 	//PhaseChange.PreDeploy("Phase", "Phase Change");
-	AddChild(&PhaseChange);
-	PhaseChange.Deploy(parameterController);
-
-	PhaseChange.SetDescription("PWM", "Pulse-Width Change");
-	AddChild(&PWMChange);
-	PWMChange.Deploy(parameterController);
-
-	PhaseChange.SetDescription("Pitch", "Pitch Change");
-	AddChild(&PitchChange);
-	PitchChange.Deploy(parameterController);
-
-
+	
+	AddChild(output);
+	ChangeUnits.Add(output);
 }

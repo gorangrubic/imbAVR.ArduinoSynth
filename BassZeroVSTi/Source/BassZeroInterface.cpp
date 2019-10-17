@@ -43,7 +43,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
     addAndMakeVisible (tabbedComponent.get());
     tabbedComponent->setTabBarDepth (36);
     tabbedComponent->addTab (TRANS("FX & Master"), Colours::lightgrey, new TabMasterFilter (synthState, ""), true);
-    tabbedComponent->addTab (TRANS("Waveforms"), Colour (0xffad0002), new TabWaveforms (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Waveforms"), Colours::lightgrey, new TabWaveforms (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Modulation"), Colours::lightgrey, new TabModulationFunctions (synthState, ""), true);
     tabbedComponent->addTab (TRANS("OPM Control"), Colours::lightgrey, new TabOPM (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Library & Setup"), Colours::lightgrey, new TabMainControl (synthState, ""), true);
@@ -66,7 +66,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 
 
     //[Constructor] You can add your own custom stuff here..
-	startTimer(GUIREFRESH_TIMEINTERVAL);
+	//startTimer(GUIREFRESH_TIMEINTERVAL);
     //[/Constructor]
 }
 
@@ -81,7 +81,7 @@ BassZeroGUI::~BassZeroGUI()
 
 
     //[Destructor]. You can add your own custom destruction code here..
-	stopTimer();
+	//stopTimer();
     //[/Destructor]
 }
 
@@ -156,9 +156,9 @@ void BassZeroGUI::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void BassZeroGUI::timerCallback() {
-
-}
+//void BassZeroGUI::timerCallback() {
+//
+//}
 //[/MiscUserCode]
 
 
@@ -193,7 +193,7 @@ BEGIN_JUCER_METADATA
                    tabBarDepth="36" initialTab="1">
     <TAB name="FX &amp; Master" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
          constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabMasterFilter.cpp"/>
-    <TAB name="Waveforms" colour="ffad0002" useJucerComp="1" contentClassName=""
+    <TAB name="Waveforms" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
          constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabWaveforms.cpp"/>
     <TAB name="Modulation" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
          constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabModulationFunctions.cpp"/>

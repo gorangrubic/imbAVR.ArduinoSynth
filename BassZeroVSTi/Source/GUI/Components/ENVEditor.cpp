@@ -141,12 +141,26 @@ ENVEditor::ENVEditor (imbSynthStateData * synthState, String nameSufix)
 
     //[Constructor] You can add your own custom stuff here..
 	modelComponent = synthState->model->modulations.GetENVByName(nameSufix);
-	modelComponent->Loop.attachControl(toggle_loop.get());
-	modelComponent->StartWithB.attachControl(toggle_startWithB.get());
-	modelComponent->TimeA.attachControl(TimeA.get());
-	modelComponent->TimeB.attachControl(TimeB.get());
-	modelComponent->ValueA.attachControl(ValueA.get());
-	modelComponent->ValueB.attachControl(ValueB.get());
+
+	if (modelComponent != nullptr) {
+
+		modelComponent->Loop.attachControl(toggle_loop.get());
+		modelComponent->StartWithB.attachControl(toggle_startWithB.get());
+		modelComponent->TimeA.attachControl(TimeA.get());
+		modelComponent->TimeB.attachControl(TimeB.get());
+		modelComponent->ValueA.attachControl(ValueA.get());
+		modelComponent->ValueB.attachControl(ValueB.get());
+
+
+		setEnabled(true);
+		setAlpha(1.0f);
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
+
     //[/Constructor]
 }
 

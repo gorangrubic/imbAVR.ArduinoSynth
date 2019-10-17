@@ -54,9 +54,12 @@ public:
 	ModulationFunctionLFO LFO_C;
 	ModulationFunctionLFO LFO_D;
 
-	imbControlParameter CTRL_A;
+
+	//ModulationSourceMacroControl CTRLA;
+
+	/*imbControlParameter CTRL_A;
 	imbControlParameter CTRL_B;
-	imbControlParameter CTRL_C;
+	imbControlParameter CTRL_C;*/
 
 	ModulationSourceMIDI VEL;
 

@@ -113,7 +113,7 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
     addAndMakeVisible (Time.get());
     Time->setRange (0, 127, 1);
     Time->setSliderStyle (Slider::LinearHorizontal);
-    Time->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    Time->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
     Time->setColour (Slider::thumbColourId, Colour (0xff397daa));
     Time->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Time->addListener (this);
@@ -124,7 +124,7 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
     addAndMakeVisible (Factor.get());
     Factor->setRange (0, 127, 1);
     Factor->setSliderStyle (Slider::LinearHorizontal);
-    Factor->setTextBoxStyle (Slider::TextBoxBelow, false, 80, 20);
+    Factor->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
     Factor->setColour (Slider::thumbColourId, Colour (0xff397daa));
     Factor->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
     Factor->addListener (this);
@@ -140,12 +140,25 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
 
     //[Constructor] You can add your own custom stuff here..
 	modelComponent = synthState->model->modulations.GetLFOByName(nameSufix);
-	modelComponent->Value.attachControl(Value.get());
-	modelComponent->Function.attachControl(Curve.get());
-	modelComponent->Retrigger.attachControl(toggle_retrigger.get());
-	modelComponent->Loop.attachControl(toggle_loop.get());
-	modelComponent->Time.attachControl(Time.get());
-	modelComponent->TimeFactor.attachControl(Factor.get());
+	if (modelComponent != nullptr) {
+
+
+		modelComponent->Value.attachControl(Value.get());
+		modelComponent->Function.attachControl(Curve.get());
+		modelComponent->Retrigger.attachControl(toggle_retrigger.get());
+		modelComponent->Loop.attachControl(toggle_loop.get());
+		modelComponent->Time.attachControl(Time.get());
+		modelComponent->TimeFactor.attachControl(Factor.get());
+
+		setEnabled(true);
+		setAlpha(1.0f);
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
+
     //[/Constructor]
 }
 
@@ -307,12 +320,12 @@ BEGIN_JUCER_METADATA
   <SLIDER name="new slider" id="da120fb852e0c0e8" memberName="Time" virtualName=""
           explicitFocusOrder="0" pos="88 24 80 26" thumbcol="ff397daa"
           textboxoutline="8e989b" min="0.0" max="127.0" int="1.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="1" textBoxWidth="80"
+          textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="80"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <SLIDER name="new slider" id="c401572f19b035c5" memberName="Factor" virtualName=""
           explicitFocusOrder="0" pos="160 24 80 26" thumbcol="ff397daa"
           textboxoutline="8e989b" min="0.0" max="127.0" int="1.0" style="LinearHorizontal"
-          textBoxPos="TextBoxBelow" textBoxEditable="1" textBoxWidth="80"
+          textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="80"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
 </JUCER_COMPONENT>
 

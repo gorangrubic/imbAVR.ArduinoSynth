@@ -274,6 +274,13 @@ OPMMacroControlEditor::OPMMacroControlEditor (imbSynthStateData * synthState, St
 
 
     //[Constructor] You can add your own custom stuff here..
+	synthState->model->opmControl.AttachParameter<Slider>("OPM_VALA", VALA.get());
+	synthState->model->opmControl.AttachParameter<Slider>("OPM_VALB", VALB.get());
+	synthState->model->opmControl.AttachParameter<Slider>("OPM_VALC", VALC.get());
+
+	synthState->model->modulations.GetMacroByName("CTRL_A")->AttachParameter<Slider>("Value", CTRLA.get());
+	synthState->model->modulations.GetMacroByName("CTRL_B")->AttachParameter<Slider>("Value", CTRLB.get());
+	synthState->model->modulations.GetMacroByName("CTRL_C")->AttachParameter<Slider>("Value", CTRLC.get());
     //[/Constructor]
 }
 

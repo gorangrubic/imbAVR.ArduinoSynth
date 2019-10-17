@@ -41,6 +41,10 @@ void BassZeroSynthModel::DeployModel()
 	MODULATIONS AddLFO(&LFO_C);
 	MODULATIONS AddLFO(&LFO_D);
 
+	MODULATIONS AddMacroControl(new ModulationSourceMacroControl());
+	MODULATIONS AddMacroControl(new ModulationSourceMacroControl());
+	MODULATIONS AddMacroControl(new ModulationSourceMacroControl());
+
 	
 	// =================== Deploying Macro Control Links
 	OPMCONTROL AddMacroControlLink(&MODA_MCL1, "MODA_MCL1", "OPM Macro Modulation A - 1");
@@ -53,19 +57,45 @@ void BassZeroSynthModel::DeployModel()
 	OPMCONTROL AddMacroControlLink(&VALC_MCL1, "VALC_MCL1", "OPM Macro Value C");
 	OPMCONTROL AddMacroControlLink(&VALC_MCL2, "VALC_MCL2", "OPM Macro Value C");
 
-	OPMCONTROL AddMacroControlLink(&MODA_MCL1, "MODA_MCL1", "OPM Macro Modulation A - 1");
+	
 
 
 	// =================== OPM Control parameters for the signal generator units
 
-	OPMCONTROL AddSignalUnit(&OPM_WFA, "WFA", "Waveform A");
-	OPMCONTROL AddSignalUnit(&OPM_WFB, "WFB", "Waveform B");
+	OPMCONTROL AddSignalUnit(&OPM_WFA, "WFA_OSC", "Waveform A");
+	OPM_WFA.AddChangeUnit(new OPMSignalUnitChange(), NameString_PWM, LabelString_PWM);
+	OPM_WFA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
+	OPM_WFA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Phase, LabelString_Phase);
 
-	OPMCONTROL AddSignalUnit(&FLT_RESA, "FLT_RESA", "Filter Resonance A");
-	OPMCONTROL AddSignalUnit(&FLT_RESB, "FLT_RESB", "Filter Resonance B");
+	OPMCONTROL AddSignalUnit(&OPM_WFB, "WFB_OSC", "Waveform B");
+	OPM_WFB.AddChangeUnit(new OPMSignalUnitChange(), NameString_PWM, LabelString_PWM);
+	OPM_WFB.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
+	OPM_WFB.AddChangeUnit(new OPMSignalUnitChange(), NameString_Phase, LabelString_Phase);
 
-	OPMCONTROL AddSignalUnit(&OPM_PERKA, "PERKA", "PERK A");
-	OPMCONTROL AddSignalUnit(&OPM_PERKB, "PERKB", "PERK B");
+
+	OPMCONTROL AddSignalUnit(&FLT_RESA, "FLT_OSC", "Filter Resonance");
+	FLT_RESA.AddChangeUnit(new OPMSignalUnitChange(), NameString_PWM, LabelString_PWM);
+	FLT_RESA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
+	FLT_RESA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Phase, LabelString_Phase);
+
+	
+	OPMCONTROL AddSignalUnit(&OPM_PERKA, "PERKA_OSC", "PERK A");
+	OPM_PERKA.AddChangeUnit(new OPMSignalUnitChange(), NameString_PWM, LabelString_PWM);
+	OPM_PERKA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
+	OPM_PERKA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Phase, LabelString_Phase);
+
+
+	OPMCONTROL AddSignalUnit(&OPM_PERKB, "PERKB_OSC", "PERK B");
+	OPM_PERKB.AddChangeUnit(new OPMSignalUnitChange(), NameString_PWM, LabelString_PWM);
+	OPM_PERKB.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
+	OPM_PERKB.AddChangeUnit(new OPMSignalUnitChange(), NameString_Phase, LabelString_Phase);
+
+
+	opmControl.AddCCParameter(parameterController, &OPM_VALA, "OPM_VALA", "Value A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+
+	opmControl.AddCCParameter(parameterController, &OPM_VALB, "OPM_VALB", "Value B", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+
+	opmControl.AddCCParameter(parameterController, &OPM_VALC, "OPM_VALC", "Value C", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 
 
 	// =================== MST components
@@ -109,15 +139,15 @@ void BassZeroSynthModel::DeployModel()
 	// =========================== OPM Macro Controls
 	COMPONENTS AddModulatedControl(&OPM_MODA, "OPM_MODA", "Modulated parameter A", &OPM_Group);
 	COMPONENTS AddModulatedControl(&OPM_MODB, "OPM_MODB", "Modulated parameter B", &OPM_Group);
-
-	COMPONENTS AddCCParameter(parameterController,&OPM_VALA, "OPM_VALA", "Value A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
-
-	COMPONENTS AddCCParameter(parameterController, &OPM_VALB, "OPM_VALB", "Value B", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
-
-	COMPONENTS AddCCParameter(parameterController, &OPM_VALC, "OPM_VALC", "Value C", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
 	
 
 	
+	/*COMPONENTS AddCCParameter(parameterController, &CTRL_A, "CTRLA", "Macro control A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+
+	COMPONENTS AddCCParameter(parameterController, &CTRL_B, "CTRLB", "Macro control A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+
+	COMPONENTS AddCCParameter(parameterController, &CTRL_C, "CTRLC", "Macro control A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);
+	*/
 }
 //
 //BassZeroSynthModel::BassZeroSynthModel()

@@ -10,7 +10,7 @@
 #pragma once
 #include "../../../JuceLibraryCode/JuceHeader.h"
 /* custom editor for imbControlParameter */
-class imbSynthParameterEditor {
+class imbSynthParameterEditor : public Component, public SettableTooltipClient {
  
     	
 	public:

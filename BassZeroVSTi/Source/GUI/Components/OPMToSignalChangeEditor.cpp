@@ -123,10 +123,23 @@ OPMToSignalChangeEditor::OPMToSignalChangeEditor (imbSynthStateData * synthState
 
     //[Constructor] You can add your own custom stuff here..
 	modelComponent = synthState->model->opmControl.GetLink(nameSufix);
-	modelComponent->Signal.attachControl(target_signal.get());
-	modelComponent->ModAmt.attachControl(Amount.get());
-	modelComponent->ModPar.attachControl(target_parameter.get());
-	modelComponent->ModTar.attachControl(target_mod.get());
+	if (modelComponent != nullptr) {
+
+
+		modelComponent->Signal.attachControl(target_signal.get());
+		modelComponent->ModAmt.attachControl(Amount.get());
+		modelComponent->ModPar.attachControl(target_parameter.get());
+		modelComponent->ModTar.attachControl(target_mod.get());
+
+		setEnabled(true);
+		setAlpha(1.0f);
+	}
+	else {
+		setEnabled(false);
+		setAlpha(0.5f);
+	}
+
+
 		//ModPar.attachControl(target_parameter.get());
     //[/Constructor]
 }

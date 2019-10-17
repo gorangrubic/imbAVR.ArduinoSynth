@@ -68,6 +68,7 @@ void imbControlParameter::attachControl(Slider * slider)
 		}
 	};
 	updateGUI();
+	updateTooltip();
 	updateState();
 }
 
@@ -76,6 +77,17 @@ void imbControlParameter::attachControl(ComboBox * _comboBox)
 	detachControl();
 	componentType = imbControlParameterComponentType::combobox;
 	pComboBox = std::shared_ptr<ComboBox>(_comboBox);
+	pComboBox->clear(true);
+
+	int i = 1;
+	for each (auto var in enumerationList->Items)
+	{
+		pComboBox->addItem(var, i);
+		i++;
+	}
+
+	//pComboBox->addItem()
+
 	pComboBox->onChange = [&, this] {
 		if (!isGUIUpdating) {
 			SetValue(pComboBox->getSelectedId());
@@ -83,13 +95,14 @@ void imbControlParameter::attachControl(ComboBox * _comboBox)
 		}
 	};
 	updateGUI();
+	updateTooltip();
 	updateState();
 }
 
 void imbControlParameter::attachControl(ToggleButton * _button)
 {
 	detachControl();
-	componentType = imbControlParameterComponentType::combobox;
+	componentType = imbControlParameterComponentType::checkbox;
 	pToggleButton = std::shared_ptr<ToggleButton>(_button);
 	pToggleButton->onStateChange = [&, this] {
 		if (!isGUIUpdating) {
@@ -104,6 +117,7 @@ void imbControlParameter::attachControl(ToggleButton * _button)
 		}
 	};
 	updateGUI();
+	updateTooltip();
 	updateState();
 }
 
@@ -119,6 +133,7 @@ void imbControlParameter::attachControl(imbSynthParameterEditor * _editor)
 		}
 	};
 	updateGUI();
+	updateTooltip();
 	updateState();
 }
 
@@ -154,9 +169,50 @@ void imbControlParameter::updateState()
 {
 	isStateUpdating = true;
 
-	pParameter->setValueNotifyingHost(Value);
+	if (pParameter == nullptr) {
+
+		//
+
+	}
+	else {
+		pParameter->setValueNotifyingHost(Value);
+	}
+	
 
 	isStateUpdating = false;
+}
+
+void imbControlParameter::updateTooltip()
+{
+
+	juce::String tooltip_msg = parameterHelp;
+	if (Error.isNotEmpty()) {
+		tooltip_msg.append(" Error: " + Error, 200);
+	}
+
+	switch (componentType) {
+
+	case imbControlParameterComponentType::combobox:
+		pComboBox->setTooltip(tooltip_msg);
+		
+		break;
+	case imbControlParameterComponentType::slider:
+		pSlider->setValue(Value, juce::NotificationType::dontSendNotification);
+		pSlider->setTooltip(tooltip_msg);
+		break;
+	case imbControlParameterComponentType::unassigned:
+
+		break;
+	case imbControlParameterComponentType::checkbox:
+		pToggleButton->setTooltip(tooltip_msg);
+		pToggleButton->setToggleState(Value > 0.5, true);
+		break;
+	case imbControlParameterComponentType::imbParameterComponent:
+		pParameterEditor->SetValue(Value);
+		pParameterEditor->setTooltip(tooltip_msg);
+		break;
+	}
+
 }
 
 
@@ -276,14 +332,25 @@ void imbControlParameter::parameterChanged(const String &, float newValue)
 
 void imbControlParameter::attachState(juce::AudioProcessorValueTreeState & parameters)
 {
-	NormalisableRange<float> valueRange = NormalisableRange<float>(MinValue, MaxValue, IntervalValue);
+	auto existingPar = parameters.getParameter(parameterIDPath);
 
-	pParameter = std::shared_ptr<juce::RangedAudioParameter>(parameters.createAndAddParameter(parameterIDPath,
-		parameterID, parameterLabel, valueRange, Value, nullptr, nullptr,
-		isMetaValue, isAutomatizable, isDescreteValue,
-		category, typeParameter == imbControlParameterType::Boolean));
+	if (existingPar != nullptr) {
+
+		Error = "---- DUPLICATED PARAMETER ID PATH";
+	}
+	else {
+
+		NormalisableRange<float> valueRange = NormalisableRange<float>(MinValue, MaxValue, IntervalValue);
+
+		pParameter = std::shared_ptr<juce::RangedAudioParameter>(parameters.createAndAddParameter(parameterIDPath,
+			parameterID, parameterLabel, valueRange, Value, nullptr, nullptr,
+			isMetaValue, isAutomatizable, isDescreteValue,
+			category, typeParameter == imbControlParameterType::Boolean));
+
+		parameters.addParameterListener(parameterIDPath, this);
+	}
 	
-	parameters.addParameterListener(parameterIDPath, this);
+	updateTooltip();
 
 	//updateState();
 }

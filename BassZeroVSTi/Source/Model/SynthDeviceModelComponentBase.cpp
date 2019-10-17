@@ -42,6 +42,8 @@ void SynthDeviceModelComponentBase::ConstructComponentParameters(ParameterContro
 
 #define CONTROLLER  parameterController.
 
+
+
   std::shared_ptr<imbControlParameter> SynthDeviceModelComponentBase::GetParameter(juce::String name)
   {
 	  

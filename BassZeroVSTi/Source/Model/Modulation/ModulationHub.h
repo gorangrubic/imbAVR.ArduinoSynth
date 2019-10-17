@@ -24,7 +24,7 @@
 
 #include <cstddef> // for NULL
 
-
+#define PARAMCONTROL parameterController
 
 class ModulationHub : 
 //	public SynthDeviceModelComponentBase,

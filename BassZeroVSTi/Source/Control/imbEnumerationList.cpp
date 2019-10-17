@@ -14,7 +14,9 @@ void imbEnumerationList::Add(String item)
 {
 	//Items.add(item);
 
-	Items.push_back(item);
+	if (IndexOf(item) == -1) {
+		Items.push_back(item);
+	}
 }
 
 int imbEnumerationList::IndexOf(String item)
