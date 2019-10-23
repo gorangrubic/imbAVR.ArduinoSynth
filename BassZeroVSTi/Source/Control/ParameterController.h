@@ -2,7 +2,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "imbControlParameterEnumerations.h"
-#include "imbEnumerationList.h"
+#include "../Source/Data/Structures/imbEnumerationList.h"
+
 //#include "imbSynthAudioProcessor.h"
 
 /// <summary>

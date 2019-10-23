@@ -36,6 +36,8 @@
 BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 {
     //[Constructor_pre] You can add your own custom stuff here..
+	tooltipWindow.reset(new TooltipWindow(this, 700));
+	
     //[/Constructor_pre]
 
     setName ("BassZero VSTi");
@@ -55,18 +57,54 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
     addAndMakeVisible (controlStateDisplay.get());
     synthStatusDisplay.reset (new SynthStateDisplay (synthState, ""));
     addAndMakeVisible (synthStatusDisplay.get());
-    synthStatusDisplay->setBounds (536, 8, 300, 24);
+    label_version.reset (new Label ("new label",
+                                    TRANS("v0.4")));
+    addAndMakeVisible (label_version.get());
+    label_version->setFont (Font ("Helvetica Neue LT Std", 15.00f, Font::plain).withTypefaceStyle ("33 Thin Extended"));
+    label_version->setJustificationType (Justification::centredLeft);
+    label_version->setEditable (false, false, false);
+    label_version->setColour (Label::textColourId, Colours::lightgrey);
+    label_version->setColour (TextEditor::textColourId, Colours::black);
+    label_version->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label_version->setBounds (200, 8, 68, 24);
 
     cachedImage_background2_jpg_1 = ImageCache::getFromMemory (background2_jpg, background2_jpgSize);
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (840, 490);
+    setSize (840, 496);
 
 
     //[Constructor] You can add your own custom stuff here..
 	//startTimer(GUIREFRESH_TIMEINTERVAL);
+	auto tlw = juce::TopLevelWindow::getActiveTopLevelWindow();
+	auto icon = ImageCache::getFromMemory(BinaryData::veles_template_blue_ico, BinaryData::veles_template_blue_icoSize);
+	
+	auto activeWindow = juce::TopLevelWindow::getActiveTopLevelWindow();
+	if (activeWindow)
+	{
+		auto window = dynamic_cast<DocumentWindow*>(activeWindow);
+		window->setIcon(icon);
+		window->setMenuBar(nullptr);
+		window->setMenuBarComponent(nullptr);
+	}
+	else 
+	{
+
+	}
+
+	//std::unique_ptr<DocumentWindow> dw;
+	//dw.reset(tlw)
+
+	//auto ic = BinaryData::getNamedResourceOriginalFilename("veles_template_blue.ico");
+	//juce::Image im = juce::Image(BinaryData::veles_template_blue_ico);
+	//DrawableImage di = DrawableImage();
+	
+//	juce::DocumentWindow::setIcon(icon);
+//	tlw->addAndMakeVisible(tooltipWindow.get());
+	addAndMakeVisible(tooltipWindow.get());
     //[/Constructor]
 }
 
@@ -78,6 +116,7 @@ BassZeroGUI::~BassZeroGUI()
     tabbedComponent = nullptr;
     controlStateDisplay = nullptr;
     synthStatusDisplay = nullptr;
+    label_version = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -116,27 +155,15 @@ void BassZeroGUI::paint (Graphics& g)
     }
 
     {
-        int x = 622, y = 468, width = 200, height = 18;
-        String text (TRANS("TesseracT Studio"));
+        int x = 627, y = 469, width = 200, height = 18;
+        String text (CharPointer_UTF8 ("TesseracT Studio \xc2\xa9 2020"));
         Colour fillColour = Colours::azure;
         //[UserPaintCustomArguments] Customize the painting arguments here..
         //[/UserPaintCustomArguments]
         g.setColour (fillColour);
-        g.setFont (Font ("Helvetica Neue LT Pro", 13.00f, Font::plain).withTypefaceStyle ("33 Thin Extended").withExtraKerningFactor (0.046f));
+        g.setFont (Font ("Helvetica Neue LT Pro", 10.00f, Font::plain).withTypefaceStyle ("33 Thin Extended").withExtraKerningFactor (0.046f));
         g.drawText (text, x, y, width, height,
                     Justification::centredRight, true);
-    }
-
-    {
-        int x = 16, y = 468, width = 200, height = 18;
-        String text (TRANS("imbAVR.BassZero VSTi v0.4"));
-        Colour fillColour = Colours::azure;
-        //[UserPaintCustomArguments] Customize the painting arguments here..
-        //[/UserPaintCustomArguments]
-        g.setColour (fillColour);
-        g.setFont (Font ("Helvetica Neue LT Pro", 13.00f, Font::plain).withTypefaceStyle ("33 Thin Extended").withExtraKerningFactor (0.046f));
-        g.drawText (text, x, y, width, height,
-                    Justification::centredLeft, true);
     }
 
     //[UserPaint] Add your own custom painting code here..
@@ -148,7 +175,8 @@ void BassZeroGUI::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    controlStateDisplay->setBounds (4, 440, getWidth() - 8, 24);
+    controlStateDisplay->setBounds (4, 440, getWidth() - 8, 52);
+    synthStatusDisplay->setBounds (256, 7, getWidth() - 260, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -175,18 +203,15 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component, public imbSynthGUIComponent"
                  constructorParams="imbSynthStateData * synthState" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="840" initialHeight="490">
+                 fixedSize="1" initialWidth="840" initialHeight="496">
   <BACKGROUND backgroundColour="ff323e44">
     <IMAGE pos="0 0 840 490" resource="background2_jpg" opacity="0.1" mode="0"/>
     <TEXT pos="19 4 200 30" fill="solid: fff0ffff" hasStroke="0" text="hardy.Veles::BassZero "
           fontname="Helvetica Neue LT Pro" fontsize="18.0" kerning="0.046"
           bold="0" italic="0" justification="33" typefaceStyle="33 Thin Extended"/>
-    <TEXT pos="622 468 200 18" fill="solid: fff0ffff" hasStroke="0" text="TesseracT Studio"
-          fontname="Helvetica Neue LT Pro" fontsize="13.0" kerning="0.046"
+    <TEXT pos="627 469 200 18" fill="solid: fff0ffff" hasStroke="0" text="TesseracT Studio &#169; 2020"
+          fontname="Helvetica Neue LT Pro" fontsize="10.0" kerning="0.046"
           bold="0" italic="0" justification="34" typefaceStyle="33 Thin Extended"/>
-    <TEXT pos="16 468 200 18" fill="solid: fff0ffff" hasStroke="0" text="imbAVR.BassZero VSTi v0.4"
-          fontname="Helvetica Neue LT Pro" fontsize="13.0" kerning="0.046"
-          bold="0" italic="0" justification="33" typefaceStyle="33 Thin Extended"/>
   </BACKGROUND>
   <TABBEDCOMPONENT name="new tabbed component" id="dacddc8e0a4fba01" memberName="tabbedComponent"
                    virtualName="" explicitFocusOrder="0" pos="0 36 840 400" orientation="top"
@@ -204,11 +229,17 @@ BEGIN_JUCER_METADATA
          jucerComponentFile="GUI/Tabs/TabMainControl.cpp"/>
   </TABBEDCOMPONENT>
   <JUCERCOMP name="" id="64c75a3190c4aabc" memberName="controlStateDisplay"
-             virtualName="" explicitFocusOrder="0" pos="4 440 8M 24" sourceFile="GUI/Global/ControlStateDisplay.cpp"
+             virtualName="" explicitFocusOrder="0" pos="4 440 8M 52" sourceFile="GUI/Global/ControlStateDisplay.cpp"
              constructorParams="synthState, &quot;&quot;"/>
   <JUCERCOMP name="" id="2a52e75071d6398c" memberName="synthStatusDisplay"
-             virtualName="" explicitFocusOrder="0" pos="536 8 300 24" sourceFile="GUI/Global/SynthStateDisplay.cpp"
+             virtualName="" explicitFocusOrder="0" pos="256 7 260M 24" sourceFile="GUI/Global/SynthStateDisplay.cpp"
              constructorParams="synthState, &quot;&quot;"/>
+  <LABEL name="new label" id="3b7f1f8d8cc0aff4" memberName="label_version"
+         virtualName="" explicitFocusOrder="0" pos="200 8 68 24" textCol="ffd3d3d3"
+         edTextCol="ff000000" edBkgCol="0" labelText="v0.4" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Helvetica Neue LT Std"
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"
+         typefaceStyle="33 Thin Extended"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

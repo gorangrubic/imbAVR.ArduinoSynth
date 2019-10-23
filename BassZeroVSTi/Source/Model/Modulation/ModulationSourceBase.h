@@ -15,7 +15,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 
 
 class ModulationSourceBase : public SynthDeviceModelComponentBase {

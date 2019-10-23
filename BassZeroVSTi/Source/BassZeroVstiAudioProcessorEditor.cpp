@@ -13,7 +13,7 @@
 #include "BassZeroInterface.h"
 
 #define WIDTH 840
-#define HEIGHT 500
+#define HEIGHT 530
 #define MENU_HEIGHT 30
 
 //==============================================================================
@@ -38,9 +38,7 @@ BassZeroVstiAudioProcessorEditor::BassZeroVstiAudioProcessorEditor (BassZeroVsti
 	mainMenuModel.setSize(WIDTH, MENU_HEIGHT);
 	
 	auto topWindow = TopLevelWindow::getActiveTopLevelWindow();
-	topWindow.
-	JUCEApplication::createInstance();
-	juce::ApplicationProperties::setStorageParameters()
+	
 	
 	//addChildComponent(bassZeroGUI);
 }

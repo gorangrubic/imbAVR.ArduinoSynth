@@ -10,9 +10,9 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Model/SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "ModelComponentDescription.h"
-#include "SharedPointerVector.h"
+
 #include <vector>
 
 #include "../Source/Control/ParameterController.h"

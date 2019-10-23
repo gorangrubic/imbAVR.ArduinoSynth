@@ -37,8 +37,9 @@
 */
 class MainViewTabInOut  : public Component,
                           public imbSynthGUIComponent,
+                          public Button::Listener,
                           public ComboBox::Listener,
-                          public Button::Listener
+                          public Slider::Listener
 {
 public:
     //==============================================================================
@@ -51,9 +52,15 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     void buttonClicked (Button* buttonThatWasClicked) override;
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
+    // Binary resources:
+    static const char* basszero_background_jpg;
+    static const int basszero_background_jpgSize;
+    static const char* background2_jpg;
+    static const int background2_jpgSize;
 
 
 private:
@@ -61,23 +68,29 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<GroupComponent> group_Device;
     std::unique_ptr<Label> label6;
-    std::unique_ptr<GroupComponent> group_MIDI_inputs;
-    std::unique_ptr<ComboBox> midiIn_1;
-    std::unique_ptr<ComboBox> midiIn_2;
-    std::unique_ptr<ComboBox> midiIn_3;
-    std::unique_ptr<ComboBox> midiIn_4;
-    std::unique_ptr<ToggleButton> toggleButton_enableMIDIIN;
+    std::unique_ptr<ToggleButton> EnableDirectMIDIInputs;
     std::unique_ptr<ComboBox> Device;
-    std::unique_ptr<ComboBox> midiOut_1;
-    std::unique_ptr<ComboBox> midiOut_2;
-    std::unique_ptr<ToggleButton> toggleButton_enableMIDIIN2;
-    std::unique_ptr<ToggleButton> toggleButton_MIDITrough;
-    std::unique_ptr<ToggleButton> toggleButton_MIDITrough2;
-    std::unique_ptr<ComboBox> midiOut_3;
-    std::unique_ptr<ComboBox> midiOut_4;
+    std::unique_ptr<ToggleButton> Enable;
+    std::unique_ptr<ToggleButton> ForwardInputsToOutputs;
+    std::unique_ptr<ToggleButton> ForwardVSTHostToOutputs;
     std::unique_ptr<TextButton> Send5;
+    std::unique_ptr<ComboBox> SerialPortSelection;
+    std::unique_ptr<ToggleButton> UseSerialLink;
+    std::unique_ptr<Slider> ccMessagesCycle;
+    std::unique_ptr<Label> label2;
+    std::unique_ptr<Label> label3;
+    std::unique_ptr<ComboBox> SerialPortBaudrate;
+    std::unique_ptr<ComboBox> MIDIInput1;
+    std::unique_ptr<Label> label4;
+    std::unique_ptr<ComboBox> MIDIInput2;
+    std::unique_ptr<ComboBox> MIDIInput3;
+    std::unique_ptr<ComboBox> MIDIOutput1;
+    std::unique_ptr<Label> label5;
+    std::unique_ptr<ComboBox> MIDIOutput2;
+    std::unique_ptr<ComboBox> MIDIOutput3;
+    std::unique_ptr<Label> label7;
+    Image cachedImage_background2_jpg_1;
 
 
     //==============================================================================

@@ -46,9 +46,10 @@ public:
 
 		this->bassZeroModel.ConstructParameters(parameters);
 
+		
 
 
-		bassZeroState.Initiated();
+		bassZeroState.Initiated(&bassZeroApplication.folders);
 
 	};
     ~BassZeroVstiAudioProcessor();

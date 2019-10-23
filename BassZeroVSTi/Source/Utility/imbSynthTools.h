@@ -11,8 +11,8 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameterEnumerations.h"
-#include "../Source/Control/imbControlParameter.h"
-#include "../Source/Model/ModelConstructionTools.h"
+
+//#include "../Source/Model/ModelConstructionTools.h"
 #include <vector>
 
 class imbSynthTools {
@@ -21,6 +21,8 @@ class imbSynthTools {
     
 
 		static int StringToInt32(juce::String stringValue, float defaultValue);
+
+		static float StringToFloat(juce::String stringValue, float defaultValue);
 
 		static int StringToInt32(juce::String stringValue, int defaultValue);
 

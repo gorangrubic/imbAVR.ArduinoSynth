@@ -11,7 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "../Source/Model/SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "../Source/Model/ModelConstructionTools.h"
 
 //#include "../SynthDeviceModel.h"
@@ -25,11 +25,11 @@ public:
 
 //	OPMControlModel * opmParent;
 
-	imbControlParameter ModAmt;
-	imbControlParameter Signal;
+	imbControlParameter ModAmt = imbControlParameter(parameterClass::opm);
+	imbControlParameter Signal = imbControlParameter(parameterClass::opm);
 
-	imbControlParameter ModTar;
-	imbControlParameter ModPar;
+	imbControlParameter ModTar = imbControlParameter(parameterClass::opm);
+	imbControlParameter ModPar = imbControlParameter(parameterClass::opm);
 
 
 

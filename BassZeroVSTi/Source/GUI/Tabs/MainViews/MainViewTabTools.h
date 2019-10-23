@@ -54,6 +54,9 @@ public:
     void buttonClicked (Button* buttonThatWasClicked) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
+    // Binary resources:
+    static const char* background2_jpg;
+    static const int background2_jpgSize;
 
 
 private:
@@ -61,9 +64,7 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<GroupComponent> group_IO;
     std::unique_ptr<GroupComponent> group_MIDITEST;
-    std::unique_ptr<TextButton> Read;
     std::unique_ptr<ToggleButton> toggleButton;
     std::unique_ptr<Slider> slider_noteDuration;
     std::unique_ptr<Label> label;
@@ -75,9 +76,8 @@ private:
     std::unique_ptr<Label> label5;
     std::unique_ptr<Slider> Velocity;
     std::unique_ptr<Label> label4;
-    std::unique_ptr<TextButton> Write;
-    std::unique_ptr<TextButton> SaveFile;
-    std::unique_ptr<TextButton> ReadFile;
+    std::unique_ptr<ToggleButton> toggleButton2;
+    Image cachedImage_background2_jpg_1;
 
 
     //==============================================================================

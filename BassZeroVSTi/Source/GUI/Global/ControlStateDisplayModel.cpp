@@ -16,8 +16,8 @@ void ControlStateDisplayModel::UpdateParameter(juce::String value, juce::String 
 {
 	if (parameter_ptr != nullptr) {
 
-		parameter_ptr->SetValue(imbSynthTools::StringToInt32(value, parameter_ptr->Value));
-		parameterValue = juce::String(parameter_ptr->Value);
+		parameter_ptr->SetValue(imbSynthTools::StringToInt32(value, parameter_ptr->GetIntValue()));
+		parameterValue = parameter_ptr->GetStringValue(); //juce::String(parameter_ptr->Value);
 
 		if (isCCParameter) {
 			parameterCCIn = imbSynthTools::StringToInt32(ccIn, int(parameterCCIn));
@@ -33,9 +33,20 @@ void ControlStateDisplayModel::UpdateParameter(juce::String value, juce::String 
 
 void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
   {
+	parameter_ptr = parameter;
 	parameterID = parameter->parameterID + " [ " + parameter->parameterLabel + " ]";
-	parameterGroup = parameter->parameterParentPath;
-	parameterValue = juce::String(parameter->Value);
+	
+	if (parameter->parClass == parameterClass::opm) {
+		parameterGroup = parameter->parameterParentPath + " [OPM]";
+	}
+	else {
+		parameterGroup = parameter->parameterParentPath;
+	}
+	
+
+
+
+	parameterValue = parameter_ptr->GetStringValue();  //juce::String(parameter->Value);
 
 
 
@@ -44,7 +55,7 @@ void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
 	parameterCCOut = HardwareToOutputMap->Get(parameter->ccID);
 
 	//parameter_ptr = std::shared_ptr<imbControlParameter>(parameter);
-	parameter_ptr = parameter;
+	
 
 	isCCParameter = parameter->typeMIDIMessage == imbControlParameterMessageType::ccMIDI;
 

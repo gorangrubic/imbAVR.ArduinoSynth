@@ -13,7 +13,7 @@
 #include "Core\ModelComponentDescription.h"
 
 
-#include "../Model/Core/SharedPointerVector.h"
+#include "../Data/Structures/SharedPointerVector.h"
 
 
 
@@ -39,7 +39,7 @@
 
 #include "../Source/Model/Core/ControlGroup.h"
 
-#include "SynthDeviceModelComponentBase.h"
+//#include "SynthDeviceModelComponentBase.h"
 
 #define MODULATIONS modulations.
 #define OPMCONTROL opmControl.

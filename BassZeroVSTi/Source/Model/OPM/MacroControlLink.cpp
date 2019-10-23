@@ -21,8 +21,6 @@ void MacroControlLink::Deploy(ParameterController & parameterController)
 	AddEnumParameter(parameterController, &ModTar, "ModTar", "Targeted Change", &parameterController.ListOfModulationModes, 0, -1, false, imbControlParameterMessageType::sysExMsg);
 
 	AddEnumParameter(parameterController, &ModPar, "ModPar", "Targeted Parameter", &parameterController.ListOfModulationParameters, 0, -1, false, imbControlParameterMessageType::sysExMsg);
-
-
 }
 
 MacroControlLink::MacroControlLink()

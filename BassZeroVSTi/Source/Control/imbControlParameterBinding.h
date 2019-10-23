@@ -11,7 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "imbControlParameterEnumerations.h"
-#include "imbEnumerationList.h"
+
 
 class imbControlParameterBinding {
 

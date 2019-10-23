@@ -1,6 +1,6 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Utility/imbValueSet.h"
+#include "../Source/Data/Structures/imbValueSet.h"
 #include <map>
 
 enum ccTranslationMapRole {

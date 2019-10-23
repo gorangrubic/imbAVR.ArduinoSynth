@@ -25,9 +25,11 @@ class imbEnumerationList {
 		/* -1 if not found */
 		int IndexOf(String item);
 
+		String AtIndex(int i);
+
 		int Count();
 
-	//	StringArray GetItems();
+		void ClearAll();
 
 		imbEnumerationList() {};
 };

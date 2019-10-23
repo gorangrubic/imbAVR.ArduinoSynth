@@ -67,7 +67,7 @@ private:
     std::unique_ptr<Label> Parameter_text;
     std::unique_ptr<Label> label_group;
     std::unique_ptr<Label> GroupName_text;
-    std::unique_ptr<Label> label5;
+    std::unique_ptr<Label> label_val;
     std::unique_ptr<Label> CCIn_label;
     std::unique_ptr<Label> CCOut_label;
     std::unique_ptr<TextEditor> Value_Edit;
@@ -75,6 +75,10 @@ private:
     std::unique_ptr<TextEditor> CCOut_edit;
     std::unique_ptr<Label> CC_label;
     std::unique_ptr<Label> text_ccID;
+    std::unique_ptr<Label> CCUnit_label;
+    std::unique_ptr<Label> label_info;
+    std::unique_ptr<Label> text_info;
+    std::unique_ptr<Label> text_class;
 
 
     //==============================================================================

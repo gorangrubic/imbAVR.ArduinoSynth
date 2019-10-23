@@ -23,147 +23,126 @@ bool imbControlParameter::SetValue(float _newValue)
 	if (_newValue < MinValue) _newValue = MinValue;
 	if (_newValue > MaxValue) _newValue = MaxValue;
 
-	bool isNewValue = false;
-
-	if (Value != _newValue) {
-		isNewValue = true;
-	}
-	
-	Value = _newValue;
+	bool isNewValue = setValue(_newValue);
 
 	if (isNewValue) {
-		updateGUI();
 		updateState();
 	}
 
 	return isNewValue;
 }
 
-void imbControlParameter::detachControl()
+void imbControlParameter::updateAll()
 {
-	if (pSlider != nullptr)
-	{
-		//delete pSlider;
-		pSlider = nullptr;
-	}
-	if (pComboBox != nullptr) {
-		//delete pComboBox;
-		pComboBox = nullptr;
-	}
-	componentType = imbControlParameterComponentType::unassigned;
-
-}
-
-void imbControlParameter::attachControl(Slider * slider)
-{
-	detachControl();
-	componentType = imbControlParameterComponentType::slider;
-	
-	pSlider = std::shared_ptr<Slider>(slider);//new SliderAttachment(valueTreeState, parameterIDPath, slider);
-	pSlider->onValueChange = [&, this] {
-		if (!isGUIUpdating) {
-			float f = (float) pSlider->getValue();
-			SetValue(f);
-			onGUIFocus(this);
-		}
-	};
-	updateGUI();
-	updateTooltip();
-	updateState();
-}
-
-void imbControlParameter::attachControl(ComboBox * _comboBox)
-{
-	detachControl();
-	componentType = imbControlParameterComponentType::combobox;
-	pComboBox = std::shared_ptr<ComboBox>(_comboBox);
-	pComboBox->clear(true);
-
-	int i = 1;
-	for each (auto var in enumerationList->Items)
-	{
-		pComboBox->addItem(var, i);
-		i++;
-	}
-
-	//pComboBox->addItem()
-
-	pComboBox->onChange = [&, this] {
-		if (!isGUIUpdating) {
-			SetValue(pComboBox->getSelectedId());
-			onGUIFocus(this);
-		}
-	};
-	updateGUI();
-	updateTooltip();
-	updateState();
-}
-
-void imbControlParameter::attachControl(ToggleButton * _button)
-{
-	detachControl();
-	componentType = imbControlParameterComponentType::checkbox;
-	pToggleButton = std::shared_ptr<ToggleButton>(_button);
-	pToggleButton->onStateChange = [&, this] {
-		if (!isGUIUpdating) {
-			auto s = pToggleButton->getToggleState();
-			if (s) {
-				SetValue(1);
-			}
-			else {
-				SetValue(0);
-			}
-			onGUIFocus(this);
-		}
-	};
-	updateGUI();
-	updateTooltip();
-	updateState();
-}
-
-void imbControlParameter::attachControl(imbSynthParameterEditor * _editor)
-{
-	detachControl();
-	componentType = imbControlParameterComponentType::imbParameterComponent;
-	pParameterEditor = std::shared_ptr<imbSynthParameterEditor>(_editor);
-	pParameterEditor->onValueChange = [&, this] {
-		if (!isGUIUpdating) {
-			SetValue(pParameterEditor->GetValue());
-			onGUIFocus(this);
-		}
-	};
 	updateGUI();
 	updateTooltip();
 	updateState();
 }
 
 
+//
+//void imbControlParameter::attachControl(Slider * slider)
+//{
+//	detachControl();
+//	componentType = guiAttachedComponentType::slider;
+//	
+//	pSlider = std::shared_ptr<Slider>(slider);//new SliderAttachment(valueTreeState, parameterIDPath, slider);
+//	pSlider->onValueChange = [&, this] {
+//		if (!isGUIUpdating) {
+//			float f = (float) pSlider->getValue();
+//			SetValue(f);
+//			onGUIFocus(this);
+//		}
+//	};
+//	updateAll();
+//}
+//
+//void imbControlParameter::attachControl(ComboBox * _comboBox)
+//{
+//	detachControl();
+//	componentType = guiAttachedComponentType::combobox;
+//	pComboBox = std::shared_ptr<ComboBox>(_comboBox);
+//	pComboBox->clear(true);
+//
+//	int i = 1;
+//	for each (auto var in enumerationList->Items)
+//	{
+//		pComboBox->addItem(var, i);
+//		i++;
+//	}
+//
+//
+//	pComboBox->onChange = [&, this] {
+//		if (!isGUIUpdating) {
+//			SetValue(pComboBox->getSelectedId());
+//			onGUIFocus(this);
+//		}
+//	};
+//	updateAll();
+//}
+//
+//void imbControlParameter::attachControl(ToggleButton * _button)
+//{
+//	detachControl();
+//	componentType = guiAttachedComponentType::checkbox;
+//	pToggleButton = std::shared_ptr<ToggleButton>(_button);
+//	pToggleButton->onStateChange = [&, this] {
+//		if (!isGUIUpdating) {
+//			auto s = pToggleButton->getToggleState();
+//			if (s) {
+//				SetValue(1);
+//			}
+//			else {
+//				SetValue(0);
+//			}
+//			onGUIFocus(this);
+//		}
+//	};
+//	updateAll();
+//}
+//
+//void imbControlParameter::attachControl(imbSynthParameterEditor * _editor)
+//{
+//	detachControl();
+//	componentType = guiAttachedComponentType::imbParameterComponent;
+//	pParameterEditor = std::shared_ptr<imbSynthParameterEditor>(_editor);
+//	pParameterEditor->onValueChange = [&, this] {
+//		if (!isGUIUpdating) {
+//			SetValue(pParameterEditor->GetValue());
+//			onGUIFocus(this);
+//		}
+//	};
+//	updateAll();
+//
+//}
 
-void imbControlParameter::updateGUI()
-{
-	isGUIUpdating = true;
 
-	switch (componentType) {
 
-	case imbControlParameterComponentType::combobox:
-		
-		pComboBox->setSelectedId((int)std::floorf(Value), true);
-		break;
-	case imbControlParameterComponentType::slider:
-		pSlider->setValue(Value, juce::NotificationType::dontSendNotification);
-		break;
-	case imbControlParameterComponentType::unassigned:
-
-		break;
-	case imbControlParameterComponentType::checkbox:
-		pToggleButton->setToggleState(Value > 0.5, true);
-		break;
-	case imbControlParameterComponentType::imbParameterComponent:
-		pParameterEditor->SetValue(Value);
-		break;
-	}
-	isGUIUpdating = false;
-}
+//void imbControlParameter::updateGUI()
+//{
+//	isGUIUpdating = true;
+//
+//	switch (componentType) {
+//
+//	case guiAttachedComponentType::combobox:
+//		
+//		pComboBox->setSelectedId((int)std::floorf(Value), true);
+//		break;
+//	case guiAttachedComponentType::slider:
+//		pSlider->setValue(Value, juce::NotificationType::dontSendNotification);
+//		break;
+//	case guiAttachedComponentType::unassigned:
+//
+//		break;
+//	case guiAttachedComponentType::checkbox:
+//		pToggleButton->setToggleState(Value > 0.5, true);
+//		break;
+//	case guiAttachedComponentType::imbParameterComponent:
+//		pParameterEditor->SetValue(Value);
+//		break;
+//	}
+//	isGUIUpdating = false;
+//}
 
 void imbControlParameter::updateState()
 {
@@ -182,38 +161,6 @@ void imbControlParameter::updateState()
 	isStateUpdating = false;
 }
 
-void imbControlParameter::updateTooltip()
-{
-
-	juce::String tooltip_msg = parameterHelp;
-	if (Error.isNotEmpty()) {
-		tooltip_msg.append(" Error: " + Error, 200);
-	}
-
-	switch (componentType) {
-
-	case imbControlParameterComponentType::combobox:
-		pComboBox->setTooltip(tooltip_msg);
-		
-		break;
-	case imbControlParameterComponentType::slider:
-		pSlider->setValue(Value, juce::NotificationType::dontSendNotification);
-		pSlider->setTooltip(tooltip_msg);
-		break;
-	case imbControlParameterComponentType::unassigned:
-
-		break;
-	case imbControlParameterComponentType::checkbox:
-		pToggleButton->setTooltip(tooltip_msg);
-		pToggleButton->setToggleState(Value > 0.5, true);
-		break;
-	case imbControlParameterComponentType::imbParameterComponent:
-		pParameterEditor->SetValue(Value);
-		pParameterEditor->setTooltip(tooltip_msg);
-		break;
-	}
-
-}
 
 
 
@@ -226,11 +173,11 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
                 int _ccID, bool _isAutomatizable, imbControlParameterType _type,
 	imbControlParameterMessageType _msgFormat) {
                     
-	parameterID = _parameterID;
-	parameterLabel = _parameterLabel;
-	parameterUnit = _parameterUnit;
+	parameterID = _parameterID.toStdString();
+	parameterLabel = _parameterLabel.toStdString();
+	parameterUnit = _parameterUnit.toStdString();
 
-	if (parameterParentPath.isNotEmpty()) {
+	if (!parameterParentPath.empty()) {
 		parameterIDPath = parameterParentPath + "" + parameterID;
 	}
 	else {
@@ -291,12 +238,6 @@ float imbControlParameter::stringToValue(juce::String input)
 	return 0.0f;
 }
 
-void imbControlParameter::SetHelp(String _parameterHelp, String _parameterHelpUrl, String _parameterUnit)
-{
-	if (_parameterHelp != "") parameterHelp = _parameterHelp;
-	if (_parameterHelpUrl != "") parameterHelpUrl = _parameterHelpUrl;
-	if (_parameterUnit != "") parameterUnit = _parameterUnit;
-}
 
 
 
@@ -357,6 +298,13 @@ void imbControlParameter::attachState(juce::AudioProcessorValueTreeState & param
 
 imbControlParameter::imbControlParameter()
 {
+	type = parameterType::controlParameter;
+}
+
+imbControlParameter::imbControlParameter(parameterClass _class)
+{
+	parClass = _class;
+	type = parameterType::controlParameter;
 }
 
 imbControlParameter::~imbControlParameter()

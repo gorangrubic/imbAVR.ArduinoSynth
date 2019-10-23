@@ -3,6 +3,36 @@
 
 
 
+//
+//void imbSynthStateData::SaveSettings(bool saveAs)
+//{
+//
+//	auto t = folders->FolderSettings.GetFilepath(configuration);
+//
+//	
+//	fc.reset(new FileChooser("Choose a file to save...",
+//		juce::String(t),
+//		configuration.filenameExtension, false));
+//
+//	fc->launchAsync(FileBrowserComponent::saveMode | FileBrowserComponent::canSelectFiles,
+//		[&,this](const FileChooser& chooser)
+//	{
+//		auto result = chooser.getURLResult();
+//		auto name = result.isEmpty() ? String()
+//			: (result.isLocalFile() ? result.getLocalFile().getFullPathName()
+//				: result.toString(true));
+//
+//		
+//
+//		AlertWindow::showMessageBoxAsync(AlertWindow::InfoIcon,
+//			"File Chooser...",
+//			"You picked: " + name);
+//	});
+//
+//	//auto result = fc->showDialog(FileBrowserComponent::saveMode | FileBrowserComponent::canSelectFiles, );
+//	//synthState->configuration.SaveFile();
+//
+//}
 
 ccTranslationMap * imbSynthStateData::GetCCMapByRole(ccTranslationMapRole mapRole)
 {
@@ -25,10 +55,10 @@ ccTranslationMapRole imbSynthStateData::CheckCCMapRole(ccTranslationMapRole mapR
 		AlertWindow w("CC Map",
 			"Select CC Map " + msg_ins,
 			AlertWindow::QuestionIcon);
-
+		
 		//w.addTextEditor("text", "enter some text here", "text field:");
 		//w.addComboBox("option", { "option 1", "option 2", "option 3", "option 4" }, "some options");
-		w.addButton("Both", 3);
+		//w.addButton("Both", 3);
 		w.addButton("Input", 1);
 		w.addButton("Output", 2);
 		w.addButton("Cancel", 0, KeyPress(KeyPress::escapeKey, 0, 0));
@@ -45,6 +75,8 @@ ccTranslationMapRole imbSynthStateData::CheckCCMapRole(ccTranslationMapRole mapR
 void imbSynthStateData::LoadCCMap(std::string filepath, ccTranslationMapRole mapRole)
 {
 	mapRole = CheckCCMapRole(mapRole, "to load into.");
+	if (mapRole == ccTranslationMapRole::unknown) return;
+
 	ccTranslationMap * cc_map = GetCCMapByRole(mapRole);
 
 	fc.reset(new FileChooser("Choose BassZero CC Map file to load...", File::getCurrentWorkingDirectory(),
@@ -84,6 +116,8 @@ void imbSynthStateData::LoadCCMap(std::string filepath, ccTranslationMapRole map
 void imbSynthStateData::SaveCCMap(std::string filepath, ccTranslationMapRole mapRole)
 {
 	mapRole = CheckCCMapRole(mapRole, "to load into.");
+	if (mapRole == ccTranslationMapRole::unknown) return;
+
 	ccTranslationMap * ccMap = GetCCMapByRole(mapRole);
 
 	fc.reset(new FileChooser("Choose BassZero CC Map file to load...", File::getCurrentWorkingDirectory(),
@@ -114,8 +148,16 @@ void imbSynthStateData::SaveCCMap(std::string filepath, ccTranslationMapRole map
 	});
 }
 
-void imbSynthStateData::Initiated()
+void imbSynthStateData::Initiated(SynthApplicationFolderCollection * _folders)
 {
+	folders = std::shared_ptr<SynthApplicationFolderCollection>(_folders);
+
+	//ioPorts.deploy();
+	//configuration.ioSettings.Deploy(ioPorts);
+
+	configuration.LoadFile(folders->FolderSettings.GetFilepath(configuration), true);
+
+
 	model->CollectAllParameters(Parameters);
 
 	for each (auto var in Parameters)
@@ -124,25 +166,43 @@ void imbSynthStateData::Initiated()
 			InputToHardwareMap->SetDefault(var->ccID);
 			HardwareToOutputMap->SetDefault(var->ccID);
 		}
+		
+		ParametersByIDPath.Add(var->parameterIDPath, var.get());
 
-		var->onGUIFocus = [&, this](imbControlParameter * parameter) {
-			SetParameterInFocus(parameter);
+	}
 
+	for each (auto var in Parameters)
+	{
+		var->onGUIFocus = [&, this](std::string idPath) {
+
+			SetParameterInFocus(idPath);
 		};
+
 	}
 	
 }
 
-void imbSynthStateData::SetParameterInFocus(imbControlParameter * parameter)
+void imbSynthStateData::SetParameterInFocus(std::string parameterIDPath)
 {
+
 	bool newInFocus = false;
-	if (inFocusParameterID != parameter->parameterIDPath) {
+	if (inFocusParameterID != parameterIDPath) {
 		newInFocus = true;
 	}
 
-	inFocusParameterID == parameter->parameterIDPath;
+	inFocusParameterID == parameterIDPath;
 
-	controlDisplayModel->SetParameter(parameter);
+	if (ParametersByIDPath.Contains(parameterIDPath)) {
+		auto parameter = ParametersByIDPath.GetPointer(parameterIDPath);
+		controlDisplayModel->SetParameter(parameter);
+
+	}
+	else {
+		
+	}
+	
+
+	
 }
 
 imbSynthStateData::~imbSynthStateData()

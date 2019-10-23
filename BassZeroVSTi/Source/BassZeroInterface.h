@@ -59,13 +59,14 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-
+	std::unique_ptr<TooltipWindow> tooltipWindow;
     //[/UserVariables]
 
     //==============================================================================
     std::unique_ptr<TabbedComponent> tabbedComponent;
     std::unique_ptr<ControlStateDisplay> controlStateDisplay;
     std::unique_ptr<SynthStateDisplay> synthStatusDisplay;
+    std::unique_ptr<Label> label_version;
     Image cachedImage_background2_jpg_1;
 
 

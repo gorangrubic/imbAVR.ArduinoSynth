@@ -26,9 +26,9 @@ std::vector<std::string> imbValueSet::GetAllIDs()
 void imbValueSet::AddComment(std::string id, std::string comment)
 {
 	if (!comment.empty()) {
-		//comment = EscapeValue(comment);
 		if (comments.find(id) == comments.end()) {
-			comments.insert(id, comment);
+			
+			comments.insert(std::make_pair(id, comment));
 		}
 		else {
 			comments[id] = comment;
@@ -40,10 +40,8 @@ void imbValueSet::AddValue(std::string id, std::string value)
 {
 	if (!value.empty()) {
 		
-		//value = EscapeValue(value);
-
 		if (data.find(id) == data.end()) {
-			data.insert(id, value);
+			data.insert(std::make_pair(id, value));
 		}
 		else {
 			data[id] = value;
@@ -55,7 +53,7 @@ void imbValueSet::AddValue(std::string id, std::string value)
 std::string imbValueSet::EscapeValue(std::string value)
 {
 	juce::String v = juce::String(value);
-	v = v.replace("\"", "''");
+	//v = v.replace("\"", "''");
 	v = v.replace("\n", "[newline]");
 
 	return v.toStdString();
@@ -64,11 +62,10 @@ std::string imbValueSet::EscapeValue(std::string value)
 std::string imbValueSet::UnescapeValue(std::string value)
 {
 	juce::String v = juce::String(value);
-	v = v.replace("''", "\"");
+	//v = v.replace("''", "\"");
 	v = v.replace("[newline]", "\n");
 
 	return v.toStdString();
-	return std::string();
 }
 
 void imbValueSet::Add(std::string id, float value, std::string comment)
@@ -209,6 +206,7 @@ std::string imbValueSet::ToString()
 		juce::String line = "";
 		line.append(it->first + " = ",50);
 		line.append("\"", 5);
+		//line.append(EscapeValue(it->second), 1000);
 		line.append(EscapeValue(it->second), 1000);
 		line.append("\";", 5);
 		
@@ -221,6 +219,7 @@ std::string imbValueSet::ToString()
 		output.append(line + "\n", 5000);
 		
 	}
+	return output.toStdString();
 }
 
 void imbValueSet::FromString(std::string input)
@@ -232,12 +231,12 @@ void imbValueSet::FromString(std::string input)
 
 		std::string::size_type pos = 0;
 		pos = var.find(" = ", 1);
-		if (pos > std::string::npos) {
+		if (pos != std::string::npos) {
 
 			auto valuePart = var.substr(pos + 3);
 			auto idPart = var.substr(0, pos);
 
-			auto from = valuePart.find("\"");
+			auto from = valuePart.find("\"")+1;
 			auto to = valuePart.find("\";");
 			auto val = valuePart.substr(from, to - from);
 
@@ -251,7 +250,7 @@ void imbValueSet::FromString(std::string input)
 			}
 		}
 	}
-	juce::String inv = juce::String(input);
+	//juce::String inv = juce::String(input);
 	
 }
 

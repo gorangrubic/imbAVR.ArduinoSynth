@@ -9,7 +9,7 @@
 */
 
 #pragma once
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "../Core/ModelComponentWithChildren.h"
 
 #include "ModulationFunctionADSR.h"
@@ -18,7 +18,7 @@
 #include "ModulationSourceMacroControl.h"
 #include "ModulationSourceMIDI.h"
 #include "ModulationSourceBase.h"
-//#include "../Core/SharedPointerVector.h"
+//#include "../Source/Data/Structures/SharedPointerVector.h"
 #include "..\Source\Model\ModelConstructionTools.h"
 #include <vector>
 

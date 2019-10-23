@@ -32,14 +32,6 @@ MainViewTabPresetManager::MainViewTabPresetManager (imbSynthStateData * synthSta
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    toggle_autoLoadOPM.reset (new ToggleButton ("new toggle button"));
-    addAndMakeVisible (toggle_autoLoadOPM.get());
-    toggle_autoLoadOPM->setTooltip (TRANS("Loads OPM preset required by Sound preset selected"));
-    toggle_autoLoadOPM->setButtonText (TRANS("Auto load related OPM"));
-    toggle_autoLoadOPM->addListener (this);
-
-    toggle_autoLoadOPM->setBounds (440, 312, 200, 16);
-
     presetLibraryView.reset (new PresetFileBrowser (&state->libraryFileBrowserModel));
     addAndMakeVisible (presetLibraryView.get());
     presetDefinitionDisplay.reset (new PresetDefinitionEditor (&state->presetSelected));
@@ -60,7 +52,6 @@ MainViewTabPresetManager::~MainViewTabPresetManager()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    toggle_autoLoadOPM = nullptr;
     presetLibraryView = nullptr;
     presetDefinitionDisplay = nullptr;
 
@@ -84,25 +75,10 @@ void MainViewTabPresetManager::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    presetLibraryView->setBounds (0, 0, 440, getHeight() - 4);
-    presetDefinitionDisplay->setBounds (440, 8, getWidth() - 448, getHeight() - 40);
+    presetLibraryView->setBounds (0, 0, 440, getHeight() - 0);
+    presetDefinitionDisplay->setBounds (440, 8, getWidth() - 448, getHeight() - 16);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
-}
-
-void MainViewTabPresetManager::buttonClicked (Button* buttonThatWasClicked)
-{
-    //[UserbuttonClicked_Pre]
-    //[/UserbuttonClicked_Pre]
-
-    if (buttonThatWasClicked == toggle_autoLoadOPM.get())
-    {
-        //[UserButtonCode_toggle_autoLoadOPM] -- add your button handler code here..
-        //[/UserButtonCode_toggle_autoLoadOPM]
-    }
-
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
 }
 
 
@@ -126,15 +102,11 @@ BEGIN_JUCER_METADATA
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="840" initialHeight="340">
   <BACKGROUND backgroundColour="323e44"/>
-  <TOGGLEBUTTON name="new toggle button" id="3527ef824b722831" memberName="toggle_autoLoadOPM"
-                virtualName="" explicitFocusOrder="0" pos="440 312 200 16" tooltip="Loads OPM preset required by Sound preset selected"
-                buttonText="Auto load related OPM" connectedEdges="0" needsCallback="1"
-                radioGroupId="0" state="0"/>
   <JUCERCOMP name="" id="4a47e8e5c4db0633" memberName="presetLibraryView"
-             virtualName="" explicitFocusOrder="0" pos="0 0 440 4M" sourceFile="../../General/PresetFileBrowser.cpp"
+             virtualName="" explicitFocusOrder="0" pos="0 0 440 0M" sourceFile="../../General/PresetFileBrowser.cpp"
              constructorParams="&amp;state-&gt;libraryFileBrowserModel"/>
   <JUCERCOMP name="" id="b0a6f0fa687bc200" memberName="presetDefinitionDisplay"
-             virtualName="" explicitFocusOrder="0" pos="440 8 448M 40M" sourceFile="../../General/PresetDefinitionEditor.cpp"
+             virtualName="" explicitFocusOrder="0" pos="440 8 448M 16M" sourceFile="../../General/PresetDefinitionEditor.cpp"
              constructorParams="&amp;state-&gt;presetSelected"/>
 </JUCER_COMPONENT>
 

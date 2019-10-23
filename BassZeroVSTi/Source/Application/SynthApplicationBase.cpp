@@ -67,10 +67,27 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_loadSettings:
-		synthState->configuration.LoadSettings();
+
+		synthState->configuration.LoadFileDialog(folders.FolderSettings.GetFilepath(synthState->configuration));
+		//synthState->configuration.LoadFile(folders.FolderSettings.GetFilepath(synthState->configuration), true);
 		break;
 	case CommandIDs::file_saveSettings:
-		synthState->configuration.SaveSettings();
+		
+		
+		
+		synthState->configuration.SaveFile(folders.FolderSettings.GetFilepath(synthState->configuration));
+
+		//synthState->configuration.SaveFile()
+
+		break;
+	case CommandIDs::file_saveSettingsAs:
+
+		synthState->configuration.SaveFileDialog(folders.FolderSettings.GetFilepath(synthState->configuration));
+		
+	
+
+		//synthState->configuration.SaveFile()
+
 		break;
 	case CommandIDs::midi_factoryCCMap:
 		//result.setInfo("Factory CC map", "Resets current CC mapping to factory defaults", "MIDI", 0);
@@ -120,32 +137,27 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 		//result.addDefaultKeypress('v', ModifierKeys::altModifier);
 		break;
 	case CommandIDs::edit_showValues:
-		//result.setInfo("Show values", "Show values for each component in overlayed textbox", "EDIT", 0);
-		//	result.setActive(true);
-			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->configuration.viewSettings.ShowValues.Toggle();
 		break;
 	case CommandIDs::edit_showCCMap:
-		//result.setInfo("Show CC map", "In overlayed textbox, shows current CC map settings for each component", "EDIT", 0);
-		//	result.setActive(true);
-			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->configuration.viewSettings.ShowCCMap.Toggle();
 		break;
 	case CommandIDs::edit_showBufferState:
-		//result.setInfo("Show buffer", "Shows current MIDI CC & SysExc messages, waiting for transfer", "EDIT", 0);
-		//	result.setActive(true);
-			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->configuration.viewSettings.ShowBufferState.Toggle();
 		break;
 	case CommandIDs::edit_showScopeOutline:
-		//result.setInfo("Show scope", "Outlines currently selected component(s) - for easier copy'n'paste operations", "EDIT", 0);
-
-		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		synthState->configuration.viewSettings.ShowScopeOutline.Toggle();
 		break;
 	case CommandIDs::edit_settings:
 		//result.setInfo("Settings", "VSTi general configuration options", "EDIT", 0);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::tools_screenshot:
-		//result.setInfo("Screenshot", "Creates screenshot of current GUI state and saves it to output directory", "TOOLS", 0);
-		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		
+		SaveScreenshot("", true);
+		
+
+		
 		break;
 	case CommandIDs::tools_readhardware:
 		//result.setInfo("Read hardware", "Reads current hardware state", "TOOLS", 0);
@@ -221,4 +233,42 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 
 
 	return true;
+  }
+
+  std::string SynthApplicationBase::SaveScreenshot(std::string filename, bool showMessage)
+  {
+	  
+	  if (filename.empty()) {
+		  
+		  filename = "screenshot_" + imbGeneralTools::GetRandomString(8) + ".jpg";
+	  }
+
+	  auto editor = synthProcessor->getActiveEditor();
+	  auto editorRectangle = editor->getBounds();
+	  auto image = editor->createComponentSnapshot(editorRectangle, true);
+/*
+	  String filePath = File::getCurrentWorkingDirectory().getFullPathName();
+	  File outFile(filePath + "/" + filename);
+*/
+	  File outFile = folders.FolderOutput.GetFile(filename);
+
+	  JPEGImageFormat jpegFormat = JPEGImageFormat();
+	  jpegFormat.setQuality(1.0);
+	  
+	  juce::FileOutputStream * s = outFile.createOutputStream(500000);
+
+	  jpegFormat.writeImageToStream(image, *s);
+
+	  s->flush();
+
+	  
+	  std::string output_path = outFile.getFullPathName().toStdString();
+
+	  if (showMessage) {
+		  AlertWindow w("Screenshot created", "Output path: " + output_path, AlertWindow::InfoIcon);
+		  w.addButton("Ok", 0, KeyPress(KeyPress::returnKey, 0, 0));
+
+		  w.runModalLoop();
+	  }
+	  return output_path;
   }

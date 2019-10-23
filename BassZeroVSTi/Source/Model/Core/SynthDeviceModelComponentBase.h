@@ -10,10 +10,11 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Control/imbControlParameter.h"
-#include "../Source/Model/Core/SharedPointerVector.h"
+#include "..\Source\Control/imbControlParameter.h"
+#include "../Source/Data/Structures/SharedPointerVector.h"
+#include "../Source/Data/Structures/SharedPointerVector.h"
 //#include "SynthDeviceModel.h"
-#include "Core/ModelComponentDescription.h"
+#include "..\Source\Model\Core\ModelComponentDescription.h"
 #include "..\Source\Model\ModelConstructionTools.h"
 //#include "Core/ModelComponentWithChildren.h"
 #include <vector>

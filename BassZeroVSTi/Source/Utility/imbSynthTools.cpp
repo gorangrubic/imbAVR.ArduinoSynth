@@ -53,6 +53,19 @@ int imbSynthTools::StringToInt32(juce::String stringValue, float defaultValue)
 	return StringToInt32(stringValue, v);
 }
 
+float imbSynthTools::StringToFloat(juce::String stringValue, float defaultValue)
+{
+	if (stringValue.isNotEmpty()) {
+		if (!stringValue.containsIgnoreCase("ABCDEFGHIJKLMNOPQRSTUVWXYZ")) {
+			float int_val = stringValue.getFloatValue();
+
+			return int_val;
+		}
+	}
+
+	return defaultValue;
+}
+
 int imbSynthTools::StringToInt32(juce::String stringValue, int defaultValue)
   {
 	  if (stringValue.isNotEmpty()) {

@@ -10,7 +10,7 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 
 class PitchAndPhaseControl :
 	public SynthDeviceModelComponentBase {

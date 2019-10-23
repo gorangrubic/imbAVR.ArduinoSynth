@@ -1,0 +1,25 @@
+/*
+  ==============================================================================
+
+    dataStringProperty.h
+    Created: 23 Oct 2019 12:55:56pm
+    Author:  gorangrubic
+
+  ==============================================================================
+*/
+
+#pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "dataObjectProperty.h"
+class dataStringProperty :public dataObjectProperty {
+
+public:
+
+	bool Set(std::string _newValue);
+	std::string Get();
+
+	dataStringProperty(std::string _id, std::string _val, std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "")
+		:dataObjectProperty(_id, parameterValueType::String, _label, _description, _unit, _helpUrl) {
+		SetStrValue(_val);
+	}
+};

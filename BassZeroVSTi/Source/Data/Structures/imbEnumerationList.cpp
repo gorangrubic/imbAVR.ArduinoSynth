@@ -48,9 +48,21 @@ int imbEnumerationList::IndexOf(String item)
 	//return output;
   }
 
+String imbEnumerationList::AtIndex(int i)
+{
+	if (i < 0) return "";
+	if (i >= Count()) return "";
+	return Items.at(i);
+}
+
 int imbEnumerationList::Count()
 {
 	return Items.size();
+}
+
+void imbEnumerationList::ClearAll()
+{
+	Items.clear();
 }
 
 //StringArray imbEnumerationList::GetItems()

@@ -65,6 +65,8 @@ void OPMSignalUnit::Deploy(ParameterController & parameterController)
 
 	// ======================= Rapid modulation of Signal generator unit properties
 
+
+
 	for each (auto var in ChangeUnits)
 	{
 		auto modMode = var->ShortName.replace(ShortName + "_", "", true);

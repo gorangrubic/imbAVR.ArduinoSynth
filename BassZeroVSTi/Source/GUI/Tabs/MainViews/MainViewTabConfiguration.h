@@ -25,8 +25,6 @@
 #include "../Source/GUI/Components/imbSynthGUIComponent.h"
 //[/Headers]
 
-#include "../../General/PathBrowser.h"
-#include "../../General/PathBrowser.h"
 
 
 //==============================================================================
@@ -39,7 +37,8 @@
 */
 class MainViewTabConfiguration  : public Component,
                                   public imbSynthGUIComponent,
-                                  public Button::Listener
+                                  public Button::Listener,
+                                  public Slider::Listener
 {
 public:
     //==============================================================================
@@ -53,7 +52,11 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void buttonClicked (Button* buttonThatWasClicked) override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
+    // Binary resources:
+    static const char* background2_jpg;
+    static const int background2_jpgSize;
 
 
 private:
@@ -64,24 +67,34 @@ private:
     std::unique_ptr<Label> label3;
     std::unique_ptr<Label> label5;
     std::unique_ptr<TextEditor> text_name2;
-    std::unique_ptr<PathBrowser> component;
-    std::unique_ptr<TextEditor> needle_device_1;
-    std::unique_ptr<TextEditor> needle_device_2;
-    std::unique_ptr<TextEditor> needle_device_3;
+    std::unique_ptr<TextEditor> needle_midiDevice;
     std::unique_ptr<Label> label7;
-    std::unique_ptr<TextEditor> needle_input_1;
-    std::unique_ptr<TextEditor> needle_device_4;
-    std::unique_ptr<TextEditor> needle_device_5;
+    std::unique_ptr<TextEditor> needle_input;
     std::unique_ptr<Label> label8;
-    std::unique_ptr<TextEditor> needle_output_1;
-    std::unique_ptr<TextEditor> needle_output_2;
-    std::unique_ptr<TextEditor> needle_output_3;
+    std::unique_ptr<TextEditor> needle_output;
     std::unique_ptr<ToggleButton> toggle_log_to_file;
     std::unique_ptr<ToggleButton> toggle_factory_readonly;
     std::unique_ptr<Label> label;
+    std::unique_ptr<Label> label2;
+    std::unique_ptr<TextEditor> needle_serialPort;
+    std::unique_ptr<Slider> fullSyncPlayTimeout;
+    std::unique_ptr<Label> label4;
+    std::unique_ptr<Slider> ccMessagesCycle;
+    std::unique_ptr<Label> label6;
+    std::unique_ptr<ToggleButton> confirmationNoteOnOff;
+    std::unique_ptr<ToggleButton> confirmationCC;
+    std::unique_ptr<ToggleButton> confirmationOPM;
+    std::unique_ptr<Slider> confirmationRetryLimit;
     std::unique_ptr<Label> label9;
-    std::unique_ptr<PathBrowser> component2;
+    std::unique_ptr<Slider> confirmationTimeout;
     std::unique_ptr<Label> label10;
+    std::unique_ptr<Slider> deviceConnectRetry;
+    std::unique_ptr<Label> label11;
+    std::unique_ptr<Slider> UIRefreshRate;
+    std::unique_ptr<Label> label12;
+    std::unique_ptr<ToggleButton> logFailStats;
+    std::unique_ptr<TextButton> ResetToDefaults;
+    Image cachedImage_background2_jpg_1;
 
 
     //==============================================================================

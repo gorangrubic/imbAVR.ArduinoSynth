@@ -10,10 +10,10 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "../Core/ModelComponentWithChildren.h"
 #include "../Core/ModelComponentDescription.h"
-#include "../Core/SharedPointerVector.h"
+#include "../Source/Data/Structures/SharedPointerVector.h"
 //#include "../SynthDeviceModel.h"
 #include "..\Source\Model\ModelConstructionTools.h"
 #include "MacroControlLink.h"

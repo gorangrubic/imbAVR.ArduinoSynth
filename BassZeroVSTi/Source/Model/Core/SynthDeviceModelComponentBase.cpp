@@ -51,7 +51,7 @@ void SynthDeviceModelComponentBase::ConstructComponentParameters(ParameterContro
 
 	  for each (auto var in Parameters)
 	  {
-		  if (var->parameterID.equalsIgnoreCase(name)) {
+		  if (var->parameterID == name) {
 			  output = var;
 			  break;
 		  }
@@ -105,21 +105,21 @@ void SynthDeviceModelComponentBase::AddParameter(ParameterController & parameter
 {
 
 	if (_parameterParentPath.isEmpty()) {
-		juce::String parentPath = "";
+		std::string parentPath = "";
 
 		if (GroupName.isNotEmpty()) {
-			parentPath.append(GroupName, 127);
+			parentPath += GroupName.toStdString();
 		}
 
 		if (ShortName.isNotEmpty()) {
-			if (parentPath.isNotEmpty()) parentPath.append("_", 2);
-			parentPath.append(ShortName, 127);
+			if (!parentPath.empty()) parentPath += "_";
+			parentPath += ShortName.toStdString();
 		}
 
 		output->parameterParentPath = parentPath;
 	}
 	else {
-		output->parameterParentPath = _parameterParentPath;
+		output->parameterParentPath = _parameterParentPath.toStdString();
 	}
 	
 	output->Setup(_parameterID, _parameterLabel, minValue, maxValue, initValue, _parameterUnit, _ccID,_isAutomatizable,_type, _msgFormat);

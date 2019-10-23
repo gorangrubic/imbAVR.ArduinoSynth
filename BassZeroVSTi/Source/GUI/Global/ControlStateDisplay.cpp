@@ -65,7 +65,7 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     label_group->setColour (TextEditor::textColourId, Colours::black);
     label_group->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    label_group->setBounds (0, 0, 64, 24);
+    label_group->setBounds (0, 0, 48, 24);
 
     GroupName_text.reset (new Label ("new label",
                                      TRANS("WFA")));
@@ -78,17 +78,15 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     GroupName_text->setColour (TextEditor::textColourId, Colours::black);
     GroupName_text->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-    GroupName_text->setBounds (64, 0, 160, 24);
-
-    label5.reset (new Label ("new label",
-                             TRANS("Value")));
-    addAndMakeVisible (label5.get());
-    label5->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
-    label5->setJustificationType (Justification::centred);
-    label5->setEditable (false, false, false);
-    label5->setColour (Label::backgroundColourId, Colour (0x25181f22));
-    label5->setColour (TextEditor::textColourId, Colours::black);
-    label5->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    label_val.reset (new Label ("new label",
+                                TRANS("Value")));
+    addAndMakeVisible (label_val.get());
+    label_val->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label_val->setJustificationType (Justification::centred);
+    label_val->setEditable (false, false, false);
+    label_val->setColour (Label::backgroundColourId, Colour (0x25181f22));
+    label_val->setColour (TextEditor::textColourId, Colours::black);
+    label_val->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
     CCIn_label.reset (new Label ("new label",
                                  TRANS("In")));
@@ -156,22 +154,65 @@ ControlStateDisplay::ControlStateDisplay (imbSynthStateData * synthState, String
     text_ccID.reset (new Label ("new label",
                                 TRANS("5")));
     addAndMakeVisible (text_ccID.get());
-    text_ccID->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    text_ccID->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
     text_ccID->setJustificationType (Justification::centred);
     text_ccID->setEditable (false, false, false);
     text_ccID->setColour (Label::backgroundColourId, Colour (0x25397daa));
     text_ccID->setColour (TextEditor::textColourId, Colour (0xff397daa));
     text_ccID->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    CCUnit_label.reset (new Label ("new label",
+                                   TRANS("\n")));
+    addAndMakeVisible (CCUnit_label.get());
+    CCUnit_label->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    CCUnit_label->setJustificationType (Justification::centred);
+    CCUnit_label->setEditable (false, false, false);
+    CCUnit_label->setColour (Label::backgroundColourId, Colour (0x25181f22));
+    CCUnit_label->setColour (TextEditor::textColourId, Colours::black);
+    CCUnit_label->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label_info.reset (new Label ("new label",
+                                 TRANS("Info")));
+    addAndMakeVisible (label_info.get());
+    label_info->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label_info->setJustificationType (Justification::centred);
+    label_info->setEditable (false, false, false);
+    label_info->setColour (Label::backgroundColourId, Colour (0x50181f22));
+    label_info->setColour (TextEditor::textColourId, Colours::black);
+    label_info->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label_info->setBounds (0, 28, 48, 24);
+
+    text_info.reset (new Label ("new label",
+                                String()));
+    addAndMakeVisible (text_info.get());
+    text_info->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    text_info->setJustificationType (Justification::centred);
+    text_info->setEditable (false, false, false);
+    text_info->setColour (Label::backgroundColourId, Colour (0x25646565));
+    text_info->setColour (TextEditor::textColourId, Colours::black);
+    text_info->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    text_class.reset (new Label ("new label",
+                                 TRANS("CC Live")));
+    addAndMakeVisible (text_class.get());
+    text_class->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    text_class->setJustificationType (Justification::centred);
+    text_class->setEditable (false, false, false);
+    text_class->setColour (Label::backgroundColourId, Colour (0xff397daa));
+    text_class->setColour (TextEditor::textColourId, Colour (0xff397daa));
+    text_class->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (830, 24);
+    setSize (830, 52);
 
 
     //[Constructor] You can add your own custom stuff here..
 	//synthState->controlStateDisplay = std::shared_ptr<ControlStateDisplay>(this);
+
 	blockRefresh = false;
 	controlDisplayModel = std::shared_ptr<ControlStateDisplayModel>(synthState->controlDisplayModel.get());
 	CCOut_edit->onTextChange = [&, this] {
@@ -197,7 +238,7 @@ ControlStateDisplay::~ControlStateDisplay()
     Parameter_text = nullptr;
     label_group = nullptr;
     GroupName_text = nullptr;
-    label5 = nullptr;
+    label_val = nullptr;
     CCIn_label = nullptr;
     CCOut_label = nullptr;
     Value_Edit = nullptr;
@@ -205,6 +246,10 @@ ControlStateDisplay::~ControlStateDisplay()
     CCOut_edit = nullptr;
     CC_label = nullptr;
     text_ccID = nullptr;
+    CCUnit_label = nullptr;
+    label_info = nullptr;
+    text_info = nullptr;
+    text_class = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -229,16 +274,20 @@ void ControlStateDisplay::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    label_parameter->setBounds (64 + 160, 0, 62, 24);
-    Parameter_text->setBounds (288, 0, getWidth() - 618, 24);
-    label5->setBounds ((((((792 - 48) + 0 - 36) + -40 - 36) + 0 - 48) + 0 - 36) + 0 - 48, 0, 48, 24);
-    CCIn_label->setBounds ((((792 - 48) + 0 - 36) + -40 - 36) + 0 - 48, 0, 48, 24);
-    CCOut_label->setBounds (792 - 48, 0, 48, 24);
-    Value_Edit->setBounds (((((792 - 48) + 0 - 36) + -40 - 36) + 0 - 48) + 0 - 36, 0, 36, 24);
-    CCIn_edit->setBounds (((792 - 48) + 0 - 36) + -40 - 36, 0, 36, 24);
-    CCOut_edit->setBounds ((792 - 48) + 48, 0, 36, 24);
-    CC_label->setBounds (((792 - 48) + 0 - 36) + 0 - 36, 0, 36, 24);
-    text_ccID->setBounds ((792 - 48) + 0 - 36, 0, 36, 24);
+    label_parameter->setBounds ((0 + 48) + 160, 0, 62, 24);
+    Parameter_text->setBounds (((0 + 48) + 160) + 62, 0, getWidth() - 600, 24);
+    GroupName_text->setBounds (0 + 48, 0, 160, 24);
+    label_val->setBounds ((((0 + 48) + 160) + 62) + (getWidth() - 600), 0, 42, 24);
+    CCIn_label->setBounds (((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24, 0, 24, 24);
+    CCOut_label->setBounds (((((((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24) + 24) + 24) + 24) + 24, 0, 36, 24);
+    Value_Edit->setBounds (((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42, 0, 36, 24);
+    CCIn_edit->setBounds ((((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24) + 24, 0, 24, 24);
+    CCOut_edit->setBounds ((((((((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24) + 24) + 24) + 24) + 24) + 36, 0, 24, 24);
+    CC_label->setBounds (((((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24) + 24) + 24, 0, 24, 24);
+    text_ccID->setBounds ((((((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24) + 24) + 24) + 24, 0, 24, 24);
+    CCUnit_label->setBounds ((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36, 0, 24, 24);
+    text_info->setBounds (48, 28, getWidth() - 48, 24);
+    text_class->setBounds ((((((((((0 + 48) + 160) + 62) + (getWidth() - 600)) + 42) + 36) + 24) + 24) + 24) + 24 - -86, 0, getWidth() - 762, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -310,7 +359,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component, public imbSynthGUIComponent, private Timer"
                  constructorParams="imbSynthStateData * synthState, String nameSufix"
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="1" initialWidth="830" initialHeight="24">
+                 overlayOpacity="0.330" fixedSize="1" initialWidth="830" initialHeight="52">
   <BACKGROUND backgroundColour="b0323e44"/>
   <LABEL name="new label" id="a579be9af7298cb3" memberName="label_parameter"
          virtualName="" explicitFocusOrder="0" pos="0R 0 62 24" posRelativeX="179ecc7c0adbb30b"
@@ -319,62 +368,85 @@ BEGIN_JUCER_METADATA
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
   <LABEL name="new label" id="1e18716abad2bc29" memberName="Parameter_text"
-         virtualName="" explicitFocusOrder="0" pos="288 0 618M 24" bkgCol="25f0ffff"
-         textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="WFA_PWM"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
-         italic="0" justification="33"/>
+         virtualName="" explicitFocusOrder="0" pos="0R 0 600M 24" posRelativeX="a579be9af7298cb3"
+         bkgCol="25f0ffff" textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0"
+         labelText="WFA_PWM" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="33"/>
   <LABEL name="new label" id="ddf7b13950d11ebf" memberName="label_group"
-         virtualName="" explicitFocusOrder="0" pos="0 0 64 24" bkgCol="50181f22"
+         virtualName="" explicitFocusOrder="0" pos="0 0 48 24" bkgCol="50181f22"
          edTextCol="ff000000" edBkgCol="0" labelText="Group" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
   <LABEL name="new label" id="179ecc7c0adbb30b" memberName="GroupName_text"
-         virtualName="" explicitFocusOrder="0" pos="64 0 160 24" bkgCol="25f0ffff"
-         textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="WFA"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
-         italic="0" justification="33"/>
-  <LABEL name="new label" id="6a4583e4a56bb802" memberName="label5" virtualName=""
-         explicitFocusOrder="0" pos="0r 0 48 24" posRelativeX="7abd47cb9a66661d"
+         virtualName="" explicitFocusOrder="0" pos="0R 0 160 24" posRelativeX="ddf7b13950d11ebf"
+         bkgCol="25f0ffff" textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0"
+         labelText="WFA" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="33"/>
+  <LABEL name="new label" id="6a4583e4a56bb802" memberName="label_val"
+         virtualName="" explicitFocusOrder="0" pos="0R 0 42 24" posRelativeX="1e18716abad2bc29"
          bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="Value"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
   <LABEL name="new label" id="62aa170f7facad24" memberName="CCIn_label"
-         virtualName="" explicitFocusOrder="0" pos="0r 0 48 24" posRelativeX="501460b9a378a69c"
+         virtualName="" explicitFocusOrder="0" pos="0R 0 24 24" posRelativeX="d77ace1ed8c5ef0a"
          bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="In"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
   <LABEL name="new label" id="cb7f4e27d9d9ff20" memberName="CCOut_label"
-         virtualName="" explicitFocusOrder="0" pos="792r 0 48 24" bkgCol="25181f22"
-         edTextCol="ff000000" edBkgCol="0" labelText="Out" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
+         virtualName="" explicitFocusOrder="0" pos="0R 0 36 24" posRelativeX="448107c45cacbe"
+         bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="Out"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
   <TEXTEDITOR name="new text editor" id="7abd47cb9a66661d" memberName="Value_Edit"
-              virtualName="" explicitFocusOrder="0" pos="0r 0 36 24" posRelativeX="62aa170f7facad24"
+              virtualName="" explicitFocusOrder="0" pos="0R 0 36 24" posRelativeX="6a4583e4a56bb802"
               bkgcol="2542a2c8" initialText="127" multiline="0" retKeyStartsLine="0"
               readonly="0" scrollbars="0" caret="1" popupmenu="0"/>
   <TEXTEDITOR name="new text editor" id="501460b9a378a69c" memberName="CCIn_edit"
-              virtualName="" explicitFocusOrder="0" pos="-40r 0 36 24" posRelativeX="448107c45cacbe"
+              virtualName="" explicitFocusOrder="0" pos="0R 0 24 24" posRelativeX="62aa170f7facad24"
               bkgcol="2542a2c8" initialText="70" multiline="0" retKeyStartsLine="0"
               readonly="0" scrollbars="0" caret="1" popupmenu="0"/>
   <TEXTEDITOR name="new text editor" id="3e13a6513a5a74e5" memberName="CCOut_edit"
-              virtualName="" explicitFocusOrder="0" pos="0R 0 36 24" posRelativeX="cb7f4e27d9d9ff20"
+              virtualName="" explicitFocusOrder="0" pos="0R 0 24 24" posRelativeX="cb7f4e27d9d9ff20"
               bkgcol="2542a2c8" initialText="48" multiline="0" retKeyStartsLine="0"
               readonly="0" scrollbars="0" caret="1" popupmenu="0"/>
   <LABEL name="new label" id="dba2040aff782f3a" memberName="CC_label"
-         virtualName="" explicitFocusOrder="0" pos="0r 0 36 24" posRelativeX="448107c45cacbe"
+         virtualName="" explicitFocusOrder="0" pos="0R 0 24 24" posRelativeX="501460b9a378a69c"
          bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="Id"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
   <LABEL name="new label" id="448107c45cacbe" memberName="text_ccID" virtualName=""
-         explicitFocusOrder="0" pos="0r 0 36 24" posRelativeX="cb7f4e27d9d9ff20"
+         explicitFocusOrder="0" pos="0R 0 24 24" posRelativeX="dba2040aff782f3a"
          bkgCol="25397daa" edTextCol="ff397daa" edBkgCol="0" labelText="5"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
+  <LABEL name="new label" id="d77ace1ed8c5ef0a" memberName="CCUnit_label"
+         virtualName="" explicitFocusOrder="0" pos="0R 0 24 24" posRelativeX="7abd47cb9a66661d"
+         bkgCol="25181f22" edTextCol="ff000000" edBkgCol="0" labelText="&#10;"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
+         italic="0" justification="36"/>
+  <LABEL name="new label" id="a030a5898f1f0106" memberName="label_info"
+         virtualName="" explicitFocusOrder="0" pos="0 28 48 24" bkgCol="50181f22"
+         edTextCol="ff000000" edBkgCol="0" labelText="Info" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
+  <LABEL name="new label" id="9d734f5c82f07f7e" memberName="text_info"
+         virtualName="" explicitFocusOrder="0" pos="48 28 48M 24" bkgCol="25646565"
+         edTextCol="ff000000" edBkgCol="0" labelText="" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
+  <LABEL name="new label" id="6f1fef3252007f7c" memberName="text_class"
+         virtualName="" explicitFocusOrder="0" pos="-86R 0 762M 24" posRelativeX="dba2040aff782f3a"
+         bkgCol="ff397daa" edTextCol="ff397daa" edBkgCol="0" labelText="CC Live"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="0"
          italic="0" justification="36"/>
 </JUCER_COMPONENT>
 

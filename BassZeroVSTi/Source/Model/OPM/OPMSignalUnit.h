@@ -10,11 +10,12 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "../Source/Control/imbControlParameter.h"
 #include "../Core/ModelComponentWithChildren.h"
-#include "../Core/SharedPointerVector.h";
-#include "../Core/ControlGroup.h";
+#include "../Source/Data/Structures/SharedPointerVector.h"
+
+#include "../Core/ControlGroup.h"
 #include "OPMSignalUnitChange.h"
 //#include "OPMControlModel.h"
 #include "..\Source\Model\ModelConstructionTools.h"
@@ -27,16 +28,16 @@ class OPMSignalUnit:
 
 public:
 
-	imbControlParameter Enabled;
-	imbControlParameter Sync;
+	imbControlParameter Enabled = imbControlParameter(parameterClass::opm);
+	imbControlParameter Sync = imbControlParameter(parameterClass::opm);
 
-	imbControlParameter PitchUnit;
-	imbControlParameter RelativeToNote;
-	imbControlParameter DoublePrescalar;
-	imbControlParameter PWMCycleMode;
+	imbControlParameter PitchUnit = imbControlParameter(parameterClass::opm);
+	imbControlParameter RelativeToNote = imbControlParameter(parameterClass::opm);
+	imbControlParameter DoublePrescalar = imbControlParameter(parameterClass::opm);
+	imbControlParameter PWMCycleMode = imbControlParameter(parameterClass::opm);
 
-	imbControlParameter WaveformPattern;
-	imbControlParameter ModByte;
+	imbControlParameter WaveformPattern = imbControlParameter(parameterClass::opm);
+	imbControlParameter ModByte = imbControlParameter(parameterClass::opm);
 
 	//OPMSignalUnitChange PhaseChange;
 	//OPMSignalUnitChange PWMChange;

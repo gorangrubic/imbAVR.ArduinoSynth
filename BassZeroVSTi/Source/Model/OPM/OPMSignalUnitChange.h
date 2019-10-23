@@ -10,7 +10,7 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "../Source/Control/imbControlParameter.h"
 #include "..\Source\Model\ModelConstructionTools.h"
 
@@ -37,14 +37,14 @@ public:
 
 	//OPMControlModel * opmParent;
 
-	imbControlParameter Enabled;
-	imbControlParameter Sync;
-	imbControlParameter Chaos;
+	imbControlParameter Enabled = imbControlParameter(parameterClass::opm);
+	imbControlParameter Sync = imbControlParameter(parameterClass::opm);
+	imbControlParameter Chaos = imbControlParameter(parameterClass::opm);
 
-	imbControlParameter Rate;
-	imbControlParameter Period;
-	imbControlParameter Change;
-	imbControlParameter Function;
+	imbControlParameter Rate = imbControlParameter(parameterClass::opm);
+	imbControlParameter Period = imbControlParameter(parameterClass::opm);
+	imbControlParameter Change = imbControlParameter(parameterClass::opm);
+	imbControlParameter Function = imbControlParameter(parameterClass::opm);
 
 	void Deploy(ParameterController & parameterController) ;
 

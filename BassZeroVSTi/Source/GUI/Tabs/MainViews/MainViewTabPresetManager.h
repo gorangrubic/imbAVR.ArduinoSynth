@@ -38,8 +38,7 @@
                                                                     //[/Comments]
 */
 class MainViewTabPresetManager  : public Component,
-                                  public imbSynthGUIComponent,
-                                  public Button::Listener
+                                  public imbSynthGUIComponent
 {
 public:
     //==============================================================================
@@ -52,7 +51,6 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
 
 
 
@@ -62,7 +60,6 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<ToggleButton> toggle_autoLoadOPM;
     std::unique_ptr<PresetFileBrowser> presetLibraryView;
     std::unique_ptr<PresetDefinitionEditor> presetDefinitionDisplay;
 

@@ -28,7 +28,7 @@ public:
 
  
 
-	MainMenuModel(BassZeroApplication * application);
+	MainMenuModel(SynthApplicationBase * application);
     ~MainMenuModel();
 
     void paint (Graphics&) override;
@@ -51,7 +51,7 @@ public:
 private:
     
     
-	std::shared_ptr<BassZeroApplication> bassZeroApplication;
+	std::shared_ptr<SynthApplicationBase> bassZeroApplication;
 	ApplicationCommandManager commandManager;
 
 	std::unique_ptr<MenuBarComponent> menuBar;

@@ -11,7 +11,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../SynthDeviceModelComponentBase.h"
+#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 #include "../Source/Model/Core/ModelComponentWithChildren.h"
 #include "../Core/ModelComponentWithChildren.h"
 #include "../Core/ModelComponentDescription.h"
@@ -20,7 +20,7 @@
 #include "../Core/ModelModulatedControl.h"
 #include "../Core/PitchAndPhaseControl.h"
 
-#include "../Source/Model/Core/SharedPointerVector.h"
+#include "../Source/Data/Structures/SharedPointerVector.h"
 #include "../Source/Model/Core/ControlGroup.h"
 
 #include <vector>

@@ -18,6 +18,7 @@ public:
 
 	//void Add(T);
 
+	//void Add(T&);
 	void Add(T*);
 
 	void Add(std::shared_ptr<T>);
@@ -30,6 +31,12 @@ public:
 //inline void SharedPointerVector<T>::Add(T item)
 //{
 //	push_back(std::make_shared<T>(item));
+//}
+
+//template<typename T>
+//inline void SharedPointerVector<T>::Add(T & item)
+//{
+//	push_back(std::shared_ptr<T>(&item));
 //}
 
 template<typename T>

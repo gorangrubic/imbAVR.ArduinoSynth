@@ -10,7 +10,8 @@
 #include "../Control/ParameterController.h"
 
 #include "../Source/Utility/ccTranslationMap.h"
-#include "../Source/Model/Core/SharedPointerVector.h"
+#include "../Source/Data/Structures/SharedPointerVector.h"
+#include "../Source/Data/Structures/SharedPointerMap.h"
 
 //#include "../GUI/Global/CommandBufferDisplay.h"
 //#include "../GUI/Global/ControlStateDisplay.h"
@@ -23,7 +24,8 @@
 #include "../GUI/General/PresetFileBrowserModel.h"
 
 #include "../Model/SynthDeviceModel.h"
-
+#include "../Source/Application/Files/SynthApplicationFolderCollection.h"
+#include "../Source/Application/Components/IOPorts.h"
 
 
 class imbSynthStateData
@@ -48,6 +50,10 @@ public:
 
 // ======================== ENVIRONMENT DATA
 
+	std::shared_ptr<SynthApplicationFolderCollection> folders;
+
+	IOPorts ioPorts;
+
 	std::shared_ptr<SynthDeviceModel> model;
 
 // ======================== STATE DATA
@@ -56,6 +62,9 @@ public:
 
 	SharedPointerVector<imbControlParameter> Parameters;
 
+	
+
+	SharedPointerMap<std::string, imbControlParameter> ParametersByIDPath;
 
 	//ParameterController parameterController;
 
@@ -65,6 +74,7 @@ public:
 	imbSynthStatePresetLibrary presetLibrary;
 
 	imbSynthGeneralConfiguration configuration;
+
 	imbSynthStateUtilityData utilityData;
 
 	
@@ -73,6 +83,8 @@ public:
 
 	std::unique_ptr<FileChooser> fc;
 
+	//void LoadSettings(bool loadAs);
+	//void SaveSettings(bool saveAs);
 
 	ccTranslationMap * GetCCMapByRole(ccTranslationMapRole mapRole);
 
@@ -83,17 +95,19 @@ public:
 	void SaveCCMap(std::string filepath = "", ccTranslationMapRole mapRole = ccTranslationMapRole::unknown);
 
 	
-	juce::String inFocusParameterID{ "" };
+	std::string inFocusParameterID{ "" };
 
 	
-	void Initiated();
+	void Initiated(SynthApplicationFolderCollection * _folders);
 
-	void SetParameterInFocus(imbControlParameter * parameter);
+	void SetParameterInFocus(std::string parameterIDPath);
 
 
 	imbSynthStateData(SynthDeviceModel * _model, juce::AudioProcessorValueTreeState * _parameters) :
 		model{ _model },
 		parameters{ _parameters },
+		ioPorts(),
+		configuration(ioPorts),
 		InputToHardwareMap(new ccTranslationMap()),
 		HardwareToOutputMap(new ccTranslationMap()),
 		bufferDisplayModel(new CommandBufferDisplayModel()),

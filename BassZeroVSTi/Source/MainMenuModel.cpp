@@ -12,7 +12,7 @@
 #include "MainMenuModel.h"
 
 //==============================================================================
-MainMenuModel::MainMenuModel(BassZeroApplication * application):
+MainMenuModel::MainMenuModel(SynthApplicationBase * application):
 	bassZeroApplication(application)
 {
     // In your constructor, you should add any child components, and
@@ -86,47 +86,70 @@ PopupMenu MainMenuModel::getMenuForIndex(int menuIndex, const String &)
 	if (menuIndex == MenuGroupIDS::file) {
 		
 		menu.addCommandItem(&commandManager, CommandIDs::file_initState);
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::file_loadPreset);
 		menu.addCommandItem(&commandManager, CommandIDs::file_savePreset);
 		menu.addCommandItem(&commandManager, CommandIDs::file_loadOPM);
 		menu.addCommandItem(&commandManager, CommandIDs::file_saveOPM);
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::file_selectLibrary);
+		menu.addCommandItem(&commandManager, CommandIDs::file_rescanLibrary);
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::file_loadSettings);
 		menu.addCommandItem(&commandManager, CommandIDs::file_saveSettings);
+		menu.addCommandItem(&commandManager, CommandIDs::file_saveSettingsAs);
+		menu.addSeparator();
+		menu.addCommandItem(&commandManager, CommandIDs::file_close);
 	}
 	else if (menuIndex == MenuGroupIDS::midi) {
+		menu.addCommandItem(&commandManager, CommandIDs::midi_rescan);
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::midi_factoryCCMap, "Factory CC map");
 		menu.addCommandItem(&commandManager, CommandIDs::midi_loadCCMap, "Load CC map");
 		menu.addCommandItem(&commandManager, CommandIDs::midi_saveCCMap, "Save CC map");
 		menu.addCommandItem(&commandManager, CommandIDs::midi_editCCMap, "Edit CC map");
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::midi_presetToMidiInstructions, "Preset to MIDI");
 		menu.addCommandItem(&commandManager, CommandIDs::midi_executeMidiInstructions, "Execute MIDI");
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::midi_inputOutput, "Input Output");
 	}
 	else if (menuIndex == MenuGroupIDS::edit) {
+		menu.addCommandItem(&commandManager, CommandIDs::edit_presetInfo);
+		menu.addSeparator();
+		menu.addCommandItem(&commandManager, CommandIDs::edit_refresh);
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::edit_copy, "Copy");
 		menu.addCommandItem(&commandManager, CommandIDs::edit_pasteValues, "Paste values");
 		menu.addCommandItem(&commandManager, CommandIDs::edit_pasteCCMaps, "Paste CC maps");
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::edit_showValues, "Show values");
 		menu.addCommandItem(&commandManager, CommandIDs::edit_showCCMap, "Show CC maps");
 		menu.addCommandItem(&commandManager, CommandIDs::edit_showBufferState, "Show Buffer state");
 		menu.addCommandItem(&commandManager, CommandIDs::edit_showScopeOutline, "Show selection outline");
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::edit_settings, "Settings");
 	}
 	else if (menuIndex == MenuGroupIDS::tools) {
 		menu.addCommandItem(&commandManager, CommandIDs::tools_screenshot, "Make screenshot");
-		menu.addCommandItem(&commandManager, CommandIDs::tools_readhardware, "Read hardware");
-		menu.addCommandItem(&commandManager, CommandIDs::tools_writehardware, "Write hardware");
-		menu.addCommandItem(&commandManager, CommandIDs::tools_hardwareStateToFile, "Hardware to file");
-		menu.addCommandItem(&commandManager, CommandIDs::tools_hardwareStateFromFile, "Hardware from file");		
+		menu.addSeparator();
+		menu.addCommandItem(&commandManager, CommandIDs::tools_readhardware);
+		menu.addCommandItem(&commandManager, CommandIDs::tools_writehardware);
+		menu.addCommandItem(&commandManager, CommandIDs::tools_hardwareStateToFile);
+		menu.addCommandItem(&commandManager, CommandIDs::tools_hardwareStateFromFile);
+		menu.addSeparator();
+		menu.addCommandItem(&commandManager, CommandIDs::tools_diagnostic);
+
 	}
 	else if (menuIndex == MenuGroupIDS::help) {
-		menu.addCommandItem(&commandManager, CommandIDs::help_readHardwareSignature, "Synth signature");
 		menu.addCommandItem(&commandManager, CommandIDs::help_userManual, "User manual");
 		menu.addCommandItem(&commandManager, CommandIDs::help_hardwareUserManual, "Hardware User manual");
 		menu.addCommandItem(&commandManager, CommandIDs::help_synthModelReference, "Synth model reference");
 		menu.addCommandItem(&commandManager, CommandIDs::help_quickTour, "Quick tour");
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::help_randomTip, "Random tip");
+		menu.addSeparator();
+		menu.addCommandItem(&commandManager, CommandIDs::help_readHardwareSignature, "Synth signature");
 		menu.addCommandItem(&commandManager, CommandIDs::help_website, "Web site");
 		menu.addCommandItem(&commandManager, CommandIDs::help_about, "About");
 	}
@@ -134,6 +157,7 @@ PopupMenu MainMenuModel::getMenuForIndex(int menuIndex, const String &)
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_reportModel, "Report model");
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_CCDefine, "Generate CC Define");
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_FirmwareModel, "Generate firmware model");
+		menu.addSeparator();
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_viewBuffer, "View buffer");
 		menu.addCommandItem(&commandManager, CommandIDs::devTools_viewLog, "View log");
 	}
@@ -150,6 +174,8 @@ void MainMenuModel::getAllCommands(Array<CommandID>& c)
 {
 
 	Array<CommandID> commands{ 
+		CommandIDs::file_close,
+		CommandIDs::file_rescanLibrary,
 		CommandIDs::file_initState,
 CommandIDs::file_loadPreset,
 CommandIDs::file_savePreset,
@@ -158,6 +184,7 @@ CommandIDs::file_saveOPM,
 CommandIDs::file_selectLibrary,
 CommandIDs::file_loadSettings,
 CommandIDs::file_saveSettings,
+CommandIDs::file_saveSettingsAs,
 CommandIDs::midi_factoryCCMap,
 CommandIDs::midi_loadCCMap,
 CommandIDs::midi_saveCCMap,
@@ -165,6 +192,8 @@ CommandIDs::midi_editCCMap,
 CommandIDs::midi_presetToMidiInstructions,
 CommandIDs::midi_executeMidiInstructions,
 CommandIDs::midi_inputOutput,
+CommandIDs::midi_rescan,
+CommandIDs::edit_presetInfo,
 CommandIDs::edit_copy,
 CommandIDs::edit_pasteValues,
 CommandIDs::edit_pasteCCMaps,
@@ -173,11 +202,13 @@ CommandIDs::edit_showCCMap,
 CommandIDs::edit_showBufferState,
 CommandIDs::edit_showScopeOutline,
 CommandIDs::edit_settings,
+CommandIDs::edit_refresh,
 CommandIDs::tools_screenshot,
 CommandIDs::tools_readhardware,
 CommandIDs::tools_writehardware,
 CommandIDs::tools_hardwareStateToFile,
 CommandIDs::tools_hardwareStateFromFile,
+CommandIDs::tools_diagnostic,
 CommandIDs::help_readHardwareSignature,
 CommandIDs::help_userManual,
 CommandIDs::help_hardwareUserManual,
@@ -200,10 +231,15 @@ void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo &
 	//result.commandID = commandID;
 	
 	switch (commandID) {
+	case CommandIDs::file_close:
+		result.setInfo("Close", "Quits the software.", "File", 0);
+		break;
+	case CommandIDs::file_rescanLibrary:
+		result.setInfo("Rescan Libraries", "Recreates preset and library index by scanning library directory.", "File", 0);
+		break;
 	case CommandIDs::file_initState:
 		result.setInfo("Init state", "Resets all preset and OPM settings to defaults.", "File",0);
 		result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
-		//result.setActive(true);
 		
 		break;
 	case CommandIDs::file_loadPreset:
@@ -241,7 +277,16 @@ void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo &
 		//result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
+	case CommandIDs::file_saveSettingsAs:
+		result.setInfo("Save settings As", "Export current VSTi settings to a custom location", "File", 0);
+		//result.setActive(true);
+		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
+	case CommandIDs::midi_rescan:
+		result.setInfo("Rescan", "Rescans input and output ports", "MIDI", 0);
+		break;
 	case CommandIDs::midi_factoryCCMap:
+
 		result.setInfo("Factory CC map", "Resets current CC mapping to factory defaults", "MIDI", 0);
 	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
@@ -276,7 +321,12 @@ void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo &
 	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
-
+	case CommandIDs::edit_presetInfo:
+		result.setInfo("Preset info", "Edit definition data of the current preset", "EDIT", 0);
+		break;
+	case CommandIDs::edit_refresh:
+		result.setInfo("Refresh", "Force user interface to refresh data", "EDIT", 0);
+		break;
 	case CommandIDs::edit_copy:
 		result.setInfo("Copy", "Stores values and CC mapping of selected component(s) into clipboard", "EDIT", 0);
 	//	result.setActive(true);
@@ -294,22 +344,25 @@ void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo &
 		break;
 	case CommandIDs::edit_showValues:
 		result.setInfo("Show values", "Show values for each component in overlayed textbox", "EDIT", 0);
+		result.setTicked(bassZeroApplication->synthState->configuration.viewSettings.ShowValues.Get());
 	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_showCCMap:
 		result.setInfo("Show CC map", "In overlayed textbox, shows current CC map settings for each component", "EDIT", 0);
+		result.setTicked(bassZeroApplication->synthState->configuration.viewSettings.ShowCCMap.Get());
 	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_showBufferState:
 		result.setInfo("Show buffer", "Shows current MIDI CC & SysExc messages, waiting for transfer", "EDIT", 0);
+		result.setTicked(bassZeroApplication->synthState->configuration.viewSettings.ShowBufferState.Get());
 	//	result.setActive(true);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_showScopeOutline:
 		result.setInfo("Show scope", "Outlines currently selected component(s) - for easier copy'n'paste operations", "EDIT", 0);
-		
+		result.setTicked(bassZeroApplication->synthState->configuration.viewSettings.ShowScopeOutline.Get());
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::edit_settings:
@@ -335,6 +388,9 @@ void MainMenuModel::getCommandInfo(CommandID commandID, ApplicationCommandInfo &
 	case CommandIDs::tools_hardwareStateFromFile:
 		result.setInfo("Hardware from file", "Loads hardware state from file", "TOOLS", 0);
 		//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
+		break;
+	case CommandIDs::tools_diagnostic:
+		result.setInfo("Diagnostic", "Generates diagnostic reports", "TOOLS", 0);
 		break;
 
 	case CommandIDs::help_readHardwareSignature:

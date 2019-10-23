@@ -9,6 +9,7 @@
 */
 
 #pragma once
+#include "../Source/Data/Model/dataObjectPropertyEnumerations.h"
 
 enum class ModulationSourceType {
 	unknown=0,
@@ -26,6 +27,10 @@ enum class ModulationSourceMIDIType {
 	pitchbend = 3,
 	aftertouch = 4
 };
+
+
+
+
 
 /// <summary>
 /// Type of MIDI messsage that represents input / output format for this parameter
@@ -57,14 +62,4 @@ enum class imbControlParameterType:unsigned int {
 	Float=2,
 	Enumeration=3,
 	Boolean=4
-};
-
-
-enum class imbControlParameterComponentType:unsigned int {
-	unassigned=0,
-	slider=1,
-	combobox = 2,
-	checkbox = 3,
-	/* imb custom component that is editor for this parameter */
-	imbParameterComponent = 4
 };

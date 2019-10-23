@@ -86,8 +86,6 @@ void SynthStateDisplay::paint (Graphics& g)
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff323e44));
-
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
 }
@@ -122,7 +120,7 @@ BEGIN_JUCER_METADATA
                  constructorParams="imbSynthStateData * synthState, String nameSufix"
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="600" initialHeight="24">
-  <BACKGROUND backgroundColour="ff323e44"/>
+  <BACKGROUND backgroundColour="323e44"/>
   <LABEL name="new label" id="ddf7b13950d11ebf" memberName="label_status"
          virtualName="" explicitFocusOrder="0" pos="0 0 64 24" bkgCol="50181f22"
          edTextCol="ff000000" edBkgCol="0" labelText="Status" editableSingleClick="0"

@@ -19,9 +19,15 @@ enum CommandIDs
 	file_loadOPM=4,
 	file_saveOPM=5,
 	file_selectLibrary=6,
-	file_loadSettings=7,
-	file_saveSettings=8,
-	midi_factoryCCMap=9,
+
+	file_rescanLibrary,
+
+	file_loadSettings,
+	file_saveSettings,
+	file_saveSettingsAs,
+	file_close,
+
+	midi_factoryCCMap,
 	midi_loadCCMap,
 	midi_saveCCMap,
 	midi_editCCMap,
@@ -29,10 +35,14 @@ enum CommandIDs
 	midi_executeMidiInstructions,
 
 	midi_inputOutput,
+	midi_rescan,
 
 	edit_copy,
 	edit_pasteValues,
 	edit_pasteCCMaps,
+
+	edit_presetInfo,
+
 	edit_showValues,
 	edit_showCCMap,
 	edit_showBufferState,
@@ -40,11 +50,19 @@ enum CommandIDs
 
 	edit_settings,
 
+	edit_refresh,
+
 	tools_screenshot,
 	tools_readhardware,
 	tools_writehardware,
 	tools_hardwareStateToFile,
 	tools_hardwareStateFromFile,
+
+	tools_diagnostic,
+
+	
+	
+
 	help_readHardwareSignature,
 	help_userManual,
 	help_hardwareUserManual,
@@ -53,6 +71,7 @@ enum CommandIDs
 	help_randomTip,
 	help_website,
 	help_about,
+
 	devTools_reportModel,
 	devTools_CCDefine,
 	devTools_FirmwareModel,
