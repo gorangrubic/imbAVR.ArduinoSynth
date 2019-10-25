@@ -20,15 +20,10 @@
 #pragma once
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../../../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Data/imbSynthStateData.h"
-#include "Pattern32BitModel.h"
+#include "../../../../JuceLibraryCode/JuceHeader.h"
 //[/Headers]
 
-#include "PatternEditor8bit.h"
-#include "PatternEditor8bit.h"
-#include "PatternEditor8bit.h"
-#include "PatternEditor8bit.h"
+#include "../../General/PresetDefinitionEditor.h"
 
 
 //==============================================================================
@@ -39,12 +34,12 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class PatternEditor32bit  : public Component
+class MainViewTabPreset  : public Component
 {
 public:
     //==============================================================================
-    PatternEditor32bit (Pattern32BitModel _pattern);
-    ~PatternEditor32bit();
+    MainViewTabPreset ();
+    ~MainViewTabPreset();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -60,14 +55,15 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<PatternEditor8bit> block1;
-    std::unique_ptr<PatternEditor8bit> block2;
-    std::unique_ptr<PatternEditor8bit> block3;
-    std::unique_ptr<PatternEditor8bit> block4;
+    std::unique_ptr<PresetDefinitionEditor> presetDefinitionDisplay;
+    std::unique_ptr<Label> label5;
+    std::unique_ptr<TextEditor> text_preset_name;
+    std::unique_ptr<Label> label2;
+    std::unique_ptr<TextEditor> text_preset_name2;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PatternEditor32bit)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainViewTabPreset)
 };
 
 //[EndFile] You can add extra defines here...

@@ -8,11 +8,23 @@ class imbSynthGUIComponent
 {
 	public:
 
-	String NameSuffix;
+	std::string NameSuffix;
+
+	bool isInErrorState = false;
 	
+	void SetEnabled(bool _enabled, bool _error);
 
 	std::shared_ptr<imbSynthStateData> state;
+	std::shared_ptr<Component> component;
 
+	void Deploy(std::string _nameSuffix, Component * _component, imbSynthStateData * _state )
+	{
+		component = std::shared_ptr<Component>(_component);
+		state = std::shared_ptr<imbSynthStateData>(_state);
+		
+		NameSuffix = _nameSuffix;
+	}
+	
 	/* Tells if GUI components are updated by internal source, not user or parameters */
 	bool isValueUpdateCall;
 
@@ -25,7 +37,7 @@ class imbSynthGUIComponent
 //	virtual void ConstructParameterLayout(std::vector<std::unique_ptr<AudioParameterInt>> params);
 
 	imbSynthGUIComponent();
-	imbSynthGUIComponent(imbSynthStateData * synthState, String nameSufix);
+	//imbSynthGUIComponent(imbSynthStateData * synthState, String nameSufix);
 	~imbSynthGUIComponent();
 };
 

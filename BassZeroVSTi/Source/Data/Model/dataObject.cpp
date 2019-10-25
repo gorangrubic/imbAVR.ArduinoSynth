@@ -126,3 +126,9 @@ void dataObject::Deploy(std::string prefix)
 
 	
 }
+
+void dataObject::SetEnvironment(SynthApplicationEnvironment & environment)
+{
+}
+
+

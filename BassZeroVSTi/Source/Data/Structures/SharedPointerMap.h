@@ -8,8 +8,11 @@
   ==============================================================================
 */
 
-#pragma once
-#include "../JuceLibraryCode/JuceHeader.h"
+
+
+
+
+
 
 template<typename TKey, typename TObject>
 class SharedPointerMap {

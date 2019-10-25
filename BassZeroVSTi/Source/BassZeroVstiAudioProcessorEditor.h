@@ -13,7 +13,8 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "BassZeroVstiAudioProcessor.h"
 #include "BassZeroInterface.h"
-#include "MainMenuModel.h"
+#include "../Source/Application/MainMenuModel.h"
+
 
 //==============================================================================
 /**

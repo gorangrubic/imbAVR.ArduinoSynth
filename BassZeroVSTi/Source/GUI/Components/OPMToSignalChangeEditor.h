@@ -37,7 +37,6 @@
 */
 class OPMToSignalChangeEditor  : public Component,
                                  public imbSynthGUIComponent,
-                                 public ComboBox::Listener,
                                  public Slider::Listener
 {
 public:
@@ -51,7 +50,6 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
 
@@ -62,13 +60,10 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<ComboBox> target_signal;
-    std::unique_ptr<Label> label;
-    std::unique_ptr<ComboBox> target_mod;
-    std::unique_ptr<Label> label2;
-    std::unique_ptr<ComboBox> target_parameter;
-    std::unique_ptr<Label> label3;
     std::unique_ptr<Slider> Amount;
+    std::unique_ptr<Label> label_signal;
+    std::unique_ptr<Label> label_signal2;
+    std::unique_ptr<Label> label_signal3;
 
 
     //==============================================================================

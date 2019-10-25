@@ -27,8 +27,8 @@ public:
 	/// </summary>
 	void Deploy(ParameterController & parameterController);
 
-	ModulationSourceMacroControl(std::string _name = "", std::string _label = "")
-		: ModulationSourceBase(_name, _label, "Macro Controls allow control of more than one synth parameter from single point.") {
+	ModulationSourceMacroControl(std::string _name = "", std::string _label = "", bool _isMaster = false)
+		: ModulationSourceBase(_name, _label, _isMaster, "Macro Controls allow control of more than one synth parameter from single point.") {
 
 		type = ModulationSourceType::Macro;
 		elementClassRole = "ModulationSourceMacroControl";

@@ -1,19 +1,11 @@
 /*
   ==============================================================================
 
-    OscilatorPerk.cpp
-    Created: 4 Oct 2019 10:05:46pm
+    dataElementIndexMap.cpp
+    Created: 25 Oct 2019 10:24:06pm
     Author:  gorangrubic
 
   ==============================================================================
 */
 
-#include "OscilatorPerk.h"
-
-void OscilatorPerk::Deploy(ParameterController & parameterController)
-{
-}
-
-OscilatorPerk::OscilatorPerk()
-{
-}
+#include "dataElementIndexMap.h"

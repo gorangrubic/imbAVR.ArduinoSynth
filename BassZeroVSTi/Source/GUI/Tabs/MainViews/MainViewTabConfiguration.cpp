@@ -366,6 +366,9 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
 
 
     //[Constructor] You can add your own custom stuff here..
+
+	state->UIManager.
+
 	state->configuration.NeedleMIDIDevice.attachControl(needle_midiDevice.get());
 	state->configuration.NeedleMIDIInput.attachControl(needle_input.get());
 	state->configuration.NeedleMIDIOutput.attachControl(needle_output.get());

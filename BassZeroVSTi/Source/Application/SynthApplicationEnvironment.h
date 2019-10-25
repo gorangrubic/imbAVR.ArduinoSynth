@@ -10,47 +10,41 @@
 
 #pragma once
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Control/imbControlParameterEnumerations.h"
+#include "../Source/Data/Model/dataObjectPropertyEnumerations.h"
 
 #include "../Source/Application/Help/HelpResourcesManager.h"
 #include "../Source/Application/Components/IOPorts.h"
 #include "../Source/Application/Files/SynthApplicationFolderCollection.h"
 
 #include "../Source/Data/Model/dataEnumDictionary.h"
+#include "../Source/Application/SynthEnumDictionaries.h"
+#include "../Source/Control/ParameterController.h"
+
 
 class SynthApplicationEnvironment {
  
     public:
 
+		ParameterController parameterController;
+
 		HelpResourcesManager helpManager;
 		IOPorts ioPorts;
     	SynthApplicationFolderCollection folders;
 
-		dataEnumDictionary enum_parameterClass = dataEnumDictionary("parameterClass");
-
-		dataEnumDictionary enum_presetNamePrefix = dataEnumDictionary("PresetPrefix","Preset prefixes", "", "", "");
-
-		dataEnumDictionary enum_pitchUnits = dataEnumDictionary("pitchUnits", "Pitch units", "Pitch/frequency unit", "", "");
-
-		dataEnumDictionary enum_signalUnitChangeParameter = dataEnumDictionary("signalUnitChangeParameter", "Preset prefixes", "", "", "");
-
-		dataEnumDictionary enum_signalUnitChange = dataEnumDictionary("signalUnitChange", "Preset prefixes", "", "", "");
-
-		dataEnumDictionary enum_signalUnitChangeMode = dataEnumDictionary("changeFunctions", "Change functions", "", "", "");
-
-		dataEnumDictionary enum_LFOFunctions = dataEnumDictionary("LFOFunctions", "LFO functions", "", "", "");
-
-
-		dataEnumDictionary enum_macroControlModes = dataEnumDictionary("MacroControlModes", "Macro Control modes", "", "", "");
-
-	
-		void init();
+		SynthEnumDictionaries enums;
+		
 
 	SynthApplicationEnvironment():
 		folders(),
 		ioPorts(),
 		helpManager(folders.FolderHelp)
 	{
-		init();
+		folders.init();
+		ioPorts.deploy();
+		enums.init();
+		
+		
 	};
     	
 };

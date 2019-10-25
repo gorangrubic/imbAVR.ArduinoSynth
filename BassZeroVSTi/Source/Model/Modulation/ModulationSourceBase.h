@@ -15,7 +15,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameter.h"
-#include "../Source/Model/Core/SynthDeviceModelComponentBase.h"
 
 #include "../Source/Data/Model/dataObject.h"
 
@@ -25,7 +24,9 @@ public:
 
 	dataBoolProperty Enabled = dataBoolProperty("Enabled", true, "Enabled", "Sets if modulation source is enabled/active.", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 
-	bool IsPrimaryModulationSource; 
+	dataEnumProperty SlaveTarget = dataEnumProperty("SlaveTarget", 0, "Slave target", "Modulated property of a Slave modulation source", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
+
+	bool IsMaster; 
 
 	/// <summary>
 	  /// Deploys this instance.
@@ -34,10 +35,13 @@ public:
 
 	ModulationSourceType type = ModulationSourceType::unknown;
 	
-	ModulationSourceBase(std::string _name = "", std::string _label = "", std::string _description = "", std::string _helpUrl = "")
+	ModulationSourceBase(std::string _name = "", std::string _label = "", bool _isMaster=false, std::string _description = "", std::string _helpUrl = "")
 		: dataObject(_name, _label, _description, "", _helpUrl) {
+		
+		IsMaster = _isMaster;
 
 		AddProperty(&Enabled);
+		AddProperty(&SlaveTarget);
 	}
 	
 	//ModulationSourceBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) {}

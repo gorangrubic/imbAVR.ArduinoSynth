@@ -13,6 +13,7 @@
 #include "../Source/Data/Structures/SharedPointerVector.h"
 
 #include "../Source/Data/Model/dataElementBase.h"
+#include "../Source/Data/Model/dataObjectPropertyBase.h"
 
 #include "dataObjectProperty.h"
 #include "dataIntProperty.h"
@@ -29,6 +30,8 @@ protected:
 
 	/* to be called after tree is completly built. sets property parameterIDPath */
 	void deploy(std::string prefix);
+
+	void deployAutomation(juce::AudioProcessorValueTreeState & parameters);
 
 	/* registers the item into children vector*/
 	void add(dataElementBase * item);
@@ -71,6 +74,19 @@ public:
 
 	dataObjectPropertyBase * FindProperty(std::string _propertyID);
 
+	dataElementContainer * GetParentOfPath(std::string relativePath)
+	{
+		juce::String s = relativePath;
+		int pathDotPos = s.lastIndexOf(".");
+		if (pathDotPos == -1) {
+			return nullptr;
+		}
+		s = s.substring(pathDotPos);
+
+		return GetMemberByPath<dataElementContainer>(s.toStdString());
+		//dataElementBase * 
+	}
+
 	template<typename T>
 	/* returns dataObjectBase child at given path. if not found, returns nullptr */
 	/* T must be dataElementBase */
@@ -102,6 +118,8 @@ public:
 	
 	/* to be called after tree is completly built. sets property paths */
 	virtual void Deploy(std::string prefix);
+
+	
 
 	dataElementContainer(std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none):dataElementBase(_name,_label,_description,_unit,_helpUrl,_parClass,_features) {
 		

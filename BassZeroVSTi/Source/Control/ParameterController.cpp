@@ -2,13 +2,6 @@
 
 
 
-
-
-void ParameterController::Setup(juce::AudioProcessorValueTreeState * _parameters)
-{
-	//parameters = std::make_shared<AudioProcessorValueTreeState>(_parameters);
-//	processor = std::make_shared<imbSynthAudioProcessor>(_processor);
-}
 /// <summary>
 /// Gets the proper identifier.
 /// </summary>

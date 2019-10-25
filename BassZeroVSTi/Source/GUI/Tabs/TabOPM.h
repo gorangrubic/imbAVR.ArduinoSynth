@@ -26,6 +26,8 @@
 //[/Headers]
 
 #include "../Components/OPMEditor.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
 
 
 //==============================================================================
@@ -36,7 +38,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class TabOPM  : public Component
+class TabOPM  : public Component,
+                public Slider::Listener
 {
 public:
     //==============================================================================
@@ -49,6 +52,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
 
 
@@ -59,6 +63,17 @@ private:
 
     //==============================================================================
     std::unique_ptr<OPMEditor> MacroControls;
+    std::unique_ptr<TabbedComponent> tabbedComponent;
+    std::unique_ptr<Label> Title2;
+    std::unique_ptr<Slider> VALA;
+    std::unique_ptr<Label> Title5;
+    std::unique_ptr<Label> Title6;
+    std::unique_ptr<SourceMixerComponent> OPM_MODA;
+    std::unique_ptr<SourceMixerComponent> OPM_MODB;
+    std::unique_ptr<Slider> VALB;
+    std::unique_ptr<Label> Title3;
+    std::unique_ptr<Slider> VALC;
+    std::unique_ptr<Label> Title4;
 
 
     //==============================================================================

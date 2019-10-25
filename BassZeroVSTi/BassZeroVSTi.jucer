@@ -3,15 +3,19 @@
 <JUCERPROJECT id="J1PyBc" name="BassZeroVSTi" projectType="audioplug" jucerVersion="5.4.4"
               pluginFormats="buildStandalone,buildVST3" pluginCharacteristicsValue="pluginProducesMidiOut,pluginWantsMidiIn"
               pluginManufacturer="TesseracT Studio" pluginVST3Category="External,Instrument,Synth"
-              companyName="TesseracT Studio" companyCopyright="2019" companyWebsite="blog.veles.rs"
+              companyName="TesseracT Studio" companyCopyright="2020" companyWebsite="blog.veles.rs"
               companyEmail="hardy@veles.rs" pluginVSTNumMidiInputs="4" pluginVSTNumMidiOutputs="4"
               compilerFlagSchemes="NewScheme" includeBinaryInJuceHeader="1"
-              maxBinaryFileSize="20971520">
+              maxBinaryFileSize="20971520" version="0.5.2" pluginDesc="Interface for controling BassZero device">
   <MAINGROUP id="u0F6E1" name="BassZeroVSTi">
     <GROUP id="{D77581B4-8CF9-72FB-081F-DCC82E4EC583}" name="Source">
       <FILE id="vA3xnU" name="veles_template_blue.ico" compile="0" resource="1"
             file="Source/veles_template_blue.ico" xcodeResource="1"/>
       <GROUP id="{27EF8916-5484-36E5-E916-591A4447043C}" name="Application">
+        <FILE id="K67co5" name="SynthEnumDictionaries.cpp" compile="1" resource="0"
+              file="Source/Application/SynthEnumDictionaries.cpp"/>
+        <FILE id="OWLMQm" name="SynthEnumDictionaries.h" compile="0" resource="0"
+              file="Source/Application/SynthEnumDictionaries.h"/>
         <GROUP id="{9887D9BC-3387-B863-26FF-6C06A57364F4}" name="Generators">
           <FILE id="Vksrd1" name="firmwareSourceCodeGenerator.cpp" compile="1"
                 resource="0" file="Source/Application/Generators/firmwareSourceCodeGenerator.cpp"/>
@@ -64,6 +68,11 @@
                 file="Source/Application/Help/HelpResourcesManager.cpp"/>
           <FILE id="ifoUgV" name="HelpResourcesManager.h" compile="0" resource="0"
                 file="Source/Application/Help/HelpResourcesManager.h"/>
+          <FILE id="Zjprhy" name="HowTo.md" compile="0" resource="1" file="Source/Application/Help/HowTo.md"/>
+          <FILE id="RtiUn6" name="Introduction.md" compile="0" resource="1" file="Source/Application/Help/Introduction.md"/>
+          <FILE id="hn4pWh" name="Modulations.md" compile="0" resource="1" file="Source/Application/Help/Modulations.md"/>
+          <FILE id="yd01hK" name="OPM.md" compile="0" resource="1" file="Source/Application/Help/OPM.md"/>
+          <FILE id="UGeNfN" name="Presets.md" compile="0" resource="1" file="Source/Application/Help/Presets.md"/>
           <FILE id="p06sOg" name="RandomTip.cpp" compile="1" resource="0" file="Source/Application/Help/RandomTip.cpp"/>
           <FILE id="DdJTEY" name="RandomTip.h" compile="0" resource="0" file="Source/Application/Help/RandomTip.h"/>
         </GROUP>
@@ -83,68 +92,29 @@
               resource="0" file="Source/Application/SynthApplicationCommandManager.cpp"/>
         <FILE id="BKO7bt" name="SynthApplicationCommandManager.h" compile="0"
               resource="0" file="Source/Application/SynthApplicationCommandManager.h"/>
+        <FILE id="K4knWn" name="MainMenuModel.cpp" compile="1" resource="0"
+              file="Source/Application/MainMenuModel.cpp"/>
+        <FILE id="HkP2SY" name="MainMenuModel.h" compile="0" resource="0" file="Source/Application/MainMenuModel.h"/>
         <FILE id="JZJnnB" name="README.md" compile="0" resource="1" file="Source/Application/README.md"/>
       </GROUP>
       <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
-        <GROUP id="{DBF45F66-8B5D-8ECD-1186-021B70922C11}" name="Core">
-          <FILE id="EqUDJw" name="ControlGroup.cpp" compile="1" resource="0"
-                file="Source/Model/Core/ControlGroup.cpp"/>
-          <FILE id="xzwx7R" name="ControlGroup.h" compile="0" resource="0" file="Source/Model/Core/ControlGroup.h"/>
-          <FILE id="NkErMT" name="ModelComponentDescription.cpp" compile="1"
-                resource="0" file="Source/Model/Core/ModelComponentDescription.cpp"/>
-          <FILE id="gQmVkK" name="ModelComponentDescription.h" compile="0" resource="0"
-                file="Source/Model/Core/ModelComponentDescription.h"/>
-          <FILE id="jI9yR9" name="ModelComponentWithChildren.cpp" compile="1"
-                resource="0" file="Source/Model/Core/ModelComponentWithChildren.cpp"/>
-          <FILE id="bMokzL" name="ModelComponentWithChildren.h" compile="0" resource="0"
-                file="Source/Model/Core/ModelComponentWithChildren.h"/>
-          <FILE id="ISc26E" name="ModelModulatedControl.cpp" compile="1" resource="0"
-                file="Source/Model/Core/ModelModulatedControl.cpp"/>
-          <FILE id="dyOBV4" name="ModelModulatedControl.h" compile="0" resource="0"
-                file="Source/Model/Core/ModelModulatedControl.h"/>
-          <FILE id="XnOkt7" name="PitchAndPhaseControl.cpp" compile="1" resource="0"
-                file="Source/Model/Core/PitchAndPhaseControl.cpp"/>
-          <FILE id="yieAIV" name="PitchAndPhaseControl.h" compile="0" resource="0"
-                file="Source/Model/Core/PitchAndPhaseControl.h"/>
-          <FILE id="Spv6ad" name="README.md" compile="0" resource="1" file="Source/Model/Core/README.md"/>
-          <FILE id="bFQxBi" name="SynthDeviceModelComponentBase.cpp" compile="1"
-                resource="0" file="Source/Model/Core/SynthDeviceModelComponentBase.cpp"/>
-          <FILE id="jdpWMX" name="SynthDeviceModelComponentBase.h" compile="0"
-                resource="0" file="Source/Model/Core/SynthDeviceModelComponentBase.h"/>
-        </GROUP>
         <GROUP id="{2C5118E3-4EE1-978A-9BA6-CD77D7A3C329}" name="Components">
-          <FILE id="XnF8bS" name="ComponentHub.cpp" compile="1" resource="0"
-                file="Source/Model/Components/ComponentHub.cpp"/>
-          <FILE id="gV9NWM" name="ComponentHub.h" compile="0" resource="0" file="Source/Model/Components/ComponentHub.h"/>
+          <FILE id="xtYiUm" name="MacroControlLink.cpp" compile="1" resource="0"
+                file="Source/Model/Components/MacroControlLink.cpp"/>
+          <FILE id="xjYE2K" name="MacroControlLink.h" compile="0" resource="0"
+                file="Source/Model/Components/MacroControlLink.h"/>
+          <FILE id="ZMfpXg" name="ModelModulatedControl.cpp" compile="1" resource="0"
+                file="Source/Model/Components/ModelModulatedControl.cpp"/>
+          <FILE id="ZFfgXH" name="ModelModulatedControl.h" compile="0" resource="0"
+                file="Source/Model/Components/ModelModulatedControl.h"/>
+          <FILE id="UTIkmY" name="OPMSignalUnitChange.cpp" compile="1" resource="0"
+                file="Source/Model/Components/OPMSignalUnitChange.cpp"/>
+          <FILE id="finz4T" name="OPMSignalUnitChange.h" compile="0" resource="0"
+                file="Source/Model/Components/OPMSignalUnitChange.h"/>
           <FILE id="bAnDfi" name="OscilatorBase.cpp" compile="1" resource="0"
                 file="Source/Model/Components/OscilatorBase.cpp"/>
           <FILE id="lLxWXl" name="OscilatorBase.h" compile="0" resource="0" file="Source/Model/Components/OscilatorBase.h"/>
-          <FILE id="DLpX1C" name="OscilatorPerk.cpp" compile="1" resource="0"
-                file="Source/Model/Components/OscilatorPerk.cpp"/>
-          <FILE id="vnCf0Z" name="OscilatorPerk.h" compile="0" resource="0" file="Source/Model/Components/OscilatorPerk.h"/>
-          <FILE id="rcu3Qw" name="OscilatorWaveform.cpp" compile="1" resource="0"
-                file="Source/Model/Components/OscilatorWaveform.cpp"/>
-          <FILE id="uGkkZf" name="OscilatorWaveform.h" compile="0" resource="0"
-                file="Source/Model/Components/OscilatorWaveform.h"/>
           <FILE id="KBtARb" name="README.md" compile="0" resource="1" file="Source/Model/Components/README.md"/>
-        </GROUP>
-        <GROUP id="{1B6F2ADE-DBCB-93CA-0AD7-FEC5B5FA25F4}" name="OPM">
-          <FILE id="k1UoiI" name="MacroControlLink.cpp" compile="1" resource="0"
-                file="Source/Model/OPM/MacroControlLink.cpp"/>
-          <FILE id="Qm9wor" name="MacroControlLink.h" compile="0" resource="0"
-                file="Source/Model/OPM/MacroControlLink.h"/>
-          <FILE id="jy7DIc" name="OPMControlModel.cpp" compile="1" resource="0"
-                file="Source/Model/OPM/OPMControlModel.cpp"/>
-          <FILE id="Ar7Gsr" name="OPMControlModel.h" compile="0" resource="0"
-                file="Source/Model/OPM/OPMControlModel.h"/>
-          <FILE id="z1Wlyt" name="OPMSignalUnit.cpp" compile="1" resource="0"
-                file="Source/Model/OPM/OPMSignalUnit.cpp"/>
-          <FILE id="SVAiUS" name="OPMSignalUnit.h" compile="0" resource="0" file="Source/Model/OPM/OPMSignalUnit.h"/>
-          <FILE id="BZCcyS" name="OPMSignalUnitChange.cpp" compile="1" resource="0"
-                file="Source/Model/OPM/OPMSignalUnitChange.cpp"/>
-          <FILE id="OiEN9P" name="OPMSignalUnitChange.h" compile="0" resource="0"
-                file="Source/Model/OPM/OPMSignalUnitChange.h"/>
-          <FILE id="ED6UqS" name="README.md" compile="0" resource="1" file="Source/Model/OPM/README.md"/>
         </GROUP>
         <GROUP id="{800131DF-E7F7-B8D7-66E6-EB00750B90A3}" name="Modulation">
           <FILE id="emIYeY" name="ModulationFunctionADSR.cpp" compile="1" resource="0"
@@ -161,19 +131,12 @@
                 file="Source/Model/Modulation/ModulationFunctionLFO.h"/>
           <FILE id="T0TjSr" name="ModulationFunctionLFO.cpp" compile="1" resource="0"
                 file="Source/Model/Modulation/ModulationFunctionLFO.cpp"/>
-          <FILE id="UPnjvf" name="ModulationHub.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationHub.cpp"/>
-          <FILE id="Ivu7z3" name="ModulationHub.h" compile="0" resource="0" file="Source/Model/Modulation/ModulationHub.h"/>
           <FILE id="ZjpE86" name="ModulationSourceBase.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationSourceBase.h"/>
           <FILE id="mD9uxn" name="ModulationSourceMacroControl.cpp" compile="1"
                 resource="0" file="Source/Model/Modulation/ModulationSourceMacroControl.cpp"/>
           <FILE id="O7hx2p" name="ModulationSourceMacroControl.h" compile="0"
                 resource="0" file="Source/Model/Modulation/ModulationSourceMacroControl.h"/>
-          <FILE id="eM2ELw" name="ModulationSourceMIDI.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationSourceMIDI.cpp"/>
-          <FILE id="xAoCV5" name="ModulationSourceMIDI.h" compile="0" resource="0"
-                file="Source/Model/Modulation/ModulationSourceMIDI.h"/>
           <FILE id="wHWnhb" name="README.md" compile="0" resource="1" file="Source/Model/Modulation/README.md"/>
         </GROUP>
         <FILE id="fisMzc" name="SynthDeviceModel.cpp" compile="1" resource="0"
@@ -315,12 +278,27 @@
                 file="Source/Data/Model/dataObjectPropertyBase.h"/>
           <FILE id="c4okAG" name="dataObjectPropertyEnumerations.h" compile="0"
                 resource="0" file="Source/Data/Model/dataObjectPropertyEnumerations.h"/>
+          <FILE id="fLdPV2" name="dataPatternObject.cpp" compile="1" resource="0"
+                file="Source/Data/Model/dataPatternObject.cpp"/>
+          <FILE id="TK3Ol3" name="dataPatternObject.h" compile="0" resource="0"
+                file="Source/Data/Model/dataPatternObject.h"/>
           <FILE id="jhfNgf" name="dataStringProperty.cpp" compile="1" resource="0"
                 file="Source/Data/Model/dataStringProperty.cpp"/>
           <FILE id="bEPX2y" name="dataStringProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataStringProperty.h"/>
         </GROUP>
         <GROUP id="{48951699-AF71-2E93-B81E-78824D171828}" name="Structures">
+          <FILE id="OP0e5B" name="dataElementIndexMap.cpp" compile="1" resource="0"
+                file="Source/Data/Structures/dataElementIndexMap.cpp"/>
+          <FILE id="oYTKzp" name="dataElementIndexMap.h" compile="0" resource="0"
+                file="Source/Data/Structures/dataElementIndexMap.h"/>
+          <FILE id="lWS4xY" name="dataObjectCollection.cpp" compile="1" resource="0"
+                file="Source/Data/Structures/dataObjectCollection.cpp"/>
+          <FILE id="dKOyEm" name="dataObjectCollection.h" compile="0" resource="0"
+                file="Source/Data/Structures/dataObjectCollection.h"/>
+          <FILE id="JC2kfo" name="imbDictionary.cpp" compile="1" resource="0"
+                file="Source/Data/Structures/imbDictionary.cpp"/>
+          <FILE id="KdsEDj" name="imbDictionary.h" compile="0" resource="0" file="Source/Data/Structures/imbDictionary.h"/>
           <FILE id="aaR941" name="imbEnumerationList.cpp" compile="1" resource="0"
                 file="Source/Data/Structures/imbEnumerationList.cpp"/>
           <FILE id="x2rWsS" name="imbEnumerationList.h" compile="0" resource="0"
@@ -377,10 +355,6 @@
               resource="0" file="Source/Control/imbControlParameterBindingManager.h"/>
         <FILE id="tOsxjf" name="imbControlParameterEnumerations.h" compile="0"
               resource="0" file="Source/Control/imbControlParameterEnumerations.h"/>
-        <FILE id="eYYyrU" name="imbParameterGroupBase.cpp" compile="1" resource="0"
-              file="Source/Control/imbParameterGroupBase.cpp"/>
-        <FILE id="bRcY68" name="imbParameterGroupBase.h" compile="0" resource="0"
-              file="Source/Control/imbParameterGroupBase.h"/>
         <FILE id="w1J5Lg" name="imbSynthAudioProcessor.cpp" compile="1" resource="0"
               file="Source/Control/imbSynthAudioProcessor.cpp"/>
         <FILE id="XUeedC" name="imbSynthAudioProcessor.h" compile="0" resource="0"
@@ -451,18 +425,10 @@
                 file="Source/GUI/General/PathBrowserModel.cpp"/>
           <FILE id="zwiGLi" name="PathBrowserModel.h" compile="0" resource="0"
                 file="Source/GUI/General/PathBrowserModel.h"/>
-          <FILE id="yiKacr" name="Pattern32BitModel.cpp" compile="1" resource="0"
-                file="Source/GUI/General/Pattern32BitModel.cpp"/>
-          <FILE id="EPSnPh" name="Pattern32BitModel.h" compile="0" resource="0"
-                file="Source/GUI/General/Pattern32BitModel.h"/>
           <FILE id="ta9lKk" name="PatternEditor8bit.cpp" compile="1" resource="0"
                 file="Source/GUI/General/PatternEditor8bit.cpp"/>
           <FILE id="DRRuPB" name="PatternEditor8bit.h" compile="0" resource="0"
                 file="Source/GUI/General/PatternEditor8bit.h"/>
-          <FILE id="Vu0ZOz" name="PatternEditor32bit.cpp" compile="1" resource="0"
-                file="Source/GUI/General/PatternEditor32bit.cpp"/>
-          <FILE id="kthxWV" name="PatternEditor32bit.h" compile="0" resource="0"
-                file="Source/GUI/General/PatternEditor32bit.h"/>
           <FILE id="HdveOF" name="PresetDefinitionEditor.cpp" compile="1" resource="0"
                 file="Source/GUI/General/PresetDefinitionEditor.cpp"/>
           <FILE id="utlKHL" name="PresetDefinitionEditor.h" compile="0" resource="0"
@@ -538,6 +504,10 @@
                   file="Source/GUI/Tabs/MainViews/MainViewTabInOut.cpp"/>
             <FILE id="IVvo3I" name="MainViewTabInOut.h" compile="0" resource="0"
                   file="Source/GUI/Tabs/MainViews/MainViewTabInOut.h"/>
+            <FILE id="amYUdw" name="MainViewTabPreset.cpp" compile="1" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabPreset.cpp"/>
+            <FILE id="WYispw" name="MainViewTabPreset.h" compile="0" resource="0"
+                  file="Source/GUI/Tabs/MainViews/MainViewTabPreset.h"/>
             <FILE id="C8fePI" name="MainViewTabPresetManager.cpp" compile="1" resource="0"
                   file="Source/GUI/Tabs/MainViews/MainViewTabPresetManager.cpp"/>
             <FILE id="AFciS2" name="MainViewTabPresetManager.h" compile="0" resource="0"
@@ -571,9 +541,6 @@
             file="Source/BassZeroInterface.cpp"/>
       <FILE id="EWAjAg" name="BassZeroInterface.h" compile="0" resource="0"
             file="Source/BassZeroInterface.h"/>
-      <FILE id="Gngb8C" name="MainMenuModel.cpp" compile="1" resource="0"
-            file="Source/MainMenuModel.cpp"/>
-      <FILE id="spZEdV" name="MainMenuModel.h" compile="0" resource="0" file="Source/MainMenuModel.h"/>
       <FILE id="UtQ2t7" name="BassZeroSynthModel.cpp" compile="1" resource="0"
             file="Source/BassZeroSynthModel.cpp"/>
       <FILE id="menble" name="BassZeroSynthModel.h" compile="0" resource="0"

@@ -10,10 +10,7 @@
 
 #include "dataBindingEntry.h"
 
-void dataBindingEntry::attachControlBase(Component * _component)
-{
-	
-}
+
 void dataBindingEntry::mouseDown(const MouseEvent & event)
 {
 
@@ -21,9 +18,9 @@ void dataBindingEntry::mouseDown(const MouseEvent & event)
 		if (onShowContextMenu != nullptr) {
 			auto menu = onShowContextMenu(parameterIDPath);
 
-			PopupMenu::Options ops();
+			//PopupMenu::Options ops();
 
-			menu.showMenuAsync(ops, )
+			//menu.showMenuAsync(ops, )
 		}
 	}
 }
@@ -71,13 +68,22 @@ juce::Rectangle<int> dataBindingEntry::getBounds()
 	}
 }
 
+
+
+void dataBindingEntry::attachControlAsParent(Component * _component)
+{
+	componentType = guiAttachedComponentType::parentComponent;
+
+	attachControlBase(dynamic_cast<juce::Component*>(_component));
+}
+
 void dataBindingEntry::attachControl(Slider * _editor)
 {
 	componentType = guiAttachedComponentType::slider;
 	pSlider = std::shared_ptr<Slider>(_editor);//new SliderAttachment(valueTreeState, parameterIDPath, slider);
 	pSlider->onValueChange = [&, this] {
 		float f = (float)pSlider->getValue();
-		if (onFloatValueChange != nullptr)	onFloatValueChange(f);
+		if (onFloatValueChange != nullptr)	onFloatValueChange(f, parameterIDPath);
 	};	
 	attachControlBase(dynamic_cast<juce::Component*>(_editor));
 }
@@ -87,7 +93,7 @@ void dataBindingEntry::attachControl(ComboBox * _editor)
 	componentType = guiAttachedComponentType::combobox;
 	pComboBox = std::shared_ptr<ComboBox>(_editor);
 	pComboBox->onChange = [&, this] {
-		if (onFloatValueChange != nullptr) onFloatValueChange((float)pComboBox->getSelectedId());
+		if (onFloatValueChange != nullptr) onFloatValueChange((float)pComboBox->getSelectedId(),parameterIDPath);
 	};	
 	attachControlBase(dynamic_cast<juce::Component*>(_editor));
 }
@@ -98,10 +104,10 @@ void dataBindingEntry::attachControl(ToggleButton * _editor)
 	pToggleButton = std::shared_ptr<ToggleButton>(_editor);
 	pToggleButton->onStateChange = [&, this] {
 		if (pToggleButton->getState()) {
-			if (onFloatValueChange != nullptr) onFloatValueChange(1);
+			if (onFloatValueChange != nullptr) onFloatValueChange(1, parameterIDPath);
 		}
 		else {
-			if (onFloatValueChange != nullptr) onFloatValueChange(0);
+			if (onFloatValueChange != nullptr) onFloatValueChange(0, parameterIDPath);
 		}
 	};
 	attachControlBase(dynamic_cast<juce::Component*>(_editor));
@@ -113,7 +119,7 @@ void dataBindingEntry::attachControl(TextEditor * _editor)
 
 	pTextEditor = std::shared_ptr<TextEditor>(_editor);
 	pTextEditor->onTextChange = [&, this] {
-		if (onStringValueChange != nullptr) onStringValueChange(pTextEditor->getText().toStdString());
+		if (onStringValueChange != nullptr) onStringValueChange(pTextEditor->getText().toStdString(), parameterIDPath);
 	};
 	attachControlBase(dynamic_cast<juce::Component*>(_editor));
 }
@@ -130,7 +136,7 @@ void dataBindingEntry::attachControl(imbSynthParameterEditor * _editor)
 	componentType = guiAttachedComponentType::imbParameterComponent;
 	pParameterEditor = std::shared_ptr<imbSynthParameterEditor>(_editor);
 	pParameterEditor->onValueChange = [&, this] {
-		if (onFloatValueChange != nullptr) onFloatValueChange(pParameterEditor->GetValue());
+		if (onFloatValueChange != nullptr) onFloatValueChange(0, parameterIDPath);
 	};
 	attachControlBase(dynamic_cast<juce::Component*>(_editor));
 }

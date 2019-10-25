@@ -10,12 +10,12 @@
 
 #include "ModulationFunctionENV.h"
 
-void ModulationFunctionENV::Deploy(ParameterController & parameterController)
-  {
-
-
-
-  }
+//void ModulationFunctionENV::Deploy(ParameterController & parameterController)
+//  {
+//
+//
+//
+//  }
 
 
 

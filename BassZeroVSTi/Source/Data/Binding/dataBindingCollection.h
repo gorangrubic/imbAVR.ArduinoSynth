@@ -10,30 +10,32 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Data/Binding/dataBindingEntry.h"
+//#include "../Source/Data/Binding/dataBindingEntry.h"
 #include "../Source/GUI/Components/imbSynthParameterEditor.h"
-#include "../Source/Data/Model/dataObjectPropertyEnumerations.h"
-#include "../Source/Data/Structures/imbEnumerationList.h"
+//#include "../Source/GUI/Components/imbSynthGUIComponent.h"
+//#include "../Source/Data/Model/dataObjectPropertyEnumerations.h"
+//#include "../Source/Data/Structures/imbEnumerationList.h"
 #include "../Source/Utility/imbSynthTools.h"
+#include "dataBindingEntry.h"
 
-#include <vector>
 class dataBindingCollection {
  
 
  
     public:
-    
-		std::vector<dataBindingEntry> entries;
 
-		void detachAll();
+		std::multimap<std::string, dataBindingEntry> items;
 
-		void attachControl(Slider* _slider);
-		void attachControl(ComboBox* _comboBox);
-		void attachControl(ToggleButton* _button);
-		void attachControl(TextEditor* _textEditor);
-		void attachControl(Label* _textLabel);
-		void attachControl(imbSynthParameterEditor* _editor);
-		void attachControl(imbSynthGUIComponent* _editor);
+		void removeBindigsFor(std::string parameterIDPath);
+
+		std::vector<dataBindingEntry> getBindingsFor(std::string parameterIDPath);
+
+		void Add(dataBindingEntry binding);
+	
+		dataBindingCollection();
+
+
+
 
     
 };

@@ -39,7 +39,8 @@ TabMainControl::TabMainControl (imbSynthStateData * synthState, String nameSufix
     tabbedComponent.reset (new TabbedComponent (TabbedButtonBar::TabsAtBottom));
     addAndMakeVisible (tabbedComponent.get());
     tabbedComponent->setTabBarDepth (30);
-    tabbedComponent->addTab (TRANS("Presets"), Colour (0xff181f22), new MainViewTabPresetManager (synthState, ""), true);
+    tabbedComponent->addTab (TRANS("Preset"), Colours::lightgrey, 0, false);
+    tabbedComponent->addTab (TRANS("Library"), Colour (0xff181f22), new MainViewTabPresetManager (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Input / Output"), Colour (0xff181f22), new MainViewTabInOut (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Configuration"), Colour (0xff181f22), new MainViewTabConfiguration (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Tools"), Colour (0xff181f22), new MainViewTabTools (synthState, ""), true);
@@ -126,7 +127,9 @@ BEGIN_JUCER_METADATA
   <TABBEDCOMPONENT name="new tabbed component" id="7355af7a2e5c288a" memberName="tabbedComponent"
                    virtualName="" explicitFocusOrder="0" pos="0 0 0M 0M" orientation="bottom"
                    tabBarDepth="30" initialTab="1">
-    <TAB name="Presets" colour="ff181f22" useJucerComp="1" contentClassName=""
+    <TAB name="Preset" colour="ffd3d3d3" useJucerComp="0" contentClassName=""
+         constructorParams="" jucerComponentFile=""/>
+    <TAB name="Library" colour="ff181f22" useJucerComp="1" contentClassName=""
          constructorParams="synthState, &quot;&quot;" jucerComponentFile="MainViews/MainViewTabPresetManager.cpp"/>
     <TAB name="Input / Output" colour="ff181f22" useJucerComp="1" contentClassName=""
          constructorParams="synthState, &quot;&quot;" jucerComponentFile="MainViews/MainViewTabInOut.cpp"/>

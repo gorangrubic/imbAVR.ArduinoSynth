@@ -20,6 +20,48 @@ void dataElementContainer::deploy(std::string prefix)
 
 }
 
+/* Deploys automation and/or DAW visible parameters*/
+void dataElementContainer::deployAutomation(juce::AudioProcessorValueTreeState & parameters)
+{
+	for each (std::shared_ptr<dataObjectPropertyBase> var in properties)
+	{
+		std::string p_path = var->parameterIDPath;
+		bool isAutomatizable = var->features.HasFlag(dataElementFeatures::_features::isAutomatizable);
+		bool doDeclareInValueTree = var->features.HasFlag(dataElementFeatures::_features::doDeclareInValueTree);
+		bool isDescreteValue = !((var->valueType == parameterValueType::Float) || (var->valueType == parameterValueType::Ratio));
+		
+		if (isAutomatizable || doDeclareInValueTree)
+		{
+			NormalisableRange<float> valueRange = NormalisableRange<float>(var->MinValue, var->MaxValue, var->IntervalValue);
+
+			auto pParameter = 
+				std::shared_ptr<juce::RangedAudioParameter>(
+					parameters.createAndAddParameter(parameterIDPath,
+				parameterID, parameterLabel, valueRange, var->Value,
+						nullptr, nullptr, false, 
+						isAutomatizable, isDescreteValue,
+				AudioProcessorParameter::Category::genericParameter,
+				(var->valueType == parameterValueType::Boolean)
+					)
+					);
+
+			parameters.addParameterListener(p_path, var.get());
+		}
+		
+		//var->parameterIDPath = GetParameterPath(var, parameterIDPath);
+	}
+
+	for each (auto var in children)
+	{
+		if (var->features.HasFlag(dataElementFeatures::isElementContainer))
+		{
+			dataElementContainer * childContainer = static_cast<dataElementContainer*>(var.get());
+			childContainer->deployAutomation(parameters);
+		}
+	}
+
+}
+
 void dataElementContainer::add(dataElementBase * item)
 {
 	children.Add(item);

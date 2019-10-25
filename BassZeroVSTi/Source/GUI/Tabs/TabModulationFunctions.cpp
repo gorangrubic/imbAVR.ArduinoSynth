@@ -34,17 +34,17 @@ TabModulationFunctions::TabModulationFunctions (imbSynthStateData * synthState, 
 
     ADSR_A.reset (new ADSREditor (synthState, "ADSR_A"));
     addAndMakeVisible (ADSR_A.get());
-    ADSR_A->setBounds (8, 48, 260, 76);
+    ADSR_A->setBounds (8, 104, 260, 76);
 
     ADSR_B.reset (new ADSREditor (synthState, "ADSR_B"));
     addAndMakeVisible (ADSR_B.get());
     LFO_A.reset (new ChaosEditor (synthState, "LFO_A"));
     addAndMakeVisible (LFO_A.get());
-    LFO_A->setBounds (288, 48, 241, 100);
+    LFO_A->setBounds (288, 112, 241, 86);
 
     ENV_A.reset (new ENVEditor (synthState, "ENV_A"));
     addAndMakeVisible (ENV_A.get());
-    ENV_A->setBounds (8, 280, 264, 68);
+    ENV_A->setBounds (8, 312, 264, 48);
 
     ENV_B.reset (new ENVEditor (synthState, "ENV_B"));
     addAndMakeVisible (ENV_B.get());
@@ -166,6 +166,8 @@ TabModulationFunctions::TabModulationFunctions (imbSynthStateData * synthState, 
     label_WFA11->setColour (TextEditor::textColourId, Colours::black);
     label_WFA11->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
+    label_WFA11->setBounds (288, 80, 96, 24);
+
     label_WFA12.reset (new Label ("Title",
                                   TRANS("ENV")));
     addAndMakeVisible (label_WFA12.get());
@@ -175,6 +177,81 @@ TabModulationFunctions::TabModulationFunctions (imbSynthStateData * synthState, 
     label_WFA12->setColour (Label::backgroundColourId, Colour (0xffed6216));
     label_WFA12->setColour (TextEditor::textColourId, Colours::black);
     label_WFA12->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label_WFA12->setBounds (8, 280, 64, 24);
+
+    label_OPM2.reset (new Label ("new label",
+                                 TRANS("MACRO")));
+    addAndMakeVisible (label_OPM2.get());
+    label_OPM2->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Bold"));
+    label_OPM2->setJustificationType (Justification::centred);
+    label_OPM2->setEditable (false, false, false);
+    label_OPM2->setColour (Label::backgroundColourId, Colour (0xff495358));
+    label_OPM2->setColour (Label::textColourId, Colours::azure);
+    label_OPM2->setColour (TextEditor::textColourId, Colours::black);
+    label_OPM2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label_OPM2->setBounds (8, 8, 100, 24);
+
+    CTRLA.reset (new Slider ("DirectValue"));
+    addAndMakeVisible (CTRLA.get());
+    CTRLA->setTooltip (TRANS("Decay time\n"));
+    CTRLA->setRange (1, 100, 1);
+    CTRLA->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLA->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLA->setColour (Slider::thumbColourId, Colours::lightgrey);
+    CTRLA->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    CTRLA->addListener (this);
+
+    CTRLA->setBounds (112, 8, 64, 64);
+
+    CTRLB.reset (new Slider ("DirectValue"));
+    addAndMakeVisible (CTRLB.get());
+    CTRLB->setTooltip (TRANS("Decay time\n"));
+    CTRLB->setRange (1, 100, 1);
+    CTRLB->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLB->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLB->setColour (Slider::thumbColourId, Colours::lightgrey);
+    CTRLB->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    CTRLB->addListener (this);
+
+    CTRLB->setBounds (176, 8, 64, 64);
+
+    CTRLC.reset (new Slider ("DirectValue"));
+    addAndMakeVisible (CTRLC.get());
+    CTRLC->setTooltip (TRANS("Decay time\n"));
+    CTRLC->setRange (1, 100, 1);
+    CTRLC->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLC->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLC->setColour (Slider::thumbColourId, Colours::lightgrey);
+    CTRLC->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    CTRLC->addListener (this);
+
+    CTRLC->setBounds (241, 8, 64, 64);
+
+    CTRLC2.reset (new Slider ("DirectValue"));
+    addAndMakeVisible (CTRLC2.get());
+    CTRLC2->setTooltip (TRANS("Decay time\n"));
+    CTRLC2->setRange (1, 100, 1);
+    CTRLC2->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLC2->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLC2->setColour (Slider::thumbColourId, Colours::lightgrey);
+    CTRLC2->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    CTRLC2->addListener (this);
+
+    CTRLC2->setBounds (304, 8, 64, 64);
+
+    CTRLC3.reset (new Slider ("DirectValue"));
+    addAndMakeVisible (CTRLC3.get());
+    CTRLC3->setTooltip (TRANS("Decay time\n"));
+    CTRLC3->setRange (1, 100, 1);
+    CTRLC3->setSliderStyle (Slider::RotaryHorizontalVerticalDrag);
+    CTRLC3->setTextBoxStyle (Slider::NoTextBox, true, 50, 10);
+    CTRLC3->setColour (Slider::thumbColourId, Colours::lightgrey);
+    CTRLC3->setColour (Slider::textBoxOutlineColourId, Colour (0x008e989b));
+    CTRLC3->addListener (this);
+
+    CTRLC3->setBounds (368, 8, 64, 64);
 
     cachedImage_background1_jpg_1 = ImageCache::getFromMemory (background1_jpg, background1_jpgSize);
 
@@ -214,6 +291,12 @@ TabModulationFunctions::~TabModulationFunctions()
     label_WFA10 = nullptr;
     label_WFA11 = nullptr;
     label_WFA12 = nullptr;
+    label_OPM2 = nullptr;
+    CTRLA = nullptr;
+    CTRLB = nullptr;
+    CTRLC = nullptr;
+    CTRLC2 = nullptr;
+    CTRLC3 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -247,26 +330,59 @@ void TabModulationFunctions::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    ADSR_B->setBounds (8 + 0, 48 + 76 - -12, 260, 76);
-    ENV_B->setBounds (8 + 280, 280 + 68 - 68, 264, 68);
-    LFO_B->setBounds (288 + 0, 48 + 100 - -12, 240, 100);
-    LFO_C->setBounds ((288 + 0) + 280, (48 + 100 - -12) + 100 - 212, 240, 100);
-    LFO_D->setBounds ((288 + 0) + 280, ((48 + 100 - -12) + 100 - 212) + 100 - -4, 240, 100);
-    label_WFA->setBounds (8 + 0, 48 + 0, 28, 24);
-    label_WFA2->setBounds (8 + 0, (48 + 76 - -12) + 0, 28, 24);
-    ENV_C->setBounds (8 + 560, 280 + 68 - 68, 264, 68);
-    label_WFA3->setBounds (8 + 0, 280 + 0, 28, 24);
-    label_WFA4->setBounds ((8 + 280) + 0, (280 + 68 - 68) + 0, 28, 24);
-    label_WFA5->setBounds ((8 + 560) + 0, (280 + 68 - 68) + 0, 28, 24);
-    label_WFA6->setBounds (288 + 0, 48 + 0, 28, 24);
-    label_WFA7->setBounds (((288 + 0) + 280) + 0, ((48 + 100 - -12) + 100 - 212) + 0, 28, 24);
-    label_WFA8->setBounds ((288 + 0) + 0, (48 + 100 - -12) + 0, 28, 24);
-    label_WFA9->setBounds (((288 + 0) + 280) + 0, (48 + 100 - -12) + -8, 28, 24);
-    label_WFA10->setBounds (8 + 0, 48 + -40, 64, 24);
-    label_WFA11->setBounds (8 + 280, 48 + -40, 96, 24);
-    label_WFA12->setBounds (8 + 0, 48 + 192, 64, 24);
+    ADSR_B->setBounds (8 + 0, 104 + 76 - -12, 260, 76);
+    ENV_B->setBounds (8 + 280, 312 + 48 - 48, 264, 48);
+    LFO_B->setBounds (288 + 0, 112 + 86 - -10, 240, 100);
+    LFO_C->setBounds ((288 + 0) + 280, (112 + 86 - -10) + 100 - 196, 240, 100);
+    LFO_D->setBounds ((288 + 0) + 280, ((112 + 86 - -10) + 100 - 196) + 100 - 4, 240, 100);
+    label_WFA->setBounds (8 + 0, 104 + 0, 28, 24);
+    label_WFA2->setBounds (8 + 0, (104 + 76 - -12) + 0, 28, 24);
+    ENV_C->setBounds (8 + 560, 312 + 48 - 48, 264, 48);
+    label_WFA3->setBounds (8 + 0, 312 + 0, 28, 24);
+    label_WFA4->setBounds ((8 + 280) + 0, (312 + 48 - 48) + 0, 28, 24);
+    label_WFA5->setBounds ((8 + 560) + 0, (312 + 48 - 48) + 0, 28, 24);
+    label_WFA6->setBounds (288 + 0, 112 + 0, 28, 24);
+    label_WFA7->setBounds (((288 + 0) + 280) + 0, ((112 + 86 - -10) + 100 - 196) + 0, 28, 24);
+    label_WFA8->setBounds ((288 + 0) + 0, (112 + 86 - -10) + 0, 28, 24);
+    label_WFA9->setBounds (((288 + 0) + 280) + 0, (112 + 86 - -10) + 0, 28, 24);
+    label_WFA10->setBounds (8 + 0, 104 + -32, 64, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
+}
+
+void TabModulationFunctions::sliderValueChanged (Slider* sliderThatWasMoved)
+{
+    //[UsersliderValueChanged_Pre]
+    //[/UsersliderValueChanged_Pre]
+
+    if (sliderThatWasMoved == CTRLA.get())
+    {
+        //[UserSliderCode_CTRLA] -- add your slider handling code here..
+        //[/UserSliderCode_CTRLA]
+    }
+    else if (sliderThatWasMoved == CTRLB.get())
+    {
+        //[UserSliderCode_CTRLB] -- add your slider handling code here..
+        //[/UserSliderCode_CTRLB]
+    }
+    else if (sliderThatWasMoved == CTRLC.get())
+    {
+        //[UserSliderCode_CTRLC] -- add your slider handling code here..
+        //[/UserSliderCode_CTRLC]
+    }
+    else if (sliderThatWasMoved == CTRLC2.get())
+    {
+        //[UserSliderCode_CTRLC2] -- add your slider handling code here..
+        //[/UserSliderCode_CTRLC2]
+    }
+    else if (sliderThatWasMoved == CTRLC3.get())
+    {
+        //[UserSliderCode_CTRLC3] -- add your slider handling code here..
+        //[/UserSliderCode_CTRLC3]
+    }
+
+    //[UsersliderValueChanged_Post]
+    //[/UsersliderValueChanged_Post]
 }
 
 
@@ -294,32 +410,32 @@ BEGIN_JUCER_METADATA
            mode="0"/>
   </BACKGROUND>
   <JUCERCOMP name="ADSR_A" id="f2a3a037a92bb9ba" memberName="ADSR_A" virtualName=""
-             explicitFocusOrder="0" pos="8 48 260 76" sourceFile="../Components/ADSREditor.cpp"
+             explicitFocusOrder="0" pos="8 104 260 76" sourceFile="../Components/ADSREditor.cpp"
              constructorParams="synthState, &quot;ADSR_A&quot;"/>
   <JUCERCOMP name="ADSR_B" id="3c7fd89d7ccb94b7" memberName="ADSR_B" virtualName=""
              explicitFocusOrder="0" pos="0 -12R 260 76" posRelativeX="f2a3a037a92bb9ba"
              posRelativeY="f2a3a037a92bb9ba" sourceFile="../Components/ADSREditor.cpp"
              constructorParams="synthState, &quot;ADSR_B&quot;"/>
   <JUCERCOMP name="LFO_A" id="cdc6831fdcc2217e" memberName="LFO_A" virtualName=""
-             explicitFocusOrder="0" pos="288 48 241 100" sourceFile="../Components/ChaosEditor.cpp"
+             explicitFocusOrder="0" pos="288 112 241 86" sourceFile="../Components/ChaosEditor.cpp"
              constructorParams="synthState, &quot;LFO_A&quot;"/>
   <JUCERCOMP name="ENV_A" id="eeefbf843699b34b" memberName="ENV_A" virtualName=""
-             explicitFocusOrder="0" pos="8 280 264 68" sourceFile="../Components/ENVEditor.cpp"
+             explicitFocusOrder="0" pos="8 312 264 48" sourceFile="../Components/ENVEditor.cpp"
              constructorParams="synthState, &quot;ENV_A&quot;"/>
   <JUCERCOMP name="ENV_B" id="88f062d2a86aa048" memberName="ENV_B" virtualName=""
-             explicitFocusOrder="0" pos="280 68R 264 68" posRelativeX="eeefbf843699b34b"
+             explicitFocusOrder="0" pos="280 48R 264 48" posRelativeX="eeefbf843699b34b"
              posRelativeY="eeefbf843699b34b" sourceFile="../Components/ENVEditor.cpp"
              constructorParams="synthState, &quot;ENV_B&quot;"/>
   <JUCERCOMP name="LFO_B" id="f2b391a335a81fcf" memberName="LFO_B" virtualName=""
-             explicitFocusOrder="0" pos="0 -12R 240 100" posRelativeX="cdc6831fdcc2217e"
+             explicitFocusOrder="0" pos="0 -10R 240 100" posRelativeX="cdc6831fdcc2217e"
              posRelativeY="cdc6831fdcc2217e" sourceFile="../Components/ChaosEditor.cpp"
              constructorParams="synthState, &quot;LFO_B&quot;"/>
   <JUCERCOMP name="LFO_C" id="c46fa60f26f8df16" memberName="LFO_C" virtualName=""
-             explicitFocusOrder="0" pos="280 212R 240 100" posRelativeX="f2b391a335a81fcf"
+             explicitFocusOrder="0" pos="280 196R 240 100" posRelativeX="f2b391a335a81fcf"
              posRelativeY="f2b391a335a81fcf" sourceFile="../Components/ChaosEditor.cpp"
              constructorParams="synthState, &quot;LFO_C&quot;"/>
   <JUCERCOMP name="LFO_D" id="1aac79be353a0397" memberName="LFO_D" virtualName=""
-             explicitFocusOrder="0" pos="280 -4R 240 100" posRelativeX="f2b391a335a81fcf"
+             explicitFocusOrder="0" pos="280 4R 240 100" posRelativeX="f2b391a335a81fcf"
              posRelativeY="c46fa60f26f8df16" sourceFile="../Components/ChaosEditor.cpp"
              constructorParams="synthState, &quot;LFO_D&quot;"/>
   <LABEL name="Title" id="1298f19adf91ae02" memberName="label_WFA" virtualName=""
@@ -335,7 +451,7 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <JUCERCOMP name="ENV_C" id="6b1b7f8f2634ccc3" memberName="ENV_C" virtualName=""
-             explicitFocusOrder="0" pos="560 68R 264 68" posRelativeX="eeefbf843699b34b"
+             explicitFocusOrder="0" pos="560 48R 264 48" posRelativeX="eeefbf843699b34b"
              posRelativeY="eeefbf843699b34b" sourceFile="../Components/ENVEditor.cpp"
              constructorParams="synthState, &quot;ENV_C&quot;"/>
   <LABEL name="Title" id="61e7d4615724c59f" memberName="label_WFA3" virtualName=""
@@ -375,30 +491,64 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <LABEL name="Title" id="d3e1be23a2914172" memberName="label_WFA9" virtualName=""
-         explicitFocusOrder="0" pos="0 -8 28 24" posRelativeX="1aac79be353a0397"
+         explicitFocusOrder="0" pos="0 0 28 24" posRelativeX="1aac79be353a0397"
          posRelativeY="f2b391a335a81fcf" bkgCol="ff029d4d" edTextCol="ff000000"
          edBkgCol="0" labelText="D" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="15.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <LABEL name="Title" id="ddee822e9d4451e4" memberName="label_WFA10" virtualName=""
-         explicitFocusOrder="0" pos="0 -40 64 24" posRelativeX="f2a3a037a92bb9ba"
+         explicitFocusOrder="0" pos="0 -32 64 24" posRelativeX="f2a3a037a92bb9ba"
          posRelativeY="f2a3a037a92bb9ba" bkgCol="ff42a2c8" edTextCol="ff000000"
          edBkgCol="0" labelText="ADSR" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
   <LABEL name="Title" id="2817ced2d5d5c9dd" memberName="label_WFA11" virtualName=""
-         explicitFocusOrder="0" pos="280 -40 96 24" posRelativeX="f2a3a037a92bb9ba"
-         posRelativeY="f2a3a037a92bb9ba" bkgCol="ff029d4d" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="288 80 96 24" bkgCol="ff029d4d" edTextCol="ff000000"
          edBkgCol="0" labelText="LFO / CHAOS" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="1" italic="0" justification="33"
          typefaceStyle="Bold"/>
   <LABEL name="Title" id="37b9f75901a03a00" memberName="label_WFA12" virtualName=""
-         explicitFocusOrder="0" pos="0 192 64 24" posRelativeX="f2a3a037a92bb9ba"
-         posRelativeY="f2a3a037a92bb9ba" bkgCol="ffed6216" edTextCol="ff000000"
+         explicitFocusOrder="0" pos="8 280 64 24" bkgCol="ffed6216" edTextCol="ff000000"
          edBkgCol="0" labelText="ENV" editableSingleClick="0" editableDoubleClick="0"
          focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
          kerning="0.0" bold="1" italic="0" justification="33" typefaceStyle="Bold"/>
+  <LABEL name="new label" id="cd567f72be297e32" memberName="label_OPM2"
+         virtualName="" explicitFocusOrder="0" pos="8 8 100 24" bkgCol="ff495358"
+         textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="MACRO"
+         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
+         fontname="Default font" fontsize="12.0" kerning="0.0" bold="1"
+         italic="0" justification="36" typefaceStyle="Bold"/>
+  <SLIDER name="DirectValue" id="88dc11d212aae427" memberName="CTRLA" virtualName=""
+          explicitFocusOrder="0" pos="112 8 64 64" posRelativeX="5eeb447276336bd"
+          posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ffd3d3d3"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
+  <SLIDER name="DirectValue" id="f4693b0c161482f7" memberName="CTRLB" virtualName=""
+          explicitFocusOrder="0" pos="176 8 64 64" posRelativeX="5eeb447276336bd"
+          posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ffd3d3d3"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
+  <SLIDER name="DirectValue" id="bdac24d826f2a4e0" memberName="CTRLC" virtualName=""
+          explicitFocusOrder="0" pos="241 8 64 64" posRelativeX="5eeb447276336bd"
+          posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ffd3d3d3"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
+  <SLIDER name="DirectValue" id="c367db56629fbd7d" memberName="CTRLC2"
+          virtualName="" explicitFocusOrder="0" pos="304 8 64 64" posRelativeX="5eeb447276336bd"
+          posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ffd3d3d3"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
+  <SLIDER name="DirectValue" id="ea5f926cc9b9c801" memberName="CTRLC3"
+          virtualName="" explicitFocusOrder="0" pos="368 8 64 64" posRelativeX="5eeb447276336bd"
+          posRelativeY="5eeb447276336bd" tooltip="Decay time&#10;" thumbcol="ffd3d3d3"
+          textboxoutline="8e989b" min="1.0" max="100.0" int="1.0" style="RotaryHorizontalVerticalDrag"
+          textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
+          textBoxHeight="10" skewFactor="1.0" needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

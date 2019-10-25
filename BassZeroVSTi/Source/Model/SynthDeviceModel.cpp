@@ -10,8 +10,6 @@
 
 #include "SynthDeviceModel.h"
 
-#define PARAMCONTROL parameterController
-#define CONTROLLER  parameterController.
 
 // modelConstructionTools.parameterController.
   void SynthDeviceModel::PreDeployModel()
@@ -91,16 +89,16 @@
 	  //
 
 		  
-		  
-		  
-		  
-		  
-		  
-	 
+		//  
+		//  
+		//  
+		//  
+		//  
+	 //
 
-		MODULATIONS Deploy(parameterController);
-		OPMCONTROL Deploy(parameterController);
-		COMPONENTS Deploy(parameterController);
+		//MODULATIONS Deploy(parameterController);
+		//OPMCONTROL Deploy(parameterController);
+		//COMPONENTS Deploy(parameterController);
 	  
 	
   }
@@ -119,30 +117,30 @@
 	 // modelConstructionTools.parameterController.Setup(parameters, processor);
 	  //parameterController.Setup(parameters, processor);
 
-	  MODULATIONS ConstructComponentAndChildComponentParameters(parameterController, parameters);
+	  /*MODULATIONS ConstructComponentAndChildComponentParameters(parameterController, parameters);
 	  OPMCONTROL ConstructComponentAndChildComponentParameters( parameterController, parameters);
-	  COMPONENTS ConstructComponentAndChildComponentParameters(parameterController, parameters);
+	  COMPONENTS ConstructComponentAndChildComponentParameters(parameterController, parameters);*/
 	  
 	  parameters.state = ValueTree("BassZero");
 
   }
 
-  void SynthDeviceModel::CollectAllParameters(SharedPointerVector<imbControlParameter>& parameters)
-  {
-	  components.CollectAllParameterDefinitions(parameters);
-	  opmControl.CollectAllParameterDefinitions(parameters);
-	  modulations.CollectAllParameterDefinitions(parameters);
+  //void SynthDeviceModel::CollectAllParameters(SharedPointerVector<imbControlParameter>& parameters)
+  //{
+	 // /*components.CollectAllParameterDefinitions(parameters);
+	 // opmControl.CollectAllParameterDefinitions(parameters);
+	 // modulations.CollectAllParameterDefinitions(parameters);*/
 
-  }
+  //}
 
 
 
-  void SynthDeviceModel::AddGroup(ControlGroup * output, std::string _shortName, std::string _longName, ControlGroup * group)
-  {
-	  output->ShortName = _shortName;
-	  output->LongName = _longName;
-	  Groups.Add(output);
-  }
+  //void SynthDeviceModel::AddGroup(ControlGroup * output, std::string _shortName, std::string _longName, ControlGroup * group)
+  //{
+	 // output->ShortName = _shortName;
+	 // output->LongName = _longName;
+	 // Groups.Add(output);
+  //}
 
   //SynthDeviceModel::SynthDeviceModel()
   //{

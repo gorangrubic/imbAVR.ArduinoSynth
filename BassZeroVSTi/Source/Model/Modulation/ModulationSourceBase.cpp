@@ -10,6 +10,6 @@
 
 #include "ModulationSourceBase.h"
 
-ModulationSourceBase::ModulationSourceBase()
-{
-}
+//ModulationSourceBase::ModulationSourceBase()
+//{
+//}

@@ -38,8 +38,8 @@ public:
 /// </summary>
 	void Deploy(ParameterController & parameterController);
 
-	ModulationFunctionLFO(std::string _name = "", std::string _label = "")
-		: ModulationSourceBase(_name, _label, "LFO functions are oscilating from zero to Value and back to zero, in each cycle (Time x Time Factor). CHAOS function moves from Last Target Value to Current Target Value, where New Target Value	is set to random value between 0 and Spread, after each cycle(Time x Time Factor).") {
+	ModulationFunctionLFO(std::string _name = "", std::string _label = "", bool _isMaster = false)
+		: ModulationSourceBase(_name, _label, _isMaster, "LFO functions are oscilating from zero to Value and back to zero, in each cycle (Time x Time Factor). CHAOS function moves from Last Target Value to Current Target Value, where New Target Value	is set to random value between 0 and Spread, after each cycle(Time x Time Factor).") {
 
 		type = ModulationSourceType::LFO;
 		elementClassRole = "ModulationFunctionLFO";

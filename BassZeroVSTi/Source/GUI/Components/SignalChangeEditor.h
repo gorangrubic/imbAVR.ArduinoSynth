@@ -37,9 +37,7 @@
 */
 class SignalChangeEditor  : public Component,
                             public imbSynthGUIComponent,
-                            public ComboBox::Listener,
-                            public Slider::Listener,
-                            public Button::Listener
+                            public Slider::Listener
 {
 public:
     //==============================================================================
@@ -52,9 +50,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
 
 
 
@@ -64,17 +60,12 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<ComboBox> Mode;
-    std::unique_ptr<Label> label;
     std::unique_ptr<Slider> Rate;
     std::unique_ptr<Label> label2;
     std::unique_ptr<Slider> Period;
     std::unique_ptr<Label> label3;
     std::unique_ptr<Slider> Change;
     std::unique_ptr<Label> label4;
-    std::unique_ptr<ToggleButton> toggle_Enabled;
-    std::unique_ptr<ToggleButton> toggle_Sync;
-    std::unique_ptr<ToggleButton> toggle_Chaos;
 
 
     //==============================================================================

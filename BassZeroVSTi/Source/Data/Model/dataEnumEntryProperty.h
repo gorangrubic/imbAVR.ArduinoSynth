@@ -23,7 +23,7 @@ public:
 	dataEnumEntryProperty(int _enum, std::string _label = "", std::string _description = "", std::string _entryColorHex = "#FFFFFFFF", std::string _helpUrl = "", std::string _id="")
 		:dataIntProperty(juce::String(_enum).toStdString(), _enum, _label, _description, "", _helpUrl) {
 		entryColorHex = _entryColorHex;
-
+		elementClassRole = "dataEnumEntryProperty";
 		if (!_id.empty()) parameterID = _id;
 
 		//SetIntValue(_val);

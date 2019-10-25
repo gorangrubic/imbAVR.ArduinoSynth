@@ -23,7 +23,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Data/imbSynthStateData.h"
 #include "../Components/imbSynthGUIComponent.h"
-#include "../Source/Model/Core/ModelModulatedControl.h"
+#include "../Source/Model/Components/ModelModulatedControl.h"
 //[/Headers]
 
 

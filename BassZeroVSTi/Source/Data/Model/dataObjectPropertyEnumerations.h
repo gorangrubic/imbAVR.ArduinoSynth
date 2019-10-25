@@ -32,6 +32,13 @@ public:
 	SafeEnum    operator ~() { SafeEnum  result(*this); result.mFlags = ~result.mFlags; return result; }
 
 
+	bool HasFlag(ENUM value)
+	{
+		UNDERLYING value_base = (UNDERLYING)value;
+		
+		return mFlags & value_base == value_base;
+	}
+
 	explicit operator bool() { return mFlags != 0; }
 
 protected:
@@ -49,6 +56,15 @@ namespace dataElementFeatures {
 		doUseAssignedColor = 1 << 5,
 		doSetValueByContextMenu = 1 << 6,
 		doAllowCopyPaste = 1 << 7,
+		hideGUIEditor = 1 << 8,
+		/* Element is  */
+		isDisabled = 1 << 9,
+		/* when true, the parameter will be declared in DAW even if isAutomatizable is flase  */
+		doDeclareInValueTree = 1 << 10,		
+		/// <summary>
+		/// minValue is less than zero, maxValue is above zero
+		/// </summary>
+		isSignedRange = 1 << 11,
 	};
 
 	typedef SafeEnum<enum _features> features;
@@ -73,6 +89,8 @@ enum class guiAttachedComponentType :unsigned int {
 	/// context menu for enum or boolean values
 	/// </summary>
 	contextMenu = 9,
+
+	parentComponent = 10
 };
 
 enum class parameterClass:int {

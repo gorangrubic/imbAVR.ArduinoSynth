@@ -1,13 +1,15 @@
 #pragma once
 
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "imbSynthGeneralConfiguration.h"
 #include "imbSynthStateUtilityData.h"
 #include "imbSynthStatePresetLibrary.h"
 #include "imbSynthPresetDefinition.h"
 #include "../Source/Application/GeneralDefinitions.h"
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "../Control/ParameterController.h"
+
+//#include "../Control/ParameterController.h"
 
 #include "../Source/Utility/ccTranslationMap.h"
 #include "../Source/Data/Structures/SharedPointerVector.h"
@@ -25,6 +27,8 @@
 
 #include "../Model/SynthDeviceModel.h"
 #include "../Source/Application/SynthApplicationEnvironment.h"
+#include "../Source/Data/Binding/dataInterfaceManager.h"
+
 
 
 class imbSynthStateData
@@ -32,23 +36,22 @@ class imbSynthStateData
     
 public:
 
+//
+
+	//IOManager
+
+	
 // ======================== Display models
 
-    std::unique_ptr<CommandBufferDisplayModel> bufferDisplayModel;
 
-	//std::shared_ptr<ControlStateDisplay> controlStateDisplay{ nullptr };
-
-	std::unique_ptr<ControlStateDisplayModel> controlDisplayModel;
-    
-	
-	//std::shared_ptr<SynthStateDisplay> synthStateDisplay{ nullptr };
-	std::unique_ptr<SynthStateDisplayModel> stateDisplayModel;
     
 	PresetFileBrowserModel libraryFileBrowserModel;
 
 
 // ======================== ENVIRONMENT DATA
 	std::unique_ptr<SynthApplicationEnvironment> environment;
+
+	dataInterfaceManager UIManager;
 
 	//std::shared_ptr<SynthApplicationFolderCollection> folders;
 
@@ -60,11 +63,11 @@ public:
 
 	juce::AudioProcessorValueTreeState * parameters;
 
-	SharedPointerVector<imbControlParameter> Parameters;
+	//SharedPointerVector<imbControlParameter> Parameters;
 
 	
 
-	SharedPointerMap<std::string, imbControlParameter> ParametersByIDPath;
+	//SharedPointerMap<std::string, imbControlParameter> ParametersByIDPath;
 
 	//ParameterController parameterController;
 
@@ -94,13 +97,11 @@ public:
 
 	void SaveCCMap(std::string filepath = "", ccTranslationMapRole mapRole = ccTranslationMapRole::unknown);
 
-	
-	std::string inFocusParameterID{ "" };
 
 	
 	void Initiated();
 
-	void SetParameterInFocus(std::string parameterIDPath);
+
 
 
 	imbSynthStateData(SynthDeviceModel * _model, juce::AudioProcessorValueTreeState * _parameters) :
@@ -110,9 +111,9 @@ public:
 		configuration(environment->ioPorts),
 		InputToHardwareMap(new ccTranslationMap()),
 		HardwareToOutputMap(new ccTranslationMap()),
-		bufferDisplayModel(new CommandBufferDisplayModel()),
-		controlDisplayModel(new ControlStateDisplayModel(InputToHardwareMap, HardwareToOutputMap,environment)),
-		stateDisplayModel( new SynthStateDisplayModel() ),
+		//bufferDisplayModel(new CommandBufferDisplayModel()),
+		//controlDisplayModel(new ControlStateDisplayModel(InputToHardwareMap, HardwareToOutputMap,environment)),
+		//stateDisplayModel( new SynthStateDisplayModel() ),
 		libraryFileBrowserModel{ PresetFileBrowserModel() }
 	{
 

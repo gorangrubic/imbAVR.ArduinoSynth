@@ -37,8 +37,8 @@ public:
 
 	
 
-	ModulationFunctionADSR(std::string _name = "", std::string _label = "")
-		: ModulationSourceBase(_name, _label, "ADSR functions start with the Initial value. At end of the attack period value reaches the maximum (peak). Afterwards, the value decays to Sustain value and waits for Note Off MIDI event to fall(release) to zero.") {
+	ModulationFunctionADSR(std::string _name = "", std::string _label = "", bool _isMaster = false)
+		: ModulationSourceBase(_name, _label, _isMaster, "ADSR functions start with the Initial value. At end of the attack period value reaches the maximum (peak). Afterwards, the value decays to Sustain value and waits for Note Off MIDI event to fall(release) to zero.") {
 
 		type = ModulationSourceType::ADSR;
 		elementClassRole = "ModulationFunctionADSR";

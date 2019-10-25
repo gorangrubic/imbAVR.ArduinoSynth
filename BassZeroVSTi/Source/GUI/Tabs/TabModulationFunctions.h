@@ -43,7 +43,8 @@
                                                                     //[/Comments]
 */
 class TabModulationFunctions  : public Component,
-                                public imbSynthGUIComponent
+                                public imbSynthGUIComponent,
+                                public Slider::Listener
 {
 public:
     //==============================================================================
@@ -56,6 +57,7 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
+    void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
     // Binary resources:
     static const char* background1_jpg;
@@ -88,6 +90,12 @@ private:
     std::unique_ptr<Label> label_WFA10;
     std::unique_ptr<Label> label_WFA11;
     std::unique_ptr<Label> label_WFA12;
+    std::unique_ptr<Label> label_OPM2;
+    std::unique_ptr<Slider> CTRLA;
+    std::unique_ptr<Slider> CTRLB;
+    std::unique_ptr<Slider> CTRLC;
+    std::unique_ptr<Slider> CTRLC2;
+    std::unique_ptr<Slider> CTRLC3;
     Image cachedImage_background1_jpg_1;
 
 

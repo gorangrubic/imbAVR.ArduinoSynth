@@ -11,7 +11,17 @@
 #include "dataElementBase.h"
 
 
-void dataElementBase::SetHelp(std::string _parameterHelp, std::string _parameterHelpUrl, std::string _parameterUnit)
+Colour dataElementBase::GetEntryColor()
+  {
+	if (!entryColorHex.empty()) {
+		return imbGeneralTools::ColorFromHex(entryColorHex);
+	} else
+	{
+		return imbGeneralTools::ColorFromHex(String("#00000000"));
+	}
+  }
+
+  void dataElementBase::SetHelp(std::string _parameterHelp, std::string _parameterHelpUrl, std::string _parameterUnit)
   {
 	if (!_parameterHelp.empty()) parameterHelp = _parameterHelp;
 	if (!_parameterHelpUrl.empty()) parameterHelpUrl = _parameterHelpUrl;

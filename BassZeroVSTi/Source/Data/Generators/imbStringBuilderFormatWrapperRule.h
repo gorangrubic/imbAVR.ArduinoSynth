@@ -16,13 +16,13 @@ class imbStringBuilderFormatWrapperRule:public imbStringBuilderFormatRule {
     std::string prefix {""};
     std::string suffix {""};
     
-    enum class StateVariable {
-     
-        none=0,
-        tabLevel,
-        listLevel,
-        blockLevel
-    }
+	enum class StateVariable {
+
+		none = 0,
+		tabLevel,
+		listLevel,
+		blockLevel
+	};
     
     StateVariable doRepeatSuffixVariable = StateVariable::none;
     StateVariable doRepeatPrefixVariable = StateVariable::none;

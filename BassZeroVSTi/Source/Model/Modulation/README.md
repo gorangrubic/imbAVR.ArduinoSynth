@@ -33,3 +33,13 @@ final output of the parameter.
 Combo menu (below the sliders) value sets what
 modulation source (function) is used, or 
 if modulation is disabled (when OFF).
+
+# Modulation of Modulation Functions
+
+## Primary modulation sources
+
+Modulation functions can have predefined role as:
++ Master
++ Slave
+
+The Master functions are able to modulate parameters of the Slave functions. In case of BassZero, all ADSRs and two LFOs are designated as Masters, meaning that they can modulate Slave LFOs' and ENVs' parameters like Value or Time. 

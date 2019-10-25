@@ -10,118 +10,81 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "Core\ModelComponentDescription.h"
+#include "../Source/Data/Model/dataObject.h"
+
+#include "../Source/Model/Components/ModelModulatedControl.h"
+#include "../Source/Model/Components/OscilatorBase.h"
+#include "../Source/Model/Components/MacroControlLink.h"
+#include "../Source/Model/Components/OPMSignalUnitChange.h"
 
 
-#include "../Data/Structures/SharedPointerVector.h"
+//#include "../Control/ParameterController.h"
 
-
-
-#include "../Control/ParameterController.h"
-#include "../Control/imbControlParameter.h"
 //
 //#include "Components\OscilatorWaveform.h"
 //#include "Components\OscilatorPerk.h"
 
-#include "Modulation\ModulationFunctionADSR.h"
-#include "Modulation\ModulationFunctionENV.h"
-#include "Modulation\ModulationFunctionLFO.h"
-#include "Modulation\ModulationSourceMacroControl.h"
-#include "Modulation\ModulationSourceMIDI.h"
-#include "Modulation\ModulationSourceBase.h"
+#include "../Source/Model/Modulation/ModulationFunctionADSR.h"
+#include "../Source/Model/Modulation/ModulationFunctionENV.h"
+#include "../Source/Model/Modulation/ModulationFunctionLFO.h"
+#include "../Source/Model/Modulation/ModulationSourceMacroControl.h"
 
-#include "..\Source\Model\ModelConstructionTools.h"
-#include "../Source/Model/Core/ControlGroup.h"
-
-#include "Modulation\ModulationHub.h"
-#include "Components\ComponentHub.h"
-#include "OPM\OPMControlModel.h"
-
-#include "../Source/Model/Core/ControlGroup.h"
-
-//#include "SynthDeviceModelComponentBase.h"
-
-#define MODULATIONS modulations.
-#define OPMCONTROL opmControl.
-#define COMPONENTS components.
+//#include "../Source/Model/ModelConstructionTools.h"
 
 #include <vector>
 
 //#include "../Source/Control/imbSynthAudioProcessor.h"
-static juce::String MODHUB_ID = juce::String("MOD");
-static juce::String MODHUB_LABEL = juce::String("Modulation sources");
+//static String MODHUB_ID = String("MOD");
+//static String MODHUB_LABEL = String("Modulation sources");
+//
+//static String COMP_ID = String("COMP");
+//static String COMP_LABEL = String("Synth Components");
+//
+//static String OPM_ID = String("OPM");
+//static String OPM_LABEL = String("Operation Mode Control");
 
-static juce::String COMP_ID = juce::String("COMP");
-static juce::String COMP_LABEL = juce::String("Synth Components");
-
-static juce::String OPM_ID = juce::String("OPM");
-static juce::String OPM_LABEL = juce::String("Operation Mode Control");
-
-class SynthDeviceModel : 
-	public ModelComponentWithChildren
+class SynthDeviceModel :public dataObject
 	//public SynthDeviceModelComponentBase
 
-{ //: {
- 
+{
+	//: {
 
 
-		/// <summary>
-	/// The synth processor
-	/// </summary>
-//	imbSynthAudioProcessor * SynthProcessor;
-    
-    public:
+	/// <summary>
+/// The synth processor
+/// </summary>
+	//	imbSynthAudioProcessor * SynthProcessor;
 
-		ModulationHub modulations;
-		ComponentHub components;
-		OPMControlModel opmControl;
+public:
 
-		//std::unique_ptr<ParameterController> parameterUnique;
+	void PreDeployModel();
+	void AfterDeployModel();
 
-	//std::unique_ptr<ModulationHub> modulations;
-	//std::unique_ptr<ComponentHub> components;
-	//std::unique_ptr<OPMControlModel> opmControl;
-
-		void PreDeployModel();
-		void AfterDeployModel();
-
-		
-		
-		/// <summary>
-		/// The parameter controller - machanism for CC / SysExc ID synthnronization
-		/// </summary>
-		ParameterController parameterController;
-
-
-
-		SharedPointerVector<ControlGroup> Groups;
-		
-		/// <summary>
+	
+	/// <summary>
 /// Deploys this instance.
 /// </summary>
-		void Deploy();
+	void Deploy();
 
-		void ConstructParameters(juce::AudioProcessorValueTreeState & parameters);
+	void ConstructParameters(AudioProcessorValueTreeState& parameters);
 
-		/* Populates specified vector with all parameters defined in the model*/
-		void CollectAllParameters(SharedPointerVector<imbControlParameter> & parameters);
-
-
-		/*Deploys model*/
-		virtual void DeployModel() = 0;
+	/* Populates specified vector with all parameters defined in the model*/
+	//void CollectAllParameters(SharedPointerVector<imbControlParameter>& parameters);
 
 
-		void AddGroup(ControlGroup * output, std::string _shortName, std::string _longName, ControlGroup * group = nullptr);
+	/*Deploys model*/
+	virtual void DeployModel() = 0;
 
+	std::string version;
 
-		SynthDeviceModel() :ModelComponentWithChildren("Main", "Main","Synth"),
-			//parameterController(),
-			modulations(), 
-			components(), 
-			opmControl()
-		{ 
-		
-		};
+	//void AddGroup(ControlGroup* output, std::string _shortName, std::string _longName, ControlGroup* group = nullptr);
+
+	
+	SynthDeviceModel(std::string _name = "", std::string _label = "", std::string _version="", std::string _description = "", std::string _helpUrl = "")
+		: dataObject(_name, _label, _description, "", _helpUrl) 
+	{
+				version = _version;
+	};
 
 	/*	SynthDeviceModel(String _shortName, String _longName) :SynthDeviceModelComponentBase(NULL, NULL, _shortName, _longName) {
 		

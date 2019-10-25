@@ -29,6 +29,18 @@ bool dataObjectPropertyBase::setValue(float _newValue)
 	return isNewValue;
 }
 
+void dataObjectPropertyBase::attachState(juce::AudioProcessorValueTreeState & parameters)
+{
+}
+
+void dataObjectPropertyBase::updateState()
+{
+}
+
+  void dataObjectPropertyBase::parameterChanged(const String &, float newValue)
+  {
+  }
+
 bool dataObjectPropertyBase::SetStrValue(std::string _newValue)
 {
 	bool isNewValue = false;
@@ -110,6 +122,41 @@ bool dataObjectPropertyBase::GetBoolValue()
 	return Value > 0.5;
 }
 
+char dataObjectPropertyBase::GetCCByteValue()
+{
+	auto vRange = MaxValue - MinValue;
+
+	float vUnit = 127 / vRange;
+
+	char ccZeroPoint = (MinValue / vRange) * 127;
+
+	char output = (Value* vUnit) -ccZeroPoint;
+	
+	/*if (MinValue < 0)
+	{
+		ccZeroPoint = (std::abs(MinValue) / vRange) * 127;
+	} else
+	{
+		
+	}*/
+	
+	return output;
+}
+
+bool dataObjectPropertyBase::SetCCByteValue(char _ccValue)
+{
+	auto vRange = MaxValue - MinValue;
+
+	float vUnit = 127 / vRange;
+
+	char ccZeroPoint = (MinValue / vRange) * 127;
+
+	float output = (_ccValue + ccZeroPoint) / vUnit;
+
+	return SetValue(output);
+	//char output = (Value* vUnit) - ccZeroPoint;
+}
+
 String dataObjectPropertyBase::GetStringValue()
 {
 	juce::String output = juce::String(Value);
@@ -151,7 +198,7 @@ String dataObjectPropertyBase::GetStringValue()
 	}
 	return output;
 }
-
+/*
 void dataObjectPropertyBase::attachControl(Slider * _slider)
 {
 	detachControl();
@@ -240,7 +287,7 @@ void dataObjectPropertyBase::attachControl(imbSynthParameterEditor * _editor)
 	
 	updateAll();
 }
-
+*/
 
 //void dataObjectPropertyBase::SetHelp(String _parameterHelp, String _parameterHelpUrl, String _parameterUnit)
 //{

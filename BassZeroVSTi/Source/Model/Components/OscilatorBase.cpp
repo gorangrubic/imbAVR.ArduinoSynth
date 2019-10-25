@@ -9,7 +9,3 @@
 */
 
 #include "OscilatorBase.h"
-
-OscilatorBase::OscilatorBase()
-  {
-  }

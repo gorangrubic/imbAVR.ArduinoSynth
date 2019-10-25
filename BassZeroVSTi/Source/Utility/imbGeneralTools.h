@@ -28,4 +28,21 @@ class imbGeneralTools {
 		/* makes color from Boris >:) */
 		static Colour ColorFromHex(std::string hexCode);
 
+		
+		static std::string GetParentPath(std::string path, int steps = 1, bool emptyOnRoot=true);		
+
+		/// <summary>
+		/// Gets the path version: when [steps] > 0, returns first [steps] nodes of path. if [steps] < 0, returns last [steps] nodes of path
+		/// </summary>
+		/// <param name="path">The path.</param>
+		/// <param name="steps">The steps.</param>
+		/// <param name="emptyOnRoot">if set to <c>true</c> [empty on root].</param>
+		/// <returns></returns>
+		static std::string GetPathVersion(std::string path, int steps = 1, bool emptyOnRoot = true);
+
+
+		static std::string Append(std::string left, std::string right, std::string separator=".");
+
+		static int Count(std::string input, std::string needle = ".");
+
 };

@@ -25,6 +25,7 @@ public:
 		:dataObjectProperty(_id, parameterValueType::Boolean, _label, _description, _unit, _helpUrl, 0,0,_parClass,_features) {
 		SetBoolValue(_val);
 
+		elementClassRole = "dataBoolProperty";
 	
 	}
 };

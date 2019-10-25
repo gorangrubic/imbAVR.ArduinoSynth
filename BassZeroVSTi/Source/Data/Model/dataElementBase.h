@@ -11,7 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "dataObjectPropertyEnumerations.h"
-
+#include "../Source/Utility/imbGeneralTools.h"
 
 class dataElementBase {
 
@@ -32,7 +32,7 @@ public:
 
 	/* Color-code */
 	std::string entryColorHex;
-
+	Colour GetEntryColor();
 
 	std::string parameterID = "";
 	std::string parameterLabel = "";
@@ -69,6 +69,9 @@ public:
 
 	dataElementBase(std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none) {
 
+		features |= dataElementFeatures::_features::doAllowCopyPaste;
+		
+		
 		parClass = _parClass;
 		features |= _features;
 

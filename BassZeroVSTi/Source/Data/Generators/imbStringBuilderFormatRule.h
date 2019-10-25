@@ -10,6 +10,8 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "imbStringBuilderState.h"
+
 class imbStringBuilderFormatRule {
  
     public:

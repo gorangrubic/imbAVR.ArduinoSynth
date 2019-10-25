@@ -37,7 +37,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 {
     //[Constructor_pre] You can add your own custom stuff here..
 	tooltipWindow.reset(new TooltipWindow(this, 700));
-	
+
     //[/Constructor_pre]
 
     setName ("BassZero VSTi");
@@ -81,7 +81,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 	//startTimer(GUIREFRESH_TIMEINTERVAL);
 	auto tlw = juce::TopLevelWindow::getActiveTopLevelWindow();
 	auto icon = ImageCache::getFromMemory(BinaryData::veles_template_blue_ico, BinaryData::veles_template_blue_icoSize);
-	
+
 	auto activeWindow = juce::TopLevelWindow::getActiveTopLevelWindow();
 	if (activeWindow)
 	{
@@ -90,7 +90,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 		window->setMenuBar(nullptr);
 		window->setMenuBarComponent(nullptr);
 	}
-	else 
+	else
 	{
 
 	}
@@ -101,7 +101,7 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
 	//auto ic = BinaryData::getNamedResourceOriginalFilename("veles_template_blue.ico");
 	//juce::Image im = juce::Image(BinaryData::veles_template_blue_ico);
 	//DrawableImage di = DrawableImage();
-	
+
 //	juce::DocumentWindow::setIcon(icon);
 //	tlw->addAndMakeVisible(tooltipWindow.get());
 	addAndMakeVisible(tooltipWindow.get());

@@ -196,8 +196,8 @@ void imbControlParameter::Setup(String _parameterID, String _parameterLabel,
 
 	ccID = _ccID;
 
-	isAutomatizable = _isAutomatizable;
-	isDescreteValue = false;
+	//isAutomatizable = _isAutomatizable;
+	//isDescreteValue = false;
 
 	switch (typeParameter) {
 	case imbControlParameterType::Integer:
@@ -273,25 +273,25 @@ void imbControlParameter::parameterChanged(const String &, float newValue)
 
 void imbControlParameter::attachState(juce::AudioProcessorValueTreeState & parameters)
 {
-	auto existingPar = parameters.getParameter(parameterIDPath);
+	//auto existingPar = parameters.getParameter(parameterIDPath);
 
-	if (existingPar != nullptr) {
+	//if (existingPar != nullptr) {
 
-		Error = "---- DUPLICATED PARAMETER ID PATH";
-	}
-	else {
+	//	Error = "---- DUPLICATED PARAMETER ID PATH";
+	//}
+	//else {
 
-		NormalisableRange<float> valueRange = NormalisableRange<float>(MinValue, MaxValue, IntervalValue);
+	//	NormalisableRange<float> valueRange = NormalisableRange<float>(MinValue, MaxValue, IntervalValue);
 
-		pParameter = std::shared_ptr<juce::RangedAudioParameter>(parameters.createAndAddParameter(parameterIDPath,
-			parameterID, parameterLabel, valueRange, Value, nullptr, nullptr,
-			isMetaValue, isAutomatizable, isDescreteValue,
-			category, typeParameter == imbControlParameterType::Boolean));
+	//	pParameter = std::shared_ptr<juce::RangedAudioParameter>(parameters.createAndAddParameter(parameterIDPath,
+	//		parameterID, parameterLabel, valueRange, Value, nullptr, nullptr,
+	//		isMetaValue, isAutomatizable, isDescreteValue,
+	//		category, typeParameter == imbControlParameterType::Boolean));
 
-		parameters.addParameterListener(parameterIDPath, this);
-	}
-	
-	updateTooltip();
+	//	parameters.addParameterListener(parameterIDPath, this);
+	//}
+	//
+	//updateTooltip();
 
 	//updateState();
 }

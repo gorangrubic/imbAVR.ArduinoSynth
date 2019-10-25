@@ -124,21 +124,7 @@ public:
 	//void attachControl(ToggleButton* _button);
 	//void attachControl(imbSynthParameterEditor* _editor);
 
-	void attachState(juce::AudioProcessorValueTreeState & parameters);
 
-	//void updateGUI();
-	void updateState();
-	//void updateTooltip();
-	
-	std::shared_ptr<juce::RangedAudioParameter> pParameter;
-
-	//std::shared_ptr<Slider> pSlider;
-	//std::shared_ptr<ComboBox> pComboBox;
-	//std::shared_ptr<ToggleButton> pToggleButton;
-	//std::shared_ptr<imbSynthParameterEditor> pParameterEditor;
-	
-
-	void parameterChanged(const String&, float newValue) override;
 
 	
 	

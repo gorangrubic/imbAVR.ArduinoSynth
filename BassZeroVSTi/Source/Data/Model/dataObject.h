@@ -16,6 +16,10 @@
 #include "dataElementContainer.h"
 
 
+
+#include "../Source/Application/SynthApplicationEnvironment.h"
+
+
 class dataObject: public dataElementContainer {
 
 protected:
@@ -41,9 +45,11 @@ public:
 
 	void Deploy(std::string prefix = "") override;
 
+	virtual void SetEnvironment(SynthApplicationEnvironment & environment);
+
 	dataObject(std::string _name="", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "",parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none)
 	:dataElementContainer(_name, _label, _description,_unit,_helpUrl) {
-
+	
 	}
 
 };

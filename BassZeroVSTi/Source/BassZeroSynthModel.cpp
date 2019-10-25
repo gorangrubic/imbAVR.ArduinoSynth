@@ -45,7 +45,7 @@ void BassZeroSynthModel::DeployModel()
 	MODULATIONS AddMacroControl(new ModulationSourceMacroControl());
 	MODULATIONS AddMacroControl(new ModulationSourceMacroControl());
 
-	
+
 	// =================== Deploying Macro Control Links
 	OPMCONTROL AddMacroControlLink(&MODA_MCL1, "MODA_MCL1", "OPM Macro Modulation A - 1");
 	OPMCONTROL AddMacroControlLink(&MODA_MCL2, "MODA_MCL2", "OPM Macro Modulation A - 2");
@@ -57,7 +57,7 @@ void BassZeroSynthModel::DeployModel()
 	OPMCONTROL AddMacroControlLink(&VALC_MCL1, "VALC_MCL1", "OPM Macro Value C");
 	OPMCONTROL AddMacroControlLink(&VALC_MCL2, "VALC_MCL2", "OPM Macro Value C");
 
-	
+
 
 
 	// =================== OPM Control parameters for the signal generator units
@@ -78,7 +78,7 @@ void BassZeroSynthModel::DeployModel()
 	FLT_RESA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
 	FLT_RESA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Phase, LabelString_Phase);
 
-	
+
 	OPMCONTROL AddSignalUnit(&OPM_PERKA, "PERKA_OSC", "PERK A");
 	OPM_PERKA.AddChangeUnit(new OPMSignalUnitChange(), NameString_PWM, LabelString_PWM);
 	OPM_PERKA.AddChangeUnit(new OPMSignalUnitChange(), NameString_Pitch, LabelString_Pitch);
@@ -105,7 +105,7 @@ void BassZeroSynthModel::DeployModel()
 
 	COMPONENTS AddModulatedControl(&MST_Pan, "MstPan", "Master PAN", &MST_Group);
 	COMPONENTS AddModulatedControl(&MST_Amp, "MstAmp", "Master AMP", &MST_Group);
-	
+
 	COMPONENTS AddModulatedControl(&MST_FLT_CUT, "FLT_Cut", "Master CutOff", &MST_Group);
 	COMPONENTS AddModulatedControl(&MST_FLT_RES, "FLT_Res", "Master Resonance", &MST_Group);
 
@@ -118,7 +118,7 @@ void BassZeroSynthModel::DeployModel()
 	COMPONENTS AddModulatedControl(&OSC_WF_MIX, "WF_Mix", "WF A/B Mix", &MST_Group);
 	COMPONENTS AddModulatedControl(&OSC_WF_FLT, "WF_FLT", "WF A/B Filter mix", &MST_Group);
 
-	COMPONENTS AddPitchAndPhaseControl(&WFA, "WFA", "Waveform A", &WFA_Group); 
+	COMPONENTS AddPitchAndPhaseControl(&WFA, "WFA", "Waveform A", &WFA_Group);
 	COMPONENTS AddModulatedControl(&WFA_PWM, "WFA_PWM", "PWM for Waveform A", &WFA_Group);
 	COMPONENTS AddModulatedControl(&WFA_Shaper, "WFA_Shaper", "Shape modulation for WFA", &WFA_Group);
 
@@ -139,7 +139,7 @@ void BassZeroSynthModel::DeployModel()
 	// =========================== OPM Macro Controls
 	COMPONENTS AddModulatedControl(&OPM_MODA, "OPM_MODA", "Modulated parameter A", &OPM_Group);
 	COMPONENTS AddModulatedControl(&OPM_MODB, "OPM_MODB", "Modulated parameter B", &OPM_Group);
-	
+
 
 	
 	/*COMPONENTS AddCCParameter(parameterController, &CTRL_A, "CTRLA", "Macro control A", 0, 0, 127, -1, true, imbControlParameterMessageType::ccMIDI);

@@ -35,7 +35,6 @@
 #include "../Components/SourceMixerComponent.h"
 #include "../Components/SourceMixerComponent.h"
 #include "../Components/SourceMixerComponent.h"
-#include "../Components/OPMMacroControlEditor.h"
 
 
 //==============================================================================
@@ -100,7 +99,6 @@ private:
     std::unique_ptr<Label> Title15;
     std::unique_ptr<Label> label_OPM6;
     std::unique_ptr<Label> Title12;
-    std::unique_ptr<OPMMacroControlEditor> OPM_Controls;
     std::unique_ptr<Label> label_OPM7;
     Image cachedImage_background1_jpg_1;
 

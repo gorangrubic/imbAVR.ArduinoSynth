@@ -23,6 +23,7 @@
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Data/imbSynthStateData.h"
 #include "../Components/imbSynthGUIComponent.h"
+#include "../Source/Model/Components/OscilatorBase.h"
 //[/Headers]
 
 #include "SignalChangeEditor.h"
@@ -41,9 +42,7 @@
                                                                     //[/Comments]
 */
 class SignalControlEditor  : public Component,
-                             public imbSynthGUIComponent,
-                             public Button::Listener,
-                             public ComboBox::Listener
+                             public imbSynthGUIComponent
 {
 public:
     //==============================================================================
@@ -56,35 +55,25 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-	std::shared_ptr<OPMSignalUnit> modelComponent;
+	std::shared_ptr<OscilatorBase> modelComponent;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<ToggleButton> toggle_PWMMode;
-    std::unique_ptr<ToggleButton> toggle_PitchRelative;
-    std::unique_ptr<Label> label;
     std::unique_ptr<SignalChangeEditor> PitchModulation;
     std::unique_ptr<PatternEditor8bit> PulsePattern;
     std::unique_ptr<SignalChangeEditor> PhaseModulation;
-    std::unique_ptr<ToggleButton> toggle_DoublePrescalar;
     std::unique_ptr<SignalChangeEditor> PWMModulation;
-    std::unique_ptr<ToggleButton> toggle_Enabled;
     std::unique_ptr<PatternEditor8bit> ModBytePattern;
     std::unique_ptr<Label> label3;
-    std::unique_ptr<ToggleButton> toggle_Sync;
     std::unique_ptr<Label> label2;
     std::unique_ptr<Label> label4;
     std::unique_ptr<Label> label5;
-    std::unique_ptr<ComboBox> PitchUnit;
     std::unique_ptr<Label> label6;
-    std::unique_ptr<Label> label7;
     std::unique_ptr<Label> label_SignalName;
 
 

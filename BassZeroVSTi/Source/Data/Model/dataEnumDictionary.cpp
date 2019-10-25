@@ -17,6 +17,13 @@ dataEnumEntryProperty * dataEnumDictionary::FindEntry(std::string _propertyID)
 	
 }
 
+dataEnumEntryProperty * dataEnumDictionary::FindEntry(int _propertyID)
+{
+	juce::String output = juce::String(_propertyID);
+	return GetPointerByID<dataEnumEntryProperty>(output.toStdString(), entries).get();
+
+}
+
 void dataEnumDictionary::AddEntry(int _enum, std::string _label, std::string _description, std::string _entryColorHex, std::string _helpUrl)
 {
 	auto e = new dataEnumEntryProperty(_enum, _label, _description, _entryColorHex, _helpUrl);

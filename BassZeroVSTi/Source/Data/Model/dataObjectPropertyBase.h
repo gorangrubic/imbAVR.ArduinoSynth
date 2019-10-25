@@ -10,29 +10,30 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/GUI/Components/imbSynthParameterEditor.h"
+//#include "../Source/GUI/Components/imbSynthParameterEditor.h"
 #include "dataObjectPropertyEnumerations.h"
 #include "../Source/Data/Structures/imbEnumerationList.h"
 #include "../Source/Utility/imbSynthTools.h"
 #include "../Source/Data/Model/dataElementBase.h"
 
-class dataObjectPropertyBase:public dataElementBase {
+
+class dataObjectPropertyBase
+:public dataElementBase,
+public AudioProcessorValueTreeState::Listener {
 
 protected:
 	/* indicating if GUI is currently updated by internal source */
 	bool isGUIUpdating = false;
 	bool isStateUpdating = false;
 
-	guiAttachedComponentType componentType = guiAttachedComponentType::unassigned;
+	//guiAttachedComponentType componentType = guiAttachedComponentType::unassigned;
 
-	std::shared_ptr<Slider> pSlider;
-	std::shared_ptr<ComboBox> pComboBox;
-	std::shared_ptr<ToggleButton> pToggleButton;
-	std::shared_ptr<TextEditor> pTextEditor;
-	std::shared_ptr<Label> pLabel;
-	std::shared_ptr<imbSynthParameterEditor> pParameterEditor;
-
-
+	//std::shared_ptr<Slider> pSlider;
+	//std::shared_ptr<ComboBox> pComboBox;
+	//std::shared_ptr<ToggleButton> pToggleButton;
+	//std::shared_ptr<TextEditor> pTextEditor;
+	//std::shared_ptr<Label> pLabel;
+	//std::shared_ptr<imbSynthParameterEditor> pParameterEditor;
 
 	
 
@@ -40,6 +41,18 @@ protected:
 
 public:
 
+	void attachState(juce::AudioProcessorValueTreeState & parameters);
+
+	//void updateGUI();
+	void updateState();
+	//void updateTooltip();
+
+	std::shared_ptr<juce::RangedAudioParameter> pParameter;
+	   
+	void parameterChanged(const String&, float newValue);
+
+
+	
 
 	parameterValueType valueType = parameterValueType::Float;
 
@@ -70,52 +83,13 @@ public:
 
 	bool GetBoolValue();
 
+	/* returns value remapped to CC range 0-127 */
+	char GetCCByteValue();
+	bool SetCCByteValue(char _ccValue);
+	
+
 	/* Gets String value */
 	String GetStringValue();
-
-
-//	String parameterID = "";
-//	String parameterLabel = "";
-//
-//	// ========================== VSTi parameters
-///* Unique parameter ID that is used for ValueTree parameter ID and for storing parameters*/
-//	String parameterIDPath;
-//
-//	/// <summary>
-//	/// Short help on this parameter
-//	/// </summary>
-//	String parameterHelp;
-//
-//	/// <summary>
-//	/// URL with more information on the parameter
-//	/// </summary>
-//	String parameterHelpUrl;
-//
-//
-//	String parameterUnit;
-//
-//	/// <summary>
-//	/// Error message
-//	/// </summary>
-//	String Error;
-//
-//	/// <summary>
-///// Sets additional information on this parameter
-///// </summary>
-///// <param name="_parameterHelp">The parameter help.</param>
-///// <param name="_parameterHelpUrl">The parameter help URL.</param>
-///// <param name="_parameterUnit">The parameter unit.</param>
-//	void SetHelp(String _parameterHelp, String _parameterHelpUrl = "", String _parameterUnit = "");
-
-	std::function<void(std::string idPath)> onGUIFocus = nullptr;
-
-	void attachControl(Slider* _slider);
-	void attachControl(ComboBox* _comboBox);
-	void attachControl(ToggleButton* _button);
-	void attachControl(TextEditor* _textEditor);
-	void attachControl(Label* _textLabel);
-	void attachControl(imbSynthParameterEditor* _editor);
-
 
 
 	virtual void updateAll() = 0;
@@ -188,6 +162,12 @@ public:
 		if (MinValue != MaxValue) {
 			features |= dataElementFeatures::isValueRanged;
 		}
+
+		if (MinValue < 0)
+		{
+			features |= dataElementFeatures::isSignedRange;
+		}
+		
 
 		valueType = _valueType;
 	};

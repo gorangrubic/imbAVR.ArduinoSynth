@@ -32,18 +32,18 @@ public:
 	//}
 
 
-	imbEnumerationList ListOfPitchUnits;
-	imbEnumerationList ListOfModulationModes;
-	imbEnumerationList ListOfModulationFunctions;
-	imbEnumerationList ListOfModulationParameters;
+	//imbEnumerationList ListOfPitchUnits;
+	//imbEnumerationList ListOfModulationModes;
+	//imbEnumerationList ListOfModulationFunctions;
+	//imbEnumerationList ListOfModulationParameters;
 
-	imbEnumerationList ListOfSignalUnits;
+	//imbEnumerationList ListOfSignalUnits;
 
-	imbEnumerationList ListOfMacroLinks;
+	//imbEnumerationList ListOfMacroLinks;
 
-	imbEnumerationList ListOfSources;
+	//imbEnumerationList ListOfSources;
 
-	imbEnumerationList ListOfLFOFunctions;
+	//imbEnumerationList ListOfLFOFunctions;
 
 	//std::vector<String> AttachedToState;
 
@@ -60,7 +60,7 @@ public:
 	unsigned int CurrentPage = 0;
 	unsigned int CurrentRow = 0;
 
-	void Setup(juce::AudioProcessorValueTreeState * _parameters);
+	
 	
 	/// <summary>
 	/// Gets proper next identifier, according to given message type.

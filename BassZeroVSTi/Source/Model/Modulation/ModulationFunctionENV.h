@@ -36,8 +36,8 @@ public:
 /// </summary>
 	void Deploy(ParameterController & parameterController);
 
-	ModulationFunctionENV(std::string _name = "", std::string _label = "")
-		: ModulationSourceBase(_name, _label, "ENV is two-point interpolated function. Cycle starts with Level B (option), moves to Level A in period defined by Time A and moves back to Level B in period defined by Time B. ") {
+	ModulationFunctionENV(std::string _name = "", std::string _label = "", bool _isMaster = false)
+		: ModulationSourceBase(_name, _label, _isMaster, "ENV is two-point interpolated function. Cycle starts with Level B (option), moves to Level A in period defined by Time A and moves back to Level B in period defined by Time B. ") {
 		type = ModulationSourceType::ENV;
 		elementClassRole = "ModulationFunctionENV";
 

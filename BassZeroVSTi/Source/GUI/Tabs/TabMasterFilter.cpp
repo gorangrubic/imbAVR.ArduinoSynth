@@ -281,10 +281,6 @@ TabMasterFilter::TabMasterFilter (imbSynthStateData * synthState, String nameSuf
 
     Title12->setBounds (520, 32, 96, 16);
 
-    OPM_Controls.reset (new OPMMacroControlEditor (synthState, "OPM_Controls"));
-    addAndMakeVisible (OPM_Controls.get());
-    OPM_Controls->setBounds (8, 8, 192, 360);
-
     label_OPM7.reset (new Label ("new label",
                                  TRANS("WAVEFORM A/B")));
     addAndMakeVisible (label_OPM7.get());
@@ -344,7 +340,6 @@ TabMasterFilter::~TabMasterFilter()
     Title15 = nullptr;
     label_OPM6 = nullptr;
     Title12 = nullptr;
-    OPM_Controls = nullptr;
     label_OPM7 = nullptr;
 
 
@@ -550,9 +545,6 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="RESONANCE" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <JUCERCOMP name="" id="2e0054d4f6fc8b7c" memberName="OPM_Controls" virtualName=""
-             explicitFocusOrder="0" pos="8 8 192 360" sourceFile="../Components/OPMMacroControlEditor.cpp"
-             constructorParams="synthState, &quot;OPM_Controls&quot;"/>
   <LABEL name="new label" id="4f31b07a5f6c7dbe" memberName="label_OPM7"
          virtualName="" explicitFocusOrder="0" pos="216 8 192 24" bkgCol="ffed6216"
          textCol="fff0ffff" edTextCol="ff000000" edBkgCol="0" labelText="WAVEFORM A/B"

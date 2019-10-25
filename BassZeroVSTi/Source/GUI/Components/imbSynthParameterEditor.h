@@ -9,14 +9,22 @@
 */
 #pragma once
 #include "../../../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Data/Model/dataObjectProperty.h"
+
 /* custom editor for imbControlParameter */
-class imbSynthParameterEditor : public Component, public SettableTooltipClient {
- 
+class imbSynthParameterEditor //, public SettableTooltipClient {
+{
     	
 	public:
+
+		dataElementBase * target;
+
+		virtual void Deploy(dataElementBase *p_target) = 0;
 	
-		virtual void SetValue(float value) = 0;
-		virtual float GetValue() = 0;
+	
+		//virtual void SetValue(float value) = 0;
+		//
+		//virtual float GetValue() = 0;
 
 		//==============================================================================
 		/** You can assign a lambda to this callback object to have it called when the slider value is changed. */

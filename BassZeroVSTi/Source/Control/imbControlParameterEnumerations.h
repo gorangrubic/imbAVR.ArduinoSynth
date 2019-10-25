@@ -29,6 +29,12 @@ enum class ModulationSourceMIDIType {
 };
 
 
+enum class OscilatorType {
+	other=0,
+	waveform=1,
+	perk=2,
+	filter=3
+};
 
 
 
