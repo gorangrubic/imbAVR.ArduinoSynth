@@ -37,6 +37,8 @@
 #include "../Components/SourceMixerComponent.h"
 #include "../Components/SourceMixerComponent.h"
 #include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
+#include "../Components/SourceMixerComponent.h"
 
 
 //==============================================================================
@@ -102,6 +104,10 @@ private:
     std::unique_ptr<SourceMixerComponent> WFB_PWM;
     std::unique_ptr<Label> Title11;
     std::unique_ptr<SourceMixerComponent> WFB_Shaper;
+    std::unique_ptr<Label> Title12;
+    std::unique_ptr<SourceMixerComponent> WFA_Shaper2;
+    std::unique_ptr<Label> Title13;
+    std::unique_ptr<SourceMixerComponent> WFA_Shaper3;
     Image cachedImage_background1_jpg_1;
 
 

@@ -37,9 +37,10 @@
 //}
 
 void dataObject::Add(dataObject * _object)
-  {
+{
 	objects.Add(_object);
-  }
+	add(_object);
+}
 
 void dataObject::Add(dataObjectPropertyBase * _property)
 {
@@ -115,4 +116,13 @@ void dataObject::CallUpdate(bool update_all, bool update_gui, bool update_toolti
 	{
 		var->CallUpdate(update_all, update_gui, update_tooltip);
 	}
+}
+
+void dataObject::Deploy(std::string prefix)
+{
+	
+	deploy(prefix);
+
+
+	
 }

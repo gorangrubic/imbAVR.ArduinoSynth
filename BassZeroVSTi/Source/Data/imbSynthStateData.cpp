@@ -148,14 +148,14 @@ void imbSynthStateData::SaveCCMap(std::string filepath, ccTranslationMapRole map
 	});
 }
 
-void imbSynthStateData::Initiated(SynthApplicationFolderCollection * _folders)
+void imbSynthStateData::Initiated()
 {
-	folders = std::shared_ptr<SynthApplicationFolderCollection>(_folders);
+	//folders = std::shared_ptr<SynthApplicationFolderCollection>(_folders);
 
 	//ioPorts.deploy();
 	//configuration.ioSettings.Deploy(ioPorts);
 
-	configuration.LoadFile(folders->FolderSettings.GetFilepath(configuration), true);
+	configuration.LoadFile(environment->folders.FolderSettings.GetFilepath(configuration), true);
 
 
 	model->CollectAllParameters(Parameters);
@@ -170,6 +170,8 @@ void imbSynthStateData::Initiated(SynthApplicationFolderCollection * _folders)
 		ParametersByIDPath.Add(var->parameterIDPath, var.get());
 
 	}
+	
+	//controlDisplayModel.reset(new ControlStateDisplayModel(InputToHardwareMap, HardwareToOutputMap, environment.get()));
 
 	for each (auto var in Parameters)
 	{

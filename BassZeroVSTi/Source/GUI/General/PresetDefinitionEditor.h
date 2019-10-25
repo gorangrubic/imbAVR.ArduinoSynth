@@ -65,6 +65,8 @@ private:
     std::unique_ptr<TextEditor> text_preset_file;
     std::unique_ptr<Label> label4;
     std::unique_ptr<TextEditor> text_preset_file2;
+    std::unique_ptr<Label> label3;
+    std::unique_ptr<TextEditor> text_author;
 
 
     //==============================================================================

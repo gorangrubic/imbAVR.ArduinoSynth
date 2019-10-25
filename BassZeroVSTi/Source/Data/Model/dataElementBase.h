@@ -10,10 +10,29 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "dataObjectPropertyEnumerations.h"
+
 
 class dataElementBase {
 
+
+protected:
+
+	
+
 public:
+
+	/* if the element contains other elements */
+	dataElementFeatures::features features;
+
+	parameterClass parClass = parameterClass::ccLive;
+
+	/* custom pseudo class id */
+	std::string elementClassRole = "";
+
+	/* Color-code */
+	std::string entryColorHex;
+
 
 	std::string parameterID = "";
 	std::string parameterLabel = "";
@@ -48,7 +67,11 @@ public:
 /// <param name="_parameterUnit">The parameter unit.</param>
 	void SetHelp(std::string _parameterHelp, std::string _parameterHelpUrl = "", std::string _parameterUnit = "");
 
-	dataElementBase(std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "") {
+	dataElementBase(std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none) {
+
+		parClass = _parClass;
+		features |= _features;
+
 		parameterID = _name;
 		if (_label.empty()) {
 			parameterLabel = parameterID;
@@ -59,4 +82,6 @@ public:
 		
 		SetHelp(_description, _helpUrl, _unit);
 	}
+
+
 };

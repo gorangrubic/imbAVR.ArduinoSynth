@@ -36,65 +36,7 @@ typedef AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
 typedef AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
 
 
-
-struct IntegerListener : public AudioProcessorValueTreeState::Listener
-{
-	int& workingValue;
-
-	IntegerListener(int& wv) : AudioProcessorValueTreeState::Listener(), workingValue(wv) {}
-	void parameterChanged(const String&, float newValue) override
-	{
-		workingValue = (int)newValue;
-	}
-};
-
-template<typename EType>
-struct EnumListener : public AudioProcessorValueTreeState::Listener
-{
-	EType& waveform;
-
-	EnumListener(EType& wf) : AudioProcessorValueTreeState::Listener(), waveform(wf) {}
-	void parameterChanged(const String&, float newValue) override
-	{
-		waveform = (EType)((int)newValue);
-		
-	}
-};
-
-struct FloatListener : public AudioProcessorValueTreeState::Listener
-{
-	float& workingValue;
-	float scaleFactor;      // multiply parameter values by this to get working value
-
-	FloatListener(float& wv, float sf = 1.0f) : AudioProcessorValueTreeState::Listener(), workingValue(wv), scaleFactor(sf) {}
-	void parameterChanged(const String&, float newValue) override
-	{
-		workingValue = scaleFactor * newValue;
-	}
-};
-
-struct BoolListener : public AudioProcessorValueTreeState::Listener
-{
-	bool& workingValue;
-
-	BoolListener(bool& wv) : AudioProcessorValueTreeState::Listener(), workingValue(wv) {}
-	void parameterChanged(const String&, float newValue) override
-	{
-		workingValue = newValue >= 0.5f;
-	}
-};
-
-
-class imbProcessorParameterListener : public AudioProcessorParameter::Listener {
-
-	void parameterValueChanged(int parameterIndex, float newValue);
-
-	void parameterGestureChanged(int parameterIndex, bool gestureIsStarting);
-
-	imbProcessorParameterListener() {};
-};
-
-using pt = AudioProcessorValueTreeState::Parameter;
+//
 
 class imbControlParameter : 
 	public dataObjectPropertyBase,
@@ -106,11 +48,11 @@ class imbControlParameter :
 
 public:
 
-	parameterClass parClass = parameterClass::ccLive;
 
 
 
-	AudioProcessorParameter::Category category = AudioProcessorParameter::Category::genericParameter;
+
+	//AudioProcessorParameter::Category category = AudioProcessorParameter::Category::
 
 	// ============= setup methods
 
@@ -138,9 +80,9 @@ public:
 	std::string parameterParentPath;
 
 	
-	bool isMetaValue;
-	bool isAutomatizable;
-	bool isDescreteValue;
+	//bool isMetaValue;
+	//bool isAutomatizable;
+	//bool isDescreteValue;
 
 
 	// ========================== CC MIDI parameters
@@ -151,9 +93,7 @@ public:
 	imbControlParameterMessageType typeMIDIMessage = imbControlParameterMessageType::ccMIDI;
 
 	//float Value = 0;
-	float MinValue = 0;
-	float MaxValue = 0;
-	float IntervalValue = 1;
+
 
 
 	/// <summary>

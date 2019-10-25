@@ -40,14 +40,19 @@ protected:
 
 public:
 
+
 	parameterValueType valueType = parameterValueType::Float;
 
 	float Value = 0.0;
+
+	
+	float MinValue = 0;
+	float MaxValue = 0;
+	float IntervalValue = 1;
+
 	std::string ValueString = "";
 
-	parameterType type = parameterType::objectProperty;
-
-
+	
 
 	imbEnumerationList * enumerationList = nullptr;
 
@@ -111,7 +116,7 @@ public:
 	void attachControl(Label* _textLabel);
 	void attachControl(imbSynthParameterEditor* _editor);
 
-	juce::Rectangle<int> getBounds();
+
 
 	virtual void updateAll() = 0;
 
@@ -121,7 +126,68 @@ public:
 	
 	void updateTooltip();
 
-	dataObjectPropertyBase(parameterValueType _valueType = parameterValueType::Float, std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = ""):dataElementBase(_name,_label,_description,_unit,_helpUrl) {
+	dataObjectPropertyBase(parameterValueType _valueType = parameterValueType::Float, std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", float minValue=0, float maxValue=0, parameterClass _parClass = parameterClass::unspecified):dataElementBase(_name,_label,_description,_unit,_helpUrl) {
+
+		parClass = _parClass;
+
+		switch (parClass)
+		{
+		case parameterClass::unspecified:
+			break;
+		case parameterClass::ccLive:
+			features |= dataElementFeatures::isAutomatizable;
+			break;
+		case parameterClass::ccSustained:
+			features |= dataElementFeatures::isAutomatizable;
+			break;
+		case parameterClass::opm:
+			break;
+		case parameterClass::configuration:
+			break;
+		default:
+			break;
+		}
+
+		MinValue = minValue;
+		MaxValue = maxValue;
+		
+		switch (_valueType)
+		{
+		case parameterValueType::Integer:
+			IntervalValue = 1;
+			break;
+		case parameterValueType::Ratio:
+			if (MinValue == MaxValue) {
+				MinValue = 0;
+				MaxValue = 1;
+				IntervalValue = 0.05;
+			}
+			break;
+		case parameterValueType::Float:
+			if (MinValue != MaxValue) {
+
+				IntervalValue = (MaxValue - MinValue) / 20;
+			}
+			break;
+		case parameterValueType::Enumeration:
+			IntervalValue = 1;
+			break;
+		case parameterValueType::Boolean:
+			IntervalValue = 1;
+			MinValue = 0;
+			MaxValue = 1;
+			break;
+		case parameterValueType::String:
+			break;
+		case parameterValueType::Byte:
+			break;
+		default:
+			break;
+		}
+
+		if (MinValue != MaxValue) {
+			features |= dataElementFeatures::isValueRanged;
+		}
 
 		valueType = _valueType;
 	};

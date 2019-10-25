@@ -37,9 +37,7 @@
 */
 class ChaosEditor  : public Component,
                      public imbSynthGUIComponent,
-                     public Slider::Listener,
-                     public ComboBox::Listener,
-                     public Button::Listener
+                     public Slider::Listener
 {
 public:
     //==============================================================================
@@ -54,8 +52,6 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
 
 
 
@@ -86,13 +82,11 @@ private:
     //==============================================================================
     std::unique_ptr<Slider> Value;
     std::unique_ptr<Label> label2;
-    std::unique_ptr<ComboBox> Curve;
-    std::unique_ptr<ToggleButton> toggle_retrigger;
-    std::unique_ptr<ToggleButton> toggle_loop;
     std::unique_ptr<Label> label3;
     std::unique_ptr<Label> label5;
     std::unique_ptr<Slider> Time;
     std::unique_ptr<Slider> Factor;
+    std::unique_ptr<Label> Curve2;
 
 
     //==============================================================================

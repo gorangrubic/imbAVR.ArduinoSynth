@@ -16,17 +16,27 @@ class ModulationSourceMacroControl : public ModulationSourceBase {
 
 public:
 
-	imbControlParameter Value;
+	dataIntProperty Value = dataIntProperty("Value", 127, "Value", "Peak value of the LFO", "", "", 0, 127, parameterClass::ccLive);
+
+	dataEnumProperty Mode = dataEnumProperty("Mode", 0, "Mode", "Operation mode of the macro control", "", "", parameterClass::opm);
+
+	
 
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
 	void Deploy(ParameterController & parameterController);
 
-	ModulationSourceMacroControl();
+	ModulationSourceMacroControl(std::string _name = "", std::string _label = "")
+		: ModulationSourceBase(_name, _label, "Macro Controls allow control of more than one synth parameter from single point.") {
 
-	//ModulationSourceMacroControl(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName)
-	//	:ModulationSourceBase(_root, _parent, _shortName, _longName),
-	//	Value()
-	//{	}
+		type = ModulationSourceType::Macro;
+		elementClassRole = "ModulationSourceMacroControl";
+		Add(&Value);
+		Add(&Mode);
+		
+
+		//elementClassRole = "Modulation"
+	}
+
 };

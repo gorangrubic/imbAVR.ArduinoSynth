@@ -11,9 +11,18 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "../Source/Application/Files/SynthApplicationFolder.h"
+#include "RandomTip.h"
 
-class HelpResourceManager {
+class HelpResourcesManager {
 
 public :
+
+	SynthApplicationFolder * folder;
+	
+	HelpResourcesManager(SynthApplicationFolder&_folder)
+	{
+		folder = &_folder;
+	}
 
 };

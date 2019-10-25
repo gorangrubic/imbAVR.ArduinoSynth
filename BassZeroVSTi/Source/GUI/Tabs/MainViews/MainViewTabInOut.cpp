@@ -30,6 +30,7 @@
 MainViewTabInOut::MainViewTabInOut (imbSynthStateData * synthState, String nameSufix)
 {
     //[Constructor_pre] You can add your own custom stuff here..
+    state = std::shared_ptr<imbSynthStateData>(synthState);
     //[/Constructor_pre]
 
     label6.reset (new Label (String(),
@@ -266,6 +267,19 @@ MainViewTabInOut::MainViewTabInOut (imbSynthStateData * synthState, String nameS
 
 
     //[Constructor] You can add your own custom stuff here..
+	state->configuration.ioSettings.EnableDirectMIDIInputs.attachControl(EnableDirectMIDIInputs.get());
+	state->configuration.ioSettings.ForwardInputsToOutputs.attachControl(ForwardInputsToOutputs.get());
+	state->configuration.ioSettings.ForwardVSTHostToOutputs.attachControl(ForwardVSTHostToOutputs.get());
+	state->configuration.ioSettings.SerialPort.attachControl(SerialPortSelection.get());
+	state->configuration.ioSettings.UseSerialLinkForMidi.attachControl(UseSerialLink.get());
+	state->configuration.ioSettings.CCMessagesCycle.attachControl(ccMessagesCycle.get());
+	state->configuration.ioSettings.SerialBaudrate.attachControl(SerialPortBaudrate.get());
+	state->configuration.ioSettings.MIDIInput1.attachControl(MIDIInput1.get());
+	state->configuration.ioSettings.MIDIInput2.attachControl(MIDIInput2.get());
+	state->configuration.ioSettings.MIDIInput3.attachControl(MIDIInput3.get());
+	state->configuration.ioSettings.MIDIOutput1.attachControl(MIDIOutput1.get());
+	state->configuration.ioSettings.MIDIOutput2.attachControl(MIDIOutput2.get());
+	state->configuration.ioSettings.MIDIOutput3.attachControl(MIDIOutput3.get());
     //[/Constructor]
 }
 

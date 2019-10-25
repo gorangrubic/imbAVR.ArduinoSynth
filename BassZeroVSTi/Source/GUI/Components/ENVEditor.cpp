@@ -32,22 +32,6 @@ ENVEditor::ENVEditor (imbSynthStateData * synthState, String nameSufix)
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    toggle_startWithB.reset (new ToggleButton ("new toggle button"));
-    addAndMakeVisible (toggle_startWithB.get());
-    toggle_startWithB->setButtonText (TRANS("Start with B"));
-    toggle_startWithB->addListener (this);
-    toggle_startWithB->setToggleState (true, dontSendNotification);
-
-    toggle_startWithB->setBounds (34, 49, 96, 16);
-
-    toggle_loop.reset (new ToggleButton ("new toggle button"));
-    addAndMakeVisible (toggle_loop.get());
-    toggle_loop->setButtonText (TRANS("Loop"));
-    toggle_loop->addListener (this);
-    toggle_loop->setToggleState (true, dontSendNotification);
-
-    toggle_loop->setBounds (149, 49, 96, 16);
-
     label2.reset (new Label ("new label",
                              TRANS("Time A")));
     addAndMakeVisible (label2.get());
@@ -75,7 +59,7 @@ ENVEditor::ENVEditor (imbSynthStateData * synthState, String nameSufix)
     TimeA->setRange (1, 127, 1);
     TimeA->setSliderStyle (Slider::LinearHorizontal);
     TimeA->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
-    TimeA->setColour (Slider::thumbColourId, Colours::cadetblue);
+    TimeA->setColour (Slider::thumbColourId, Colour (0xff397daa));
     TimeA->addListener (this);
 
     TimeA->setBounds (75, -3, 76, 24);
@@ -85,7 +69,7 @@ ENVEditor::ENVEditor (imbSynthStateData * synthState, String nameSufix)
     ValueA->setRange (0, 127, 1);
     ValueA->setSliderStyle (Slider::LinearHorizontal);
     ValueA->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
-    ValueA->setColour (Slider::thumbColourId, Colours::cadetblue);
+    ValueA->setColour (Slider::thumbColourId, Colour (0xff397daa));
     ValueA->addListener (this);
 
     ValueA->setBounds (75, 22, 76, 24);
@@ -117,7 +101,7 @@ ENVEditor::ENVEditor (imbSynthStateData * synthState, String nameSufix)
     TimeB->setRange (1, 127, 1);
     TimeB->setSliderStyle (Slider::LinearHorizontal);
     TimeB->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
-    TimeB->setColour (Slider::thumbColourId, Colours::cadetblue);
+    TimeB->setColour (Slider::thumbColourId, Colour (0xff397daa));
     TimeB->addListener (this);
 
     TimeB->setBounds (192, -3, 76, 24);
@@ -127,7 +111,7 @@ ENVEditor::ENVEditor (imbSynthStateData * synthState, String nameSufix)
     ValueB->setRange (1, 127, 1);
     ValueB->setSliderStyle (Slider::LinearHorizontal);
     ValueB->setTextBoxStyle (Slider::NoTextBox, false, 80, 20);
-    ValueB->setColour (Slider::thumbColourId, Colours::cadetblue);
+    ValueB->setColour (Slider::thumbColourId, Colour (0xff397daa));
     ValueB->addListener (this);
 
     ValueB->setBounds (192, 22, 76, 24);
@@ -169,8 +153,6 @@ ENVEditor::~ENVEditor()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    toggle_startWithB = nullptr;
-    toggle_loop = nullptr;
     label2 = nullptr;
     label3 = nullptr;
     TimeA = nullptr;
@@ -204,26 +186,6 @@ void ENVEditor::resized()
 
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
-}
-
-void ENVEditor::buttonClicked (Button* buttonThatWasClicked)
-{
-    //[UserbuttonClicked_Pre]
-    //[/UserbuttonClicked_Pre]
-
-    if (buttonThatWasClicked == toggle_startWithB.get())
-    {
-        //[UserButtonCode_toggle_startWithB] -- add your button handler code here..
-        //[/UserButtonCode_toggle_startWithB]
-    }
-    else if (buttonThatWasClicked == toggle_loop.get())
-    {
-        //[UserButtonCode_toggle_loop] -- add your button handler code here..
-        //[/UserButtonCode_toggle_loop]
-    }
-
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
 }
 
 void ENVEditor::sliderValueChanged (Slider* sliderThatWasMoved)
@@ -278,12 +240,6 @@ BEGIN_JUCER_METADATA
                  variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
                  overlayOpacity="0.330" fixedSize="1" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="50323e44"/>
-  <TOGGLEBUTTON name="new toggle button" id="2cfe8a56cb12fe68" memberName="toggle_startWithB"
-                virtualName="" explicitFocusOrder="0" pos="34 49 96 16" buttonText="Start with B"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
-  <TOGGLEBUTTON name="new toggle button" id="eb3f284f0415ad84" memberName="toggle_loop"
-                virtualName="" explicitFocusOrder="0" pos="149 49 96 16" buttonText="Loop"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
   <LABEL name="new label" id="d2451e9917b20736" memberName="label2" virtualName=""
          explicitFocusOrder="0" pos="32 1 64 16" edTextCol="ff000000"
          edBkgCol="0" labelText="Time A" editableSingleClick="0" editableDoubleClick="0"
@@ -295,12 +251,12 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
          kerning="0.0" bold="0" italic="0" justification="33"/>
   <SLIDER name="new slider" id="6ca730a9abe41a69" memberName="TimeA" virtualName=""
-          explicitFocusOrder="0" pos="75 -3 76 24" thumbcol="ff5f9ea0"
+          explicitFocusOrder="0" pos="75 -3 76 24" thumbcol="ff397daa"
           min="1.0" max="127.0" int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="new slider" id="f3df82c31fff81d2" memberName="ValueA" virtualName=""
-          explicitFocusOrder="0" pos="75 22 76 24" thumbcol="ff5f9ea0"
+          explicitFocusOrder="0" pos="75 22 76 24" thumbcol="ff397daa"
           min="0.0" max="127.0" int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
@@ -315,12 +271,12 @@ BEGIN_JUCER_METADATA
          focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
          kerning="0.0" bold="0" italic="0" justification="33"/>
   <SLIDER name="new slider" id="fb709a93f4a268fd" memberName="TimeB" virtualName=""
-          explicitFocusOrder="0" pos="192 -3 76 24" thumbcol="ff5f9ea0"
+          explicitFocusOrder="0" pos="192 -3 76 24" thumbcol="ff397daa"
           min="1.0" max="127.0" int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>
   <SLIDER name="new slider" id="c49f667b41db0eeb" memberName="ValueB" virtualName=""
-          explicitFocusOrder="0" pos="192 22 76 24" thumbcol="ff5f9ea0"
+          explicitFocusOrder="0" pos="192 22 76 24" thumbcol="ff397daa"
           min="1.0" max="127.0" int="1.0" style="LinearHorizontal" textBoxPos="NoTextBox"
           textBoxEditable="1" textBoxWidth="80" textBoxHeight="20" skewFactor="1.0"
           needsCallback="1"/>

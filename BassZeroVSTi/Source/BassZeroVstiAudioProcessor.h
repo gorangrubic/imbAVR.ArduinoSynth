@@ -27,6 +27,7 @@ public:
 	BassZeroApplication bassZeroApplication;
 	BassZeroSynthModel bassZeroModel;
 	imbSynthStateData bassZeroState;
+	
 
     //==============================================================================
 	BassZeroVstiAudioProcessor() :
@@ -49,7 +50,7 @@ public:
 		
 
 
-		bassZeroState.Initiated(&bassZeroApplication.folders);
+		bassZeroState.Initiated();
 
 	};
     ~BassZeroVstiAudioProcessor();

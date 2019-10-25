@@ -55,38 +55,6 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
 
     label2->setBounds (24, 4, 62, 16);
 
-    Curve.reset (new ComboBox ("new combo box"));
-    addAndMakeVisible (Curve.get());
-    Curve->setEditableText (false);
-    Curve->setJustificationType (Justification::centredLeft);
-    Curve->setTextWhenNothingSelected (TRANS("Triangle"));
-    Curve->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
-    Curve->addItem (TRANS("Triangle"), 1);
-    Curve->addItem (TRANS("Ramp Down"), 2);
-    Curve->addItem (TRANS("Ramp Up"), 3);
-    Curve->addItem (TRANS("Square Pulse"), 4);
-    Curve->addItem (TRANS("Sinewave"), 5);
-    Curve->addItem (TRANS("Chaos"), 6);
-    Curve->addListener (this);
-
-    Curve->setBounds (88, 81, 148, 16);
-
-    toggle_retrigger.reset (new ToggleButton ("new toggle button"));
-    addAndMakeVisible (toggle_retrigger.get());
-    toggle_retrigger->setButtonText (TRANS("Re-trig."));
-    toggle_retrigger->addListener (this);
-    toggle_retrigger->setToggleState (true, dontSendNotification);
-
-    toggle_retrigger->setBounds (160, 56, 63, 16);
-
-    toggle_loop.reset (new ToggleButton ("new toggle button"));
-    addAndMakeVisible (toggle_loop.get());
-    toggle_loop->setButtonText (TRANS("Loop"));
-    toggle_loop->addListener (this);
-    toggle_loop->setToggleState (true, dontSendNotification);
-
-    toggle_loop->setBounds (88, 56, 63, 16);
-
     label3.reset (new Label ("new label",
                              TRANS("Time")));
     addAndMakeVisible (label3.get());
@@ -131,6 +99,19 @@ ChaosEditor::ChaosEditor (imbSynthStateData * synthState, String nameSufix)
 
     Factor->setBounds (160, 24, 80, 26);
 
+    Curve2.reset (new Label ("new label",
+                             TRANS("Triangle")));
+    addAndMakeVisible (Curve2.get());
+    Curve2->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Curve2->setJustificationType (Justification::centred);
+    Curve2->setEditable (false, false, false);
+    Curve2->setColour (Label::backgroundColourId, Colour (0x40181f22));
+    Curve2->setColour (Label::textColourId, Colours::lightgrey);
+    Curve2->setColour (TextEditor::textColourId, Colours::black);
+    Curve2->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    Curve2->setBounds (96, 56, 140, 24);
+
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -169,13 +150,11 @@ ChaosEditor::~ChaosEditor()
 
     Value = nullptr;
     label2 = nullptr;
-    Curve = nullptr;
-    toggle_retrigger = nullptr;
-    toggle_loop = nullptr;
     label3 = nullptr;
     label5 = nullptr;
     Time = nullptr;
     Factor = nullptr;
+    Curve2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -229,41 +208,6 @@ void ChaosEditor::sliderValueChanged (Slider* sliderThatWasMoved)
     //[/UsersliderValueChanged_Post]
 }
 
-void ChaosEditor::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
-{
-    //[UsercomboBoxChanged_Pre]
-    //[/UsercomboBoxChanged_Pre]
-
-    if (comboBoxThatHasChanged == Curve.get())
-    {
-        //[UserComboBoxCode_Curve] -- add your combo box handling code here..
-        //[/UserComboBoxCode_Curve]
-    }
-
-    //[UsercomboBoxChanged_Post]
-    //[/UsercomboBoxChanged_Post]
-}
-
-void ChaosEditor::buttonClicked (Button* buttonThatWasClicked)
-{
-    //[UserbuttonClicked_Pre]
-    //[/UserbuttonClicked_Pre]
-
-    if (buttonThatWasClicked == toggle_retrigger.get())
-    {
-        //[UserButtonCode_toggle_retrigger] -- add your button handler code here..
-        //[/UserButtonCode_toggle_retrigger]
-    }
-    else if (buttonThatWasClicked == toggle_loop.get())
-    {
-        //[UserButtonCode_toggle_loop] -- add your button handler code here..
-        //[/UserButtonCode_toggle_loop]
-    }
-
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
-}
-
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
@@ -297,16 +241,6 @@ BEGIN_JUCER_METADATA
          edTextCol="ff000000" edBkgCol="0" labelText="Value" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="36"/>
-  <COMBOBOX name="new combo box" id="62baf5ef154366df" memberName="Curve"
-            virtualName="" explicitFocusOrder="0" pos="88 81 148 16" editable="0"
-            layout="33" items="Triangle&#10;Ramp Down&#10;Ramp Up&#10;Square Pulse&#10;Sinewave&#10;Chaos"
-            textWhenNonSelected="Triangle" textWhenNoItems="(no choices)"/>
-  <TOGGLEBUTTON name="new toggle button" id="2cfe8a56cb12fe68" memberName="toggle_retrigger"
-                virtualName="" explicitFocusOrder="0" pos="160 56 63 16" buttonText="Re-trig."
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
-  <TOGGLEBUTTON name="new toggle button" id="eb3f284f0415ad84" memberName="toggle_loop"
-                virtualName="" explicitFocusOrder="0" pos="88 56 63 16" buttonText="Loop"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="1"/>
   <LABEL name="new label" id="f9922551998c59e2" memberName="label3" virtualName=""
          explicitFocusOrder="0" pos="88 4 80 16" edTextCol="ff000000"
          edBkgCol="0" labelText="Time" editableSingleClick="0" editableDoubleClick="0"
@@ -327,6 +261,11 @@ BEGIN_JUCER_METADATA
           textboxoutline="8e989b" min="0.0" max="127.0" int="1.0" style="LinearHorizontal"
           textBoxPos="NoTextBox" textBoxEditable="1" textBoxWidth="80"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
+  <LABEL name="new label" id="5d970384ed5df30b" memberName="Curve2" virtualName=""
+         explicitFocusOrder="0" pos="96 56 140 24" bkgCol="40181f22" textCol="ffd3d3d3"
+         edTextCol="ff000000" edBkgCol="0" labelText="Triangle" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="36"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

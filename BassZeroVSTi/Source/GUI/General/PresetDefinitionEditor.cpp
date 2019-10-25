@@ -124,11 +124,33 @@ PresetDefinitionEditor::PresetDefinitionEditor (imbSynthPresetDefinition * _pres
     text_preset_file2->setPopupMenuEnabled (true);
     text_preset_file2->setText (TRANS("1"));
 
+    label3.reset (new Label ("new label",
+                             TRANS("Author")));
+    addAndMakeVisible (label3.get());
+    label3->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label3->setJustificationType (Justification::centredLeft);
+    label3->setEditable (false, false, false);
+    label3->setColour (Label::backgroundColourId, Colours::azure);
+    label3->setColour (Label::textColourId, Colour (0xff181f22));
+    label3->setColour (TextEditor::textColourId, Colours::black);
+    label3->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    text_author.reset (new TextEditor ("new text editor"));
+    addAndMakeVisible (text_author.get());
+    text_author->setTooltip (TRANS("Title of the Operation Mode"));
+    text_author->setMultiLine (false);
+    text_author->setReturnKeyStartsNewLine (false);
+    text_author->setReadOnly (false);
+    text_author->setScrollbarsShown (false);
+    text_author->setCaretVisible (true);
+    text_author->setPopupMenuEnabled (true);
+    text_author->setText (TRANS("hardy.Veles"));
+
 
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (450, 200);
+    setSize (450, 350);
 
 
     //[Constructor] You can add your own custom stuff here..
@@ -148,6 +170,8 @@ PresetDefinitionEditor::~PresetDefinitionEditor()
     text_preset_file = nullptr;
     label4 = nullptr;
     text_preset_file2 = nullptr;
+    label3 = nullptr;
+    text_author = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -170,11 +194,13 @@ void PresetDefinitionEditor::resized()
     //[/UserPreResize]
 
     text_preset_name->setBounds (56, 0, getWidth() - 56, 24);
-    text_preset_note->setBounds (56, 32, getWidth() - 54, getHeight() - 64);
+    text_preset_note->setBounds (56, 32, getWidth() - 54, getHeight() - 96);
     label2->setBounds (0, getHeight() - 24, 48, 24);
     text_preset_file->setBounds (56, getHeight() - 24, getWidth() - 224, 24);
     label4->setBounds (getWidth() - 160, getHeight() - 24, 64, 24);
     text_preset_file2->setBounds (getWidth() - 88, getHeight() - 24, 88, 24);
+    label3->setBounds (0, getHeight() - 54, 48, 24);
+    text_author->setBounds (56, getHeight() - 54, getWidth() - 56, 24);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -198,7 +224,7 @@ BEGIN_JUCER_METADATA
                  parentClasses="public Component, public imbSynthGUIComponent"
                  constructorParams="imbSynthPresetDefinition * _preset" variableInitialisers=""
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="1" initialWidth="450" initialHeight="200">
+                 fixedSize="1" initialWidth="450" initialHeight="350">
   <BACKGROUND backgroundColour="323e44"/>
   <LABEL name="new label" id="cdcd778c5d2cc957" memberName="label5" virtualName=""
          explicitFocusOrder="0" pos="0 0 48 24" bkgCol="fff0ffff" textCol="ff181f22"
@@ -215,7 +241,7 @@ BEGIN_JUCER_METADATA
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <TEXTEDITOR name="new text editor" id="fb2c4953e2b66de1" memberName="text_preset_note"
-              virtualName="" explicitFocusOrder="0" pos="56 32 54M 64M" tooltip="Title of the Operation Mode"
+              virtualName="" explicitFocusOrder="0" pos="56 32 54M 96M" tooltip="Title of the Operation Mode"
               initialText="Progressive trance bass line with light punch dot"
               multiline="1" retKeyStartsLine="1" readonly="0" scrollbars="1"
               caret="1" popupmenu="1"/>
@@ -238,6 +264,15 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="0Rr 24R 88 24" tooltip="Title of the Operation Mode"
               initialText="1" multiline="0" retKeyStartsLine="0" readonly="1"
               scrollbars="0" caret="0" popupmenu="1"/>
+  <LABEL name="new label" id="f940b7d0128adbb8" memberName="label3" virtualName=""
+         explicitFocusOrder="0" pos="0 54R 48 24" bkgCol="fff0ffff" textCol="ff181f22"
+         edTextCol="ff000000" edBkgCol="0" labelText="Author" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="12.0" kerning="0.0" bold="0" italic="0" justification="33"/>
+  <TEXTEDITOR name="new text editor" id="e304bb0f79d79b82" memberName="text_author"
+              virtualName="" explicitFocusOrder="0" pos="56 54R 56M 24" tooltip="Title of the Operation Mode"
+              initialText="hardy.Veles" multiline="0" retKeyStartsLine="0"
+              readonly="0" scrollbars="0" caret="1" popupmenu="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

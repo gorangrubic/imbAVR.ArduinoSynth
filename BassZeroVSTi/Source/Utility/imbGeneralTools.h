@@ -21,4 +21,11 @@ class imbGeneralTools {
 		/* returns random string*/
 		static std::string GetRandomString(int numberOfChars);
 
+		/* makes color from Boris >:) */
+		static Colour ColorFromHex(String hexCode);
+
+
+		/* makes color from Boris >:) */
+		static Colour ColorFromHex(std::string hexCode);
+
 };

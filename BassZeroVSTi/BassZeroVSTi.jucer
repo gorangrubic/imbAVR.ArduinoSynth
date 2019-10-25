@@ -12,7 +12,21 @@
       <FILE id="vA3xnU" name="veles_template_blue.ico" compile="0" resource="1"
             file="Source/veles_template_blue.ico" xcodeResource="1"/>
       <GROUP id="{27EF8916-5484-36E5-E916-591A4447043C}" name="Application">
+        <GROUP id="{9887D9BC-3387-B863-26FF-6C06A57364F4}" name="Generators">
+          <FILE id="Vksrd1" name="firmwareSourceCodeGenerator.cpp" compile="1"
+                resource="0" file="Source/Application/Generators/firmwareSourceCodeGenerator.cpp"/>
+          <FILE id="WzdOdT" name="firmwareSourceCodeGenerator.h" compile="0"
+                resource="0" file="Source/Application/Generators/firmwareSourceCodeGenerator.h"/>
+          <FILE id="cw0K3D" name="modelDocumentationGenerator.cpp" compile="1"
+                resource="0" file="Source/Application/Generators/modelDocumentationGenerator.cpp"/>
+          <FILE id="ZVKNJY" name="modelDocumentationGenerator.h" compile="0"
+                resource="0" file="Source/Application/Generators/modelDocumentationGenerator.h"/>
+        </GROUP>
         <GROUP id="{A3960F15-7E59-ED21-FBDD-F698B516AC33}" name="Components">
+          <FILE id="YfbpEM" name="GUIStateManager.cpp" compile="1" resource="0"
+                file="Source/Application/Components/GUIStateManager.cpp"/>
+          <FILE id="ZTgXKO" name="GUIStateManager.h" compile="0" resource="0"
+                file="Source/Application/Components/GUIStateManager.h"/>
           <FILE id="XUYwou" name="IOBufferStats.cpp" compile="1" resource="0"
                 file="Source/Application/Components/IOBufferStats.cpp"/>
           <FILE id="Z16BGy" name="IOBufferStats.h" compile="0" resource="0" file="Source/Application/Components/IOBufferStats.h"/>
@@ -53,6 +67,10 @@
           <FILE id="p06sOg" name="RandomTip.cpp" compile="1" resource="0" file="Source/Application/Help/RandomTip.cpp"/>
           <FILE id="DdJTEY" name="RandomTip.h" compile="0" resource="0" file="Source/Application/Help/RandomTip.h"/>
         </GROUP>
+        <FILE id="xZkz2W" name="SynthApplicationEnvironment.cpp" compile="1"
+              resource="0" file="Source/Application/SynthApplicationEnvironment.cpp"/>
+        <FILE id="ufONoe" name="SynthApplicationEnvironment.h" compile="0"
+              resource="0" file="Source/Application/SynthApplicationEnvironment.h"/>
         <FILE id="v049wv" name="CommandIDs.cpp" compile="1" resource="0" file="Source/Application/CommandIDs.cpp"/>
         <FILE id="AzG7R8" name="CommandIDs.h" compile="0" resource="0" file="Source/Application/CommandIDs.h"/>
         <FILE id="hztLim" name="GeneralDefinitions.h" compile="0" resource="0"
@@ -191,11 +209,66 @@
         <FILE id="K295Do" name="README.md" compile="0" resource="1" file="Source/Utility/README.md"/>
       </GROUP>
       <GROUP id="{597FEE43-E744-9541-A257-64224B6641A0}" name="Data">
+        <GROUP id="{8F0FD5A6-EBD5-48F0-E44A-C41DDBA6CB21}" name="Binding">
+          <FILE id="WewbaJ" name="dataBindingCollection.cpp" compile="1" resource="0"
+                file="Source/Data/Binding/dataBindingCollection.cpp"/>
+          <FILE id="RSkGhn" name="dataBindingCollection.h" compile="0" resource="0"
+                file="Source/Data/Binding/dataBindingCollection.h"/>
+          <FILE id="sQOaWc" name="dataBindingEntry.cpp" compile="1" resource="0"
+                file="Source/Data/Binding/dataBindingEntry.cpp"/>
+          <FILE id="O9EOqf" name="dataBindingEntry.h" compile="0" resource="0"
+                file="Source/Data/Binding/dataBindingEntry.h"/>
+          <FILE id="QyD7FK" name="dataContextMenu.cpp" compile="1" resource="0"
+                file="Source/Data/Binding/dataContextMenu.cpp"/>
+          <FILE id="eBnzMK" name="dataContextMenu.h" compile="0" resource="0"
+                file="Source/Data/Binding/dataContextMenu.h"/>
+          <FILE id="gt6E5V" name="dataInterfaceManager.cpp" compile="1" resource="0"
+                file="Source/Data/Binding/dataInterfaceManager.cpp"/>
+          <FILE id="NzS3GJ" name="dataInterfaceManager.h" compile="0" resource="0"
+                file="Source/Data/Binding/dataInterfaceManager.h"/>
+          <FILE id="OhuK9L" name="dataInterfacePolicy.cpp" compile="1" resource="0"
+                file="Source/Data/Binding/dataInterfacePolicy.cpp"/>
+          <FILE id="qUGB5U" name="dataInterfacePolicy.h" compile="0" resource="0"
+                file="Source/Data/Binding/dataInterfacePolicy.h"/>
+          <FILE id="bniUXm" name="README.md" compile="0" resource="1" file="Source/Data/Binding/README.md"/>
+        </GROUP>
         <GROUP id="{D39B9DD3-BF2B-71FF-9103-B0FB09220274}" name="Generators">
+          <FILE id="h4CMB7" name="imbMarkdownBuilder.cpp" compile="1" resource="0"
+                file="Source/Data/Generators/imbMarkdownBuilder.cpp"/>
+          <FILE id="Bazvs1" name="imbMarkdownBuilder.h" compile="0" resource="0"
+                file="Source/Data/Generators/imbMarkdownBuilder.h"/>
+          <FILE id="u3ntGl" name="imbSourceCodeBuilder.cpp" compile="1" resource="0"
+                file="Source/Data/Generators/imbSourceCodeBuilder.cpp"/>
+          <FILE id="UwetVB" name="imbSourceCodeBuilder.h" compile="0" resource="0"
+                file="Source/Data/Generators/imbSourceCodeBuilder.h"/>
           <FILE id="tJuQ7D" name="imbStringBuilder.cpp" compile="1" resource="0"
                 file="Source/Data/Generators/imbStringBuilder.cpp"/>
           <FILE id="oUTuM3" name="imbStringBuilder.h" compile="0" resource="0"
                 file="Source/Data/Generators/imbStringBuilder.h"/>
+          <FILE id="ViVwb0" name="imbStringBuilderFormatBase.cpp" compile="1"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatBase.cpp"/>
+          <FILE id="yYnxlE" name="imbStringBuilderFormatBase.h" compile="0" resource="0"
+                file="Source/Data/Generators/imbStringBuilderFormatBase.h"/>
+          <FILE id="GHPVMW" name="imbStringBuilderFormatListRule.cpp" compile="1"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatListRule.cpp"/>
+          <FILE id="expteA" name="imbStringBuilderFormatListRule.h" compile="0"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatListRule.h"/>
+          <FILE id="Iw1otP" name="imbStringBuilderFormatRule.cpp" compile="1"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatRule.cpp"/>
+          <FILE id="buQTr8" name="imbStringBuilderFormatRule.h" compile="0" resource="0"
+                file="Source/Data/Generators/imbStringBuilderFormatRule.h"/>
+          <FILE id="depCrZ" name="imbStringBuilderFormatTitleRule.cpp" compile="1"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatTitleRule.cpp"/>
+          <FILE id="nSYP7z" name="imbStringBuilderFormatTitleRule.h" compile="0"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatTitleRule.h"/>
+          <FILE id="blVrSe" name="imbStringBuilderFormatWrapperRule.cpp" compile="1"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatWrapperRule.cpp"/>
+          <FILE id="Ni3cqv" name="imbStringBuilderFormatWrapperRule.h" compile="0"
+                resource="0" file="Source/Data/Generators/imbStringBuilderFormatWrapperRule.h"/>
+          <FILE id="bsIelE" name="imbStringBuilderState.cpp" compile="1" resource="0"
+                file="Source/Data/Generators/imbStringBuilderState.cpp"/>
+          <FILE id="f2yO61" name="imbStringBuilderState.h" compile="0" resource="0"
+                file="Source/Data/Generators/imbStringBuilderState.h"/>
         </GROUP>
         <GROUP id="{4A58E3EC-6072-289C-F419-A0A99E7FB12D}" name="Model">
           <FILE id="w0nQrO" name="dataBoolProperty.cpp" compile="1" resource="0"
@@ -206,6 +279,10 @@
                 file="Source/Data/Model/dataElementBase.cpp"/>
           <FILE id="oLcH1r" name="dataElementBase.h" compile="0" resource="0"
                 file="Source/Data/Model/dataElementBase.h"/>
+          <FILE id="gqdm0O" name="dataElementBindable.cpp" compile="1" resource="0"
+                file="Source/Data/Model/dataElementBindable.cpp"/>
+          <FILE id="AfwkDe" name="dataElementBindable.h" compile="0" resource="0"
+                file="Source/Data/Model/dataElementBindable.h"/>
           <FILE id="DFxfgZ" name="dataElementContainer.cpp" compile="1" resource="0"
                 file="Source/Data/Model/dataElementContainer.cpp"/>
           <FILE id="N87z8L" name="dataElementContainer.h" compile="0" resource="0"
@@ -426,6 +503,10 @@
                 file="Source/GUI/Global/ControlStateDisplayModel.cpp"/>
           <FILE id="W3rS0j" name="ControlStateDisplayModel.h" compile="0" resource="0"
                 file="Source/GUI/Global/ControlStateDisplayModel.h"/>
+          <FILE id="nsblP0" name="HelpTipDisplay.cpp" compile="1" resource="0"
+                file="Source/GUI/Global/HelpTipDisplay.cpp"/>
+          <FILE id="pKuJ6T" name="HelpTipDisplay.h" compile="0" resource="0"
+                file="Source/GUI/Global/HelpTipDisplay.h"/>
           <FILE id="xMW2QI" name="PropertyComponentMap.cpp" compile="1" resource="0"
                 file="Source/GUI/Global/PropertyComponentMap.cpp"/>
           <FILE id="SfEIpx" name="PropertyComponentMap.h" compile="0" resource="0"

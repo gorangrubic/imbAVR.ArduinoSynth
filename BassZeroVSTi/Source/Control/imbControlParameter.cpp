@@ -298,23 +298,16 @@ void imbControlParameter::attachState(juce::AudioProcessorValueTreeState & param
 
 imbControlParameter::imbControlParameter()
 {
-	type = parameterType::controlParameter;
+	//type = parameterType::controlParameter;
 }
 
 imbControlParameter::imbControlParameter(parameterClass _class)
 {
 	parClass = _class;
-	type = parameterType::controlParameter;
+//	type = parameterType::controlParameter;
 }
 
 imbControlParameter::~imbControlParameter()
 {
 }
 
-void imbProcessorParameterListener::parameterValueChanged(int parameterIndex, float newValue)
-{
-}
-
-void imbProcessorParameterListener::parameterGestureChanged(int parameterIndex, bool gestureIsStarting)
-{
-}

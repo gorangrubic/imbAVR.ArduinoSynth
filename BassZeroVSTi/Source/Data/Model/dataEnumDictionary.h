@@ -28,7 +28,9 @@ public:
 
 	void AddEntry(int _enum, std::string _label = "", std::string _description = "", std::string _entryColorHex = "#FFFFFFFF", std::string _helpUrl = "");
 
-	dataEnumDictionary(std::string _name):dataElementContainer(_name) {
+	void AddEntry(std::string _id, std::string _label = "", std::string _description = "", std::string _entryColorHex = "#FFFFFFFF", std::string _helpUrl = "");
+
+	dataEnumDictionary(std::string _name, std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = ""):dataElementContainer(_name,_label,_description,_unit,_helpUrl) {
 
 	}
 

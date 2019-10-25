@@ -19,5 +19,16 @@ dataEnumEntryProperty * dataEnumDictionary::FindEntry(std::string _propertyID)
 
 void dataEnumDictionary::AddEntry(int _enum, std::string _label, std::string _description, std::string _entryColorHex, std::string _helpUrl)
 {
-	entries.Add(new dataEnumEntryProperty(_enum, _label, _description, _entryColorHex, _helpUrl));
+	auto e = new dataEnumEntryProperty(_enum, _label, _description, _entryColorHex, _helpUrl);
+
+	entries.Add(e);
+	add(e);
+}
+
+void dataEnumDictionary::AddEntry(std::string _id, std::string _label, std::string _description, std::string _entryColorHex, std::string _helpUrl)
+{
+	int _enum = entries.size();
+	auto e = new dataEnumEntryProperty(_enum, _label, _description, _entryColorHex, _helpUrl, _id);
+	entries.Add(e);
+	add(e);
 }

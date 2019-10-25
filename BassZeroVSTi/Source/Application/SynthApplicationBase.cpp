@@ -67,22 +67,22 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 			//result.addDefaultKeypress('i', ModifierKeys::shiftModifier);
 		break;
 	case CommandIDs::file_loadSettings:
-
-		synthState->configuration.LoadFileDialog(folders.FolderSettings.GetFilepath(synthState->configuration));
+		
+		synthState->configuration.LoadFileDialog(synthState->environment->folders.FolderSettings.GetFilepath(synthState->configuration));
 		//synthState->configuration.LoadFile(folders.FolderSettings.GetFilepath(synthState->configuration), true);
 		break;
 	case CommandIDs::file_saveSettings:
 		
 		
 		
-		synthState->configuration.SaveFile(folders.FolderSettings.GetFilepath(synthState->configuration));
+		synthState->configuration.SaveFile(synthState->environment->folders.FolderSettings.GetFilepath(synthState->configuration));
 
 		//synthState->configuration.SaveFile()
 
 		break;
 	case CommandIDs::file_saveSettingsAs:
 
-		synthState->configuration.SaveFileDialog(folders.FolderSettings.GetFilepath(synthState->configuration));
+		synthState->configuration.SaveFileDialog(synthState->environment->folders.FolderSettings.GetFilepath(synthState->configuration));
 		
 	
 
@@ -250,7 +250,7 @@ bool SynthApplicationBase::perform(CommandIDs commandID)
 	  String filePath = File::getCurrentWorkingDirectory().getFullPathName();
 	  File outFile(filePath + "/" + filename);
 */
-	  File outFile = folders.FolderOutput.GetFile(filename);
+	  File outFile = synthState->environment->folders.FolderOutput.GetFile(filename);
 
 	  JPEGImageFormat jpegFormat = JPEGImageFormat();
 	  jpegFormat.setQuality(1.0);

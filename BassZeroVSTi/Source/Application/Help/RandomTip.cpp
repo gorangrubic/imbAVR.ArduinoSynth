@@ -9,3 +9,7 @@
 */
 
 #include "RandomTip.h"
+
+RandomTip::RandomTip()
+  {
+  }

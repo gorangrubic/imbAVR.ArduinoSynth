@@ -1,0 +1,1 @@
+Manages GUI vs data model integration, including contextual menu and copy&paste operations.

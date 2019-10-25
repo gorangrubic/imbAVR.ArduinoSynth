@@ -58,37 +58,37 @@
 	 
 
 
-	  PARAMCONTROL.ListOfModulationFunctions.Add("One-shot");
-	  PARAMCONTROL.ListOfModulationFunctions.Add("Loop");
-	  CONTROLLER ListOfModulationFunctions.Add("Mirror");
-	  CONTROLLER ListOfModulationFunctions.Add("Continual");
+	  //PARAMCONTROL.ListOfModulationFunctions.Add("One-shot");
+	  //PARAMCONTROL.ListOfModulationFunctions.Add("Loop");
+	  //CONTROLLER ListOfModulationFunctions.Add("Mirror");
+	  //CONTROLLER ListOfModulationFunctions.Add("Continual");
 
-	  CONTROLLER ListOfPitchUnits.Add("Semitones");
-	  CONTROLLER ListOfPitchUnits.Add("Octaves");
-	  CONTROLLER ListOfPitchUnits.Add("1 Hz");
-	  CONTROLLER ListOfPitchUnits.Add("10 Hz");
-	  CONTROLLER ListOfPitchUnits.Add("100 Hz");
-	  CONTROLLER ListOfPitchUnits.Add("500 Hz");
-	  CONTROLLER ListOfPitchUnits.Add("1000 Hz");
-	  CONTROLLER ListOfPitchUnits.Add("2000 Hz");
+	  //CONTROLLER ListOfPitchUnits.Add("Semitones");
+	  //CONTROLLER ListOfPitchUnits.Add("Octaves");
+	  //CONTROLLER ListOfPitchUnits.Add("1 Hz");
+	  //CONTROLLER ListOfPitchUnits.Add("10 Hz");
+	  //CONTROLLER ListOfPitchUnits.Add("100 Hz");
+	  //CONTROLLER ListOfPitchUnits.Add("500 Hz");
+	  //CONTROLLER ListOfPitchUnits.Add("1000 Hz");
+	  //CONTROLLER ListOfPitchUnits.Add("2000 Hz");
 
-	  CONTROLLER ListOfModulationParameters.Add("OFF");
-	  CONTROLLER ListOfModulationParameters.Add("Rate");
-	  CONTROLLER ListOfModulationParameters.Add("Period");
-	  CONTROLLER ListOfModulationParameters.Add("Change");
+	  //CONTROLLER ListOfModulationParameters.Add("OFF");
+	  //CONTROLLER ListOfModulationParameters.Add("Rate");
+	  //CONTROLLER ListOfModulationParameters.Add("Period");
+	  //CONTROLLER ListOfModulationParameters.Add("Change");
 
-	  CONTROLLER ListOfModulationModes.Add("OFF");
-	  CONTROLLER ListOfModulationModes.Add("Pitch");
-	  CONTROLLER ListOfModulationModes.Add("PWM");
-	  CONTROLLER ListOfModulationModes.Add("Phase");
+	  //CONTROLLER ListOfModulationModes.Add("OFF");
+	  //CONTROLLER ListOfModulationModes.Add("Pitch");
+	  //CONTROLLER ListOfModulationModes.Add("PWM");
+	  //CONTROLLER ListOfModulationModes.Add("Phase");
 
-	  CONTROLLER ListOfLFOFunctions.Add("Triangle");
-	  CONTROLLER ListOfLFOFunctions.Add("Ramp Down");
-	  CONTROLLER ListOfLFOFunctions.Add("Ramp Up");
-	  CONTROLLER ListOfLFOFunctions.Add("Square Pulse");
-	  CONTROLLER ListOfLFOFunctions.Add("Sinewave");
-	  CONTROLLER ListOfLFOFunctions.Add("Chaos");
-	  
+	  //CONTROLLER ListOfLFOFunctions.Add("Triangle");
+	  //CONTROLLER ListOfLFOFunctions.Add("Ramp Down");
+	  //CONTROLLER ListOfLFOFunctions.Add("Ramp Up");
+	  //CONTROLLER ListOfLFOFunctions.Add("Square Pulse");
+	  //CONTROLLER ListOfLFOFunctions.Add("Sinewave");
+	  //CONTROLLER ListOfLFOFunctions.Add("Chaos");
+	  //
 
 		  
 		  

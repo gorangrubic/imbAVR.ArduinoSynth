@@ -218,6 +218,32 @@ TabWaveforms::TabWaveforms (imbSynthStateData * synthState, String nameSufix)
 
     WFB_Shaper.reset (new SourceMixerComponent (synthState, "WFB_Shaper"));
     addAndMakeVisible (WFB_Shaper.get());
+    Title12.reset (new Label ("new label",
+                              TRANS("AMP")));
+    addAndMakeVisible (Title12.get());
+    Title12->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title12->setJustificationType (Justification::centred);
+    Title12->setEditable (false, false, false);
+    Title12->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title12->setColour (Label::textColourId, Colour (0xff181f22));
+    Title12->setColour (TextEditor::textColourId, Colours::black);
+    Title12->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    WFA_Shaper2.reset (new SourceMixerComponent (synthState, "WFA_Shaper"));
+    addAndMakeVisible (WFA_Shaper2.get());
+    Title13.reset (new Label ("new label",
+                              TRANS("AMP")));
+    addAndMakeVisible (Title13.get());
+    Title13->setFont (Font (12.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Title13->setJustificationType (Justification::centred);
+    Title13->setEditable (false, false, false);
+    Title13->setColour (Label::backgroundColourId, Colours::aliceblue);
+    Title13->setColour (Label::textColourId, Colour (0xff181f22));
+    Title13->setColour (TextEditor::textColourId, Colours::black);
+    Title13->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    WFA_Shaper3.reset (new SourceMixerComponent (synthState, "WFA_Shaper"));
+    addAndMakeVisible (WFA_Shaper3.get());
     cachedImage_background1_jpg_1 = ImageCache::getFromMemory (background1_jpg, background1_jpgSize);
 
     //[UserPreSize]
@@ -263,6 +289,10 @@ TabWaveforms::~TabWaveforms()
     WFB_PWM = nullptr;
     Title11 = nullptr;
     WFB_Shaper = nullptr;
+    Title12 = nullptr;
+    WFA_Shaper2 = nullptr;
+    Title13 = nullptr;
+    WFA_Shaper3 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -318,6 +348,10 @@ void TabWaveforms::resized()
     WFB_PWM->setBounds (getWidth() - 315, 66, 96, 96);
     Title11->setBounds (16 + 96 - -510, 48, 100, 16);
     WFB_Shaper->setBounds (getWidth() - 216, 66, 96, 96);
+    Title12->setBounds (16 + 96 - -204, 48, 100, 16);
+    WFA_Shaper2->setBounds (getWidth() - 522, 66, 96, 96);
+    Title13->setBounds (16 + 96 - -613, 47, 100, 16);
+    WFA_Shaper3->setBounds (getWidth() - 113, 65, 96, 96);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -472,6 +506,24 @@ BEGIN_JUCER_METADATA
   <JUCERCOMP name="WFB_Shaper" id="98f2b70d9c7fc60f" memberName="WFB_Shaper"
              virtualName="" explicitFocusOrder="0" pos="216R 66 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
              constructorParams="synthState, &quot;WFB_Shaper&quot;"/>
+  <LABEL name="new label" id="9e594b82a3588497" memberName="Title12" virtualName=""
+         explicitFocusOrder="0" pos="-204R 48 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="AMP" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="WFA_Shaper" id="2e243343b9ba97cc" memberName="WFA_Shaper2"
+             virtualName="" explicitFocusOrder="0" pos="522R 66 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;WFA_Shaper&quot;"/>
+  <LABEL name="new label" id="24df3b379b707fe9" memberName="Title13" virtualName=""
+         explicitFocusOrder="0" pos="-613R 47 100 16" posRelativeX="7f2b83568bc74387"
+         bkgCol="fff0f8ff" textCol="ff181f22" edTextCol="ff000000" edBkgCol="0"
+         labelText="AMP" editableSingleClick="0" editableDoubleClick="0"
+         focusDiscardsChanges="0" fontname="Default font" fontsize="12.0"
+         kerning="0.0" bold="0" italic="0" justification="36"/>
+  <JUCERCOMP name="WFA_Shaper" id="9f610db72eb81132" memberName="WFA_Shaper3"
+             virtualName="" explicitFocusOrder="0" pos="113R 65 96 96" sourceFile="../Components/SourceMixerComponent.cpp"
+             constructorParams="synthState, &quot;WFA_Shaper&quot;"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

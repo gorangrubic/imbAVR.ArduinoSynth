@@ -30,3 +30,31 @@ std::string imbGeneralTools::GetRandomString(int numberOfChars)
 		return s;
 
 }
+
+  Colour imbGeneralTools::ColorFromHex(String color_hex)
+  {
+	  
+	  if (color_hex.startsWith("#")) color_hex = color_hex.substring(1);
+
+
+	  if (color_hex.length() == 6) {
+		  unsigned int r, g, b;
+		  sscanf(color_hex.getCharPointer(), "%02x%02x%02x", &r, &g, &b);
+
+		  return Colour(r, g, b);
+	  }
+	  else if (color_hex.length() == 8) {
+
+		  unsigned int a, r, g, b;
+		  sscanf(color_hex.getCharPointer(), "%02%02x%02x%02x", &a, &r, &g, &b);
+
+		  return Colour(juce::uint8(r), juce::uint8(g), juce::uint8(b), juce::uint8(a));
+		
+	  }
+	  return Colour();
+  }
+
+  Colour imbGeneralTools::ColorFromHex(std::string hexCode)
+  {
+	  return ColorFromHex(juce::String(hexCode));
+  }

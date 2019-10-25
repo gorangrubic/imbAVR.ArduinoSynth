@@ -23,11 +23,20 @@
 
 class dataElementContainer : public dataElementBase {
 
+
+
 protected:
 
+	/* to be called after tree is completly built. sets property parameterIDPath */
+	void deploy(std::string prefix);
+
+	/* registers the item into children vector*/
+	void add(dataElementBase * item);
+
+	/* all contained children */
+	SharedPointerVector<dataElementBase> children;
 
 
-public:
 
 	template<typename T>
 	std::shared_ptr<T> GetPointerByID(juce::String _id, SharedPointerVector<T> & collection)
@@ -46,6 +55,10 @@ public:
 
 		return output;
 	}
+	
+public:
+
+	
 
 	SharedPointerVector<dataObjectPropertyBase> properties;
 	
@@ -57,10 +70,44 @@ public:
 	void AddProperty(dataObjectPropertyBase * _property);
 
 	dataObjectPropertyBase * FindProperty(std::string _propertyID);
-	
 
-	dataElementContainer(std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = ""):dataElementBase(_name,_label,_description,_unit,_helpUrl) {
+	template<typename T>
+	/* returns dataObjectBase child at given path. if not found, returns nullptr */
+	/* T must be dataElementBase */
+	T * GetMemberByPath(std::string relativePath) {
+
+		juce::String s = relativePath;
+		std::string needle = s;
+		int pathDotPos = s.indexOf(".");
+		
+		if (pathDotPos == -1) {
+			auto p = GetPointerByID(needle, children);
+			return dynamic_cast<T>(p);
+		}
+		else {
+
+			needle = s.substring(0, pathDotPos);
+			std::string pathRest = s.substring(pathDotPos);
+
+			auto p = GetPointerByID(needle, children);
+			dataElementBase * de = dynamic_cast<dataElementBase*>(p);
+			if (de->isContainer) {
+				return de->GetMemberByPath<T>(pathRest);
+			}
+			else {
+				return nullptr;
+			}
+		}
+	}
 	
+	/* to be called after tree is completly built. sets property paths */
+	virtual void Deploy(std::string prefix);
+
+	dataElementContainer(std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none):dataElementBase(_name,_label,_description,_unit,_helpUrl,_parClass,_features) {
+		
+		features |= dataElementFeatures::isElementContainer;
+		
+		//isContainer = true;
 	}
 
 };

@@ -13,7 +13,7 @@
 #include "../Source/Control/imbControlParameter.h"
 #include "../Source/Control/imbControlParameterEnumerations.h"
 #include "../Source/Utility/ccTranslationMap.h"
-
+#include "../Source/Application/SynthApplicationEnvironment.h"
 
 
 class ControlStateDisplayModel {
@@ -22,6 +22,8 @@ public:
 
 	std::unique_ptr<ccTranslationMap> & InputToHardwareMap;
 	std::unique_ptr<ccTranslationMap> & HardwareToOutputMap;
+	std::unique_ptr<SynthApplicationEnvironment> & environment;
+	//std::shared_ptr<imbSynthStateData> state;
 
 	//std::shared_ptr<imbControlParameter> parameter_ptr;
 	imbControlParameter * parameter_ptr;
@@ -29,7 +31,11 @@ public:
 	juce::String parameterGroup{ "" };
 	
 	juce::String parameterValue{ "" };
+	juce::String parameterUnit{ "" };
+	juce::String parameterInfo{ "" };
 
+	dataEnumEntryProperty * parameterClassEntry = nullptr;
+	
 	unsigned int parameterCC{ 0 };
 	unsigned int parameterCCIn{ 0 };
 	unsigned int parameterCCOut{ 0 };
@@ -40,5 +46,5 @@ public:
 
 	void SetParameter(imbControlParameter * parameter);
 
-	ControlStateDisplayModel(std::unique_ptr<ccTranslationMap> & inputToHardwareMap, std::unique_ptr<ccTranslationMap> & hardwareToOutputMap);
+	ControlStateDisplayModel(std::unique_ptr<ccTranslationMap> & inputToHardwareMap, std::unique_ptr<ccTranslationMap> & hardwareToOutputMap, std::unique_ptr<SynthApplicationEnvironment> & _environment);
 };

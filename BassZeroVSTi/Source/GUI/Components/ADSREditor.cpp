@@ -94,7 +94,7 @@ ADSREditor::ADSREditor (imbSynthStateData * synthState, String nameSufix)
     InitLevel->setRange (1, 127, 1);
     InitLevel->setSliderStyle (Slider::LinearHorizontal);
     InitLevel->setTextBoxStyle (Slider::NoTextBox, true, 50, 20);
-    InitLevel->setColour (Slider::thumbColourId, Colour (0xffad0002));
+    InitLevel->setColour (Slider::thumbColourId, Colour (0xffed6216));
     InitLevel->addListener (this);
 
     InitLevel->setBounds (56, 31, 64, 24);
@@ -116,7 +116,7 @@ ADSREditor::ADSREditor (imbSynthStateData * synthState, String nameSufix)
     SustainLevel->setRange (1, 127, 1);
     SustainLevel->setSliderStyle (Slider::LinearHorizontal);
     SustainLevel->setTextBoxStyle (Slider::NoTextBox, true, 50, 20);
-    SustainLevel->setColour (Slider::thumbColourId, Colour (0xffad0002));
+    SustainLevel->setColour (Slider::thumbColourId, Colour (0xff397daa));
     SustainLevel->addListener (this);
 
     SustainLevel->setBounds (56, 55, 64, 24);
@@ -294,7 +294,7 @@ BEGIN_JUCER_METADATA
           needsCallback="1"/>
   <SLIDER name="DirectValue" id="fe24b362f1390fa2" memberName="InitLevel"
           virtualName="" explicitFocusOrder="0" pos="56 31 64 24" tooltip="Initial level"
-          thumbcol="ffad0002" min="1.0" max="127.0" int="1.0" style="LinearHorizontal"
+          thumbcol="ffed6216" min="1.0" max="127.0" int="1.0" style="LinearHorizontal"
           textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="e2537dd020d310c4" memberName="label4" virtualName=""
@@ -304,7 +304,7 @@ BEGIN_JUCER_METADATA
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
   <SLIDER name="DirectValue" id="6a522a56e4d2ab40" memberName="SustainLevel"
           virtualName="" explicitFocusOrder="0" pos="56 55 64 24" tooltip="Sustain level&#10;"
-          thumbcol="ffad0002" min="1.0" max="127.0" int="1.0" style="LinearHorizontal"
+          thumbcol="ff397daa" min="1.0" max="127.0" int="1.0" style="LinearHorizontal"
           textBoxPos="NoTextBox" textBoxEditable="0" textBoxWidth="50"
           textBoxHeight="20" skewFactor="1.0" needsCallback="1"/>
   <LABEL name="new label" id="7c4b83edc2e8e6c7" memberName="label5" virtualName=""

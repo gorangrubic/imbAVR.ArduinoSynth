@@ -241,34 +241,6 @@ void dataObjectPropertyBase::attachControl(imbSynthParameterEditor * _editor)
 	updateAll();
 }
 
-juce::Rectangle<int> dataObjectPropertyBase::getBounds()
-{
-	switch (componentType) {
-
-	case guiAttachedComponentType::combobox:
-		return pComboBox->getBounds();
-		break;
-	case guiAttachedComponentType::slider:
-		return pSlider->getBounds();
-		break;
-	case guiAttachedComponentType::unassigned:
-
-		break;
-	case guiAttachedComponentType::checkbox:
-		return pToggleButton->getBounds();
-		break;
-	case guiAttachedComponentType::imbParameterComponent:
-		return pParameterEditor->getBounds();
-		break;
-	case guiAttachedComponentType::texteditor:
-		//pTextEditor->setText(GetStringValue(), false);
-		return pTextEditor->getBounds();
-		break;
-	case guiAttachedComponentType::textlabel:
-		return pLabel->getBounds();
-		break;
-	}
-}
 
 //void dataObjectPropertyBase::SetHelp(String _parameterHelp, String _parameterHelpUrl, String _parameterUnit)
 //{

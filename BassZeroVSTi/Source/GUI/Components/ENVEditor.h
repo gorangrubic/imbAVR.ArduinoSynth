@@ -37,7 +37,6 @@
 */
 class ENVEditor  : public Component,
                    public imbSynthGUIComponent,
-                   public Button::Listener,
                    public Slider::Listener
 {
 public:
@@ -52,7 +51,6 @@ public:
 
     void paint (Graphics& g) override;
     void resized() override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
 
 
@@ -65,8 +63,6 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<ToggleButton> toggle_startWithB;
-    std::unique_ptr<ToggleButton> toggle_loop;
     std::unique_ptr<Label> label2;
     std::unique_ptr<Label> label3;
     std::unique_ptr<Slider> TimeA;

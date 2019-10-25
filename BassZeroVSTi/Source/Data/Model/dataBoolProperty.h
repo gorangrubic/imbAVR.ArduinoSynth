@@ -21,8 +21,10 @@ public:
 
 	void Toggle();
 
-	dataBoolProperty(std::string _id, bool _val, std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "")
-		:dataObjectProperty(_id, parameterValueType::Boolean, _label, _description, _unit, _helpUrl) {
+	dataBoolProperty(std::string _id, bool _val, std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none)
+		:dataObjectProperty(_id, parameterValueType::Boolean, _label, _description, _unit, _helpUrl, 0,0,_parClass,_features) {
 		SetBoolValue(_val);
+
+	
 	}
 };

@@ -24,8 +24,7 @@
 #include "../GUI/General/PresetFileBrowserModel.h"
 
 #include "../Model/SynthDeviceModel.h"
-#include "../Source/Application/Files/SynthApplicationFolderCollection.h"
-#include "../Source/Application/Components/IOPorts.h"
+#include "../Source/Application/SynthApplicationEnvironment.h"
 
 
 class imbSynthStateData
@@ -49,10 +48,11 @@ public:
 
 
 // ======================== ENVIRONMENT DATA
+	std::unique_ptr<SynthApplicationEnvironment> environment;
 
-	std::shared_ptr<SynthApplicationFolderCollection> folders;
+	//std::shared_ptr<SynthApplicationFolderCollection> folders;
 
-	IOPorts ioPorts;
+	//IOPorts ioPorts;
 
 	std::shared_ptr<SynthDeviceModel> model;
 
@@ -98,7 +98,7 @@ public:
 	std::string inFocusParameterID{ "" };
 
 	
-	void Initiated(SynthApplicationFolderCollection * _folders);
+	void Initiated();
 
 	void SetParameterInFocus(std::string parameterIDPath);
 
@@ -106,12 +106,12 @@ public:
 	imbSynthStateData(SynthDeviceModel * _model, juce::AudioProcessorValueTreeState * _parameters) :
 		model{ _model },
 		parameters{ _parameters },
-		ioPorts(),
-		configuration(ioPorts),
+		environment(new SynthApplicationEnvironment()),
+		configuration(environment->ioPorts),
 		InputToHardwareMap(new ccTranslationMap()),
 		HardwareToOutputMap(new ccTranslationMap()),
 		bufferDisplayModel(new CommandBufferDisplayModel()),
-		controlDisplayModel(new ControlStateDisplayModel(InputToHardwareMap, HardwareToOutputMap)),
+		controlDisplayModel(new ControlStateDisplayModel(InputToHardwareMap, HardwareToOutputMap,environment)),
 		stateDisplayModel( new SynthStateDisplayModel() ),
 		libraryFileBrowserModel{ PresetFileBrowserModel() }
 	{

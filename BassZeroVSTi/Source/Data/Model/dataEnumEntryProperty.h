@@ -17,13 +17,16 @@ class dataEnumEntryProperty :public dataIntProperty {
 
 public:
 
-	std::string entryColorHex;
+	
 
 	// dataIntProperty(std::string _id, int _val, std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "")
-	dataEnumEntryProperty(int _enum, std::string _label = "", std::string _description = "", std::string _entryColorHex = "#FFFFFFFF", std::string _helpUrl = "")
+	dataEnumEntryProperty(int _enum, std::string _label = "", std::string _description = "", std::string _entryColorHex = "#FFFFFFFF", std::string _helpUrl = "", std::string _id="")
 		:dataIntProperty(juce::String(_enum).toStdString(), _enum, _label, _description, "", _helpUrl) {
 		entryColorHex = _entryColorHex;
 
+		if (!_id.empty()) parameterID = _id;
+
 		//SetIntValue(_val);
 	}
+
 };

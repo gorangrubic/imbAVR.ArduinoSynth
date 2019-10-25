@@ -10,9 +10,10 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "../Data/Model/dataObject.h"
 
 
-#include "../Control/ParameterController.h"
+//#include "../Control/ParameterController.h"
 
 //#include "../Model/SynthDeviceModelComponentBase.h"
 //#include "../Model/SynthDeviceModel.h"
@@ -23,6 +24,8 @@ class ModelConstructionTools {
     
     public:
     
+		//dataObject Create()
+
 		
 		/// <summary>
 			/// The parameter controller - machanism for CC / SysExc ID synthnronization

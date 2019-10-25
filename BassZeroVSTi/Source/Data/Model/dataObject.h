@@ -39,7 +39,9 @@ public:
 
 	void CallUpdate(bool update_all=true, bool update_gui=true, bool update_tooltip=true);
 
-	dataObject(std::string _name="", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "")
+	void Deploy(std::string prefix = "") override;
+
+	dataObject(std::string _name="", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "",parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none)
 	:dataElementContainer(_name, _label, _description,_unit,_helpUrl) {
 
 	}

@@ -36,20 +36,24 @@ void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
 	parameter_ptr = parameter;
 	parameterID = parameter->parameterID + " [ " + parameter->parameterLabel + " ]";
 	
-	if (parameter->parClass == parameterClass::opm) {
+	/*if (parameter->parClass == parameterClass::opm) {
 		parameterGroup = parameter->parameterParentPath + " [OPM]";
 	}
 	else {
 		parameterGroup = parameter->parameterParentPath;
-	}
-	
+	}*/
+
+	parameterGroup = parameter->parameterParentPath;
 
 
 
 	parameterValue = parameter_ptr->GetStringValue();  //juce::String(parameter->Value);
 
-
-
+	parameterClassEntry = environment->enum_parameterClass.FindEntry(std::to_string((int)parameter_ptr->parClass));
+	
+	parameterUnit = parameter_ptr->parameterUnit;
+	parameterInfo = parameter_ptr->parameterHelp;
+	
 	parameterCC = parameter->ccID;
 	parameterCCIn = InputToHardwareMap->Get(parameter->ccID);
 	parameterCCOut = HardwareToOutputMap->Get(parameter->ccID);
@@ -61,9 +65,10 @@ void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
 
   }
 
-ControlStateDisplayModel::ControlStateDisplayModel(std::unique_ptr<ccTranslationMap> & inputToHardwareMap, std::unique_ptr<ccTranslationMap> & hardwareToOutputMap)
+ControlStateDisplayModel::ControlStateDisplayModel(std::unique_ptr<ccTranslationMap> & inputToHardwareMap, std::unique_ptr<ccTranslationMap> & hardwareToOutputMap, std::unique_ptr<SynthApplicationEnvironment> & _environment)
 :InputToHardwareMap(inputToHardwareMap),
-HardwareToOutputMap(hardwareToOutputMap)
+HardwareToOutputMap(hardwareToOutputMap),
+environment(_environment)
 	//:InputToHardwareMap( inputToHardwareMap ),
 	//HardwareToOutputMap( hardwareToOutputMap )
 {
