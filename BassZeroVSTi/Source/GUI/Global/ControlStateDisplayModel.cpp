@@ -14,27 +14,28 @@
 
 void ControlStateDisplayModel::UpdateParameter(juce::String value, juce::String ccIn, juce::String ccOut)
 {
-	if (parameter_ptr != nullptr) {
+	//if (parameter_ptr != nullptr) {
 
-		parameter_ptr->SetValue(imbSynthTools::StringToInt32(value, parameter_ptr->GetIntValue()));
-		parameterValue = parameter_ptr->GetStringValue(); //juce::String(parameter_ptr->Value);
+	//	parameter_ptr->SetValue(imbSynthTools::StringToInt32(value, parameter_ptr->GetIntValue()));
+	//	parameterValue = parameter_ptr->GetStringValue(); //juce::String(parameter_ptr->Value);
 
-		if (isCCParameter) {
-			parameterCCIn = imbSynthTools::StringToInt32(ccIn, int(parameterCCIn));
-			parameterCCOut = imbSynthTools::StringToInt32(ccOut, int(parameterCCOut));
+	//	if (isCCParameter) {
+	//		parameterCCIn = imbSynthTools::StringToInt32(ccIn, int(parameterCCIn));
+	//		parameterCCOut = imbSynthTools::StringToInt32(ccOut, int(parameterCCOut));
 
 
-			InputToHardwareMap->Set(parameter_ptr->ccID, parameterCCIn);
-			HardwareToOutputMap->Set(parameter_ptr->ccID, parameterCCOut);
-		}
-	}
+	//		InputToHardwareMap->Set(parameter_ptr->ccID, parameterCCIn);
+	//		HardwareToOutputMap->Set(parameter_ptr->ccID, parameterCCOut);
+	//	}
+	//}
 
 }
 
-void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
+  
+  void ControlStateDisplayModel::SetParameter(dataElementBase * parameter)
   {
 	parameter_ptr = parameter;
-	parameterID = parameter->parameterID + " [ " + parameter->parameterLabel + " ]";
+	parameterID = parameter->parameterLabel;
 	
 	/*if (parameter->parClass == parameterClass::opm) {
 		parameterGroup = parameter->parameterParentPath + " [OPM]";
@@ -43,7 +44,7 @@ void ControlStateDisplayModel::SetParameter(imbControlParameter * parameter)
 		parameterGroup = parameter->parameterParentPath;
 	}*/
 
-	parameterGroup = parameter->parameterParentPath;
+	parameterGroup = parameter->parameterIDPath;
 
 
 

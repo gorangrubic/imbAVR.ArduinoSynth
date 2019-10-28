@@ -13,7 +13,9 @@
 
 #include "../Source/Data/Model/dataObjectPropertyEnumerations.h"
 #include "../Source/GUI/Components/imbSynthParameterEditor.h"
-#include "../Source/Application/Components/ViewSettings.h"
+
+//#include "../Source/Application/Settings/ViewSettings.h"
+
 #include "../Source/Application/SynthApplicationEnvironment.h"
 #include "dataContextMenu.h"
 

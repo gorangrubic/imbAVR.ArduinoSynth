@@ -29,3 +29,18 @@ public:
 	
 	}
 };
+
+bool dataBoolProperty::Set(bool _newValue)
+{
+	return SetBoolValue(_newValue);
+}
+
+bool dataBoolProperty::Get()
+{
+	return GetBoolValue();
+}
+
+void dataBoolProperty::Toggle()
+{
+	Set(!Get());
+}

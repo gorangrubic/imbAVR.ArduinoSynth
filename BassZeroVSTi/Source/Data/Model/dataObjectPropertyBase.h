@@ -52,9 +52,9 @@ public:
 	void parameterChanged(const String&, float newValue);
 
 
-	
+	int GetCheckSum(bool forValue = true, bool forStructure = false);
 
-	parameterValueType valueType = parameterValueType::Float;
+	
 
 	float Value = 0.0;
 
@@ -103,6 +103,7 @@ public:
 	dataObjectPropertyBase(parameterValueType _valueType = parameterValueType::Float, std::string _name = "", std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", float minValue=0, float maxValue=0, parameterClass _parClass = parameterClass::unspecified):dataElementBase(_name,_label,_description,_unit,_helpUrl) {
 
 		parClass = _parClass;
+		features |= dataElementFeatures::isProperty;
 
 		switch (parClass)
 		{
@@ -158,6 +159,8 @@ public:
 		default:
 			break;
 		}
+
+		
 
 		if (MinValue != MaxValue) {
 			features |= dataElementFeatures::isValueRanged;

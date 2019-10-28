@@ -17,10 +17,11 @@ class ModelModulatedControl : public dataObject {
 
 public:
 
-	dataIntProperty ModAmt = dataIntProperty("ModAmt", 0, "Mod. Amount", "Modulation amount and direction","","",-64,64);
+	dataIntProperty ModAmt = dataIntProperty("ModAmt", 0, "Mod. Amount", "Modulation amount and direction","%","",-100,+100);
 	dataEnumProperty ModSrc = dataEnumProperty("ModSrc", 0, "Modulation source", "Modulation function or macro control providing modulation value for this control", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
-	dataIntProperty Val = dataIntProperty("Val", 0, "Value", "Modulation amount and direction","","",0,127);
+	dataIntProperty Val = dataIntProperty("Val", 0, "Value", "Modulation amount and direction","%","",0,100);
 	
+	dataEnumProperty Mode = dataEnumProperty("Mode", 0, "Modulation mode", "Designates how Value is combined with modulation function", "modulationMode", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 
 	/// <summary>
 	/// Deploys this instance.
@@ -31,6 +32,12 @@ public:
 		: dataObject(_name, _label, _description, "", _helpUrl,_parClass) {
 
 		elementClassRole = "ModelModulatedControl";
+
+
+		Add(&Val);
+		Add(&ModAmt);
+		Add(&ModSrc);
+		Add(&Mode);
 		
 	}
 

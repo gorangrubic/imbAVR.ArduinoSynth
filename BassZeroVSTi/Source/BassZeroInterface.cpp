@@ -43,13 +43,13 @@ BassZeroGUI::BassZeroGUI (imbSynthStateData * synthState)
     setName ("BassZero VSTi");
     tabbedComponent.reset (new TabbedComponent (TabbedButtonBar::TabsAtTop));
     addAndMakeVisible (tabbedComponent.get());
-    tabbedComponent->setTabBarDepth (36);
+    tabbedComponent->setTabBarDepth (24);
     tabbedComponent->addTab (TRANS("FX & Master"), Colours::lightgrey, new TabMasterFilter (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Waveforms"), Colours::lightgrey, new TabWaveforms (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Modulation"), Colours::lightgrey, new TabModulationFunctions (synthState, ""), true);
     tabbedComponent->addTab (TRANS("OPM Control"), Colours::lightgrey, new TabOPM (synthState, ""), true);
     tabbedComponent->addTab (TRANS("Library & Setup"), Colours::lightgrey, new TabMainControl (synthState, ""), true);
-    tabbedComponent->setCurrentTabIndex (1);
+    tabbedComponent->setCurrentTabIndex (4);
 
     tabbedComponent->setBounds (0, 36, 840, 400);
 
@@ -215,7 +215,7 @@ BEGIN_JUCER_METADATA
   </BACKGROUND>
   <TABBEDCOMPONENT name="new tabbed component" id="dacddc8e0a4fba01" memberName="tabbedComponent"
                    virtualName="" explicitFocusOrder="0" pos="0 36 840 400" orientation="top"
-                   tabBarDepth="36" initialTab="1">
+                   tabBarDepth="24" initialTab="4">
     <TAB name="FX &amp; Master" colour="ffd3d3d3" useJucerComp="1" contentClassName=""
          constructorParams="synthState, &quot;&quot;" jucerComponentFile="GUI/Tabs/TabMasterFilter.cpp"/>
     <TAB name="Waveforms" colour="ffd3d3d3" useJucerComp="1" contentClassName=""

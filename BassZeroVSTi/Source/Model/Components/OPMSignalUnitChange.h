@@ -26,14 +26,7 @@ class OPMSignalUnitChange :
 {
 public:
 
-	/*static std::string NameString_Phase = const "Phase";
-	static std::string NameString_Pitch = "Pitch";
-	static std::string NameString_PWM = juce::String("PWM");
-	static std::string LabelString_Phase = juce::String("Phase");
-	static std::string LabelString_Pitch = juce::String("Pitch");
-	static std::string LabelString_PWM = juce::String("Pulse-Width Change");*/
 
-	//OPMControlModel * opmParent;
 
 	dataBoolProperty Enabled = dataBoolProperty("Enabled", true, "Enabled", "Sets if modulation source is enabled/active.", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 	dataBoolProperty Sync = dataBoolProperty("Enabled", true, "Enabled", "When [True] Period will restart to beginning with every Note On. Otherwise, the LFO continues where it stoped with last Note Off.", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
@@ -50,6 +43,13 @@ public:
 
 		elementClassRole = "OPMSignalUnitChange";
 		
+		Add(&Enabled);
+		Add(&Sync);
+		Add(&Chaos);
+		Add(&Rate);
+		Add(&Period);
+		Add(&Change);
+		Add(&Function);
 	}
 
 //	OPMSignalUnitChange(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) { }

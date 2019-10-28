@@ -14,7 +14,7 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Control/imbControlParameter.h"
+
 
 #include "../Source/Data/Model/dataObject.h"
 
@@ -35,13 +35,14 @@ public:
 
 	ModulationSourceType type = ModulationSourceType::unknown;
 	
-	ModulationSourceBase(std::string _name = "", std::string _label = "", bool _isMaster=false, std::string _description = "", std::string _helpUrl = "")
-		: dataObject(_name, _label, _description, "", _helpUrl) {
+	ModulationSourceBase(std::string _name = "", std::string _label = "", bool _isMaster=false, std::string _description = "", std::string _helpUrl = "", parameterClass _parClass = parameterClass::ccLive)
+		: dataObject(_name, _label, _description, "", _helpUrl,_parClass) {
 		
 		IsMaster = _isMaster;
 
-		AddProperty(&Enabled);
-		AddProperty(&SlaveTarget);
+		Add(&Enabled,true);
+		Add(&SlaveTarget, true);
+		
 	}
 	
 	//ModulationSourceBase(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :SynthDeviceModelComponentBase(_root, _parent, _shortName, _longName) {}

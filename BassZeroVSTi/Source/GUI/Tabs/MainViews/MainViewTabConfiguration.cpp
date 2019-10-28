@@ -45,33 +45,6 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
 
     label3->setBounds (16, 32, 300, 24);
 
-    label5.reset (new Label ("new label",
-                             TRANS("Needle 1")));
-    addAndMakeVisible (label5.get());
-    label5->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-    label5->setJustificationType (Justification::centredLeft);
-    label5->setEditable (false, false, false);
-    label5->setColour (Label::backgroundColourId, Colours::azure);
-    label5->setColour (Label::textColourId, Colour (0xff181f22));
-    label5->setColour (TextEditor::textColourId, Colours::black);
-    label5->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
-
-    label5->setBounds (464, 424, 112, 24);
-
-    text_name2.reset (new TextEditor ("new text editor"));
-    addAndMakeVisible (text_name2.get());
-    text_name2->setTooltip (TRANS("Title of the Operation Mode"));
-    text_name2->setMultiLine (false);
-    text_name2->setReturnKeyStartsNewLine (false);
-    text_name2->setReadOnly (false);
-    text_name2->setScrollbarsShown (true);
-    text_name2->setCaretVisible (true);
-    text_name2->setPopupMenuEnabled (true);
-    text_name2->setColour (TextEditor::backgroundColourId, Colour (0xff181f22));
-    text_name2->setText (TRANS("Arduino Pro Micro"));
-
-    text_name2->setBounds (584, 424, 176, 24);
-
     needle_midiDevice.reset (new TextEditor ("new text editor"));
     addAndMakeVisible (needle_midiDevice.get());
     needle_midiDevice->setTooltip (TRANS("Title of the Operation Mode"));
@@ -235,24 +208,24 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
 
     confirmationNoteOnOff.reset (new ToggleButton (String()));
     addAndMakeVisible (confirmationNoteOnOff.get());
-    confirmationNoteOnOff->setButtonText (TRANS("Confirmation protocol for Note On/Off"));
+    confirmationNoteOnOff->setButtonText (TRANS("Confirm Note On/Off"));
     confirmationNoteOnOff->addListener (this);
 
-    confirmationNoteOnOff->setBounds (344, 104, 360, 24);
+    confirmationNoteOnOff->setBounds (344, 104, 200, 24);
 
     confirmationCC.reset (new ToggleButton (String()));
     addAndMakeVisible (confirmationCC.get());
-    confirmationCC->setButtonText (TRANS("Confirmation protocol for CC"));
+    confirmationCC->setButtonText (TRANS("Confirm CC"));
     confirmationCC->addListener (this);
 
-    confirmationCC->setBounds (344, 128, 360, 24);
+    confirmationCC->setBounds (344, 128, 200, 24);
 
     confirmationOPM.reset (new ToggleButton (String()));
     addAndMakeVisible (confirmationOPM.get());
-    confirmationOPM->setButtonText (TRANS("Confirmation protocol for OPM"));
+    confirmationOPM->setButtonText (TRANS("Confirm OPM"));
     confirmationOPM->addListener (this);
 
-    confirmationOPM->setBounds (344, 152, 360, 24);
+    confirmationOPM->setBounds (344, 152, 200, 24);
 
     confirmationRetryLimit.reset (new Slider ("new slider"));
     addAndMakeVisible (confirmationRetryLimit.get());
@@ -342,13 +315,6 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
 
     label12->setBounds (344, 297, 190, 24);
 
-    logFailStats.reset (new ToggleButton (String()));
-    addAndMakeVisible (logFailStats.get());
-    logFailStats->setButtonText (TRANS("Log fail stats"));
-    logFailStats->addListener (this);
-
-    logFailStats->setBounds (648, 104, 150, 24);
-
     ResetToDefaults.reset (new TextButton ("new button"));
     addAndMakeVisible (ResetToDefaults.get());
     ResetToDefaults->setButtonText (TRANS("Reset to defaults"));
@@ -356,6 +322,46 @@ MainViewTabConfiguration::MainViewTabConfiguration (imbSynthStateData * synthSta
     ResetToDefaults->setColour (TextButton::buttonColourId, Colour (0xff397daa));
 
     ResetToDefaults->setBounds (16, 296, 300, 24);
+
+    label13.reset (new Label ("new label",
+                              TRANS("VSTi clock (ms)")));
+    addAndMakeVisible (label13.get());
+    label13->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label13->setJustificationType (Justification::centredLeft);
+    label13->setEditable (false, false, false);
+    label13->setColour (TextEditor::textColourId, Colours::black);
+    label13->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label13->setBounds (568, 104, 136, 24);
+
+    slider.reset (new Slider ("new slider"));
+    addAndMakeVisible (slider.get());
+    slider->setRange (1, 10, 1);
+    slider->setSliderStyle (Slider::IncDecButtons);
+    slider->setTextBoxStyle (Slider::TextBoxLeft, false, 36, 24);
+    slider->addListener (this);
+
+    slider->setBounds (712, 112, 80, 16);
+
+    label14.reset (new Label ("new label",
+                              TRANS("Hardware clock (ms)")));
+    addAndMakeVisible (label14.get());
+    label14->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    label14->setJustificationType (Justification::centredLeft);
+    label14->setEditable (false, false, false);
+    label14->setColour (TextEditor::textColourId, Colours::black);
+    label14->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    label14->setBounds (568, 132, 136, 24);
+
+    slider2.reset (new Slider ("new slider"));
+    addAndMakeVisible (slider2.get());
+    slider2->setRange (10, 50, 1);
+    slider2->setSliderStyle (Slider::IncDecButtons);
+    slider2->setTextBoxStyle (Slider::TextBoxLeft, false, 36, 24);
+    slider2->addListener (this);
+
+    slider2->setBounds (712, 136, 80, 16);
 
     cachedImage_background2_jpg_1 = ImageCache::getFromMemory (background2_jpg, background2_jpgSize);
 
@@ -398,8 +404,6 @@ MainViewTabConfiguration::~MainViewTabConfiguration()
     //[/Destructor_pre]
 
     label3 = nullptr;
-    label5 = nullptr;
-    text_name2 = nullptr;
     needle_midiDevice = nullptr;
     label7 = nullptr;
     needle_input = nullptr;
@@ -425,8 +429,11 @@ MainViewTabConfiguration::~MainViewTabConfiguration()
     label11 = nullptr;
     UIRefreshRate = nullptr;
     label12 = nullptr;
-    logFailStats = nullptr;
     ResetToDefaults = nullptr;
+    label13 = nullptr;
+    slider = nullptr;
+    label14 = nullptr;
+    slider2 = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -498,11 +505,6 @@ void MainViewTabConfiguration::buttonClicked (Button* buttonThatWasClicked)
         //[UserButtonCode_confirmationOPM] -- add your button handler code here..
         //[/UserButtonCode_confirmationOPM]
     }
-    else if (buttonThatWasClicked == logFailStats.get())
-    {
-        //[UserButtonCode_logFailStats] -- add your button handler code here..
-        //[/UserButtonCode_logFailStats]
-    }
     else if (buttonThatWasClicked == ResetToDefaults.get())
     {
         //[UserButtonCode_ResetToDefaults] -- add your button handler code here..
@@ -548,6 +550,16 @@ void MainViewTabConfiguration::sliderValueChanged (Slider* sliderThatWasMoved)
         //[UserSliderCode_UIRefreshRate] -- add your slider handling code here..
         //[/UserSliderCode_UIRefreshRate]
     }
+    else if (sliderThatWasMoved == slider.get())
+    {
+        //[UserSliderCode_slider] -- add your slider handling code here..
+        //[/UserSliderCode_slider]
+    }
+    else if (sliderThatWasMoved == slider2.get())
+    {
+        //[UserSliderCode_slider2] -- add your slider handling code here..
+        //[/UserSliderCode_slider2]
+    }
 
     //[UsersliderValueChanged_Post]
     //[/UsersliderValueChanged_Post]
@@ -582,16 +594,6 @@ BEGIN_JUCER_METADATA
          edBkgCol="0" labelText="MIDI Device needles" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
-  <LABEL name="new label" id="cdcd778c5d2cc957" memberName="label5" virtualName=""
-         explicitFocusOrder="0" pos="464 424 112 24" bkgCol="fff0ffff"
-         textCol="ff181f22" edTextCol="ff000000" edBkgCol="0" labelText="Needle 1"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
-         italic="0" justification="33"/>
-  <TEXTEDITOR name="new text editor" id="70ba1419acb8f72c" memberName="text_name2"
-              virtualName="" explicitFocusOrder="0" pos="584 424 176 24" tooltip="Title of the Operation Mode"
-              bkgcol="ff181f22" initialText="Arduino Pro Micro" multiline="0"
-              retKeyStartsLine="0" readonly="0" scrollbars="1" caret="1" popupmenu="1"/>
   <TEXTEDITOR name="new text editor" id="922d1416b90b6e43" memberName="needle_midiDevice"
               virtualName="" explicitFocusOrder="0" pos="16 56 300 24" tooltip="Title of the Operation Mode"
               bkgcol="ff181f22" initialText="Pro Micro|BassZero" multiline="0"
@@ -661,13 +663,13 @@ BEGIN_JUCER_METADATA
          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
          italic="0" justification="33"/>
   <TOGGLEBUTTON name="" id="4cc6ebac49fe7816" memberName="confirmationNoteOnOff"
-                virtualName="" explicitFocusOrder="0" pos="344 104 360 24" buttonText="Confirmation protocol for Note On/Off"
+                virtualName="" explicitFocusOrder="0" pos="344 104 200 24" buttonText="Confirm Note On/Off"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="" id="ac3984931dd16cfe" memberName="confirmationCC" virtualName=""
-                explicitFocusOrder="0" pos="344 128 360 24" buttonText="Confirmation protocol for CC"
+                explicitFocusOrder="0" pos="344 128 200 24" buttonText="Confirm CC"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <TOGGLEBUTTON name="" id="1b9c4f59adc6eb25" memberName="confirmationOPM" virtualName=""
-                explicitFocusOrder="0" pos="344 152 360 24" buttonText="Confirmation protocol for OPM"
+                explicitFocusOrder="0" pos="344 152 200 24" buttonText="Confirm OPM"
                 connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <SLIDER name="new slider" id="6f7dfd62a9b9675f" memberName="confirmationRetryLimit"
           virtualName="" explicitFocusOrder="0" pos="822r 192 260 24" posRelativeX="532fe1565902977"
@@ -717,13 +719,29 @@ BEGIN_JUCER_METADATA
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
          fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
          italic="0" justification="33"/>
-  <TOGGLEBUTTON name="" id="4ab1bbd887e6b414" memberName="logFailStats" virtualName=""
-                explicitFocusOrder="0" pos="648 104 150 24" buttonText="Log fail stats"
-                connectedEdges="0" needsCallback="1" radioGroupId="0" state="0"/>
   <TEXTBUTTON name="new button" id="81b4e57bbf82b3a1" memberName="ResetToDefaults"
               virtualName="" explicitFocusOrder="0" pos="16 296 300 24" posRelativeX="d44bfedad95ee328"
               posRelativeY="d44bfedad95ee328" bgColOff="ff397daa" buttonText="Reset to defaults"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <LABEL name="new label" id="53962bfe79ca55e8" memberName="label13" virtualName=""
+         explicitFocusOrder="0" pos="568 104 136 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="VSTi clock (ms)" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
+  <SLIDER name="new slider" id="e24b3ee866c4beb9" memberName="slider" virtualName=""
+          explicitFocusOrder="0" pos="712 112 80 16" min="1.0" max="10.0"
+          int="1.0" style="IncDecButtons" textBoxPos="TextBoxLeft" textBoxEditable="1"
+          textBoxWidth="36" textBoxHeight="24" skewFactor="1.0" needsCallback="1"/>
+  <LABEL name="new label" id="c570371078bfa45a" memberName="label14" virtualName=""
+         explicitFocusOrder="0" pos="568 132 136 24" edTextCol="ff000000"
+         edBkgCol="0" labelText="Hardware clock (ms)" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15.0" kerning="0.0" bold="0" italic="0" justification="33"/>
+  <SLIDER name="new slider" id="e4b440e5ee5584f5" memberName="slider2"
+          virtualName="" explicitFocusOrder="0" pos="712 136 80 16" min="10.0"
+          max="50.0" int="1.0" style="IncDecButtons" textBoxPos="TextBoxLeft"
+          textBoxEditable="1" textBoxWidth="36" textBoxHeight="24" skewFactor="1.0"
+          needsCallback="1"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

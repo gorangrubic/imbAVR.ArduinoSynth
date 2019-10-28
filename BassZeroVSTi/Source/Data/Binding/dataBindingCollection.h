@@ -39,3 +39,23 @@ class dataBindingCollection {
 
     
 };
+
+void dataBindingCollection::detachAll()
+{
+}
+
+void dataBindingCollection::attachControl(Slider * _slider)
+{
+}
+
+void dataBindingCollection::attachControl(ComboBox * _comboBox)
+{
+}
+
+void dataBindingCollection::attachControl(ToggleButton * _button)
+{
+}
+
+void dataBindingCollection::attachControl(TextEditor * _textEditor)
+{
+}

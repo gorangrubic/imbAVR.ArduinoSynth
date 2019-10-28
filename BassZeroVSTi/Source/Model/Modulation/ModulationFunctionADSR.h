@@ -20,6 +20,9 @@ public:
 
 	
 	dataIntProperty TimeFactor = dataIntProperty("TimeFactor", 2, "Time Factor", "Multiplier of synth base time unit, applied to all time parameters (A,D,R)", "", "", 1, 5, parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
+
+	dataEnumProperty TimeUnit = dataEnumProperty("TimeUnit", 0, "Time unit", "Used by modulation functions", "timeUnit", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
+
 	
 	dataIntProperty AttackTime = dataIntProperty("AttackTime", 5, "Attack time", "", "", "", 0, 127, parameterClass::ccSustained);
 	dataIntProperty DecayTime = dataIntProperty("DecayTime", 25, "Decay time", "", "", "", 0, 127, parameterClass::ccSustained);
@@ -30,6 +33,7 @@ public:
 
 	dataBoolProperty VelAsPeak = dataBoolProperty("VelAsPeak", true, "Velocity as peak", "Note velocity defines peak value (reached after attack period), otherwise peak is max. value.", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 
+	
 	/// <summary>
 	/// Deploys this instance.
 	/// </summary>
@@ -43,14 +47,22 @@ public:
 		type = ModulationSourceType::ADSR;
 		elementClassRole = "ModulationFunctionADSR";
 
-		Add(&TimeFactor);
-		Add(&AttackTime);
-		Add(&DecayTime);
-		Add(&ReleaseTime);
-		Add(&InitValue);
-		Add(&SustainValue);
-		Add(&VelAsPeak);
+		layout.OpenBlock("Time", "");
 
+			Add(&TimeFactor,true);
+			Add(&TimeUnit, true);
+			Add(&AttackTime, true);
+			Add(&DecayTime, true);
+			Add(&ReleaseTime, true);
+			
+		layout.CloseBlock();
+
+		layout.OpenBlock("Value", "");
+			Add(&InitValue,true);
+			Add(&SustainValue, true);
+			Add(&VelAsPeak, true);
+
+		layout.CloseBlock();
 		//elementClassRole = "Modulation"
 	}
 

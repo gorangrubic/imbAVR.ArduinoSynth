@@ -22,7 +22,10 @@
 
 #include "../Source/Data/Structures/imbValueSet.h"
 #include "dataBindingEntry.h";
+#include "../Source/Data/Structures/dataObjectCollection.h"
+#include "../Source/Application/Model/CommandModelComplete.h"
 
+#include "../Source/Data/Binding/dataContextMenu.h"
 
 
 /* manages current focus (selection) in data tree; copy/clipboard data, etc */
@@ -31,19 +34,50 @@ class dataInterfaceManager {
     public:
 
 		imbValueSet clipboard;
+
+		dataObjectCollection dataModels;
+
+
+		/// <summary>
+		/// Registers given data model to the interface manager
+		/// </summary>
+		/// <param name="_model">The model.</param>
+		void Register(dataObject _model);
+
+
+		/// <summary>
+		/// Gets the data element.
+		/// </summary>
+		/// <param name="pathID">The path identifier.</param>
+		/// <returns></returns>
+		template<typename T>
+		T * GetDataElement(std::string pathID) {
+
+			auto o = dataModels.FindElement(pathID);
+			if (o == nullptr) return nullptr;
+			T * output = static_cast<T>(o);
+			return output;
+		}
+
 		dataBindingCollection bindings;
 
-		dataObject model;
+		CommandModelComplete keyboardCommander;
+		
+		void init() {
+
+		}
+
+		//dataObject model;
 	
-		std::unique_ptr<CommandBufferDisplayModel> bufferDisplayModel;
+		//std::unique_ptr<CommandBufferDisplayModel> bufferDisplayModel;
 
-		//std::shared_ptr<ControlStateDisplay> controlStateDisplay{ nullptr };
+		////std::shared_ptr<ControlStateDisplay> controlStateDisplay{ nullptr };
 
-		std::unique_ptr<ControlStateDisplayModel> controlDisplayModel;
+		//std::unique_ptr<ControlStateDisplayModel> controlDisplayModel;
 
 
-		//std::shared_ptr<SynthStateDisplay> synthStateDisplay{ nullptr };
-		std::unique_ptr<SynthStateDisplayModel> stateDisplayModel;
+		////std::shared_ptr<SynthStateDisplay> synthStateDisplay{ nullptr };
+		//std::unique_ptr<SynthStateDisplayModel> stateDisplayModel;
 
 
 		dataContextMenu showContextMenu(std::string pathID);

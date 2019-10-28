@@ -23,6 +23,8 @@ public:
 	dataIntProperty TimeA = dataIntProperty("TimeA", 40, "Time A", "Period to reach Value A, from start", "", "", 0, 127, parameterClass::ccLive);
 	dataIntProperty TimeB = dataIntProperty("TimeB", 127, "Time B", "Period to move from Value A to Value B", "", "", 0, 127, parameterClass::ccLive);
 
+	dataEnumProperty TimeUnit = dataEnumProperty("TimeUnit", 0, "Time unit", "Used by modulation functions", "timeUnit", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
+
 	dataIntProperty ValueA = dataIntProperty("ValueA", 100, "Value A", "Value after Time A", "", "", 0, 127, parameterClass::ccLive);
 	dataIntProperty ValueB = dataIntProperty("ValueB", 20, "Value B", "Value after Time B and at start (option)", "", "", 0, 127, parameterClass::ccLive);
 
@@ -30,6 +32,7 @@ public:
 
 	dataBoolProperty Loop = dataBoolProperty("Loop", true, "Loop", "If the function is looped, otherwise it runs only once (per Note On)", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 
+	dataEnumProperty TimeUnit = dataEnumProperty("TimeUnit", 0, "Time unit", "Used by modulation functions", "timeUnit", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 
 	/// <summary>
 /// Deploys this instance.
@@ -41,14 +44,28 @@ public:
 		type = ModulationSourceType::ENV;
 		elementClassRole = "ModulationFunctionENV";
 
-		Add(&TimeFactorA);
-		Add(&TimeFactorB);
-		Add(&TimeA);
-		Add(&TimeB);
-		Add(&ValueA);
-		Add(&ValueB);
-		Add(&StartWithB);
-		Add(&Loop);
+		layout.OpenBlock("Time", "");
+
+			Add(&TimeFactorA,true);
+			Add(&TimeFactorB, true);
+			Add(&TimeA, true);
+			Add(&TimeB, true);
+			Add(&TimeUnit, true);
+
+		layout.CloseBlock();
+
+		layout.OpenBlock("Value", "");
+		
+			Add(&ValueA, true);
+			Add(&ValueB, true);
+			Add(&StartWithB, true);
+			Add(&Loop, true);
+
+		layout.CloseBlock();
+
+
+	
+		
 		
 
 		//elementClassRole = "Modulation"

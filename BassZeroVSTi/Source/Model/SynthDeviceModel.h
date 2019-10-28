@@ -17,43 +17,21 @@
 #include "../Source/Model/Components/MacroControlLink.h"
 #include "../Source/Model/Components/OPMSignalUnitChange.h"
 
-
-//#include "../Control/ParameterController.h"
-
-//
-//#include "Components\OscilatorWaveform.h"
-//#include "Components\OscilatorPerk.h"
-
 #include "../Source/Model/Modulation/ModulationFunctionADSR.h"
 #include "../Source/Model/Modulation/ModulationFunctionENV.h"
 #include "../Source/Model/Modulation/ModulationFunctionLFO.h"
 #include "../Source/Model/Modulation/ModulationSourceMacroControl.h"
 
-//#include "../Source/Model/ModelConstructionTools.h"
-
 #include <vector>
 
-//#include "../Source/Control/imbSynthAudioProcessor.h"
-//static String MODHUB_ID = String("MOD");
-//static String MODHUB_LABEL = String("Modulation sources");
-//
-//static String COMP_ID = String("COMP");
-//static String COMP_LABEL = String("Synth Components");
-//
-//static String OPM_ID = String("OPM");
-//static String OPM_LABEL = String("Operation Mode Control");
-
 class SynthDeviceModel :public dataObject
-	//public SynthDeviceModelComponentBase
-
+	
 {
-	//: {
-
-
-	/// <summary>
+	
+/// <summary>
 /// The synth processor
 /// </summary>
-	//	imbSynthAudioProcessor * SynthProcessor;
+///	imbSynthAudioProcessor * SynthProcessor;
 
 public:
 
@@ -61,6 +39,8 @@ public:
 	void AfterDeployModel();
 
 	
+
+
 	/// <summary>
 /// Deploys this instance.
 /// </summary>
@@ -68,9 +48,7 @@ public:
 
 	void ConstructParameters(AudioProcessorValueTreeState& parameters);
 
-	/* Populates specified vector with all parameters defined in the model*/
-	//void CollectAllParameters(SharedPointerVector<imbControlParameter>& parameters);
-
+	virtual void PrepareEnums(SynthEnumDictionaries & environment);
 
 	/*Deploys model*/
 	virtual void DeployModel() = 0;

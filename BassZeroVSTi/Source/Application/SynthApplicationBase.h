@@ -16,8 +16,8 @@
 
 #include "CommandIDs.h"
 #include "../Model/SynthDeviceModel.h"
-#include "../Control/imbSynthAudioProcessor.h"
-#include "../Data/imbSynthStateData.h"
+#include "imbSynthAudioProcessor.h"
+#include "imbSynthStateData.h"
 #include "../Data/Structures/SharedPointerVector.h"
 
 #include "../Source/Utility/imbGeneralTools.h"
@@ -31,7 +31,8 @@ public :
 	std::shared_ptr<imbSynthAudioProcessor> synthProcessor;
 	std::shared_ptr<imbSynthStateData> synthState;
 
-
+	
+	
 	
 	
 	bool perform(CommandIDs commandID);

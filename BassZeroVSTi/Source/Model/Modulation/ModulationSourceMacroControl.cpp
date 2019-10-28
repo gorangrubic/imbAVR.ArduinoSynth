@@ -10,16 +10,6 @@
 
 #include "ModulationSourceMacroControl.h"
 
-void ModulationSourceMacroControl::Deploy(ParameterController & parameterController)
-{
-	AddCCParameter(parameterController, &Value, "Value", "Value", 64);
-}
-
-ModulationSourceMacroControl::ModulationSourceMacroControl():
-	Value() {
-	type = ModulationSourceType::Macro;
-//	NamePrefix = "CTRL";
-}
 
 //ModulationSourceMacroControl::ModulationSourceMacroControl(SynthDeviceModel * _root, SynthDeviceModelComponentBase * _parent, String _shortName, String _longName) :ModulationSourceBase(_root, _parent, _shortName, _longName),
 //Value()

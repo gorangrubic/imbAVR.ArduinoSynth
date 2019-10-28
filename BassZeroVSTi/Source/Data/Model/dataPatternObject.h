@@ -176,3 +176,33 @@ class dataPatternObject:public dataObject {
 			
 		}
 };
+
+void dataPatternObject::Set(std::vector<float> pattern)
+{
+}
+
+dataObjectProperty * dataPatternObject::GetCell(int i)
+{
+	return GetMemberByPath<dataObjectProperty>(GetCellID(i));
+	
+}
+
+std::vector<dataObjectProperty*> dataPatternObject::GetAllCells()
+{
+	std::vector<dataObjectProperty *> output;
+
+	for (size_t i = 0; i < patternSize; i++)
+	{
+		output.push_back(GetCell(i));
+	}
+	
+	return output;
+}
+
+std::string dataPatternObject::GetCellID(int i)
+{
+	return String(i).toStdString();
+}
+
+
+

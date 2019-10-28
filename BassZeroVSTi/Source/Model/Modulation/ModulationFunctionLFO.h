@@ -19,11 +19,13 @@ public:
 
 	
 
-	dataIntProperty Time = dataIntProperty("Time", 50, "Time", "Duration of one LFO cycle", "", "", 0, 127, parameterClass::ccLive);
+	dataIntProperty Time = dataIntProperty("Time", 50, "Time", "Duration of one LFO cycle", "", "", 0, 100, parameterClass::ccLive);
 
-	dataIntProperty TimeFactor = dataIntProperty("TimeFactor", 10, "Time factor", "Multiplier of synth base time unit, applied to the time parameter", "", "", 0, 127, parameterClass::ccSustained);
+	dataIntProperty TimeFactor = dataIntProperty("TimeFactor", 10, "Time factor", "Multiplier of synth base time unit, applied to the time parameter", "", "", 0, 100, parameterClass::ccSustained);
 
-	dataIntProperty Value = dataIntProperty("Value", 127, "Value", "Peak value of the LFO", "", "", 0, 127, parameterClass::ccLive);
+	dataEnumProperty TimeUnit = dataEnumProperty("TimeUnit", 0, "Time unit", "Used by modulation functions", "timeUnit", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
+
+	dataIntProperty Value = dataIntProperty("Value", 100, "Value", "Peak value of the LFO", "", "", 0, 100, parameterClass::ccLive);
 	
 	
 	dataBoolProperty Retrigger = dataBoolProperty("Retrigger", true,"Note Retrigger", "Designates if LFO resets with start of new note played", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
@@ -32,6 +34,8 @@ public:
 	dataBoolProperty Loop = dataBoolProperty("Loop", true, "Loop", "Designates if LFO runs in loop, otherwise it will run only once with new note played", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
 
 	dataEnumProperty Curve = dataEnumProperty("Curve", 1, "Curve", "Value curve function applied to the LFO", "", "", parameterClass::opm, dataElementFeatures::_features::doSetValueByContextMenu);
+
+	
 
 	/// <summary>
 /// Deploys this instance.
@@ -43,13 +47,23 @@ public:
 
 		type = ModulationSourceType::LFO;
 		elementClassRole = "ModulationFunctionLFO";
-		Add(&Time);
-		Add(&TimeFactor);
-		Add(&Value);
-		Add(&Retrigger);
-		Add(&Loop);
-		Add(&Curve);
-		
+
+		layout.OpenBlock("Time", "");
+
+			Add(&Time, true);
+			Add(&TimeFactor, true);
+			Add(&TimeUnit, true);
+
+		layout.CloseBlock();
+
+		layout.OpenBlock("Value", "");
+
+			Add(&Value, true);
+			Add(&Retrigger, true);
+			Add(&Curve, true);
+			Add(&Loop, true);
+
+		layout.CloseBlock();
 
 		//elementClassRole = "Modulation"
 	}

@@ -21,7 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/Application/imbSynthStateData.h"
 #include "../Source/GUI/Components/imbSynthGUIComponent.h"
 //[/Headers]
 
@@ -65,8 +65,6 @@ private:
 
     //==============================================================================
     std::unique_ptr<Label> label3;
-    std::unique_ptr<Label> label5;
-    std::unique_ptr<TextEditor> text_name2;
     std::unique_ptr<TextEditor> needle_midiDevice;
     std::unique_ptr<Label> label7;
     std::unique_ptr<TextEditor> needle_input;
@@ -92,8 +90,11 @@ private:
     std::unique_ptr<Label> label11;
     std::unique_ptr<Slider> UIRefreshRate;
     std::unique_ptr<Label> label12;
-    std::unique_ptr<ToggleButton> logFailStats;
     std::unique_ptr<TextButton> ResetToDefaults;
+    std::unique_ptr<Label> label13;
+    std::unique_ptr<Slider> slider;
+    std::unique_ptr<Label> label14;
+    std::unique_ptr<Slider> slider2;
     Image cachedImage_background2_jpg_1;
 
 

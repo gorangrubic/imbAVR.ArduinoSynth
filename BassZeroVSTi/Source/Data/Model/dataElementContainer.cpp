@@ -9,13 +9,22 @@
 */
 
 #include "dataElementContainer.h"
+#include <vector>
 
 void dataElementContainer::deploy(std::string prefix)
 {
 	parameterIDPath = GetPrefix(prefix);
-	for each (auto var in properties)
+
+	for each (std::shared_ptr<dataElementBase> var in children)
 	{
 		var->parameterIDPath = GetParameterPath(var, parameterIDPath);
+
+		if (var->features.HasFlag(dataElementFeatures::isElementContainer)) {
+
+
+			dataElementContainer * c = static_cast<dataElementContainer *>(var.get());
+			c->deploy(parameterIDPath);
+		}
 	}
 
 }
@@ -67,38 +76,24 @@ void dataElementContainer::add(dataElementBase * item)
 	children.Add(item);
 }
 
-std::string dataElementContainer::GetPrefix(std::string parentPathPrefix)
-{
-	if (!parameterIDPath.empty()) return parameterIDPath;
 
-	std::string prefix = name;
-	if (!parentPathPrefix.empty()) {
-		if (!name.empty()) {
-			prefix = parentPathPrefix + "." + name;
-		}
-		else {
-			prefix = parentPathPrefix;
-		}
-	}
-	return prefix;
+void dataElementContainer::RemoveAll()
+{
+	children.clear();
+	properties.clear();
 }
 
-std::string dataElementContainer::GetParameterPath(std::shared_ptr<dataObjectPropertyBase> var, std::string prefix)
+void dataElementContainer::RemoveEntry(std::string _propertyID)
 {
-	std::string p = "";
-	if (prefix.empty()) {
-		p = var->parameterID;
-	}
-	else {
-		p = prefix + "." + var->parameterID;
-	}
-	return p;
+	RemovePointerByID(_propertyID, children);
+	RemovePointerByID(_propertyID, properties);
 }
 
 void dataElementContainer::AddProperty(dataObjectPropertyBase * _property)
 {
 	properties.Add(_property);
 	add(dynamic_cast<dataElementBase*>(_property));
+	
 }
 
 dataObjectPropertyBase * dataElementContainer::FindProperty(std::string _propertyID)
@@ -106,7 +101,62 @@ dataObjectPropertyBase * dataElementContainer::FindProperty(std::string _propert
 	return GetPointerByID<dataObjectPropertyBase>(_propertyID, properties).get();
 }
 
+int dataElementContainer::GetCheckSum(bool forValue, bool forStructure)
+{
+	int output;
+
+
+
+	for each (std::shared_ptr<dataElementBase> var in children)
+	{
+//		var->parameterIDPath = GetParameterPath(var, parameterIDPath);
+
+		if (var->features.HasFlag(dataElementFeatures::isElementContainer)) {
+			dataElementContainer * c = static_cast<dataElementContainer *>(var.get());
+			output += c->GetCheckSum(forValue, forStructure);
+		}
+		else if (var->features.HasFlag(dataElementFeatures::isProperty)) {
+			dataObjectPropertyBase * p = static_cast<dataObjectPropertyBase *>(var.get());
+
+			output += p->GetCheckSum(forValue, forStructure);
+
+
+		}
+	}
+
+
+	return output;
+}
+
 void dataElementContainer::Deploy(std::string prefix)
 {
 	deploy(prefix);
 }
+
+void dataElementContainer::GetAllProperties(std::vector<dataObjectPropertyBase*>& allProperties, parameterClass parClass)
+{
+	for each (std::shared_ptr<dataElementBase> var in children)
+	{
+		if (var->features.HasFlag(dataElementFeatures::_features::isProperty)) {
+			auto p= static_cast<dataObjectPropertyBase*>(var.get());
+
+			if (parClass != parameterClass::unspecified) {
+				if (p->parClass == parClass) {
+					allProperties.push_back(p);
+				}
+			}
+			else {
+				allProperties.push_back(p);
+			}
+
+		}
+		else if (var->features.HasFlag(dataElementFeatures::_features::isElementContainer)) {
+			auto c = static_cast<dataElementContainer*>(var.get());
+			c->GetAllProperties(allProperties, parClass);
+		}
+	
+	}
+}
+
+
+

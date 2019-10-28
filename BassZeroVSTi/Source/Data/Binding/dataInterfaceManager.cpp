@@ -10,6 +10,13 @@
 
 #include "dataInterfaceManager.h"
 
+#include "../Source/Data/Model/dataObject.h"
+
+void dataInterfaceManager::Register(dataObject _model)
+{
+	dataModels.Add(&_model);
+}
+
 dataContextMenu dataInterfaceManager::showContextMenu(std::string pathID)
 {
 	dataContextMenu output;
@@ -19,6 +26,7 @@ dataContextMenu dataInterfaceManager::showContextMenu(std::string pathID)
 
 void dataInterfaceManager::setGuiFocus(std::string pathID)
 {
+	dataElementBase _focused = GetDataElement<dataElementBase>(pathID);
 }
 
 void dataInterfaceManager::setFloatValueChange(float newValue, std::string pathID)

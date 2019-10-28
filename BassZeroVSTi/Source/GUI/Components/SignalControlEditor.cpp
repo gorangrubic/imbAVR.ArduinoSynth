@@ -18,7 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
-#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/Application/imbSynthStateData.h"
 #include "../Source/GUI/Components/imbSynthGUIComponent.h"
 
 //[/Headers]

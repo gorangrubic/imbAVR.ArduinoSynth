@@ -22,13 +22,33 @@ protected:
 
 public:
 
+	parameterValueType valueType = parameterValueType::Float;
+
 	/* if the element contains other elements */
 	dataElementFeatures::features features;
 
 	parameterClass parClass = parameterClass::ccLive;
 
+	virtual int GetCheckSum(bool forValue = true, bool forStructure = false) = 0;
+
 	/* custom pseudo class id */
 	std::string elementClassRole = "";
+	std::string editorOfPreferenceDefault = "";
+	std::string editorOfPreference = "";
+
+	std::string GetEditorOfPreference() {
+
+		if (editorOfPreference.empty()) {
+
+			if (editorOfPreferenceDefault.empty()) {
+				editorOfPreferenceDefault = dataObjectPropertyEnumerations::GetDefaultEditorOfPreference(valueType);
+			}
+
+			return editorOfPreferenceDefault;
+		}
+
+		return editorOfPreference;
+	}
 
 	/* Color-code */
 	std::string entryColorHex;
@@ -58,6 +78,9 @@ public:
 	/// Error message
 	/// </summary>
 	std::string Error;
+
+	std::string GetPrefix(std::string parentPathPrefix = "");
+	std::string GetParameterPath(std::shared_ptr<dataElementBase> var, std::string prefix);
 
 	/// <summary>
 /// Sets additional information on this parameter

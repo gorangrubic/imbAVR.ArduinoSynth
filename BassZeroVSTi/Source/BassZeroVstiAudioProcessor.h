@@ -14,7 +14,7 @@
 #include "Control\imbSynthAudioProcessor.h"
 #include "Model\SynthDeviceModel.h"
 #include "BassZeroSynthModel.h"
-#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/Application/imbSynthStateData.h"
 #include "BassZeroApplication.h"
 
 //==============================================================================
@@ -45,6 +45,11 @@ public:
 		this->bassZeroModel.ConstructParameters(parameters);
 
 		synthState.Initiated();
+
+		this->bassZeroModel.PrepareEnums(synthState.environment->enums);
+		this->bassZeroModel.DeployEnums(synthState.environment->enums);
+
+		this->Start();
 
 	};
     ~BassZeroVstiAudioProcessor();

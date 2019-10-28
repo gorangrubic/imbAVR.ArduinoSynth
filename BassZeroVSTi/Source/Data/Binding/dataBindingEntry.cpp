@@ -11,7 +11,11 @@
 #include "dataBindingEntry.h"
 
 
-void dataBindingEntry::mouseDown(const MouseEvent & event)
+void dataBindingEntry::attachControlBase(Component * _component)
+  {
+  }
+
+  void dataBindingEntry::mouseDown(const MouseEvent & event)
 {
 
 	if (event.mods.isRightButtonDown()) {

@@ -22,7 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "PathBrowserModel.h"
-#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/Application/imbSynthStateData.h"
 #include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
 

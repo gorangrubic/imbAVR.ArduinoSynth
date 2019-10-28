@@ -41,12 +41,50 @@ void dataObjectPropertyBase::updateState()
   {
   }
 
+  int dataObjectPropertyBase::GetCheckSum(bool forValue, bool forStructure)
+  {
+	  int output = 0;
+
+	  if (forValue) {
+
+		  if (valueType != parameterValueType::String) {
+			  output += GetIntValue();
+		  }
+		  else {
+			  auto s = GetStringValue();
+			/*  for (size_t i = 0; i < s.length(); i++)
+			  {
+				  
+			  }*/
+			 /* for each (char var in s.getCharPointer)
+			  {
+				  output += (char)var;
+			  }*/
+			  output += s.hashCode(); // GetStringValue().length();
+		  }
+
+	  }
+
+	  if (forStructure) {
+
+		  juce::String p = parameterIDPath;
+
+		  output += p.hashCode();
+		  /*for each (char var in parameterIDPath.getCharPointer)
+		  {
+			  output += (char)var;
+		  }*/
+	  }
+
+	  return output;
+  }
+
 bool dataObjectPropertyBase::SetStrValue(std::string _newValue)
 {
 	bool isNewValue = false;
 	juce::String jStr = juce::String(_newValue);
 
-	if (valueType == parameterValueType::String) {
+	if (valueType == parameterValueType::String || valueType == parameterValueType::customClassProperty) {
 
 		if (ValueString != _newValue) {
 			isNewValue = true;
@@ -161,7 +199,7 @@ String dataObjectPropertyBase::GetStringValue()
 {
 	juce::String output = juce::String(Value);
 
-	if (valueType == parameterValueType::String) {
+	if (valueType == parameterValueType::String || valueType == parameterValueType::customClassProperty) {
 		return ValueString;
 	}
 	else if (valueType == parameterValueType::Enumeration) {

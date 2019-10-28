@@ -10,140 +10,120 @@
 
 #include "SynthDeviceModel.h"
 
+void SynthDeviceModel::PreDeployModel()
+{
+	
+}
 
-// modelConstructionTools.parameterController.
-  void SynthDeviceModel::PreDeployModel()
-  {
-	  //modulations.model = this;
-	  //modulations.parameterControllerPtr = &this->parameterController;
-	  /*
-	  modulations = std::make_unique<ModulationHub>(new  ModulationHub());
-	  components = std::make_unique<ComponentHub>(new ComponentHub());
-	  opmControl = std::make_unique<OPMControlModel>(new OPMControlModel());
-	  */
-	  //modulations = std::unique_ptr<ModulationHub>(); //  std::make_unique<ModulationHub>();
-	  //components = std::unique_ptr<ComponentHub>();
-	  //opmControl = std::unique_ptr<OPMControlModel>();
-	  
-
-	  //parameterController.Reset();
-	  
-	  //modulations = ModulationHub();
-	  //components = ComponentHub();
-	  //opmControl = OPMControlModel();
-
-	  //MODULATIONS SetParent(std::shared_ptr<SynthDeviceModelComponentBase>(this), std::shared_ptr<ModelComponentWithChildren>(this));
-	  //COMPONENTS SetParent(std::shared_ptr<SynthDeviceModelComponentBase>(this), std::shared_ptr<ModelComponentWithChildren>(this));
-	  //OPMCONTROL SetParent(std::shared_ptr<SynthDeviceModelComponentBase>(this), std::shared_ptr<ModelComponentWithChildren>(this));
-	 /* parameterUnique = std::make_unique<ParameterController>(parameterController);
-	  parameterUnique->Reset();*/
-
-	 // auto s = std::shared_ptr<ParameterController>(&parameterController);
-
-	//  parameterControllerPtr = s;
-
-	//  ModelComponentDescription::parameterControllerPtr.swap(s);
-	  //modulations.parameterControllerPtr.reset(std::shared_ptr<ParameterController>(&parameterController));
-
-	//  MODULATIONS SetDescription("", ""); // , std::shared_ptr<ParameterController>(&parameterController));
-	//  COMPONENTS SetDescription("", ""); // std::shared_ptr<ParameterController>(&parameterController));
-	//  OPMCONTROL SetDescription("", ""); //, std::shared_ptr<ParameterController>(&parameterController));
-  }
-
-  void SynthDeviceModel::AfterDeployModel()
-  {
+void SynthDeviceModel::AfterDeployModel()
+{
 
 	 
+}
 
+/* MAIN DEPLOY function too call. Executes: PreDeploy, DeployModel and AfterDeploy*/
+void SynthDeviceModel::Deploy()
+{
+	  deploy("");
 
-	  //PARAMCONTROL.ListOfModulationFunctions.Add("One-shot");
-	  //PARAMCONTROL.ListOfModulationFunctions.Add("Loop");
-	  //CONTROLLER ListOfModulationFunctions.Add("Mirror");
-	  //CONTROLLER ListOfModulationFunctions.Add("Continual");
+}
 
-	  //CONTROLLER ListOfPitchUnits.Add("Semitones");
-	  //CONTROLLER ListOfPitchUnits.Add("Octaves");
-	  //CONTROLLER ListOfPitchUnits.Add("1 Hz");
-	  //CONTROLLER ListOfPitchUnits.Add("10 Hz");
-	  //CONTROLLER ListOfPitchUnits.Add("100 Hz");
-	  //CONTROLLER ListOfPitchUnits.Add("500 Hz");
-	  //CONTROLLER ListOfPitchUnits.Add("1000 Hz");
-	  //CONTROLLER ListOfPitchUnits.Add("2000 Hz");
-
-	  //CONTROLLER ListOfModulationParameters.Add("OFF");
-	  //CONTROLLER ListOfModulationParameters.Add("Rate");
-	  //CONTROLLER ListOfModulationParameters.Add("Period");
-	  //CONTROLLER ListOfModulationParameters.Add("Change");
-
-	  //CONTROLLER ListOfModulationModes.Add("OFF");
-	  //CONTROLLER ListOfModulationModes.Add("Pitch");
-	  //CONTROLLER ListOfModulationModes.Add("PWM");
-	  //CONTROLLER ListOfModulationModes.Add("Phase");
-
-	  //CONTROLLER ListOfLFOFunctions.Add("Triangle");
-	  //CONTROLLER ListOfLFOFunctions.Add("Ramp Down");
-	  //CONTROLLER ListOfLFOFunctions.Add("Ramp Up");
-	  //CONTROLLER ListOfLFOFunctions.Add("Square Pulse");
-	  //CONTROLLER ListOfLFOFunctions.Add("Sinewave");
-	  //CONTROLLER ListOfLFOFunctions.Add("Chaos");
-	  //
-
-		  
-		//  
-		//  
-		//  
-		//  
-		//  
-	 //
-
-		//MODULATIONS Deploy(parameterController);
-		//OPMCONTROL Deploy(parameterController);
-		//COMPONENTS Deploy(parameterController);
+void SynthDeviceModel::ConstructParameters(juce::AudioProcessorValueTreeState & parameters)
+{
 	  
-	
-  }
 
-  /* MAIN DEPLOY function too call. Executes: PreDeploy, DeployModel and AfterDeploy*/
-  void SynthDeviceModel::Deploy()
-  {
+	deployAutomation(parameters);
+	parameters.state = ValueTree("BassZero");
+}
 
+void SynthDeviceModel::PrepareEnums(SynthEnumDictionaries & output)
+{
+	for each (std::shared_ptr<dataElementBase> var in children)
+	{
+		dataElementBase * var_ptr = var.get();
 
+		if (var->elementClassRole == "MacroControlLink") {
+			output.macroControlLinks.AddEntry(var->parameterID, var->parameterLabel, var->parameterHelp);
+		} else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationSourceBase * _modulationBase = static_cast<ModulationSourceBase*>(var_ptr);
+			if (_modulationBase->IsMaster) {
+				output.masterModulationSources.AddEntry(var_ptr);
+			}
+			else {
+				output.slaveModulationSources.AddEntry(var_ptr);
+			}
 
-  }
+			output.modulationSources.AddEntry(var_ptr);
+			output.modulationFunctionADSR.AddEntry(var_ptr);
 
-  void SynthDeviceModel::ConstructParameters(juce::AudioProcessorValueTreeState & parameters)
-  {
-	 // CONTROLLER Setup(parameters);
-	 // modelConstructionTools.parameterController.Setup(parameters, processor);
-	  //parameterController.Setup(parameters, processor);
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionENV") {
+			ModulationSourceBase * _modulationBase = static_cast<ModulationSourceBase*>(var_ptr);
+			if (_modulationBase->IsMaster) {
+				output.masterModulationSources.AddEntry(var_ptr);
+			}
+			else {
+				output.slaveModulationSources.AddEntry(var_ptr);
+			}
 
-	  /*MODULATIONS ConstructComponentAndChildComponentParameters(parameterController, parameters);
-	  OPMCONTROL ConstructComponentAndChildComponentParameters( parameterController, parameters);
-	  COMPONENTS ConstructComponentAndChildComponentParameters(parameterController, parameters);*/
-	  
-	  parameters.state = ValueTree("BassZero");
+			output.modulationSources.AddEntry(var_ptr);
+			output.modulationFunctionENV.AddEntry(var_ptr);
+		}
+		else if (var->elementClassRole == "ModulationFunctionLFO") {
+			ModulationSourceBase * _modulationBase = static_cast<ModulationSourceBase*>(var_ptr);
+			if (_modulationBase->IsMaster) {
+				output.masterModulationSources.AddEntry(var_ptr);
+			}
+			else {
+				output.slaveModulationSources.AddEntry(var_ptr);
+			}
 
-  }
+			output.modulationSources.AddEntry(var_ptr);
+			output.modulationFunctionLFO.AddEntry(var_ptr);
+		}
+		else if (var->elementClassRole == "ModulationSourceMacroControl") {
+			ModulationSourceBase * _modulationBase = static_cast<ModulationSourceBase*>(var_ptr);
+			if (_modulationBase->IsMaster) {
+				output.masterModulationSources.AddEntry(var_ptr);
+			}
+			else {
+				output.slaveModulationSources.AddEntry(var_ptr);
+			}
 
-  //void SynthDeviceModel::CollectAllParameters(SharedPointerVector<imbControlParameter>& parameters)
-  //{
-	 // /*components.CollectAllParameterDefinitions(parameters);
-	 // opmControl.CollectAllParameterDefinitions(parameters);
-	 // modulations.CollectAllParameterDefinitions(parameters);*/
+			output.modulationSources.AddEntry(var_ptr);
+			output.modulationSourceMacroControl.AddEntry(var_ptr);
+		}
+		else if (var->elementClassRole == "OscilatorBase") {
+			OscilatorBase* _OscilatorBase = static_cast<OscilatorBase*>(var_ptr);
 
-  //}
+			output.oscilators.AddEntry(var_ptr);
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationFunctionADSR* _ModulationFunctionADSR = static_cast<ModulationFunctionADSR*>(var_ptr);
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationFunctionADSR* _ModulationFunctionADSR = static_cast<ModulationFunctionADSR*>(var_ptr);
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationFunctionADSR* _ModulationFunctionADSR = static_cast<ModulationFunctionADSR*>(var_ptr);
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationFunctionADSR* _ModulationFunctionADSR = static_cast<ModulationFunctionADSR*>(var_ptr);
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationFunctionADSR* _ModulationFunctionADSR = static_cast<ModulationFunctionADSR*>(var.get());
+			// to do
+		}
+		else if (var->elementClassRole == "ModulationFunctionADSR") {
+			ModulationFunctionADSR* _ModulationFunctionADSR = static_cast<ModulationFunctionADSR*>(var.get());
+			// to do
+		}
+	}
 
-
-
-  //void SynthDeviceModel::AddGroup(ControlGroup * output, std::string _shortName, std::string _longName, ControlGroup * group)
-  //{
-	 // output->ShortName = _shortName;
-	 // output->LongName = _longName;
-	 // Groups.Add(output);
-  //}
-
-  //SynthDeviceModel::SynthDeviceModel()
-  //{
-	 // 
-
-  //}
+}

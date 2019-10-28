@@ -12,7 +12,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Source/Control/imbControlParameter.h"
 #include "../Source/Control/imbControlParameterEnumerations.h"
-#include "../Source/Utility/ccTranslationMap.h"
+#include "../Source/Application/Data/ccTranslationMap.h"
 #include "../Source/Application/SynthApplicationEnvironment.h"
 
 
@@ -26,7 +26,8 @@ public:
 	//std::shared_ptr<imbSynthStateData> state;
 
 	//std::shared_ptr<imbControlParameter> parameter_ptr;
-	imbControlParameter * parameter_ptr;
+	dataElementBase * parameter_ptr;
+
 	juce::String parameterID{ "" };
 	juce::String parameterGroup{ "" };
 	
@@ -44,7 +45,7 @@ public:
 
 	void UpdateParameter(juce::String value, juce::String ccIn, juce::String ccOut);
 
-	void SetParameter(imbControlParameter * parameter);
+	void SetParameter(dataElementBase * parameter);
 
 	ControlStateDisplayModel(std::unique_ptr<ccTranslationMap> & inputToHardwareMap, std::unique_ptr<ccTranslationMap> & hardwareToOutputMap, std::unique_ptr<SynthApplicationEnvironment> & _environment);
 };

@@ -16,7 +16,14 @@ std::string imbValueSetFile::GetFilename(std::string filename)
 
 	if (filename.empty()) {
 		if (filenameDefault.empty()) {
-			filename = name;
+			if (_lastFilepath.empty()) {
+				filename = parameterID;
+			}
+			else {
+				File lf = File(_lastFilepath);
+				filename = lf.getFileNameWithoutExtension().toStdString();
+			}
+			
 		}
 		else {
 			filename = filenameDefault;
@@ -61,6 +68,7 @@ bool imbValueSetFile::LoadFile(std::string filepath, bool saveDefault)
 	}
 	
 	if (saveDefault) SaveFile(filepath);
+	if (loaded) _lastFilepath = filepath;
 	return loaded;
 }
 
@@ -113,6 +121,8 @@ bool imbValueSetFile::SaveFile(std::string filepath)
 	}
 	auto jstr = juce::String(valueSet.ToString());
 	targetFile.appendText(jstr);
+
+	_lastFilepath = targetFile.getFullPathName().toStdString();
 	return true;
 }
 

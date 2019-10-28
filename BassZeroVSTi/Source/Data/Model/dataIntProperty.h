@@ -15,8 +15,14 @@ class dataIntProperty :public dataObjectProperty {
 
 public:
 
-	bool Set(int _newValue);
-	int Get();
+	bool Set(int _newValue) {
+	 	return SetIntValue(_newValue);   
+	};
+	
+	int Get() {
+	 
+	    return GetIntValue();
+	}
 
 	
 	dataIntProperty(std::string _id, int _val, std::string _label = "", std::string _description = "", std::string _unit = "", std::string _helpUrl = "", int minValue = 0, int maxValue = 0, parameterClass _parClass = parameterClass::unspecified, dataElementFeatures::_features _features = dataElementFeatures::none)

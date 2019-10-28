@@ -9,75 +9,125 @@
 */
 
 #include "SynthEnumDictionaries.h"
+#include "GeneralDefinitions.h"
+#include "D:/JUCE/modules/juce_gui_basics/keyboard/juce_KeyPress.cpp"
+
 void SynthEnumDictionaries::init()
 {
-	enum_parameterClass.AddEntry((int)parameterClass::unspecified, "Other", "Unspecified parameter class", "#181f22");
-	enum_parameterClass.AddEntry((int)parameterClass::ccLive, "CC Live", "Control parameters, applied during both Note On or Off", "#ed6216");
-	enum_parameterClass.AddEntry((int)parameterClass::ccSustained, "CC Sustained", "Control parameters, applied in Note off period", "#029d4d");
-	enum_parameterClass.AddEntry((int)parameterClass::opm, "OPM", "OPM parameters, applied when synth (DAW, MIDI generator) is not activly playing", "#397daa");
-	enum_parameterClass.AddEntry((int)parameterClass::configuration, "Settings", "Static configuration parameters", "#181f22");
+	parameterClass.AddEntry((int)parameterClass::unspecified, "Other", "Unspecified parameter class", IMBCOLOR_DARKGRAY);
+	parameterClass.AddEntry((int)parameterClass::ccLive, "CC Live", "Control parameters, applied during both Note On or Off", IMBCOLOR_BLUE);
+	parameterClass.AddEntry((int)parameterClass::ccSustained, "CC Sustained", "Control parameters, applied in Note off period", IMBCOLOR_GREEN);
+	parameterClass.AddEntry((int)parameterClass::opm, "OPM", "OPM parameters, applied when synth (DAW, MIDI generator) is not activly playing", IMBCOLOR_ORANGE);
+	parameterClass.AddEntry((int)parameterClass::configuration, "Settings", "Static configuration parameters", IMBCOLOR_DARKGRAY);
 
-	enum_oscilatorTypes.AddEntry((int)OscilatorType::other, "Other", "Other type of oscilator", "#181f22", "");
-	enum_oscilatorTypes.AddEntry((int)OscilatorType::waveform, "Waveform", "Main waveform oscilator", "#397daa", "");
-	enum_oscilatorTypes.AddEntry((int)OscilatorType::perk, "Perk", "Secondary oscilator", "#ed6216", "");
-	enum_oscilatorTypes.AddEntry((int)OscilatorType::filter, "Filter", "Oscilator modulating VCO filter", "#029d4d", "");
-
-
-	enum_presetNamePrefix.AddEntry("BS", "Bassline", "");
-	enum_presetNamePrefix.AddEntry("PL", "Plucked", "");
-	enum_presetNamePrefix.AddEntry("LD", "Lead", "");
-	enum_presetNamePrefix.AddEntry("SY", "Synth", "");
-	enum_presetNamePrefix.AddEntry("KY", "Key", "");
-	enum_presetNamePrefix.AddEntry("PD", "Pad", "");
-	enum_presetNamePrefix.AddEntry("SQ", "Sequence", "");
-
-	enum_presetNamePrefix.AddEntry("KD", "Kick drum", "");
-	enum_presetNamePrefix.AddEntry("DR", "Drums", "");
-	enum_presetNamePrefix.AddEntry("SN", "Snare", "");
-	enum_presetNamePrefix.AddEntry("PR", "Percussions", "");
-	enum_presetNamePrefix.AddEntry("HI", "High hat", "");
-
-	enum_presetNamePrefix.AddEntry("FX", "Effect", "");
-	enum_presetNamePrefix.AddEntry("UL", "Uplifter", "");
-	enum_presetNamePrefix.AddEntry("DL", "Downlifter", "");
-	enum_presetNamePrefix.AddEntry("IN", "Incoming FX", "");
-	enum_presetNamePrefix.AddEntry("OU", "Outcoming FX", "");
-	enum_presetNamePrefix.AddEntry("NS", "Noise", "");
-
-	enum_pitchUnits.AddEntry("Semitones", "Semitones", "Semitone - 12 in one octave");
-	enum_pitchUnits.AddEntry("Octaves", "Octaves", "Octave - 12 semitones");
-	enum_pitchUnits.AddEntry("1Hz", "1 Hz", "");
-	enum_pitchUnits.AddEntry("10Hz", "10 Hz", "");
-	enum_pitchUnits.AddEntry("100Hz", "100 Hz", "");
-	enum_pitchUnits.AddEntry("500Hz", "500 Hz", "");
-	enum_pitchUnits.AddEntry("1000Hz", "1000 Hz", "");
-	enum_pitchUnits.AddEntry("2000Hz", "2000 Hz", "");
-
-	enum_signalUnitChangeParameter.AddEntry("Rate");
-	enum_signalUnitChangeParameter.AddEntry("Period");
-	enum_signalUnitChangeParameter.AddEntry("Change");
-
-	enum_signalUnitChange.AddEntry("Pitch");
-	enum_signalUnitChange.AddEntry("PWM");
-	enum_signalUnitChange.AddEntry("Phase");
-
-	enum_signalUnitChangeMode.AddEntry("OneShot", "One-shot", "Performs change only in the first Period");
-	enum_signalUnitChangeMode.AddEntry("Loop", "", "Repeats the same value oscilation in each Period.");
-	enum_signalUnitChangeMode.AddEntry("Mirror", "", "Performs change in inverse direction on every second Period.");
-	enum_signalUnitChangeMode.AddEntry("Continual", "", "Keeps appling change, regardless Period.");
-
-	enum_LFOCurves.AddEntry("Triangle", "Triangle", "Starting with 0, reaching Value at middle of cycle, decreasing back to 0");
-
-	enum_LFOCurves.AddEntry("Down", "Ramp down", "Starting with Value, decreasing to 0");
-	enum_LFOCurves.AddEntry("Up", "Ramp up", "Starting with 0, increasing to Value");
-	enum_LFOCurves.AddEntry("Square", "Square pulse", "Half of the cycle the value is Value, other half it is 0");
-	enum_LFOCurves.AddEntry("Sine", "Sinewave", "Sine curve, starting and ending with 0");
-	enum_LFOCurves.AddEntry("Chaos", "Chaos", "CHAOS function moves from Last Target Value to Current Target Value, where New Target Value is set to random value between 0 and Spread, after each cycle(Time x Time Factor).");
+	oscilatorTypes.AddEntry((int)OscilatorType::other, "Other", "Other type of oscilator", IMBCOLOR_DARKGRAY, "");
+	oscilatorTypes.AddEntry((int)OscilatorType::waveform, "Waveform", "Main waveform oscilator", IMBCOLOR_ORANGE, "");
+	oscilatorTypes.AddEntry((int)OscilatorType::perk, "Perk", "Secondary oscilator", IMBCOLOR_BLUE, "");
+	oscilatorTypes.AddEntry((int)OscilatorType::filter, "Filter", "Oscilator modulating VCO filter", IMBCOLOR_GREEN, "");
 
 
-	enum_macroControlModes.AddEntry("Normal", "Normal", "Normal macro control mode, value is settable by user via GUI or DAW automation");
-	enum_macroControlModes.AddEntry("Velocity", "Velocity", "Value of the macro control is combined with note velocity");
-	enum_macroControlModes.AddEntry("Pitchbend", "Pitchbend", "Value of the macro control is combined with pitchbend MIDI data");
-	enum_macroControlModes.AddEntry("Aftertouch", "Aftertouch", "Value of the macro control is combined with Aftertouch MIDI data");
+	presetNamePrefix.AddEntry("BS", "Bassline", "", IMBCOLOR_BLUE);
+	presetNamePrefix.AddEntry("PL", "Plucked", "", IMBCOLOR_BLUE);
+	presetNamePrefix.AddEntry("LD", "Lead", "", IMBCOLOR_BLUE);
+	presetNamePrefix.AddEntry("SY", "Synth", "", IMBCOLOR_BLUE);
+	presetNamePrefix.AddEntry("KY", "Key", "", IMBCOLOR_BLUE);
+	presetNamePrefix.AddEntry("PD", "Pad", "", IMBCOLOR_BLUE);
+	presetNamePrefix.AddEntry("SQ", "Sequence", "", IMBCOLOR_BLUE);
+
+	presetNamePrefix.AddEntry("KD", "Kick drum", "", IMBCOLOR_ORANGE);
+	presetNamePrefix.AddEntry("DR", "Drums", "", IMBCOLOR_ORANGE);
+	presetNamePrefix.AddEntry("SN", "Snare", "", IMBCOLOR_ORANGE);
+	presetNamePrefix.AddEntry("PR", "Percussions", "", IMBCOLOR_ORANGE);
+	presetNamePrefix.AddEntry("HI", "High hat", "", IMBCOLOR_ORANGE);
+
+	presetNamePrefix.AddEntry("FX", "Effect", "", IMBCOLOR_GREEN);
+	presetNamePrefix.AddEntry("UL", "Uplifter", "", IMBCOLOR_GREEN);
+	presetNamePrefix.AddEntry("DL", "Downlifter", "", IMBCOLOR_GREEN);
+	presetNamePrefix.AddEntry("IN", "Incoming FX", "", IMBCOLOR_GREEN);
+	presetNamePrefix.AddEntry("OU", "Outcoming FX", "", IMBCOLOR_GREEN);
+	presetNamePrefix.AddEntry("NS", "Noise", "", IMBCOLOR_GREEN);
+
+	pitchUnits.AddEntry("Semitones", "Semitones", "Semitone - 12 in one octave");
+	pitchUnits.AddEntry("Octaves", "Octaves", "Octave - 12 semitones");
+	pitchUnits.AddEntry("1Hz", "1 Hz", "");
+	pitchUnits.AddEntry("10Hz", "10 Hz", "");
+	pitchUnits.AddEntry("100Hz", "100 Hz", "");
+	pitchUnits.AddEntry("500Hz", "500 Hz", "");
+	pitchUnits.AddEntry("1000Hz", "1000 Hz", "");
+	pitchUnits.AddEntry("2000Hz", "2000 Hz", "");
+
+	signalUnitChangeParameter.AddEntry("Rate");
+	signalUnitChangeParameter.AddEntry("Period");
+	signalUnitChangeParameter.AddEntry("Change");
+
+	signalUnitChange.AddEntry("Pitch");
+	signalUnitChange.AddEntry("PWM");
+	signalUnitChange.AddEntry("Phase");
+
+	signalUnitChangeMode.AddEntry("OneShot", "One-shot", "Performs change only in the first Period");
+	signalUnitChangeMode.AddEntry("Loop", "", "Repeats the same value oscilation in each Period.");
+	signalUnitChangeMode.AddEntry("Mirror", "", "Performs change in inverse direction on every second Period.");
+	signalUnitChangeMode.AddEntry("Continual", "", "Keeps appling change, regardless Period.");
+
+	LFOCurves.AddEntry("Triangle", "Triangle", "Starting with 0, reaching Value at middle of cycle, decreasing back to 0");
+
+	LFOCurves.AddEntry("Down", "Ramp down", "Starting with Value, decreasing to 0");
+	LFOCurves.AddEntry("Up", "Ramp up", "Starting with 0, increasing to Value");
+	LFOCurves.AddEntry("Square", "Square pulse", "Half of the cycle the value is Value, other half it is 0");
+	LFOCurves.AddEntry("Sine", "Sinewave", "Sine curve, starting and ending with 0");
+	LFOCurves.AddEntry("Chaos", "Chaos", "CHAOS function moves from Last Target Value to Current Target Value, where New Target Value is set to random value between 0 and Spread, after each cycle(Time x Time Factor).");
+
+	modulationMode.AddEntry("Sum", "Sum", "Resulting value is re-normalized sum of {[Value]} and {value generated by modulation source * [ModAmt]}.");
+	modulationMode.AddEntry("Factor", "Factor", "[ModAmt] is above zero, the {[Value]} is multiplied by {value generated by modulation source * [ModAmt]}, othersize: {value generated by modulation source * {1-[ModAmt] } }.");
+	modulationMode.AddEntry("Mix", "Mix", "[Value] is interpretted as cross-fade mix between {{value generated by modulation source * [ModAmt]} + {center of the value range}} and middle of the control parameter value range.");
+
+	timeUnit.AddEntry("bc", "Base clock", "Clock of hardware oscilator-control i.e. synth control firmware computation cycle.", IMBCOLOR_BLUE);
+	timeUnit.AddEntry("ms", "Miliseconds", "Time unit is approx. one millisecond, i.e. one 1000th of second.", IMBCOLOR_BLUE);
+	timeUnit.AddEntry("10ms", "10 miliseconds", "Time unit is approx. ten millisecond, i.e. one 100th of second.", IMBCOLOR_BLUE);
+	timeUnit.AddEntry("100ms", "100 miliseconds", "Time unit is approx. hundred millisecond, i.e. one 10th of second.", IMBCOLOR_BLUE);
+	timeUnit.AddEntry("1_32", "1/32", "Tempo synchronized to 1/32 of one bar (1/8 of period between two kicks)", IMBCOLOR_ORANGE);
+	timeUnit.AddEntry("1_16", "1/16", "Tempo synchronized to 1/16 of one bar (1/4 of period between two kicks)", IMBCOLOR_ORANGE);
+	timeUnit.AddEntry("1_8", "1/8", "Tempo synchronized to 1/8 of one bar (1/2 of period between two kicks)", IMBCOLOR_ORANGE);
+	timeUnit.AddEntry("1_4", "1/4", "Tempo synchronized to 1/4 of one bar (period between two kicks)", IMBCOLOR_ORANGE);
+
+	macroControlModes.AddEntry("Normal", "Normal", "Normal macro control mode, value is settable by user via GUI or DAW automation");
+	macroControlModes.AddEntry("Velocity", "Velocity", "Value of the macro control is combined with note velocity");
+	macroControlModes.AddEntry("Pitchbend", "Pitchbend", "Value of the macro control is combined with pitchbend MIDI data");
+	macroControlModes.AddEntry("Aftertouch", "Aftertouch", "Value of the macro control is combined with Aftertouch MIDI data");
 	
+	//KeyPressHelpers::translations.
+
+
+	int len = sizeof(KeyPressHelpers::translations) / sizeof(KeyPressHelpers::translations[0]);
+
+		//auto s = KeyPressHelpers::translations.size();
+
+	for (size_t i = 0; i < len; i++)
+	{
+		auto entry = KeyPressHelpers::translations[i];
+		KeyPress k = KeyPress(entry.code);
+		
+		keyPressCodes.AddEntry(
+			entry.code, entry.name, k.getTextDescriptionWithIcons().toStdString());
+	};
+
+	for (int i = KeyPress::F1Key; i < KeyPress::numberPadDelete; i++) {
+
+		KeyPress k = KeyPress(i);
+		if (k.isValid()) {
+
+			keyPressCodes.AddEntry(i, k.getTextDescription().toStdString(), k.getTextDescriptionWithIcons().toStdString());
+		}
+	}
+
+
+	len = sizeof(KeyPressHelpers::modifierNames) / sizeof(KeyPressHelpers::modifierNames[0]);
+	for (size_t i = 0; i < len; i++)
+	{
+		auto entry = KeyPressHelpers::modifierNames[i];
+		
+		keyPressModifiers.AddEntry(entry.flag, entry.name, entry.name);
+	};
+	
+	//juce::KeyPressHelpers::KeyNameAndCode;
 }

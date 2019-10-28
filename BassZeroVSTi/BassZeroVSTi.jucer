@@ -9,13 +9,95 @@
               maxBinaryFileSize="20971520" version="0.5.2" pluginDesc="Interface for controling BassZero device">
   <MAINGROUP id="u0F6E1" name="BassZeroVSTi">
     <GROUP id="{D77581B4-8CF9-72FB-081F-DCC82E4EC583}" name="Source">
-      <FILE id="vA3xnU" name="veles_template_blue.ico" compile="0" resource="1"
-            file="Source/veles_template_blue.ico" xcodeResource="1"/>
+      <FILE id="uKTkDh" name="WProgram.h" compile="0" resource="0" file="Source/WProgram.h"/>
+      <GROUP id="{72748A7E-D460-C334-C814-FD4D5852CD12}" name="External">
+        <GROUP id="{75A72996-0D26-243D-14DA-C32AB6BB26BB}" name="Common">
+          <GROUP id="{6966FA1C-2749-B651-70AC-6364D09DA57A}" name="src">
+            <FILE id="LXob2a" name="Common.cpp" compile="1" resource="0" file="../../imbAVR.BassZero/Common/src/Common.cpp"/>
+            <FILE id="Ch5PrO" name="Common.h" compile="0" resource="0" file="../../imbAVR.BassZero/Common/src/Common.h"/>
+            <FILE id="tpWcuj" name="MathTool.cpp" compile="1" resource="0" file="../../imbAVR.BassZero/Common/src/MathTool.cpp"/>
+            <FILE id="VYDO00" name="MathTool.h" compile="0" resource="0" file="../../imbAVR.BassZero/Common/src/MathTool.h"/>
+            <FILE id="mc0lvN" name="MonitoredArray.cpp" compile="1" resource="0"
+                  file="../../imbAVR.BassZero/Common/src/MonitoredArray.cpp"/>
+            <FILE id="eMWbYl" name="MonitoredArray.h" compile="0" resource="0"
+                  file="../../imbAVR.BassZero/Common/src/MonitoredArray.h"/>
+          </GROUP>
+          <FILE id="xTEKhk" name="Common.vcxitems" compile="0" resource="0" file="../../imbAVR.BassZero/Common/Common.vcxitems"/>
+          <FILE id="IguKD6" name="Common.vcxitems.filters" compile="0" resource="0"
+                file="../../imbAVR.BassZero/Common/Common.vcxitems.filters"/>
+          <FILE id="gFZMLq" name="library.properties" compile="0" resource="0"
+                file="../../imbAVR.BassZero/Common/library.properties"/>
+          <FILE id="WdWO3L" name="readme.txt" compile="0" resource="0" file="../../imbAVR.BassZero/Common/readme.txt"/>
+        </GROUP>
+        <GROUP id="{6E22C330-7490-A7F3-D72D-CC2C08E2D946}" name="Functions">
+          <GROUP id="{F3E255E6-C74F-3D04-0530-0D98BE1ADD89}" name="src">
+            <FILE id="vL7rwz" name="ADSR.cpp" compile="1" resource="0" file="../../imbAVR.BassZero/Functions/src/ADSR.cpp"/>
+            <FILE id="rmPVfO" name="ADSR.h" compile="0" resource="0" file="../../imbAVR.BassZero/Functions/src/ADSR.h"/>
+            <FILE id="GGgsOw" name="Functions.cpp" compile="1" resource="0" file="../../imbAVR.BassZero/Functions/src/Functions.cpp"/>
+            <FILE id="wnM9bo" name="Functions.h" compile="0" resource="0" file="../../imbAVR.BassZero/Functions/src/Functions.h"/>
+            <FILE id="AJRmwT" name="TwoPointENV.cpp" compile="1" resource="0" file="../../imbAVR.BassZero/Functions/src/TwoPointENV.cpp"/>
+            <FILE id="fqdyHk" name="TwoPointENV.h" compile="0" resource="0" file="../../imbAVR.BassZero/Functions/src/TwoPointENV.h"/>
+          </GROUP>
+          <FILE id="OiRhGl" name="Functions.vcxitems" compile="0" resource="0"
+                file="../../imbAVR.BassZero/Functions/Functions.vcxitems"/>
+          <FILE id="jmz5i5" name="Functions.vcxitems.filters" compile="0" resource="0"
+                file="../../imbAVR.BassZero/Functions/Functions.vcxitems.filters"/>
+          <FILE id="qO8A09" name="library.properties" compile="0" resource="0"
+                file="../../imbAVR.BassZero/Functions/library.properties"/>
+          <FILE id="cbBQjA" name="readme.txt" compile="0" resource="0" file="../../imbAVR.BassZero/Functions/readme.txt"/>
+        </GROUP>
+      </GROUP>
       <GROUP id="{27EF8916-5484-36E5-E916-591A4447043C}" name="Application">
-        <FILE id="K67co5" name="SynthEnumDictionaries.cpp" compile="1" resource="0"
-              file="Source/Application/SynthEnumDictionaries.cpp"/>
-        <FILE id="OWLMQm" name="SynthEnumDictionaries.h" compile="0" resource="0"
-              file="Source/Application/SynthEnumDictionaries.h"/>
+        <GROUP id="{6254FDB2-0868-0BAE-CB9C-84B383C9B987}" name="Model">
+          <FILE id="NP7xb1" name="CommandInvokePoint.h" compile="0" resource="0"
+                file="Source/Application/Model/CommandInvokePoint.h"/>
+          <FILE id="L3RPYS" name="CommandModel.h" compile="0" resource="0" file="Source/Application/Model/CommandModel.h"/>
+          <FILE id="ncFcL1" name="CommandModelComplete.h" compile="0" resource="0"
+                file="Source/Application/Model/CommandModelComplete.h"/>
+          <FILE id="oxyITF" name="CommandModelDecoration.h" compile="0" resource="0"
+                file="Source/Application/Model/CommandModelDecoration.h"/>
+          <FILE id="eSvgsB" name="CommandValueSetter.h" compile="0" resource="0"
+                file="Source/Application/Model/CommandValueSetter.h"/>
+        </GROUP>
+        <GROUP id="{BD0ECBE0-EDFE-6156-3C51-BA3B348F4AD4}" name="Data">
+          <GROUP id="{0BE32625-8388-5B05-2E6D-2C01BB40AF33}" name="Presets">
+            <FILE id="nfnZec" name="imbSynthLibraryContributor.h" compile="0" resource="0"
+                  file="Source/Application/Data/Presets/imbSynthLibraryContributor.h"/>
+            <FILE id="sp6CXF" name="imbSynthLibraryManager.h" compile="0" resource="0"
+                  file="Source/Application/Data/Presets/imbSynthLibraryManager.h"/>
+            <FILE id="uUZJj5" name="imbSynthPresetDefinition.h" compile="0" resource="0"
+                  file="Source/Application/Data/Presets/imbSynthPresetDefinition.h"/>
+            <FILE id="iBRUkH" name="imbSynthPresetGroup.h" compile="0" resource="0"
+                  file="Source/Application/Data/Presets/imbSynthPresetGroup.h"/>
+            <FILE id="wd1J6M" name="imbSynthPresetLibrary.h" compile="0" resource="0"
+                  file="Source/Application/Data/Presets/imbSynthPresetLibrary.h"/>
+            <FILE id="kGl5pg" name="imbSynthStatePresetLibrary.h" compile="0" resource="0"
+                  file="Source/Application/Data/Presets/imbSynthStatePresetLibrary.h"/>
+          </GROUP>
+          <FILE id="tV2o7d" name="ccTranslationMap.cpp" compile="1" resource="0"
+                file="Source/Application/Data/ccTranslationMap.cpp"/>
+          <FILE id="TSpmMy" name="ccTranslationMap.h" compile="0" resource="0"
+                file="Source/Application/Data/ccTranslationMap.h"/>
+          <FILE id="MXYKWx" name="Header.h" compile="0" resource="0" file="Source/Application/Data/Header.h"/>
+          <FILE id="RHB7Hg" name="IOBufferStats.h" compile="0" resource="0" file="Source/Application/Data/IOBufferStats.h"/>
+          <FILE id="Jtu2WE" name="IOCommunicationStats.h" compile="0" resource="0"
+                file="Source/Application/Data/IOCommunicationStats.h"/>
+          <FILE id="aVFULu" name="MIDISequence.h" compile="0" resource="0" file="Source/Application/Data/MIDISequence.h"/>
+          <FILE id="I3pzf9" name="PresetPreviewSequence.h" compile="0" resource="0"
+                file="Source/Application/Data/Presets/PresetPreviewSequence.h"/>
+        </GROUP>
+        <GROUP id="{D0794DB4-C34D-7EA8-8C82-F681DA94F330}" name="Settings">
+          <FILE id="peNreK" name="Header.h" compile="0" resource="0" file="Source/Application/Settings/Header.h"/>
+          <FILE id="FPP24I" name="imbSynthGeneralConfiguration.h" compile="0"
+                resource="0" file="Source/Application/Settings/imbSynthGeneralConfiguration.h"/>
+          <FILE id="NwJb41" name="imbSynthStateUtilityData.h" compile="0" resource="0"
+                file="Source/Application/Settings/imbSynthStateUtilityData.h"/>
+          <FILE id="aRDWg7" name="IOSettings.cpp" compile="1" resource="0" file="Source/Application/Settings/IOSettings.cpp"/>
+          <FILE id="Nmd4S2" name="IOSettings.h" compile="0" resource="0" file="Source/Application/Settings/IOSettings.h"/>
+          <FILE id="kXt7qX" name="MidiGeneratorSettings.h" compile="0" resource="0"
+                file="Source/Application/Settings/MidiGeneratorSettings.h"/>
+          <FILE id="WfTQkk" name="ViewSettings.h" compile="0" resource="0" file="Source/Application/Settings/ViewSettings.h"/>
+        </GROUP>
         <GROUP id="{9887D9BC-3387-B863-26FF-6C06A57364F4}" name="Generators">
           <FILE id="Vksrd1" name="firmwareSourceCodeGenerator.cpp" compile="1"
                 resource="0" file="Source/Application/Generators/firmwareSourceCodeGenerator.cpp"/>
@@ -27,33 +109,26 @@
                 resource="0" file="Source/Application/Generators/modelDocumentationGenerator.h"/>
         </GROUP>
         <GROUP id="{A3960F15-7E59-ED21-FBDD-F698B516AC33}" name="Components">
-          <FILE id="YfbpEM" name="GUIStateManager.cpp" compile="1" resource="0"
-                file="Source/Application/Components/GUIStateManager.cpp"/>
-          <FILE id="ZTgXKO" name="GUIStateManager.h" compile="0" resource="0"
-                file="Source/Application/Components/GUIStateManager.h"/>
-          <FILE id="XUYwou" name="IOBufferStats.cpp" compile="1" resource="0"
-                file="Source/Application/Components/IOBufferStats.cpp"/>
-          <FILE id="Z16BGy" name="IOBufferStats.h" compile="0" resource="0" file="Source/Application/Components/IOBufferStats.h"/>
-          <FILE id="L72yZT" name="IOCommunicationStats.cpp" compile="1" resource="0"
-                file="Source/Application/Components/IOCommunicationStats.cpp"/>
-          <FILE id="yONiyW" name="IOCommunicationStats.h" compile="0" resource="0"
-                file="Source/Application/Components/IOCommunicationStats.h"/>
-          <FILE id="rLyOO6" name="IOManager.cpp" compile="1" resource="0" file="Source/Application/Components/IOManager.cpp"/>
+          <FILE id="lZyA9h" name="AudioInputManager.h" compile="0" resource="0"
+                file="Source/Application/Components/AudioInputManager.h"/>
+          <FILE id="HaysLK" name="AudioOutputManager.h" compile="0" resource="0"
+                file="Source/Application/Components/AudioOutputManager.h"/>
+          <FILE id="SDABau" name="imbTimeScheduler.h" compile="0" resource="0"
+                file="Source/Application/Components/imbTimeScheduler.h"/>
           <FILE id="UQVzMK" name="IOManager.h" compile="0" resource="0" file="Source/Application/Components/IOManager.h"/>
           <FILE id="NZ3AVS" name="IOPorts.cpp" compile="1" resource="0" file="Source/Application/Components/IOPorts.cpp"/>
           <FILE id="npEfxY" name="IOPorts.h" compile="0" resource="0" file="Source/Application/Components/IOPorts.h"/>
-          <FILE id="xyixOL" name="IOSettings.cpp" compile="1" resource="0" file="Source/Application/Components/IOSettings.cpp"/>
-          <FILE id="dJRpEo" name="IOSettings.h" compile="0" resource="0" file="Source/Application/Components/IOSettings.h"/>
-          <FILE id="Exbfq4" name="MidiGeneratorSettings.cpp" compile="1" resource="0"
-                file="Source/Application/Components/MidiGeneratorSettings.cpp"/>
-          <FILE id="YWj9tw" name="MidiGeneratorSettings.h" compile="0" resource="0"
-                file="Source/Application/Components/MidiGeneratorSettings.h"/>
+          <FILE id="quvnAe" name="KeyboardManager.h" compile="0" resource="0"
+                file="Source/Application/Components/KeyboardManager.h"/>
+          <FILE id="V68LJT" name="MidiManager.h" compile="0" resource="0" file="Source/Application/Components/MidiManager.h"/>
           <FILE id="ToiISo" name="README.md" compile="0" resource="1" file="Source/Application/Components/README.md"/>
-          <FILE id="UIHKd2" name="ViewSettings.cpp" compile="1" resource="0"
-                file="Source/Application/Components/ViewSettings.cpp"/>
-          <FILE id="HOue6E" name="ViewSettings.h" compile="0" resource="0" file="Source/Application/Components/ViewSettings.h"/>
+          <FILE id="SNm7KU" name="SynthApplicationTask.h" compile="0" resource="0"
+                file="Source/Application/Components/SynthApplicationTask.h"/>
+          <FILE id="KkD5lv" name="UserInterfaceManager.h" compile="0" resource="0"
+                file="Source/Application/Components/UserInterfaceManager.h"/>
         </GROUP>
         <GROUP id="{8AA9186F-14D7-933E-94AE-F2BADC20773C}" name="Files">
+          <FILE id="Ty5ejQ" name="README.md" compile="0" resource="1" file="Source/Application/Files/README.md"/>
           <FILE id="NjgoKT" name="SynthApplicationFolder.cpp" compile="1" resource="0"
                 file="Source/Application/Files/SynthApplicationFolder.cpp"/>
           <FILE id="UuvoxC" name="SynthApplicationFolder.h" compile="0" resource="0"
@@ -64,8 +139,7 @@
                 resource="0" file="Source/Application/Files/SynthApplicationFolderCollection.h"/>
         </GROUP>
         <GROUP id="{8F2357CF-9AC2-D7CD-9D1A-9BE10C4372EE}" name="Help">
-          <FILE id="I1rcQv" name="HelpResourcesManager.cpp" compile="1" resource="0"
-                file="Source/Application/Help/HelpResourcesManager.cpp"/>
+          <FILE id="bGwvJJ" name="HelpDocument.h" compile="0" resource="0" file="Source/Application/Help/HelpDocument.h"/>
           <FILE id="ifoUgV" name="HelpResourcesManager.h" compile="0" resource="0"
                 file="Source/Application/Help/HelpResourcesManager.h"/>
           <FILE id="Zjprhy" name="HowTo.md" compile="0" resource="1" file="Source/Application/Help/HowTo.md"/>
@@ -73,14 +147,10 @@
           <FILE id="hn4pWh" name="Modulations.md" compile="0" resource="1" file="Source/Application/Help/Modulations.md"/>
           <FILE id="yd01hK" name="OPM.md" compile="0" resource="1" file="Source/Application/Help/OPM.md"/>
           <FILE id="UGeNfN" name="Presets.md" compile="0" resource="1" file="Source/Application/Help/Presets.md"/>
-          <FILE id="p06sOg" name="RandomTip.cpp" compile="1" resource="0" file="Source/Application/Help/RandomTip.cpp"/>
           <FILE id="DdJTEY" name="RandomTip.h" compile="0" resource="0" file="Source/Application/Help/RandomTip.h"/>
         </GROUP>
-        <FILE id="xZkz2W" name="SynthApplicationEnvironment.cpp" compile="1"
-              resource="0" file="Source/Application/SynthApplicationEnvironment.cpp"/>
         <FILE id="ufONoe" name="SynthApplicationEnvironment.h" compile="0"
               resource="0" file="Source/Application/SynthApplicationEnvironment.h"/>
-        <FILE id="v049wv" name="CommandIDs.cpp" compile="1" resource="0" file="Source/Application/CommandIDs.cpp"/>
         <FILE id="AzG7R8" name="CommandIDs.h" compile="0" resource="0" file="Source/Application/CommandIDs.h"/>
         <FILE id="hztLim" name="GeneralDefinitions.h" compile="0" resource="0"
               file="Source/Application/GeneralDefinitions.h"/>
@@ -88,49 +158,53 @@
               file="Source/Application/SynthApplicationBase.cpp"/>
         <FILE id="MntATZ" name="SynthApplicationBase.h" compile="0" resource="0"
               file="Source/Application/SynthApplicationBase.h"/>
-        <FILE id="WM8a9N" name="SynthApplicationCommandManager.cpp" compile="1"
-              resource="0" file="Source/Application/SynthApplicationCommandManager.cpp"/>
-        <FILE id="BKO7bt" name="SynthApplicationCommandManager.h" compile="0"
-              resource="0" file="Source/Application/SynthApplicationCommandManager.h"/>
         <FILE id="K4knWn" name="MainMenuModel.cpp" compile="1" resource="0"
               file="Source/Application/MainMenuModel.cpp"/>
         <FILE id="HkP2SY" name="MainMenuModel.h" compile="0" resource="0" file="Source/Application/MainMenuModel.h"/>
+        <FILE id="K67co5" name="SynthEnumDictionaries.cpp" compile="1" resource="0"
+              file="Source/Application/SynthEnumDictionaries.cpp"/>
+        <FILE id="OWLMQm" name="SynthEnumDictionaries.h" compile="0" resource="0"
+              file="Source/Application/SynthEnumDictionaries.h"/>
+        <FILE id="rbgAbJ" name="imbSynthStateData.cpp" compile="1" resource="0"
+              file="Source/Application/imbSynthStateData.cpp"/>
+        <FILE id="zO9v11" name="imbSynthStateData.h" compile="0" resource="0"
+              file="Source/Application/imbSynthStateData.h"/>
+        <FILE id="nBfAaP" name="imbSynthAudioProcessor.cpp" compile="1" resource="0"
+              file="Source/Application/imbSynthAudioProcessor.cpp"/>
+        <FILE id="M4VEQ4" name="imbSynthAudioProcessor.h" compile="0" resource="0"
+              file="Source/Application/imbSynthAudioProcessor.h"/>
         <FILE id="JZJnnB" name="README.md" compile="0" resource="1" file="Source/Application/README.md"/>
       </GROUP>
       <GROUP id="{C6BF9B20-7B3E-09A6-592B-473E3211776F}" name="Model">
+        <FILE id="wTYpFq" name="Header.h" compile="0" resource="0" file="Source/Model/Header.h"/>
+        <GROUP id="{F6635BB3-7448-312A-CB5B-9E7FE41101A8}" name="Communication">
+          <FILE id="V15uLQ" name="ParameterController.cpp" compile="1" resource="0"
+                file="Source/Model/Communication/ParameterController.cpp"/>
+          <FILE id="vJJBAU" name="ParameterController.h" compile="0" resource="0"
+                file="Source/Model/Communication/ParameterController.h"/>
+          <FILE id="FXjCh8" name="ParameterMap.h" compile="0" resource="0" file="Source/Model/Communication/ParameterMap.h"/>
+          <FILE id="MX6oF2" name="ParameterMapEntry.h" compile="0" resource="0"
+                file="Source/Model/Communication/ParameterMapEntry.h"/>
+          <FILE id="O5TdpG" name="ParameterValueMessage.h" compile="0" resource="0"
+                file="Source/Model/Communication/ParameterValueMessage.h"/>
+        </GROUP>
         <GROUP id="{2C5118E3-4EE1-978A-9BA6-CD77D7A3C329}" name="Components">
-          <FILE id="xtYiUm" name="MacroControlLink.cpp" compile="1" resource="0"
-                file="Source/Model/Components/MacroControlLink.cpp"/>
           <FILE id="xjYE2K" name="MacroControlLink.h" compile="0" resource="0"
                 file="Source/Model/Components/MacroControlLink.h"/>
-          <FILE id="ZMfpXg" name="ModelModulatedControl.cpp" compile="1" resource="0"
-                file="Source/Model/Components/ModelModulatedControl.cpp"/>
           <FILE id="ZFfgXH" name="ModelModulatedControl.h" compile="0" resource="0"
                 file="Source/Model/Components/ModelModulatedControl.h"/>
-          <FILE id="UTIkmY" name="OPMSignalUnitChange.cpp" compile="1" resource="0"
-                file="Source/Model/Components/OPMSignalUnitChange.cpp"/>
           <FILE id="finz4T" name="OPMSignalUnitChange.h" compile="0" resource="0"
                 file="Source/Model/Components/OPMSignalUnitChange.h"/>
-          <FILE id="bAnDfi" name="OscilatorBase.cpp" compile="1" resource="0"
-                file="Source/Model/Components/OscilatorBase.cpp"/>
           <FILE id="lLxWXl" name="OscilatorBase.h" compile="0" resource="0" file="Source/Model/Components/OscilatorBase.h"/>
           <FILE id="KBtARb" name="README.md" compile="0" resource="1" file="Source/Model/Components/README.md"/>
         </GROUP>
         <GROUP id="{800131DF-E7F7-B8D7-66E6-EB00750B90A3}" name="Modulation">
-          <FILE id="emIYeY" name="ModulationFunctionADSR.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationFunctionADSR.cpp"/>
           <FILE id="ijxa3R" name="ModulationFunctionADSR.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationFunctionADSR.h"/>
-          <FILE id="DTNtrx" name="ModulationFunctionENV.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationFunctionENV.cpp"/>
           <FILE id="Pd14wA" name="ModulationFunctionENV.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationFunctionENV.h"/>
-          <FILE id="Dk7soF" name="ModulationSourceBase.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationSourceBase.cpp"/>
           <FILE id="NGeksM" name="ModulationFunctionLFO.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationFunctionLFO.h"/>
-          <FILE id="T0TjSr" name="ModulationFunctionLFO.cpp" compile="1" resource="0"
-                file="Source/Model/Modulation/ModulationFunctionLFO.cpp"/>
           <FILE id="ZjpE86" name="ModulationSourceBase.h" compile="0" resource="0"
                 file="Source/Model/Modulation/ModulationSourceBase.h"/>
           <FILE id="mD9uxn" name="ModulationSourceMacroControl.cpp" compile="1"
@@ -139,37 +213,33 @@
                 resource="0" file="Source/Model/Modulation/ModulationSourceMacroControl.h"/>
           <FILE id="wHWnhb" name="README.md" compile="0" resource="1" file="Source/Model/Modulation/README.md"/>
         </GROUP>
+        <FILE id="Ij3pMV" name="imbControlParameterEnumerations.h" compile="0"
+              resource="0" file="Source/Model/imbControlParameterEnumerations.h"/>
         <FILE id="fisMzc" name="SynthDeviceModel.cpp" compile="1" resource="0"
               file="Source/Model/SynthDeviceModel.cpp"/>
         <FILE id="AUPdri" name="SynthDeviceModel.h" compile="0" resource="0"
               file="Source/Model/SynthDeviceModel.h"/>
-        <FILE id="JCDkxA" name="ModelConstructionTools.cpp" compile="1" resource="0"
-              file="Source/Model/ModelConstructionTools.cpp"/>
-        <FILE id="lGGKpq" name="ModelConstructionTools.h" compile="0" resource="0"
-              file="Source/Model/ModelConstructionTools.h"/>
         <FILE id="Bk6BiC" name="README.md" compile="0" resource="1" file="Source/Model/README.md"/>
       </GROUP>
       <GROUP id="{339FE495-1696-E062-B2C3-4DA5B3929585}" name="Utility">
-        <FILE id="lJkS8T" name="ccTranslationEntry.cpp" compile="1" resource="0"
-              file="Source/Utility/ccTranslationEntry.cpp"/>
-        <FILE id="XgP5dM" name="ccTranslationEntry.h" compile="0" resource="0"
-              file="Source/Utility/ccTranslationEntry.h"/>
-        <FILE id="JeNDKS" name="ccTranslationMap.cpp" compile="1" resource="0"
-              file="Source/Utility/ccTranslationMap.cpp"/>
-        <FILE id="rP6GXJ" name="ccTranslationMap.h" compile="0" resource="0"
-              file="Source/Utility/ccTranslationMap.h"/>
+        <FILE id="JWs6UN" name="Header.h" compile="0" resource="0" file="Source/Utility/Header.h"/>
         <FILE id="AlEoRy" name="imbGeneralTools.cpp" compile="1" resource="0"
               file="Source/Utility/imbGeneralTools.cpp"/>
         <FILE id="gswmPA" name="imbGeneralTools.h" compile="0" resource="0"
               file="Source/Utility/imbGeneralTools.h"/>
-        <FILE id="Yj4RCC" name="imbSynthModelExporter.cpp" compile="1" resource="0"
-              file="Source/Utility/imbSynthModelExporter.cpp"/>
-        <FILE id="RSA4UV" name="imbSynthModelExporter.h" compile="0" resource="0"
-              file="Source/Utility/imbSynthModelExporter.h"/>
         <FILE id="tSMT4t" name="imbSynthTools.cpp" compile="1" resource="0"
               file="Source/Utility/imbSynthTools.cpp"/>
         <FILE id="AI3QUG" name="imbSynthTools.h" compile="0" resource="0" file="Source/Utility/imbSynthTools.h"/>
+        <FILE id="u6VNBs" name="imbTimeWatch.h" compile="0" resource="0" file="Source/Utility/imbTimeWatch.h"/>
         <FILE id="K295Do" name="README.md" compile="0" resource="1" file="Source/Utility/README.md"/>
+        <FILE id="kGlc63" name="SafeEnum.h" compile="0" resource="0" file="Source/Utility/SafeEnum.h"/>
+        <FILE id="TaLYB6" name="Serialization.cpp" compile="1" resource="0"
+              file="Source/Utility/Serialization.cpp"/>
+        <FILE id="AmLATv" name="Serialization.h" compile="0" resource="0" file="Source/Utility/Serialization.h"/>
+        <FILE id="mgDgKs" name="SystemInfoManager.h" compile="0" resource="0"
+              file="Source/Utility/SystemInfoManager.h"/>
+        <FILE id="dOmRGy" name="ThreadWithProgressWindow.h" compile="0" resource="0"
+              file="Source/Utility/ThreadWithProgressWindow.h"/>
       </GROUP>
       <GROUP id="{597FEE43-E744-9541-A257-64224B6641A0}" name="Data">
         <GROUP id="{8F0FD5A6-EBD5-48F0-E44A-C41DDBA6CB21}" name="Binding">
@@ -181,19 +251,21 @@
                 file="Source/Data/Binding/dataBindingEntry.cpp"/>
           <FILE id="O9EOqf" name="dataBindingEntry.h" compile="0" resource="0"
                 file="Source/Data/Binding/dataBindingEntry.h"/>
-          <FILE id="QyD7FK" name="dataContextMenu.cpp" compile="1" resource="0"
-                file="Source/Data/Binding/dataContextMenu.cpp"/>
           <FILE id="eBnzMK" name="dataContextMenu.h" compile="0" resource="0"
                 file="Source/Data/Binding/dataContextMenu.h"/>
           <FILE id="gt6E5V" name="dataInterfaceManager.cpp" compile="1" resource="0"
                 file="Source/Data/Binding/dataInterfaceManager.cpp"/>
           <FILE id="NzS3GJ" name="dataInterfaceManager.h" compile="0" resource="0"
                 file="Source/Data/Binding/dataInterfaceManager.h"/>
-          <FILE id="OhuK9L" name="dataInterfacePolicy.cpp" compile="1" resource="0"
-                file="Source/Data/Binding/dataInterfacePolicy.cpp"/>
-          <FILE id="qUGB5U" name="dataInterfacePolicy.h" compile="0" resource="0"
-                file="Source/Data/Binding/dataInterfacePolicy.h"/>
           <FILE id="bniUXm" name="README.md" compile="0" resource="1" file="Source/Data/Binding/README.md"/>
+        </GROUP>
+        <GROUP id="{A811D308-F831-B5F4-C41A-3A1DF3C8D4D8}" name="Document">
+          <FILE id="g8olov" name="DocumentBlock.h" compile="0" resource="0" file="Source/Data/Document/DocumentBlock.h"/>
+          <FILE id="qtfaWF" name="DocumentBuilder.h" compile="0" resource="0"
+                file="Source/Data/Document/DocumentBuilder.h"/>
+          <FILE id="eTThpC" name="DocumentModel.h" compile="0" resource="0" file="Source/Data/Document/DocumentModel.h"/>
+          <FILE id="UbnywX" name="DocumentViewer.h" compile="0" resource="0"
+                file="Source/Data/Document/DocumentViewer.h"/>
         </GROUP>
         <GROUP id="{D39B9DD3-BF2B-71FF-9103-B0FB09220274}" name="Generators">
           <FILE id="h4CMB7" name="imbMarkdownBuilder.cpp" compile="1" resource="0"
@@ -234,18 +306,16 @@
                 file="Source/Data/Generators/imbStringBuilderState.h"/>
         </GROUP>
         <GROUP id="{4A58E3EC-6072-289C-F419-A0A99E7FB12D}" name="Model">
-          <FILE id="w0nQrO" name="dataBoolProperty.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataBoolProperty.cpp"/>
           <FILE id="iqfsMT" name="dataBoolProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataBoolProperty.h"/>
+          <FILE id="fTQmdM" name="dataCustomLabelProperty.h" compile="0" resource="0"
+                file="Source/Data/Model/dataCustomLabelProperty.h"/>
+          <FILE id="G53DtZ" name="dataCustomTypeProperty.h" compile="0" resource="0"
+                file="Source/Data/Model/dataCustomTypeProperty.h"/>
           <FILE id="l7T9pd" name="dataElementBase.cpp" compile="1" resource="0"
                 file="Source/Data/Model/dataElementBase.cpp"/>
           <FILE id="oLcH1r" name="dataElementBase.h" compile="0" resource="0"
                 file="Source/Data/Model/dataElementBase.h"/>
-          <FILE id="gqdm0O" name="dataElementBindable.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataElementBindable.cpp"/>
-          <FILE id="AfwkDe" name="dataElementBindable.h" compile="0" resource="0"
-                file="Source/Data/Model/dataElementBindable.h"/>
           <FILE id="DFxfgZ" name="dataElementContainer.cpp" compile="1" resource="0"
                 file="Source/Data/Model/dataElementContainer.cpp"/>
           <FILE id="N87z8L" name="dataElementContainer.h" compile="0" resource="0"
@@ -254,22 +324,28 @@
                 file="Source/Data/Model/dataEnumDictionary.cpp"/>
           <FILE id="f9DlJg" name="dataEnumDictionary.h" compile="0" resource="0"
                 file="Source/Data/Model/dataEnumDictionary.h"/>
-          <FILE id="lIr6hk" name="dataEnumEntryProperty.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataEnumEntryProperty.cpp"/>
           <FILE id="ZB148g" name="dataEnumEntryProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataEnumEntryProperty.h"/>
-          <FILE id="NHRhK0" name="dataEnumProperty.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataEnumProperty.cpp"/>
           <FILE id="oNd5tW" name="dataEnumProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataEnumProperty.h"/>
-          <FILE id="Uk1Qk2" name="dataIntProperty.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataIntProperty.cpp"/>
+          <FILE id="qAXHnM" name="dataFilepathProperty.h" compile="0" resource="0"
+                file="Source/Data/Model/dataFilepathProperty.h"/>
           <FILE id="SYN0tE" name="dataIntProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataIntProperty.h"/>
+          <FILE id="uHnedL" name="dataLayoutBlock.h" compile="0" resource="0"
+                file="Source/Data/Model/dataLayoutBlock.h"/>
+          <FILE id="o3rFci" name="dataLayoutBlockBase.h" compile="0" resource="0"
+                file="Source/Data/Model/dataLayoutBlockBase.h"/>
+          <FILE id="JkIEDn" name="dataLayoutBlockViewSettings.h" compile="0"
+                resource="0" file="Source/Data/Model/dataLayoutBlockViewSettings.h"/>
+          <FILE id="zpbmvj" name="dataLinkProperty.h" compile="0" resource="0"
+                file="Source/Data/Model/dataLinkProperty.h"/>
           <FILE id="bmDc44" name="dataObject.cpp" compile="1" resource="0" file="Source/Data/Model/dataObject.cpp"/>
           <FILE id="pPpIGU" name="dataObject.h" compile="0" resource="0" file="Source/Data/Model/dataObject.h"/>
-          <FILE id="Iiye6F" name="dataObjectProperty.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataObjectProperty.cpp"/>
+          <FILE id="Vjlr37" name="dataObjectLayout.h" compile="0" resource="0"
+                file="Source/Data/Model/dataObjectLayout.h"/>
+          <FILE id="JJZEKh" name="dataObjectLayoutViewSettings.h" compile="0"
+                resource="0" file="Source/Data/Model/dataObjectLayoutViewSettings.h"/>
           <FILE id="mVa0jm" name="dataObjectProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataObjectProperty.h"/>
           <FILE id="xnh61a" name="dataObjectPropertyBase.cpp" compile="1" resource="0"
@@ -278,29 +354,21 @@
                 file="Source/Data/Model/dataObjectPropertyBase.h"/>
           <FILE id="c4okAG" name="dataObjectPropertyEnumerations.h" compile="0"
                 resource="0" file="Source/Data/Model/dataObjectPropertyEnumerations.h"/>
+          <FILE id="TOlJjo" name="dataObjectPropertyViewSettings.h" compile="0"
+                resource="0" file="Source/Data/Model/dataObjectPropertyViewSettings.h"/>
           <FILE id="fLdPV2" name="dataPatternObject.cpp" compile="1" resource="0"
                 file="Source/Data/Model/dataPatternObject.cpp"/>
           <FILE id="TK3Ol3" name="dataPatternObject.h" compile="0" resource="0"
                 file="Source/Data/Model/dataPatternObject.h"/>
-          <FILE id="jhfNgf" name="dataStringProperty.cpp" compile="1" resource="0"
-                file="Source/Data/Model/dataStringProperty.cpp"/>
           <FILE id="bEPX2y" name="dataStringProperty.h" compile="0" resource="0"
                 file="Source/Data/Model/dataStringProperty.h"/>
         </GROUP>
         <GROUP id="{48951699-AF71-2E93-B81E-78824D171828}" name="Structures">
-          <FILE id="OP0e5B" name="dataElementIndexMap.cpp" compile="1" resource="0"
-                file="Source/Data/Structures/dataElementIndexMap.cpp"/>
           <FILE id="oYTKzp" name="dataElementIndexMap.h" compile="0" resource="0"
                 file="Source/Data/Structures/dataElementIndexMap.h"/>
-          <FILE id="lWS4xY" name="dataObjectCollection.cpp" compile="1" resource="0"
-                file="Source/Data/Structures/dataObjectCollection.cpp"/>
           <FILE id="dKOyEm" name="dataObjectCollection.h" compile="0" resource="0"
                 file="Source/Data/Structures/dataObjectCollection.h"/>
-          <FILE id="JC2kfo" name="imbDictionary.cpp" compile="1" resource="0"
-                file="Source/Data/Structures/imbDictionary.cpp"/>
           <FILE id="KdsEDj" name="imbDictionary.h" compile="0" resource="0" file="Source/Data/Structures/imbDictionary.h"/>
-          <FILE id="aaR941" name="imbEnumerationList.cpp" compile="1" resource="0"
-                file="Source/Data/Structures/imbEnumerationList.cpp"/>
           <FILE id="x2rWsS" name="imbEnumerationList.h" compile="0" resource="0"
                 file="Source/Data/Structures/imbEnumerationList.h"/>
           <FILE id="ty5RMe" name="imbValueSet.cpp" compile="1" resource="0" file="Source/Data/Structures/imbValueSet.cpp"/>
@@ -309,63 +377,50 @@
                 file="Source/Data/Structures/imbValueSetFile.cpp"/>
           <FILE id="OU3bMP" name="imbValueSetFile.h" compile="0" resource="0"
                 file="Source/Data/Structures/imbValueSetFile.h"/>
-          <FILE id="IYsgJ6" name="SharedPointerMap.cpp" compile="1" resource="0"
-                file="Source/Data/Structures/SharedPointerMap.cpp"/>
+          <FILE id="EeK0Mz" name="matrixModel.h" compile="0" resource="0" file="Source/Data/Structures/matrixModel.h"/>
           <FILE id="MF54zs" name="SharedPointerMap.h" compile="0" resource="0"
                 file="Source/Data/Structures/SharedPointerMap.h"/>
-          <FILE id="P6f6pV" name="SharedPointerVector.cpp" compile="1" resource="0"
-                file="Source/Data/Structures/SharedPointerVector.cpp"/>
           <FILE id="EsNi7w" name="SharedPointerVector.h" compile="0" resource="0"
                 file="Source/Data/Structures/SharedPointerVector.h"/>
         </GROUP>
-        <FILE id="dtrqzH" name="imbSynthGeneralConfiguration.cpp" compile="1"
-              resource="0" file="Source/Data/imbSynthGeneralConfiguration.cpp"/>
-        <FILE id="ddDQpP" name="imbSynthGeneralConfiguration.h" compile="0"
-              resource="0" file="Source/Data/imbSynthGeneralConfiguration.h"/>
-        <FILE id="ox8hNz" name="imbSynthPresetDefinition.cpp" compile="1" resource="0"
-              file="Source/Data/imbSynthPresetDefinition.cpp"/>
-        <FILE id="FkoDib" name="imbSynthPresetDefinition.h" compile="0" resource="0"
-              file="Source/Data/imbSynthPresetDefinition.h"/>
-        <FILE id="u9COS8" name="imbSynthStateData.cpp" compile="1" resource="0"
-              file="Source/Data/imbSynthStateData.cpp"/>
-        <FILE id="DzBPYm" name="imbSynthStateData.h" compile="0" resource="0"
-              file="Source/Data/imbSynthStateData.h"/>
-        <FILE id="N4KIrJ" name="imbSynthStatePresetLibrary.cpp" compile="1"
-              resource="0" file="Source/Data/imbSynthStatePresetLibrary.cpp"/>
-        <FILE id="ydJgid" name="imbSynthStatePresetLibrary.h" compile="0" resource="0"
-              file="Source/Data/imbSynthStatePresetLibrary.h"/>
-        <FILE id="M0mI5O" name="imbSynthStateUtilityData.cpp" compile="1" resource="0"
-              file="Source/Data/imbSynthStateUtilityData.cpp"/>
-        <FILE id="yXwa7d" name="imbSynthStateUtilityData.h" compile="0" resource="0"
-              file="Source/Data/imbSynthStateUtilityData.h"/>
+        <FILE id="ScIK2h" name="Header.h" compile="0" resource="0" file="Source/Data/Header.h"/>
         <FILE id="LvWOG2" name="README.md" compile="0" resource="1" file="Source/Data/README.md"/>
       </GROUP>
-      <GROUP id="{2D365E2E-92D3-1196-4DAA-3D156C632C3C}" name="Control">
-        <FILE id="W8iaun" name="imbControlParameter.cpp" compile="1" resource="0"
-              file="Source/Control/imbControlParameter.cpp"/>
-        <FILE id="rfo4kI" name="imbControlParameter.h" compile="0" resource="0"
-              file="Source/Control/imbControlParameter.h"/>
-        <FILE id="KUBtgZ" name="imbControlParameterBinding.cpp" compile="1"
-              resource="0" file="Source/Control/imbControlParameterBinding.cpp"/>
-        <FILE id="eaWGO4" name="imbControlParameterBinding.h" compile="0" resource="0"
-              file="Source/Control/imbControlParameterBinding.h"/>
-        <FILE id="tEu7Cq" name="imbControlParameterBindingManager.cpp" compile="1"
-              resource="0" file="Source/Control/imbControlParameterBindingManager.cpp"/>
-        <FILE id="eLgmDJ" name="imbControlParameterBindingManager.h" compile="0"
-              resource="0" file="Source/Control/imbControlParameterBindingManager.h"/>
-        <FILE id="tOsxjf" name="imbControlParameterEnumerations.h" compile="0"
-              resource="0" file="Source/Control/imbControlParameterEnumerations.h"/>
-        <FILE id="w1J5Lg" name="imbSynthAudioProcessor.cpp" compile="1" resource="0"
-              file="Source/Control/imbSynthAudioProcessor.cpp"/>
-        <FILE id="XUeedC" name="imbSynthAudioProcessor.h" compile="0" resource="0"
-              file="Source/Control/imbSynthAudioProcessor.h"/>
-        <FILE id="RFrQVz" name="ParameterController.cpp" compile="1" resource="0"
-              file="Source/Control/ParameterController.cpp"/>
-        <FILE id="jzkWjq" name="ParameterController.h" compile="0" resource="0"
-              file="Source/Control/ParameterController.h"/>
-        <FILE id="dAizFc" name="README.md" compile="0" resource="1" file="Source/Control/README.md"/>
-      </GROUP>
       <GROUP id="{A1E69F2B-739B-6421-F522-AAF614DDC146}" name="GUI">
+        <GROUP id="{7CD92E2A-15F3-7338-7CAB-5BD3A910BBB4}" name="Theme">
+          <FILE id="pVRoF9" name="imbSynthThemeBase.h" compile="0" resource="0"
+                file="Source/GUI/Theme/imbSynthThemeBase.h"/>
+          <FILE id="bLIcZM" name="imbSynthThemeRounded.h" compile="0" resource="0"
+                file="Source/GUI/Theme/imbSynthThemeRounded.h"/>
+          <FILE id="Kmo1Dj" name="imbSynthThemeSquare.h" compile="0" resource="0"
+                file="Source/GUI/Theme/imbSynthThemeSquare.h"/>
+          <FILE id="aUhka3" name="imbSynthThemeTools.h" compile="0" resource="0"
+                file="Source/GUI/Theme/imbSynthThemeTools.h"/>
+        </GROUP>
+        <GROUP id="{4244E728-983C-7303-BED6-0BBDABA4DE39}" name="Generic">
+          <FILE id="dAkpgp" name="dataLayoutBlockComponent.h" compile="0" resource="0"
+                file="Source/GUI/Generic/dataLayoutBlockComponent.h"/>
+          <FILE id="VAAx1i" name="dataLayoutComponent.h" compile="0" resource="0"
+                file="Source/GUI/Generic/dataLayoutComponent.h"/>
+          <FILE id="FLbaJO" name="dataObjectEditor.h" compile="0" resource="0"
+                file="Source/GUI/Generic/dataObjectEditor.h"/>
+          <FILE id="mGo0Qb" name="dataPresentationEnumerations.h" compile="0"
+                resource="0" file="Source/GUI/Generic/dataPresentationEnumerations.h"/>
+          <FILE id="EcWsvE" name="dataPropertyEditor.h" compile="0" resource="0"
+                file="Source/GUI/Generic/dataPropertyEditor.h"/>
+          <FILE id="DxsHvH" name="dataTableEditor.h" compile="0" resource="0"
+                file="Source/GUI/Generic/dataTableEditor.h"/>
+          <FILE id="RK8Yu2" name="imbSynthSlider.h" compile="0" resource="0"
+                file="Source/GUI/Generic/imbSynthSlider.h"/>
+          <FILE id="SwNYxz" name="patternMatrix.h" compile="0" resource="0" file="Source/GUI/Generic/patternMatrix.h"/>
+          <FILE id="HD4vTf" name="README.md" compile="0" resource="1" file="Source/GUI/Generic/README.md"/>
+          <FILE id="zpWb49" name="sequenceEditor.h" compile="0" resource="0"
+                file="Source/GUI/Generic/sequenceEditor.h"/>
+          <FILE id="mfoE70" name="signalViewport.h" compile="0" resource="0"
+                file="Source/GUI/Generic/signalViewport.h"/>
+          <FILE id="U49A6c" name="sourceCodeEditor.h" compile="0" resource="0"
+                file="Source/GUI/Generic/sourceCodeEditor.h"/>
+        </GROUP>
         <GROUP id="{EBA3489F-B953-DEE7-B265-E1355A74CC1F}" name="Help">
           <FILE id="DBGqUw" name="AboutScreen.cpp" compile="1" resource="0" file="Source/GUI/Help/AboutScreen.cpp"/>
           <FILE id="vJ4XXx" name="AboutScreen.h" compile="0" resource="0" file="Source/GUI/Help/AboutScreen.h"/>
@@ -441,6 +496,8 @@
                 file="Source/GUI/General/PresetFileBrowserModel.cpp"/>
           <FILE id="SjRfmw" name="PresetFileBrowserModel.h" compile="0" resource="0"
                 file="Source/GUI/General/PresetFileBrowserModel.h"/>
+          <FILE id="zlsLSz" name="SynthParameterOverlayScreen.h" compile="0"
+                resource="0" file="Source/GUI/General/SynthParameterOverlayScreen.h"/>
         </GROUP>
         <GROUP id="{36A4A682-D439-2BE4-9272-EF79482CE161}" name="Global">
           <FILE id="x67kaI" name="AboutScreenDisplay.cpp" compile="1" resource="0"
@@ -559,6 +616,8 @@
             file="Source/BassZeroApplication.h"/>
       <FILE id="RBVx98" name="README.md" compile="0" resource="1" file="Source/README.md"/>
     </GROUP>
+    <FILE id="vA3xnU" name="veles_template_blue.ico" compile="0" resource="1"
+          file="Source/veles_template_blue.ico" xcodeResource="1"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">

@@ -21,7 +21,7 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/Application/imbSynthStateData.h"
 #include "../Source/Data/Model/dataPatternObject.h"
 #include "../Components/imbSynthGUIComponent.h"
 //[/Headers]
@@ -36,17 +36,17 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class PatternEditor8bit  : public Component, public imbSynthParameterEditor
+class PatternEditor8bit  : public Component
 {
 public:
     //==============================================================================
-    PatternEditor8bit();
+    PatternEditor8bit ();
     ~PatternEditor8bit();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
 	void Deploy(dataElementBase *p_target);
-	
+
     //[/UserMethods]
 
     void paint (Graphics& g) override;

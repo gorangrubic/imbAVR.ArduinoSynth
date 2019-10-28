@@ -40,6 +40,10 @@ class imbGeneralTools {
 		/// <returns></returns>
 		static std::string GetPathVersion(std::string path, int steps = 1, bool emptyOnRoot = true);
 
+		static std::string namePartSeparator() { return "_"; };
+		static std::string extensionSeparator() { return "."; };
+		static std::string dataSeparator() { return "."; };
+		static std::string filepathSeparator() { return "/"; };
 
 		static std::string Append(std::string left, std::string right, std::string separator=".");
 

@@ -16,7 +16,7 @@
 #include "Control\imbSynthAudioProcessor.h"
 #include "Model\SynthDeviceModel.h"
 #include "BassZeroSynthModel.h"
-#include "../Source/Data/imbSynthStateData.h"
+#include "../Source/Application/imbSynthStateData.h"
 #include "BassZeroApplication.h"
 //#include "BassZeroVstiAudioProcessor.h"
 

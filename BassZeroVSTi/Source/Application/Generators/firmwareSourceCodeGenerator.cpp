@@ -9,3 +9,27 @@
 */
 
 #include "firmwareSourceCodeGenerator.h"
+
+void firmwareSourceCodeGenerator::GenerateCCMapDefines()
+  {
+  }
+
+  void firmwareSourceCodeGenerator::GenerateCCEnumConversions()
+  {
+  }
+
+  void firmwareSourceCodeGenerator::GenerateEnumConversion(dataEnumDictionary & list)
+  {
+  }
+
+  void firmwareSourceCodeGenerator::GenerateModulationSourceDeclarations()
+  {
+  }
+
+void firmwareSourceCodeGenerator::GenerateSignalSources()
+{
+}
+
+void firmwareSourceCodeGenerator::DataObjectToClass(dataObject & source)
+{
+}

@@ -10,40 +10,7 @@
 
 #pragma once
 
-//class dataElementConstants {
-//
-//	static const std::string RoleClassContainer = "dataElementContainer";
-//};
-
-/* this class template is taken from: https://stackoverflow.com/questions/1448396/how-to-use-enums-as-flags-in-c/43213134#43213134 */
-/* Author: uliwitness (stackoverflow user: https://stackoverflow.com/users/242278/uliwitness ) */
-template<class ENUM, class UNDERLYING = typename std::underlying_type<ENUM>::type>
-class SafeEnum
-{
-public:
-	SafeEnum() : mFlags(0) {}
-	SafeEnum(ENUM singleFlag) : mFlags(singleFlag) {}
-	SafeEnum(const SafeEnum& original) : mFlags(original.mFlags) {}
-
-	SafeEnum&   operator |=(ENUM addValue) { mFlags |= addValue; return *this; }
-	SafeEnum    operator |(ENUM addValue) { SafeEnum  result(*this); result |= addValue; return result; }
-	SafeEnum&   operator &=(ENUM maskValue) { mFlags &= maskValue; return *this; }
-	SafeEnum    operator &(ENUM maskValue) { SafeEnum  result(*this); result &= maskValue; return result; }
-	SafeEnum    operator ~() { SafeEnum  result(*this); result.mFlags = ~result.mFlags; return result; }
-
-
-	bool HasFlag(ENUM value)
-	{
-		UNDERLYING value_base = (UNDERLYING)value;
-		
-		return mFlags & value_base == value_base;
-	}
-
-	explicit operator bool() { return mFlags != 0; }
-
-protected:
-	UNDERLYING  mFlags;
-};
+#include "../Source/Utility/SafeEnum.h"
 
 namespace dataElementFeatures {
 	enum _features :int {
@@ -65,6 +32,15 @@ namespace dataElementFeatures {
 		/// minValue is less than zero, maxValue is above zero
 		/// </summary>
 		isSignedRange = 1 << 11,
+		isProperty = 1<<12,
+		/* parameter has fixed value */
+		isReadOnly = 1 << 13,
+		/* parameter is not saved to file*/
+		isTemporary = 1 << 14,
+		allowToShowLabel = 1 << 15,
+		allowToShowDescription = 1 << 16,
+		allowToShowHelpIcon = 1 << 17,
+		allowToUseColor = 1 << 18,
 	};
 
 	typedef SafeEnum<enum _features> features;
@@ -107,6 +83,7 @@ enum class parameterClass:int {
 
 
 
+
 enum class parameterValueType :unsigned int {
 	Integer = 0,
 	Ratio = 1,
@@ -114,8 +91,77 @@ enum class parameterValueType :unsigned int {
 	Enumeration = 3,
 	Boolean = 4,
 	String = 5,
-	Byte = 6
+	Byte = 6,
+
+	dataObject = 7,
+	dataElementContainer = 8,
+	customClassProperty = 9
+
 };
+
+namespace dataObjectPropertyEnumerations {
+
+	enum class enumerationEditorModes :unsigned int {
+		normal = 0,
+		/* radio group -- for togglebuttin just a chekbox*/
+		checkBox = 1,
+		popupMenu = 2,
+		labelWithPopupMenu = 3,
+		textEditorWithPopupMenu = 4,
+	};
+
+	enum class sliderModes :unsigned int {
+		linear = 0,
+		/* radio group -- for togglebuttin just a chekbox*/
+		numbers = 1,
+		rotational = 2,
+		labelWithPopupMenu = 3,
+		textEditorWithPopupMenu = 4,
+	};
+
+	enum class layout :unsigned int {
+		unspecified=0,
+		column = 1,
+		compactRow = 2,
+		
+	};
+
+	static std::string GetDefaultEditorOfPreference(parameterValueType valueType) {
+
+		switch (valueType) {
+		case parameterValueType::Boolean:
+			return "ToggleButton";
+			break;
+		case parameterValueType::Byte:
+			return "PatternEditor8bit";
+			break;
+		case parameterValueType::dataObject:
+			return "dataObjectEditor";
+			break;
+		case parameterValueType::dataElementContainer:
+			return "dataTableEditor";
+			break;
+		case parameterValueType::customClassProperty:
+			break;
+		case parameterValueType::Enumeration:
+			return "ComboBox";
+			break;
+		case parameterValueType::Float:
+			return "Slider";
+			break;
+		case parameterValueType::Integer:
+			return "Slider";
+			break;
+		case parameterValueType::Ratio:
+			return "Slider";
+			break;
+		case parameterValueType::String:
+			return "TextEditor";
+			break;
+
+		}
+	}
+}
 
 //enum class parameterType {
 //	objectProperty=0,

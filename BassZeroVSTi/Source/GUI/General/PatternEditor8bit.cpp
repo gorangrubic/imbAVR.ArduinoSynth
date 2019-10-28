@@ -30,7 +30,7 @@
 PatternEditor8bit::PatternEditor8bit ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
-    
+
     //[/Constructor_pre]
 
 
@@ -56,47 +56,6 @@ PatternEditor8bit::~PatternEditor8bit()
     //[/Destructor]
 }
 
-void PatternEditor8bit::Deploy(dataElementBase * p_target)
-{
-	pattern = static_cast<dataPatternObject*>(p_target);
-
-	auto allCells = pattern->GetAllCells();
-
-	Slider::SliderStyle cellStyle = Slider::SliderStyle::LinearBarVertical;
-
-	switch (pattern->cellType)
-	{
-	case parameterValueType::Boolean:
-		cellStyle = Slider::SliderStyle::LinearBarVertical;
-		break;
-	case parameterValueType::Float:
-		cellStyle = Slider::SliderStyle::LinearBarVertical;
-		break;
-	case parameterValueType::Integer:
-		cellStyle = Slider::SliderStyle::LinearVertical;
-		break;
-	}
-	
-	
-	cellWidth = getWidth() / allCells.size();
-	cellHeight = getHeight();
-
-	int x = 0;
-	for each (auto cell in allCells)
-	{
-		std::unique_ptr<Slider> cellComponent = std::unique_ptr<Slider>(new Slider(cellStyle, Slider::TextEntryBoxPosition::NoTextBox));
-		addAndMakeVisible(cellComponent.get());
-		cellComponent->setSize(cellWidth, cellHeight);
-		cellComponent->setTopLeftPosition(x, 0);
-		
-		x += cellWidth;
-		//= std::unique_ptr<Component>(new)
-	}
-	
-	
-	
-}
-
 //==============================================================================
 void PatternEditor8bit::paint (Graphics& g)
 {
@@ -112,8 +71,8 @@ void PatternEditor8bit::paint (Graphics& g)
 void PatternEditor8bit::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
-	
-	
+
+
     //[/UserPreResize]
 
     //[UserResized] Add your own custom resize handling here..

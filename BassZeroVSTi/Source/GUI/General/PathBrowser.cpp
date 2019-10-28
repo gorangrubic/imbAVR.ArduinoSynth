@@ -35,7 +35,7 @@ PathBrowser::PathBrowser ()
     Path.reset (new Label ("new label",
                            TRANS("c:\\BassZero\\Library")));
     addAndMakeVisible (Path.get());
-    Path->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
+    Path->setFont (Font ("Helvetica Neue LT Std", 15.00f, Font::plain));
     Path->setJustificationType (Justification::centredLeft);
     Path->setEditable (false, true, false);
     Path->setColour (Label::backgroundColourId, Colour (0xff181f22));
@@ -164,8 +164,8 @@ BEGIN_JUCER_METADATA
          explicitFocusOrder="0" pos="-4R 0 172M 0M" posRelativeX="84f7b5d81fc26926"
          bkgCol="ff181f22" edTextCol="ff000000" edBkgCol="0" labelText="c:\BassZero\Library"
          editableSingleClick="0" editableDoubleClick="1" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15.0" kerning="0.0" bold="0"
-         italic="0" justification="33"/>
+         fontname="Helvetica Neue LT Std" fontsize="15.0" kerning="0.0"
+         bold="0" italic="0" justification="33"/>
   <TEXTBUTTON name="new button" id="8e7e026c8158390c" memberName="Browse" virtualName=""
               explicitFocusOrder="0" pos="0Rr 0 80 0M" bgColOff="ff495358"
               bgColOn="ff495358" buttonText="Browse" connectedEdges="0" needsCallback="1"

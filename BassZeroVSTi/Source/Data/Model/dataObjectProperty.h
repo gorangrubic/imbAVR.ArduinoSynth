@@ -19,9 +19,18 @@ protected:
 	
 public:
 
-	void updateAll();
+	void updateAll() {
+	  updateGUI();
+	  updateTooltip();
+  }
 
-	bool SetValue(float _newValue);
+
+	bool SetValue(float _newValue) 
+  {
+	  return setValue(_newValue);
+  }
+
+
 
 	dataObjectProperty(std::string _id, parameterValueType _valType, std::string _label="", std::string _description="", std::string _unit = "", std::string _helpUrl="", float minValue = 0, float maxValue = 0, parameterClass _parClass= parameterClass::unspecified, dataElementFeatures::_features _features=dataElementFeatures::none, float _value = 0)
 		:dataObjectPropertyBase(_valType,_id,_label,_description,_unit,_helpUrl,minValue,maxValue,_parClass)  {

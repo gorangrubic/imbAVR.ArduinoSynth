@@ -13,6 +13,8 @@
 #include "../Source/Data/Model/dataObject.h"
 #include "../Source/Data/Model/dataObjectProperty.h"
 
+#include "../Source/Data/Generators/imbSourceCodeBuilder.h"
+
 class firmwareSourceCodeGenerator {
     
  
@@ -29,13 +31,17 @@ class firmwareSourceCodeGenerator {
         void GenerateEnumConversion(dataEnumDictionary &list);
         
         void GenerateModulationSourceDeclarations();
-        void GenerateModulationSourceDeclarations();
+        //void GenerateModulationSourceDeclarations();
         
         void GenerateSignalSources();
         
         
         
         void DataObjectToClass(dataObject &source);
-                
+
+		firmwareSourceCodeGenerator(imbSourceCodeBuilder &_builder, SynthDeviceModel &_model) :builder{ _builder }, model{ _model }
+		{
+			
+		}
         
-}
+};

@@ -10,10 +10,9 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../Source/Control/imbControlParameterEnumerations.h"
+#include "../Model/imbControlParameterEnumerations.h"
 
-//#include "../Source/Model/ModelConstructionTools.h"
-#include <vector>
+
 
 class imbSynthTools {
  
@@ -25,6 +24,23 @@ class imbSynthTools {
 		static float StringToFloat(juce::String stringValue, float defaultValue);
 
 		static int StringToInt32(juce::String stringValue, int defaultValue);
+
+		/* Displays message box. Returns 0 if Cancel selected, 1 if ok */
+		static int showMessageBox(std::string title, std::string message, std::string okButtonText = "", std::string cancelButtonText = "", AlertWindow::AlertIconType icon = AlertWindow::InfoIcon)
+		{
+
+			AlertWindow w(title,
+				message,
+				icon);
+
+			if (okButtonText.empty()) okButtonText = "Close";
+
+			if (!okButtonText.empty()) w.addButton(okButtonText, 1, KeyPress(KeyPress::returnKey, 0, 0));
+			if (!cancelButtonText.empty()) w.addButton(cancelButtonText, 0, KeyPress(KeyPress::escapeKey, 0, 0));
+
+			return w.runModalLoop();
+
+		}
 
 
 		//static void imbSynthTools::SetParameter(AudioProcessorParameterGroup * group, imbControlParameter p)

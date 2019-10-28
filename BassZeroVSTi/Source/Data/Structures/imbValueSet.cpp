@@ -178,6 +178,39 @@ std::string imbValueSet::Get(std::string id, std::string defaultValue)
 	return s.toStdString();
 }
 
+void imbValueSet::Remove(std::string id)
+{
+	if (data.find(id) == data.end()) {
+		return;
+	}
+	data.erase(id);
+
+	if (comments.find(id) == comments.end()) {
+		return;
+	}
+	comments.erase(id);
+}
+
+bool imbValueSet::Contains(std::string id, bool containsCommentToo)
+{
+	if (data.find(id) == data.end()) {
+		return false;
+	}
+	if (containsCommentToo) {
+		if (comments.find(id) == comments.end()) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool imbValueSet::hasSameValue(std::string id, std::string value)
+{
+	if (!Contains(id, false)) return false;
+
+	return true;
+}
+
 std::vector<std::string> imbValueSet::split_string(const std::string& str,
 	const std::string& delimiter)
 {
